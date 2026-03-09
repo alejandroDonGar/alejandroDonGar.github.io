@@ -50,19 +50,31 @@ body {
 }
 .profile-image-container {
     position: relative;
-    width: 200px;
-    height: 200px;
-    flex-shrink: 0; 
+    
+    /* 1. Forzamos el tamaño: cambia 250px por el tamaño que quieras */
+    width: 250px; 
+    height: 250px; 
+    
+    /* 2. Evitamos que el texto de la derecha lo aplaste */
+    flex: 0 0 250px; 
+    
+    /* 3. Estética */
     border-radius: 20px;
     overflow: hidden;
+    margin-right: 2rem; /* Espacio entre foto y texto */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 .slide {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100%;  /* Ocupa el 100% de los 250px del padre */
+    height: 100%; /* Ocupa el 100% de los 250px del padre */
+    
+    /* 4. ¡VITAL! Esto hace que la foto no se estire ni se vea flaca */
     object-fit: cover; 
+    
+    /* 5. Animación */
     opacity: 0;
     transition: opacity 1s ease-in-out;
 }
