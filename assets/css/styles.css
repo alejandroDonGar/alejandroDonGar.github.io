@@ -52,7 +52,7 @@ body {
     position: relative;
     
     /* 1. Forzamos el tamaño: cambia 250px por el tamaño que quieras */
-    width: 250px; 
+    width: 400px; 
     height: 250px; 
     
     /* 2. Evitamos que el texto de la derecha lo aplaste */
