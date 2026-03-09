@@ -50,31 +50,24 @@ body {
 }
 .profile-image-container {
     position: relative;
-    
-    /* 1. Forzamos el tamaño: cambia 250px por el tamaño que quieras */
-    width: 400px; 
-    height: 250px; 
-    
-    /* 2. Evitamos que el texto de la derecha lo aplaste */
-    flex: 0 0 250px; 
-    
-    /* 3. Estética */
-    border-radius: 20px;
-    overflow: hidden;
-    margin-right: 2rem; /* Espacio entre foto y texto */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    width: 300px;         /* Ajusta este ancho a tu gusto */
+    aspect-ratio: 1 / 1;  /* Esto hace que sea un cuadrado perfecto siempre */
+    border-radius: 30px;  /* El redondeado de tu imagen */
+    overflow: hidden;     /* ¡VITAL! Para que la foto no se salga de las esquinas */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1); /* Tu sombra */
+    flex-shrink: 0;       /* Evita que el texto la aplaste */
 }
 .slide {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;  /* Ocupa el 100% de los 250px del padre */
-    height: 100%; /* Ocupa el 100% de los 250px del padre */
+    width: 100%;          /* Se estira al 100% del contenedor cuadrado */
+    height: 100%;         /* Se estira al 100% del contenedor cuadrado */
     
-    /* 4. ¡VITAL! Esto hace que la foto no se estire ni se vea flaca */
-    object-fit: cover; 
+    /* ESTA ES LA MAGIA: */
+    object-fit: cover;    /* Recorta la foto para que llene el cuadrado sin estirarse */
+    object-position: center; /* Centra la cara en el recorte */
     
-    /* 5. Animación */
     opacity: 0;
     transition: opacity 1s ease-in-out;
 }
