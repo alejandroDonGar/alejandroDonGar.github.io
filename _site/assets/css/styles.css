@@ -48,6 +48,37 @@ body {
   transform: translateY(-4px);
   box-shadow: 0 15px 30px -10px rgba(37, 99, 235, 0.2);
 }
+.profile-image-container {
+    position: relative; /* Importante para que las fotos se encimen */
+    width: 250px;       /* Ajusta al ancho de tu diseño */
+    height: 250px;      /* Ajusta al alto de tu diseño */
+    border-radius: 20px;
+    overflow: hidden;   /* Corta lo que sobresalga (como el zoom) */
+    margin-bottom: 1.5rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Sombra suave para que resalte */
+}
+
+/* 2. Estilo base de todas las imágenes */
+.slide {
+    position: absolute; /* Las apila una encima de otra */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* Hace que la foto rellene el espacio sin deformarse */
+    opacity: 0;         /* Ocultas por defecto */
+    transform: scale(1); /* Tamaño normal */
+    transition: 
+        opacity 1s ease-in-out, 
+        transform 3s ease-in-out; /* Transición suave de 1s para el fade y 3s para el zoom */
+}
+
+/* 3. Clase que activa el JavaScript */
+.slide.active {
+    opacity: 1;         /* Se vuelve visible */
+    transform: scale(1.08); /* Pequeño efecto de zoom mientras está activa */
+    z-index: 1;         /* Se coloca al frente */
+}
 .title {
   font-size: 56px;
   font-weight: 900;
