@@ -20,9 +20,7 @@
       </button>
       <a class="btn" href="https://www.linkedin.com/in/alejandrodongar" target="_blank">LinkedIn</a>
       <a class="btn" href="https://github.com/alejandroDonGar" target="_blank">GitHub</a>
-      <button class="btn" id="copy-btn" onclick="copyEmail()">
-        <span id="btn-text">Email</span>
-      </button>
+      <button class="btn" onclick="copyEmail()">Copiar Email</button>
     </nav>
   </header>
   <section class="section">
@@ -133,19 +131,8 @@
     }));
   }
   function copyEmail() {
-    const email = "alexDoGa.Work@gmail.com";
-    navigator.clipboard.writeText(email);
-    
-    const btnText = document.getElementById("btn-text");
-    const originalText = btnText.innerText;
-    
-    btnText.innerText = "¡Copiado! ✅";
-    btnText.style.color = "var(--brand2)"; // Verde esmeralda
-    
-    setTimeout(() => {
-      btnText.innerText = originalText;
-      btnText.style.color = "inherit";
-    }, 2000);
+    navigator.clipboard.writeText("alexDoGa.Work@gmail.com");
+    alert("¡Email copiado al portapapeles! 📧");
   }
   function renderFeatured(repos){
     const featured = repos.filter(r => r.topics.includes(FEATURED_TOPIC)).slice(0, 6);
