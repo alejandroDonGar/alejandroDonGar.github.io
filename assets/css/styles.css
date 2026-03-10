@@ -47,11 +47,10 @@ body {
 .container { 
   width: 100%; max-width: 1000px; margin: 0 auto; padding: 28px 18px 60px; 
 }
-.main-container { /* Cambia esto por el nombre de tu contenedor principal */
+main, .container { 
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Esto pone exactamente 20px de espacio entre CADA hijo */
-    padding: 20px; /* Esto evita que los cuadros toquen los bordes de la ventana */
+    gap: 2rem !important; /* Esto garantiza 32px de espacio real entre cada bloque */
 }
 .topbar {
     display: flex;
