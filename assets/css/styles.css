@@ -134,14 +134,17 @@ body {
 /* --- HOVERS: Solo se activan al tocar la foto --- */
 
 .profile-img-container:hover::before {
-  opacity: 0.3; /* Se enciende el aura */
-  transform: translate(-50%, -50%) scale(1.2);
+  opacity: 0.3; 
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
 .profile-img-container:hover img {
-  border-color: var(--brand); /* El borde se vuelve azul */
-  transform: scale(1.03) translateY(-5px);
-  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+  border-color: var(--brand);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+  transform: scale(1.02);
+}
+.bio {
+  flex: 1;
 }
 .profile-bio p {
     margin-bottom: 24px;
