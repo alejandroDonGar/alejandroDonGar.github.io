@@ -20,7 +20,7 @@
       </button>
       <a class="btn" href="https://www.linkedin.com/in/alejandrodongar" target="_blank">LinkedIn</a>
       <a class="btn" href="https://github.com/alejandroDonGar" target="_blank">GitHub</a>
-      <button id="copy-btn" class="btn" onclick="copyEmail()">Copiar Email</button>
+      <button id="copy-btn" class="btn">Copiar Email</button>
     </nav>
   </header>
   <section class="section">
@@ -130,19 +130,6 @@
       topics: r.topics || []
     }));
   }
-  function copyEmail(elemento) {
-    const email = "alexDoGa.Work@gmail.com";
-    navigator.clipboard.writeText(email);
-    const textoOriginal = elemento.innerText;
-    elemento.innerText = "¡Copiado! ✅";
-    elemento.style.color = "#0f172a"; 
-    elemento.style.fontWeight = "bold";
-    setTimeout(() => {
-        elemento.innerText = textoOriginal;
-        elemento.style.color = "";
-        elemento.style.fontWeight = ""; 
-    }, 2000);
-}
   function renderFeatured(repos){
     const featured = repos.filter(r => r.topics.includes(FEATURED_TOPIC)).slice(0, 6);
     const el = document.getElementById("featured");
@@ -296,6 +283,37 @@
   }
   console.log("%c¡Hola! Soy Alejandro Donate 👋", "color: #38bdf8; font-size: 20px; font-weight: bold;");
   console.log("Veo que estás revisando el código... ¡Eso me gusta! Si buscas un perfil junior con ganas de aprender, ¡hablemos!");  
+
+  document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('copy-btn');
+
+      if (btn) {
+          btn.addEventListener('click', () => {
+              const email = "alexDoGa.Work@gmail.com";
+              
+              // Intentar copiar al portapapeles
+              navigator.clipboard.writeText(email).then(() => {
+                  const originalText = btn.innerText;
+
+                  // 1. Cambiar texto y estilo (Contraste alto para que se vea)
+                  btn.innerText = "¡Copiado! ✅";
+                  btn.style.backgroundColor = "var(--brand)"; // Fondo azul brillante
+                  btn.style.color = "#0f172a";               // Texto oscuro (Contraste)
+                  btn.style.fontWeight = "bold";
+
+                  // 2. Volver al estado original tras 2 segundos
+                  setTimeout(() => {
+                      btn.innerText = originalText;
+                      btn.style.backgroundColor = ""; // Vuelve al original del CSS
+                      btn.style.color = "";
+                      btn.style.fontWeight = "";
+                  }, 2000);
+              }).catch(err => {
+                  console.error('Error al copiar: ', err);
+              });
+          });
+      }
+  });
 </script>
 
 </body>
