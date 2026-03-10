@@ -101,24 +101,35 @@ body {
   padding: 32px;
   margin: 22px auto 30px;
   animation-delay: 0.3s;
+  position: relative;
+  overflow: visible !important;
 }
 .profile img {
-  box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
-  border: 2px solid var(--brand); /* Un borde fino azul */
+  width: 240px; 
+  height: 320px;
+  object-fit: cover;
+  border-radius: 20px;
+  flex-shrink: 0;
+  transition: all 0.5s ease;
+  border: 2px solid var(--brand);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); 
   position: relative;
   z-index: 2;
 }
 .profile::before {
   content: "";
   position: absolute;
-  width: 260px;
-  height: 340px;
+  top: 50%;
+  left: 150px;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 360px;
   background: var(--brand);
-  filter: blur(50px);
-  opacity: 0.1;
+  filter: blur(60px);
+  opacity: 0.25;
   z-index: 1;
-  border-radius: 20px;
-  animation: pulseGlow 4s infinite alternate;
+  pointer-events: none;
+  border-radius: 50%;
 }
 .profile img:hover {
   transform: scale(1.05);
@@ -129,6 +140,10 @@ body {
     line-height: 1.7;  
     color: var(--text);
     opacity: 0.9;       
+}
+.section, .profile {
+  border: 1px solid var(--line); /* Un poco más fino para no distraer */
+  background: var(--card);
 }
 .pill, .tag {
   display: inline-flex;
