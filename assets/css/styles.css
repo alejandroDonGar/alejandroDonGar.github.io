@@ -127,8 +127,9 @@ body {
   font-size: 13px;
   font-weight: 600;
   color: var(--text); 
-  transition: all 0.3s ease !important;
+  transition: all 0.3s ease; /* Sin !important aquí */
   margin: 0 8px 8px 0;
+  cursor: pointer;
 }
 .pillrow {
     margin-top: 15px;   
@@ -140,15 +141,14 @@ body {
 .pill[data-tech="SQL"] { --tech-color: #336791; }
 .pill[data-tech="HTML/CSS"] { --tech-color: #264de4; }
 .pill[data-tech="Git"] { --tech-color: #f05032; }
-html body .pill:hover, html body .tag:hover, html body [data-theme="dark"] .pill:hover {
+.pill:hover, .tag:hover, [data-theme="dark"] .pill:hover, [data-theme="dark"] .tag:hover {
+  background-image: none !important;
+  background-color: #38bdf8 !important; 
   background: #38bdf8 !important; 
-  background-color: #38bdf8 !important;
   color: #ffffff !important; 
-  border: 2px solid #38bdf8 !important;
+  border-color: #38bdf8 !important;
   box-shadow: 0 0 20px rgba(56, 189, 248, 0.6) !important;
   transform: translateY(-5px) !important;
-  cursor: pointer;
-  z-index: 10;
 }
 .pill, .tag {
   transition: all 0.2s ease-in-out !important;
