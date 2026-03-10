@@ -246,6 +246,7 @@ section:last-child {
     text-decoration: none; 
     transition: all 0.3s ease;
     font-size: 14px;
+    min-width: 140px;
 }
 .btn:hover {
     background: var(--brand);
