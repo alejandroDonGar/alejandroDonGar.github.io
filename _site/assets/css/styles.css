@@ -100,9 +100,10 @@ body {
   gap: 40px;
   padding: 32px;
   margin: 22px auto 30px;
-  animation-delay: 0.3s;
   position: relative;
   overflow: visible !important;
+  z-index: 0; 
+  background: var(--card);
 }
 .profile img {
   width: 240px; 
@@ -112,22 +113,22 @@ body {
   flex-shrink: 0;
   transition: all 0.5s ease;
   border: 2px solid var(--brand);
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); 
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 .profile::before {
   content: "";
   position: absolute;
   top: 50%;
-  left: 150px;
+  left: 150px; /* Posición detrás de la foto */
   transform: translate(-50%, -50%);
-  width: 280px;
-  height: 360px;
-  background: var(--brand);
-  filter: blur(60px);
-  opacity: 0.25;
-  z-index: 1;
+  width: 320px; /* Un poco más grande para que sobresalga */
+  height: 400px;
+  background: var(--brand); /* Tu azul cielo */
+  filter: blur(80px); /* Más difuminado para que parezca luz real */
+  opacity: 0.4; /* Súbelo a 0.4 temporalmente para confirmar que lo ves */
+  z-index: -1; /* CAPA NEGATIVA: Se mete detrás del fondo de la tarjeta */
   pointer-events: none;
   border-radius: 50%;
 }
