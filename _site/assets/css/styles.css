@@ -144,7 +144,6 @@ body {
 .bio {
   margin:32px;
 }
-
 .profile-img-container:hover::before {
   opacity: 0.3; 
   transform: translate(-50%, -50%) scale(1.1);
@@ -395,5 +394,6 @@ body {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
+
 .bar { background: var(--line); height: 8px; border-radius: 10px; margin: 5px 0 15px; overflow: hidden; }
 .progress { background: var(--brand); height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
