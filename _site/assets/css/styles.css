@@ -121,15 +121,13 @@ body {
   display: inline-flex;
   align-items: center;
   padding: 6px 14px;
-  /* CAMBIO CLAVE: Usamos la variable de la tarjeta, no blanco fijo */
   background: var(--card); 
   border: 1.5px solid var(--line);
   border-radius: 100px;
   font-size: 13px;
   font-weight: 600;
-  /* CAMBIO CLAVE: El texto debe seguir a la variable de texto */
   color: var(--text); 
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin: 0 8px 8px 0;
 }
 .pillrow {
@@ -143,14 +141,15 @@ body {
 .pill[data-tech="HTML/CSS"] { --tech-color: #264de4; }
 .pill[data-tech="Git"] { --tech-color: #f05032; }
 .pill:hover, .tag:hover {
-  background: var(--brand) !important;
-  color: #ffffff !important;
-  border-color: var(--brand) !important;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+  border-color: var(--brand) !important; 
+  background: var(--hover-bg) !important;
+  color: var(--text) !important; 
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.5) !important; 
+  transform: translateY(-4px);
+  cursor: pointer;
 }
 [data-theme="dark"] .pill, [data-theme="dark"] .tag {
-  background: rgba(255, 255, 255, 0.05) !important; /* Gris traslúcido muy pro */
+  background: rgba(255, 255, 255, 0.05) !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
   color: var(--text) !important;
 }
