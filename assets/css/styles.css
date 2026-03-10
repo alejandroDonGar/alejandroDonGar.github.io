@@ -122,12 +122,12 @@ body {
   align-items: center;
   padding: 6px 14px;
   background: var(--card); 
-  border: 1.5px solid var(--line);
+  border: 2px solid var(--line);
   border-radius: 100px;
   font-size: 13px;
   font-weight: 600;
   color: var(--text); 
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
   margin: 0 8px 8px 0;
 }
 .pillrow {
@@ -141,12 +141,12 @@ body {
 .pill[data-tech="HTML/CSS"] { --tech-color: #264de4; }
 .pill[data-tech="Git"] { --tech-color: #f05032; }
 .pill:hover, .tag:hover {
-  border-color: var(--brand) !important; 
+  border: 2px solid var(--brand) !important; 
   background: var(--hover-bg) !important;
-  color: var(--text) !important; 
-  box-shadow: 0 0 15px rgba(56, 189, 248, 0.5) !important; 
+  box-shadow: 0 0 12px var(--brand) !important; 
   transform: translateY(-4px);
   cursor: pointer;
+  color: var(--text) !important;
 }
 [data-theme="dark"] .pill, [data-theme="dark"] .tag {
   background: rgba(255, 255, 255, 0.05) !important;
