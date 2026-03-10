@@ -96,14 +96,11 @@ body {
 .topbar:hover .subtitle { color: var(--brand); }
 /* 1. EL CONTENEDOR (Fuerza la fila) */
 .profile {
-    display: flex !important;
-    flex-direction: row; /* Pone foto y texto en fila */
-    align-items: flex-start;
-    gap: 40px; /* Espacio entre la foto y tu biografía */
-    width: 100%;
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
+  display: flex !important;
+  flex-direction: row;    /* Foto a la izquierda, Bio a la derecha */
+  gap: 40px;
+  width: 100%;
+  align-items: flex-start;
 }
 
 /* 2. LA FOTO (Tamaño controlado) */
@@ -142,10 +139,9 @@ body {
 
 /* 4. LA BIOGRAFÍA (Ocupa el resto) */
 .bio {
-    flex: 1; /* El texto ocupa todo el espacio que sobra a la derecha */
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .profile-bio p {
@@ -155,14 +151,9 @@ body {
     opacity: 0.9;       
 }
 .section {
-    display: block !important; /* Forza que el título esté arriba solo */
-    width: 100%;
-    max-width: 1100px;
-    margin: 24px auto;
-    padding: 32px; /* Este es el "aire" que faltaba con los bordes */
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
+  display: flex !important;
+  flex-direction: column; /* Título arriba, contenido abajo */
+  padding: 32px;
 }
 .section h2 {
     margin: 0 0 24px 0;
@@ -399,6 +390,18 @@ body {
 @keyframes loading {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
+}
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--line);
+  border-radius: 10px;
+  margin-top: 5px;
+}
+.progress {
+  height: 100%;
+  background: var(--brand); /* Tu azul brillante */
+  border-radius: 10px;
 }
 .bar { background: var(--line); height: 8px; border-radius: 10px; margin: 5px 0 15px; overflow: hidden; }
 .progress { background: var(--brand); height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
