@@ -383,7 +383,3 @@ body {
 }
 .bar { background: var(--line); height: 8px; border-radius: 10px; margin: 5px 0 15px; overflow: hidden; }
 .progress { background: var(--brand); height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
-@keyframes pulseGlow {
-  from { transform: scale(1); opacity: 0.1; }
-  to { transform: scale(1.1); opacity: 0.2; }
-}
