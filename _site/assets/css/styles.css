@@ -69,6 +69,10 @@ body {
   border-radius: var(--radius);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--text);
+  margin-bottom: 24px;
+}
+section:last-child {
+    margin-bottom: 0;
 }
 .topbar:hover, .section:hover, .profile:hover, .card:hover {
   border-color: var(--brand);
