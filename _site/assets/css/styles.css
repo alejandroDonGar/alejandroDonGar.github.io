@@ -262,3 +262,53 @@ body {
   .title { font-size: 36px; }
   .grid2 { grid-template-columns: 1fr; }
 }
+
+
+.skills-interactive { margin-top: 25px; }
+.skills-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+/* Reutilizamos el estilo de tus pills pero como botones */
+.skill-pill {
+  padding: 10px 20px;
+  border-radius: 100px;
+  border: 2px solid var(--line);
+  background: var(--card);
+  color: var(--text);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+/* El estado ACTIVO (cuando está seleccionado) */
+.skill-pill.active {
+  background: var(--brand) !important;
+  color: white !important;
+  border-color: var(--brand) !important;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+.skill-card {
+  background: var(--card);
+  border-left: 4px solid var(--brand); /* Una línea lateral pro */
+  padding: 20px;
+  border-radius: 12px;
+  min-height: 100px;
+  /* Animación de entrada */
+  animation: slideIn 0.4s ease-out;
+}
+.skill-card h4 {
+  margin: 0 0 8px 0;
+  color: var(--brand);
+  text-transform: uppercase;
+}
+.skill-card p {
+  margin: 0;
+  color: var(--muted);
+  font-family: monospace; /* Estilo código para los contenidos */
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
