@@ -50,11 +50,10 @@
             <button class="skill-pill" onclick="showSkill('web', this)">FRONTEND</button>
             <button class="skill-pill" onclick="showSkill('xml', this)">XML</button>
           </div>
-          <div class="skills-content-wrapper">
-            <div id="skill-display" class="skill-card">
+          <div id="skill-display" class="skill-card">
+            <h3 id="skill-title" style="margin-top:0">JAVA</h3>
               <h4 id="skill-title">JAVA</h4>
               <p id="skill-text">CLASES | GETTER - SETTER | FECHAS | EXP REGULARES | ARRAYS | LISTAS | SETS | MAPS</p>
-            </div>
           </div>
         </div>
         
@@ -263,24 +262,23 @@
   };
 
   function showSkill(key, btn) {
-    // 1. Quitar clase active de todos los botones
-    document.querySelectorAll('.skill-pill').forEach(b => b.classList.remove('active'));
-    // 2. Poner active al botón pulsado
-    btn.classList.add('active');
-    
-    const display = document.getElementById('skill-display');
-    const title = document.getElementById('skill-title');
-    const text = document.getElementById('skill-text');
+  // 1. Gestionar botones activos
+  document.querySelectorAll('.skill-pill').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  
+  const display = document.getElementById('skill-display');
+  const title = document.getElementById('skill-title');
+  const text = document.getElementById('skill-text');
 
-    // 3. Cambiar contenido
-    title.innerText = skillData[key].title;
-    text.innerText = skillData[key].text;
+  // 2. Cambiar el contenido
+  title.innerText = skillData[key].title;
+  text.innerText = skillData[key].text;
 
-    // 4. Reiniciar animación
-    display.style.animation = 'none';
-    display.offsetHeight; /* truco para forzar el reflow */
-    display.style.animation = null; 
-  }
+  // 3. REINICIAR ANIMACIÓN (Truco Pro)
+  display.style.animation = 'none';
+  display.offsetHeight; /* Esto obliga al navegador a resetear el elemento */
+  display.style.animation = 'slideFade 0.5s ease-out forwards';
+}
 </script>
 
 </body>
