@@ -152,6 +152,20 @@ body {
   border-color: rgba(255, 255, 255, 0.1) !important;
   color: var(--text) !important;
 }
+[data-theme="dark"] .pill:hover, [data-theme="dark"] .tag:hover, .pill:hover {
+  background-color: #38bdf8 !important; 
+  background: #38bdf8 !important; 
+  color: #ffffff !important; 
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.5) !important;
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+/* 2. Asegúrate de que la transición sea suave */
+.pill, .tag {
+  transition: all 0.2s ease-in-out !important;
+}
 .section { 
     margin-top: 22px; 
     padding: 32px; 
