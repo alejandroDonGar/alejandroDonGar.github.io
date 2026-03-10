@@ -25,10 +25,7 @@
     <h2>Sobre mí</h2>
     <div class="grid2">
       <div class="profile">
-        <div class="profile-image-container">
-            <img src="assets/img/perfil.jpg" class="slide active" alt="Foto 1">
-            <img src="assets/img/perfil2.jpg" class="slide" alt="Foto 2">
-        </div>
+        <img src="assets/img/perfil.jpg" alt="Foto de perfil">
         <div class="bio">
           <p class="muted" style="margin:0">
             Estudiante que busca aprender sobre desarrollo de software. Busco enrriquecerme de conocimiento tanto sobre el backend con JAVA en el lado de la programación y BBDD como por el frontend con HTML, CSS y XML. Me parece interesante el mundo del desarrollo de software y siempre estoy dispuesto a aprender lo más que pueda.
@@ -214,16 +211,6 @@
     document.getElementById("repos").innerHTML = `<div class="muted">${err.message}</div>`;
     console.error(err);
   });
-  const slides = document.querySelectorAll('.slide');
-        let current = 0;
-
-        function cambiarImagen() {
-            slides[current].classList.remove('active');
-            current = (current + 1) % slides.length;
-            slides[current].classList.add('active');
-        }
-
-        setInterval(cambiarImagen, 3000);
 </script>
 
 </body>

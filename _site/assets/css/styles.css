@@ -48,43 +48,6 @@ body {
   transform: translateY(-4px);
   box-shadow: 0 15px 30px -10px rgba(37, 99, 235, 0.2);
 }
-.about-content {
-    display: flex;
-    flex-direction: row; /* Foto a la izquierda, texto a la derecha */
-    align-items: center; /* Centra verticalmente */
-    gap: 2rem;           /* Espacio entre foto y texto */
-    flex-wrap: wrap;     /* SI NO HAY ESPACIO (ZOOM), EL TEXTO BAJA SOLITO */
-    justify-content: center;
-}
-.profile-image-container {
-    position: relative;
-    width: 250px;         /* Tamaño base */
-    aspect-ratio: 3 / 4;  /* Proporción vertical perfecta */
-    flex-shrink: 0;       /* PROHIBIDO ENCOGERSE */
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-/* Las imágenes dentro */
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;    /* Llena el 3:4 sin deformar tu cara */
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
-.slide.active {
-    opacity: 1;
-}
-.about-text {
-    flex: 1;              /* Ocupa todo el espacio que sobra */
-    min-width: 300px;     /* Si el espacio es menor a esto, el texto baja */
-}
 .title {
   font-size: 56px;
   font-weight: 900;
