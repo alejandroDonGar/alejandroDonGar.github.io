@@ -48,48 +48,6 @@ body {
   transform: translateY(-4px);
   box-shadow: 0 15px 30px -10px rgba(37, 99, 235, 0.2);
 }
-.learning-container, .info-footer {
-    margin-top: 40px;
-}
-
-/* El Grid de conocimientos */
-.learning-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-}
-
-.tech-card {
-    background: rgba(255, 255, 255, 0.05); /* Fondo sutil si es oscuro */
-    padding: 15px;
-    border-radius: 12px;
-    border-top: 3px solid var(--accent-color, #646cff);
-    transition: transform 0.3s ease;
-}
-
-.tech-card:hover {
-    transform: translateY(-5px);
-}
-
-.tech-card h4 {
-    margin: 0 0 8px 0;
-    font-size: 1rem;
-}
-
-/* Nivel de Inglés en etiquetas */
-.levels {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.level-tag {
-    background: #f0f0f0;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    color: #333;
-}
 .title {
   font-size: 56px;
   font-weight: 900;
