@@ -103,7 +103,6 @@ body {
   cursor: pointer;
 }
 
-/* El resplandor (Invisible por defecto) */
 .profile-img-container::before {
   content: "";
   position: absolute;
@@ -120,7 +119,6 @@ body {
   border-radius: 50%;
 }
 
-/* LA FOTO (Estilo base) */
 .profile-img-container img {
   width: 100%;
   height: 100%;
@@ -130,8 +128,6 @@ body {
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   display: block;
 }
-
-/* --- HOVERS: Solo se activan al tocar la foto --- */
 
 .profile-img-container:hover::before {
   opacity: 0.3; /* Se enciende el aura */
