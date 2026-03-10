@@ -302,12 +302,10 @@ body {
   box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
 }
 .skill-card {
-  margin-top: 20px;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.03);
+  transition: all 0.3s ease;
   border-left: 4px solid var(--brand);
-  border-radius: 0 12px 12px 0;
-  animation: slideFade 0.5s ease-out forwards;
+  padding-left: 20px;
+  margin-top: 15px;
 }
 .skill-card h4 {
   margin: 0 0 8px 0;
@@ -322,14 +320,10 @@ body {
 @keyframes slideFade {
   from { 
     opacity: 0; 
-    transform: translateX(-20px); /* Viene desde la izquierda */
+    transform: translateX(-20px); 
   }
   to { 
     opacity: 1; 
     transform: translateX(0); 
   }
-}
-@keyframes slideIn {
-  from { opacity: 0; transform: translateX(20px); }
-  to { opacity: 1; transform: translateX(0); }
 }

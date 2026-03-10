@@ -51,9 +51,8 @@
             <button class="skill-pill" onclick="showSkill('xml', this)">XML</button>
           </div>
           <div id="skill-display" class="skill-card">
-            <h3 id="skill-title" style="margin-top:0">JAVA</h3>
-              <h4 id="skill-title">JAVA</h4>
-              <p id="skill-text">CLASES | GETTER - SETTER | FECHAS | EXP REGULARES | ARRAYS | LISTAS | SETS | MAPS</p>
+            <h3 id="skill-title" style="margin-top:0; color:var(--brand)">JAVA</h3>
+            <p id="skill-text" class="muted">CLASES | GETTER - SETTER | FECHAS | EXP REGULARES | ARRAYS | LISTAS | SETS | MAPS</p>
           </div>
         </div>
         
@@ -262,23 +261,17 @@
   };
 
   function showSkill(key, btn) {
-  // 1. Gestionar botones activos
-  document.querySelectorAll('.skill-pill').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  
-  const display = document.getElementById('skill-display');
-  const title = document.getElementById('skill-title');
-  const text = document.getElementById('skill-text');
-
-  // 2. Cambiar el contenido
-  title.innerText = skillData[key].title;
-  text.innerText = skillData[key].text;
-
-  // 3. REINICIAR ANIMACIÓN (Truco Pro)
-  display.style.animation = 'none';
-  display.offsetHeight; /* Esto obliga al navegador a resetear el elemento */
-  display.style.animation = 'slideFade 0.5s ease-out forwards';
-}
+    document.querySelectorAll('.skill-pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const display = document.getElementById('skill-display');
+    const title = document.getElementById('skill-title');
+    const text = document.getElementById('skill-text');
+    title.innerText = skillData[key].title;
+    text.innerText = skillData[key].text;
+    display.style.animation = 'none';
+    display.offsetHeight;
+    display.style.animation = 'slideFade 0.5s ease-out forwards';
+  }
 </script>
 
 </body>
