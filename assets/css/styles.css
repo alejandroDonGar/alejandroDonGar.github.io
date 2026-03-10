@@ -271,32 +271,43 @@ body {
   margin-bottom: 20px;
   flex-wrap: wrap;
 }
-/* Reutilizamos el estilo de tus pills pero como botones */
+
 .skill-pill {
-  padding: 10px 20px;
-  border-radius: 100px;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 20px;
+  background: var(--card) !important; 
   border: 2px solid var(--line);
-  background: var(--card);
-  color: var(--text);
+  border-radius: 100px; 
+  font-size: 14px;
   font-weight: 700;
+  color: var(--text);
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-right: 8px;
 }
-/* El estado ACTIVO (cuando está seleccionado) */
+
 .skill-pill.active {
   background: var(--brand) !important;
   color: white !important;
   border-color: var(--brand) !important;
   box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
 }
+.skill-pill:hover, 
+.skill-pill.active {
+  background: var(--brand) !important;
+  color: white !important;
+  border-color: var(--brand) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
+}
 .skill-card {
-  background: var(--card);
-  border-left: 4px solid var(--brand); /* Una línea lateral pro */
+  margin-top: 20px;
   padding: 20px;
-  border-radius: 12px;
-  min-height: 100px;
-  /* Animación de entrada */
-  animation: slideIn 0.4s ease-out;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 4px solid var(--brand);
+  border-radius: 0 12px 12px 0;
+  animation: slideFade 0.5s ease-out forwards;
 }
 .skill-card h4 {
   margin: 0 0 8px 0;
@@ -306,7 +317,17 @@ body {
 .skill-card p {
   margin: 0;
   color: var(--muted);
-  font-family: monospace; /* Estilo código para los contenidos */
+  font-family: monospace; 
+}
+@keyframes slideFade {
+  from { 
+    opacity: 0; 
+    transform: translateX(-20px); /* Viene desde la izquierda */
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
 }
 @keyframes slideIn {
   from { opacity: 0; transform: translateX(20px); }
