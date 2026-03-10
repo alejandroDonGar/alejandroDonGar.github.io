@@ -111,9 +111,8 @@ body {
   object-fit: cover;
   border-radius: 20px;
   flex-shrink: 0;
-  transition: all 0.5s ease;
-  border: 2px solid var(--brand);
-  box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+  border: 2px solid var(--line); 
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   z-index: 1;
 }
@@ -121,20 +120,26 @@ body {
   content: "";
   position: absolute;
   top: 50%;
-  left: 150px; /* Posición detrás de la foto */
+  left: 155px;
   transform: translate(-50%, -50%);
-  width: 320px; /* Un poco más grande para que sobresalga */
-  height: 400px;
-  background: var(--brand); /* Tu azul cielo */
-  filter: blur(80px); /* Más difuminado para que parezca luz real */
-  opacity: 0.4; /* Súbelo a 0.4 temporalmente para confirmar que lo ves */
-  z-index: -1; /* CAPA NEGATIVA: Se mete detrás del fondo de la tarjeta */
+  width: 280px;
+  height: 360px;
+  background: var(--brand);
+  filter: blur(80px);
+  opacity: 0; 
+  z-index: -1;
   pointer-events: none;
   border-radius: 50%;
+  transition: opacity 0.6s ease, transform 0.6s ease; 
 }
-.profile img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+.profile:hover::before {
+  opacity: 0.25;
+  transform: translate(-50%, -50%) scale(1.1); 
+}
+.profile:hover img {
+  border-color: var(--brand);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+  transform: translateY(-5px) scale(1.02); 
 }
 .profile-bio p {
     margin-bottom: 24px;
@@ -143,7 +148,7 @@ body {
     opacity: 0.9;       
 }
 .section, .profile {
-  border: 1px solid var(--line); /* Un poco más fino para no distraer */
+  border: 1px solid var(--line); 
   background: var(--card);
 }
 .pill, .tag {
