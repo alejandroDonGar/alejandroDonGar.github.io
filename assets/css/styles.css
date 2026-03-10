@@ -139,6 +139,9 @@ body {
   transform: scale(1.03) translateY(-5px);
   box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
 }
+.bio {
+    flex: 1;
+}
 .profile-bio p {
     margin-bottom: 24px;
     line-height: 1.7;  
@@ -147,8 +150,15 @@ body {
 }
 
 .section, .profile {
-    border: 1px solid var(--line); 
+    border: 1px solid var(--line);
     background: var(--card);
+    
+    /* AÑADE ESTO: */
+    display: flex;           /* Los pone en fila */
+    align-items: flex-start;  /* Alinea el texto con la parte de arriba de la foto */
+    gap: 40px;               /* El espacio de separación entre foto y texto */
+    padding: 32px;           /* Para que el contenido no toque los bordes */
+    border-radius: var(--radius);
 }
 
 .pill, .tag {
