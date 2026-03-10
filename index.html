@@ -99,33 +99,8 @@
     <div style="height:12px"></div>
     <div id="repos" class="cards"></div>
   </section>
-  <section class="section fade-in" style="text-align: center; margin-top: 40px;">
-    <h2>¡Hablemos!</h2>
-    <div class="social-grid">
-        <a href="https://www.linkedin.com" target="_blank" class="social-card">
-            <span class="icon">🔗</span>
-            <div class="social-info">
-                <strong>LinkedIn</strong>
-                <span class="muted">Conecta conmigo</span>
-            </div>
-        </a>
-        <a href="https://github.com" target="_blank" class="social-card">
-            <span class="icon">💻</span>
-            <div class="social-info">
-                <strong>GitHub</strong>
-                <span class="muted">Mira mis repos</span>
-            </div>
-        </a>
-        <div class="social-card" onclick="copyEmail()" style="cursor: pointer;">
-            <span class="icon">📧</span>
-            <div class="social-info">
-                <strong>Email</strong>
-                <span id="email-status" class="muted">Copiar correo</span>
-            </div>
-        </div>
-    </div>
-  </section>
 </div>
+
 <script>
   const GITHUB_USERNAME = "alejandroDonGar"; // <- CAMBIA ESTO
   const FEATURED_TOPIC = "showcase";
@@ -156,19 +131,16 @@
     }));
   }
   function copyEmail() {
-      const email = "alexDoGa.Work@gmail.com";
-      navigator.clipboard.writeText(email);
+      navigator.clipboard.writeText("alexDoGa.Work@gmail.com");
+      const status = document.getElementById("email-status");
+      const originalText = status.innerText;
       
-      // Buscar el botón que llamó a la función
-      const btn = event.target;
-      const originalText = btn.innerText;
-      
-      btn.innerText = "¡Email Copiado! ✅";
-      btn.style.backgroundColor = "var(--brand)"; // Color de éxito
+      status.innerText = "¡Copiado! ✅";
+      status.style.color = "var(--brand)";
       
       setTimeout(() => {
-          btn.innerText = originalText;
-          btn.style.backgroundColor = ""; // Vuelve al color original
+          status.innerText = originalText;
+          status.style.color = "";
       }, 2000);
   }
   function renderFeatured(repos){

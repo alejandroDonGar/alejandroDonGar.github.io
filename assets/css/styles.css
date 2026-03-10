@@ -415,39 +415,3 @@ section:last-child {
 }
 .bar { background: var(--line); height: 8px; border-radius: 10px; margin: 5px 0 15px; overflow: hidden; }
 .progress { background: var(--brand); height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
-
-.social-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-}
-.social-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    padding: 1.5rem;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.3s ease;
-}
-.social-card:hover {
-    border-color: var(--brand);
-    background: var(--bg-item);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-.social-card .icon {
-    font-size: 1.8rem;
-    background: var(--bg-item);
-    padding: 10px;
-    border-radius: 12px;
-}
-.social-info {
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-}
