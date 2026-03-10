@@ -121,15 +121,16 @@ body {
   display: inline-flex;
   align-items: center;
   padding: 6px 14px;
-  background: #ffffff;
+
+  background: var(--card); 
   border: 1.5px solid var(--line);
   border-radius: 100px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--text);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+ 
+  color: var(--text); 
+  transition: all 0.3s ease;
   margin: 0 8px 8px 0;
-  --tech-color: var(--brand); 
 }
 .pillrow {
     margin-top: 15px;   
@@ -143,11 +144,14 @@ body {
 .pill[data-tech="Git"] { --tech-color: #f05032; }
 
 .pill:hover, .tag:hover {
-  border-color: var(--tech-color);
-  color: var(--tech-color);
-  background: #fff;
+  background: var(--brand);
+  color: white;
+  border-color: var(--brand);
   transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+[data-theme="dark"] .pill, [data-theme="dark"] .tag {
+  background: rgba(255, 255, 255, 0.05); /* Un brillo muy sutil */
+  border-color: rgba(255, 255, 255, 0.1);
 }
 .section { 
     margin-top: 22px; 
@@ -202,16 +206,15 @@ body {
     background-size: 16px;
 }
 .input, .select {
-    padding: 10px 16px;
-    border: 2px solid var(--line);
-    border-radius: 12px;        
-    background: #ffffff;
-    color: var(--text);
-    font-size: 14px;
-    font-weight: 500;
-    outline: none;
-    transition: all 0.3s ease;    
-    height: 42px;               
+  padding: 10px 16px;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  /* CAMBIO AQUÍ: Para que no sean blancos en modo noche */
+  background: var(--card); 
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
 }
 .input:focus, .select:focus {
     border-color: var(--brand);    
