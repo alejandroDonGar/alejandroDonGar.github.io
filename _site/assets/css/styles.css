@@ -128,8 +128,8 @@ main, .container {
   margin-right: 20px;
   object-fit: cover;
   border-radius: 20px;
-  border: 12px solid var(--line);
-  transition: all 0.5s ease;
+  border: 1px solid transparent;
+    transition: all 0.3s ease;
 }
 .profile-img-container::before {
   content: "";
@@ -144,8 +144,15 @@ main, .container {
   transition: opacity 0.5s ease;
   border-radius: 50%;
 }
-.profile-img-container:hover::before { opacity: 0.3; }
-.profile-img-container:hover img { border-color: var(--brand); transform: scale(1.02); }
+.profile-img-container:hover::before { 
+  opacity: 0.3; 
+}
+.profile-img-container:hover img { 
+  border-color: var(--brand); 
+  border: 1px solid var(--brand); 
+  transform: scale(1.02); 
+    transition: all 0.3s ease;
+}
 .bio {
   flex: 1;
   display: flex;
