@@ -19,7 +19,11 @@
   /* ESTA ES LA CLAVE: El color del hover en modo oscuro */
   --hover-bg: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
 }
-
+[data-theme="dark"] .title {
+  background: linear-gradient(to right, #ffffff 20%, var(--brand) 50%, #ffffff 80%);
+  background-clip: text;
+  background-size: 200% auto;
+}
 [data-theme="dark"] .profile img {
   filter: brightness(0.9) contrast(1.1);
   border: 1px solid var(--line);
