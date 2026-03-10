@@ -347,43 +347,5 @@ body {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
-.english-levels {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 10px;
-}
-
-.level-item {
-  width: 100%;
-}
-
-.level-info {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  margin-bottom: 5px;
-  color: var(--text);
-  font-weight: 600;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 8px;
-  background: var(--line); /* Color gris de fondo */
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.progress {
-  height: 100%;
-  background: var(--brand); /* Tu azul brillante */
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3); /* Un pequeño brillo */
-  transition: width 1s ease-in-out;
-}
-
-/* Efecto al pasar el ratón por la sección */
-.level-item:hover .progress {
-  filter: brightness(1.2);
-}
+.bar { background: var(--line); height: 8px; border-radius: 10px; margin: 5px 0 15px; overflow: hidden; }
+.progress { background: var(--brand); height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
