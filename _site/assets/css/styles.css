@@ -96,25 +96,20 @@ body {
 .topbar:hover .subtitle { color: var(--brand); }
 /* 1. EL CONTENEDOR (Fuerza la fila) */
 .profile {
-    display: flex !important;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 40px;
-    width: 100%;
-    background: transparent;
-    padding: 0;
-    border: none;
+  display: flex !important;
+  flex-direction: row;    /* Foto a la izquierda, Bio a la derecha */
+  gap: 40px;
+  width: 100%;
+  align-items: flex-start;
 }
 
 /* 2. LA FOTO (Tamaño controlado) */
 .profile-img-container {
-  width: 240px;
-  height: 320px;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 5;
+    width: 240px;
+    height: 320px;
+    flex-shrink: 0; /* Evita que el texto aplaste la foto */
+    position: relative;
 }
-
 .profile-img-container img {
   width: 100%;
   height: 100%;
@@ -145,6 +140,8 @@ body {
 /* 4. LA BIOGRAFÍA (Ocupa el resto) */
 .bio {
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .profile-bio p {
@@ -154,20 +151,14 @@ body {
     opacity: 0.9;       
 }
 .section {
-    border: 1px solid var(--line);
-    background: var(--card);
-    padding: 32px;
-    margin-top: 22px;
-    border-radius: var(--radius);
-    display: block; /* Importante: Bloque normal, no flex */
-    width: 100%;
+  display: flex !important;
+  flex-direction: column; /* Título arriba, contenido abajo */
+  padding: 32px;
 }
-
 .section h2 {
-    margin-top: 0;
-    margin-bottom: 24px;
-    display: block;
+    margin: 0 0 24px 0;
     width: 100%;
+    display: block;
 }
 .pill, .tag {
   display: inline-flex;
@@ -205,17 +196,12 @@ body {
 .pill, .tag {
   transition: all 0.2s ease-in-out !important;
 }
-.section { 
-    margin-top: 22px; 
-    padding: 32px; 
-    animation-delay: 0.5s; 
-}
 .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-    width: 100%; /* Para que use todo el espacio disponible */
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin-top: 20px;
 }
 .card { 
     display: flex; 
@@ -274,6 +260,8 @@ body {
     box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1); 
 }
 .muted {
+  line-height: 1.7;        /* Mejora la lectura del párrafo */
+  margin: 0;
   color: var(--muted) !important;
 }
 .muted-list {
@@ -310,10 +298,15 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 900px) {
-  .profile { flex-direction: column; text-align: center; }
-  .title { font-size: 36px; }
-  .grid2 { grid-template-columns: 1fr; }
+@media (max-width: 800px) {
+  .profile {
+    flex-direction: column; /* En móvil, foto arriba y texto abajo */
+    align-items: center;
+    text-align: center;
+  }
+  .profile-img-container {
+    margin-bottom: 20px;
+  }
 }
 
 
@@ -398,6 +391,18 @@ body {
 @keyframes loading {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
+}
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--line);
+  border-radius: 10px;
+  margin-top: 5px;
+}
+.progress {
+  height: 100%;
+  background: var(--brand); /* Tu azul brillante */
+  border-radius: 10px;
 }
 .bar { background: var(--line); height: 8px; border-radius: 10px; margin: 5px 0 15px; overflow: hidden; }
 .progress { background: var(--brand); height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
