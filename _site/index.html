@@ -62,11 +62,14 @@
         </p>
 
         <h3 style="margin:16px 0 10px">Nivel de Inglés</h3>
-        <ul class="muted" style="margin:0;padding-left:18px">
-          <li>Nivel Hablado: B1</li>
-          <li>Nivel de Escrito: B1/B2</li>
-          <li>Nivel de Lectura: B1/B2</li>
-        </ul>
+        <div class="skill-bar-container">
+          <span>Hablado (B1)</span>
+          <div class="bar"><div class="progress" style="width: 50%"></div></div>
+          <span>Escrito (B1/B2)</span>
+          <div class="bar"><div class="progress" style="width: 65%"></div></div>
+          <span>Lectura (B1/B2)</span>
+          <div class="bar"><div class="progress" style="width: 70%"></div></div>
+        </div>
       </div>
     </div>
   </section>
@@ -230,6 +233,7 @@
   }
 
   async function main(){
+    document.getElementById("repos").innerHTML = '<div class="skeleton"></div>'.repeat(3);
     bindUI();
     allRepos = await fetchRepos();
     renderFeatured(allRepos);
