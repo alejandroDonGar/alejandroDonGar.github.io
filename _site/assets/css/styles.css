@@ -223,6 +223,34 @@ body {
 .muted {
   color: var(--muted) !important;
 }
+.muted-list {
+  list-style: none;
+  padding: 0 !important;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+.muted-list li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+.muted-list li:hover {
+  border-color: var(--brand);
+  transform: translateX(5px);
+  background: var(--hover-bg);
+}
+.muted-list li strong {
+  display: block;
+  color: var(--brand);
+  margin-bottom: 4px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
 @keyframes shine { to { background-position: 200% center; } }
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
