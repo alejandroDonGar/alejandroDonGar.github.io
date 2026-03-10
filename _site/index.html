@@ -20,7 +20,7 @@
       </button>
       <a class="btn" href="https://www.linkedin.com/in/alejandrodongar" target="_blank">LinkedIn</a>
       <a class="btn" href="https://github.com/alejandroDonGar" target="_blank">GitHub</a>
-      <button class="btn" onclick="copyEmail()">Copiar Email</button>
+      <button class="btn" onclick="copyEmail(this)">Copiar Email</button>
     </nav>
   </header>
   <section class="section">
@@ -130,16 +130,15 @@
       topics: r.topics || []
     }));
   }
-  function copyEmail() {
-      navigator.clipboard.writeText("alexDoGa.Work@gmail.com");
-      const originalText = btn.innerText;
-      
-      btn.innerText = "¡Copiado! ✅";
-      btn.style.color = "var(--brand)";
-      
+  function copyEmail(elemento) {
+      const email = "alexDoGa.Work@gmail.com";
+      navigator.clipboard.writeText(email);
+      const textoOriginal = elemento.innerText;
+      elemento.innerText = "¡Copiado! ✅";
+      elemento.style.color = "var(--brand)";
       setTimeout(() => {
-          btn.innerText = originalText;
-          btn.style.color = "";
+          elemento.innerText = textoOriginal;
+          elemento.style.color = "";
       }, 2000);
   }
   function renderFeatured(repos){
