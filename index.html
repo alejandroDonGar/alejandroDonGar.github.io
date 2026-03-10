@@ -166,6 +166,12 @@
     el.innerHTML = list.length ? "" : `<div class="muted">No hay resultados con esos filtros.</div>`;
 
     list.forEach((r, i) => {
+      const delay = i * 0.1; // 0.1s de diferencia entre cada una
+      el.insertAdjacentHTML("beforeend", `
+        <article class="card" style="animation-delay: ${delay}s">
+          ...
+        </article>
+      `);
       const topics = (r.topics && r.topics.length)
         ? r.topics.slice(0, 6).map(t => `<span class="pill">${t}</span>`).join("")
         : `<span class="pill">sin topics</span>`;
