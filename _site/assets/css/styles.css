@@ -44,7 +44,15 @@ body {
   justify-content: center;
   align-items: center;
 }
-.container { max-width: 1100px; margin: 0 auto; padding: 28px 18px 60px; }
+.main-container { /* Cambia esto por el nombre de tu contenedor principal */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Esto pone exactamente 20px de espacio entre CADA hijo */
+    padding: 20px; /* Esto evita que los cuadros toquen los bordes de la ventana */
+}
+.container { 
+  width: 100%; max-width: 1000px; margin: 0 auto; padding: 28px 18px 60px; 
+}
 .topbar {
     display: flex;
     flex-direction: column;
@@ -69,10 +77,6 @@ body {
   border-radius: var(--radius);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--text);
-  margin-bottom: 24px;
-}
-section:last-child {
-    margin-bottom: 0;
 }
 .topbar:hover, .section:hover, .profile:hover, .card:hover {
   border-color: var(--brand);
