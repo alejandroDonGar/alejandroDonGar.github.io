@@ -143,9 +143,6 @@ body {
   box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
   transform: scale(1.02);
 }
-.bio {
-  flex: 1;
-}
 .profile-bio p {
     margin-bottom: 24px;
     line-height: 1.7;  
