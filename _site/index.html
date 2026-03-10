@@ -132,15 +132,14 @@
   }
   function copyEmail() {
       navigator.clipboard.writeText("alexDoGa.Work@gmail.com");
-      const status = document.getElementById("email-status");
-      const originalText = status.innerText;
+      const originalText = btn.innerText;
       
-      status.innerText = "¡Copiado! ✅";
-      status.style.color = "var(--brand)";
+      btn.innerText = "¡Copiado! ✅";
+      btn.style.color = "var(--brand)";
       
       setTimeout(() => {
-          status.innerText = originalText;
-          status.style.color = "";
+          btn.innerText = originalText;
+          btn.style.color = "";
       }, 2000);
   }
   function renderFeatured(repos){
