@@ -50,7 +50,7 @@ body {
 main, .container { 
     display: flex;
     flex-direction: column;
-    gap: 10px !important; /* Esto garantiza 32px de espacio real entre cada bloque */
+    gap: 10px !important; 
 }
 .topbar {
     display: flex;
@@ -90,7 +90,6 @@ main, .container {
 .main-container > *:nth-child(2) { animation-delay: 0.2s; }
 .main-container > *:nth-child(3) { animation-delay: 0.3s; }
 .main-container > *:nth-child(4) { animation-delay: 0.4s; }
-
 .title {
   font-size: 56px;
   font-weight: 900;
@@ -110,12 +109,12 @@ main, .container {
 .topbar:hover .title { text-shadow: 0 0 20px rgba(37, 99, 235, 0.15); }
 .subtitle { margin: 8px 0 0; color: var(--muted); font-size: 20px; transition: color 0.4s; }
 .topbar:hover .subtitle { color: var(--brand); }
-.profile { /* O la clase que uses para ese contenedor azul */
+.profile { 
     display: flex;
     align-items: center;
-    gap: 2rem;         /* Esto separa la imagen del texto */
-    padding: 2rem;     /* Esto crea el espacio entre el borde y el contenido */
-    border-radius: 20px; /* Para que las esquinas se vean suaves como en tu imagen */
+    gap: 2rem; 
+    padding: 2rem; 
+    border-radius: 20px; 
 }
 .profile-img-container {
     width: 240px;
@@ -145,10 +144,8 @@ main, .container {
   transition: opacity 0.5s ease;
   border-radius: 50%;
 }
-
 .profile-img-container:hover::before { opacity: 0.3; }
 .profile-img-container:hover img { border-color: var(--brand); transform: scale(1.02); }
-
 .bio {
   flex: 1;
   display: flex;
@@ -309,7 +306,6 @@ section:last-child {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
 @media (max-width: 800px) {
   .profile {
     flex-direction: column;
@@ -320,8 +316,6 @@ section:last-child {
     margin-bottom: 20px;
   }
 }
-
-
 .skills-interactive { margin-top: 25px; }
 .skills-tabs {
   display: flex;
@@ -329,7 +323,6 @@ section:last-child {
   margin-bottom: 20px;
   flex-wrap: wrap;
 }
-
 .skill-pill {
   display: inline-flex;
   align-items: center;
@@ -344,7 +337,6 @@ section:last-child {
   transition: all 0.3s ease;
   margin-right: 8px;
 }
-
 .skill-pill.active {
   background: var(--brand) !important;
   color: white !important;
