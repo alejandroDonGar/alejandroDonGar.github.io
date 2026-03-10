@@ -101,10 +101,9 @@ body {
     align-items: flex-start;
     gap: 40px;
     width: 100%;
-    /* Quitamos bordes aquí para que no se dupliquen con la sección */
-    border: none;
     background: transparent;
-    padding: 0; 
+    padding: 0;
+    border: none;
 }
 
 /* 2. LA FOTO (Tamaño controlado) */
@@ -160,28 +159,16 @@ body {
     padding: 32px;
     margin-top: 22px;
     border-radius: var(--radius);
-    /* Aseguramos que el contenido fluya de arriba a abajo */
-    display: block; 
+    display: block; /* Importante: Bloque normal, no flex */
+    width: 100%;
 }
 
-/* Estilo para que los títulos (h2) ocupen todo el ancho arriba */
 .section h2 {
     margin-top: 0;
     margin-bottom: 24px;
+    display: block;
     width: 100%;
 }
-.profile {
-    border: 1px solid var(--line);
-    background: var(--card);
-    
-    /* AÑADE ESTO: */
-    display: flex;           /* Los pone en fila */
-    align-items: flex-start;  /* Alinea el texto con la parte de arriba de la foto */
-    gap: 40px;               /* El espacio de separación entre foto y texto */
-    padding: 32px;           /* Para que el contenido no toque los bordes */
-    border-radius: var(--radius);
-}
-
 .pill, .tag {
   display: inline-flex;
   align-items: center;
@@ -227,8 +214,8 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
-    width: 100%; /* Muy importante */
     margin-top: 20px;
+    width: 100%; /* Para que use todo el espacio disponible */
 }
 .card { 
     display: flex; 
