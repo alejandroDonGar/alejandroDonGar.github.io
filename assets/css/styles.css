@@ -9,11 +9,20 @@
   --radius: 18px;
 }
 [data-theme="dark"] {
-  --bg: #0f172a;
-  --text: #f8fafc;
+  --bg: #0f172a;       /* El azul casi negro del fondo de tu imagen */
+  --text: #e2e8f0;     /* Gris claro/crema para legibilidad */
   --muted: #94a3b8;
-  --card: #1e293b;
+  --card: #1e293b;     /* Un azul marino oscuro para las tarjetas */
   --line: #334155;
+  --brand: #38bdf8;    /* Un azul más eléctrico que resalta en oscuro */
+  
+  /* ESTA ES LA CLAVE: El color del hover en modo oscuro */
+  --hover-bg: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+[data-theme="dark"] .profile img {
+  filter: brightness(0.9) contrast(1.1);
+  border: 1px solid var(--line);
 }
 * { box-sizing: border-box; }
 body {
@@ -60,9 +69,9 @@ body {
 }
 .topbar:hover, .section:hover, .profile:hover, .card:hover {
   border-color: var(--brand);
-  background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+  background: var(--hover-bg); 
   transform: translateY(-4px);
-  box-shadow: 0 15px 30px -10px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
 }
 .title {
   font-size: 56px;
