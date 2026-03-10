@@ -1,23 +1,21 @@
 :root {
-  /* Modo Claro (Default) */
   --bg: #f8fafc;
   --text: #0f172a;
   --muted: #64748b;
   --card: #ffffff;
   --line: #e2e8f0;
   --brand: #0ea5e9;
+  --hover-bg: #f0f9ff; /* Blanco con un toque azul */
   --radius: 18px;
 }
 [data-theme="dark"] {
-  --bg: #0f172a;       /* El azul casi negro del fondo de tu imagen */
-  --text: #e2e8f0;     /* Gris claro/crema para legibilidad */
+  --bg: #0f172a;       /* Azul muy oscuro (fondo de tu foto) */
+  --text: #f1f5f9;     /* Blanco crema */
   --muted: #94a3b8;
-  --card: #1e293b;     /* Un azul marino oscuro para las tarjetas */
+  --card: #1e293b;     /* Azul pizarra */
   --line: #334155;
-  --brand: #38bdf8;    /* Un azul más eléctrico que resalta en oscuro */
-  
-  /* ESTA ES LA CLAVE: El color del hover en modo oscuro */
-  --hover-bg: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  --brand: #38bdf8;
+  --hover-bg: #2d3748; /* GRIS AZULADO MÁS CLARO: Aquí es donde se "ilumina" */
 }
 [data-theme="dark"] .title {
   background: linear-gradient(to right, #ffffff 20%, var(--brand) 50%, #ffffff 80%);
@@ -64,18 +62,18 @@ body {
     margin-top: 10px; /* Separación extra respecto al subtítulo */
 }
 .topbar, .section, .profile, .card {
-  background: var(--card);
+  background: var(--card); /* Antes quizás decía #ffffff */
   border: 2px solid var(--line);
   border-radius: var(--radius);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0;
-  animation: fadeInUp 0.6s ease-out forwards;
+  color: var(--text); /* Asegura que el texto cambie siempre */
 }
 .topbar:hover, .section:hover, .profile:hover, .card:hover {
   border-color: var(--brand);
+  /* En modo claro será blanco azulado, en oscuro un marino eléctrico */
   background: var(--hover-bg); 
   transform: translateY(-4px);
-  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 .title {
   font-size: 56px;
@@ -218,6 +216,9 @@ body {
 .input:focus, .select:focus {
     border-color: var(--brand);    
     box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1); 
+}
+.muted {
+  color: var(--muted) !important;
 }
 @keyframes shine { to { background-position: 200% center; } }
 @keyframes fadeInUp {
