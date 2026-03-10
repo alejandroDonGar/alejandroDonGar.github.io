@@ -103,11 +103,22 @@ body {
   animation-delay: 0.3s;
 }
 .profile img {
-  width: 240px; height: 320px;
-  object-fit: cover;
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
+  border: 2px solid var(--brand); /* Un borde fino azul */
+  position: relative;
+  z-index: 2;
+}
+.profile::before {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 340px;
+  background: var(--brand);
+  filter: blur(50px);
+  opacity: 0.1;
+  z-index: 1;
   border-radius: 20px;
-  flex-shrink: 0;
-  transition: all 0.5s ease;
+  animation: pulseGlow 4s infinite alternate;
 }
 .profile img:hover {
   transform: scale(1.05);
@@ -349,3 +360,7 @@ body {
 }
 .bar { background: var(--line); height: 8px; border-radius: 10px; margin: 5px 0 15px; overflow: hidden; }
 .progress { background: var(--brand); height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
+@keyframes pulseGlow {
+  from { transform: scale(1); opacity: 0.1; }
+  to { transform: scale(1.1); opacity: 0.2; }
+}
