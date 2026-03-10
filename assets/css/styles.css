@@ -154,6 +154,7 @@ body {
   display: flex !important;
   flex-direction: column; /* Título arriba, contenido abajo */
   padding: 32px;
+  margin: 32px;
 }
 .section h2 {
     margin: 0 0 24px 0;
