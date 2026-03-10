@@ -131,8 +131,20 @@
     }));
   }
   function copyEmail() {
-    navigator.clipboard.writeText("alexDoGa.Work@gmail.com");
-    alert("¡Email copiado al portapapeles! 📧");
+      const email = "alexDoGa.Work@gmail.com";
+      navigator.clipboard.writeText(email);
+      
+      // Buscar el botón que llamó a la función
+      const btn = event.target;
+      const originalText = btn.innerText;
+      
+      btn.innerText = "¡Email Copiado! ✅";
+      btn.style.backgroundColor = "var(--brand)"; // Color de éxito
+      
+      setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.backgroundColor = ""; // Vuelve al color original
+      }, 2000);
   }
   function renderFeatured(repos){
     const featured = repos.filter(r => r.topics.includes(FEATURED_TOPIC)).slice(0, 6);
