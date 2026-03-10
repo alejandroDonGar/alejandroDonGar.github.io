@@ -253,6 +253,18 @@ section:last-child {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
+.filter-btn:hover {
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); /* Glow azul suave */
+    border-color: var(--brand);
+    transform: translateY(-2px); /* Un pequeño salto para darle vida */
+    transition: all 0.3s ease;
+}
+.filter-btn.active {
+    background-color: var(--brand);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.6); /* Glow más intenso */
+    border: none;
+}
 .input {
     flex: 1;
     min-width: 200px;
