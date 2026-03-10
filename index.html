@@ -191,7 +191,11 @@
   function renderRepos(repos){
     const el = document.getElementById("repos");
     const list = applyFilters(repos);
-    el.innerHTML = list.length ? "" : `<div class="muted">No hay resultados con esos filtros.</div>`;
+    el.innerHTML = list.length ? "" : `
+    <div class="muted" style="text-align:center; padding: 40px;">
+        <div style="font-size: 3rem; margin-bottom: 10px;">🔍</div>
+        <p>No encontramos repositorios que coincidan con "<b>${document.getElementById("q").value}</b>"</p>
+    </div>`;
 
     list.forEach((r, i) => {
       const topics = (r.topics && r.topics.length)
