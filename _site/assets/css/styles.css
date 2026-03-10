@@ -76,7 +76,9 @@ main, .container {
   border-radius: var(--radius);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--text);
+  opacity: 0;
   margin-bottom: 24px;
+  animation: slideFade 0.8s ease-out forwards;
 }
 .topbar:hover, .section:hover, .profile:hover, .card:hover {
   border-color: var(--brand);
@@ -84,6 +86,11 @@ main, .container {
   transform: translateY(-4px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
+.main-container > *:nth-child(1) { animation-delay: 0.1s; }
+.main-container > *:nth-child(2) { animation-delay: 0.3s; }
+.main-container > *:nth-child(3) { animation-delay: 0.5s; }
+.main-container > *:nth-child(4) { animation-delay: 0.7s; }
+
 .title {
   font-size: 56px;
   font-weight: 900;
@@ -369,14 +376,14 @@ section:last-child {
   font-family: monospace; 
 }
 @keyframes slideFade {
-  from { 
-    opacity: 0; 
-    transform: translateX(-20px); 
-  }
-  to { 
-    opacity: 1; 
-    transform: translateX(0); 
-  }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 .skeleton {
   background: var(--line);
