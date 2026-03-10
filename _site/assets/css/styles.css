@@ -5,17 +5,17 @@
   --card: #ffffff;
   --line: #e2e8f0;
   --brand: #0ea5e9;
-  --hover-bg: #f0f9ff; /* Blanco con un toque azul */
+  --hover-bg: #f0f9ff; 
   --radius: 18px;
 }
 [data-theme="dark"] {
-  --bg: #0f172a;       /* Azul muy oscuro (fondo de tu foto) */
-  --text: #f1f5f9;     /* Blanco crema */
+  --bg: #0f172a;       
+  --text: #f1f5f9;     
   --muted: #94a3b8;
-  --card: #1e293b;     /* Azul pizarra */
+  --card: #1e293b;    
   --line: #334155;
   --brand: #38bdf8;
-  --hover-bg: #2d3748; /* GRIS AZULADO MÁS CLARO: Aquí es donde se "ilumina" */
+  --hover-bg: #2d3748; 
 }
 [data-theme="dark"] .title {
   background: linear-gradient(to right, #ffffff 20%, var(--brand) 50%, #ffffff 80%);
@@ -32,7 +32,7 @@ body {
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.5; /* Mejora la lectura general */
+  line-height: 1.5;
 }
 body {
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -47,30 +47,29 @@ body {
 .container { max-width: 1100px; margin: 0 auto; padding: 28px 18px 60px; }
 .topbar {
     display: flex;
-    flex-direction: column; /* Cambiamos a columna para que el nombre tenga todo su espacio */
-    align-items: flex-start; /* Alinea todo a la izquierda */
-    gap: 12px;              /* Espacio uniforme entre nombre, subtítulo y botones */
-    padding: 32px 40px;     /* Más aire para que el texto grande no toque los bordes */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;       
+    padding: 32px 40px;   
     background: var(--card);
     border: 2px solid var(--line);
-    border-radius: 24px;    /* Un poco más de curva para equilibrar el tamaño del texto */
+    border-radius: 24px; 
     transition: all 0.4s ease;
 }
 .topbar .contact-buttons { 
     display: flex;
     gap: 10px;
-    margin-top: 10px; /* Separación extra respecto al subtítulo */
+    margin-top: 10px;
 }
 .topbar, .section, .profile, .card {
-  background: var(--card); /* Antes quizás decía #ffffff */
+  background: var(--card);
   border: 2px solid var(--line);
   border-radius: var(--radius);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  color: var(--text); /* Asegura que el texto cambie siempre */
+  color: var(--text);
 }
 .topbar:hover, .section:hover, .profile:hover, .card:hover {
   border-color: var(--brand);
-  /* En modo claro será blanco azulado, en oscuro un marino eléctrico */
   background: var(--hover-bg); 
   transform: translateY(-4px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -88,26 +87,23 @@ body {
   -webkit-text-fill-color: transparent;
   animation: shine 4s linear infinite;
   transition: text-shadow 0.4s ease;
-  letter-spacing: -2px; /* Hace que las letras estén más juntas, estilo Apple/SaaS */
+  letter-spacing: -2px;
   filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.2));
 }
 .topbar:hover .title { text-shadow: 0 0 20px rgba(37, 99, 235, 0.15); }
 .subtitle { margin: 8px 0 0; color: var(--muted); font-size: 20px; transition: color 0.4s; }
 .topbar:hover .subtitle { color: var(--brand); }
-/* 1. EL CONTENEDOR (Fuerza la fila) */
 .profile {
   display: flex !important;
-  flex-direction: row;    /* Foto a la izquierda, Bio a la derecha */
+  flex-direction: row;
   gap: 40px;
   width: 100%;
   align-items: flex-start;
 }
-
-/* 2. LA FOTO (Tamaño controlado) */
 .profile-img-container {
     width: 240px;
     height: 320px;
-    flex-shrink: 0; /* Evita que el texto aplaste la foto */
+    flex-shrink: 0;
     position: relative;
 }
 .profile-img-container img {
@@ -118,8 +114,6 @@ body {
   border: 2px solid var(--line);
   transition: all 0.5s ease;
 }
-
-/* 3. EL RESPLANDOR (Hover) */
 .profile-img-container::before {
   content: "";
   position: absolute;
@@ -137,7 +131,6 @@ body {
 .profile-img-container:hover::before { opacity: 0.3; }
 .profile-img-container:hover img { border-color: var(--brand); transform: scale(1.02); }
 
-/* 4. LA BIOGRAFÍA (Ocupa el resto) */
 .bio {
   flex: 1;
   display: flex;
@@ -151,7 +144,7 @@ body {
 }
 .section {
   display: flex !important;
-  flex-direction: column; /* Título arriba, contenido abajo */
+  flex-direction: column;
   padding: 32px;
 }
 .section h2 {
@@ -169,7 +162,7 @@ body {
   font-size: 13px;
   font-weight: 600;
   color: var(--text); 
-  transition: all 0.3s ease; /* Sin !important aquí */
+  transition: all 0.3s ease; 
   margin: 0 8px 8px 0;
   cursor: pointer;
 }
@@ -247,7 +240,6 @@ body {
   padding: 10px 16px;
   border: 2px solid var(--line);
   border-radius: 12px;
-  /* CAMBIO AQUÍ: Para que no sean blancos en modo noche */
   background: var(--card); 
   color: var(--text);
   font-size: 14px;
@@ -259,7 +251,7 @@ body {
     box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1); 
 }
 .muted {
-  line-height: 1.7;        /* Mejora la lectura del párrafo */
+  line-height: 1.7;
   margin: 0;
   color: var(--muted) !important;
 }
@@ -299,7 +291,7 @@ body {
 
 @media (max-width: 800px) {
   .profile {
-    flex-direction: column; /* En móvil, foto arriba y texto abajo */
+    flex-direction: column;
     align-items: center;
     text-align: center;
   }
@@ -399,7 +391,7 @@ body {
 }
 .progress {
   height: 100%;
-  background: var(--brand); /* Tu azul brillante */
+  background: var(--brand);
   border-radius: 10px;
 }
 .bar { background: var(--line); height: 8px; border-radius: 10px; margin: 5px 0 15px; overflow: hidden; }
