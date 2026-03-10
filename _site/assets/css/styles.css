@@ -143,7 +143,6 @@ body {
   display: flex;
   flex-direction: column;
 }
-
 .profile-bio p {
     margin-bottom: 24px;
     line-height: 1.7;  
