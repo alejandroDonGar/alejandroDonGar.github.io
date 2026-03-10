@@ -15,12 +15,14 @@
       <div class="subtitle">Estudiante de Desarrollo de Aplicaciones Multiplataforma - 1º DAM</div>
     </div>
     <nav style="display:flex;gap:10px">
+      <button id="theme-toggle" class="btn" style="padding: 10px; line-height: 1;">
+        <span id="theme-icon">🌙</span>
+      </button>
       <a class="btn" href="https://www.linkedin.com/in/alejandrodongar" target="_blank">LinkedIn</a>
       <a class="btn" href="https://github.com/alejandroDonGar" target="_blank">GitHub</a>
       <a class="btn" href="mailto:alexDoGa.Work@gmail.com">Email</a>
     </nav>
   </header>
-
   <section class="section">
     <h2>Sobre mí</h2>
     <div class="grid2">
@@ -185,6 +187,28 @@
       `);
     });
   }
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeIcon = document.getElementById("theme-icon");
+  const currentTheme = localStorage.getItem("theme") || "light";
+
+    // Aplicar el tema guardado al cargar
+    if (currentTheme === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+      themeIcon.innerText = "☀️";
+    }
+    themeToggle.addEventListener("click", () => {
+      let theme = document.documentElement.getAttribute("data-theme");
+      
+      if (theme === "dark") {
+        document.documentElement.setAttribute("data-theme", "light");
+        themeIcon.innerText = "🌙";
+        localStorage.setItem("theme", "light");
+      } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+        themeIcon.innerText = "☀️";
+        localStorage.setItem("theme", "dark");
+      }
+    });
 
   function bindUI(){
     document.getElementById("q").addEventListener("input", () => renderRepos(allRepos));
