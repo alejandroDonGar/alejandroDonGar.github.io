@@ -142,27 +142,17 @@ body {
 .pill[data-tech="SQL"] { --tech-color: #336791; }
 .pill[data-tech="HTML/CSS"] { --tech-color: #264de4; }
 .pill[data-tech="Git"] { --tech-color: #f05032; }
-.pill:hover {
-  background: var(--brand) !important; /* Forzamos el azul del branding */
-  color: #ffffff !important;           /* Texto blanco siempre en hover */
-  border-color: var(--brand);
-  transform: translateY(-2px);
+.pill:hover, .tag:hover {
+  background: var(--brand) !important;
+  color: #ffffff !important;
+  border-color: var(--brand) !important;
+  transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
 }
-.pill:hover, .tag:hover {
-  background: var(--brand);
-  color: white;
-  border-color: var(--brand);
-  transform: translateY(-3px);
-}
-[data-theme="dark"] .pill {
-  background: rgba(255, 255, 255, 0.05); /* Un gris azulado muy sutil */
-  border-color: var(--line);
-  color: var(--text);
-}
 [data-theme="dark"] .pill, [data-theme="dark"] .tag {
-  background: rgba(255, 255, 255, 0.05); /* Un brillo muy sutil */
-  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05) !important; /* Gris traslúcido muy pro */
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: var(--text) !important;
 }
 .section { 
     margin-top: 22px; 
