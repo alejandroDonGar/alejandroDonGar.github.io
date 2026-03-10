@@ -101,8 +101,8 @@ body {
   padding: 32px;
   margin: 22px auto 30px;
   position: relative;
+  z-index: 1; /* El contenedor principal es la capa base */
   overflow: visible !important;
-  z-index: 0; 
   background: var(--card);
 }
 .profile img {
@@ -119,22 +119,24 @@ body {
 .profile::before {
   content: "";
   position: absolute;
-  top: 50%;
-  left: 155px;
-  transform: translate(-50%, -50%);
+  /* Posicionamos el centro del brillo en el centro de la foto (240px / 2 = 120px) */
+  top: 160px; /* La mitad de los 320px de altura */
+  left: 120px; 
+  transform: translate(-50%, -50%); /* Centrado absoluto respecto a ese punto */
+  
   width: 280px;
   height: 360px;
   background: var(--brand);
-  filter: blur(80px);
-  opacity: 0; 
-  z-index: -1;
+  filter: blur(80px); /* Difuminado muy suave */
+  opacity: 0; /* APAGADO por defecto */
+  z-index: -1; /* El brillo se mete DEBAJO de la tarjeta */
   pointer-events: none;
   border-radius: 50%;
-  transition: opacity 0.6s ease, transform 0.6s ease; 
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .profile:hover::before {
-  opacity: 0.25; /* Luz suave (si quieres menos, pon 0.15) */
-  transform: translate(-50%, -50%) scale(1.1); 
+  opacity: 0.2; /* Luz azul sutil y elegante */
+  transform: translate(-50%, -50%) scale(1.1); /* Crece un pelín */
 }
 .profile:hover img {
   border-color: var(--brand);
