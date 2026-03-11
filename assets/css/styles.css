@@ -410,7 +410,7 @@ section:last-child {
 }
 .stats-wrapper .section-title {
     text-align: left; 
-    margin-bottom: 2rem;
+    padding: 32px;
     font-size: 1.8rem;
     color: var(--text);
 }
