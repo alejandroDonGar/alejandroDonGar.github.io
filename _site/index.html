@@ -102,11 +102,10 @@
 </div>
 
 <script>
-  const GITHUB_USERNAME = "alejandroDonGar"; // <- CAMBIA ESTO
+  const GITHUB_USERNAME = "alejandroDonGar"; 
   const FEATURED_TOPIC = "showcase";
   let allRepos = [];
   let activeTopic = "all";
-
   function formatDate(iso){
     const d = new Date(iso);
     return d.toLocaleDateString("es-ES", {year:"numeric", month:"short", day:"2-digit"});
@@ -114,7 +113,6 @@
   function cardBorderByIndex(i){
     return "";
   }
-
   async function fetchRepos(){
     const url = `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
     const res = await fetch(url, { headers: { "Accept":"application/vnd.github+json" }});
@@ -134,7 +132,6 @@
     const featured = repos.filter(r => r.topics.includes(FEATURED_TOPIC)).slice(0, 6);
     const el = document.getElementById("featured");
     el.innerHTML = featured.length ? "" : `<div class="muted">Aún no tienes repos con topic <b>${FEATURED_TOPIC}</b>.</div>`;
-
     featured.forEach((r, i) => {
       const topics = r.topics.slice(0, 4).map(t => `<span class="pill">${t}</span>`).join("");
       el.insertAdjacentHTML("beforeend", `
@@ -155,23 +152,19 @@
       `);
     });
   }
-
   function applyFilters(repos){
     const q = (document.getElementById("q").value || "").toLowerCase();
     const sort = document.getElementById("sort").value;
-
     let out = repos.filter(r => {
       const matchesText = r.name.toLowerCase().includes(q) || (r.description||"").toLowerCase().includes(q);
       const matchesTopic = activeTopic === "all" ? true : r.topics.includes(activeTopic);
       return matchesText && matchesTopic;
     });
-
     if (sort === "updated") out.sort((a,b) => new Date(b.updated_at) - new Date(a.updated_at));
     if (sort === "stars") out.sort((a,b) => (b.stargazers_count||0) - (a.stargazers_count||0));
     if (sort === "name") out.sort((a,b) => a.name.localeCompare(b.name));
     return out;
   }
-
   function renderRepos(repos){
     const el = document.getElementById("repos");
     const list = applyFilters(repos);
@@ -180,12 +173,10 @@
         <div style="font-size: 3rem; margin-bottom: 10px;">🔍</div>
         <p>No encontramos repositorios que coincidan con "<b>${document.getElementById("q").value}</b>"</p>
     </div>`;
-
     list.forEach((r, i) => {
       const topics = (r.topics && r.topics.length)
         ? r.topics.slice(0, 6).map(t => `<span class="pill">${t}</span>`).join("")
         : `<span class="pill">sin topics</span>`;
-
       el.insertAdjacentHTML("beforeend", `
         <article class="card ${cardBorderByIndex(i)}">
           <h3>${r.name}</h3>
@@ -204,15 +195,12 @@
   const themeToggle = document.getElementById("theme-toggle");
   const themeIcon = document.getElementById("theme-icon");
   const currentTheme = localStorage.getItem("theme") || "light";
-
-    // Aplicar el tema guardado al cargar
     if (currentTheme === "dark") {
       document.documentElement.setAttribute("data-theme", "dark");
       themeIcon.innerText = "☀️";
     }
     themeToggle.addEventListener("click", () => {
       let theme = document.documentElement.getAttribute("data-theme");
-      
       if (theme === "dark") {
         document.documentElement.setAttribute("data-theme", "light");
         themeIcon.innerText = "🌙";
@@ -223,7 +211,6 @@
         localStorage.setItem("theme", "dark");
       }
     });
-
   function bindUI(){
     document.getElementById("q").addEventListener("input", () => renderRepos(allRepos));
     document.getElementById("sort").addEventListener("change", () => renderRepos(allRepos));
@@ -236,7 +223,6 @@
       });
     });
   }
-
   async function main(){
     document.getElementById("repos").innerHTML = '<div class="skeleton"></div>'.repeat(3);
     bindUI();
@@ -244,7 +230,6 @@
     renderFeatured(allRepos);
     renderRepos(allRepos);
   }
-
   main().catch(err => {
     document.getElementById("featured").innerHTML = `<div class="muted">${err.message}</div>`;
     document.getElementById("repos").innerHTML = `<div class="muted">${err.message}</div>`;
@@ -268,7 +253,6 @@
       text: "XSD | VALIDACIÓN | ESTRUCTURAS DE DATOS" 
     }
   };
-
   function showSkill(key, btn) {
     document.querySelectorAll('.skill-pill').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
@@ -283,28 +267,20 @@
   }
   console.log("%c¡Hola! Soy Alejandro Donate 👋", "color: #38bdf8; font-size: 20px; font-weight: bold;");
   console.log("Veo que estás revisando el código... ¡Eso me gusta! Si buscas un perfil junior con ganas de aprender, ¡hablemos!");  
-
   document.addEventListener('DOMContentLoaded', () => {
       const btn = document.getElementById('copy-btn');
-
       if (btn) {
           btn.addEventListener('click', () => {
               const email = "alexDoGa.Work@gmail.com";
-              
-              // Intentar copiar al portapapeles
               navigator.clipboard.writeText(email).then(() => {
                   const originalText = btn.innerText;
-
-                  // 1. Cambiar texto y estilo (Contraste alto para que se vea)
                   btn.innerText = "¡Copiado! ✅";
-                  btn.style.backgroundColor = "var(--brand)"; // Fondo azul brillante
-                  btn.style.color = "#0f172a";               // Texto oscuro (Contraste)
+                  btn.style.backgroundColor = "var(--brand)"; 
+                  btn.style.color = "#0f172a";            
                   btn.style.fontWeight = "bold";
-
-                  // 2. Volver al estado original tras 2 segundos
                   setTimeout(() => {
                       btn.innerText = originalText;
-                      btn.style.backgroundColor = ""; // Vuelve al original del CSS
+                      btn.style.backgroundColor = "";
                       btn.style.color = "";
                       btn.style.fontWeight = "";
                   }, 2000);
