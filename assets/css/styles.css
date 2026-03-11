@@ -436,19 +436,30 @@ section:last-child {
     padding: 2rem 0;
     display: flex;
     justify-content: center;
-    width: 100%;
 }
 .stats-wrapper {
+    background: #1a222f; 
+    padding: 2rem;
+    border-radius: 15px;
     width: 90%;
     max-width: 1100px;
-    text-align: center;
+}
+.stats-wrapper .section-title {
+    text-align: left; 
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    color: #fff;
 }
 .stats-cards {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;
-    margin-top: 1.5rem;
+    justify-content: flex-start; 
+}
+.stats-cards img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
 }
 .gh-card {
     max-width: 100%;
