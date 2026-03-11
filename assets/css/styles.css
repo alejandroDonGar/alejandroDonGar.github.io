@@ -83,7 +83,7 @@ main, .container {
 .topbar:hover, .section:hover, .profile:hover, .card:hover {
   border-color: var(--brand);
   background: var(--hover-bg); 
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   box-shadow: 0 10px 30px rgba(22, 72, 114, 0.2);
 }
 .main-container > *:nth-child(1) { animation-delay: 0.1s; }
@@ -428,7 +428,7 @@ section:last-child {
 .stats-wrapper.section-card:hover {
     border-color: var(--brand);
     background: var(--hover-bg); 
-    transform: translateY(-4px);
+    transform: translateY(-6px);
     box-shadow: 0 10px 30px rgba(22, 72, 114, 0.2);
 }
 .stats-cards {
