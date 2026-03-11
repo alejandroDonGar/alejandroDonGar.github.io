@@ -445,7 +445,7 @@ section:last-child {
     color: #fff;
 }
 .stats-wrapper.section-card {
-    background-color: #1e293b; 
+    background: var(--card);
     padding: 2.5rem;
     border-radius: 15px;
     width: 90%;
@@ -455,9 +455,10 @@ section:last-child {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 .stats-wrapper.section-card:hover {
-    border-color: #3b82f6;
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
-    transform: translateY(-2px);
+    border-color: var(--brand);
+    background: var(--hover-bg); 
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 .stats-cards {
     display: flex;
@@ -468,7 +469,7 @@ section:last-child {
 }
 .stats-cards img {
     height: 165px; 
-    border-radius: 8px;
+    border-radius: 12px;
 }
 .gh-card {
     max-width: 100%;
@@ -479,7 +480,7 @@ section:last-child {
 }
 .gh-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 210, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 @media (max-width: 768px) {
     .stats-cards {
