@@ -408,7 +408,7 @@ section:last-child {
     justify-content: center;
     margin: 20px 0;
 }
-.stats-wrapper .section-title {
+.stats-wrapper.section-title {
     text-align: left; 
     padding: 32px;
     font-size: 1.3rem;
