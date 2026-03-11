@@ -424,6 +424,8 @@ section:last-child {
     padding: 20px 32px 32px 32px;
     width: 100%;
     max-width: 1000px;
+    opacity: 0;
+    animation: slideFade 0.3s ease-out forwards;
 }
 .stats-wrapper.section-card:hover {
     border-color: var(--brand);
