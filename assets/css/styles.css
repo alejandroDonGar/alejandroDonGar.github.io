@@ -403,10 +403,11 @@ section:last-child {
 .bar { background: var(--line); height: 8px; border-radius: 10px; margin: 5px 0 15px; overflow: hidden; }
 .progress { background: var(--brand); height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
 .github-stats-container {
-    padding: 1rem 0;
+    margin: 0 auto; 
+    padding: 0;
+    width: 100%;
     display: flex;
     justify-content: center;
-    margin: 20px 0;
 }
 .stats-wrapper.section-title {
     text-align: left; 
@@ -415,14 +416,14 @@ section:last-child {
     color: var(--text);
 }
 .stats-wrapper.section-card {
+    margin-top: 0; 
+    margin-bottom: 24px;
     background: var(--card);
     border: 2px solid var(--line);
     border-radius: var(--radius);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    color: var(--text);
-    opacity: 0;
-    margin-bottom: 24px;
-    animation: slideFade 0.8s ease-out forwards;
+    padding: 20px 32px 32px 32px;
+    width: 100%;
+    max-width: 1000px;
 }
 .stats-wrapper.section-card:hover {
     border-color: var(--brand);
