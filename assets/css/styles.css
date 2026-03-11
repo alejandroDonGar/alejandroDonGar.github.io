@@ -437,7 +437,7 @@ section:last-child {
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
-    justify-content: flex-start;
+    justify-content: center;
     margin-top: 1.5rem;
 }
 .stats-cards img {
