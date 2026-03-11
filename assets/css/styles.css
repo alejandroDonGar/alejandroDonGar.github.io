@@ -351,7 +351,7 @@ section:last-child {
   padding: 8px 20px;
   background: var(--card) !important; 
   border: 2px solid var(--line);
-  border-radius: 100px; 
+  border-radius: 12px; 
   font-size: 14px;
   font-weight: 700;
   color: var(--text);
