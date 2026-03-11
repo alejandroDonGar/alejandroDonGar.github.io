@@ -149,7 +149,7 @@ main, .container {
 }
 .profile-img-container:hover img { 
   border-color: var(--brand); 
-  border: 2.5px solid var(--brand); 
+  border: 2px solid var(--brand); 
   transform: scale(1.02); 
   transition: all 0.3s ease;
 }
