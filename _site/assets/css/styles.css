@@ -149,9 +149,9 @@ main, .container {
 }
 .profile-img-container:hover img { 
   border-color: var(--brand); 
-  border: 5px solid var(--brand); 
+  border: 2px solid var(--brand); 
   transform: scale(1.02); 
-    transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 .bio {
   flex: 1;
