@@ -433,16 +433,10 @@ section:last-child {
 .progress { background: var(--brand); height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
 
 .github-stats-container {
-    padding: 2rem 0;
+    padding: 1rem 0;
     display: flex;
     justify-content: center;
-}
-.stats-wrapper {
-    background: #1a222f; 
-    padding: 2rem;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 1100px;
+    margin: 20px 0;
 }
 .stats-wrapper .section-title {
     text-align: left; 
@@ -450,15 +444,30 @@ section:last-child {
     font-size: 1.8rem;
     color: #fff;
 }
+.stats-wrapper.section-card {
+    background-color: #1e293b; 
+    padding: 2.5rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 1100px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+.stats-wrapper.section-card:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+    transform: translateY(-2px);
+}
 .stats-cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: flex-start; 
+    gap: 25px;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
 }
 .stats-cards img {
-    max-width: 100%;
-    height: auto;
+    height: 165px; 
     border-radius: 8px;
 }
 .gh-card {
