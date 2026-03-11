@@ -296,18 +296,25 @@
 
   document.addEventListener('DOMContentLoaded', () => {
       const btn = document.getElementById('copy-btn');
+
       if (btn) {
           btn.addEventListener('click', () => {
               const email = "alexDoGa.Work@gmail.com";
+              
+              // Intentar copiar al portapapeles
               navigator.clipboard.writeText(email).then(() => {
                   const originalText = btn.innerText;
+
+                  // 1. Cambiar texto y estilo (Contraste alto para que se vea)
                   btn.innerText = "¡Copiado! ✅";
-                  btn.style.backgroundColor = "var(--brand)";
-                  btn.style.color = "#ffffff";
+                  btn.style.backgroundColor = "var(--brand)"; // Fondo azul brillante
+                  btn.style.color = "#ffffff";               // Texto oscuro (Contraste)
                   btn.style.fontWeight = "bold";
+
+                  // 2. Volver al estado original tras 2 segundos
                   setTimeout(() => {
                       btn.innerText = originalText;
-                      btn.style.backgroundColor = "";
+                      btn.style.backgroundColor = ""; // Vuelve al original del CSS
                       btn.style.color = "";
                       btn.style.fontWeight = "";
                   }, 2000);
@@ -318,5 +325,6 @@
       }
   });
 </script>
+
 </body>
 </html>
