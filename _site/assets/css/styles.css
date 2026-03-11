@@ -452,13 +452,12 @@ section:last-child {
     max-width: 1100px;
     border: 1px solid transparent;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 .stats-wrapper.section-card:hover {
     border-color: var(--brand);
     background: var(--hover-bg); 
     transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 .stats-cards {
     display: flex;
