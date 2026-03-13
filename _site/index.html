@@ -80,8 +80,8 @@
       <div class="stats-wrapper section-card"> 
           <h2 style="margin:0 0 10px" class="section-title">Mi Actividad en GitHub</h2>
           <div class="stats-cards">
-              <img class="github-stats-img" src="https://github-readme-stats.vercel.app/api?username=alejandroDonGar&&theme=default&hide_border=true" alt="Estadísticas de GitHub" />
-              <img class="github-stats-img" src="https://github-readme-stats.vercel.app/api/top-langs?username=alejandroDonGar&&theme=default&hide_border=true" alt="Lenguajes más usados" />
+              <img class="github-stats-img" src="https://github-readme-stats.vercel.app/api?username=alejandroDonGar&&theme=react&hide_border=true" alt="Estadísticas de GitHub" />
+              <img class="github-stats-img" src="https://github-readme-stats.vercel.app/api/top-langs?username=alejandroDonGar&&theme=react&hide_border=true" alt="Lenguajes más usados" />
           </div>
       </div>
   </section>
@@ -218,7 +218,7 @@
   
   function updateGithubStats(theme) {
       const statsImages = document.querySelectorAll(".github-stats-img");
-      const githubTheme = (theme === "dark") ? "catppuccin_latte" : "default"; 
+      const githubTheme = (theme === "dark") ? "default" : "react"; 
       
       statsImages.forEach(img => {
           
