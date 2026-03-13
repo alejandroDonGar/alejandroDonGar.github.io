@@ -222,9 +222,19 @@
       
       statsImages.forEach(img => {
           
-          const url = new URL(img.src);
-          url.searchParams.set("theme", githubTheme);
-          img.src = url.toString();
+          img.classList.add("fade-out");
+
+          
+          setTimeout(() => {
+              const url = new URL(img.src);
+              url.searchParams.set("theme", githubTheme);
+              img.src = url.toString();
+
+              
+              img.onload = () => {
+                  img.classList.remove("fade-out");
+              };
+          }, 400);
       });
   }
 
