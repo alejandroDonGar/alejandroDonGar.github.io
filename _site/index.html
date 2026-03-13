@@ -80,8 +80,8 @@
       <div class="stats-wrapper section-card"> 
           <h2 style="margin:0 0 10px" class="section-title">Mi Actividad en GitHub</h2>
           <div class="stats-cards">
-              <img src="https://github-readme-stats.vercel.app/api?username=alejandroDonGar&&theme=algolia&hide_border=true" alt="Estadísticas de GitHub" />
-              <img src="https://github-readme-stats.vercel.app/api/top-langs?username=alejandroDonGar&&theme=algolia&hide_border=true" alt="Lenguajes más usados" />
+              <img class="github-stats-img" src="https://github-readme-stats.vercel.app/api?username=alejandroDonGar&&theme=algolia&hide_border=true" alt="Estadísticas de GitHub" />
+              <img class="github-stats-img" src="https://github-readme-stats.vercel.app/api/top-langs?username=alejandroDonGar&&theme=algolia&hide_border=true" alt="Lenguajes más usados" />
           </div>
       </div>
   </section>
@@ -215,24 +215,42 @@
   const themeIcon = document.getElementById("theme-icon");
   const currentTheme = localStorage.getItem("theme") || "light";
 
-    // Aplicar el tema guardado al cargar
-    if (currentTheme === "dark") {
+  // 1. Función auxiliar para cambiar el tema de las imágenes de GitHub
+  function updateGithubStats(theme) {
+      const statsImages = document.querySelectorAll(".github-stats-img");
+      const githubTheme = (theme === "dark") ? "dark" : "algolia"; // 'algolia' es tu tema claro actual
+      
+      statsImages.forEach(img => {
+          // Esta línea cambia el parámetro &theme= en la URL
+          const url = new URL(img.src);
+          url.searchParams.set("theme", githubTheme);
+          img.src = url.toString();
+      });
+  }
+
+  // 2. Aplicar el tema guardado al cargar la página
+  if (currentTheme === "dark") {
       document.documentElement.setAttribute("data-theme", "dark");
       themeIcon.innerText = "☀️";
-    }
-    themeToggle.addEventListener("click", () => {
+      updateGithubStats("dark"); // <- Esto asegura que las stats carguen en oscuro si el tema ya estaba puesto
+  }
+
+  // 3. Evento del botón (MANTENER LAS CONSTANTES AQUÍ TAMBIÉN)
+  themeToggle.addEventListener("click", () => {
       let theme = document.documentElement.getAttribute("data-theme");
       
       if (theme === "dark") {
-        document.documentElement.setAttribute("data-theme", "light");
-        themeIcon.innerText = "🌙";
-        localStorage.setItem("theme", "light");
+          document.documentElement.setAttribute("data-theme", "light");
+          themeIcon.innerText = "🌙";
+          localStorage.setItem("theme", "light");
+          updateGithubStats("light"); // <- Cambia stats a claro
       } else {
-        document.documentElement.setAttribute("data-theme", "dark");
-        themeIcon.innerText = "☀️";
-        localStorage.setItem("theme", "dark");
+          document.documentElement.setAttribute("data-theme", "dark");
+          themeIcon.innerText = "☀️";
+          localStorage.setItem("theme", "dark");
+          updateGithubStats("dark"); // <- Cambia stats a oscuro
       }
-    });
+  });
 
   function bindUI(){
     document.getElementById("q").addEventListener("input", () => renderRepos(allRepos));
