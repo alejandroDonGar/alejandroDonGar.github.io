@@ -112,7 +112,7 @@
 </div>
 
 <script>
-  const GITHUB_USERNAME = "alejandroDonGar"; // <- CAMBIA ESTO
+  const GITHUB_USERNAME = "alejandroDonGar"; 
   const FEATURED_TOPIC = "showcase";
   let allRepos = [];
   let activeTopic = "all";
@@ -215,27 +215,27 @@
   const themeIcon = document.getElementById("theme-icon");
   const currentTheme = localStorage.getItem("theme") || "light";
 
-  // 1. Función auxiliar para cambiar el tema de las imágenes de GitHub
+  
   function updateGithubStats(theme) {
       const statsImages = document.querySelectorAll(".github-stats-img");
-      const githubTheme = (theme === "dark") ? "default" : "one_dark_pro"; // 'algolia' es tu tema claro actual
+      const githubTheme = (theme === "dark") ? "shadow_blue" : "one_dark_pro"; 
       
       statsImages.forEach(img => {
-          // Esta línea cambia el parámetro &theme= en la URL
+          
           const url = new URL(img.src);
           url.searchParams.set("theme", githubTheme);
           img.src = url.toString();
       });
   }
 
-  // 2. Aplicar el tema guardado al cargar la página
+  
   if (currentTheme === "dark") {
       document.documentElement.setAttribute("data-theme", "dark");
       themeIcon.innerText = "☀️";
-      updateGithubStats("dark"); // <- Esto asegura que las stats carguen en oscuro si el tema ya estaba puesto
+      updateGithubStats("dark"); 
   }
 
-  // 3. Evento del botón (MANTENER LAS CONSTANTES AQUÍ TAMBIÉN)
+  
   themeToggle.addEventListener("click", () => {
       let theme = document.documentElement.getAttribute("data-theme");
       
@@ -243,12 +243,12 @@
           document.documentElement.setAttribute("data-theme", "light");
           themeIcon.innerText = "🌙";
           localStorage.setItem("theme", "light");
-          updateGithubStats("light"); // <- Cambia stats a claro
+          updateGithubStats("light"); 
       } else {
           document.documentElement.setAttribute("data-theme", "dark");
           themeIcon.innerText = "☀️";
           localStorage.setItem("theme", "dark");
-          updateGithubStats("dark"); // <- Cambia stats a oscuro
+          updateGithubStats("dark"); 
       }
   });
 
@@ -319,20 +319,20 @@
           btn.addEventListener('click', () => {
               const email = "alexDoGa.Work@gmail.com";
               
-              // Intentar copiar al portapapeles
+              
               navigator.clipboard.writeText(email).then(() => {
                   const originalText = btn.innerText;
 
-                  // 1. Cambiar texto y estilo (Contraste alto para que se vea)
+                  
                   btn.innerText = "¡Copiado! ✅";
-                  btn.style.backgroundColor = "var(--brand)"; // Fondo azul brillante
-                  btn.style.color = "#ffffff";               // Texto oscuro (Contraste)
+                  btn.style.backgroundColor = "var(--brand)"; 
+                  btn.style.color = "#ffffff";               
                   btn.style.fontWeight = "bold";
 
-                  // 2. Volver al estado original tras 2 segundos
+                  
                   setTimeout(() => {
                       btn.innerText = originalText;
-                      btn.style.backgroundColor = ""; // Vuelve al original del CSS
+                      btn.style.backgroundColor = ""; 
                       btn.style.color = "";
                       btn.style.fontWeight = "";
                   }, 2000);
