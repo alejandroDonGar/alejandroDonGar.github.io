@@ -429,11 +429,8 @@ nav {
 
 }
 
-
-
-
 /* ===============================
-   UNIFIED HOVER FOR BUTTONS & PILLS
+   UNIFIED HOVER FOR INTERACTIVE ELEMENTS
 ================================ */
 
 .btn,
@@ -446,45 +443,43 @@ nav {
 .pill:hover,
 .skill-pill:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 14px rgba(14,165,233,0.35);
+  box-shadow: 0 6px 14px rgba(14, 165, 233, 0.35);
 }
 
-/* keep active state consistent */
 .btn.active,
 .skill-pill.active {
   transform: translateY(-3px);
-  box-shadow: 0 6px 14px rgba(14,165,233,0.35);
+  box-shadow: 0 6px 14px rgba(14, 165, 233, 0.35);
 }
-
 
 
 /* ===============================
-   GITHUB STATS LAYOUT
+   GITHUB STATS – SIDE BY SIDE WITH EQUAL HEIGHT
 ================================ */
 
-.github-stats-container .stats-wrapper {
-  padding: 24px;
-}
-
-.github-stats-container .stats-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+.stats-cards {
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   align-items: stretch;
 }
 
-.github-stats-container .github-stats-img {
+.github-stats-img {
+  flex: 1 1 420px;
   width: 100%;
-  height: 100%;
-  min-height: 190px;
-  object-fit: cover;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
   display: block;
-  margin: 0;
 }
 
-/* Keep side-by-side only when there is enough room */
-@media (max-width: 760px) {
-  .github-stats-container .stats-cards {
-    grid-template-columns: 1fr;
+@media (min-width: 900px) {
+  .stats-cards {
+    align-items: stretch;
+  }
+
+  .stats-cards .github-stats-img {
+    flex: 1 1 0;
+    align-self: stretch;
   }
 }
