@@ -74,6 +74,17 @@ main, .container {
     box-sizing: border-box; /* Incluye el padding en el cálculo del ancho */
     padding: 10px; 
 }
+.header-botones a, .header-botones button {
+    flex: 1 1 auto;       /* Permite que crezcan o se encojan según el espacio */
+    min-width: 120px;     /* Evita que se vuelvan demasiado pequeños */
+    max-width: 100%;      /* Nunca serán más anchos que el contenedor */
+    text-align: center;
+    white-space: normal;  /* Permite que el texto del botón salte de línea si es muy largo */
+}
+html, body {
+    overflow-x: hidden; /* Corta cualquier cosa que se salga lateralmente */
+    width: 100%;
+}
 .topbar, .section, .profile, .card {
   background: var(--card);
   border: 2px solid var(--line);
