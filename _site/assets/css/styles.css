@@ -226,8 +226,15 @@ section:last-child {
     gap: 12px; 
     padding: 24px; 
     animation-delay: 0.6s; 
-    overflow-x: auto;
     max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.card img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
 }
 .card:hover {
     transform: translateY(-5px);
