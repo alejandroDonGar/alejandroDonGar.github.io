@@ -429,3 +429,29 @@ nav {
 
 }
 
+
+
+
+/* ===============================
+   UNIFIED HOVER FOR BUTTONS & PILLS
+================================ */
+
+.btn,
+.pill,
+.skill-pill {
+  transition: all 0.25s ease;
+}
+
+.btn:hover,
+.pill:hover,
+.skill-pill:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(14,165,233,0.35);
+}
+
+/* keep active state consistent */
+.btn.active,
+.skill-pill.active {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(14,165,233,0.35);
+}
