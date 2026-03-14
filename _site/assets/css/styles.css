@@ -51,7 +51,7 @@ main, .container {
     display: flex;
     flex-direction: column;
     gap: 10px !important; 
-}
+} 
 .topbar {
     display: flex;
     flex-direction: column;
@@ -67,8 +67,14 @@ main, .container {
 }
 .topbar .contact-buttons { 
     display: flex;
-    gap: 10px;
-    margin-top: 10px;
+    flex-wrap: wrap;
+    gap: 12px; 
+    justify-content: flex-start;
+    width: 100%;
+}
+.topbar.contact-buttons {
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 .topbar, .section, .profile, .card {
   background: var(--card);
