@@ -490,7 +490,7 @@ section:last-child {
     box-shadow: 0 10px 30px rgba(22, 72, 114, 0.2);
 }
 @keyframes shine { to { background-position: 200% center; } }
-@media (max-width: 800px) {
+@media (max-width: 1500px) {
   .profile {
     flex-direction: column;
     align-items: center;
@@ -504,7 +504,7 @@ section:last-child {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
-@media (max-width: 768px) {
+@media (max-width: 1440px) {
     .stats-cards {
         flex-direction: column;
         align-items: center;
