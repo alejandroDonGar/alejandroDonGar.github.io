@@ -312,19 +312,21 @@ img {
 
 .profile {
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
+  grid-template-columns: clamp(180px, 24vw, 220px) minmax(0, 1fr);
   gap: 24px;
-  align-items: stretch;
+  align-items: start;
 }
 
 .profile-img-container {
-  width: 220px;
+  width: 100%;
+  max-width: 220px;
   aspect-ratio: 3 / 4;
   border-radius: 24px;
   overflow: hidden;
   border: 2px solid color-mix(in srgb, var(--brand) 30%, var(--line));
   background: var(--brand-soft);
   align-self: start;
+  justify-self: start;
 }
 
 .profile-img-container img {
@@ -335,14 +337,15 @@ img {
 
 .bio {
   min-width: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+}
+
+.bio > .muted:first-child {
+  max-width: 34ch;
 }
 
 .mini-cards {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 12px;
   margin-top: 18px;
 }
@@ -681,7 +684,12 @@ a {
 
   .profile-img-container {
     width: 180px;
+    max-width: 180px;
     aspect-ratio: 3 / 4;
+  }
+
+  .bio > .muted:first-child {
+    max-width: none;
   }
 
   .mini-cards {
