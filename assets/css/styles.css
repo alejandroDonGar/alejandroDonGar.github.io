@@ -472,26 +472,6 @@ section:last-child {
     display: block;
     margin: 10px auto; /* Las centra y les da un poco de aire */
 }
-.github-stats-wrapper {
-    display: flex;
-    flex-wrap: wrap;       /* Para que en móvil bajen una debajo de otra */
-    gap: 24px;             /* Separación constante entre ellas */
-    justify-content: center;
-    width: 100%;
-}
-.stat-item {
-    flex: 1;               /* Hace que ambas cajas midan lo mismo de ancho */
-    min-width: 300px;      /* Evita que se encojan demasiado en móvil */
-    display: flex;
-    align-items: stretch;  /* Iguala la altura de las cajas */
-}
-.stat-item img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: fill;      /* Esto las obliga a estirarse para ser iguales */
-    border-radius: 10px;   /* Por si quieres que mantengan las esquinas redondeadas */
-}
-
 .gh-card {
     max-width: 100%;
     height: auto;
