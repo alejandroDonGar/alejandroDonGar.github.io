@@ -412,11 +412,11 @@ section:last-child {
 .bar { background: var(--line); height: 8px; border-radius: 10px; margin: 5px 0 15px; overflow: hidden; }
 .progress { background: var(--brand); height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
 .github-stats-container {
-    margin: 0 auto; 
-    padding: 0;
-    width: 100%;
     display: flex;
+    flex-wrap: wrap;      
+    align-items: stretch;  
     justify-content: center;
+    gap: 20px;
     
 }
 .stats-wrapper.section-title {
@@ -459,6 +459,10 @@ section:last-child {
 }
 .github-stats-img.fade-out {
     opacity: 0;
+}
+.github-stats-container img {
+    height: 100% !important; 
+    object-fit: contain;
 }
 .github-stats-container img, 
 #github-stats img,
