@@ -2,357 +2,506 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Alejandro Donate García — CV & Repos</title>
-  <meta name="description" content="CV y repositorios destacados en GitHub." />
-  <link rel="stylesheet" href="/assets/css/styles.css">
+  <meta name="description" content="Portfolio, CV y repositorios destacados en GitHub." />
+  <link rel="stylesheet" href="styles_preview_mejorado.css">
 </head>
 <body>
-  <div class="container">
-  <header class="topbar">
-    <div>
-      <h1 class="title">Alejandro Donate García</h1>
-      <div class="subtitle">Estudiante de Desarrollo de Aplicaciones Multiplataforma - 1º DAM</div>
-    </div>
-    <nav style="display:flex;gap:10px">
-      <button id="theme-toggle" class="btn" style="padding: 10px; line-height: 1;">
-        <span id="theme-icon">🌙</span>
-      </button>
-      <a class="btn" href="https://www.linkedin.com/in/alejandrodongar" target="_blank">LinkedIn</a>
-      <a class="btn" href="https://github.com/alejandroDonGar" target="_blank">GitHub</a>
-      <button id="copy-btn" class="btn">Copiar Email</button>
-    </nav>
-  </header>
-  <section class="section">
-    <h2>Sobre mí</h2>
-    <div class="grid2">
-      <div class="profile">
-        <div class="profile-img-container">
-          <img src="assets/img/perfil.jpg" alt="Foto de perfil">
-        </div>
-        <div class="bio">
-          <p class="muted" style="margin:0">
-            Estudiante que busca aprender sobre desarrollo de software. Busco enrriquecerme de conocimiento tanto sobre el backend con JAVA en el lado de la programación y BBDD como por el frontend con HTML, CSS y XML. Me parece interesante el mundo del desarrollo de software y siempre estoy dispuesto a aprender lo más que pueda.
+  <a href="#top" class="back-to-top" aria-label="Volver arriba">↑</a>
+
+  <div class="container" id="top">
+    <header class="topbar hero-card">
+      <div class="hero-main">
+        <div>
+          <p class="eyebrow">Portfolio · Desarrollo Multiplataforma</p>
+          <h1 class="title">Alejandro Donate García</h1>
+          <p class="subtitle">Estudiante de Desarrollo de Aplicaciones Multiplataforma · 1º DAM</p>
+          <p class="hero-text">
+            Me interesa crecer en desarrollo de software, reforzar backend con Java y BBDD,
+            y seguir mejorando en frontend con HTML, CSS y XML.
           </p>
-          <div class="pillrow">
+
+          <div class="hero-highlights">
             <span class="pill">Java</span>
             <span class="pill">SQL</span>
             <span class="pill">HTML/CSS</span>
             <span class="pill">Git</span>
           </div>
         </div>
+
+        <nav class="hero-actions">
+          <button id="theme-toggle" class="btn icon-btn" style="padding:10px;line-height:1;">
+            <span id="theme-icon">🌙</span>
+          </button>
+          <a class="btn" href="#featured">Ver proyectos</a>
+          <a class="btn" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">GitHub</a>
+          <button id="copy-btn" class="btn">Copiar Email</button>
+        </nav>
       </div>
-      
+
+      <div class="hero-side">
+        <div class="hero-panel">
+          <h3>Actualmente</h3>
+          <ul class="status-list">
+            <li>Buscando prácticas y oportunidades para seguir aprendiendo.</li>
+            <li>Reforzando Java, bases de datos y diseño web responsive.</li>
+            <li>Construyendo proyectos personales para mejorar mi portfolio.</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="section-heading">
         <div>
-        <h3 style="margin:0 0 10px">Contenidos Aprendidos</h3>
-        <div class="skills-interactive">
-          <div class="skills-tabs">
-            <button class="skill-pill active" onclick="showSkill('java', this)">JAVA</button>
-            <button class="skill-pill" onclick="showSkill('bbdd', this)">BBDD</button>
-            <button class="skill-pill" onclick="showSkill('web', this)">FRONTEND</button>
-            <button class="skill-pill" onclick="showSkill('xml', this)">XML</button>
-          </div>
-          <div id="skill-display" class="skill-card">
-            <h3 id="skill-title" style="margin-top:0; color:var(--brand)">JAVA</h3>
-            <p id="skill-text" class="muted">CLASES | GETTER - SETTER | FECHAS | EXP REGULARES | ARRAYS | LISTAS | SETS | MAPS</p>
-          </div>
-        </div>
-        
-        <h3 style="margin:16px 0 10px">Objetivo</h3>
-        <p class="muted" style="margin:0">
-          Busco prácticas, ambientes para aprender y mejorar la habilidades que tengo. Busco aprender principalmente sobre JAVA, BBDD y entornos de diseño como puedan ser HTML o CSS junto con XML y XSD.
-        </p>
-
-        <h3 style="margin:16px 0 10px">Nivel de Inglés</h3>
-        <div class="skill-bar-container">
-          <span>Hablado (B1)</span>
-          <div class="bar"><div class="progress" style="width: 50%"></div></div>
-          <span>Escrito (B1/B2)</span>
-          <div class="bar"><div class="progress" style="width: 65%"></div></div>
-          <span>Lectura (B1/B2)</span>
-          <div class="bar"><div class="progress" style="width: 70%"></div></div>
+          <h2>Sobre mí</h2>
+          <p class="section-intro">Una vista rápida de mi perfil, lo que he aprendido y hacia dónde quiero avanzar.</p>
         </div>
       </div>
-    </div>
-  </section>
-  
-  <section class="github-stats-container">
-      <div class="stats-wrapper section-card"> 
-          <h2 style="margin:0 0 10px" class="section-title">Mi Actividad en GitHub</h2>
-          <div class="stats-cards">
-              <img class="github-stats-img" src="https://github-readme-stats.vercel.app/api?username=alejandroDonGar&&theme=algolia&hide_border=true" alt="Estadísticas de GitHub" />
-              <img class="github-stats-img" src="https://github-readme-stats.vercel.app/api/top-langs?username=alejandroDonGar&&theme=algolia&hide_border=true" alt="Lenguajes más usados" />
+
+      <div class="grid2">
+        <div class="profile">
+          <div class="profile-img-container">
+            <img src="assets/img/perfil.jpg" alt="Foto de perfil">
           </div>
+          <div class="bio">
+            <p class="muted" style="margin-top:0">
+              Estudiante que busca aprender sobre desarrollo de software. Busco enriquecerme de conocimiento
+              tanto sobre backend con Java y BBDD como por el frontend con HTML, CSS y XML.
+              Me parece interesante el mundo del desarrollo de software y siempre estoy dispuesto a aprender lo más que pueda.
+            </p>
+
+            <div class="pillrow">
+              <span class="pill">Java</span>
+              <span class="pill">SQL</span>
+              <span class="pill">HTML/CSS</span>
+              <span class="pill">Git</span>
+            </div>
+
+            <div class="mini-cards">
+              <article class="mini-card">
+                <span class="mini-label">Objetivo</span>
+                <p>Seguir creciendo en Java, BBDD y entornos de diseño como HTML, CSS, XML y XSD.</p>
+              </article>
+              <article class="mini-card">
+                <span class="mini-label">Fortaleza</span>
+                <p>Constancia, curiosidad y ganas reales de aprender y mejorar con práctica.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <div class="aside-stack">
+          <div class="skills-interactive section-soft">
+            <div class="block-header">
+              <h3 style="margin:0">Contenidos aprendidos</h3>
+              <span class="soft-badge">Interactivo</span>
+            </div>
+
+            <div class="skills-tabs">
+              <button class="skill-pill active" onclick="showSkill('java', this)">JAVA</button>
+              <button class="skill-pill" onclick="showSkill('bbdd', this)">BBDD</button>
+              <button class="skill-pill" onclick="showSkill('web', this)">FRONTEND</button>
+              <button class="skill-pill" onclick="showSkill('xml', this)">XML</button>
+            </div>
+
+            <div id="skill-display" class="skill-card">
+              <h3 id="skill-title" style="margin-top:0;color:var(--brand)">JAVA</h3>
+              <p id="skill-text" class="muted">CLASES | GETTER - SETTER | FECHAS | EXP REGULARES | ARRAYS | LISTAS | SETS | MAPS</p>
+            </div>
+          </div>
+
+          <div class="section-soft">
+            <div class="block-header">
+              <h3 style="margin:0">Nivel de inglés</h3>
+              <span class="soft-badge">Progreso</span>
+            </div>
+
+            <div class="skill-bar-container">
+              <div class="level-group">
+                <div class="level-title-row">
+                  <span>Hablado</span>
+                </div>
+                <div class="level-scale">
+                  <span>B1</span>
+                  <span>B2</span>
+                </div>
+                <div class="bar"><div class="progress" style="width:50%"></div></div>
+              </div>
+
+              <div class="level-group">
+                <div class="level-title-row">
+                  <span>Escrito</span>
+                </div>
+                <div class="level-scale">
+                  <span>B1</span>
+                  <span>B2</span>
+                </div>
+                <div class="bar"><div class="progress" style="width:65%"></div></div>
+              </div>
+
+              <div class="level-group">
+                <div class="level-title-row">
+                  <span>Lectura</span>
+                </div>
+                <div class="level-scale">
+                  <span>B1</span>
+                  <span>B2</span>
+                </div>
+                <div class="bar"><div class="progress" style="width:70%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-soft">
+            <div class="block-header">
+              <h3 style="margin:0">Actualmente aprendiendo</h3>
+              <span class="soft-badge">Roadmap</span>
+            </div>
+            <div class="roadmap-list">
+              <div class="roadmap-item"><strong>Java:</strong> consolidar POO, colecciones y buenas prácticas.</div>
+              <div class="roadmap-item"><strong>BBDD:</strong> consultas SQL más completas y modelado.</div>
+              <div class="roadmap-item"><strong>Frontend:</strong> responsive design, estructura y limpieza visual.</div>
+            </div>
+          </div>
+        </div>
       </div>
-  </section>
+    </section>
 
-  <section class="section">
-    <h2>Proyectos destacados</h2>
-    <div id="featured" class="cards"></div>
-  </section>
-
-  <section class="section">
-    <h2>Mis repositorios</h2>
-    <div class="toolbar">
-      <input id="q" class="input" placeholder="Buscar repositorios..." />
-      <select id="sort" class="select">
-        <option value="updated">Ordenar: actividad reciente</option>
-        <option value="stars">Ordenar: estrellas</option>
-        <option value="name">Ordenar: nombre</option>
-      </select>
-      <button class="btn active" data-topic="all">Todos</button>
-      <button class="btn" data-topic="showcase">showcase</button>
-      <button class="btn" data-topic="web">web</button>
-      <button class="btn" data-topic="backend">backend</button>
-    </div>
-
-    <div style="height:12px"></div>
-    <div id="repos" class="cards"></div>
-  </section>
-</div>
-
-<script>
-  const GITHUB_USERNAME = "alejandroDonGar"; 
-  const FEATURED_TOPIC = "showcase";
-  let allRepos = [];
-  let activeTopic = "all";
-
-  function formatDate(iso){
-    const d = new Date(iso);
-    return d.toLocaleDateString("es-ES", {year:"numeric", month:"short", day:"2-digit"});
-  }
-  function cardBorderByIndex(i){
-    return "";
-  }
-
-  async function fetchRepos(){
-    const url = `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
-    const res = await fetch(url, { headers: { "Accept":"application/vnd.github+json" }});
-    if(!res.ok) throw new Error("No se pudo leer la API de GitHub. Revisa tu usuario.");
-    const repos = await res.json();
-    return repos.map(r => ({
-      name: r.name,
-      html_url: r.html_url,
-      description: r.description || "",
-      language: r.language || "—",
-      stargazers_count: r.stargazers_count || 0,
-      updated_at: r.updated_at,
-      topics: r.topics || []
-    }));
-  }
-  function renderFeatured(repos){
-    const featured = repos.filter(r => r.topics.includes(FEATURED_TOPIC)).slice(0, 6);
-    const el = document.getElementById("featured");
-    el.innerHTML = featured.length ? "" : `<div class="muted">Aún no tienes repos con topic <b>${FEATURED_TOPIC}</b>.</div>`;
-
-    featured.forEach((r, i) => {
-      const topics = r.topics.slice(0, 4).map(t => `<span class="pill">${t}</span>`).join("");
-      el.insertAdjacentHTML("beforeend", `
-        <article class="card ${cardBorderByIndex(i)}">
-          <h3>${r.name}</h3>
-          <div class="muted">${r.description || "Sin descripción (añádela en GitHub 😉)"}</div>
-          <div class="pillrow">
-            <span class="pill featured">Featured</span>
-            ${topics}
+    <section class="github-stats-container">
+      <div class="stats-wrapper section-card">
+        <div class="section-heading compact-heading">
+          <div>
+            <h2 class="section-title" style="margin:0">Mi Actividad en GitHub</h2>
+            <p class="section-intro">Actividad reciente y tecnologías que más aparecen en mis proyectos.</p>
           </div>
-          <div class="repoMeta">
-            <span>⭐ ${r.stargazers_count}</span>
-            <span>🧩 ${r.language}</span>
-            <span>🕒 ${formatDate(r.updated_at)}</span>
-          </div>
-          <a class="btn" href="${r.html_url}" target="_blank" rel="noreferrer">Ver repo</a>
+        </div>
+        <div class="stats-cards">
+          <img class="github-stats-img" src="https://github-readme-stats.vercel.app/api?username=alejandroDonGar&&theme=algolia&hide_border=true" alt="Estadísticas de GitHub" />
+          <img class="github-stats-img" src="https://github-readme-stats.vercel.app/api/top-langs?username=alejandroDonGar&&theme=algolia&hide_border=true" alt="Lenguajes más usados" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <h2>Proyectos destacados</h2>
+          <p class="section-intro">Una selección de repositorios que mejor representan mi progreso y mi forma de trabajar.</p>
+        </div>
+      </div>
+      <div id="featured" class="cards"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <h2>Mis repositorios</h2>
+          <p class="section-intro">Explora mis proyectos por nombre, actividad o temática.</p>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <input id="q" class="input" placeholder="Buscar repositorios..." />
+        <select id="sort" class="select">
+          <option value="updated">Ordenar: actividad reciente</option>
+          <option value="stars">Ordenar: estrellas</option>
+          <option value="name">Ordenar: nombre</option>
+        </select>
+        <button class="btn active" data-topic="all">Todos</button>
+        <button class="btn" data-topic="showcase">showcase</button>
+        <button class="btn" data-topic="web">web</button>
+        <button class="btn" data-topic="backend">backend</button>
+      </div>
+
+      <div class="results-meta">
+        <span id="results-count">Cargando repositorios...</span>
+      </div>
+
+      <div id="repos" class="cards"></div>
+    </section>
+
+    <section class="section contact-section">
+      <div class="section-heading">
+        <div>
+          <h2>Contacto</h2>
+          <p class="section-intro">Si crees que puedo encajar en unas prácticas o colaborar en un proyecto, estaré encantado de hablar.</p>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <article class="contact-card">
+          <h3>Email</h3>
+          <p class="muted">alexDoGa.Work@gmail.com</p>
+          <button class="btn" onclick="navigator.clipboard.writeText('alexDoGa.Work@gmail.com')">Copiar email</button>
         </article>
-      `);
-    });
-  }
 
-  function applyFilters(repos){
-    const q = (document.getElementById("q").value || "").toLowerCase();
-    const sort = document.getElementById("sort").value;
-
-    let out = repos.filter(r => {
-      const matchesText = r.name.toLowerCase().includes(q) || (r.description||"").toLowerCase().includes(q);
-      const matchesTopic = activeTopic === "all" ? true : r.topics.includes(activeTopic);
-      return matchesText && matchesTopic;
-    });
-
-    if (sort === "updated") out.sort((a,b) => new Date(b.updated_at) - new Date(a.updated_at));
-    if (sort === "stars") out.sort((a,b) => (b.stargazers_count||0) - (a.stargazers_count||0));
-    if (sort === "name") out.sort((a,b) => a.name.localeCompare(b.name));
-    return out;
-  }
-
-  function renderRepos(repos){
-    const el = document.getElementById("repos");
-    const list = applyFilters(repos);
-    el.innerHTML = list.length ? "" : `
-    <div class="muted" style="text-align:center; padding: 40px;">
-        <div style="font-size: 3rem; margin-bottom: 10px;">🔍</div>
-        <p>No encontramos repositorios que coincidan con "<b>${document.getElementById("q").value}</b>"</p>
-    </div>`;
-
-    list.forEach((r, i) => {
-      const topics = (r.topics && r.topics.length)
-        ? r.topics.slice(0, 6).map(t => `<span class="pill">${t}</span>`).join("")
-        : `<span class="pill">sin topics</span>`;
-
-      el.insertAdjacentHTML("beforeend", `
-        <article class="card ${cardBorderByIndex(i)}">
-          <h3>${r.name}</h3>
-          <div class="muted">${r.description || "Sin descripción"}</div>
-          <div class="pillrow">${topics}</div>
-          <div class="repoMeta">
-            <span>⭐ ${r.stargazers_count}</span>
-            <span>🧩 ${r.language}</span>
-            <span>🕒 ${formatDate(r.updated_at)}</span>
-          </div>
-          <a class="btn" href="${r.html_url}" target="_blank" rel="noreferrer">Abrir</a>
+        <article class="contact-card">
+          <h3>LinkedIn</h3>
+          <p class="muted">Perfil profesional y contacto directo.</p>
+          <a class="btn" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">Abrir LinkedIn</a>
         </article>
-      `);
-    });
-  }
-  const themeToggle = document.getElementById("theme-toggle");
-  const themeIcon = document.getElementById("theme-icon");
-  const currentTheme = localStorage.getItem("theme") || "light";
 
-  
-  function updateGithubStats(theme) {
-      const statsImages = document.querySelectorAll(".github-stats-img");
-      const githubTheme = (theme === "dark") ? "default" : "algolia"; 
-      
-      statsImages.forEach(img => {
-          
-          img.classList.add("fade-out");
+        <article class="contact-card">
+          <h3>GitHub</h3>
+          <p class="muted">Repositorios, prácticas y proyectos personales.</p>
+          <a class="btn" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">Abrir GitHub</a>
+        </article>
+      </div>
+    </section>
+  </div>
 
-          
-          setTimeout(() => {
-              const url = new URL(img.src);
-              url.searchParams.set("theme", githubTheme);
-              img.src = url.toString();
+  <script>
+    const GITHUB_USERNAME = "alejandroDonGar";
+    const FEATURED_TOPIC = "showcase";
+    let allRepos = [];
+    let activeTopic = "all";
 
-              
-              img.onload = () => {
-                  img.classList.remove("fade-out");
-              };
-          }, 400);
+    function formatDate(iso) {
+      const d = new Date(iso);
+      return d.toLocaleDateString("es-ES", { year: "numeric", month: "short", day: "2-digit" });
+    }
+
+    function cardBorderByIndex(i) {
+      return "";
+    }
+
+    async function fetchRepos() {
+      const url = `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
+      const res = await fetch(url, { headers: { "Accept": "application/vnd.github+json" } });
+      if (!res.ok) throw new Error("No se pudo leer la API de GitHub. Revisa tu usuario.");
+      const repos = await res.json();
+      return repos.map(r => ({
+        name: r.name,
+        html_url: r.html_url,
+        description: r.description || "",
+        language: r.language || "—",
+        stargazers_count: r.stargazers_count || 0,
+        updated_at: r.updated_at,
+        topics: r.topics || []
+      }));
+    }
+
+    function renderFeatured(repos) {
+      const featured = repos.filter(r => r.topics.includes(FEATURED_TOPIC)).slice(0, 6);
+      const el = document.getElementById("featured");
+      el.innerHTML = featured.length ? "" : `<div class="muted">Aún no tienes repos con topic <b>${FEATURED_TOPIC}</b>.</div>`;
+
+      featured.forEach((r, i) => {
+        const topics = r.topics.slice(0, 4).map(t => `<span class="pill">${t}</span>`).join("");
+        el.insertAdjacentHTML("beforeend", `
+          <article class="card ${cardBorderByIndex(i)}">
+            <div class="card-topline">
+              <span class="mini-label">Destacado</span>
+            </div>
+            <h3>${r.name}</h3>
+            <div class="muted">${r.description || "Sin descripción (añádela en GitHub 😉)"}</div>
+            <div class="pillrow">
+              <span class="pill featured">Featured</span>
+              ${topics}
+            </div>
+            <div class="repoMeta">
+              <span>⭐ ${r.stargazers_count}</span>
+              <span>🧩 ${r.language}</span>
+              <span>🕒 ${formatDate(r.updated_at)}</span>
+            </div>
+            <a class="btn" href="${r.html_url}" target="_blank" rel="noreferrer">Ver repo</a>
+          </article>
+        `);
       });
-  }
+    }
 
-  
-  if (currentTheme === "dark") {
+    function applyFilters(repos) {
+      const q = (document.getElementById("q").value || "").toLowerCase();
+      const sort = document.getElementById("sort").value;
+
+      let out = repos.filter(r => {
+        const matchesText = r.name.toLowerCase().includes(q) || (r.description || "").toLowerCase().includes(q);
+        const matchesTopic = activeTopic === "all" ? true : r.topics.includes(activeTopic);
+        return matchesText && matchesTopic;
+      });
+
+      if (sort === "updated") out.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+      if (sort === "stars") out.sort((a, b) => (b.stargazers_count || 0) - (a.stargazers_count || 0));
+      if (sort === "name") out.sort((a, b) => a.name.localeCompare(b.name));
+
+      return out;
+    }
+
+    function renderRepos(repos) {
+      const el = document.getElementById("repos");
+      const list = applyFilters(repos);
+      const resultsCount = document.getElementById("results-count");
+      resultsCount.textContent = `${list.length} repositorio(s) mostrados`;
+
+      el.innerHTML = list.length ? "" : `
+        <div class="empty-state">
+          <div style="font-size: 3rem; margin-bottom: 10px;">🔍</div>
+          <p>No encontramos repositorios que coincidan con "<b>${document.getElementById("q").value}</b>"</p>
+        </div>`;
+
+      list.forEach((r, i) => {
+        const topics = (r.topics && r.topics.length)
+          ? r.topics.slice(0, 6).map(t => `<span class="pill">${t}</span>`).join("")
+          : `<span class="pill">sin topics</span>`;
+
+        el.insertAdjacentHTML("beforeend", `
+          <article class="card ${cardBorderByIndex(i)}">
+            <h3>${r.name}</h3>
+            <div class="muted">${r.description || "Sin descripción"}</div>
+            <div class="pillrow">${topics}</div>
+            <div class="repoMeta">
+              <span>⭐ ${r.stargazers_count}</span>
+              <span>🧩 ${r.language}</span>
+              <span>🕒 ${formatDate(r.updated_at)}</span>
+            </div>
+            <a class="btn" href="${r.html_url}" target="_blank" rel="noreferrer">Abrir</a>
+          </article>
+        `);
+      });
+    }
+
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeIcon = document.getElementById("theme-icon");
+    const currentTheme = localStorage.getItem("theme") || "light";
+
+    function updateGithubStats(theme) {
+      const statsImages = document.querySelectorAll(".github-stats-img");
+      const githubTheme = (theme === "dark") ? "default" : "algolia";
+
+      statsImages.forEach(img => {
+        img.classList.add("fade-out");
+
+        setTimeout(() => {
+          const url = new URL(img.src);
+          url.searchParams.set("theme", githubTheme);
+          img.src = url.toString();
+
+          img.onload = () => {
+            img.classList.remove("fade-out");
+          };
+        }, 400);
+      });
+    }
+
+    if (currentTheme === "dark") {
       document.documentElement.setAttribute("data-theme", "dark");
       themeIcon.innerText = "☀️";
-      updateGithubStats("dark"); 
-  }
-
-  
-  themeToggle.addEventListener("click", () => {
-      let theme = document.documentElement.getAttribute("data-theme");
-      
-      if (theme === "dark") {
-          document.documentElement.setAttribute("data-theme", "light");
-          themeIcon.innerText = "🌙";
-          localStorage.setItem("theme", "light");
-          updateGithubStats("light"); 
-      } else {
-          document.documentElement.setAttribute("data-theme", "dark");
-          themeIcon.innerText = "☀️";
-          localStorage.setItem("theme", "dark");
-          updateGithubStats("dark"); 
-      }
-  });
-
-  function bindUI(){
-    document.getElementById("q").addEventListener("input", () => renderRepos(allRepos));
-    document.getElementById("sort").addEventListener("change", () => renderRepos(allRepos));
-    document.querySelectorAll(".btn[data-topic]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".btn[data-topic]").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        activeTopic = btn.dataset.topic;
-        renderRepos(allRepos);
-      });
-    });
-  }
-
-  async function main(){
-    document.getElementById("repos").innerHTML = '<div class="skeleton"></div>'.repeat(3);
-    bindUI();
-    allRepos = await fetchRepos();
-    renderFeatured(allRepos);
-    renderRepos(allRepos);
-  }
-
-  main().catch(err => {
-    document.getElementById("featured").innerHTML = `<div class="muted">${err.message}</div>`;
-    document.getElementById("repos").innerHTML = `<div class="muted">${err.message}</div>`;
-    console.error(err);
-  });
-  const skillData = {
-    java: { 
-      title: "JAVA", 
-      text: "CLASES | GETTER - SETTER | FECHAS | EXP REGULARES | ARRAYS | LISTAS | SETS | MAPS" 
-    },
-    bbdd: { 
-      title: "BBDD", 
-      text: "CREATE TABLES | ALTER - DROP - INSERT INTO | JOINS | POSTGRES" 
-    },
-    web: { 
-      title: "FRONTEND", 
-      text: "HTML GENERAL | CSS GRID | FLEXBOX | RESPONSIVE DESIGN" 
-    },
-    xml: { 
-      title: "XML", 
-      text: "XSD | VALIDACIÓN | ESTRUCTURAS DE DATOS" 
+      updateGithubStats("dark");
     }
-  };
 
-  function showSkill(key, btn) {
-    document.querySelectorAll('.skill-pill').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const display = document.getElementById('skill-display');
-    const title = document.getElementById('skill-title');
-    const text = document.getElementById('skill-text');
-    title.innerText = skillData[key].title;
-    text.innerText = skillData[key].text;
-    display.style.animation = 'none';
-    display.offsetHeight;
-    display.style.animation = 'slideFade 0.5s ease-out forwards';
-  }
-  console.log("%c¡Hola! Soy Alejandro Donate 👋", "color: #38bdf8; font-size: 20px; font-weight: bold;");
-  console.log("Veo que estás revisando el código... ¡Eso me gusta! Si buscas un perfil junior con ganas de aprender, ¡hablemos!");  
+    themeToggle.addEventListener("click", () => {
+      let theme = document.documentElement.getAttribute("data-theme");
 
-  document.addEventListener('DOMContentLoaded', () => {
-      const btn = document.getElementById('copy-btn');
+      if (theme === "dark") {
+        document.documentElement.setAttribute("data-theme", "light");
+        themeIcon.innerText = "🌙";
+        localStorage.setItem("theme", "light");
+        updateGithubStats("light");
+      } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+        themeIcon.innerText = "☀️";
+        localStorage.setItem("theme", "dark");
+        updateGithubStats("dark");
+      }
+    });
+
+    function bindUI() {
+      document.getElementById("q").addEventListener("input", () => renderRepos(allRepos));
+      document.getElementById("sort").addEventListener("change", () => renderRepos(allRepos));
+
+      document.querySelectorAll(".btn[data-topic]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".btn[data-topic]").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          activeTopic = btn.dataset.topic;
+          renderRepos(allRepos);
+        });
+      });
+    }
+
+    async function main() {
+      document.getElementById("repos").innerHTML = '<div class="skeleton"></div>'.repeat(3);
+      bindUI();
+      allRepos = await fetchRepos();
+      renderFeatured(allRepos);
+      renderRepos(allRepos);
+    }
+
+    main().catch(err => {
+      document.getElementById("featured").innerHTML = `<div class="muted">${err.message}</div>`;
+      document.getElementById("repos").innerHTML = `<div class="muted">${err.message}</div>`;
+      document.getElementById("results-count").textContent = "No se pudieron cargar los repositorios";
+      console.error(err);
+    });
+
+    const skillData = {
+      java: {
+        title: "JAVA",
+        text: "CLASES | GETTER - SETTER | FECHAS | EXP REGULARES | ARRAYS | LISTAS | SETS | MAPS"
+      },
+      bbdd: {
+        title: "BBDD",
+        text: "CREATE TABLES | ALTER - DROP - INSERT INTO | JOINS | POSTGRES"
+      },
+      web: {
+        title: "FRONTEND",
+        text: "HTML GENERAL | CSS GRID | FLEXBOX | RESPONSIVE DESIGN"
+      },
+      xml: {
+        title: "XML",
+        text: "XSD | VALIDACIÓN | ESTRUCTURAS DE DATOS"
+      }
+    };
+
+    function showSkill(key, btn) {
+      document.querySelectorAll(".skill-pill").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const display = document.getElementById("skill-display");
+      const title = document.getElementById("skill-title");
+      const text = document.getElementById("skill-text");
+
+      title.innerText = skillData[key].title;
+      text.innerText = skillData[key].text;
+
+      display.style.animation = "none";
+      display.offsetHeight;
+      display.style.animation = "slideFade 0.5s ease-out forwards";
+    }
+
+    console.log("%c¡Hola! Soy Alejandro Donate 👋", "color: #38bdf8; font-size: 20px; font-weight: bold;");
+    console.log("Veo que estás revisando el código... ¡Eso me gusta! Si buscas un perfil junior con ganas de aprender, ¡hablemos!");
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById("copy-btn");
 
       if (btn) {
-          btn.addEventListener('click', () => {
-              const email = "alexDoGa.Work@gmail.com";
-              
-              
-              navigator.clipboard.writeText(email).then(() => {
-                  const originalText = btn.innerText;
+        btn.addEventListener("click", () => {
+          const email = "alexDoGa.Work@gmail.com";
 
-                  
-                  btn.innerText = "¡Copiado! ✅";
-                  btn.style.backgroundColor = "var(--brand)"; 
-                  btn.style.color = "#ffffff";               
-                  btn.style.fontWeight = "bold";
+          navigator.clipboard.writeText(email).then(() => {
+            const originalText = btn.innerText;
 
-                  
-                  setTimeout(() => {
-                      btn.innerText = originalText;
-                      btn.style.backgroundColor = ""; 
-                      btn.style.color = "";
-                      btn.style.fontWeight = "";
-                  }, 2000);
-              }).catch(err => {
-                  console.error('Error al copiar: ', err);
-              });
+            btn.innerText = "¡Copiado! ✅";
+            btn.style.backgroundColor = "var(--brand)";
+            btn.style.color = "#ffffff";
+            btn.style.fontWeight = "bold";
+
+            setTimeout(() => {
+              btn.innerText = originalText;
+              btn.style.backgroundColor = "";
+              btn.style.color = "";
+              btn.style.fontWeight = "";
+            }, 2000);
+          }).catch(err => {
+            console.error("Error al copiar: ", err);
           });
+        });
       }
-  });
-</script>
-
+    });
+  </script>
 </body>
 </html>
