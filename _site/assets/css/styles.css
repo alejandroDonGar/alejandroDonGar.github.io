@@ -63,7 +63,7 @@ main,
 
 
 /* ===============================
-   SHARED CARD STYLE
+   CARD BASE STYLE
 ================================ */
 
 .topbar,
@@ -79,6 +79,22 @@ main,
   opacity: 0;
   animation: slideFade 0.8s ease-out forwards;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* FIX: restore inner spacing like original CSS */
+
+.section,
+.section-card,
+.card {
+  padding: 24px;
+}
+
+.topbar {
+  padding: 32px 40px;
+}
+
+.profile {
+  padding: 2rem;
 }
 
 .topbar:hover,
@@ -101,7 +117,6 @@ main,
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 32px 40px;
   border-radius: 24px;
 }
 
@@ -162,7 +177,6 @@ nav {
   display: flex;
   align-items: center;
   gap: 2rem;
-  padding: 2rem;
 }
 
 .profile-img-container {
@@ -315,7 +329,6 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 15px;
   overflow: hidden;
 }
 
@@ -326,11 +339,6 @@ nav {
   height: auto !important;
   display: block;
   margin: 10px auto;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(56, 189, 248, 0.15);
 }
 
 
@@ -359,67 +367,6 @@ nav {
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-}
-
-
-/* ===============================
-   INPUTS
-================================ */
-
-.input,
-.select {
-  padding: 10px 16px;
-  font-size: 14px;
-  border-radius: 12px;
-  border: 2px solid var(--line);
-  background: var(--card);
-  color: var(--text);
-  outline: none;
-  transition: 0.3s;
-}
-
-.input {
-  flex: 1;
-  min-width: 200px;
-  max-width: 300px;
-}
-
-.select {
-  cursor: pointer;
-  padding-right: 30px;
-  appearance: none;
-}
-
-.input:focus,
-.select:focus {
-  border-color: var(--brand);
-  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
-}
-
-
-/* ===============================
-   GITHUB STATS
-================================ */
-
-.github-stats-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.stats-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-  justify-content: center;
-  margin-top: 1.5rem;
-}
-
-.stats-cards img {
-  height: 240px;
-  border-radius: 12px;
-  transition: opacity 0.4s;
 }
 
 
@@ -482,11 +429,3 @@ nav {
 
 }
 
-@media (max-width: 768px) {
-
-  .stats-cards {
-    flex-direction: column;
-    align-items: center;
-  }
-
-}
