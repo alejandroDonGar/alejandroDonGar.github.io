@@ -448,6 +448,11 @@ section:last-child {
     transition: opacity 0.4s ease-in-out; 
     opacity: 1;
 }
+.card img, .github-stats img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
 .github-stats-img.fade-out {
     opacity: 0;
 }
