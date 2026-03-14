@@ -174,8 +174,8 @@ title: "Mi página"
         </div>
       </div>
       <div class="stats-cards">
-        <img class="github-stats-img" src="https://github-readme-stats.vercel.app/api?username=alejandroDonGar&&theme=algolia&hide_border=true" alt="Estadísticas de GitHub" />
-        <img class="github-stats-img" src="https://github-readme-stats.vercel.app/api/top-langs?username=alejandroDonGar&&theme=algolia&hide_border=true" alt="Lenguajes más usados" />
+        <img class="github-stats-img" src="https://github-readme-stats.vercel.app/api?username=alejandroDonGar&hide_border=true&bg_color=fffaf4&title_color=9c6b3f&text_color=4d3c2d&icon_color=b98555&border_color=d8c6b3" alt="Estadísticas de GitHub" />
+        <img class="github-stats-img" src="https://github-readme-stats.vercel.app/api/top-langs?username=alejandroDonGar&hide_border=true&bg_color=fffaf4&title_color=9c6b3f&text_color=4d3c2d&icon_color=b98555&border_color=d8c6b3" alt="Lenguajes más usados" />
       </div>
     </div>
   </section>
@@ -364,15 +364,21 @@ title: "Mi página"
 
   function updateGithubStats(theme) {
     const statsImages = document.querySelectorAll(".github-stats-img");
-    const githubTheme = (theme === "dark") ? "default" : "algolia";
+    const urls = (theme === "dark")
+      ? [
+          "https://github-readme-stats.vercel.app/api?username=alejandroDonGar&hide_border=true&bg_color=241c16&title_color=d2a06f&text_color=f2e8db&icon_color=e0b27f&border_color=4e3a2d",
+          "https://github-readme-stats.vercel.app/api/top-langs?username=alejandroDonGar&hide_border=true&bg_color=241c16&title_color=d2a06f&text_color=f2e8db&icon_color=e0b27f&border_color=4e3a2d"
+        ]
+      : [
+          "https://github-readme-stats.vercel.app/api?username=alejandroDonGar&hide_border=true&bg_color=fffaf4&title_color=9c6b3f&text_color=4d3c2d&icon_color=b98555&border_color=d8c6b3",
+          "https://github-readme-stats.vercel.app/api/top-langs?username=alejandroDonGar&hide_border=true&bg_color=fffaf4&title_color=9c6b3f&text_color=4d3c2d&icon_color=b98555&border_color=d8c6b3"
+        ];
 
-    statsImages.forEach(img => {
+    statsImages.forEach((img, index) => {
       img.classList.add("fade-out");
 
       setTimeout(() => {
-        const url = new URL(img.src);
-        url.searchParams.set("theme", githubTheme);
-        img.src = url.toString();
+        img.src = urls[index];
 
         img.onload = () => {
           img.classList.remove("fade-out");

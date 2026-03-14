@@ -3,30 +3,30 @@
 ================================ */
 
 :root {
-  --bg: #f8fafc;
-  --text: #0f172a;
-  --muted: #64748b;
-  --card: #ffffff;
-  --line: #e2e8f0;
-  --brand: #0ea5e9;
-  --brand-soft: rgba(14, 165, 233, 0.12);
-  --hover-bg: #f0f9ff;
-  --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-  --shadow-hover: 0 14px 36px rgba(14, 165, 233, 0.18);
+  --bg: #f4efe7;
+  --text: #2c241d;
+  --muted: #6f6256;
+  --card: #fffaf4;
+  --line: #d8c6b3;
+  --brand: #9c6b3f;
+  --brand-soft: rgba(156, 107, 63, 0.12);
+  --hover-bg: #f6ede3;
+  --shadow: 0 10px 30px rgba(58, 39, 23, 0.08);
+  --shadow-hover: 0 14px 36px rgba(156, 107, 63, 0.18);
   --radius: 20px;
 }
 
 [data-theme="dark"] {
-  --bg: #0f172a;
-  --text: #f1f5f9;
-  --muted: #94a3b8;
-  --card: #1e293b;
-  --line: #334155;
-  --brand: #38bdf8;
-  --brand-soft: rgba(56, 189, 248, 0.12);
-  --hover-bg: #243244;
-  --shadow: 0 14px 34px rgba(2, 6, 23, 0.35);
-  --shadow-hover: 0 16px 40px rgba(56, 189, 248, 0.16);
+  --bg: #19130f;
+  --text: #f2e8db;
+  --muted: #b8a89a;
+  --card: #241c16;
+  --line: #4e3a2d;
+  --brand: #d2a06f;
+  --brand-soft: rgba(210, 160, 111, 0.12);
+  --hover-bg: #2d221a;
+  --shadow: 0 14px 34px rgba(0, 0, 0, 0.34);
+  --shadow-hover: 0 16px 40px rgba(210, 160, 111, 0.16);
 }
 
 /* ===============================
@@ -250,7 +250,7 @@ img {
 .pill:hover,
 .skill-pill:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 14px rgba(14, 165, 233, 0.35);
+  box-shadow: 0 6px 14px rgba(156, 107, 63, 0.28);
 }
 
 .btn:hover {
@@ -262,7 +262,7 @@ img {
 .btn.active,
 .skill-pill.active {
   transform: translateY(-3px);
-  box-shadow: 0 6px 14px rgba(14, 165, 233, 0.35);
+  box-shadow: 0 6px 14px rgba(156, 107, 63, 0.28);
 }
 
 .btn.active {
@@ -471,8 +471,8 @@ img {
 .progress {
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--brand) 0%, color-mix(in srgb, var(--brand) 70%, #7dd3fc) 100%);
-  box-shadow: 0 0 18px rgba(14, 165, 233, 0.28);
+  background: linear-gradient(90deg, var(--brand) 0%, color-mix(in srgb, var(--brand) 72%, #d6b08b) 100%);
+  box-shadow: 0 0 18px rgba(156, 107, 63, 0.24);
 }
 
 .roadmap-list {
@@ -629,7 +629,7 @@ img {
   text-decoration: none;
   background: var(--brand);
   color: #fff;
-  box-shadow: 0 12px 24px rgba(14, 165, 233, 0.32);
+  box-shadow: 0 12px 24px rgba(156, 107, 63, 0.28);
   z-index: 50;
   font-weight: 900;
 }
