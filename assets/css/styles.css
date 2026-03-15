@@ -1162,3 +1162,18 @@ body::before {
     transform: scale(1.03);
   }
 }
+
+
+/* ===============================
+   AUTO PROFILE IMAGE SWAP
+================================ */
+
+.profile-img-swap.auto-swap .primary-img {
+  opacity: 0;
+  transform: scale(1.02);
+}
+
+.profile-img-swap.auto-swap .secondary-img {
+  opacity: 1;
+  transform: scale(1);
+}

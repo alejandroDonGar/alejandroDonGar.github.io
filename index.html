@@ -626,3 +626,21 @@ title: "Mi página"
     }
   });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector(".profile-img-swap");
+  if(!container) return;
+
+  let showingAlt = false;
+
+  setInterval(() => {
+    showingAlt = !showingAlt;
+    if(showingAlt){
+      container.classList.add("auto-swap");
+    } else {
+      container.classList.remove("auto-swap");
+    }
+  }, 5000); // change every 5 seconds
+});
+</script>
