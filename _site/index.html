@@ -609,7 +609,6 @@ title: "Mi página"
         showingAlt = !showingAlt;
 
         photoContainer.classList.add("swap-glow");
-        document.body.classList.add("photo-pulse");
 
         if (showingAlt) {
           photoContainer.classList.add("auto-swap");
@@ -619,9 +618,8 @@ title: "Mi página"
 
         setTimeout(() => {
           photoContainer.classList.remove("swap-glow");
-          document.body.classList.remove("photo-pulse");
         }, 700);
-      }, 5000);
+      }, 7000);
     }
 
     if (btn) {
