@@ -18,10 +18,10 @@ title: "Mi página"
         </p>
 
         <div class="hero-highlights">
-          <span class="pill">Java</span>
-          <span class="pill">SQL</span>
-          <span class="pill">HTML/CSS</span>
-          <span class="pill">Git</span>
+          <span class="pill" title="POO, colecciones, fechas, expresiones regulares">Java</span>
+          <span class="pill" title="Consultas, joins, tablas y operaciones CRUD">SQL</span>
+          <span class="pill" title="Maquetación, responsive, grid y flexbox">HTML/CSS</span>
+          <span class="pill" title="Control de versiones y flujo de trabajo básico">Git</span>
         </div>
       </div>
 
@@ -48,7 +48,7 @@ title: "Mi página"
     </div>
   </header>
 
-  <section class="section">
+  <section class="section reveal-on-scroll">
     <div class="section-heading">
       <div>
         <h2>Sobre mí</h2>
@@ -69,10 +69,10 @@ title: "Mi página"
           </p>
 
           <div class="pillrow">
-            <span class="pill">Java</span>
-            <span class="pill">SQL</span>
-            <span class="pill">HTML/CSS</span>
-            <span class="pill">Git</span>
+            <span class="pill" title="POO, colecciones, fechas, expresiones regulares">Java</span>
+            <span class="pill" title="Consultas, joins, tablas y operaciones CRUD">SQL</span>
+            <span class="pill" title="Maquetación, responsive, grid y flexbox">HTML/CSS</span>
+            <span class="pill" title="Control de versiones y flujo de trabajo básico">Git</span>
           </div>
 
           <div class="mini-cards">
@@ -96,10 +96,10 @@ title: "Mi página"
           </div>
 
           <div class="skills-tabs">
-            <button class="skill-pill active" onclick="showSkill('java', this)">JAVA</button>
-            <button class="skill-pill" onclick="showSkill('bbdd', this)">BBDD</button>
-            <button class="skill-pill" onclick="showSkill('web', this)">FRONTEND</button>
-            <button class="skill-pill" onclick="showSkill('xml', this)">XML</button>
+            <button class="skill-pill active" title="POO, colecciones y trabajo con estructuras" onclick="showSkill('java', this)">JAVA</button>
+            <button class="skill-pill" title="Modelado, tablas, joins e inserciones" onclick="showSkill('bbdd', this)">BBDD</button>
+            <button class="skill-pill" title="HTML, CSS, responsive design y layout" onclick="showSkill('web', this)">FRONTEND</button>
+            <button class="skill-pill" title="XSD, validación y estructuras" onclick="showSkill('xml', this)">XML</button>
           </div>
 
           <div id="skill-display" class="skill-card">
@@ -188,7 +188,52 @@ title: "Mi página"
   </section>
 
 
-  <section class="section">
+
+  <section class="section reveal-on-scroll">
+    <div class="section-heading">
+      <div>
+        <h2>Mi progreso</h2>
+        <p class="section-intro">Una pequeña línea de tiempo para mostrar cómo he ido creciendo y en qué estoy centrado ahora.</p>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <article class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div class="timeline-card">
+          <h3>Inicio en DAM</h3>
+          <p class="muted">Comienzo a formarme en desarrollo de software con una base orientada a backend, bases de datos y desarrollo web.</p>
+        </div>
+      </article>
+
+      <article class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div class="timeline-card">
+          <h3>Java y SQL</h3>
+          <p class="muted">Refuerzo programación orientada a objetos, estructuras de datos, fechas, colecciones y operaciones con bases de datos.</p>
+        </div>
+      </article>
+
+      <article class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div class="timeline-card">
+          <h3>Frontend y portfolio</h3>
+          <p class="muted">Empiezo a trabajar más la parte visual con HTML y CSS, responsive design y mejora de la experiencia de usuario.</p>
+        </div>
+      </article>
+
+      <article class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div class="timeline-card">
+          <h3>Ahora mismo</h3>
+          <p class="muted">Sigo construyendo proyectos, mejorando mi portfolio y buscando oportunidades para seguir aprendiendo en un entorno real.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+
+  <section class="section reveal-on-scroll">
     <div class="section-heading">
       <div>
         <h2>Proyectos destacados</h2>
@@ -213,47 +258,90 @@ title: "Mi página"
         <option value="stars">Ordenar: estrellas</option>
         <option value="name">Ordenar: nombre</option>
       </select>
-      <button class="btn active" data-topic="all">Todos</button>
-      <button class="btn" data-topic="showcase">showcase</button>
-      <button class="btn" data-topic="web">web</button>
-      <button class="btn" data-topic="backend">backend</button>
+      <button class="btn active filter-btn" data-topic="all">✨ Todos</button>
+      <button class="btn filter-btn" data-topic="showcase">⭐ Showcase</button>
+      <button class="btn filter-btn" data-topic="web">🌐 Web</button>
+      <button class="btn filter-btn" data-topic="backend">⚙️ Backend</button>
     </div>
 
     <div class="results-meta">
       <span id="results-count">Cargando repositorios...</span>
+      <button id="toggle-repos" class="btn subtle-btn" type="button" style="display:none;">Ver más</button>
     </div>
 
     <div id="repos" class="cards"></div>
   </section>
 
-  <section class="section contact-section">
+
+  <section class="section reveal-on-scroll">
+    <div class="section-heading">
+      <div>
+        <h2>Cómo trabajo y qué busco</h2>
+        <p class="section-intro">Además de la parte técnica, quiero que la página refleje cómo aprendo y cómo me gusta crecer como desarrollador.</p>
+      </div>
+    </div>
+
+    <div class="human-grid">
+      <article class="human-card">
+        <h3>Cómo aprendo</h3>
+        <p class="muted">Me gusta aprender practicando: entender la base teórica, probar por mi cuenta, equivocarme, corregir y volver a intentarlo hasta comprender bien cada concepto.</p>
+      </article>
+
+      <article class="human-card">
+        <h3>Qué valoro</h3>
+        <p class="muted">Valoro los entornos en los que puedo seguir creciendo, recibir feedback y mejorar tanto en lo técnico como en la forma de trabajar en equipo.</p>
+      </article>
+
+      <article class="human-card">
+        <h3>Qué busco</h3>
+        <p class="muted">Busco oportunidades para seguir desarrollándome en backend, bases de datos y frontend, aportando constancia, actitud y ganas de aprender.</p>
+      </article>
+    </div>
+  </section>
+
+
+  <section class="section contact-section reveal-on-scroll">
     <div class="section-heading">
       <div>
         <h2>Contacto</h2>
-        <p class="section-intro">Si crees que puedo encajar en unas prácticas o colaborar en un proyecto, estaré encantado de hablar.</p>
+        <p class="section-intro">Si crees que puedo encajar en unas prácticas o colaborar en un proyecto, estaré encantado de hablar. Respondo rápido y estoy abierto a seguir creciendo en un entorno real.</p>
       </div>
     </div>
 
     <div class="contact-grid">
       <article class="contact-card">
         <h3>Email</h3>
-        <p class="muted">alexDoGa.Work@gmail.com</p>
+        <p class="muted">alexDoGa.Work@gmail.com</p><ul class="contact-list"><li>Respuesta rápida por email</li><li>Contacto directo y sencillo</li></ul>
         <button class="btn" onclick="navigator.clipboard.writeText('alexDoGa.Work@gmail.com')">Copiar email</button>
       </article>
 
       <article class="contact-card">
         <h3>LinkedIn</h3>
-        <p class="muted">Perfil profesional y contacto directo.</p>
+        <p class="muted">Perfil profesional y contacto directo.</p><ul class="contact-list"><li>Trayectoria y perfil</li><li>Canal ideal para networking</li></ul>
         <a class="btn" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">Abrir LinkedIn</a>
       </article>
 
       <article class="contact-card">
         <h3>GitHub</h3>
-        <p class="muted">Repositorios, prácticas y proyectos personales.</p>
+        <p class="muted">Repositorios, prácticas y proyectos personales.</p><ul class="contact-list"><li>Código y evolución técnica</li><li>Proyectos y práctica real</li></ul>
         <a class="btn" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">Abrir GitHub</a>
       </article>
     </div>
   </section>
+
+    <footer class="site-footer reveal-on-scroll">
+      <div>
+        <strong>Alejandro Donate García</strong>
+        <p class="muted">Portfolio personal construido con HTML, CSS y GitHub API.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#top">Inicio</a>
+        <a href="#featured">Proyectos</a>
+        <a href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </footer>
+
 </div>
 
 <script>
@@ -261,6 +349,8 @@ title: "Mi página"
   const FEATURED_TOPIC = "showcase";
   let allRepos = [];
   let activeTopic = "all";
+  let reposExpanded = false;
+  const REPOS_PREVIEW_COUNT = 6;
 
   function formatDate(iso) {
     const d = new Date(iso);
@@ -336,8 +426,13 @@ title: "Mi página"
   function renderRepos(repos) {
     const el = document.getElementById("repos");
     const list = applyFilters(repos);
+    const visibleList = reposExpanded ? list : list.slice(0, REPOS_PREVIEW_COUNT);
     const resultsCount = document.getElementById("results-count");
-    resultsCount.textContent = `${list.length} repositorio(s) mostrados`;
+    const toggleBtn = document.getElementById("toggle-repos");
+
+    resultsCount.textContent = `${list.length} repositorio(s) encontrados`;
+    toggleBtn.style.display = list.length > REPOS_PREVIEW_COUNT ? "inline-flex" : "none";
+    toggleBtn.textContent = reposExpanded ? "Ver menos" : "Ver más";
 
     el.innerHTML = list.length ? "" : `
       <div class="empty-state">
@@ -345,7 +440,7 @@ title: "Mi página"
         <p>No encontramos repositorios que coincidan con "<b>${document.getElementById("q").value}</b>"</p>
       </div>`;
 
-    list.forEach((r, i) => {
+    visibleList.forEach((r, i) => {
       const topics = (r.topics && r.topics.length)
         ? r.topics.slice(0, 6).map(t => `<span class="pill">${t}</span>`).join("")
         : `<span class="pill">sin topics</span>`;
@@ -485,11 +580,25 @@ title: "Mi página"
     display.style.animation = "slideFade 0.5s ease-out forwards";
   }
 
+  function initRevealOnScroll() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal-on-scroll, .site-footer").forEach(el => observer.observe(el));
+  }
+
   console.log("%c¡Hola! Soy Alejandro Donate 👋", "color: #38bdf8; font-size: 20px; font-weight: bold;");
   console.log("Veo que estás revisando el código... ¡Eso me gusta! Si buscas un perfil junior con ganas de aprender, ¡hablemos!");
 
   document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("copy-btn");
+
+    initRevealOnScroll();
 
     if (btn) {
       btn.addEventListener("click", () => {
