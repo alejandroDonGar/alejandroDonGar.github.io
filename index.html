@@ -346,6 +346,7 @@ title: "Mi página"
 </div>
 
 
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".profile-img-swap");
@@ -357,8 +358,9 @@ document.addEventListener("DOMContentLoaded", () => {
     showingAlt = !showingAlt;
 
     container.classList.add("swap-glow");
+    document.body.classList.add("photo-pulse");
 
-    if(showingAlt){
+    if (showingAlt) {
       container.classList.add("auto-swap");
     } else {
       container.classList.remove("auto-swap");
@@ -366,9 +368,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
       container.classList.remove("swap-glow");
-    }, 600);
+      document.body.classList.remove("photo-pulse");
+    }, 700);
 
   }, 5000);
 });
 </script>
+
 

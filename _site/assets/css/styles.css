@@ -1189,3 +1189,44 @@ body::before {
     0 12px 30px rgba(43, 36, 29, 0.18);
   border-color: color-mix(in srgb, var(--brand) 45%, var(--accent-olive));
 }
+
+
+/* ===============================
+   PAGE PULSE ON PHOTO SWAP
+================================ */
+
+body {
+  transition: background 0.45s ease, color 0.3s ease;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 22%, color-mix(in srgb, var(--brand-soft) 65%, transparent) 0%, transparent 28%),
+    radial-gradient(circle at 78% 18%, color-mix(in srgb, var(--accent-olive-soft) 72%, transparent) 0%, transparent 22%);
+  opacity: 0;
+  transition: opacity 0.55s ease;
+  z-index: -1;
+}
+
+body.photo-pulse {
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--bg) 90%, var(--brand-soft)) 0%,
+      color-mix(in srgb, var(--bg) 94%, var(--accent-olive-soft)) 100%);
+}
+
+body.photo-pulse::after {
+  opacity: 0.9;
+}
+
+.profile-img-swap.swap-glow {
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--accent-olive) 40%, transparent),
+    0 0 22px color-mix(in srgb, var(--brand) 36%, transparent),
+    0 12px 34px rgba(43, 36, 29, 0.20);
+}
+
