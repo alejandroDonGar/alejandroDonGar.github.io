@@ -18,10 +18,10 @@ title: "Mi página"
         </p>
 
         <div class="hero-highlights">
-          <span class="pill" title="POO, colecciones, fechas, expresiones regulares">Java</span>
-          <span class="pill" title="Consultas, joins, tablas y operaciones CRUD">SQL</span>
+          <span class="pill" title="POO, colecciones, fechas y lógica">Java</span>
+          <span class="pill" title="Consultas, joins y modelado básico">SQL</span>
           <span class="pill" title="Maquetación, responsive, grid y flexbox">HTML/CSS</span>
-          <span class="pill" title="Control de versiones y flujo de trabajo básico">Git</span>
+          <span class="pill" title="Control de versiones y flujo de trabajo">Git</span>
         </div>
       </div>
 
@@ -62,6 +62,7 @@ title: "Mi página"
           <img class="profile-img primary-img" src="assets/img/perfil.jpg" alt="Foto de perfil">
           <img class="profile-img secondary-img" src="assets/img/perfil2.jpg" alt="Segunda foto de perfil">
         </div>
+
         <div class="bio">
           <p class="muted" style="margin-top:0">
             Soy estudiante y todavía estoy en una etapa muy inicial de aprendizaje. Me interesa seguir descubriendo cómo funciona el desarrollo de software,
@@ -70,10 +71,10 @@ title: "Mi página"
           </p>
 
           <div class="pillrow">
-            <span class="pill" title="POO, colecciones, fechas, expresiones regulares">Java</span>
-            <span class="pill" title="Consultas, joins, tablas y operaciones CRUD">SQL</span>
-            <span class="pill" title="Maquetación, responsive, grid y flexbox">HTML/CSS</span>
-            <span class="pill" title="Control de versiones y flujo de trabajo básico">Git</span>
+            <span class="pill">Java</span>
+            <span class="pill">SQL</span>
+            <span class="pill">HTML/CSS</span>
+            <span class="pill">Git</span>
           </div>
 
           <div class="mini-cards">
@@ -117,35 +118,18 @@ title: "Mi página"
 
           <div class="skill-bar-container">
             <div class="level-group">
-              <div class="level-title-row">
-                <span>Hablado</span>
-              </div>
-              <div class="level-scale">
-                <span>B1</span>
-                <span>B2</span>
-              </div>
+              <div class="level-title-row"><span>Hablado</span></div>
+              <div class="level-scale"><span>B1</span><span>B2</span></div>
               <div class="bar"><div class="progress" style="width:50%"></div></div>
             </div>
-
             <div class="level-group">
-              <div class="level-title-row">
-                <span>Escrito</span>
-              </div>
-              <div class="level-scale">
-                <span>B1</span>
-                <span>B2</span>
-              </div>
+              <div class="level-title-row"><span>Escrito</span></div>
+              <div class="level-scale"><span>B1</span><span>B2</span></div>
               <div class="bar"><div class="progress" style="width:65%"></div></div>
             </div>
-
             <div class="level-group">
-              <div class="level-title-row">
-                <span>Lectura</span>
-              </div>
-              <div class="level-scale">
-                <span>B1</span>
-                <span>B2</span>
-              </div>
+              <div class="level-title-row"><span>Lectura</span></div>
+              <div class="level-scale"><span>B1</span><span>B2</span></div>
               <div class="bar"><div class="progress" style="width:70%"></div></div>
             </div>
           </div>
@@ -166,8 +150,7 @@ title: "Mi página"
     </div>
   </section>
 
-  
-  <section class="github-stats-container">
+  <section class="github-stats-container reveal-on-scroll">
     <div class="stats-wrapper section-card">
       <div class="section-heading compact-heading">
         <div>
@@ -187,8 +170,6 @@ title: "Mi página"
       </div>
     </div>
   </section>
-
-
 
   <section class="section reveal-on-scroll">
     <div class="section-heading">
@@ -233,18 +214,18 @@ title: "Mi página"
     </div>
   </section>
 
-
   <section class="section reveal-on-scroll">
     <div class="section-heading">
       <div>
         <h2>Proyectos destacados</h2>
-        <p class="section-intro">Una selección de proyectos y prácticas que reflejan lo que voy aprendiendo y cómo estoy avanzando.</p>
+        <p class="section-intro">Tarjetas más completas, con vista previa rápida de la estructura del repositorio para hacer el portfolio más interactivo.</p>
       </div>
     </div>
-    <div id="featured" class="cards"></div>
+
+    <div id="featured" class="repo-showcase-list"></div>
   </section>
 
-  <section class="section">
+  <section class="section reveal-on-scroll">
     <div class="section-heading">
       <div>
         <h2>Mis repositorios</h2>
@@ -270,9 +251,8 @@ title: "Mi página"
       <button id="toggle-repos" class="btn subtle-btn" type="button" style="display:none;">Ver más</button>
     </div>
 
-    <div id="repos" class="cards"></div>
+    <div id="repos" class="repo-showcase-list"></div>
   </section>
-
 
   <section class="section reveal-on-scroll">
     <div class="section-heading">
@@ -300,7 +280,6 @@ title: "Mi página"
     </div>
   </section>
 
-
   <section class="section contact-section reveal-on-scroll">
     <div class="section-heading">
       <div>
@@ -312,37 +291,39 @@ title: "Mi página"
     <div class="contact-grid">
       <article class="contact-card">
         <h3>Email</h3>
-        <p class="muted">alexDoGa.Work@gmail.com</p><ul class="contact-list"><li>Respuesta rápida por email</li><li>Contacto directo y sencillo</li></ul>
+        <p class="muted">alexDoGa.Work@gmail.com</p>
+        <ul class="contact-list"><li>Respuesta rápida por email</li><li>Contacto directo y sencillo</li></ul>
         <button class="btn" onclick="navigator.clipboard.writeText('alexDoGa.Work@gmail.com')">Copiar email</button>
       </article>
 
       <article class="contact-card">
         <h3>LinkedIn</h3>
-        <p class="muted">Perfil profesional y contacto directo.</p><ul class="contact-list"><li>Trayectoria y perfil</li><li>Canal ideal para networking</li></ul>
+        <p class="muted">Perfil profesional y contacto directo.</p>
+        <ul class="contact-list"><li>Trayectoria y perfil</li><li>Canal ideal para networking</li></ul>
         <a class="btn" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">Abrir LinkedIn</a>
       </article>
 
       <article class="contact-card">
         <h3>GitHub</h3>
-        <p class="muted">Repositorios, prácticas y proyectos personales.</p><ul class="contact-list"><li>Código y evolución técnica</li><li>Proyectos y práctica real</li></ul>
+        <p class="muted">Repositorios, prácticas y proyectos personales.</p>
+        <ul class="contact-list"><li>Código y evolución técnica</li><li>Proyectos y práctica real</li></ul>
         <a class="btn" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">Abrir GitHub</a>
       </article>
     </div>
   </section>
 
-    <footer class="site-footer reveal-on-scroll">
-      <div>
-        <strong>Alejandro Donate García</strong>
-        <p class="muted">Portfolio personal construido mientras sigo aprendiendo HTML, CSS y JavaScript.</p>
-      </div>
-      <div class="footer-links">
-        <a href="#top">Inicio</a>
-        <a href="#featured">Proyectos</a>
-        <a href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">LinkedIn</a>
-      </div>
-    </footer>
-
+  <footer class="site-footer reveal-on-scroll">
+    <div>
+      <strong>Alejandro Donate García</strong>
+      <p class="muted">Portfolio personal construido con HTML, CSS y GitHub API.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#top">Inicio</a>
+      <a href="#featured">Proyectos</a>
+      <a href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">LinkedIn</a>
+    </div>
+  </footer>
 </div>
 
 <script>
@@ -352,19 +333,16 @@ title: "Mi página"
   let activeTopic = "all";
   let reposExpanded = false;
   const REPOS_PREVIEW_COUNT = 6;
+  const repoTreeCache = new Map();
 
   function formatDate(iso) {
     const d = new Date(iso);
     return d.toLocaleDateString("es-ES", { year: "numeric", month: "short", day: "2-digit" });
   }
 
-  function cardBorderByIndex(i) {
-    return "";
-  }
-
   async function fetchRepos() {
     const url = `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
-    const res = await fetch(url, { headers: { "Accept": "application/vnd.github+json" } });
+    const res = await fetch(url, { headers: { "Accept":"application/vnd.github+json" } });
     if (!res.ok) throw new Error("No se pudo leer la API de GitHub. Revisa tu usuario.");
     const repos = await res.json();
     return repos.map(r => ({
@@ -374,37 +352,10 @@ title: "Mi página"
       language: r.language || "—",
       stargazers_count: r.stargazers_count || 0,
       updated_at: r.updated_at,
-      topics: r.topics || []
+      topics: r.topics || [],
+      default_branch: r.default_branch || "main",
+      homepage: r.homepage || ""
     }));
-  }
-
-  function renderFeatured(repos) {
-    const featured = repos.filter(r => r.topics.includes(FEATURED_TOPIC)).slice(0, 6);
-    const el = document.getElementById("featured");
-    el.innerHTML = featured.length ? "" : `<div class="muted">Aún no tienes repos con topic <b>${FEATURED_TOPIC}</b>.</div>`;
-
-    featured.forEach((r, i) => {
-      const topics = r.topics.slice(0, 4).map(t => `<span class="pill">${t}</span>`).join("");
-      el.insertAdjacentHTML("beforeend", `
-        <article class="card ${cardBorderByIndex(i)}">
-          <div class="card-topline">
-            <span class="mini-label">Destacado</span>
-          </div>
-          <h3>${r.name}</h3>
-          <div class="muted">${r.description || "Sin descripción (añádela en GitHub 😉)"}</div>
-          <div class="pillrow">
-            <span class="pill featured">Featured</span>
-            ${topics}
-          </div>
-          <div class="repoMeta">
-            <span>⭐ ${r.stargazers_count}</span>
-            <span>🧩 ${r.language}</span>
-            <span>🕒 ${formatDate(r.updated_at)}</span>
-          </div>
-          <a class="btn" href="${r.html_url}" target="_blank" rel="noreferrer">Ver repo</a>
-        </article>
-      `);
-    });
   }
 
   function applyFilters(repos) {
@@ -420,8 +371,71 @@ title: "Mi página"
     if (sort === "updated") out.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
     if (sort === "stars") out.sort((a, b) => (b.stargazers_count || 0) - (a.stargazers_count || 0));
     if (sort === "name") out.sort((a, b) => a.name.localeCompare(b.name));
-
     return out;
+  }
+
+  function repoTags(repo, featured = false) {
+    const tags = [];
+    if (featured) tags.push('<span class="pill featured">Featured</span>');
+    const topics = (repo.topics && repo.topics.length)
+      ? repo.topics.slice(0, 5).map(t => `<span class="pill">${t}</span>`)
+      : ['<span class="pill">sin topics</span>'];
+    return tags.concat(topics).join("");
+  }
+
+  function buildRepoCard(repo, featured = false) {
+    const previewLabel = featured ? "Vista rápida del repo" : "Vista previa";
+    return `
+      <article class="repo-advanced-card ${featured ? 'repo-featured-card' : ''}">
+        <div class="repo-main">
+          <div class="repo-copy">
+            <div class="card-topline">
+              <span class="mini-label">${featured ? 'Destacado' : 'Repositorio'}</span>
+            </div>
+
+            <h3>${repo.name}</h3>
+            <p class="repo-description muted">${repo.description || "Sin descripción (añádela en GitHub 😉)"}</p>
+
+            <div class="pillrow repo-pillrow">
+              ${repoTags(repo, featured)}
+            </div>
+
+            <div class="repoMeta">
+              <span>⭐ ${repo.stargazers_count}</span>
+              <span>🧩 ${repo.language}</span>
+              <span>🕒 ${formatDate(repo.updated_at)}</span>
+            </div>
+
+            <div class="repo-actions">
+              <a class="btn" href="${repo.html_url}" target="_blank" rel="noreferrer">Ver repo</a>
+              <button class="btn subtle-btn repo-toggle-btn" type="button" data-repo="${repo.name}">
+                Mostrar estructura
+              </button>
+              ${repo.homepage ? `<a class="btn subtle-btn" href="${repo.homepage}" target="_blank" rel="noreferrer">Ver demo</a>` : ""}
+            </div>
+          </div>
+
+          <div class="repo-preview-panel" id="panel-${repo.name}">
+            <div class="repo-preview-head">
+              <span class="mini-label">${previewLabel}</span>
+              <span class="repo-preview-note muted">Nivel raíz del repositorio</span>
+            </div>
+
+            <div class="repo-tree-shell">
+              <div class="repo-tree-loading muted">Pulsa en “Mostrar estructura” para cargar una vista rápida.</div>
+              <pre class="repo-tree" hidden></pre>
+            </div>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  function renderFeatured(repos) {
+    const featured = repos.filter(r => r.topics.includes(FEATURED_TOPIC)).slice(0, 6);
+    const el = document.getElementById("featured");
+    el.innerHTML = featured.length ? featured.map(r => buildRepoCard(r, true)).join("") : `<div class="muted">Aún no tienes repos con topic <b>${FEATURED_TOPIC}</b>.</div>`;
+    bindRepoToggles();
   }
 
   function renderRepos(repos) {
@@ -435,30 +449,78 @@ title: "Mi página"
     toggleBtn.style.display = list.length > REPOS_PREVIEW_COUNT ? "inline-flex" : "none";
     toggleBtn.textContent = reposExpanded ? "Ver menos" : "Ver más";
 
-    el.innerHTML = list.length ? "" : `
+    el.innerHTML = list.length ? visibleList.map(r => buildRepoCard(r, false)).join("") : `
       <div class="empty-state">
         <div style="font-size: 3rem; margin-bottom: 10px;">🔍</div>
         <p>No encontramos repositorios que coincidan con "<b>${document.getElementById("q").value}</b>"</p>
       </div>`;
 
-    visibleList.forEach((r, i) => {
-      const topics = (r.topics && r.topics.length)
-        ? r.topics.slice(0, 6).map(t => `<span class="pill">${t}</span>`).join("")
-        : `<span class="pill">sin topics</span>`;
+    bindRepoToggles();
+  }
 
-      el.insertAdjacentHTML("beforeend", `
-        <article class="card ${cardBorderByIndex(i)}">
-          <h3>${r.name}</h3>
-          <div class="muted">${r.description || "Sin descripción"}</div>
-          <div class="pillrow">${topics}</div>
-          <div class="repoMeta">
-            <span>⭐ ${r.stargazers_count}</span>
-            <span>🧩 ${r.language}</span>
-            <span>🕒 ${formatDate(r.updated_at)}</span>
-          </div>
-          <a class="btn" href="${r.html_url}" target="_blank" rel="noreferrer">Abrir</a>
-        </article>
-      `);
+  async function fetchRepoTree(repoName, branch = "main") {
+    const cacheKey = `${repoName}:${branch}`;
+    if (repoTreeCache.has(cacheKey)) return repoTreeCache.get(cacheKey);
+
+    const treeUrl = `https://api.github.com/repos/${GITHUB_USERNAME}/${repoName}/git/trees/${branch}?recursive=1`;
+    const res = await fetch(treeUrl, { headers: { "Accept":"application/vnd.github+json" } });
+    if (!res.ok) throw new Error("No se pudo cargar la estructura");
+    const data = await res.json();
+
+    const items = (data.tree || [])
+      .filter(item => item.path && item.path.split("/").length <= 2)
+      .slice(0, 14)
+      .map(item => ({
+        path: item.path,
+        type: item.type
+      }));
+
+    repoTreeCache.set(cacheKey, items);
+    return items;
+  }
+
+  function treeToText(items) {
+    if (!items.length) return "No se pudo obtener una vista rápida del contenido.";
+    return items.map(item => {
+      const depth = item.path.split("/").length - 1;
+      const indent = "  ".repeat(depth);
+      const label = item.type === "tree" ? "📁" : "📄";
+      const name = item.path.split("/").pop();
+      return `${indent}${label} ${name}`;
+    }).join("\n");
+  }
+
+  function bindRepoToggles() {
+    document.querySelectorAll(".repo-toggle-btn").forEach(btn => {
+      btn.addEventListener("click", async () => {
+        const repoName = btn.dataset.repo;
+        const panel = document.getElementById(`panel-${repoName}`);
+        const tree = panel.querySelector(".repo-tree");
+        const loading = panel.querySelector(".repo-tree-loading");
+        const repo = allRepos.find(r => r.name === repoName);
+        const isOpen = panel.classList.contains("open");
+
+        if (isOpen) {
+          panel.classList.remove("open");
+          btn.textContent = "Mostrar estructura";
+          return;
+        }
+
+        panel.classList.add("open");
+        btn.textContent = "Ocultar estructura";
+
+        if (!tree.textContent.trim()) {
+          loading.textContent = "Cargando estructura...";
+          try {
+            const items = await fetchRepoTree(repoName, repo?.default_branch || "main");
+            tree.textContent = treeToText(items);
+            tree.hidden = false;
+            loading.hidden = true;
+          } catch (err) {
+            loading.textContent = "No se pudo cargar la vista rápida de este repositorio.";
+          }
+        }
+      });
     });
   }
 
@@ -484,13 +546,9 @@ title: "Mi página"
 
     statsImages.forEach((img, index) => {
       img.classList.add("fade-out");
-
       setTimeout(() => {
         img.src = urls[index];
-
-        img.onload = () => {
-          img.classList.remove("fade-out");
-        };
+        img.onload = () => img.classList.remove("fade-out");
       }, 400);
     });
   }
@@ -503,7 +561,6 @@ title: "Mi página"
 
   themeToggle.addEventListener("click", () => {
     let theme = document.documentElement.getAttribute("data-theme");
-
     if (theme === "dark") {
       document.documentElement.setAttribute("data-theme", "light");
       themeIcon.innerText = "🌙";
@@ -518,14 +575,16 @@ title: "Mi página"
   });
 
   function bindUI() {
-    document.getElementById("q").addEventListener("input", () => renderRepos(allRepos));
-    document.getElementById("sort").addEventListener("change", () => renderRepos(allRepos));
+    document.getElementById("q").addEventListener("input", () => { reposExpanded = false; renderRepos(allRepos); });
+    document.getElementById("sort").addEventListener("change", () => { reposExpanded = false; renderRepos(allRepos); });
+    document.getElementById("toggle-repos").addEventListener("click", () => { reposExpanded = !reposExpanded; renderRepos(allRepos); });
 
     document.querySelectorAll(".btn[data-topic]").forEach(btn => {
       btn.addEventListener("click", () => {
         document.querySelectorAll(".btn[data-topic]").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
         activeTopic = btn.dataset.topic;
+        reposExpanded = false;
         renderRepos(allRepos);
       });
     });
@@ -547,35 +606,18 @@ title: "Mi página"
   });
 
   const skillData = {
-    java: {
-      title: "JAVA",
-      text: "CLASES | GETTER - SETTER | FECHAS | EXP REGULARES | ARRAYS | LISTAS | SETS | MAPS"
-    },
-    bbdd: {
-      title: "BBDD",
-      text: "CREATE TABLES | ALTER - DROP - INSERT INTO | JOINS | POSTGRES"
-    },
-    web: {
-      title: "FRONTEND",
-      text: "HTML GENERAL | CSS GRID | FLEXBOX | RESPONSIVE DESIGN"
-    },
-    xml: {
-      title: "XML",
-      text: "XSD | VALIDACIÓN | ESTRUCTURAS DE DATOS"
-    }
+    java: { title: "JAVA", text: "CLASES | GETTER - SETTER | FECHAS | EXP REGULARES | ARRAYS | LISTAS | SETS | MAPS" },
+    bbdd: { title: "BBDD", text: "CREATE TABLES | ALTER - DROP - INSERT INTO | JOINS | POSTGRES" },
+    web: { title: "FRONTEND", text: "HTML GENERAL | CSS GRID | FLEXBOX | RESPONSIVE DESIGN" },
+    xml: { title: "XML", text: "XSD | VALIDACIÓN | ESTRUCTURAS DE DATOS" }
   };
 
   function showSkill(key, btn) {
     document.querySelectorAll(".skill-pill").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
-
     const display = document.getElementById("skill-display");
-    const title = document.getElementById("skill-title");
-    const text = document.getElementById("skill-text");
-
-    title.innerText = skillData[key].title;
-    text.innerText = skillData[key].text;
-
+    document.getElementById("skill-title").innerText = skillData[key].title;
+    document.getElementById("skill-text").innerText = skillData[key].text;
     display.style.animation = "none";
     display.offsetHeight;
     display.style.animation = "slideFade 0.5s ease-out forwards";
@@ -584,17 +626,12 @@ title: "Mi página"
   function initRevealOnScroll() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("revealed");
-        }
+        if (entry.isIntersecting) entry.target.classList.add("revealed");
       });
     }, { threshold: 0.12 });
 
     document.querySelectorAll(".reveal-on-scroll, .site-footer").forEach(el => observer.observe(el));
   }
-
-  console.log("%c¡Hola! Soy Alejandro Donate 👋", "color: #38bdf8; font-size: 20px; font-weight: bold;");
-  console.log("Veo que estás revisando el código... ¡Eso me gusta! Si buscas un perfil junior con ganas de aprender, ¡hablemos!");
 
   document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("copy-btn");
@@ -604,45 +641,31 @@ title: "Mi página"
 
     if (photoContainer) {
       let showingAlt = false;
-
       setInterval(() => {
         showingAlt = !showingAlt;
-
         photoContainer.classList.add("swap-glow");
-
-        if (showingAlt) {
-          photoContainer.classList.add("auto-swap");
-        } else {
-          photoContainer.classList.remove("auto-swap");
-        }
-
-        setTimeout(() => {
-          photoContainer.classList.remove("swap-glow");
-        }, 700);
+        if (showingAlt) photoContainer.classList.add("auto-swap");
+        else photoContainer.classList.remove("auto-swap");
+        setTimeout(() => photoContainer.classList.remove("swap-glow"), 700);
       }, 7000);
     }
 
     if (btn) {
       btn.addEventListener("click", () => {
         const email = "alexDoGa.Work@gmail.com";
-
         navigator.clipboard.writeText(email).then(() => {
           const originalText = btn.innerText;
-
           btn.innerText = "¡Copiado! ✅";
           btn.style.backgroundColor = "var(--brand)";
           btn.style.color = "#ffffff";
           btn.style.fontWeight = "bold";
-
           setTimeout(() => {
             btn.innerText = originalText;
             btn.style.backgroundColor = "";
             btn.style.color = "";
             btn.style.fontWeight = "";
           }, 2000);
-        }).catch(err => {
-          console.error("Error al copiar: ", err);
-        });
+        }).catch(err => console.error("Error al copiar: ", err));
       });
     }
   });
