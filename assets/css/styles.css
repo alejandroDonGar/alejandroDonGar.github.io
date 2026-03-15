@@ -1138,16 +1138,6 @@ body::before {
   transform: scale(1);
 }
 
-/* disable hover interaction on the photo */
-.profile-img-swap:hover .primary-img {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.profile-img-swap:hover .secondary-img {
-  opacity: 0;
-  transform: scale(1.03);
-}
 
 /* ===============================
    PROFILE SWAP GLOW + PAGE PULSE
@@ -1187,4 +1177,10 @@ body.photo-pulse {
 
 body.photo-pulse::after {
   opacity: 0.9;
+}
+
+
+/* Keep hover neutral on the profile image container */
+.profile-img-swap:hover {
+  transform: none;
 }
