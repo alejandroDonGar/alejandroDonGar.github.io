@@ -165,20 +165,28 @@ title: "Mi página"
     </div>
   </section>
 
+  
   <section class="github-stats-container">
     <div class="stats-wrapper section-card">
       <div class="section-heading compact-heading">
         <div>
           <h2 class="section-title" style="margin:0">Mi Actividad en GitHub</h2>
-          <p class="section-intro">Actividad reciente y tecnologías que más aparecen en mis proyectos.</p>
+          <p class="section-intro">Actividad reciente, lenguajes más usados y constancia de trabajo en mis proyectos.</p>
         </div>
       </div>
-      <div class="stats-cards">
-        <img class="github-stats-img" src="https://github-readme-stats.vercel.app/api?username=alejandroDonGar&hide_border=true&bg_color=fcf8f1&title_color=a9774b&text_color=52473b&icon_color=7b7558&border_color=d2c5b2" alt="Estadísticas de GitHub" />
-        <img class="github-stats-img" src="https://github-readme-stats.vercel.app/api/top-langs?username=alejandroDonGar&hide_border=true&bg_color=fcf8f1&title_color=a9774b&text_color=52473b&icon_color=7b7558&border_color=d2c5b2" alt="Lenguajes más usados" />
+
+      <div class="stats-cards stats-cards-main">
+        <img class="github-stats-img github-stats-large" src="https://github-readme-stats.vercel.app/api?username=alejandroDonGar&hide_border=true&bg_color=fcf8f1&title_color=a9774b&text_color=52473b&icon_color=7b7558&border_color=d2c5b2" alt="Estadísticas de GitHub" />
+        <img class="github-stats-img github-stats-large" src="https://github-readme-stats.vercel.app/api/top-langs?username=alejandroDonGar&hide_border=true&bg_color=fcf8f1&title_color=a9774b&text_color=52473b&icon_color=7b7558&border_color=d2c5b2" alt="Lenguajes más usados" />
+      </div>
+
+      <div class="stats-cards stats-cards-secondary">
+        <img class="github-stats-img github-stats-medium" src="https://streak-stats.demolab.com?user=alejandroDonGar&hide_border=true&background=FCF8F1&ring=A9774B&fire=7B7558&currStreakLabel=6D645A&sideLabels=6D645A&dates=8C8175&currStreakNum=52473B&sideNums=52473B" alt="Racha de contribuciones" />
+        <img class="github-stats-img github-stats-wide" src="https://github-readme-activity-graph.vercel.app/graph?username=alejandroDonGar&bg_color=fcf8f1&color=6d645a&line=a9774b&point=7b7558&area=true&area_color=d9cfbf&hide_border=true" alt="Gráfico de actividad de GitHub" />
       </div>
     </div>
   </section>
+
 
   <section class="section">
     <div class="section-heading">
@@ -367,11 +375,15 @@ title: "Mi página"
     const urls = (theme === "dark")
       ? [
           "https://github-readme-stats.vercel.app/api?username=alejandroDonGar&hide_border=true&bg_color=221b15&title_color=c79566&text_color=efe4d6&icon_color=8b9270&border_color=4c4134",
-          "https://github-readme-stats.vercel.app/api/top-langs?username=alejandroDonGar&hide_border=true&bg_color=221b15&title_color=c79566&text_color=efe4d6&icon_color=8b9270&border_color=4c4134"
+          "https://github-readme-stats.vercel.app/api/top-langs?username=alejandroDonGar&hide_border=true&bg_color=221b15&title_color=c79566&text_color=efe4d6&icon_color=8b9270&border_color=4c4134",
+          "https://streak-stats.demolab.com?user=alejandroDonGar&hide_border=true&background=221B15&ring=C79566&fire=8B9270&currStreakLabel=B3A695&sideLabels=B3A695&dates=8E8172&currStreakNum=EFE4D6&sideNums=EFE4D6",
+          "https://github-readme-activity-graph.vercel.app/graph?username=alejandroDonGar&bg_color=221b15&color=b3a695&line=c79566&point=8b9270&area=true&area_color=3a3026&hide_border=true"
         ]
       : [
           "https://github-readme-stats.vercel.app/api?username=alejandroDonGar&hide_border=true&bg_color=fcf8f1&title_color=a9774b&text_color=52473b&icon_color=7b7558&border_color=d2c5b2",
-          "https://github-readme-stats.vercel.app/api/top-langs?username=alejandroDonGar&hide_border=true&bg_color=fcf8f1&title_color=a9774b&text_color=52473b&icon_color=7b7558&border_color=d2c5b2"
+          "https://github-readme-stats.vercel.app/api/top-langs?username=alejandroDonGar&hide_border=true&bg_color=fcf8f1&title_color=a9774b&text_color=52473b&icon_color=7b7558&border_color=d2c5b2",
+          "https://streak-stats.demolab.com?user=alejandroDonGar&hide_border=true&background=FCF8F1&ring=A9774B&fire=7B7558&currStreakLabel=6D645A&sideLabels=6D645A&dates=8C8175&currStreakNum=52473B&sideNums=52473B",
+          "https://github-readme-activity-graph.vercel.app/graph?username=alejandroDonGar&bg_color=fcf8f1&color=6d645a&line=a9774b&point=7b7558&area=true&area_color=d9cfbf&hide_border=true"
         ];
 
     statsImages.forEach((img, index) => {

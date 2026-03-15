@@ -494,8 +494,10 @@ img {
   color: var(--muted);
 }
 
+
+
 /* ===============================
-   GITHUB STATS
+   GITHUB STATS EXPANDIDAS
 ================================ */
 
 .stats-wrapper {
@@ -510,20 +512,70 @@ img {
   align-items: center;
 }
 
+.stats-cards + .stats-cards {
+  margin-top: 24px;
+}
+
 .github-stats-img {
-  flex: 0 1 auto;
   width: auto;
   max-width: 100%;
-  height: 220px;
   object-fit: contain;
   display: block;
   margin: 0;
   transition: opacity 0.4s ease;
 }
 
-.fade-out {
-  opacity: 0.2;
+.github-stats-large {
+  height: 220px;
 }
+
+.github-stats-medium {
+  height: 220px;
+}
+
+.github-stats-wide {
+  height: 220px;
+}
+
+@media (min-width: 1200px) {
+  .stats-cards-main .github-stats-large {
+    height: 220px;
+  }
+
+  .stats-cards-secondary .github-stats-medium {
+    height: 215px;
+  }
+
+  .stats-cards-secondary .github-stats-wide {
+    height: 215px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .github-stats-large,
+  .github-stats-medium,
+  .github-stats-wide {
+    height: auto;
+    width: 100%;
+    max-width: 920px;
+  }
+}
+
+@media (max-width: 850px) {
+  .stats-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .github-stats-large,
+  .github-stats-medium,
+  .github-stats-wide {
+    height: auto;
+    width: 100%;
+    max-width: 560px;
+  }
+}
+
 
 /* ===============================
    REPOS / CARDS
