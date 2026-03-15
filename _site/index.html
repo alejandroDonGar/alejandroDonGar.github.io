@@ -598,8 +598,31 @@ title: "Mi página"
 
   document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("copy-btn");
+    const photoContainer = document.querySelector(".profile-img-swap");
 
     initRevealOnScroll();
+
+    if (photoContainer) {
+      let showingAlt = false;
+
+      setInterval(() => {
+        showingAlt = !showingAlt;
+
+        photoContainer.classList.add("swap-glow");
+        document.body.classList.add("photo-pulse");
+
+        if (showingAlt) {
+          photoContainer.classList.add("auto-swap");
+        } else {
+          photoContainer.classList.remove("auto-swap");
+        }
+
+        setTimeout(() => {
+          photoContainer.classList.remove("swap-glow");
+          document.body.classList.remove("photo-pulse");
+        }, 700);
+      }, 5000);
+    }
 
     if (btn) {
       btn.addEventListener("click", () => {
