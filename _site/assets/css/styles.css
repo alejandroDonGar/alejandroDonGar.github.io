@@ -1107,16 +1107,12 @@ body::before {
 .profile-img-swap {
   position: relative;
   isolation: isolate;
-  cursor: pointer;
+  
   box-shadow: 0 12px 28px rgba(43, 36, 29, 0.12);
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.profile-img-swap:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 34px rgba(43, 36, 29, 0.16), 0 0 0 1px color-mix(in srgb, var(--accent-olive) 32%, transparent);
-  border-color: color-mix(in srgb, var(--brand) 38%, var(--accent-olive));
-}
+
 
 .profile-img {
   position: absolute;
@@ -1137,30 +1133,16 @@ body::before {
   transform: scale(1.03);
 }
 
-.profile-img-swap:hover .primary-img {
-  opacity: 0;
-  transform: scale(1.02);
-}
 
-.profile-img-swap:hover .secondary-img {
-  opacity: 1;
-  transform: scale(1);
-}
+
+
 
 @media (hover: none) {
-  .profile-img-swap:hover {
-    transform: none;
-  }
+  
 
-  .profile-img-swap:hover .primary-img {
-    opacity: 1;
-    transform: scale(1);
-  }
+  
 
-  .profile-img-swap:hover .secondary-img {
-    opacity: 0;
-    transform: scale(1.03);
-  }
+  
 }
 
 
@@ -1176,4 +1158,34 @@ body::before {
 .profile-img-swap.auto-swap .secondary-img {
   opacity: 1;
   transform: scale(1);
+}
+
+
+/* Disable hover effects on profile image (auto swap only) */
+.profile-img-swap:hover .primary-img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.profile-img-swap:hover .secondary-img {
+  opacity: 0;
+  transform: scale(1.03);
+}
+
+
+
+/* ===============================
+   PROFILE SWAP GLOW EFFECT
+================================ */
+
+.profile-img-swap {
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.profile-img-swap.swap-glow {
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--accent-olive) 40%, transparent),
+    0 0 18px color-mix(in srgb, var(--brand) 35%, transparent),
+    0 12px 30px rgba(43, 36, 29, 0.18);
+  border-color: color-mix(in srgb, var(--brand) 45%, var(--accent-olive));
 }
