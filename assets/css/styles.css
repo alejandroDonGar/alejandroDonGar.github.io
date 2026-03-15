@@ -999,3 +999,101 @@ body::before {
     align-items: stretch;
   }
 }
+
+
+
+/* ===============================
+   UNIFIED CARD HOVER (CONSISTENT)
+================================ */
+
+.section-card,
+.timeline-card,
+.human-card,
+.contact-card,
+.card,
+.section-soft {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.section-card:hover,
+.timeline-card:hover,
+.human-card:hover,
+.contact-card:hover,
+.card:hover,
+.section-soft:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: color-mix(in srgb, var(--brand) 40%, var(--line));
+  background: color-mix(in srgb, var(--card) 92%, var(--accent-olive-soft));
+}
+
+
+
+/* ===============================
+   DEPTH HOVER SYSTEM
+================================ */
+
+:root {
+  --lift-soft: translateY(-3px);
+  --lift-mid: translateY(-5px);
+  --lift-strong: translateY(-7px);
+
+  --shadow-soft: 0 10px 24px rgba(43, 36, 29, 0.10);
+  --shadow-mid: 0 14px 30px rgba(43, 36, 29, 0.14);
+  --shadow-strong: 0 18px 38px rgba(43, 36, 29, 0.18);
+}
+
+[data-theme="dark"] {
+  --shadow-soft: 0 10px 24px rgba(0, 0, 0, 0.24);
+  --shadow-mid: 0 14px 30px rgba(0, 0, 0, 0.30);
+  --shadow-strong: 0 18px 38px rgba(0, 0, 0, 0.36);
+}
+
+/* soft depth */
+.timeline-card,
+.human-card,
+.contact-card,
+.mini-card,
+.roadmap-item {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.timeline-card:hover,
+.human-card:hover,
+.contact-card:hover,
+.mini-card:hover,
+.roadmap-item:hover {
+  transform: var(--lift-soft);
+  box-shadow: var(--shadow-soft);
+  border-color: color-mix(in srgb, var(--accent-olive) 30%, var(--line));
+}
+
+/* medium depth */
+.card,
+.section-soft,
+.section-card,
+.profile {
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+}
+
+.card:hover,
+.section-soft:hover,
+.section-card:hover,
+.profile:hover {
+  transform: var(--lift-mid);
+  box-shadow: var(--shadow-mid);
+  border-color: color-mix(in srgb, var(--brand) 40%, var(--line));
+}
+
+/* strong depth for key containers */
+.topbar,
+.section {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.topbar:hover,
+.section:hover {
+  transform: var(--lift-strong);
+  box-shadow: var(--shadow-strong);
+  border-color: color-mix(in srgb, var(--brand) 44%, var(--accent-olive));
+}
