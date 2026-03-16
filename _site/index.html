@@ -1,649 +1,209 @@
----
-layout: default
-title: "Mi página"
----
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alejandro Donate García · CV Aurora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-orb orb-a"></div>
+  <div class="bg-orb orb-b"></div>
+  <div class="bg-grid"></div>
 
-<a href="#top" class="back-to-top" aria-label="Volver arriba">↑</a>
-
-<div class="container" id="top">
-  <header class="topbar hero-card">
-    <div class="hero-main">
-      <div>
-        <p class="eyebrow">Portfolio · Desarrollo Multiplataforma</p>
-        <h1 class="title">Alejandro Donate García</h1>
-        <p class="subtitle">Estudiante de Desarrollo de Aplicaciones Multiplataforma · 1º DAM</p>
-        <p class="hero-text">
-          Estoy empezando mi camino en el desarrollo de software y ahora mismo mi objetivo es seguir aprendiendo,
-          practicar mucho y ganar confianza poco a poco en Java, bases de datos y desarrollo web.
-        </p>
-
-        <div class="hero-highlights">
-          <span class="pill" title="POO, colecciones, fechas, expresiones regulares">Java</span>
-          <span class="pill" title="Consultas, joins, tablas y operaciones CRUD">SQL</span>
-          <span class="pill" title="Maquetación, responsive, grid y flexbox">HTML/CSS</span>
-          <span class="pill" title="Control de versiones y flujo de trabajo básico">Git</span>
-        </div>
+  <header class="hero wrapper">
+    <div class="hero-copy panel glass reveal">
+      <span class="eyebrow">Portfolio · Desarrollo Multiplataforma</span>
+      <h1>Alejandro Donate García</h1>
+      <p class="role">Estudiante de Desarrollo de Aplicaciones Multiplataforma · 1º DAM</p>
+      <p class="lead">
+        Estoy empezando mi camino en el desarrollo de software y ahora mismo mi objetivo es seguir aprendiendo,
+        practicar mucho y ganar confianza poco a poco en Java, bases de datos y desarrollo web.
+      </p>
+      <div class="tags">
+        <span>Java</span><span>SQL</span><span>HTML/CSS</span><span>Git</span><span>XML</span>
       </div>
-
-      <nav class="hero-actions">
-        <button id="theme-toggle" class="btn icon-btn" style="padding:10px;line-height:1;">
-          <span id="theme-icon">🌙</span>
-        </button>
-        <a class="btn" href="#featured">Ver proyectos</a>
-        <a class="btn" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a class="btn" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">GitHub</a>
-        <button id="copy-btn" class="btn">Copiar Email</button>
-      </nav>
+      <div class="actions">
+        <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+        <a href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer" class="btn">LinkedIn</a>
+        <a href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer" class="btn">GitHub</a>
+        <button class="btn" id="copyMail">Copiar email</button>
+      </div>
     </div>
 
-    <div class="hero-side">
-      <div class="hero-panel">
-        <h3>Actualmente</h3>
+    <div class="hero-stack">
+      <article class="panel stat-card reveal delay-1">
+        <div class="avatar">AD</div>
+        <div>
+          <p class="mini">Objetivo actual</p>
+          <h2>Primera oportunidad para aprender en un entorno real</h2>
+        </div>
+      </article>
+      <article class="panel reveal delay-2">
+        <p class="mini">Actualmente</p>
         <ul class="status-list">
           <li>Buscando prácticas y oportunidades donde pueda aprender desde cero y seguir mejorando.</li>
           <li>Practicando Java, bases de datos y diseño web para afianzar una base más sólida.</li>
           <li>Construyendo proyectos sencillos para aplicar lo que voy aprendiendo paso a paso.</li>
         </ul>
-      </div>
+      </article>
     </div>
   </header>
 
-  <section class="section reveal-on-scroll">
-    <div class="section-heading">
-      <div>
-        <h2>Sobre mí</h2>
-        <p class="section-intro">Una vista rápida de mi perfil, de lo que estoy empezando a trabajar y de hacia dónde quiero seguir avanzando.</p>
+  <main class="wrapper layout">
+    <section class="content-col">
+      <article class="panel reveal">
+        <div class="section-head">
+          <span class="chip">Sobre mí</span>
+          <h2>Un perfil junior con mucha constancia y ganas reales de crecer</h2>
+        </div>
+        <p>
+          Soy estudiante y todavía estoy en una etapa muy inicial de aprendizaje. Me interesa seguir descubriendo cómo funciona el desarrollo de software,
+          especialmente en Java, bases de datos y la parte web con HTML, CSS y XML. Mi objetivo ahora mismo es practicar, entender bien las bases y seguir ganando soltura poco a poco.
+        </p>
+        <div class="two-up">
+          <div class="mini-panel">
+            <h3>Objetivo</h3>
+            <p>Seguir aprendiendo y afianzando poco a poco Java, bases de datos y tecnologías web.</p>
+          </div>
+          <div class="mini-panel">
+            <h3>Fortaleza</h3>
+            <p>Constancia, curiosidad y muchas ganas de aprender con práctica y experiencia real.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel reveal delay-1">
+        <div class="section-head">
+          <span class="chip">Progreso</span>
+          <h2>Mi línea de avance</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item"><span></span><div><h3>Inicio en DAM</h3><p>Empiezo a formarme en desarrollo de software y a construir una base en programación, bases de datos y desarrollo web.</p></div></div>
+          <div class="timeline-item"><span></span><div><h3>Java y SQL</h3><p>Empiezo a practicar programación orientada a objetos, colecciones y consultas básicas para entender mejor los fundamentos.</p></div></div>
+          <div class="timeline-item"><span></span><div><h3>Frontend y portfolio</h3><p>Voy trabajando la parte visual con HTML y CSS, aprendiendo responsive design y mejorando poco a poco la maquetación.</p></div></div>
+          <div class="timeline-item"><span></span><div><h3>Ahora mismo</h3><p>Sigo construyendo proyectos sencillos, mejorando mi portfolio y buscando una primera oportunidad para aprender en un entorno real.</p></div></div>
+        </div>
+      </article>
+
+      <article class="panel reveal delay-2" id="proyectos">
+        <div class="section-head">
+          <span class="chip">Proyectos</span>
+          <h2>Repositorios y prácticas</h2>
+        </div>
+        <div class="project-grid">
+          <div class="project-card accent-a">
+            <p class="mini">Enfoque</p>
+            <h3>Showcase / portfolio</h3>
+            <p>Una selección de proyectos y prácticas que reflejan lo que voy aprendiendo y cómo estoy avanzando.</p>
+          </div>
+          <div class="project-card accent-b">
+            <p class="mini">Repositorio</p>
+            <h3>GitHub activo</h3>
+            <p>Explora mis proyectos y prácticas por nombre, actividad o temática en mi perfil.</p>
+          </div>
+          <div class="project-card accent-c">
+            <p class="mini">Aprendizaje</p>
+            <h3>Backend, BBDD y web</h3>
+            <p>Construyendo proyectos sencillos para aplicar conceptos de Java, SQL, HTML/CSS y lógica.</p>
+          </div>
+        </div>
+        <a class="inline-link" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">Abrir GitHub de Alejandro →</a>
+      </article>
+    </section>
+
+    <aside class="side-col">
+      <article class="panel reveal delay-1">
+        <div class="section-head tight">
+          <span class="chip">Skills</span>
+          <h2>Contenidos que estoy trabajando</h2>
+        </div>
+        <div class="skill-list">
+          <button class="skill active" data-title="JAVA" data-text="CLASES · GETTER/SETTER · FECHAS · EXPRESIONES REGULARES · ARRAYS · LISTAS · SETS · MAPS">Java</button>
+          <button class="skill" data-title="BBDD" data-text="CREATE TABLES · ALTER · DROP · INSERT INTO · JOINS · POSTGRES">BBDD</button>
+          <button class="skill" data-title="FRONTEND" data-text="HTML GENERAL · CSS GRID · FLEXBOX · RESPONSIVE DESIGN">Frontend</button>
+          <button class="skill" data-title="XML" data-text="XSD · VALIDACIÓN · ESTRUCTURAS DE DATOS">XML</button>
+        </div>
+        <div class="skill-display">
+          <p id="skillTitle">JAVA</p>
+          <span id="skillText">CLASES · GETTER/SETTER · FECHAS · EXPRESIONES REGULARES · ARRAYS · LISTAS · SETS · MAPS</span>
+        </div>
+      </article>
+
+      <article class="panel reveal delay-2">
+        <div class="section-head tight">
+          <span class="chip">Idiomas</span>
+          <h2>Nivel de inglés</h2>
+        </div>
+        <div class="bars">
+          <div><label>Hablado</label><div class="bar"><i style="width:50%"></i></div><small>B1–B2</small></div>
+          <div><label>Escrito</label><div class="bar"><i style="width:65%"></i></div><small>B1–B2</small></div>
+          <div><label>Lectura</label><div class="bar"><i style="width:70%"></i></div><small>B1–B2</small></div>
+        </div>
+      </article>
+
+      <article class="panel reveal delay-3">
+        <div class="section-head tight">
+          <span class="chip">Roadmap</span>
+          <h2>Actualmente aprendiendo</h2>
+        </div>
+        <div class="roadmap">
+          <div><strong>Java:</strong> seguir entendiendo mejor la POO, las colecciones y la lógica de programación.</div>
+          <div><strong>BBDD:</strong> ganar más soltura con consultas SQL, tablas y relaciones.</div>
+          <div><strong>Frontend:</strong> mejorar en estructura, responsive design y limpieza visual.</div>
+        </div>
+      </article>
+
+      <article class="panel reveal delay-3">
+        <div class="section-head tight">
+          <span class="chip">Contacto</span>
+          <h2>Hablemos</h2>
+        </div>
+        <div class="contact-card-simple">
+          <p><strong>Email:</strong> <a href="mailto:alexDoGa.Work@gmail.com">alexDoGa.Work@gmail.com</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">alejandrodongar</a></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">alejandroDonGar</a></p>
+        </div>
+      </article>
+    </aside>
+  </main>
+
+  <section class="wrapper values reveal">
+    <article class="panel value-panel">
+      <h2>Cómo trabajo y qué busco</h2>
+      <div class="value-grid">
+        <div><h3>Cómo aprendo</h3><p>Me gusta aprender practicando: entender la teoría, probar por mi cuenta, equivocarme y volver a intentarlo hasta asentar bien cada concepto.</p></div>
+        <div><h3>Qué valoro</h3><p>Valoro los entornos en los que pueda seguir creciendo, recibir feedback y aprender de personas con más experiencia.</p></div>
+        <div><h3>Qué busco</h3><p>Busco una oportunidad para seguir desarrollándome poco a poco en backend, bases de datos y frontend, aportando constancia, actitud y ganas de aprender.</p></div>
       </div>
-    </div>
-
-    <div class="grid2">
-      <div class="profile">
-        <div class="profile-img-container profile-img-swap">
-          <img class="profile-img primary-img" src="assets/img/perfil.jpg" alt="Foto de perfil">
-          <img class="profile-img secondary-img" src="assets/img/perfil2.jpg" alt="Segunda foto de perfil">
-        </div>
-        <div class="bio">
-          <p class="muted" style="margin-top:0">
-            Soy estudiante y todavía estoy en una etapa muy inicial de aprendizaje. Me interesa seguir descubriendo cómo funciona el desarrollo de software,
-            especialmente en Java, bases de datos y la parte web con HTML, CSS y XML. Mi objetivo ahora mismo es practicar,
-            entender bien las bases y seguir ganando soltura poco a poco.
-          </p>
-
-          <div class="pillrow">
-            <span class="pill" title="POO, colecciones, fechas, expresiones regulares">Java</span>
-            <span class="pill" title="Consultas, joins, tablas y operaciones CRUD">SQL</span>
-            <span class="pill" title="Maquetación, responsive, grid y flexbox">HTML/CSS</span>
-            <span class="pill" title="Control de versiones y flujo de trabajo básico">Git</span>
-          </div>
-
-          <div class="mini-cards">
-            <article class="mini-card">
-              <span class="mini-label">Objetivo</span>
-              <p>Seguir aprendiendo y afianzando poco a poco Java, bases de datos y tecnologías web.</p>
-            </article>
-            <article class="mini-card">
-              <span class="mini-label">Fortaleza</span>
-              <p>Constancia, curiosidad y muchas ganas de aprender con práctica y experiencia real.</p>
-            </article>
-          </div>
-        </div>
-      </div>
-
-      <div class="aside-stack">
-        <div class="skills-interactive section-soft">
-          <div class="block-header">
-            <h3 style="margin:0">Contenidos que estoy trabajando</h3>
-            <span class="soft-badge">Interactivo</span>
-          </div>
-
-          <div class="skills-tabs">
-            <button class="skill-pill active" title="POO, colecciones y trabajo con estructuras" onclick="showSkill('java', this)">JAVA</button>
-            <button class="skill-pill" title="Modelado, tablas, joins e inserciones" onclick="showSkill('bbdd', this)">BBDD</button>
-            <button class="skill-pill" title="HTML, CSS, responsive design y layout" onclick="showSkill('web', this)">FRONTEND</button>
-            <button class="skill-pill" title="XSD, validación y estructuras" onclick="showSkill('xml', this)">XML</button>
-          </div>
-
-          <div id="skill-display" class="skill-card">
-            <h3 id="skill-title" style="margin-top:0;color:var(--brand)">JAVA</h3>
-            <p id="skill-text" class="muted">CLASES | GETTER - SETTER | FECHAS | EXP REGULARES | ARRAYS | LISTAS | SETS | MAPS</p>
-          </div>
-        </div>
-
-        <div class="section-soft">
-          <div class="block-header">
-            <h3 style="margin:0">Nivel de inglés</h3>
-            <span class="soft-badge">Progreso</span>
-          </div>
-
-          <div class="skill-bar-container">
-            <div class="level-group">
-              <div class="level-title-row">
-                <span>Hablado</span>
-              </div>
-              <div class="level-scale">
-                <span>B1</span>
-                <span>B2</span>
-              </div>
-              <div class="bar"><div class="progress" style="width:50%"></div></div>
-            </div>
-
-            <div class="level-group">
-              <div class="level-title-row">
-                <span>Escrito</span>
-              </div>
-              <div class="level-scale">
-                <span>B1</span>
-                <span>B2</span>
-              </div>
-              <div class="bar"><div class="progress" style="width:65%"></div></div>
-            </div>
-
-            <div class="level-group">
-              <div class="level-title-row">
-                <span>Lectura</span>
-              </div>
-              <div class="level-scale">
-                <span>B1</span>
-                <span>B2</span>
-              </div>
-              <div class="bar"><div class="progress" style="width:70%"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="section-soft">
-          <div class="block-header">
-            <h3 style="margin:0">Actualmente aprendiendo</h3>
-            <span class="soft-badge">Roadmap</span>
-          </div>
-          <div class="roadmap-list">
-            <div class="roadmap-item"><strong>Java:</strong> seguir entendiendo mejor la POO, las colecciones y la lógica de programación.</div>
-            <div class="roadmap-item"><strong>BBDD:</strong> ganar más soltura con consultas SQL, tablas y relaciones.</div>
-            <div class="roadmap-item"><strong>Frontend:</strong> mejorar en estructura, responsive design y limpieza visual.</div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </article>
   </section>
 
-  
-  <section class="github-stats-container">
-    <div class="stats-wrapper section-card">
-      <div class="section-heading compact-heading">
-        <div>
-          <h2 class="section-title" style="margin:0">Mi Actividad en GitHub</h2>
-          <p class="section-intro">Una referencia visual de mi actividad mientras sigo practicando y construyendo proyectos para aprender.</p>
-        </div>
-      </div>
-
-      <div class="stats-cards stats-cards-main">
-        <img class="github-stats-img github-stats-large" src="https://github-readme-stats.vercel.app/api?username=alejandroDonGar&hide_border=true&bg_color=fcf8f1&title_color=a9774b&text_color=52473b&icon_color=7b7558&border_color=d2c5b2" alt="Estadísticas de GitHub" />
-        <img class="github-stats-img github-stats-large" src="https://github-readme-stats.vercel.app/api/top-langs?username=alejandroDonGar&hide_border=true&bg_color=fcf8f1&title_color=a9774b&text_color=52473b&icon_color=7b7558&border_color=d2c5b2" alt="Lenguajes más usados" />
-      </div>
-
-      <div class="stats-cards stats-cards-secondary">
-        <img class="github-stats-img github-stats-medium" src="https://streak-stats.demolab.com?user=alejandroDonGar&hide_border=true&background=FCF8F1&ring=A9774B&fire=7B7558&currStreakLabel=6D645A&sideLabels=6D645A&dates=8C8175&currStreakNum=52473B&sideNums=52473B" alt="Racha de contribuciones" />
-        <img class="github-stats-img github-stats-wide" src="https://github-readme-activity-graph.vercel.app/graph?username=alejandroDonGar&bg_color=fcf8f1&color=6d645a&line=a9774b&point=7b7558&area=true&area_color=d9cfbf&hide_border=true" alt="Gráfico de actividad de GitHub" />
-      </div>
-    </div>
-  </section>
-
-
-
-  <section class="section reveal-on-scroll">
-    <div class="section-heading">
-      <div>
-        <h2>Mi progreso</h2>
-        <p class="section-intro">Una pequeña línea de tiempo para mostrar cómo voy avanzando y en qué estoy centrado ahora mismo.</p>
-      </div>
-    </div>
-
-    <div class="timeline">
-      <article class="timeline-item">
-        <span class="timeline-dot"></span>
-        <div class="timeline-card">
-          <h3>Inicio en DAM</h3>
-          <p class="muted">Empiezo a formarme en desarrollo de software y a construir una base en programación, bases de datos y desarrollo web.</p>
-        </div>
-      </article>
-
-      <article class="timeline-item">
-        <span class="timeline-dot"></span>
-        <div class="timeline-card">
-          <h3>Java y SQL</h3>
-          <p class="muted">Empiezo a practicar programación orientada a objetos, colecciones y consultas básicas para entender mejor los fundamentos.</p>
-        </div>
-      </article>
-
-      <article class="timeline-item">
-        <span class="timeline-dot"></span>
-        <div class="timeline-card">
-          <h3>Frontend y portfolio</h3>
-          <p class="muted">Voy trabajando la parte visual con HTML y CSS, aprendiendo responsive design y mejorando poco a poco la maquetación.</p>
-        </div>
-      </article>
-
-      <article class="timeline-item">
-        <span class="timeline-dot"></span>
-        <div class="timeline-card">
-          <h3>Ahora mismo</h3>
-          <p class="muted">Sigo construyendo proyectos sencillos, mejorando mi portfolio y buscando una primera oportunidad para aprender en un entorno real.</p>
-        </div>
-      </article>
-    </div>
-  </section>
-
-
-  <section class="section reveal-on-scroll">
-    <div class="section-heading">
-      <div>
-        <h2>Proyectos destacados</h2>
-        <p class="section-intro">Una selección de proyectos y prácticas que reflejan lo que voy aprendiendo y cómo estoy avanzando.</p>
-      </div>
-    </div>
-    <div id="featured" class="cards"></div>
-  </section>
-
-  <section class="section">
-    <div class="section-heading">
-      <div>
-        <h2>Mis repositorios</h2>
-        <p class="section-intro">Explora mis proyectos y prácticas por nombre, actividad o temática.</p>
-      </div>
-    </div>
-
-    <div class="toolbar">
-      <input id="q" class="input" placeholder="Buscar repositorios..." />
-      <select id="sort" class="select">
-        <option value="updated">Ordenar: actividad reciente</option>
-        <option value="stars">Ordenar: estrellas</option>
-        <option value="name">Ordenar: nombre</option>
-      </select>
-      <button class="btn active filter-btn" data-topic="all">✨ Todos</button>
-      <button class="btn filter-btn" data-topic="showcase">⭐ Showcase</button>
-      <button class="btn filter-btn" data-topic="web">🌐 Web</button>
-      <button class="btn filter-btn" data-topic="backend">⚙️ Backend</button>
-    </div>
-
-    <div class="results-meta">
-      <span id="results-count">Cargando repositorios...</span>
-      <button id="toggle-repos" class="btn subtle-btn" type="button" style="display:none;">Ver más</button>
-    </div>
-
-    <div id="repos" class="cards"></div>
-  </section>
-
-
-  <section class="section reveal-on-scroll">
-    <div class="section-heading">
-      <div>
-        <h2>Cómo trabajo y qué busco</h2>
-        <p class="section-intro">Además de la parte técnica, quiero que la página refleje cómo aprendo y cómo quiero seguir creciendo como desarrollador junior.</p>
-      </div>
-    </div>
-
-    <div class="human-grid">
-      <article class="human-card">
-        <h3>Cómo aprendo</h3>
-        <p class="muted">Me gusta aprender practicando: entender la teoría, probar por mi cuenta, equivocarme y volver a intentarlo hasta asentar bien cada concepto.</p>
-      </article>
-
-      <article class="human-card">
-        <h3>Qué valoro</h3>
-        <p class="muted">Valoro los entornos en los que pueda seguir creciendo, recibir feedback y aprender de personas con más experiencia.</p>
-      </article>
-
-      <article class="human-card">
-        <h3>Qué busco</h3>
-        <p class="muted">Busco una oportunidad para seguir desarrollándome poco a poco en backend, bases de datos y frontend, aportando constancia, actitud y ganas de aprender.</p>
-      </article>
-    </div>
-  </section>
-
-
-  <section class="section contact-section reveal-on-scroll">
-    <div class="section-heading">
-      <div>
-        <h2>Contacto</h2>
-        <p class="section-intro">Si crees que puedo encajar en unas prácticas o en una oportunidad para seguir aprendiendo, estaré encantado de hablar. Mi objetivo es crecer, ganar experiencia y seguir mejorando.</p>
-      </div>
-    </div>
-
-    <div class="contact-grid">
-      <article class="contact-card">
-        <h3>Email</h3>
-        <p class="muted">alexDoGa.Work@gmail.com</p><ul class="contact-list"><li>Respuesta rápida por email</li><li>Contacto directo y sencillo</li></ul>
-        <button class="btn" onclick="navigator.clipboard.writeText('alexDoGa.Work@gmail.com')">Copiar email</button>
-      </article>
-
-      <article class="contact-card">
-        <h3>LinkedIn</h3>
-        <p class="muted">Perfil profesional y contacto directo.</p><ul class="contact-list"><li>Trayectoria y perfil</li><li>Canal ideal para networking</li></ul>
-        <a class="btn" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">Abrir LinkedIn</a>
-      </article>
-
-      <article class="contact-card">
-        <h3>GitHub</h3>
-        <p class="muted">Repositorios, prácticas y proyectos personales.</p><ul class="contact-list"><li>Código y evolución técnica</li><li>Proyectos y práctica real</li></ul>
-        <a class="btn" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">Abrir GitHub</a>
-      </article>
-    </div>
-  </section>
-
-    <footer class="site-footer reveal-on-scroll">
-      <div>
-        <strong>Alejandro Donate García</strong>
-        <p class="muted">Portfolio personal construido mientras sigo aprendiendo HTML, CSS y JavaScript.</p>
-      </div>
-      <div class="footer-links">
-        <a href="#top">Inicio</a>
-        <a href="#featured">Proyectos</a>
-        <a href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">LinkedIn</a>
-      </div>
-    </footer>
-
-</div>
-
-<script>
-  const GITHUB_USERNAME = "alejandroDonGar";
-  const FEATURED_TOPIC = "showcase";
-  let allRepos = [];
-  let activeTopic = "all";
-  let reposExpanded = false;
-  const REPOS_PREVIEW_COUNT = 6;
-
-  function formatDate(iso) {
-    const d = new Date(iso);
-    return d.toLocaleDateString("es-ES", { year: "numeric", month: "short", day: "2-digit" });
-  }
-
-  function cardBorderByIndex(i) {
-    return "";
-  }
-
-  async function fetchRepos() {
-    const url = `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
-    const res = await fetch(url, { headers: { "Accept": "application/vnd.github+json" } });
-    if (!res.ok) throw new Error("No se pudo leer la API de GitHub. Revisa tu usuario.");
-    const repos = await res.json();
-    return repos.map(r => ({
-      name: r.name,
-      html_url: r.html_url,
-      description: r.description || "",
-      language: r.language || "—",
-      stargazers_count: r.stargazers_count || 0,
-      updated_at: r.updated_at,
-      topics: r.topics || []
-    }));
-  }
-
-  function renderFeatured(repos) {
-    const featured = repos.filter(r => r.topics.includes(FEATURED_TOPIC)).slice(0, 6);
-    const el = document.getElementById("featured");
-    el.innerHTML = featured.length ? "" : `<div class="muted">Aún no tienes repos con topic <b>${FEATURED_TOPIC}</b>.</div>`;
-
-    featured.forEach((r, i) => {
-      const topics = r.topics.slice(0, 4).map(t => `<span class="pill">${t}</span>`).join("");
-      el.insertAdjacentHTML("beforeend", `
-        <article class="card ${cardBorderByIndex(i)}">
-          <div class="card-topline">
-            <span class="mini-label">Destacado</span>
-          </div>
-          <h3>${r.name}</h3>
-          <div class="muted">${r.description || "Sin descripción (añádela en GitHub 😉)"}</div>
-          <div class="pillrow">
-            <span class="pill featured">Featured</span>
-            ${topics}
-          </div>
-          <div class="repoMeta">
-            <span>⭐ ${r.stargazers_count}</span>
-            <span>🧩 ${r.language}</span>
-            <span>🕒 ${formatDate(r.updated_at)}</span>
-          </div>
-          <a class="btn" href="${r.html_url}" target="_blank" rel="noreferrer">Ver repo</a>
-        </article>
-      `);
-    });
-  }
-
-  function applyFilters(repos) {
-    const q = (document.getElementById("q").value || "").toLowerCase();
-    const sort = document.getElementById("sort").value;
-
-    let out = repos.filter(r => {
-      const matchesText = r.name.toLowerCase().includes(q) || (r.description || "").toLowerCase().includes(q);
-      const matchesTopic = activeTopic === "all" ? true : r.topics.includes(activeTopic);
-      return matchesText && matchesTopic;
+  <script>
+    const copyButton = document.getElementById('copyMail');
+    copyButton?.addEventListener('click', async () => {
+      await navigator.clipboard.writeText('alexDoGa.Work@gmail.com');
+      const original = copyButton.textContent;
+      copyButton.textContent = '¡Copiado!';
+      setTimeout(() => copyButton.textContent = original, 1800);
     });
 
-    if (sort === "updated") out.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
-    if (sort === "stars") out.sort((a, b) => (b.stargazers_count || 0) - (a.stargazers_count || 0));
-    if (sort === "name") out.sort((a, b) => a.name.localeCompare(b.name));
-
-    return out;
-  }
-
-  function renderRepos(repos) {
-    const el = document.getElementById("repos");
-    const list = applyFilters(repos);
-    const visibleList = reposExpanded ? list : list.slice(0, REPOS_PREVIEW_COUNT);
-    const resultsCount = document.getElementById("results-count");
-    const toggleBtn = document.getElementById("toggle-repos");
-
-    resultsCount.textContent = `${list.length} repositorio(s) encontrados`;
-    toggleBtn.style.display = list.length > REPOS_PREVIEW_COUNT ? "inline-flex" : "none";
-    toggleBtn.textContent = reposExpanded ? "Ver menos" : "Ver más";
-
-    el.innerHTML = list.length ? "" : `
-      <div class="empty-state">
-        <div style="font-size: 3rem; margin-bottom: 10px;">🔍</div>
-        <p>No encontramos repositorios que coincidan con "<b>${document.getElementById("q").value}</b>"</p>
-      </div>`;
-
-    visibleList.forEach((r, i) => {
-      const topics = (r.topics && r.topics.length)
-        ? r.topics.slice(0, 6).map(t => `<span class="pill">${t}</span>`).join("")
-        : `<span class="pill">sin topics</span>`;
-
-      el.insertAdjacentHTML("beforeend", `
-        <article class="card ${cardBorderByIndex(i)}">
-          <h3>${r.name}</h3>
-          <div class="muted">${r.description || "Sin descripción"}</div>
-          <div class="pillrow">${topics}</div>
-          <div class="repoMeta">
-            <span>⭐ ${r.stargazers_count}</span>
-            <span>🧩 ${r.language}</span>
-            <span>🕒 ${formatDate(r.updated_at)}</span>
-          </div>
-          <a class="btn" href="${r.html_url}" target="_blank" rel="noreferrer">Abrir</a>
-        </article>
-      `);
-    });
-  }
-
-  const themeToggle = document.getElementById("theme-toggle");
-  const themeIcon = document.getElementById("theme-icon");
-  const currentTheme = localStorage.getItem("theme") || "light";
-
-  function updateGithubStats(theme) {
-    const statsImages = document.querySelectorAll(".github-stats-img");
-    const urls = (theme === "dark")
-      ? [
-          "https://github-readme-stats.vercel.app/api?username=alejandroDonGar&hide_border=true&bg_color=221b15&title_color=c79566&text_color=efe4d6&icon_color=8b9270&border_color=4c4134",
-          "https://github-readme-stats.vercel.app/api/top-langs?username=alejandroDonGar&hide_border=true&bg_color=221b15&title_color=c79566&text_color=efe4d6&icon_color=8b9270&border_color=4c4134",
-          "https://streak-stats.demolab.com?user=alejandroDonGar&hide_border=true&background=221B15&ring=C79566&fire=8B9270&currStreakLabel=B3A695&sideLabels=B3A695&dates=8E8172&currStreakNum=EFE4D6&sideNums=EFE4D6",
-          "https://github-readme-activity-graph.vercel.app/graph?username=alejandroDonGar&bg_color=221b15&color=b3a695&line=c79566&point=8b9270&area=true&area_color=3a3026&hide_border=true"
-        ]
-      : [
-          "https://github-readme-stats.vercel.app/api?username=alejandroDonGar&hide_border=true&bg_color=fcf8f1&title_color=a9774b&text_color=52473b&icon_color=7b7558&border_color=d2c5b2",
-          "https://github-readme-stats.vercel.app/api/top-langs?username=alejandroDonGar&hide_border=true&bg_color=fcf8f1&title_color=a9774b&text_color=52473b&icon_color=7b7558&border_color=d2c5b2",
-          "https://streak-stats.demolab.com?user=alejandroDonGar&hide_border=true&background=FCF8F1&ring=A9774B&fire=7B7558&currStreakLabel=6D645A&sideLabels=6D645A&dates=8C8175&currStreakNum=52473B&sideNums=52473B",
-          "https://github-readme-activity-graph.vercel.app/graph?username=alejandroDonGar&bg_color=fcf8f1&color=6d645a&line=a9774b&point=7b7558&area=true&area_color=d9cfbf&hide_border=true"
-        ];
-
-    statsImages.forEach((img, index) => {
-      img.classList.add("fade-out");
-
-      setTimeout(() => {
-        img.src = urls[index];
-
-        img.onload = () => {
-          img.classList.remove("fade-out");
-        };
-      }, 400);
-    });
-  }
-
-  if (currentTheme === "dark") {
-    document.documentElement.setAttribute("data-theme", "dark");
-    themeIcon.innerText = "☀️";
-    updateGithubStats("dark");
-  }
-
-  themeToggle.addEventListener("click", () => {
-    let theme = document.documentElement.getAttribute("data-theme");
-
-    if (theme === "dark") {
-      document.documentElement.setAttribute("data-theme", "light");
-      themeIcon.innerText = "🌙";
-      localStorage.setItem("theme", "light");
-      updateGithubStats("light");
-    } else {
-      document.documentElement.setAttribute("data-theme", "dark");
-      themeIcon.innerText = "☀️";
-      localStorage.setItem("theme", "dark");
-      updateGithubStats("dark");
-    }
-  });
-
-  function bindUI() {
-    document.getElementById("q").addEventListener("input", () => renderRepos(allRepos));
-    document.getElementById("sort").addEventListener("change", () => renderRepos(allRepos));
-
-    document.querySelectorAll(".btn[data-topic]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".btn[data-topic]").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        activeTopic = btn.dataset.topic;
-        renderRepos(allRepos);
+    document.querySelectorAll('.skill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.skill').forEach(el => el.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('skillTitle').textContent = btn.dataset.title;
+        document.getElementById('skillText').textContent = btn.dataset.text;
       });
     });
-  }
 
-  async function main() {
-    document.getElementById("repos").innerHTML = '<div class="skeleton"></div>'.repeat(3);
-    bindUI();
-    allRepos = await fetchRepos();
-    renderFeatured(allRepos);
-    renderRepos(allRepos);
-  }
-
-  main().catch(err => {
-    document.getElementById("featured").innerHTML = `<div class="muted">${err.message}</div>`;
-    document.getElementById("repos").innerHTML = `<div class="muted">${err.message}</div>`;
-    document.getElementById("results-count").textContent = "No se pudieron cargar los repositorios";
-    console.error(err);
-  });
-
-  const skillData = {
-    java: {
-      title: "JAVA",
-      text: "CLASES | GETTER - SETTER | FECHAS | EXP REGULARES | ARRAYS | LISTAS | SETS | MAPS"
-    },
-    bbdd: {
-      title: "BBDD",
-      text: "CREATE TABLES | ALTER - DROP - INSERT INTO | JOINS | POSTGRES"
-    },
-    web: {
-      title: "FRONTEND",
-      text: "HTML GENERAL | CSS GRID | FLEXBOX | RESPONSIVE DESIGN"
-    },
-    xml: {
-      title: "XML",
-      text: "XSD | VALIDACIÓN | ESTRUCTURAS DE DATOS"
-    }
-  };
-
-  function showSkill(key, btn) {
-    document.querySelectorAll(".skill-pill").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-
-    const display = document.getElementById("skill-display");
-    const title = document.getElementById("skill-title");
-    const text = document.getElementById("skill-text");
-
-    title.innerText = skillData[key].title;
-    text.innerText = skillData[key].text;
-
-    display.style.animation = "none";
-    display.offsetHeight;
-    display.style.animation = "slideFade 0.5s ease-out forwards";
-  }
-
-  function initRevealOnScroll() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("revealed");
-        }
-      });
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
     }, { threshold: 0.12 });
-
-    document.querySelectorAll(".reveal-on-scroll, .site-footer").forEach(el => observer.observe(el));
-  }
-
-  console.log("%c¡Hola! Soy Alejandro Donate 👋", "color: #38bdf8; font-size: 20px; font-weight: bold;");
-  console.log("Veo que estás revisando el código... ¡Eso me gusta! Si buscas un perfil junior con ganas de aprender, ¡hablemos!");
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("copy-btn");
-    const photoContainer = document.querySelector(".profile-img-swap");
-
-    initRevealOnScroll();
-
-    if (photoContainer) {
-      let showingAlt = false;
-
-      setInterval(() => {
-        showingAlt = !showingAlt;
-
-        photoContainer.classList.add("swap-glow");
-
-        if (showingAlt) {
-          photoContainer.classList.add("auto-swap");
-        } else {
-          photoContainer.classList.remove("auto-swap");
-        }
-
-        setTimeout(() => {
-          photoContainer.classList.remove("swap-glow");
-        }, 700);
-      }, 7000);
-    }
-
-    if (btn) {
-      btn.addEventListener("click", () => {
-        const email = "alexDoGa.Work@gmail.com";
-
-        navigator.clipboard.writeText(email).then(() => {
-          const originalText = btn.innerText;
-
-          btn.innerText = "¡Copiado! ✅";
-          btn.style.backgroundColor = "var(--brand)";
-          btn.style.color = "#ffffff";
-          btn.style.fontWeight = "bold";
-
-          setTimeout(() => {
-            btn.innerText = originalText;
-            btn.style.backgroundColor = "";
-            btn.style.color = "";
-            btn.style.fontWeight = "";
-          }, 2000);
-        }).catch(err => {
-          console.error("Error al copiar: ", err);
-        });
-      });
-    }
-  });
-</script>
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
