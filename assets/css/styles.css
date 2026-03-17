@@ -1319,3 +1319,29 @@ main > .screen > .wrapper > .panel + .panel
 {
     display: none;
 }
+
+
+/* Extra spacing so quick ribbon never overlaps the navigation */
+.sections-nav
+{
+    top: 190px;
+}
+
+.hero-screen
+{
+    padding-top: 260px;
+}
+
+/* If the ribbon wraps (long languages like DE), push nav further */
+@media (max-width: 1200px)
+{
+    .sections-nav
+    {
+        top: 210px;
+    }
+
+    .hero-screen
+    {
+        padding-top: 280px;
+    }
+}
