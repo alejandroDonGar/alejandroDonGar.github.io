@@ -1347,46 +1347,31 @@ main > .screen > .wrapper > .panel + .panel
 }
 
 
-
-
-
-
-/* Top quick info ribbon restored */
+/* Give breathing room inside the quick info ribbon */
 .quick-ribbon
 {
-    top: 12px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: min(1180px, calc(100% - 28px));
-    opacity: 1;
-    pointer-events: auto;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 28px;
+    padding-right: 28px;
 }
 
 .ribbon-inner
 {
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 18px;
-    padding: 18px 22px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
-.ribbon-copy
+/* Prevent text touching edges on small screens */
+@media (max-width: 900px)
 {
-    max-width: 360px;
-}
-
-.ribbon-actions
-{
-    justify-content: flex-end;
-    align-items: center;
-    row-gap: 10px;
+    .quick-ribbon
+    {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
 
 
-
-/* Unified quick ribbon: contacts + preferences */
+/* v13 unified top ribbon and mobile-only hero controls */
 .quick-ribbon
 {
     top: 12px;
@@ -1440,6 +1425,11 @@ main > .screen > .wrapper > .panel + .panel
     padding-top: 238px;
 }
 
+.mobile-controls
+{
+    display: none;
+}
+
 @media (max-width: 1220px)
 {
     .ribbon-inner
@@ -1479,5 +1469,18 @@ main > .screen > .wrapper > .panel + .panel
     .hero-screen
     {
         padding-top: 148px;
+    }
+
+    .mobile-controls
+    {
+        display: grid;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .mobile-controls .lang-switch
+    {
+        display: grid;
+        gap: 10px;
     }
 }
