@@ -2133,3 +2133,84 @@ main
     background: rgba(255, 255, 255, 0.05);
     transform: translateX(4px);
 }
+
+
+/* ===== v23 apple glow hover ===== */
+
+/* Keep original structure, only improve hover feeling */
+.button,
+.section-pill,
+.chip-button,
+.lang-btn,
+.repo-pill
+{
+    position: relative;
+    isolation: isolate;
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease,
+        color 0.22s ease;
+}
+
+.button::before,
+.section-pill::before,
+.chip-button::before,
+.lang-btn::before
+{
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(124, 255, 178, 0.18), transparent 42%),
+        radial-gradient(circle at 80% 80%, rgba(77, 166, 255, 0.16), transparent 46%);
+    opacity: 0;
+    transition: opacity 0.22s ease;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.button:hover,
+.section-pill:hover,
+.chip-button:hover,
+.lang-btn:hover
+{
+    border-color: rgba(124, 255, 178, 0.28);
+    box-shadow:
+        0 10px 26px rgba(0, 0, 0, 0.30),
+        0 0 0 1px rgba(124, 255, 178, 0.12) inset,
+        0 0 22px rgba(77, 166, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+.button:hover::before,
+.section-pill:hover::before,
+.chip-button:hover::before,
+.lang-btn:hover::before
+{
+    opacity: 1;
+}
+
+/* Stronger hover for primary CTAs only */
+.button.primary:hover
+{
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.34),
+        0 0 0 1px rgba(124, 255, 178, 0.18) inset,
+        0 0 28px rgba(124, 255, 178, 0.16);
+}
+
+/* Extra separation so top bar and menu read more clearly over the background */
+.quick-ribbon
+{
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.30),
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+.sections-nav
+{
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.22));
+}
