@@ -1597,7 +1597,7 @@ main > .screen > .wrapper > .panel + .panel
 }
 
 
-/* Skills chart fix */
+/* Skills chart fix v2 */
 .skills-chart
 {
     display: grid;
