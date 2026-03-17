@@ -176,6 +176,9 @@
                             <h3 id="strength-title" class="lang-fade"></h3>
                             <p id="strength-text" class="lang-fade"></p>
                         </div>
+                    <div class="radar-summary-card" id="radar-summary-card">
+                        <span class="mini-label lang-fade" id="radar-summary-label"></span>
+                        <p class="lang-fade" id="radar-summary-text"></p>
                     </div>
                 </article>
                 <article class="panel reveal tilt-card">
@@ -458,7 +461,7 @@ document.addEventListener("DOMContentLoaded", () =>
     {
         recruiterButtons.forEach(button =>
         {
-            button.textContent = recruiterMode ? t("recruiterModeOff") : t("recruiterMode");
+            button.textContent = recruiterMode ? t("recruiterDemoOff") : t("recruiterDemoOn");
         });
     }
 
@@ -566,6 +569,8 @@ document.addEventListener("DOMContentLoaded", () =>
             "radar-label": "radarLabel",
             "radar-title": "radarTitle",
             "skills-auto-note": "skillsAutoNote",
+            "radar-summary-label": "radarSummaryLabel",
+            "radar-summary-text": "radarSummaryDefault",
             "stats-label": "statsLabel",
             "stats-title": "statsTitle",
             "stats-text": "statsText",
@@ -1017,9 +1022,63 @@ document.addEventListener("DOMContentLoaded", () =>
         return [x, y];
     }
 
-    function updateSkillVisuals(reposData)
+
+    function updateRadarSummary(metrics)
     {
-        const metrics = computeSkillMetrics(reposData);
+        const summary = document.getElementById("radar-summary-text");
+        if (!summary)
+        {
+            return;
+        }
+
+        const ordered = Object.entries(metrics).sort((a, b) => b[1] - a[1]);
+        const first = ordered[0]?.[0] || "java";
+        const second = ordered[1]?.[0] || "db";
+
+        const labels = {
+            java: "Java",
+            db: currentLang === "en" ? "Databases" : currentLang === "de" ? "Datenbanken" : currentLang === "is" ? "Gagnagrunnar" : "BBDD",
+            frontend: "Frontend",
+            xml: "XML"
+        };
+
+        const summaries = {
+            es: "Perfil orientado a " + (first === "frontend" ? "frontend" : "backend") + " con más peso en " + labels[first] + " y apoyo en " + labels[second] + ".",
+            en: (first === "frontend" ? "Frontend" : "Backend") + "-leaning profile with strongest weight in " + labels[first] + " and support from " + labels[second] + ".",
+            de: (first === "frontend" ? "Frontend" : "Backend") + "-orientiertes Profil mit Schwerpunkt auf " + labels[first] + " und Unterstützung durch " + labels[second] + ".",
+            is: "Prófíll sem hallar að " + (first === "frontend" ? "frontend" : "backend") + " með mesta áherslu á " + labels[first] + " og stuðning frá " + labels[second] + "."
+        };
+
+        summary.textContent = summaries[currentLang] || t("radarSummaryDefault");
+    }
+
+    function bindRepoRadarHover()
+    {
+        document.querySelectorAll(".repo-card").forEach(card =>
+        {
+            card.addEventListener("mouseenter", () =>
+            {
+                const text = card.textContent.toLowerCase();
+                const metrics = {
+                    java: text.includes("java") || text.includes("backend") ? 84 : 56,
+                    db: text.includes("sql") || text.includes("bbdd") || text.includes("database") ? 80 : 48,
+                    frontend: text.includes("web") || text.includes("frontend") || text.includes("html") || text.includes("css") ? 82 : 46,
+                    xml: text.includes("xml") || text.includes("xsd") ? 74 : 34
+                };
+                updateSkillVisuals([], metrics);
+                updateRadarSummary(metrics);
+            });
+
+            card.addEventListener("mouseleave", () =>
+            {
+                updateSkillVisuals(allRepos);
+            });
+        });
+    }
+
+    function updateSkillVisuals(reposData, forcedMetrics = null)
+    {
+        const metrics = forcedMetrics || computeSkillMetrics(reposData);
         const bars = {
             java: document.querySelector('.chart-row[data-skill="java"] .chart-bar i') || document.querySelectorAll('.chart-row .chart-bar i')[0],
             db: document.querySelector('.chart-row[data-skill="db"] .chart-bar i') || document.querySelectorAll('.chart-row .chart-bar i')[1],
@@ -1049,6 +1108,8 @@ document.addEventListener("DOMContentLoaded", () =>
             db: skillPoint(cx, cy, Math.PI / 2, radius, metrics.db),
             xml: skillPoint(cx, cy, Math.PI, radius, metrics.xml)
         };
+
+        updateRadarSummary(metrics);
 
         const polygon = document.getElementById('radar-shape');
         if (polygon)
@@ -1122,6 +1183,7 @@ document.addEventListener("DOMContentLoaded", () =>
                 <a class="button repo-button" href="${repo.html_url}" target="_blank" rel="noreferrer">${t("viewRepo")}</a>
             </article>
         `).join("");
+        bindRepoRadarHover();
     }
 
     function applyFilters(reposData)

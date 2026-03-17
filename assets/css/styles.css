@@ -2077,3 +2077,59 @@ main
         max-width: 260px;
     }
 }
+
+
+/* v19 recruiter demo + radar summary */
+.radar-summary-card
+{
+    margin-top: 14px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    border: 1px solid var(--panel-border);
+    background: var(--bridge-bg);
+}
+
+.radar-summary-card p
+{
+    margin: 8px 0 0;
+    color: var(--muted);
+    line-height: 1.65;
+}
+
+.recruiter-mode #perfil .panel:first-child,
+.recruiter-mode #progreso,
+.recruiter-mode #skills,
+.recruiter-mode .section-bridge
+{
+    display: none;
+}
+
+.recruiter-mode #repositorios,
+.recruiter-mode #inicio,
+.recruiter-mode #contacto
+{
+    scroll-snap-align: start;
+}
+
+.recruiter-mode .repo-featured-grid
+{
+    grid-template-columns: 1fr 1fr;
+}
+
+.recruiter-mode .repo-featured-main
+{
+    grid-row: auto;
+    min-height: 260px;
+}
+
+.recruiter-mode .quick-ribbon
+{
+    backdrop-filter: blur(22px);
+}
+
+.radar-legend-item.active
+{
+    border-color: rgba(101, 216, 255, 0.45);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(4px);
+}
