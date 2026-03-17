@@ -1484,3 +1484,77 @@ main > .screen > .wrapper > .panel + .panel
         gap: 10px;
     }
 }
+
+
+/* v14 ribbon rows + more separation from nav */
+.ribbon-actions
+{
+    display: grid;
+    gap: 12px;
+    justify-items: end;
+}
+
+.ribbon-actions-top,
+.ribbon-actions-bottom
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.ribbon-actions-top .lang-switch
+{
+    margin-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.sections-nav
+{
+    top: 176px;
+}
+
+.hero-screen
+{
+    padding-top: 258px;
+}
+
+@media (max-width: 1220px)
+{
+    .ribbon-actions
+    {
+        justify-items: start;
+    }
+
+    .ribbon-actions-top,
+    .ribbon-actions-bottom
+    {
+        justify-content: flex-start;
+    }
+
+    .sections-nav
+    {
+        top: 220px;
+    }
+
+    .hero-screen
+    {
+        padding-top: 302px;
+    }
+}
+
+@media (max-width: 900px)
+{
+    .sections-nav
+    {
+        top: 18px;
+    }
+
+    .hero-screen
+    {
+        padding-top: 148px;
+    }
+}
