@@ -1093,3 +1093,9 @@ select
         width: 100%;
     }
 }
+
+
+main > .screen > .wrapper > .panel + .panel
+{
+    margin-top: 22px;
+}
