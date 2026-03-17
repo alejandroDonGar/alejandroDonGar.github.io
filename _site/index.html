@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alejandro Donate García · Aurora v3</title>
+    <title>Alejandro Donate García · Aurora v6</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
-<body>
-    <div class="bg-orb orb-a"></div>
-    <div class="bg-orb orb-b"></div>
-    <div class="bg-orb orb-c"></div>
-    <div class="bg-grid"></div>
-    <div class="bg-shape shape-a"></div>
-    <div class="bg-shape shape-b"></div>
+<body data-default-theme="dark">
+    <div class="bg-layer bg-grid"></div>
+    <div class="bg-layer bg-orb orb-a"></div>
+    <div class="bg-layer bg-orb orb-b"></div>
+    <div class="bg-layer bg-orb orb-c"></div>
+    <div class="bg-layer bg-shape shape-a"></div>
+    <div class="bg-layer bg-shape shape-b"></div>
+
     <div class="quick-ribbon" id="quickRibbon">
         <div class="ribbon-inner">
             <div class="ribbon-copy">
@@ -23,65 +24,59 @@
                 <span>Estudiante de Desarrollo de Aplicaciones Multiplataforma · 1º DAM</span>
             </div>
             <div class="ribbon-actions">
-                <a href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">GitHub</a>
-                <a href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">LinkedIn</a>
-                <button type="button" class="theme-toggle" data-theme-toggle aria-label="Cambiar modo de color">Modo claro</button>
-                <button type="button" data-copy-email>Copiar email</button>
+                <a class="button subtle" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">GitHub</a>
+                <a class="button subtle" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">LinkedIn</a>
+                <button class="button subtle" type="button" data-theme-toggle>Modo claro</button>
+                <button class="button subtle" type="button" data-copy-email>Copiar email</button>
             </div>
         </div>
     </div>
-    <nav class="sections-nav" aria-label="Secciones">
+
+    <nav class="sections-nav">
         <a href="#inicio" class="section-pill active">Inicio</a>
         <a href="#perfil" class="section-pill">Perfil</a>
         <a href="#progreso" class="section-pill">Progreso</a>
-        <a href="#repos" class="section-pill">Repos</a>
+        <a href="#repositorios" class="section-pill">Repos</a>
         <a href="#skills" class="section-pill">Skills</a>
         <a href="#contacto" class="section-pill">Contacto</a>
     </nav>
-    <main>
-        <section class="screen hero-screen" id="inicio">
-            <div class="wrapper hero-layout">
-                <article class="panel hero-copy reveal visible">
-                    <span class="eyebrow">Portfolio · Aurora</span>
-                    <h1>Alejandro Donate García</h1>
-                    <p class="role">Estudiante de Desarrollo de Aplicaciones Multiplataforma · 1º DAM</p>
-                    <p class="lead">Estoy empezando mi camino en el desarrollo de software y ahora mismo mi objetivo es seguir aprendiendo, practicar mucho y ganar confianza poco a poco en Java, bases de datos y desarrollo web.</p>
-                    <div class="tag-row">
-                        <span>Java</span><span>SQL</span><span>HTML/CSS</span><span>Git</span><span>XML</span>
-                    </div>
-                    <div class="action-row">
-                        <a class="btn btn-primary" href="#repos">Ver proyectos</a>
-                        <a class="btn" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">LinkedIn</a>
-                        <a class="btn" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">GitHub</a>
-                        <button class="btn theme-toggle" type="button" data-theme-toggle aria-label="Cambiar modo de color">Modo claro</button>
-                        <button class="btn" type="button" data-copy-email>Copiar email</button>
+
+    <header class="screen hero-screen" id="inicio">
+        <div class="wrapper hero-grid">
+            <article class="panel hero-copy reveal visible tilt-card">
+                <span class="eyebrow">Aurora v6</span>
+                <h1>Alejandro Donate García</h1>
+                <p class="role">Estudiante de Desarrollo de Aplicaciones Multiplataforma · 1º DAM</p>
+                <p class="lead">Estoy empezando mi camino en el desarrollo de software y ahora mismo mi objetivo es seguir aprendiendo, practicar mucho y ganar confianza poco a poco en Java, bases de datos y desarrollo web.</p>
+                <div class="pill-row"><span>Java</span><span>SQL</span><span>HTML/CSS</span><span>Git</span><span>XML</span></div>
+                <div class="action-row">
+                    <a class="button primary" href="#repositorios">Ver proyectos</a>
+                    <a class="button subtle" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">LinkedIn</a>
+                    <a class="button subtle" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">GitHub</a>
+                    <button class="button subtle" type="button" data-theme-toggle>Modo claro</button>
+                    <button class="button subtle" type="button" data-copy-email>Copiar email</button>
+                </div>
+            </article>
+            <aside class="hero-stack">
+                <article class="panel reveal visible tilt-card">
+                    <div class="profile-frame">
+                        <img src="assets/img/perfil.jpg" alt="Foto de perfil de Alejandro Donate García" />
                     </div>
                 </article>
-                <aside class="hero-side">
-                    <article class="panel profile-card reveal visible tilt-card">
-                        <div class="profile-frame">
-                            <img src="assets/img/perfil.jpg" alt="Foto de perfil de Alejandro Donate García" />
-                        </div>
-                        <div class="profile-copy">
-                            <span class="chip-label">Objetivo actual</span>
-                            <h2>Primera oportunidad para aprender en un entorno real</h2>
-                            <p>Quiero seguir creciendo en backend, bases de datos y desarrollo web mientras construyo una base sólida y útil.</p>
-                        </div>
-                    </article>
-                    <article class="panel reveal visible tilt-card">
-                        <span class="chip-label">Actualmente</span>
-                        <ul class="status-list">
-                            <li>Buscando prácticas y oportunidades donde pueda aprender desde cero y seguir mejorando.</li><li>Practicando Java, bases de datos y diseño web para afianzar una base más sólida.</li><li>Construyendo proyectos sencillos para aplicar lo que voy aprendiendo paso a paso.</li>
-                        </ul>
-                    </article>
-                </aside>
-            </div>
-        </section>
+                <article class="panel reveal visible tilt-card">
+                    <span class="mini-label">Actualmente</span>
+                    <ul class="status-list"><li>Buscando prácticas y oportunidades donde pueda aprender desde cero y seguir mejorando.</li><li>Practicando Java, bases de datos y diseño web para afianzar una base más sólida.</li><li>Construyendo proyectos sencillos para aplicar lo que voy aprendiendo paso a paso.</li></ul>
+                </article>
+            </aside>
+        </div>
+    </header>
+
+    <main>
         <section class="screen" id="perfil">
-            <div class="wrapper split-layout">
+            <div class="wrapper split-grid">
                 <article class="panel reveal tilt-card">
                     <div class="section-head">
-                        <span class="chip-label">Sobre mí</span>
+                        <span class="mini-label">Sobre mí</span>
                         <h2>Un perfil junior con mucha constancia y ganas reales de crecer</h2>
                     </div>
                     <p>Soy estudiante y todavía estoy en una etapa muy inicial de aprendizaje. Me interesa seguir descubriendo cómo funciona el desarrollo de software, especialmente en Java, bases de datos y la parte web con HTML, CSS y XML. Mi objetivo ahora mismo es practicar, entender bien las bases y seguir ganando soltura poco a poco.</p>
@@ -98,174 +93,209 @@
                 </article>
                 <article class="panel reveal tilt-card">
                     <div class="section-head">
-                        <span class="chip-label">Cómo trabajo</span>
-                        <h2>Qué busco y cómo aprendo</h2>
-                    </div>
-                    <div class="stack-grid">
-                        <div class="mini-card">
-                            <h3>Cómo aprendo</h3>
-                            <p>Me gusta aprender practicando, entendiendo la teoría y volviendo a intentar cada concepto hasta asimilarlo bien.</p>
-                        </div>
-                        <div class="mini-card">
-                            <h3>Qué valoro</h3>
-                            <p>Los entornos donde pueda crecer, recibir feedback y aprender de personas con más experiencia.</p>
-                        </div>
-                        <div class="mini-card">
-                            <h3>Qué busco</h3>
-                            <p>Una oportunidad donde seguir desarrollándome poco a poco en backend, bases de datos y frontend.</p>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
-        <section class="screen" id="progreso">
-            <div class="wrapper">
-                <article class="panel reveal">
-                    <div class="section-head">
-                        <span class="chip-label">Progreso</span>
-                        <h2>Mi línea de avance</h2>
-                    </div>
-                    <div class="timeline">
-                        <div class="timeline-item tilt-card"><span></span><div><h3>Inicio en DAM</h3><p>Base en programación, bases de datos y desarrollo web.</p></div></div><div class="timeline-item tilt-card"><span></span><div><h3>Java y SQL</h3><p>POO, colecciones y consultas para entender fundamentos.</p></div></div><div class="timeline-item tilt-card"><span></span><div><h3>Frontend y portfolio</h3><p>HTML, CSS, responsive design y mejora visual.</p></div></div><div class="timeline-item tilt-card"><span></span><div><h3>Ahora mismo</h3><p>Proyectos sencillos y búsqueda de una primera oportunidad real.</p></div></div>
-                    </div>
-                </article>
-            </div>
-        </section>
-        <section class="screen" id="repos">
-            <div class="wrapper repos-layout">
-                <article class="panel reveal">
-                    <div class="section-head">
-                        <span class="chip-label">Showcase</span>
-                        <h2>Repositorios destacados</h2>
-                    </div>
-                    <div class="showcase-grid">
-                        <article class="showcase-card tilt-card">
-                            <span class="mini-top">showcase</span>
-                            <h3>Proyectos destacados</h3>
-                            <p>Espacio pensado para enseñar mejor los repositorios que marques como importantes y que quieras enseñar con más contexto.</p>
-                            <a href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">Ver GitHub</a>
-                        </article>
-                        <article class="showcase-card tilt-card">
-                            <span class="mini-top">repos</span>
-                            <h3>Prácticas y progreso</h3>
-                            <p>Zona para mostrar proyectos desplegados, tecnologías utilizadas y aprendizajes de cada repositorio.</p>
-                            <a href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">Abrir perfil</a>
-                        </article>
-                    </div>
-                </article>
-                <article class="panel reveal">
-                    <div class="section-head">
-                        <span class="chip-label">Todos los repos</span>
-                        <h2>Explora prácticas y proyectos</h2>
-                    </div>
-                    <div class="filter-row">
-                        <button class="filter-chip">Todos</button>
-                        <button class="filter-chip">Showcase</button>
-                        <button class="filter-chip">Web</button>
-                        <button class="filter-chip">Backend</button>
-                    </div>
-                    <div class="repo-grid">
-                        <article class="repo-card tilt-card">
-                            <h3>Proyecto web</h3>
-                            <p>Maquetación, responsive design y organización visual.</p>
-                        </article>
-                        <article class="repo-card tilt-card">
-                            <h3>Prácticas Java</h3>
-                            <p>POO, colecciones, lógica y resolución de ejercicios.</p>
-                        </article>
-                        <article class="repo-card tilt-card">
-                            <h3>Consultas SQL</h3>
-                            <p>Tablas, relaciones y consultas para reforzar bases de datos.</p>
-                        </article>
-                    </div>
-                </article>
-            </div>
-        </section>
-        <section class="screen" id="skills">
-            <div class="wrapper split-layout">
-                <article class="panel reveal">
-                    <div class="section-head">
-                        <span class="chip-label">Skills</span>
+                        <span class="mini-label">Skills</span>
                         <h2>Contenidos que estoy trabajando</h2>
                     </div>
-                    <div class="skill-buttons">
-                        <button type="button" class="skill-button active" data-skill-button data-title="JAVA" data-text="CLASES · GETTER/SETTER · FECHAS · EXPRESIONES REGULARES · ARRAYS · LISTAS · SETS · MAPS">Java</button><button type="button" class="skill-button " data-skill-button data-title="BBDD" data-text="CREATE TABLES · ALTER · DROP · INSERT INTO · JOINS · POSTGRES">BBDD</button><button type="button" class="skill-button " data-skill-button data-title="FRONTEND" data-text="HTML GENERAL · CSS GRID · FLEXBOX · RESPONSIVE DESIGN">Frontend</button><button type="button" class="skill-button " data-skill-button data-title="XML" data-text="XSD · VALIDACIÓN · ESTRUCTURAS DE DATOS">XML</button>
-                    </div>
+                    <div class="chip-row"><button type="button" class="chip-button active" data-skill-button data-title="JAVA" data-text="CLASES · GETTER/SETTER · FECHAS · EXPRESIONES REGULARES · ARRAYS · LISTAS · SETS · MAPS">Java</button><button type="button" class="chip-button " data-skill-button data-title="BBDD" data-text="CREATE TABLES · ALTER · DROP · INSERT INTO · JOINS · POSTGRES">BBDD</button><button type="button" class="chip-button " data-skill-button data-title="FRONTEND" data-text="HTML GENERAL · CSS GRID · FLEXBOX · RESPONSIVE DESIGN">Frontend</button><button type="button" class="chip-button " data-skill-button data-title="XML" data-text="XSD · VALIDACIÓN · ESTRUCTURAS DE DATOS">XML</button></div>
                     <div class="skill-display tilt-card">
                         <p id="skillTitle">JAVA</p>
                         <span id="skillText">CLASES · GETTER/SETTER · FECHAS · EXPRESIONES REGULARES · ARRAYS · LISTAS · SETS · MAPS</span>
                     </div>
+                    <div class="bridge-strip">
+                        <span>Práctica real</span>
+                        <span>Responsive</span>
+                        <span>Backend</span>
+                        <span>BBDD</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="screen compact-screen" id="progreso">
+            <div class="wrapper split-grid">
+                <article class="panel reveal">
+                    <div class="section-head">
+                        <span class="mini-label">Progreso</span>
+                        <h2>Mi línea de avance</h2>
+                    </div>
+                    <div class="timeline"><article class="timeline-item tilt-card">
+                <span class="timeline-dot"></span>
+                <div>
+                    <h3>Inicio en DAM</h3>
+                    <p>Empiezo a formarme en desarrollo de software y a construir una base en programación, bases de datos y desarrollo web.</p>
+                </div>
+            </article><article class="timeline-item tilt-card">
+                <span class="timeline-dot"></span>
+                <div>
+                    <h3>Java y SQL</h3>
+                    <p>Empiezo a practicar programación orientada a objetos, colecciones y consultas básicas para entender mejor los fundamentos.</p>
+                </div>
+            </article><article class="timeline-item tilt-card">
+                <span class="timeline-dot"></span>
+                <div>
+                    <h3>Frontend y portfolio</h3>
+                    <p>Voy trabajando la parte visual con HTML y CSS, aprendiendo responsive design y mejorando poco a poco la maquetación.</p>
+                </div>
+            </article><article class="timeline-item tilt-card">
+                <span class="timeline-dot"></span>
+                <div>
+                    <h3>Ahora mismo</h3>
+                    <p>Sigo construyendo proyectos sencillos, mejorando mi portfolio y buscando una primera oportunidad para aprender en un entorno real.</p>
+                </div>
+            </article></div>
                 </article>
                 <div class="stack-grid">
                     <article class="panel reveal">
                         <div class="section-head">
-                            <span class="chip-label">Inglés</span>
-                            <h2>Nivel</h2>
+                            <span class="mini-label">Idiomas</span>
+                            <h2>Nivel de inglés</h2>
                         </div>
-                        <div class="bars">
-                            <div class="bar-block tilt-card"><label>Hablado</label><div class="bar"><i style="width:50%"></i></div><small>B1–B2</small></div><div class="bar-block tilt-card"><label>Escrito</label><div class="bar"><i style="width:65%"></i></div><small>B1–B2</small></div><div class="bar-block tilt-card"><label>Lectura</label><div class="bar"><i style="width:70%"></i></div><small>B1–B2</small></div>
-                        </div>
+                        <div class="levels"><div class="level-item tilt-card">
+                <label>Hablado</label>
+                <div class="bar"><i style="width:50%"></i></div>
+                <small>B1–B2</small>
+            </div><div class="level-item tilt-card">
+                <label>Escrito</label>
+                <div class="bar"><i style="width:65%"></i></div>
+                <small>B1–B2</small>
+            </div><div class="level-item tilt-card">
+                <label>Lectura</label>
+                <div class="bar"><i style="width:70%"></i></div>
+                <small>B1–B2</small>
+            </div></div>
                     </article>
                     <article class="panel reveal">
                         <div class="section-head">
-                            <span class="chip-label">Roadmap</span>
+                            <span class="mini-label">Roadmap</span>
                             <h2>Actualmente aprendiendo</h2>
                         </div>
-                        <div class="roadmap-list">
-                            <div class="mini-card tilt-card">Java · seguir entendiendo mejor la POO, las colecciones y la lógica de programación.</div><div class="mini-card tilt-card">BBDD · ganar más soltura con consultas SQL, tablas y relaciones.</div><div class="mini-card tilt-card">Frontend · mejorar en estructura, responsive design y limpieza visual.</div>
-                        </div>
+                        <div class="roadmap-grid"><div class='roadmap-item tilt-card'>Java · seguir entendiendo mejor la POO, las colecciones y la lógica de programación.</div><div class='roadmap-item tilt-card'>BBDD · ganar más soltura con consultas SQL, tablas y relaciones.</div><div class='roadmap-item tilt-card'>Frontend · mejorar en estructura, responsive design y limpieza visual.</div></div>
                     </article>
                 </div>
             </div>
         </section>
+
+        <section class="screen compact-screen" id="repositorios">
+            <div class="wrapper">
+                <article class="panel reveal">
+                    <div class="section-head">
+                        <span class="mini-label">Showcase</span>
+                        <h2>Proyectos destacados desde GitHub</h2>
+                        <p>Los repositorios con topic <strong>showcase</strong> se muestran aquí más grandes y clicables.</p>
+                    </div>
+                    <div id="featured" class="repo-featured-grid"></div>
+                </article>
+                <article class="panel reveal">
+                    <div class="section-head">
+                        <span class="mini-label">Repositorios</span>
+                        <h2>Mis repositorios</h2>
+                        <p>Explora mis proyectos y prácticas por nombre, actividad o temática.</p>
+                    </div>
+                    <div class="toolbar">
+                        <input id="q" class="input" placeholder="Buscar repositorios..." />
+                        <select id="sort" class="select">
+                            <option value="updated">Ordenar: actividad reciente</option>
+                            <option value="stars">Ordenar: estrellas</option>
+                            <option value="name">Ordenar: nombre</option>
+                        </select>
+                        <button class="button subtle active" data-topic="all">Todos</button>
+                        <button class="button subtle" data-topic="showcase">Showcase</button>
+                        <button class="button subtle" data-topic="web">Web</button>
+                        <button class="button subtle" data-topic="backend">Backend</button>
+                    </div>
+                    <div class="results-meta">
+                        <span id="results-count">Cargando repositorios...</span>
+                        <button id="toggle-repos" class="button subtle" type="button" style="display:none;">Ver más</button>
+                    </div>
+                    <div id="repos" class="repo-grid"></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="screen compact-screen" id="skills">
+            <div class="wrapper">
+                <article class="panel reveal">
+                    <div class="section-head">
+                        <span class="mini-label">Enfoque personal</span>
+                        <h2>Cómo trabajo y qué busco</h2>
+                        <p>Además de la parte técnica, quiero que la página refleje cómo aprendo y cómo quiero seguir creciendo como desarrollador junior.</p>
+                    </div>
+                    <div class="value-grid"><article class="value-card tilt-card">
+                <h3>Cómo aprendo</h3>
+                <p>Me gusta aprender practicando: entender la teoría, probar por mi cuenta, equivocarme y volver a intentarlo hasta asentar bien cada concepto.</p>
+            </article><article class="value-card tilt-card">
+                <h3>Qué valoro</h3>
+                <p>Valoro los entornos en los que pueda seguir creciendo, recibir feedback y aprender de personas con más experiencia.</p>
+            </article><article class="value-card tilt-card">
+                <h3>Qué busco</h3>
+                <p>Busco una oportunidad para seguir desarrollándome poco a poco en backend, bases de datos y frontend, aportando constancia, actitud y ganas de aprender.</p>
+            </article></div>
+                </article>
+            </div>
+        </section>
+
         <section class="screen contact-screen" id="contacto">
             <div class="wrapper">
                 <article class="panel contact-panel reveal">
-                    <div class="section-head">
-                        <span class="chip-label">Contacto</span>
+                    <div class="section-head centered">
+                        <span class="mini-label">Contacto</span>
                         <h2>Conectemos</h2>
-                        <p>He dejado esta última pantalla más compacta para que no se sienta vacía y cada forma de contacto tenga su propio botón.</p>
+                        <p>He dejado esta zona final más compacta, más cohesionada con el resto y sin mostrar el email en texto.</p>
                     </div>
                     <div class="contact-actions">
-                        <a class="contact-btn" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">GitHub</a>
-                        <a class="contact-btn" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">LinkedIn</a>
-                        <button class="contact-btn theme-toggle" type="button" data-theme-toggle aria-label="Cambiar modo de color">Modo claro</button>
-                        <button class="contact-btn" type="button" data-copy-email>Copiar email</button>
+                        <a class="button primary" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">GitHub</a>
+                        <a class="button subtle" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">LinkedIn</a>
+                        <button class="button subtle" type="button" data-theme-toggle>Modo claro</button>
+                        <button class="button subtle" type="button" data-copy-email>Copiar email</button>
                     </div>
                 </article>
             </div>
         </section>
     </main>
+
     
 <script>
 document.addEventListener("DOMContentLoaded", () =>
 {
-    const email = "alexDoGa.Work@gmail.com";
-
     const root = document.documentElement;
     const themeKey = "portfolio-theme";
-    const setTheme = theme =>
+    const email = "alexDoGa.Work@gmail.com";
+    const ribbon = document.getElementById("quickRibbon");
+    const hero = document.getElementById("inicio");
+    const pills = document.querySelectorAll(".section-pill");
+    const skillButtons = document.querySelectorAll("[data-skill-button]");
+    const featured = document.getElementById("featured");
+    const repos = document.getElementById("repos");
+    const q = document.getElementById("q");
+    const sort = document.getElementById("sort");
+    const resultsCount = document.getElementById("results-count");
+    const toggleRepos = document.getElementById("toggle-repos");
+    const filterButtons = document.querySelectorAll("[data-topic]");
+    const GITHUB_USERNAME = "alejandroDonGar";
+    const FEATURED_TOPIC = "showcase";
+    const REPOS_PREVIEW_COUNT = 6;
+    let allRepos = [];
+    let activeTopic = "all";
+    let reposExpanded = false;
+
+    function applyTheme(theme)
     {
         root.setAttribute("data-theme", theme);
-        const light = theme === "light";
         document.querySelectorAll("[data-theme-toggle]").forEach(button =>
         {
-            button.textContent = light ? "Modo nocturno" : "Modo claro";
+            button.textContent = theme === "light" ? "Modo nocturno" : "Modo claro";
         });
-    };
-
-    const storedTheme = localStorage.getItem(themeKey);
-    if (storedTheme)
-    {
-        setTheme(storedTheme);
     }
+
+    const storedTheme = localStorage.getItem(themeKey) || document.body.dataset.defaultTheme || "dark";
+    applyTheme(storedTheme);
 
     document.querySelectorAll("[data-theme-toggle]").forEach(button =>
     {
         button.addEventListener("click", () =>
         {
             const nextTheme = root.getAttribute("data-theme") === "light" ? "dark" : "light";
-            setTheme(nextTheme);
+            applyTheme(nextTheme);
             localStorage.setItem(themeKey, nextTheme);
         });
     });
@@ -274,24 +304,34 @@ document.addEventListener("DOMContentLoaded", () =>
     {
         button.addEventListener("click", async () =>
         {
+            const original = button.textContent;
             try
             {
                 await navigator.clipboard.writeText(email);
-                const original = button.textContent;
                 button.textContent = "Email copiado";
-                setTimeout(() =>
-                {
-                    button.textContent = original;
-                }, 1400);
             }
             catch (error)
             {
                 button.textContent = "No se pudo copiar";
-                setTimeout(() =>
-                {
-                    button.textContent = "Copiar email";
-                }, 1400);
             }
+            setTimeout(() =>
+            {
+                button.textContent = original;
+            }, 1400);
+        });
+    });
+
+    skillButtons.forEach(button =>
+    {
+        button.addEventListener("click", () =>
+        {
+            skillButtons.forEach(item =>
+            {
+                item.classList.remove("active");
+            });
+            button.classList.add("active");
+            document.getElementById("skillTitle").textContent = button.dataset.title;
+            document.getElementById("skillText").textContent = button.dataset.text;
         });
     });
 
@@ -306,7 +346,7 @@ document.addEventListener("DOMContentLoaded", () =>
         });
     },
     {
-        threshold: 0.16
+        threshold: 0.14
     });
 
     document.querySelectorAll(".reveal").forEach(element =>
@@ -314,37 +354,16 @@ document.addEventListener("DOMContentLoaded", () =>
         revealObserver.observe(element);
     });
 
-    document.querySelectorAll("[data-skill-button]").forEach(button =>
-    {
-        button.addEventListener("click", () =>
-        {
-            const title = button.getAttribute("data-title");
-            const text = button.getAttribute("data-text");
-            document.querySelectorAll("[data-skill-button]").forEach(item =>
-            {
-                item.classList.remove("active");
-            });
-            button.classList.add("active");
-            const titleNode = document.getElementById("skillTitle");
-            const textNode = document.getElementById("skillText");
-            if (titleNode && textNode)
-            {
-                titleNode.textContent = title;
-                textNode.textContent = text;
-            }
-        });
-    });
-
-    const hero = document.getElementById("inicio");
-    const ribbon = document.getElementById("quickRibbon");
-    const pills = document.querySelectorAll(".section-pill");
     const sectionObserver = new IntersectionObserver(entries =>
     {
         entries.forEach(entry =>
         {
-            const id = entry.target.id;
-            const pill = document.querySelector('.section-pill[href="#' + id + '"]');
-            if (entry.isIntersecting && pill)
+            if (!entry.isIntersecting)
+            {
+                return;
+            }
+            const pill = document.querySelector('.section-pill[href="#' + entry.target.id + '"]');
+            if (pill)
             {
                 pills.forEach(item =>
                 {
@@ -355,10 +374,10 @@ document.addEventListener("DOMContentLoaded", () =>
         });
     },
     {
-        threshold: 0.45
+        threshold: 0.42
     });
 
-    document.querySelectorAll("section[id]").forEach(section =>
+    document.querySelectorAll("section[id], header[id]").forEach(section =>
     {
         sectionObserver.observe(section);
     });
@@ -369,18 +388,18 @@ document.addEventListener("DOMContentLoaded", () =>
         {
             entries.forEach(entry =>
             {
-                if (!entry.isIntersecting)
+                if (entry.isIntersecting)
                 {
-                    ribbon.classList.add("visible");
+                    ribbon.classList.remove("visible");
                 }
                 else
                 {
-                    ribbon.classList.remove("visible");
+                    ribbon.classList.add("visible");
                 }
             });
         },
         {
-            threshold: 0.85
+            threshold: 0.72
         });
         ribbonObserver.observe(hero);
     }
@@ -389,7 +408,7 @@ document.addEventListener("DOMContentLoaded", () =>
     {
         card.addEventListener("mousemove", event =>
         {
-            if (window.innerWidth < 980)
+            if (window.innerWidth < 900)
             {
                 return;
             }
@@ -398,13 +417,239 @@ document.addEventListener("DOMContentLoaded", () =>
             const y = event.clientY - rect.top;
             const rotateX = ((y / rect.height) - 0.5) * -10;
             const rotateY = ((x / rect.width) - 0.5) * 10;
-            card.style.transform = "translateY(-8px) rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg) scale(1.01)";
+            card.style.transform = "translateY(-8px) rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg)";
         });
         card.addEventListener("mouseleave", () =>
         {
             card.style.transform = "";
         });
     });
+
+    document.addEventListener("mousemove", event =>
+    {
+        const x = (event.clientX / window.innerWidth).toFixed(3);
+        const y = (event.clientY / window.innerHeight).toFixed(3);
+        root.style.setProperty("--mx", x);
+        root.style.setProperty("--my", y);
+    });
+
+    function formatDate(iso)
+    {
+        const d = new Date(iso);
+        return d.toLocaleDateString("es-ES",
+        {
+            year: "numeric",
+            month: "short",
+            day: "2-digit"
+        });
+    }
+
+    function repoMeta(repo)
+    {
+        return `
+            <div class="repo-meta">
+                <span>⭐ ${repo.stargazers_count || 0}</span>
+                <span>🧩 ${repo.language || "—"}</span>
+                <span>🕒 ${formatDate(repo.updated_at)}</span>
+            </div>
+        `;
+    }
+
+    function repoTopics(repo, featuredCard)
+    {
+        const topics = (repo.topics && repo.topics.length)
+            ? repo.topics.slice(0, featuredCard ? 5 : 6).map(topic => `<span class="repo-pill ${topic === FEATURED_TOPIC ? "highlight" : ""}">${topic}</span>`).join("")
+            : `<span class="repo-pill">sin topics</span>`;
+        return `<div class="repo-pills">${featuredCard ? `<span class="repo-pill highlight">featured</span>` : ""}${topics}</div>`;
+    }
+
+    async function fetchRepos()
+    {
+        const url = `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
+        const res = await fetch(url,
+        {
+            headers:
+            {
+                "Accept": "application/vnd.github+json"
+            }
+        });
+
+        if (!res.ok)
+        {
+            throw new Error("No se pudo leer la API de GitHub.");
+        }
+
+        const repos = await res.json();
+        return repos
+            .filter(repo => !repo.fork)
+            .map(repo => ({
+                name: repo.name,
+                html_url: repo.html_url,
+                description: repo.description || "Sin descripción todavía.",
+                language: repo.language || "—",
+                stargazers_count: repo.stargazers_count || 0,
+                updated_at: repo.updated_at,
+                topics: repo.topics || []
+            }));
+    }
+
+    function renderFeatured(reposData)
+    {
+        if (!featured)
+        {
+            return;
+        }
+
+        const featuredRepos = reposData.filter(repo => repo.topics.includes(FEATURED_TOPIC)).slice(0, 6);
+        if (!featuredRepos.length)
+        {
+            featured.innerHTML = `<div class="empty-state">Aún no tienes repos con topic <b>${FEATURED_TOPIC}</b>.</div>`;
+            return;
+        }
+
+        featured.innerHTML = featuredRepos.map((repo, index) => `
+            <article class="repo-card repo-featured ${index === 0 ? "repo-featured-main" : ""} tilt-card">
+                <div class="repo-topline">
+                    <span class="mini-label">Showcase</span>
+                    <span class="repo-link-icon">↗</span>
+                </div>
+                <h3>${repo.name}</h3>
+                <p>${repo.description}</p>
+                ${repoTopics(repo, true)}
+                ${repoMeta(repo)}
+                <a class="button repo-button" href="${repo.html_url}" target="_blank" rel="noreferrer">Ver repo</a>
+            </article>
+        `).join("");
+    }
+
+    function applyFilters(reposData)
+    {
+        const query = (q?.value || "").toLowerCase().trim();
+        const sortValue = sort?.value || "updated";
+
+        let list = reposData.filter(repo =>
+        {
+            const matchesText = repo.name.toLowerCase().includes(query) || (repo.description || "").toLowerCase().includes(query);
+            const matchesTopic = activeTopic === "all" ? true : repo.topics.includes(activeTopic);
+            return matchesText && matchesTopic;
+        });
+
+        if (sortValue === "updated")
+        {
+            list.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+        }
+
+        if (sortValue === "stars")
+        {
+            list.sort((a, b) => (b.stargazers_count || 0) - (a.stargazers_count || 0));
+        }
+
+        if (sortValue === "name")
+        {
+            list.sort((a, b) => a.name.localeCompare(b.name));
+        }
+
+        return list;
+    }
+
+    function renderRepos(reposData)
+    {
+        if (!repos)
+        {
+            return;
+        }
+
+        const list = applyFilters(reposData);
+        const visibleList = reposExpanded ? list : list.slice(0, REPOS_PREVIEW_COUNT);
+
+        if (resultsCount)
+        {
+            resultsCount.textContent = `${list.length} repositorio(s) encontrados`;
+        }
+
+        if (toggleRepos)
+        {
+            toggleRepos.style.display = list.length > REPOS_PREVIEW_COUNT ? "inline-flex" : "none";
+            toggleRepos.textContent = reposExpanded ? "Ver menos" : "Ver más";
+        }
+
+        if (!list.length)
+        {
+            repos.innerHTML = `<div class="empty-state">No encontramos repositorios que coincidan con "<b>${q?.value || ""}</b>"</div>`;
+            return;
+        }
+
+        repos.innerHTML = visibleList.map(repo => `
+            <article class="repo-card tilt-card">
+                <div class="repo-topline">
+                    <span class="mini-label">${repo.topics.includes(FEATURED_TOPIC) ? "Featured" : "Repo"}</span>
+                </div>
+                <h3>${repo.name}</h3>
+                <p>${repo.description}</p>
+                ${repoTopics(repo, false)}
+                ${repoMeta(repo)}
+                <a class="button repo-button subtle" href="${repo.html_url}" target="_blank" rel="noreferrer">Abrir</a>
+            </article>
+        `).join("");
+    }
+
+    filterButtons.forEach(button =>
+    {
+        button.addEventListener("click", () =>
+        {
+            activeTopic = button.dataset.topic || "all";
+            reposExpanded = false;
+            filterButtons.forEach(item =>
+            {
+                item.classList.remove("active");
+            });
+            button.classList.add("active");
+            renderRepos(allRepos);
+        });
+    });
+
+    q?.addEventListener("input", () =>
+    {
+        reposExpanded = false;
+        renderRepos(allRepos);
+    });
+
+    sort?.addEventListener("change", () =>
+    {
+        renderRepos(allRepos);
+    });
+
+    toggleRepos?.addEventListener("click", () =>
+    {
+        reposExpanded = !reposExpanded;
+        renderRepos(allRepos);
+    });
+
+    async function initRepos()
+    {
+        if (!featured || !repos)
+        {
+            return;
+        }
+
+        featured.innerHTML = `<div class="skeleton"></div><div class="skeleton"></div>`;
+        repos.innerHTML = `<div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>`;
+
+        try
+        {
+            allRepos = await fetchRepos();
+            renderFeatured(allRepos);
+            renderRepos(allRepos);
+        }
+        catch (error)
+        {
+            const message = `<div class="empty-state">No se pudieron cargar los repositorios desde GitHub.</div>`;
+            featured.innerHTML = message;
+            repos.innerHTML = message;
+        }
+    }
+
+    initRepos();
 });
 </script>
 
