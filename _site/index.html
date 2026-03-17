@@ -1320,5 +1320,135 @@ document.addEventListener("DOMContentLoaded", () =>
     initRepos();
 });
 </script>
+
+<script>
+function initBackgroundIcons()
+{
+    const iconSets = {
+        back: ["☕", "💻", "🌐", "📦"],
+        mid: ["🐙", "✉️", "🔗", "☕", "💻"],
+        front: ["🌐", "🐙", "✉️", "🔗", "💻"]
+    };
+
+    const layers = {
+        back: document.getElementById("bg-icons-layer-back"),
+        mid: document.getElementById("bg-icons-layer-mid"),
+        front: document.getElementById("bg-icons-layer-front")
+    };
+
+    Object.entries(layers).forEach(([depth, container]) =>
+    {
+        const total = depth === "back" ? 18 : depth === "mid" ? 24 : 16;
+
+        for (let i = 0; i < total; i++)
+        {
+            const el = document.createElement("span");
+            el.className = "bg-icon bg-icon-" + depth;
+            el.textContent = iconSets[depth][Math.floor(Math.random() * iconSets[depth].length)];
+
+            const px = Math.random() * window.innerWidth;
+            const py = Math.random() * (window.innerHeight * 2.2);
+            const driftX = (Math.random() - 0.5) * (depth === "back" ? 10 : depth === "mid" ? 16 : 22);
+            const driftY = (Math.random() - 0.5) * (depth === "back" ? 8 : depth === "mid" ? 12 : 16);
+
+            el.dataset.baseX = px.toFixed(2);
+            el.dataset.baseY = py.toFixed(2);
+            el.dataset.driftX = driftX.toFixed(2);
+            el.dataset.driftY = driftY.toFixed(2);
+            el.dataset.waveX = "0";
+            el.dataset.waveY = "0";
+            el.dataset.waveZ = "0";
+            el.dataset.depth = depth === "back" ? "0.35" : depth === "mid" ? "0.65" : "1";
+
+            container.appendChild(el);
+        }
+    });
+}
+
+function renderIcons(time = 0)
+{
+    const scrollY = window.scrollY || 0;
+
+    document.querySelectorAll(".bg-icon").forEach((icon, index) =>
+    {
+        const baseX = parseFloat(icon.dataset.baseX);
+        const baseY = parseFloat(icon.dataset.baseY);
+        const driftX = parseFloat(icon.dataset.driftX);
+        const driftY = parseFloat(icon.dataset.driftY);
+        const waveX = parseFloat(icon.dataset.waveX);
+        const waveY = parseFloat(icon.dataset.waveY);
+        const waveZ = parseFloat(icon.dataset.waveZ);
+        const depth = parseFloat(icon.dataset.depth);
+
+        const t = time * 0.00045 + index * 0.35;
+        const floatX = Math.sin(t) * driftX;
+        const floatY = Math.cos(t * 1.15) * driftY;
+        const parallaxY = scrollY * depth * -0.08;
+        const zScale = 1 + waveZ;
+
+        const x = baseX + floatX + waveX;
+        const y = baseY + floatY + parallaxY + waveY;
+
+        icon.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${zScale})`;
+
+        icon.dataset.waveX = String(waveX * 0.92);
+        icon.dataset.waveY = String(waveY * 0.92);
+        icon.dataset.waveZ = String(waveZ * 0.88);
+    });
+
+    requestAnimationFrame(renderIcons);
+}
+
+function triggerWave(x, y)
+{
+    const glow = document.getElementById("bg-wave-glow");
+    if (glow)
+    {
+        glow.style.left = x + "px";
+        glow.style.top = y + "px";
+        glow.classList.remove("active");
+        void glow.offsetWidth;
+        glow.classList.add("active");
+    }
+
+    document.querySelectorAll(".bg-icon").forEach(icon =>
+    {
+        const rect = icon.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+
+        const dx = cx - x;
+        const dy = cy - y;
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        const depth = parseFloat(icon.dataset.depth);
+
+        const normalizedX = dx / dist;
+        const normalizedY = dy / dist;
+
+        const planeForce = (180 / (dist + 80)) * depth;
+        const depthForce = (0.2 / (dist / 180 + 1)) * (1.2 - depth);
+
+        icon.dataset.waveX = String(parseFloat(icon.dataset.waveX) + normalizedX * planeForce * 18);
+        icon.dataset.waveY = String(parseFloat(icon.dataset.waveY) + normalizedY * planeForce * 18);
+        icon.dataset.waveZ = String(parseFloat(icon.dataset.waveZ) + depthForce);
+    });
+}
+
+function bindWave()
+{
+    document.querySelectorAll("button, .button, a.button").forEach(btn =>
+    {
+        btn.addEventListener("click", e =>
+        {
+            triggerWave(e.clientX, e.clientY);
+        });
+    });
+}
+
+initBackgroundIcons();
+renderIcons();
+bindWave();
+</script>
 </body>
+
 </html>
