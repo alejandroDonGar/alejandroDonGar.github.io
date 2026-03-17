@@ -1099,3 +1099,34 @@ main > .screen > .wrapper > .panel + .panel
 {
     margin-top: 22px;
 }
+
+
+.lang-fade
+{
+    transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.lang-fade-active
+{
+    animation: langSwap 0.32s ease;
+}
+
+.loading
+{
+    min-height: 140px;
+}
+
+@keyframes langSwap
+{
+    0%
+    {
+        opacity: 0.35;
+        transform: translateY(6px);
+    }
+
+    100%
+    {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
