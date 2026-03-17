@@ -411,7 +411,7 @@ document.addEventListener("DOMContentLoaded", () =>
     {
         translations[lang] = Object.assign({}, translations[lang] || {}, extraTranslations[lang]);
     });
-    const skillVisualTranslations = {"es": {"radarLabel": "Radar de skills", "radarTitle": "Lectura automática desde GitHub", "skillsAutoNote": "Estas métricas se calculan automáticamente según lenguajes y topics detectados en mis repositorios.", "downloadCv": "Descargar CV PDF", "radarSummaryLabel": "Resumen del perfil", "radarSummaryDefault": "Perfil orientado a backend con base sólida en Java, BBDD y apoyo visual en frontend."}, "en": {"radarLabel": "Skills radar", "radarTitle": "Automatic read from GitHub", "skillsAutoNote": "These metrics are calculated automatically from languages and topics detected in my repositories.", "downloadCv": "Download CV PDF", "radarSummaryLabel": "Profile summary", "radarSummaryDefault": "Backend-oriented profile with a solid base in Java, databases, and supporting frontend work."}, "de": {"radarLabel": "Skill-Radar", "radarTitle": "Automatische Auswertung aus GitHub", "skillsAutoNote": "Diese Werte werden automatisch aus Sprachen und Topics meiner Repositories berechnet.", "downloadCv": "CV als PDF", "radarSummaryLabel": "Profilzusammenfassung", "radarSummaryDefault": "Backend-orientiertes Profil mit solider Basis in Java, Datenbanken und unterstützendem Frontend."}, "is": {"radarLabel": "Færniradar", "radarTitle": "Sjálfvirk lestur úr GitHub", "skillsAutoNote": "Þessi gildi eru reiknuð sjálfkrafa út frá tungumálum og topics í repositories mínum.", "downloadCv": "Sækja CV PDF", "radarSummaryLabel": "Yfirlit prófíls", "radarSummaryDefault": "Prófíll sem hallar að backend með traustan grunn í Java, gagnagrunnum og stuðningsfærni í frontend."}};
+    const skillVisualTranslations = {"es": {"radarLabel": "Radar de skills", "radarTitle": "Lectura automática desde GitHub", "skillsAutoNote": "Estas métricas se calculan automáticamente según lenguajes y topics detectados en mis repositorios.", "downloadCv": "Descargar CV PDF", "radarSummaryLabel": "Resumen del perfil", "radarSummaryDefault": "Perfil orientado a backend con base sólida en Java, BBDD y apoyo visual en frontend.", "recruiterDemoOn": "Modo recruiter", "recruiterDemoOff": "Salir recruiter"}, "en": {"radarLabel": "Skills radar", "radarTitle": "Automatic read from GitHub", "skillsAutoNote": "These metrics are calculated automatically from languages and topics detected in my repositories.", "downloadCv": "Download CV PDF", "radarSummaryLabel": "Profile summary", "radarSummaryDefault": "Backend-oriented profile with a solid base in Java, databases, and supporting frontend work.", "recruiterDemoOn": "Recruiter mode", "recruiterDemoOff": "Exit recruiter"}, "de": {"radarLabel": "Skill-Radar", "radarTitle": "Automatische Auswertung aus GitHub", "skillsAutoNote": "Diese Werte werden automatisch aus Sprachen und Topics meiner Repositories berechnet.", "downloadCv": "CV als PDF", "radarSummaryLabel": "Profilzusammenfassung", "radarSummaryDefault": "Backend-orientiertes Profil mit solider Basis in Java, Datenbanken und unterstützendem Frontend.", "recruiterDemoOn": "Recruiter-Modus", "recruiterDemoOff": "Recruiter beenden"}, "is": {"radarLabel": "Færniradar", "radarTitle": "Sjálfvirk lestur úr GitHub", "skillsAutoNote": "Þessi gildi eru reiknuð sjálfkrafa út frá tungumálum og topics í repositories mínum.", "downloadCv": "Sækja CV PDF", "radarSummaryLabel": "Yfirlit prófíls", "radarSummaryDefault": "Prófíll sem hallar að backend með traustan grunn í Java, gagnagrunnum og stuðningsfærni í frontend.", "recruiterDemoOn": "Recruiter hamur", "recruiterDemoOff": "Loka recruiter"}};
     Object.keys(skillVisualTranslations).forEach(lang =>
     {
         translations[lang] = Object.assign({}, translations[lang] || {}, skillVisualTranslations[lang]);
@@ -461,7 +461,9 @@ document.addEventListener("DOMContentLoaded", () =>
     {
         recruiterButtons.forEach(button =>
         {
-            button.textContent = recruiterMode ? t("recruiterDemoOff") : t("recruiterDemoOn");
+            button.textContent = recruiterMode
+                ? (currentLang === "en" ? "Exit recruiter" : currentLang === "de" ? "Recruiter beenden" : currentLang === "is" ? "Loka recruiter" : "Salir recruiter")
+                : (currentLang === "en" ? "Recruiter mode" : currentLang === "de" ? "Recruiter-Modus" : currentLang === "is" ? "Recruiter hamur" : "Modo recruiter");
         });
     }
 
@@ -614,6 +616,22 @@ document.addEventListener("DOMContentLoaded", () =>
         {
             radarSummaryTextNode.textContent = t("radarSummaryDefault");
         }
+        const recruiterTitleNode = document.getElementById("recruiter-title");
+        if (recruiterTitleNode)
+        {
+            recruiterTitleNode.textContent = currentLang === "en" ? "20-second summary" : currentLang === "de" ? "20-Sekunden-Zusammenfassung" : currentLang === "is" ? "20 sekúndna samantekt" : "Resumen de 20 segundos";
+        }
+        const recruiterTextNode = document.getElementById("recruiter-text");
+        if (recruiterTextNode)
+        {
+            recruiterTextNode.textContent = currentLang === "en"
+                ? "Junior profile focused on Java, databases, and web development. Looking for a first real opportunity to grow with consistency, attitude, and hands-on learning."
+                : currentLang === "de"
+                    ? "Junior-Profil mit Fokus auf Java, Datenbanken und Webentwicklung. Ich suche eine erste echte Gelegenheit, mit Ausdauer, Haltung und praxisnahem Lernen zu wachsen."
+                    : currentLang === "is"
+                        ? "Junior prófíll með fókus á Java, gagnagrunna og vefþróun. Ég leita að fyrsta raunverulega tækifærinu til að vaxa með þrautseigju, viðhorfi og verklegu námi."
+                        : "Perfil junior centrado en Java, bases de datos y desarrollo web. Busco una primera oportunidad real para crecer con constancia, actitud y aprendizaje práctico.";
+        }
         applyTheme(root.getAttribute("data-theme") || "dark");
         setSkillText(currentSkill);
         updateRecruiterButtons();
@@ -702,6 +720,22 @@ document.addEventListener("DOMContentLoaded", () =>
         if (radarSummaryTextNode && !radarSummaryTextNode.textContent.trim())
         {
             radarSummaryTextNode.textContent = t("radarSummaryDefault");
+        }
+        const recruiterTitleNode = document.getElementById("recruiter-title");
+        if (recruiterTitleNode)
+        {
+            recruiterTitleNode.textContent = currentLang === "en" ? "20-second summary" : currentLang === "de" ? "20-Sekunden-Zusammenfassung" : currentLang === "is" ? "20 sekúndna samantekt" : "Resumen de 20 segundos";
+        }
+        const recruiterTextNode = document.getElementById("recruiter-text");
+        if (recruiterTextNode)
+        {
+            recruiterTextNode.textContent = currentLang === "en"
+                ? "Junior profile focused on Java, databases, and web development. Looking for a first real opportunity to grow with consistency, attitude, and hands-on learning."
+                : currentLang === "de"
+                    ? "Junior-Profil mit Fokus auf Java, Datenbanken und Webentwicklung. Ich suche eine erste echte Gelegenheit, mit Ausdauer, Haltung und praxisnahem Lernen zu wachsen."
+                    : currentLang === "is"
+                        ? "Junior prófíll með fókus á Java, gagnagrunna og vefþróun. Ég leita að fyrsta raunverulega tækifærinu til að vaxa með þrautseigju, viðhorfi og verklegu námi."
+                        : "Perfil junior centrado en Java, bases de datos y desarrollo web. Busco una primera oportunidad real para crecer con constancia, actitud y aprendizaje práctico.";
         }
             }, 1400);
         });
