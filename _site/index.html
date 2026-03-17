@@ -18,20 +18,19 @@
     <div class="bg-layer bg-shape shape-b"></div>
 
     <div class="quick-ribbon" id="quickRibbon">
-        <div class="ribbon-inner ribbon-inner-controls">
-            <div class="ribbon-copy ribbon-copy-controls">
-                <span class="control-label lang-fade" id="control-label">Preferencias</span>
+        <div class="ribbon-inner">
+            <div class="ribbon-copy">
+                <strong>Alejandro Donate García</strong>
+                <span id="ribbon-role" class="lang-fade"></span>
             </div>
-            <div class="ribbon-actions ribbon-actions-controls">
-                <div class="lang-switch"><button type="button" class="lang-btn active" data-lang="es">ES</button>
-                    <button type="button" class="lang-btn" data-lang="en">EN</button>
-                    <button type="button" class="lang-btn" data-lang="de">DE</button>
-                    <button type="button" class="lang-btn" data-lang="is">IS</button>
-                </div>
-                <button class="button subtle" type="button" id="recruiter-toggle-top"></button>
-                <button class="button subtle" type="button" data-theme-toggle id="theme-toggle"></button>
+            <div class="ribbon-actions">
+                <a class="button subtle" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">GitHub</a>
+                <a class="button subtle" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">LinkedIn</a>
+                <button class="button subtle gyro-button" id="gyro-toggle" type="button"></button>
+                    <button class="button subtle" type="button" data-copy-email><span class="copy-label"></span></button>
             </div>
         </div>
+    </div>
     </div>
     </div>
 
@@ -43,6 +42,17 @@
         <a href="#skills" class="section-pill" id="nav-skills" class="lang-fade"></a>
         <a href="#contacto" class="section-pill" id="nav-contact" class="lang-fade"></a>
     </nav>
+
+        <section class="screen compact-screen pref-screen" id="preferencias">
+            <div class="wrapper">
+                <article class="panel pref-panel reveal visible">
+                    <div class="section-head">
+                        <span class="mini-label lang-fade" id="control-label"></span>
+                    </div>
+                    <div class="pref-actions">
+            </article>
+            </div>
+        </section>
 
     <header class="screen hero-screen" id="inicio">
         <div class="wrapper hero-grid">
@@ -62,24 +72,8 @@
                     <a class="button primary" href="#repositorios" id="hero-projects" class="lang-fade"></a>
                     <a class="button subtle" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">LinkedIn</a>
                     <a class="button subtle" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">GitHub</a>
-                    <button class="button subtle" type="button" id="recruiter-toggle-hero"></button>
-                    <button class="button subtle" type="button" data-theme-toggle id="theme-toggle-hero"></button>
-                    <button class="button subtle gyro-button" id="gyro-toggle" type="button"></button>
                     <button class="button subtle" type="button" data-copy-email><span class="copy-label"></span></button>
                 </div>
-                <div class="lang-switch"><button type="button" class="lang-btn active" data-lang="es">ES</button>
-<button type="button" class="lang-btn " data-lang="en">EN</button>
-<button type="button" class="lang-btn " data-lang="de">DE</button>
-<button type="button" class="lang-btn " data-lang="is">IS</button></div>
-
-                <div class="recruiter-banner panel reveal" id="recruiter-banner">
-                    <div class="section-head">
-                        <span class="mini-label lang-fade" id="recruiter-label"></span>
-                        <h2 class="lang-fade" id="recruiter-title"></h2>
-                        <p class="lang-fade" id="recruiter-text"></p>
-                    </div>
-                </div>
-
             </article>
             <aside class="hero-stack">
                 <article class="panel reveal visible tilt-card">
@@ -402,6 +396,7 @@ document.addEventListener("DOMContentLoaded", () =>
         document.documentElement.lang = lang;
 
         const map = {
+            "ribbon-role": "siteRole",
             "nav-start": "navStart",
             "nav-profile": "navProfile",
             "nav-progress": "navProgress",

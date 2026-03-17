@@ -1349,7 +1349,9 @@ main > .screen > .wrapper > .panel + .panel
 
 
 
-/* Final top preferences bar */
+
+
+/* Top quick info ribbon restored */
 .quick-ribbon
 {
     top: 12px;
@@ -1362,48 +1364,70 @@ main > .screen > .wrapper > .panel + .panel
     padding-right: 0;
 }
 
-.ribbon-inner-controls
+.ribbon-inner
 {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     gap: 18px;
-    padding: 14px 18px;
+    padding: 18px 22px;
 }
 
-.ribbon-copy-controls
+.ribbon-copy
 {
-    max-width: none;
+    max-width: 360px;
 }
 
-.control-label
+.ribbon-actions
 {
-    display: inline-flex;
+    justify-content: flex-end;
     align-items: center;
-    min-height: 42px;
-    padding: 0.72rem 1rem;
-    border-radius: 999px;
-    border: 1px solid var(--panel-border);
-    background: var(--chip-bg);
-    color: var(--text);
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    font-size: 0.78rem;
+    row-gap: 10px;
 }
 
-.ribbon-actions-controls
+/* New preferences panel */
+.pref-screen
 {
-    justify-content: flex-start;
+    padding-top: 118px;
+    padding-bottom: 8px;
+}
+
+.pref-panel
+{
+    padding: 18px 22px;
+}
+
+.pref-panel .section-head
+{
+    margin-bottom: 12px;
+}
+
+.pref-actions
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+.pref-actions .lang-switch
+{
+    margin-top: 0;
 }
 
 .sections-nav
 {
-    top: 122px;
+    top: 116px;
 }
 
 .hero-screen
 {
-    padding-top: 188px;
+    padding-top: 24px;
+}
+
+/* extra space below restored top ribbon */
+body .screen:first-of-type
+{
+    scroll-margin-top: 210px;
 }
 
 @media (max-width: 1200px)
@@ -1413,20 +1437,25 @@ main > .screen > .wrapper > .panel + .panel
         width: calc(100% - 22px);
     }
 
-    .ribbon-inner-controls
+    .ribbon-inner
     {
         grid-template-columns: 1fr;
-        gap: 12px;
+        align-items: start;
+    }
+
+    .ribbon-copy
+    {
+        max-width: 100%;
     }
 
     .sections-nav
     {
-        top: 148px;
+        top: 152px;
     }
 
-    .hero-screen
+    .pref-screen
     {
-        padding-top: 214px;
+        padding-top: 156px;
     }
 }
 
@@ -1442,8 +1471,13 @@ main > .screen > .wrapper > .panel + .panel
         top: 18px;
     }
 
+    .pref-screen
+    {
+        padding-top: 70px;
+    }
+
     .hero-screen
     {
-        padding-top: 148px;
+        padding-top: 12px;
     }
 }
