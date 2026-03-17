@@ -1384,78 +1384,83 @@ main > .screen > .wrapper > .panel + .panel
     row-gap: 10px;
 }
 
-/* New preferences panel */
-.pref-screen
+
+
+/* Unified quick ribbon: contacts + preferences */
+.quick-ribbon
 {
-    padding-top: 118px;
-    padding-bottom: 8px;
+    top: 12px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: min(1280px, calc(100% - 28px));
+    opacity: 1;
+    pointer-events: auto;
+    padding-left: 0;
+    padding-right: 0;
 }
 
-.pref-panel
+.ribbon-inner
 {
-    padding: 18px 22px;
+    grid-template-columns: minmax(260px, 360px) minmax(0, 1fr);
+    align-items: center;
+    gap: 20px;
+    padding: 18px 24px;
 }
 
-.pref-panel .section-head
+.ribbon-copy
 {
-    margin-bottom: 12px;
+    max-width: 100%;
 }
 
-.pref-actions
+.ribbon-actions
 {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    justify-content: flex-end;
     align-items: center;
+    gap: 12px;
+    row-gap: 12px;
 }
 
-.pref-actions .lang-switch
+.ribbon-actions .lang-switch
 {
     margin-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
 .sections-nav
 {
-    top: 116px;
+    top: 156px;
 }
 
 .hero-screen
 {
-    padding-top: 24px;
+    padding-top: 238px;
 }
 
-/* extra space below restored top ribbon */
-body .screen:first-of-type
+@media (max-width: 1220px)
 {
-    scroll-margin-top: 210px;
-}
-
-@media (max-width: 1200px)
-{
-    .quick-ribbon
-    {
-        width: calc(100% - 22px);
-    }
-
     .ribbon-inner
     {
         grid-template-columns: 1fr;
         align-items: start;
     }
 
-    .ribbon-copy
+    .ribbon-actions
     {
-        max-width: 100%;
+        justify-content: flex-start;
     }
 
     .sections-nav
     {
-        top: 152px;
+        top: 196px;
     }
 
-    .pref-screen
+    .hero-screen
     {
-        padding-top: 156px;
+        padding-top: 278px;
     }
 }
 
@@ -1471,13 +1476,8 @@ body .screen:first-of-type
         top: 18px;
     }
 
-    .pref-screen
-    {
-        padding-top: 70px;
-    }
-
     .hero-screen
     {
-        padding-top: 12px;
+        padding-top: 148px;
     }
 }
