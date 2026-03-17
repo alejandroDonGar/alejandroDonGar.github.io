@@ -8,11 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/styles.css" />
-    <meta name="description" content="Portfolio de Alejandro Donate García. Estudiante de Desarrollo de Aplicaciones Multiplataforma, centrado en Java, bases de datos y desarrollo web." />
-    <meta property="og:title" content="Alejandro Donate García · Portfolio" />
-    <meta property="og:description" content="Portfolio personal con proyectos, showcase de GitHub, multidioma y modo claro/oscuro." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="assets/img/perfil.jpg" />
+<meta name="description" content="Portfolio de Alejandro Donate García." />
+<meta property="og:title" content="Alejandro Donate García · Portfolio" />
+<meta property="og:description" content="Portfolio con proyectos y GitHub." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="assets/img/perfil.jpg" />
 </head>
 <body data-default-theme="dark">
     <div class="bg-layer bg-grid"></div>
@@ -73,7 +73,6 @@
                 </div>
                 <div class="action-row">
                     <a class="button primary" href="#repositorios" id="hero-projects" class="lang-fade"></a>
-                    <button class="button subtle" type="button" id="download-cv-btn"></button>
                     <div class="mobile-controls">
                         <div class="lang-switch">
                     <button type="button" class="lang-btn active" data-lang="es">ES</button>
@@ -151,6 +150,12 @@
                         <span id="skillText"></span>
                     </div>
                     <div class="bridge-strip">
+<div class="skills-chart">
+<div class="chart-row"><span>Java</span><div class="chart-bar"><i style="--value:76%"></i></div></div>
+<div class="chart-row"><span>BBDD</span><div class="chart-bar"><i style="--value:68%"></i></div></div>
+<div class="chart-row"><span>Frontend</span><div class="chart-bar"><i style="--value:72%"></i></div></div>
+<div class="chart-row"><span>XML</span><div class="chart-bar"><i style="--value:58%"></i></div></div>
+</div>
                         <span id="bridge-1" class="lang-fade"></span>
                         <span id="bridge-2" class="lang-fade"></span>
                         <span id="bridge-3" class="lang-fade"></span>
@@ -487,7 +492,6 @@ document.addEventListener("DOMContentLoaded", () =>
             "contact-label": "contactLabel",
             "contact-title": "contactTitle",
             "contact-text": "contactText",
-            "download-cv-btn": "downloadCv",
             "stats-label": "statsLabel",
             "stats-title": "statsTitle",
             "stats-text": "statsText",
@@ -567,16 +571,6 @@ document.addEventListener("DOMContentLoaded", () =>
             localStorage.setItem(themeKey, nextTheme);
         });
     });
-
-    const downloadCvButton = document.getElementById("download-cv-btn");
-
-    if (downloadCvButton)
-    {
-        downloadCvButton.addEventListener("click", () =>
-        {
-            window.print();
-        });
-    }
 
     document.querySelectorAll("[data-copy-email]").forEach(button =>
     {
