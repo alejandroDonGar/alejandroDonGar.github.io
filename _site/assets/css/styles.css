@@ -1957,3 +1957,123 @@ main
         padding-bottom: 24px !important;
     }
 }
+
+
+/* Ultra radar polish */
+.skills-radar-card
+{
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.skills-radar-layout
+{
+    grid-template-columns: minmax(260px, 320px) 1fr;
+    gap: 24px;
+    align-items: center;
+}
+
+.radar-wrap
+{
+    min-height: 280px;
+}
+
+.radar-svg
+{
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+}
+
+.radar-grid
+{
+    fill: rgba(255, 255, 255, 0.025);
+    stroke: rgba(255, 255, 255, 0.12);
+    stroke-width: 1.5;
+}
+
+.radar-grid-inner
+{
+    fill: rgba(255, 255, 255, 0.015);
+}
+
+.radar-axis
+{
+    stroke: rgba(255, 255, 255, 0.12);
+    stroke-width: 1;
+}
+
+.radar-shape
+{
+    fill: rgba(101, 216, 255, 0.24);
+    stroke: rgba(101, 216, 255, 1);
+    stroke-width: 2.2;
+    filter: drop-shadow(0 0 10px rgba(101, 216, 255, 0.42));
+    animation: radarFloat 4.5s ease-in-out infinite;
+}
+
+.radar-dot
+{
+    fill: var(--text);
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35));
+}
+
+.radar-legend
+{
+    gap: 14px;
+}
+
+.radar-legend-item
+{
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.radar-legend-item:hover
+{
+    transform: translateX(4px);
+    border-color: rgba(101, 216, 255, 0.4);
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.radar-legend-item strong
+{
+    min-width: 56px;
+    text-align: right;
+}
+
+@keyframes radarFloat
+{
+    0%
+    {
+        transform: translateY(0);
+    }
+
+    50%
+    {
+        transform: translateY(-4px);
+    }
+
+    100%
+    {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 900px)
+{
+    .skills-radar-layout
+    {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .radar-wrap
+    {
+        min-height: 240px;
+    }
+
+    .radar-svg
+    {
+        max-width: 260px;
+    }
+}

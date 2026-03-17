@@ -996,10 +996,10 @@ document.addEventListener("DOMContentLoaded", () =>
         const countLang = name => langCount[name.toLowerCase()] || 0;
         const countTopic = list => topics.filter(topic => list.includes(topic)).length;
 
-        const java = clamp(28 + (countLang("java") * 18) + (countTopic(["java", "backend", "poo", "oop"]) * 6), 24, 92);
-        const db = clamp(22 + (countLang("sql") * 18) + (countLang("plpgsql") * 14) + (countTopic(["sql", "database", "bbdd", "postgres", "db"]) * 7), 20, 90);
-        const frontend = clamp(24 + (countLang("html") * 10) + (countLang("css") * 10) + (countLang("javascript") * 12) + (countTopic(["web", "frontend", "css", "html", "responsive"]) * 6), 22, 92);
-        const xml = clamp(16 + (countLang("xml") * 18) + (countTopic(["xml", "xsd"]) * 10), 14, 86);
+        const java = clamp(48 + (countLang("java") * 14) + (countTopic(["java", "backend", "poo", "oop"]) * 5), 42, 92);
+        const db = clamp(42 + (countLang("sql") * 14) + (countLang("plpgsql") * 12) + (countTopic(["sql", "database", "bbdd", "postgres", "db"]) * 5), 38, 90);
+        const frontend = clamp(44 + (countLang("html") * 8) + (countLang("css") * 8) + (countLang("javascript") * 10) + (countTopic(["web", "frontend", "css", "html", "responsive"]) * 5), 40, 92);
+        const xml = clamp(34 + (countLang("xml") * 14) + (countTopic(["xml", "xsd"]) * 8), 32, 86);
 
         return {
             java,
