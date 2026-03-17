@@ -1345,3 +1345,27 @@ main > .screen > .wrapper > .panel + .panel
         padding-top: 280px;
     }
 }
+
+
+/* Give breathing room inside the quick info ribbon */
+.quick-ribbon
+{
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
+.ribbon-inner
+{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Prevent text touching edges on small screens */
+@media (max-width: 900px)
+{
+    .quick-ribbon
+    {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
