@@ -18,23 +18,21 @@
     <div class="bg-layer bg-shape shape-b"></div>
 
     <div class="quick-ribbon" id="quickRibbon">
-        <div class="ribbon-inner">
-            <div class="ribbon-copy">
-                <strong>Alejandro Donate García</strong>
-                <span id="ribbon-role" class="lang-fade"></span>
+        <div class="ribbon-inner ribbon-inner-controls">
+            <div class="ribbon-copy ribbon-copy-controls">
+                <span class="control-label lang-fade" id="control-label">Preferencias</span>
             </div>
-            <div class="ribbon-actions">
+            <div class="ribbon-actions ribbon-actions-controls">
                 <div class="lang-switch"><button type="button" class="lang-btn active" data-lang="es">ES</button>
-<button type="button" class="lang-btn " data-lang="en">EN</button>
-<button type="button" class="lang-btn " data-lang="de">DE</button>
-<button type="button" class="lang-btn " data-lang="is">IS</button></div>
-                <a class="button subtle" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">GitHub</a>
-                <a class="button subtle" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">LinkedIn</a>
+                    <button type="button" class="lang-btn" data-lang="en">EN</button>
+                    <button type="button" class="lang-btn" data-lang="de">DE</button>
+                    <button type="button" class="lang-btn" data-lang="is">IS</button>
+                </div>
                 <button class="button subtle" type="button" id="recruiter-toggle-top"></button>
                 <button class="button subtle" type="button" data-theme-toggle id="theme-toggle"></button>
-                <button class="button subtle" type="button" data-copy-email><span class="copy-label"></span></button>
             </div>
         </div>
+    </div>
     </div>
 
     <nav class="sections-nav">
@@ -404,7 +402,6 @@ document.addEventListener("DOMContentLoaded", () =>
         document.documentElement.lang = lang;
 
         const map = {
-            "ribbon-role": "siteRole",
             "nav-start": "navStart",
             "nav-profile": "navProfile",
             "nav-progress": "navProgress",
@@ -473,6 +470,7 @@ document.addEventListener("DOMContentLoaded", () =>
             "contact-label": "contactLabel",
             "contact-title": "contactTitle",
             "contact-text": "contactText",
+            "control-label": "controlLabel",
             "stats-label": "statsLabel",
             "stats-title": "statsTitle",
             "stats-text": "statsText",
