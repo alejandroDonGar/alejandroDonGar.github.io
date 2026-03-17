@@ -2214,3 +2214,49 @@ main
 {
     filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.22));
 }
+
+
+/* ===== v24 shadow fix ===== */
+
+/* Keep ribbon shadow inside rounded silhouette */
+.quick-ribbon
+{
+    overflow: visible;
+    border-radius: 999px;
+}
+
+.ribbon-inner
+{
+    border-radius: 999px;
+    box-shadow:
+        0 16px 34px rgba(0, 0, 0, 0.34),
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+/* Remove square-looking shadow from outer wrapper */
+.quick-ribbon
+{
+    box-shadow: none !important;
+}
+
+/* Stronger separation for menu pills over the background */
+.sections-nav
+{
+    filter: none;
+}
+
+.section-pill
+{
+    box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.32),
+        0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+}
+
+.section-pill:hover,
+.section-pill.active
+{
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.38),
+        0 0 0 1px rgba(124, 255, 178, 0.10) inset,
+        0 0 18px rgba(77, 166, 255, 0.08);
+}
