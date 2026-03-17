@@ -6,7 +6,7 @@
     <title>Alejandro Donate García · CV</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body data-default-theme="dark">
@@ -21,51 +21,56 @@
         <div class="ribbon-inner">
             <div class="ribbon-copy">
                 <strong>Alejandro Donate García</strong>
-                <span>Estudiante de Desarrollo de Aplicaciones Multiplataforma · 1º DAM</span>
+                <span id="ribbon-role"></span>
             </div>
             <div class="ribbon-actions">
+                <div class="lang-switch"><button type="button" class="lang-btn active" data-lang="es">ES</button>
+<button type="button" class="lang-btn " data-lang="en">EN</button>
+<button type="button" class="lang-btn " data-lang="de">DE</button>
+<button type="button" class="lang-btn " data-lang="is">IS</button></div>
                 <a class="button subtle" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer"><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.67.5 12.05c0 5.1 3.3 9.42 7.88 10.95.58.1.79-.25.79-.57 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.55-3.88-1.55-.52-1.34-1.28-1.7-1.28-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.75 1.19 1.75 1.19 1.02 1.76 2.69 1.25 3.34.95.1-.75.4-1.25.72-1.54-2.55-.3-5.24-1.28-5.24-5.68 0-1.25.44-2.28 1.17-3.08-.12-.3-.5-1.52.1-3.16 0 0 .95-.3 3.1 1.18A10.7 10.7 0 0 1 12 6.48c.95 0 1.9.13 2.8.39 2.15-1.48 3.1-1.18 3.1-1.18.6 1.64.22 2.86.1 3.16.73.8 1.17 1.83 1.17 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.77 1.08.77 2.18 0 1.58-.01 2.86-.01 3.25 0 .32.2.68.8.56 4.58-1.53 7.87-5.85 7.87-10.95C23.5 5.67 18.35.5 12 .5Z"/></svg></span>GitHub</a>
                 <a class="button subtle" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer"><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.49 2.49 0 1 0 5 8.48 2.49 2.49 0 0 0 4.98 3.5ZM2.75 9.25h4.46V21H2.75V9.25ZM9.75 9.25h4.28v1.6h.06c.6-1.12 2.05-2.3 4.22-2.3 4.5 0 5.33 2.96 5.33 6.8V21h-4.46v-5.08c0-1.21-.02-2.77-1.69-2.77-1.7 0-1.96 1.32-1.96 2.69V21H9.75V9.25Z"/></svg></span>LinkedIn</a>
-                <button class="button subtle" type="button" data-theme-toggle>Modo claro</button>
-                <button class="button subtle" type="button" data-copy-email><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.75A2.75 2.75 0 0 1 5.75 3h12.5A2.75 2.75 0 0 1 21 5.75v12.5A2.75 2.75 0 0 1 18.25 21H5.75A2.75 2.75 0 0 1 3 18.25V5.75Zm2.1.14 6.4 5.1a.8.8 0 0 0 1 0l6.4-5.1a1.15 1.15 0 0 0-.65-.19H5.75c-.24 0-.46.07-.65.19Zm14.15 1.7-5.75 4.57a2.3 2.3 0 0 1-2.88 0L4.87 7.6v10.65c0 .48.4.88.88.88h12.5c.48 0 .88-.4.88-.88V7.6Z"/></svg></span>Copiar email</button>
+                <button class="button subtle" type="button" data-theme-toggle id="theme-toggle"></button>
+                <button class="button subtle" type="button" data-copy-email><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.75A2.75 2.75 0 0 1 5.75 3h12.5A2.75 2.75 0 0 1 21 5.75v12.5A2.75 2.75 0 0 1 18.25 21H5.75A2.75 2.75 0 0 1 3 18.25V5.75Zm2.1.14 6.4 5.1a.8.8 0 0 0 1 0l6.4-5.1a1.15 1.15 0 0 0-.65-.19H5.75c-.24 0-.46.07-.65.19Zm14.15 1.7-5.75 4.57a2.3 2.3 0 0 1-2.88 0L4.87 7.6v10.65c0 .48.4.88.88.88h12.5c.48 0 .88-.4.88-.88V7.6Z"/></svg></span><span class="copy-label"></span></button>
             </div>
         </div>
     </div>
 
     <nav class="sections-nav">
-        <a href="#inicio" class="section-pill active">Inicio</a>
-        <a href="#perfil" class="section-pill">Perfil</a>
-        <a href="#progreso" class="section-pill">Progreso</a>
-        <a href="#repositorios" class="section-pill">Repos</a>
-        <a href="#skills" class="section-pill">Skills</a>
-        <a href="#contacto" class="section-pill">Contacto</a>
+        <a href="#inicio" class="section-pill active" id="nav-start"></a>
+        <a href="#perfil" class="section-pill" id="nav-profile"></a>
+        <a href="#progreso" class="section-pill" id="nav-progress"></a>
+        <a href="#repositorios" class="section-pill" id="nav-repos"></a>
+        <a href="#skills" class="section-pill" id="nav-skills"></a>
+        <a href="#contacto" class="section-pill" id="nav-contact"></a>
     </nav>
 
     <header class="screen hero-screen" id="inicio">
         <div class="wrapper hero-grid">
             <article class="panel hero-copy reveal visible tilt-card">
-                <span class="eyebrow">Kinetic v6</span>
+                <span class="eyebrow" id="hero-label"></span>
                 <h1>Alejandro Donate García</h1>
-                <p class="role">Estudiante de Desarrollo de Aplicaciones Multiplataforma · 1º DAM</p>
-                <p class="lead">Estoy empezando mi camino en el desarrollo de software y ahora mismo mi objetivo es seguir aprendiendo, practicar mucho y ganar confianza poco a poco en Java, bases de datos y desarrollo web.</p>
+                <p class="role" id="hero-role"></p>
+                <p class="lead" id="hero-lead"></p>
                 <div class="pill-row"><span>Java</span><span>SQL</span><span>HTML/CSS</span><span>Git</span><span>XML</span></div>
                 <div class="action-row">
-                    <a class="button primary" href="#repositorios">Ver proyectos</a>
+                    <a class="button primary" href="#repositorios" id="hero-projects"></a>
                     <a class="button subtle" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer"><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.49 2.49 0 1 0 5 8.48 2.49 2.49 0 0 0 4.98 3.5ZM2.75 9.25h4.46V21H2.75V9.25ZM9.75 9.25h4.28v1.6h.06c.6-1.12 2.05-2.3 4.22-2.3 4.5 0 5.33 2.96 5.33 6.8V21h-4.46v-5.08c0-1.21-.02-2.77-1.69-2.77-1.7 0-1.96 1.32-1.96 2.69V21H9.75V9.25Z"/></svg></span>LinkedIn</a>
                     <a class="button subtle" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer"><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.67.5 12.05c0 5.1 3.3 9.42 7.88 10.95.58.1.79-.25.79-.57 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.55-3.88-1.55-.52-1.34-1.28-1.7-1.28-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.75 1.19 1.75 1.19 1.02 1.76 2.69 1.25 3.34.95.1-.75.4-1.25.72-1.54-2.55-.3-5.24-1.28-5.24-5.68 0-1.25.44-2.28 1.17-3.08-.12-.3-.5-1.52.1-3.16 0 0 .95-.3 3.1 1.18A10.7 10.7 0 0 1 12 6.48c.95 0 1.9.13 2.8.39 2.15-1.48 3.1-1.18 3.1-1.18.6 1.64.22 2.86.1 3.16.73.8 1.17 1.83 1.17 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.77 1.08.77 2.18 0 1.58-.01 2.86-.01 3.25 0 .32.2.68.8.56 4.58-1.53 7.87-5.85 7.87-10.95C23.5 5.67 18.35.5 12 .5Z"/></svg></span>GitHub</a>
-                    <button class="button subtle" type="button" data-theme-toggle>Modo claro</button>
-                    <button class="button subtle" type="button" data-copy-email><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.75A2.75 2.75 0 0 1 5.75 3h12.5A2.75 2.75 0 0 1 21 5.75v12.5A2.75 2.75 0 0 1 18.25 21H5.75A2.75 2.75 0 0 1 3 18.25V5.75Zm2.1.14 6.4 5.1a.8.8 0 0 0 1 0l6.4-5.1a1.15 1.15 0 0 0-.65-.19H5.75c-.24 0-.46.07-.65.19Zm14.15 1.7-5.75 4.57a2.3 2.3 0 0 1-2.88 0L4.87 7.6v10.65c0 .48.4.88.88.88h12.5c.48 0 .88-.4.88-.88V7.6Z"/></svg></span>Copiar email</button>
+                    <button class="button subtle" type="button" data-theme-toggle id="theme-toggle-hero"></button>
+                    <button class="button subtle gyro-button" id="gyro-toggle" type="button"></button>
+                    <button class="button subtle" type="button" data-copy-email><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.75A2.75 2.75 0 0 1 5.75 3h12.5A2.75 2.75 0 0 1 21 5.75v12.5A2.75 2.75 0 0 1 18.25 21H5.75A2.75 2.75 0 0 1 3 18.25V5.75Zm2.1.14 6.4 5.1a.8.8 0 0 0 1 0l6.4-5.1a1.15 1.15 0 0 0-.65-.19H5.75c-.24 0-.46.07-.65.19Zm14.15 1.7-5.75 4.57a2.3 2.3 0 0 1-2.88 0L4.87 7.6v10.65c0 .48.4.88.88.88h12.5c.48 0 .88-.4.88-.88V7.6Z"/></svg></span><span class="copy-label"></span></button>
                 </div>
+                <div class="lang-switch"><button type="button" class="lang-btn active" data-lang="es">ES</button>
+<button type="button" class="lang-btn " data-lang="en">EN</button>
+<button type="button" class="lang-btn " data-lang="de">DE</button>
+<button type="button" class="lang-btn " data-lang="is">IS</button></div>
             </article>
             <aside class="hero-stack">
+                <article class="panel reveal visible tilt-card"><div class="profile-frame"><img src="assets/img/perfil.jpg" alt="Foto de perfil de Alejandro Donate García" /></div></article>
                 <article class="panel reveal visible tilt-card">
-                    <div class="profile-frame">
-                        <img src="assets/img/perfil.jpg" alt="Foto de perfil de Alejandro Donate García" />
-                    </div>
-                </article>
-                <article class="panel reveal visible tilt-card">
-                    <span class="mini-label">Actualmente</span>
-                    <ul class="status-list"><li>Buscando prácticas y oportunidades donde pueda aprender desde cero y seguir mejorando.</li><li>Practicando Java, bases de datos y diseño web para afianzar una base más sólida.</li><li>Construyendo proyectos sencillos para aplicar lo que voy aprendiendo paso a paso.</li></ul>
+                    <span class="mini-label" id="current-label"></span>
+                    <ul class="status-list"><li id="current-1"></li><li id="current-2"></li><li id="current-3"></li></ul>
                 </article>
             </aside>
         </div>
@@ -75,38 +80,23 @@
         <section class="screen" id="perfil">
             <div class="wrapper split-grid">
                 <article class="panel reveal tilt-card">
-                    <div class="section-head">
-                        <span class="mini-label">Sobre mí</span>
-                        <h2>Un perfil junior con mucha constancia y ganas reales de crecer</h2>
-                    </div>
-                    <p>Soy estudiante y todavía estoy en una etapa muy inicial de aprendizaje. Me interesa seguir descubriendo cómo funciona el desarrollo de software, especialmente en Java, bases de datos y la parte web con HTML, CSS y XML. Mi objetivo ahora mismo es practicar, entender bien las bases y seguir ganando soltura poco a poco.</p>
+                    <div class="section-head"><span class="mini-label" id="about-label"></span><h2 id="about-title"></h2></div>
+                    <p id="about-text"></p>
                     <div class="mini-grid">
-                        <div class="mini-card">
-                            <h3>Objetivo</h3>
-                            <p>Seguir aprendiendo y afianzando poco a poco Java, bases de datos y tecnologías web.</p>
-                        </div>
-                        <div class="mini-card">
-                            <h3>Fortaleza</h3>
-                            <p>Constancia, curiosidad y muchas ganas de aprender con práctica y experiencia real.</p>
-                        </div>
+                        <div class="mini-card"><h3 id="goal-title"></h3><p id="goal-text"></p></div>
+                        <div class="mini-card"><h3 id="strength-title"></h3><p id="strength-text"></p></div>
                     </div>
                 </article>
                 <article class="panel reveal tilt-card">
-                    <div class="section-head">
-                        <span class="mini-label">Skills</span>
-                        <h2>Contenidos que estoy trabajando</h2>
+                    <div class="section-head"><span class="mini-label" id="skills-label"></span><h2 id="skills-title"></h2></div>
+                    <div class="chip-row">
+                        <button type="button" class="chip-button active" data-skill-button data-skill="java">Java</button>
+                        <button type="button" class="chip-button" data-skill-button data-skill="db">BBDD</button>
+                        <button type="button" class="chip-button" data-skill-button data-skill="frontend">Frontend</button>
+                        <button type="button" class="chip-button" data-skill-button data-skill="xml">XML</button>
                     </div>
-                    <div class="chip-row"><button type="button" class="chip-button active" data-skill-button data-title="JAVA" data-text="CLASES · GETTER/SETTER · FECHAS · EXPRESIONES REGULARES · ARRAYS · LISTAS · SETS · MAPS">Java</button><button type="button" class="chip-button " data-skill-button data-title="BBDD" data-text="CREATE TABLES · ALTER · DROP · INSERT INTO · JOINS · POSTGRES">BBDD</button><button type="button" class="chip-button " data-skill-button data-title="FRONTEND" data-text="HTML GENERAL · CSS GRID · FLEXBOX · RESPONSIVE DESIGN">Frontend</button><button type="button" class="chip-button " data-skill-button data-title="XML" data-text="XSD · VALIDACIÓN · ESTRUCTURAS DE DATOS">XML</button></div>
-                    <div class="skill-display tilt-card">
-                        <p id="skillTitle">JAVA</p>
-                        <span id="skillText">CLASES · GETTER/SETTER · FECHAS · EXPRESIONES REGULARES · ARRAYS · LISTAS · SETS · MAPS</span>
-                    </div>
-                    <div class="bridge-strip">
-                        <span>Práctica real</span>
-                        <span>Responsive</span>
-                        <span>Backend</span>
-                        <span>BBDD</span>
-                    </div>
+                    <div class="skill-display tilt-card"><p id="skillTitle">JAVA</p><span id="skillText"></span></div>
+                    <div class="bridge-strip"><span id="bridge-1"></span><span id="bridge-2"></span><span id="bridge-3"></span><span id="bridge-4"></span></div>
                 </article>
             </div>
         </section>
@@ -116,62 +106,26 @@
         <section class="screen compact-screen" id="progreso">
             <div class="wrapper split-grid">
                 <article class="panel reveal">
-                    <div class="section-head">
-                        <span class="mini-label">Progreso</span>
-                        <h2>Mi línea de avance</h2>
+                    <div class="section-head"><span class="mini-label" id="progress-label"></span><h2 id="progress-title"></h2></div>
+                    <div class="timeline">
+                        <article class="timeline-item tilt-card"><span class="timeline-dot"></span><div><h3 id="tl1t"></h3><p id="tl1d"></p></div></article>
+                        <article class="timeline-item tilt-card"><span class="timeline-dot"></span><div><h3 id="tl2t"></h3><p id="tl2d"></p></div></article>
+                        <article class="timeline-item tilt-card"><span class="timeline-dot"></span><div><h3 id="tl3t"></h3><p id="tl3d"></p></div></article>
+                        <article class="timeline-item tilt-card"><span class="timeline-dot"></span><div><h3 id="tl4t"></h3><p id="tl4d"></p></div></article>
                     </div>
-                    <div class="timeline"><article class="timeline-item tilt-card">
-                <span class="timeline-dot"></span>
-                <div>
-                    <h3>Inicio en DAM</h3>
-                    <p>Empiezo a formarme en desarrollo de software y a construir una base en programación, bases de datos y desarrollo web.</p>
-                </div>
-            </article><article class="timeline-item tilt-card">
-                <span class="timeline-dot"></span>
-                <div>
-                    <h3>Java y SQL</h3>
-                    <p>Empiezo a practicar programación orientada a objetos, colecciones y consultas básicas para entender mejor los fundamentos.</p>
-                </div>
-            </article><article class="timeline-item tilt-card">
-                <span class="timeline-dot"></span>
-                <div>
-                    <h3>Frontend y portfolio</h3>
-                    <p>Voy trabajando la parte visual con HTML y CSS, aprendiendo responsive design y mejorando poco a poco la maquetación.</p>
-                </div>
-            </article><article class="timeline-item tilt-card">
-                <span class="timeline-dot"></span>
-                <div>
-                    <h3>Ahora mismo</h3>
-                    <p>Sigo construyendo proyectos sencillos, mejorando mi portfolio y buscando una primera oportunidad para aprender en un entorno real.</p>
-                </div>
-            </article></div>
                 </article>
                 <div class="stack-grid">
                     <article class="panel reveal">
-                        <div class="section-head">
-                            <span class="mini-label">Idiomas</span>
-                            <h2>Nivel de inglés</h2>
+                        <div class="section-head"><span class="mini-label" id="lang-label"></span><h2 id="english-title"></h2></div>
+                        <div class="levels">
+                            <div class="level-item tilt-card"><label id="spoken-label"></label><div class="bar"><i style="width:50%"></i></div><small>B1–B2</small></div>
+                            <div class="level-item tilt-card"><label id="written-label"></label><div class="bar"><i style="width:65%"></i></div><small>B1–B2</small></div>
+                            <div class="level-item tilt-card"><label id="reading-label"></label><div class="bar"><i style="width:70%"></i></div><small>B1–B2</small></div>
                         </div>
-                        <div class="levels"><div class="level-item tilt-card">
-                <label>Hablado</label>
-                <div class="bar"><i style="width:50%"></i></div>
-                <small>B1–B2</small>
-            </div><div class="level-item tilt-card">
-                <label>Escrito</label>
-                <div class="bar"><i style="width:65%"></i></div>
-                <small>B1–B2</small>
-            </div><div class="level-item tilt-card">
-                <label>Lectura</label>
-                <div class="bar"><i style="width:70%"></i></div>
-                <small>B1–B2</small>
-            </div></div>
                     </article>
                     <article class="panel reveal">
-                        <div class="section-head">
-                            <span class="mini-label">Roadmap</span>
-                            <h2>Actualmente aprendiendo</h2>
-                        </div>
-                        <div class="roadmap-grid"><div class='roadmap-item tilt-card'>Java · seguir entendiendo mejor la POO, las colecciones y la lógica de programación.</div><div class='roadmap-item tilt-card'>BBDD · ganar más soltura con consultas SQL, tablas y relaciones.</div><div class='roadmap-item tilt-card'>Frontend · mejorar en estructura, responsive design y limpieza visual.</div></div>
+                        <div class="section-head"><span class="mini-label" id="roadmap-label"></span><h2 id="roadmap-title"></h2></div>
+                        <div class="roadmap-grid"><div class="roadmap-item tilt-card" id="road-1"></div><div class="roadmap-item tilt-card" id="road-2"></div><div class="roadmap-item tilt-card" id="road-3"></div></div>
                     </article>
                 </div>
             </div>
@@ -182,35 +136,20 @@
         <section class="screen compact-screen" id="repositorios">
             <div class="wrapper">
                 <article class="panel reveal">
-                    <div class="section-head">
-                        <span class="mini-label">Showcase</span>
-                        <h2>Proyectos destacados desde GitHub</h2>
-                        <p>Los repositorios con topic <strong>showcase</strong> se muestran aquí más grandes y clicables.</p>
-                    </div>
+                    <div class="section-head"><span class="mini-label" id="showcase-label"></span><h2 id="showcase-title"></h2><p id="showcase-text"></p></div>
                     <div id="featured" class="repo-featured-grid"></div>
                 </article>
                 <article class="panel reveal">
-                    <div class="section-head">
-                        <span class="mini-label">Repositorios</span>
-                        <h2>Mis repositorios</h2>
-                        <p>Explora mis proyectos y prácticas por nombre, actividad o temática.</p>
-                    </div>
+                    <div class="section-head"><span class="mini-label" id="repos-label"></span><h2 id="repos-title"></h2><p id="repos-text"></p></div>
                     <div class="toolbar">
-                        <input id="q" class="input" placeholder="Buscar repositorios..." />
-                        <select id="sort" class="select">
-                            <option value="updated">Ordenar: actividad reciente</option>
-                            <option value="stars">Ordenar: estrellas</option>
-                            <option value="name">Ordenar: nombre</option>
-                        </select>
-                        <button class="button subtle active" data-topic="all">Todos</button>
-                        <button class="button subtle" data-topic="showcase">Showcase</button>
-                        <button class="button subtle" data-topic="web">Web</button>
-                        <button class="button subtle" data-topic="backend">Backend</button>
+                        <input id="q" class="input" />
+                        <select id="sort" class="select"><option value="updated"></option><option value="stars"></option><option value="name"></option></select>
+                        <button class="button subtle active" data-topic="all" id="filter-all"></button>
+                        <button class="button subtle" data-topic="showcase" id="filter-showcase">Showcase</button>
+                        <button class="button subtle" data-topic="web" id="filter-web"></button>
+                        <button class="button subtle" data-topic="backend" id="filter-backend"></button>
                     </div>
-                    <div class="results-meta">
-                        <span id="results-count">Cargando repositorios...</span>
-                        <button id="toggle-repos" class="button subtle" type="button" style="display:none;">Ver más</button>
-                    </div>
+                    <div class="results-meta"><span id="results-count"></span><button id="toggle-repos" class="button subtle" type="button" style="display:none;"></button></div>
                     <div id="repos" class="repo-grid"></div>
                 </article>
             </div>
@@ -221,21 +160,12 @@
         <section class="screen compact-screen" id="skills">
             <div class="wrapper">
                 <article class="panel reveal">
-                    <div class="section-head">
-                        <span class="mini-label">Enfoque personal</span>
-                        <h2>Cómo trabajo y qué busco</h2>
-                        <p>Además de la parte técnica, quiero que la página refleje cómo aprendo y cómo quiero seguir creciendo como desarrollador junior.</p>
+                    <div class="section-head"><span class="mini-label" id="personal-label"></span><h2 id="personal-title"></h2><p id="personal-text"></p></div>
+                    <div class="value-grid">
+                        <article class="value-card tilt-card"><h3 id="value1t"></h3><p id="value1d"></p></article>
+                        <article class="value-card tilt-card"><h3 id="value2t"></h3><p id="value2d"></p></article>
+                        <article class="value-card tilt-card"><h3 id="value3t"></h3><p id="value3d"></p></article>
                     </div>
-                    <div class="value-grid"><article class="value-card tilt-card">
-                <h3>Cómo aprendo</h3>
-                <p>Me gusta aprender practicando: entender la teoría, probar por mi cuenta, equivocarme y volver a intentarlo hasta asentar bien cada concepto.</p>
-            </article><article class="value-card tilt-card">
-                <h3>Qué valoro</h3>
-                <p>Valoro los entornos en los que pueda seguir creciendo, recibir feedback y aprender de personas con más experiencia.</p>
-            </article><article class="value-card tilt-card">
-                <h3>Qué busco</h3>
-                <p>Busco una oportunidad para seguir desarrollándome poco a poco en backend, bases de datos y frontend, aportando constancia, actitud y ganas de aprender.</p>
-            </article></div>
                 </article>
             </div>
         </section>
@@ -243,27 +173,23 @@
         <section class="screen contact-screen" id="contacto">
             <div class="wrapper">
                 <article class="panel contact-panel reveal">
-                    <div class="section-head centered">
-                        <span class="mini-label">Contacto</span>
-                        <h2>Conectemos</h2>
-                        <p>He dejado esta zona final más compacta, más cohesionada con el resto y sin mostrar el email en texto.</p>
-                    </div>
+                    <div class="section-head centered"><span class="mini-label" id="contact-label"></span><h2 id="contact-title"></h2><p id="contact-text"></p></div>
                     <div class="contact-actions">
                         <a class="button primary" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer"><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.67.5 12.05c0 5.1 3.3 9.42 7.88 10.95.58.1.79-.25.79-.57 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.55-3.88-1.55-.52-1.34-1.28-1.7-1.28-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.75 1.19 1.75 1.19 1.02 1.76 2.69 1.25 3.34.95.1-.75.4-1.25.72-1.54-2.55-.3-5.24-1.28-5.24-5.68 0-1.25.44-2.28 1.17-3.08-.12-.3-.5-1.52.1-3.16 0 0 .95-.3 3.1 1.18A10.7 10.7 0 0 1 12 6.48c.95 0 1.9.13 2.8.39 2.15-1.48 3.1-1.18 3.1-1.18.6 1.64.22 2.86.1 3.16.73.8 1.17 1.83 1.17 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.77 1.08.77 2.18 0 1.58-.01 2.86-.01 3.25 0 .32.2.68.8.56 4.58-1.53 7.87-5.85 7.87-10.95C23.5 5.67 18.35.5 12 .5Z"/></svg></span>GitHub</a>
                         <a class="button subtle" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer"><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.49 2.49 0 1 0 5 8.48 2.49 2.49 0 0 0 4.98 3.5ZM2.75 9.25h4.46V21H2.75V9.25ZM9.75 9.25h4.28v1.6h.06c.6-1.12 2.05-2.3 4.22-2.3 4.5 0 5.33 2.96 5.33 6.8V21h-4.46v-5.08c0-1.21-.02-2.77-1.69-2.77-1.7 0-1.96 1.32-1.96 2.69V21H9.75V9.25Z"/></svg></span>LinkedIn</a>
-                        <button class="button subtle" type="button" data-copy-email><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.75A2.75 2.75 0 0 1 5.75 3h12.5A2.75 2.75 0 0 1 21 5.75v12.5A2.75 2.75 0 0 1 18.25 21H5.75A2.75 2.75 0 0 1 3 18.25V5.75Zm2.1.14 6.4 5.1a.8.8 0 0 0 1 0l6.4-5.1a1.15 1.15 0 0 0-.65-.19H5.75c-.24 0-.46.07-.65.19Zm14.15 1.7-5.75 4.57a2.3 2.3 0 0 1-2.88 0L4.87 7.6v10.65c0 .48.4.88.88.88h12.5c.48 0 .88-.4.88-.88V7.6Z"/></svg></span>Copiar email</button>
+                        <button class="button subtle" type="button" data-copy-email><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.75A2.75 2.75 0 0 1 5.75 3h12.5A2.75 2.75 0 0 1 21 5.75v12.5A2.75 2.75 0 0 1 18.25 21H5.75A2.75 2.75 0 0 1 3 18.25V5.75Zm2.1.14 6.4 5.1a.8.8 0 0 0 1 0l6.4-5.1a1.15 1.15 0 0 0-.65-.19H5.75c-.24 0-.46.07-.65.19Zm14.15 1.7-5.75 4.57a2.3 2.3 0 0 1-2.88 0L4.87 7.6v10.65c0 .48.4.88.88.88h12.5c.48 0 .88-.4.88-.88V7.6Z"/></svg></span><span class="copy-label"></span></button>
                     </div>
                 </article>
             </div>
         </section>
     </main>
 
-    
 <script>
 document.addEventListener("DOMContentLoaded", () =>
 {
     const root = document.documentElement;
     const themeKey = "portfolio-theme";
+    const langKey = "portfolio-lang-kinetic-es-en-de-is";
     const email = "alexDoGa.Work@gmail.com";
     const ribbon = document.getElementById("quickRibbon");
     const hero = document.getElementById("inicio");
@@ -276,19 +202,36 @@ document.addEventListener("DOMContentLoaded", () =>
     const resultsCount = document.getElementById("results-count");
     const toggleRepos = document.getElementById("toggle-repos");
     const filterButtons = document.querySelectorAll("[data-topic]");
+    const langButtons = document.querySelectorAll(".lang-btn");
     const GITHUB_USERNAME = "alejandroDonGar";
     const FEATURED_TOPIC = "showcase";
     const REPOS_PREVIEW_COUNT = 6;
+    const translations = {"es": {"langName": "ES", "siteRole": "Estudiante de Desarrollo de Aplicaciones Multiplataforma · 1º DAM", "navStart": "Inicio", "navProfile": "Perfil", "navProgress": "Progreso", "navRepos": "Repos", "navSkills": "Skills", "navContact": "Contacto", "themeLight": "Modo claro", "themeDark": "Modo nocturno", "gyro": "Activar giroscopio", "gyroOn": "Giroscopio activo", "heroLabel": "Kinetic internacional", "lead": "Estoy empezando mi camino en el desarrollo de software y ahora mismo mi objetivo es seguir aprendiendo, practicar mucho y ganar confianza poco a poco en Java, bases de datos y desarrollo web.", "viewProjects": "Ver proyectos", "copyEmail": "Copiar email", "copiedEmail": "Email copiado", "copyFail": "No se pudo copiar", "current": "Actualmente", "current1": "Buscando prácticas y oportunidades donde pueda aprender desde cero y seguir mejorando.", "current2": "Practicando Java, bases de datos y diseño web para afianzar una base más sólida.", "current3": "Construyendo proyectos sencillos para aplicar lo que voy aprendiendo paso a paso.", "aboutLabel": "Sobre mí", "aboutTitle": "Un perfil junior con mucha constancia y ganas reales de crecer", "aboutText": "Soy estudiante y todavía estoy en una etapa muy inicial de aprendizaje. Me interesa seguir descubriendo cómo funciona el desarrollo de software, especialmente en Java, bases de datos y la parte web con HTML, CSS y XML. Mi objetivo ahora mismo es practicar, entender bien las bases y seguir ganando soltura poco a poco.", "goalTitle": "Objetivo", "goalText": "Seguir aprendiendo y afianzando poco a poco Java, bases de datos y tecnologías web.", "strengthTitle": "Fortaleza", "strengthText": "Constancia, curiosidad y muchas ganas de aprender con práctica y experiencia real.", "skillsLabel": "Skills", "skillsTitle": "Contenidos que estoy trabajando", "bridge1": "Práctica real", "bridge2": "Responsive", "bridge3": "Backend", "bridge4": "BBDD", "progressLabel": "Progreso", "progressTitle": "Mi línea de avance", "timeline1t": "Inicio en DAM", "timeline1d": "Empiezo a formarme en desarrollo de software y a construir una base en programación, bases de datos y desarrollo web.", "timeline2t": "Java y SQL", "timeline2d": "Empiezo a practicar programación orientada a objetos, colecciones y consultas básicas para entender mejor los fundamentos.", "timeline3t": "Frontend y portfolio", "timeline3d": "Voy trabajando la parte visual con HTML y CSS, aprendiendo responsive design y mejorando poco a poco la maquetación.", "timeline4t": "Ahora mismo", "timeline4d": "Sigo construyendo proyectos sencillos, mejorando mi portfolio y buscando una primera oportunidad para aprender en un entorno real.", "langLabel": "Idiomas", "englishTitle": "Nivel de inglés", "spoken": "Hablado", "written": "Escrito", "reading": "Lectura", "roadmapLabel": "Roadmap", "roadmapTitle": "Actualmente aprendiendo", "road1": "Java · seguir entendiendo mejor la POO, las colecciones y la lógica de programación.", "road2": "BBDD · ganar más soltura con consultas SQL, tablas y relaciones.", "road3": "Frontend · mejorar en estructura, responsive design y limpieza visual.", "showcaseLabel": "Showcase", "showcaseTitle": "Proyectos destacados desde GitHub", "showcaseText": "Los repositorios con topic showcase se muestran aquí más grandes y clicables.", "reposLabel": "Repositorios", "reposTitle": "Mis repositorios", "reposText": "Explora mis proyectos y prácticas por nombre, actividad o temática.", "searchPlaceholder": "Buscar repositorios...", "sortUpdated": "Ordenar: actividad reciente", "sortStars": "Ordenar: estrellas", "sortName": "Ordenar: nombre", "all": "Todos", "web": "Web", "backend": "Backend", "loadingRepos": "Cargando repositorios...", "showMore": "Ver más", "showLess": "Ver menos", "personalLabel": "Enfoque personal", "personalTitle": "Cómo trabajo y qué busco", "personalText": "Además de la parte técnica, quiero que la página refleje cómo aprendo y cómo quiero seguir creciendo como desarrollador junior.", "value1t": "Cómo aprendo", "value1d": "Me gusta aprender practicando: entender la teoría, probar por mi cuenta, equivocarme y volver a intentarlo hasta asentar bien cada concepto.", "value2t": "Qué valoro", "value2d": "Valoro los entornos en los que pueda seguir creciendo, recibir feedback y aprender de personas con más experiencia.", "value3t": "Qué busco", "value3d": "Busco una oportunidad para seguir desarrollándome poco a poco en backend, bases de datos y frontend, aportando constancia, actitud y ganas de aprender.", "contactLabel": "Contacto", "contactTitle": "Conectemos", "contactText": "He dejado esta zona final más compacta, más cohesionada con el resto y sin mostrar el email en texto.", "resultsFound": "repositorio(s) encontrados", "featuredBadge": "Destacado", "repoBadge": "Repo", "openRepo": "Abrir", "viewRepo": "Ver repo", "noTopics": "sin topics", "updatedMeta": "Actualizado", "loadingError": "No se pudieron cargar los repositorios desde GitHub.", "noRepos": "No encontramos repositorios que coincidan con", "noFeatured": "Aún no tienes repos con topic showcase."}, "en": {"langName": "EN", "siteRole": "Multiplatform Application Development Student · 1st Year", "navStart": "Home", "navProfile": "Profile", "navProgress": "Progress", "navRepos": "Repos", "navSkills": "Skills", "navContact": "Contact", "themeLight": "Light mode", "themeDark": "Dark mode", "gyro": "Enable gyroscope", "gyroOn": "Gyroscope active", "heroLabel": "Kinetic international", "lead": "I am starting my path in software development and right now my goal is to keep learning, practice a lot, and gradually build confidence in Java, databases, and web development.", "viewProjects": "View projects", "copyEmail": "Copy email", "copiedEmail": "Email copied", "copyFail": "Could not copy", "current": "Currently", "current1": "Looking for internships and opportunities where I can learn from scratch and keep improving.", "current2": "Practicing Java, databases, and web design to build a stronger foundation.", "current3": "Building simple projects to apply what I am learning step by step.", "aboutLabel": "About me", "aboutTitle": "A junior profile with consistency and a real desire to grow", "aboutText": "I am a student and I am still at a very early stage of learning. I am interested in continuing to discover how software development works, especially Java, databases, and the web side with HTML, CSS, and XML. My goal right now is to practice, understand the fundamentals well, and gradually gain more confidence.", "goalTitle": "Goal", "goalText": "Keep learning and steadily strengthen Java, databases, and web technologies.", "strengthTitle": "Strength", "strengthText": "Consistency, curiosity, and a real desire to learn through practice and real experience.", "skillsLabel": "Skills", "skillsTitle": "Topics I am currently working on", "bridge1": "Real practice", "bridge2": "Responsive", "bridge3": "Backend", "bridge4": "Databases", "progressLabel": "Progress", "progressTitle": "My learning path", "timeline1t": "Starting DAM", "timeline1d": "I begin training in software development and building a foundation in programming, databases, and web development.", "timeline2t": "Java and SQL", "timeline2d": "I start practicing object-oriented programming, collections, and basic queries to better understand the fundamentals.", "timeline3t": "Frontend and portfolio", "timeline3d": "I keep working on the visual side with HTML and CSS, learning responsive design and gradually improving my layouts.", "timeline4t": "Right now", "timeline4d": "I continue building simple projects, improving my portfolio, and looking for a first real opportunity to learn in a professional environment.", "langLabel": "Languages", "englishTitle": "English level", "spoken": "Spoken", "written": "Written", "reading": "Reading", "roadmapLabel": "Roadmap", "roadmapTitle": "Currently learning", "road1": "Java · keep improving my understanding of OOP, collections, and programming logic.", "road2": "Databases · gain more confidence with SQL queries, tables, and relationships.", "road3": "Frontend · improve structure, responsive design, and visual polish.", "showcaseLabel": "Showcase", "showcaseTitle": "Featured projects from GitHub", "showcaseText": "Repositories with the showcase topic appear here in a larger and clickable format.", "reposLabel": "Repositories", "reposTitle": "My repositories", "reposText": "Explore my projects and practice work by name, activity, or topic.", "searchPlaceholder": "Search repositories...", "sortUpdated": "Sort: recent activity", "sortStars": "Sort: stars", "sortName": "Sort: name", "all": "All", "web": "Web", "backend": "Backend", "loadingRepos": "Loading repositories...", "showMore": "Show more", "showLess": "Show less", "personalLabel": "Personal approach", "personalTitle": "How I work and what I am looking for", "personalText": "Beyond the technical side, I want the page to reflect how I learn and how I want to keep growing as a junior developer.", "value1t": "How I learn", "value1d": "I like learning by practicing: understanding the theory, trying things on my own, making mistakes, and trying again until each concept becomes solid.", "value2t": "What I value", "value2d": "I value environments where I can keep growing, receive feedback, and learn from people with more experience.", "value3t": "What I am looking for", "value3d": "I am looking for an opportunity to keep developing step by step in backend, databases, and frontend, bringing consistency, attitude, and willingness to learn.", "contactLabel": "Contact", "contactTitle": "Let's connect", "contactText": "I made this final section more compact, more cohesive with the rest, and without showing the email address in plain text.", "resultsFound": "repository(ies) found", "featuredBadge": "Featured", "repoBadge": "Repo", "openRepo": "Open", "viewRepo": "View repo", "noTopics": "no topics", "updatedMeta": "Updated", "loadingError": "Could not load repositories from GitHub.", "noRepos": "No repositories matched", "noFeatured": "You do not have repos with the showcase topic yet."}, "de": {"langName": "DE", "siteRole": "Student für plattformübergreifende Anwendungsentwicklung · 1. Jahr", "navStart": "Start", "navProfile": "Profil", "navProgress": "Fortschritt", "navRepos": "Repos", "navSkills": "Skills", "navContact": "Kontakt", "themeLight": "Heller Modus", "themeDark": "Dunkler Modus", "gyro": "Gyroskop aktivieren", "gyroOn": "Gyroskop aktiv", "heroLabel": "Kinetic international", "lead": "Ich beginne gerade meinen Weg in der Softwareentwicklung und mein aktuelles Ziel ist es, weiter zu lernen, viel zu üben und nach und nach mehr Sicherheit in Java, Datenbanken und Webentwicklung zu gewinnen.", "viewProjects": "Projekte ansehen", "copyEmail": "E-Mail kopieren", "copiedEmail": "E-Mail kopiert", "copyFail": "Konnte nicht kopieren", "current": "Aktuell", "current1": "Ich suche Praktika und Möglichkeiten, bei denen ich von Grund auf lernen und mich weiter verbessern kann.", "current2": "Ich übe Java, Datenbanken und Webdesign, um eine stärkere Grundlage aufzubauen.", "current3": "Ich entwickle einfache Projekte, um das Gelernte Schritt für Schritt anzuwenden.", "aboutLabel": "Über mich", "aboutTitle": "Ein Junior-Profil mit Ausdauer und echtem Wunsch zu wachsen", "aboutText": "Ich bin Student und befinde mich noch in einer sehr frühen Lernphase. Ich möchte weiter entdecken, wie Softwareentwicklung funktioniert, besonders Java, Datenbanken und der Webbereich mit HTML, CSS und XML. Mein Ziel ist es jetzt, zu üben, die Grundlagen gut zu verstehen und Schritt für Schritt mehr Sicherheit zu gewinnen.", "goalTitle": "Ziel", "goalText": "Weiter lernen und Java, Datenbanken und Webtechnologien Schritt für Schritt festigen.", "strengthTitle": "Stärke", "strengthText": "Ausdauer, Neugier und der echte Wunsch, durch Praxis und reale Erfahrung zu lernen.", "skillsLabel": "Skills", "skillsTitle": "Themen, an denen ich gerade arbeite", "bridge1": "Praxis", "bridge2": "Responsive", "bridge3": "Backend", "bridge4": "Datenbanken", "progressLabel": "Fortschritt", "progressTitle": "Mein Lernweg", "timeline1t": "Start in DAM", "timeline1d": "Ich beginne meine Ausbildung in der Softwareentwicklung und baue eine Grundlage in Programmierung, Datenbanken und Webentwicklung auf.", "timeline2t": "Java und SQL", "timeline2d": "Ich übe objektorientierte Programmierung, Collections und grundlegende Abfragen, um die Grundlagen besser zu verstehen.", "timeline3t": "Frontend und Portfolio", "timeline3d": "Ich arbeite weiter am visuellen Teil mit HTML und CSS, lerne Responsive Design und verbessere nach und nach mein Layout.", "timeline4t": "Im Moment", "timeline4d": "Ich entwickle weiterhin einfache Projekte, verbessere mein Portfolio und suche nach einer ersten echten Chance, in einem realen Umfeld zu lernen.", "langLabel": "Sprachen", "englishTitle": "Englischniveau", "spoken": "Sprechen", "written": "Schreiben", "reading": "Lesen", "roadmapLabel": "Roadmap", "roadmapTitle": "Aktuell lerne ich", "road1": "Java · OOP, Collections und Programmierlogik besser verstehen.", "road2": "Datenbanken · mehr Sicherheit bei SQL-Abfragen, Tabellen und Beziehungen gewinnen.", "road3": "Frontend · Struktur, Responsive Design und visuelle Sauberkeit verbessern.", "showcaseLabel": "Showcase", "showcaseTitle": "Hervorgehobene Projekte von GitHub", "showcaseText": "Repositories mit dem Topic showcase werden hier größer und klickbar angezeigt.", "reposLabel": "Repositories", "reposTitle": "Meine Repositories", "reposText": "Erkunde meine Projekte und Übungen nach Name, Aktivität oder Thema.", "searchPlaceholder": "Repositories suchen...", "sortUpdated": "Sortieren: letzte Aktivität", "sortStars": "Sortieren: Sterne", "sortName": "Sortieren: Name", "all": "Alle", "web": "Web", "backend": "Backend", "loadingRepos": "Repositories werden geladen...", "showMore": "Mehr anzeigen", "showLess": "Weniger anzeigen", "personalLabel": "Persönlicher Ansatz", "personalTitle": "Wie ich arbeite und wonach ich suche", "personalText": "Neben dem technischen Teil möchte ich, dass die Seite zeigt, wie ich lerne und wie ich mich als Junior-Entwickler weiterentwickeln möchte.", "value1t": "Wie ich lerne", "value1d": "Ich lerne gern durch Praxis: Theorie verstehen, selbst ausprobieren, Fehler machen und erneut versuchen, bis jedes Konzept wirklich sitzt.", "value2t": "Was ich schätze", "value2d": "Ich schätze Umgebungen, in denen ich wachsen, Feedback erhalten und von erfahreneren Menschen lernen kann.", "value3t": "Was ich suche", "value3d": "Ich suche eine Möglichkeit, mich Schritt für Schritt in Backend, Datenbanken und Frontend weiterzuentwickeln und dabei Ausdauer, Haltung und Lernbereitschaft einzubringen.", "contactLabel": "Kontakt", "contactTitle": "Lass uns vernetzen", "contactText": "Ich habe diesen letzten Bereich kompakter und stimmiger gestaltet und zeige die E-Mail-Adresse nicht direkt an.", "resultsFound": "Repository(s) gefunden", "featuredBadge": "Highlight", "repoBadge": "Repo", "openRepo": "Öffnen", "viewRepo": "Repo ansehen", "noTopics": "keine Topics", "updatedMeta": "Aktualisiert", "loadingError": "Repositories konnten nicht von GitHub geladen werden.", "noRepos": "Keine Repositories gefunden für", "noFeatured": "Du hast noch keine Repos mit dem Topic showcase."}, "is": {"langName": "IS", "siteRole": "Nemandi í fjölvettvangsforritaþróun · 1. ár", "navStart": "Byrjun", "navProfile": "Prófíll", "navProgress": "Framvinda", "navRepos": "Repos", "navSkills": "Skills", "navContact": "Samband", "themeLight": "Ljós stilling", "themeDark": "Dökk stilling", "gyro": "Virkja gyroscope", "gyroOn": "Gyroscope virkt", "heroLabel": "Kinetic international", "lead": "Ég er að byrja leið mína í hugbúnaðarþróun og markmið mitt núna er að halda áfram að læra, æfa mikið og byggja smám saman upp meira öryggi í Java, gagnagrunnum og vefþróun.", "viewProjects": "Skoða verkefni", "copyEmail": "Afrita netfang", "copiedEmail": "Netfang afritað", "copyFail": "Ekki tókst að afrita", "current": "Núna", "current1": "Ég er að leita að starfsnámi og tækifærum þar sem ég get lært frá grunni og haldið áfram að bæta mig.", "current2": "Ég er að æfa Java, gagnagrunna og vefhönnun til að byggja sterkari grunn.", "current3": "Ég er að búa til einföld verkefni til að beita því sem ég er að læra skref fyrir skref.", "aboutLabel": "Um mig", "aboutTitle": "Junior prófíll með mikla þrautseigju og raunverulegan vilja til að vaxa", "aboutText": "Ég er nemandi og enn á mjög byrjunarstigi í námi. Ég hef áhuga á að halda áfram að uppgötva hvernig hugbúnaðarþróun virkar, sérstaklega Java, gagnagrunna og vefhlutann með HTML, CSS og XML. Markmið mitt núna er að æfa, skilja grunnatriðin vel og verða smám saman öruggari.", "goalTitle": "Markmið", "goalText": "Halda áfram að læra og styrkja smám saman Java, gagnagrunna og veftækni.", "strengthTitle": "Styrkur", "strengthText": "Þrautseigja, forvitni og raunverulegur vilji til að læra í gegnum æfingu og raunverulega reynslu.", "skillsLabel": "Skills", "skillsTitle": "Efni sem ég er að vinna í núna", "bridge1": "Raunæfing", "bridge2": "Responsive", "bridge3": "Backend", "bridge4": "Gagnagrunnar", "progressLabel": "Framvinda", "progressTitle": "Námsleiðin mín", "timeline1t": "Byrjun í DAM", "timeline1d": "Ég byrja að læra hugbúnaðarþróun og byggi grunn í forritun, gagnagrunnum og vefþróun.", "timeline2t": "Java og SQL", "timeline2d": "Ég byrja að æfa hlutbundna forritun, söfn og einfaldar fyrirspurnir til að skilja grunnatriðin betur.", "timeline3t": "Frontend og portfolio", "timeline3d": "Ég vinn áfram að sjónræna hlutanum með HTML og CSS, læri responsive design og bæti smám saman útlitið.", "timeline4t": "Akkúrat núna", "timeline4d": "Ég held áfram að búa til einföld verkefni, bæta portfolio mitt og leita að fyrsta raunverulega tækifærinu til að læra í faglegu umhverfi.", "langLabel": "Tungumál", "englishTitle": "Enska", "spoken": "Talað", "written": "Skrifað", "reading": "Lestur", "roadmapLabel": "Roadmap", "roadmapTitle": "Núna að læra", "road1": "Java · skilja betur OOP, söfn og forritunarrökfræði.", "road2": "Gagnagrunnar · verða öruggari með SQL fyrirspurnir, töflur og tengsl.", "road3": "Frontend · bæta uppbyggingu, responsive design og sjónræna hreinsun.", "showcaseLabel": "Showcase", "showcaseTitle": "Valin verkefni frá GitHub", "showcaseText": "Repositories með showcase topic birtast hér stærri og smellanleg.", "reposLabel": "Repositories", "reposTitle": "Mín repositories", "reposText": "Skoðaðu verkefni og æfingar eftir nafni, virkni eða efni.", "searchPlaceholder": "Leita í repositories...", "sortUpdated": "Raða: nýleg virkni", "sortStars": "Raða: stjörnur", "sortName": "Raða: nafn", "all": "Allt", "web": "Web", "backend": "Backend", "loadingRepos": "Hleð repositories...", "showMore": "Sýna meira", "showLess": "Sýna minna", "personalLabel": "Persónuleg nálgun", "personalTitle": "Hvernig ég vinn og hvað ég leita að", "personalText": "Auk tæknilega hlutans vil ég að síðan sýni hvernig ég læri og hvernig ég vil halda áfram að þróast sem junior forritari.", "value1t": "Hvernig ég læri", "value1d": "Mér finnst best að læra með æfingu: skilja fræðin, prófa sjálfur, gera mistök og reyna aftur þar til hvert hugtak verður traust.", "value2t": "Hvað ég met", "value2d": "Ég met umhverfi þar sem ég get haldið áfram að vaxa, fengið endurgjöf og lært af fólki með meiri reynslu.", "value3t": "Að hverju ég leita", "value3d": "Ég leita að tækifæri til að þróast skref fyrir skref í backend, gagnagrunnum og frontend, með þrautseigju, viðhorfi og vilja til að læra.", "contactLabel": "Samband", "contactTitle": "Höfum samband", "contactText": "Ég gerði þennan loka hluta nettari og samræmdari við restina og sýni ekki netfangið beint.", "resultsFound": "repository fannst/fundust", "featuredBadge": "Valið", "repoBadge": "Repo", "openRepo": "Opna", "viewRepo": "Skoða repo", "noTopics": "engin topics", "updatedMeta": "Uppfært", "loadingError": "Ekki tókst að hlaða repositories frá GitHub.", "noRepos": "Engin repositories fundust fyrir", "noFeatured": "Þú ert ekki með repos með showcase topic enn."}};
+    let currentLang = localStorage.getItem(langKey) || "es";
     let allRepos = [];
     let activeTopic = "all";
     let reposExpanded = false;
+    let gyroEnabled = false;
+    let currentSkill = "java";
+
+    const skillMap = {
+        java: "CLASES · GETTER/SETTER · FECHAS · EXPRESIONES REGULARES · ARRAYS · LISTAS · SETS · MAPS",
+        db: "CREATE TABLES · ALTER · DROP · INSERT INTO · JOINS · POSTGRES",
+        frontend: "HTML GENERAL · CSS GRID · FLEXBOX · RESPONSIVE DESIGN",
+        xml: "XSD · VALIDACIÓN · ESTRUCTURAS DE DATOS"
+    };
+
+    function t(key)
+    {
+        return translations[currentLang][key] || translations["es"][key] || key;
+    }
 
     function applyTheme(theme)
     {
         root.setAttribute("data-theme", theme);
         document.querySelectorAll("[data-theme-toggle]").forEach(button =>
         {
-            button.textContent = theme === "light" ? "Modo nocturno" : "Modo claro";
+            button.textContent = theme === "light" ? t("themeDark") : t("themeLight");
         });
     }
 
@@ -305,87 +248,190 @@ document.addEventListener("DOMContentLoaded", () =>
         });
     });
 
+    function updateCopyLabels(text)
+    {
+        document.querySelectorAll(".copy-label").forEach(node =>
+        {
+            node.textContent = text;
+        });
+    }
+
     document.querySelectorAll("[data-copy-email]").forEach(button =>
     {
         button.addEventListener("click", async () =>
         {
-            const original = button.textContent;
             try
             {
                 await navigator.clipboard.writeText(email);
-                button.textContent = "Email copiado";
+                updateCopyLabels(t("copiedEmail"));
             }
             catch (error)
             {
-                button.textContent = "No se pudo copiar";
+                updateCopyLabels(t("copyFail"));
             }
             setTimeout(() =>
             {
-                button.textContent = original;
+                updateCopyLabels(t("copyEmail"));
             }, 1400);
         });
+    });
+
+    function setSkillText(skill)
+    {
+        currentSkill = skill;
+        const titles = {
+            java: "JAVA",
+            db: currentLang === "es" ? "BBDD" : currentLang === "en" ? "DATABASES" : currentLang === "de" ? "DATENBANKEN" : "GAGNAGRUNNAR",
+            frontend: "FRONTEND",
+            xml: "XML"
+        };
+        document.getElementById("skillTitle").textContent = titles[skill];
+        document.getElementById("skillText").textContent = skillMap[skill];
+    }
+
+    function applyLanguage(lang)
+    {
+        currentLang = lang;
+        localStorage.setItem(langKey, lang);
+        document.documentElement.lang = lang;
+
+        const map = {
+            "ribbon-role": "siteRole",
+            "nav-start": "navStart",
+            "nav-profile": "navProfile",
+            "nav-progress": "navProgress",
+            "nav-repos": "navRepos",
+            "nav-skills": "navSkills",
+            "nav-contact": "navContact",
+            "hero-label": "heroLabel",
+            "hero-role": "siteRole",
+            "hero-lead": "lead",
+            "hero-projects": "viewProjects",
+            "current-label": "current",
+            "current-1": "current1",
+            "current-2": "current2",
+            "current-3": "current3",
+            "about-label": "aboutLabel",
+            "about-title": "aboutTitle",
+            "about-text": "aboutText",
+            "goal-title": "goalTitle",
+            "goal-text": "goalText",
+            "strength-title": "strengthTitle",
+            "strength-text": "strengthText",
+            "skills-label": "skillsLabel",
+            "skills-title": "skillsTitle",
+            "bridge-1": "bridge1",
+            "bridge-2": "bridge2",
+            "bridge-3": "bridge3",
+            "bridge-4": "bridge4",
+            "progress-label": "progressLabel",
+            "progress-title": "progressTitle",
+            "tl1t": "timeline1t",
+            "tl1d": "timeline1d",
+            "tl2t": "timeline2t",
+            "tl2d": "timeline2d",
+            "tl3t": "timeline3t",
+            "tl3d": "timeline3d",
+            "tl4t": "timeline4t",
+            "tl4d": "timeline4d",
+            "lang-label": "langLabel",
+            "english-title": "englishTitle",
+            "spoken-label": "spoken",
+            "written-label": "written",
+            "reading-label": "reading",
+            "roadmap-label": "roadmapLabel",
+            "roadmap-title": "roadmapTitle",
+            "road-1": "road1",
+            "road-2": "road2",
+            "road-3": "road3",
+            "showcase-label": "showcaseLabel",
+            "showcase-title": "showcaseTitle",
+            "showcase-text": "showcaseText",
+            "repos-label": "reposLabel",
+            "repos-title": "reposTitle",
+            "repos-text": "reposText",
+            "filter-all": "all",
+            "filter-web": "web",
+            "filter-backend": "backend",
+            "personal-label": "personalLabel",
+            "personal-title": "personalTitle",
+            "personal-text": "personalText",
+            "value1t": "value1t",
+            "value1d": "value1d",
+            "value2t": "value2t",
+            "value2d": "value2d",
+            "value3t": "value3t",
+            "value3d": "value3d",
+            "contact-label": "contactLabel",
+            "contact-title": "contactTitle",
+            "contact-text": "contactText"
+        };
+
+        Object.entries(map).forEach(([id, key]) =>
+        {
+            const node = document.getElementById(id);
+            if (node) node.textContent = t(key);
+        });
+
+        q.placeholder = t("searchPlaceholder");
+        document.querySelector('#sort option[value="updated"]').textContent = t("sortUpdated");
+        document.querySelector('#sort option[value="stars"]').textContent = t("sortStars");
+        document.querySelector('#sort option[value="name"]').textContent = t("sortName");
+        document.getElementById("filter-showcase").textContent = "Showcase";
+        document.getElementById("gyro-toggle").textContent = gyroEnabled ? t("gyroOn") : t("gyro");
+        updateCopyLabels(t("copyEmail"));
+        applyTheme(root.getAttribute("data-theme") || storedTheme);
+        setSkillText(currentSkill);
+        renderRepos(allRepos);
+        renderFeatured(allRepos);
+
+        langButtons.forEach(button =>
+        {
+            button.classList.toggle("active", button.dataset.lang === lang);
+        });
+    }
+
+    langButtons.forEach(button =>
+    {
+        button.addEventListener("click", () => applyLanguage(button.dataset.lang));
     });
 
     skillButtons.forEach(button =>
     {
         button.addEventListener("click", () =>
         {
-            skillButtons.forEach(item =>
-            {
-                item.classList.remove("active");
-            });
+            skillButtons.forEach(item => item.classList.remove("active"));
             button.classList.add("active");
-            document.getElementById("skillTitle").textContent = button.dataset.title;
-            document.getElementById("skillText").textContent = button.dataset.text;
+            setSkillText(button.dataset.skill);
         });
     });
+
+    applyLanguage(currentLang);
+    setSkillText("java");
 
     const revealObserver = new IntersectionObserver(entries =>
     {
         entries.forEach(entry =>
         {
-            if (entry.isIntersecting)
-            {
-                entry.target.classList.add("visible");
-            }
+            if (entry.isIntersecting) entry.target.classList.add("visible");
         });
-    },
-    {
-        threshold: 0.14
-    });
-
-    document.querySelectorAll(".reveal").forEach(element =>
-    {
-        revealObserver.observe(element);
-    });
+    }, { threshold: 0.14 });
+    document.querySelectorAll(".reveal").forEach(element => revealObserver.observe(element));
 
     const sectionObserver = new IntersectionObserver(entries =>
     {
         entries.forEach(entry =>
         {
-            if (!entry.isIntersecting)
-            {
-                return;
-            }
+            if (!entry.isIntersecting) return;
             const pill = document.querySelector('.section-pill[href="#' + entry.target.id + '"]');
             if (pill)
             {
-                pills.forEach(item =>
-                {
-                    item.classList.remove("active");
-                });
+                pills.forEach(item => item.classList.remove("active"));
                 pill.classList.add("active");
             }
         });
-    },
-    {
-        threshold: 0.42
-    });
-
-    document.querySelectorAll("section[id], header[id]").forEach(section =>
-    {
-        sectionObserver.observe(section);
-    });
+    }, { threshold: 0.42 });
+    document.querySelectorAll("section[id], header[id]").forEach(section => sectionObserver.observe(section));
 
     if (hero && ribbon)
     {
@@ -393,19 +439,9 @@ document.addEventListener("DOMContentLoaded", () =>
         {
             entries.forEach(entry =>
             {
-                if (entry.isIntersecting)
-                {
-                    ribbon.classList.remove("visible");
-                }
-                else
-                {
-                    ribbon.classList.add("visible");
-                }
+                ribbon.classList.toggle("visible", !entry.isIntersecting);
             });
-        },
-        {
-            threshold: 0.72
-        });
+        }, { threshold: 0.72 });
         ribbonObserver.observe(hero);
     }
 
@@ -413,10 +449,7 @@ document.addEventListener("DOMContentLoaded", () =>
     {
         card.addEventListener("mousemove", event =>
         {
-            if (window.innerWidth < 900)
-            {
-                return;
-            }
+            if (window.innerWidth < 900) return;
             const rect = card.getBoundingClientRect();
             const x = event.clientX - rect.left;
             const y = event.clientY - rect.top;
@@ -438,11 +471,64 @@ document.addEventListener("DOMContentLoaded", () =>
         root.style.setProperty("--my", y);
     });
 
+    document.querySelectorAll(".button").forEach(button =>
+    {
+        button.addEventListener("click", event =>
+        {
+            const ripple = document.createElement("span");
+            ripple.className = "ripple";
+            const rect = button.getBoundingClientRect();
+            ripple.style.left = (event.clientX - rect.left) + "px";
+            ripple.style.top = (event.clientY - rect.top) + "px";
+            button.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 520);
+        });
+    });
+
+    window.addEventListener("scroll", () =>
+    {
+        root.style.setProperty("--scrollY", String(window.scrollY));
+    }, { passive: true });
+
+    function requestGyro()
+    {
+        if (window.innerWidth > 900) return;
+        const applyGyro = () =>
+        {
+            if (gyroEnabled) return;
+            gyroEnabled = true;
+            document.getElementById("gyro-toggle").textContent = t("gyroOn");
+            window.addEventListener("deviceorientation", event =>
+            {
+                const gamma = Math.max(-18, Math.min(18, event.gamma || 0));
+                const beta = Math.max(-18, Math.min(18, event.beta || 0));
+                document.querySelectorAll(".tilt-card").forEach(card =>
+                {
+                    const rotateY = gamma * 0.35;
+                    const rotateX = (beta - 8) * -0.18;
+                    card.style.transform = "translateY(-4px) rotateX(" + rotateX.toFixed(2) + "deg) rotateY(" + rotateY.toFixed(2) + "deg)";
+                });
+            });
+        };
+
+        if (typeof DeviceOrientationEvent !== "undefined" && typeof DeviceOrientationEvent.requestPermission === "function")
+        {
+            DeviceOrientationEvent.requestPermission().then(permission =>
+            {
+                if (permission === "granted") applyGyro();
+            }).catch(() => {});
+        }
+        else if ("DeviceOrientationEvent" in window)
+        {
+            applyGyro();
+        }
+    }
+    document.getElementById("gyro-toggle").addEventListener("click", requestGyro);
+
     function formatDate(iso)
     {
         const d = new Date(iso);
-        return d.toLocaleDateString("es-ES",
-        {
+        return d.toLocaleDateString(currentLang === "is" ? "is-IS" : currentLang === "de" ? "de-DE" : currentLang === "en" ? "en-GB" : "es-ES", {
             year: "numeric",
             month: "short",
             day: "2-digit"
@@ -455,7 +541,7 @@ document.addEventListener("DOMContentLoaded", () =>
             <div class="repo-meta">
                 <span>⭐ ${repo.stargazers_count || 0}</span>
                 <span>🧩 ${repo.language || "—"}</span>
-                <span>🕒 ${formatDate(repo.updated_at)}</span>
+                <span>🕒 ${t("updatedMeta")}: ${formatDate(repo.updated_at)}</span>
             </div>
         `;
     }
@@ -464,51 +550,33 @@ document.addEventListener("DOMContentLoaded", () =>
     {
         const topics = (repo.topics && repo.topics.length)
             ? repo.topics.slice(0, featuredCard ? 5 : 6).map(topic => `<span class="repo-pill ${topic === FEATURED_TOPIC ? "highlight" : ""}">${topic}</span>`).join("")
-            : `<span class="repo-pill">sin topics</span>`;
-        return `<div class="repo-pills">${featuredCard ? `<span class="repo-pill highlight">featured</span>` : ""}${topics}</div>`;
+            : `<span class="repo-pill">${t("noTopics")}</span>`;
+        return `<div class="repo-pills">${featuredCard ? `<span class="repo-pill highlight">${t("featuredBadge")}</span>` : ""}${topics}</div>`;
     }
 
     async function fetchRepos()
     {
         const url = `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
-        const res = await fetch(url,
-        {
-            headers:
-            {
-                "Accept": "application/vnd.github+json"
-            }
-        });
-
-        if (!res.ok)
-        {
-            throw new Error("No se pudo leer la API de GitHub.");
-        }
-
+        const res = await fetch(url, { headers: { "Accept": "application/vnd.github+json" } });
+        if (!res.ok) throw new Error("GitHub error");
         const repos = await res.json();
-        return repos
-            .filter(repo => !repo.fork)
-            .map(repo => ({
-                name: repo.name,
-                html_url: repo.html_url,
-                description: repo.description || "Sin descripción todavía.",
-                language: repo.language || "—",
-                stargazers_count: repo.stargazers_count || 0,
-                updated_at: repo.updated_at,
-                topics: repo.topics || []
-            }));
+        return repos.filter(repo => !repo.fork).map(repo => ({
+            name: repo.name,
+            html_url: repo.html_url,
+            description: repo.description || "—",
+            language: repo.language || "—",
+            stargazers_count: repo.stargazers_count || 0,
+            updated_at: repo.updated_at,
+            topics: repo.topics || []
+        }));
     }
 
     function renderFeatured(reposData)
     {
-        if (!featured)
-        {
-            return;
-        }
-
         const featuredRepos = reposData.filter(repo => repo.topics.includes(FEATURED_TOPIC)).slice(0, 6);
         if (!featuredRepos.length)
         {
-            featured.innerHTML = `<div class="empty-state">Aún no tienes repos con topic <b>${FEATURED_TOPIC}</b>.</div>`;
+            featured.innerHTML = `<div class="empty-state">${t("noFeatured")}</div>`;
             return;
         }
 
@@ -522,15 +590,15 @@ document.addEventListener("DOMContentLoaded", () =>
                 <p>${repo.description}</p>
                 ${repoTopics(repo, true)}
                 ${repoMeta(repo)}
-                <a class="button repo-button" href="${repo.html_url}" target="_blank" rel="noreferrer"><span class="btn-icon" aria-hidden="true">↗</span>Ver repo</a>
+                <a class="button repo-button" href="${repo.html_url}" target="_blank" rel="noreferrer"><span class="btn-icon" aria-hidden="true">↗</span>${t("viewRepo")}</a>
             </article>
         `).join("");
     }
 
     function applyFilters(reposData)
     {
-        const query = (q?.value || "").toLowerCase().trim();
-        const sortValue = sort?.value || "updated";
+        const query = (q.value || "").toLowerCase().trim();
+        const sortValue = sort.value || "updated";
 
         let list = reposData.filter(repo =>
         {
@@ -539,61 +607,38 @@ document.addEventListener("DOMContentLoaded", () =>
             return matchesText && matchesTopic;
         });
 
-        if (sortValue === "updated")
-        {
-            list.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
-        }
-
-        if (sortValue === "stars")
-        {
-            list.sort((a, b) => (b.stargazers_count || 0) - (a.stargazers_count || 0));
-        }
-
-        if (sortValue === "name")
-        {
-            list.sort((a, b) => a.name.localeCompare(b.name));
-        }
+        if (sortValue === "updated") list.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+        if (sortValue === "stars") list.sort((a, b) => (b.stargazers_count || 0) - (a.stargazers_count || 0));
+        if (sortValue === "name") list.sort((a, b) => a.name.localeCompare(b.name));
 
         return list;
     }
 
     function renderRepos(reposData)
     {
-        if (!repos)
-        {
-            return;
-        }
-
         const list = applyFilters(reposData);
         const visibleList = reposExpanded ? list : list.slice(0, REPOS_PREVIEW_COUNT);
 
-        if (resultsCount)
-        {
-            resultsCount.textContent = `${list.length} repositorio(s) encontrados`;
-        }
-
-        if (toggleRepos)
-        {
-            toggleRepos.style.display = list.length > REPOS_PREVIEW_COUNT ? "inline-flex" : "none";
-            toggleRepos.textContent = reposExpanded ? "Ver menos" : "Ver más";
-        }
+        resultsCount.textContent = `${list.length} ${t("resultsFound")}`;
+        toggleRepos.style.display = list.length > REPOS_PREVIEW_COUNT ? "inline-flex" : "none";
+        toggleRepos.textContent = reposExpanded ? t("showLess") : t("showMore");
 
         if (!list.length)
         {
-            repos.innerHTML = `<div class="empty-state">No encontramos repositorios que coincidan con "<b>${q?.value || ""}</b>"</div>`;
+            repos.innerHTML = `<div class="empty-state">${t("noRepos")} "<b>${q.value || ""}</b>"</div>`;
             return;
         }
 
         repos.innerHTML = visibleList.map(repo => `
             <article class="repo-card tilt-card">
                 <div class="repo-topline">
-                    <span class="mini-label">${repo.topics.includes(FEATURED_TOPIC) ? "Featured" : "Repo"}</span>
+                    <span class="mini-label">${repo.topics.includes(FEATURED_TOPIC) ? t("featuredBadge") : t("repoBadge")}</span>
                 </div>
                 <h3>${repo.name}</h3>
                 <p>${repo.description}</p>
                 ${repoTopics(repo, false)}
                 ${repoMeta(repo)}
-                <a class="button repo-button subtle" href="${repo.html_url}" target="_blank" rel="noreferrer"><span class="btn-icon" aria-hidden="true">↗</span>Abrir</a>
+                <a class="button repo-button subtle" href="${repo.html_url}" target="_blank" rel="noreferrer"><span class="btn-icon" aria-hidden="true">↗</span>${t("openRepo")}</a>
             </article>
         `).join("");
     }
@@ -604,42 +649,20 @@ document.addEventListener("DOMContentLoaded", () =>
         {
             activeTopic = button.dataset.topic || "all";
             reposExpanded = false;
-            filterButtons.forEach(item =>
-            {
-                item.classList.remove("active");
-            });
+            filterButtons.forEach(item => item.classList.remove("active"));
             button.classList.add("active");
             renderRepos(allRepos);
         });
     });
 
-    q?.addEventListener("input", () =>
-    {
-        reposExpanded = false;
-        renderRepos(allRepos);
-    });
-
-    sort?.addEventListener("change", () =>
-    {
-        renderRepos(allRepos);
-    });
-
-    toggleRepos?.addEventListener("click", () =>
-    {
-        reposExpanded = !reposExpanded;
-        renderRepos(allRepos);
-    });
+    q.addEventListener("input", () => { reposExpanded = false; renderRepos(allRepos); });
+    sort.addEventListener("change", () => renderRepos(allRepos));
+    toggleRepos.addEventListener("click", () => { reposExpanded = !reposExpanded; renderRepos(allRepos); });
 
     async function initRepos()
     {
-        if (!featured || !repos)
-        {
-            return;
-        }
-
         featured.innerHTML = `<div class="skeleton"></div><div class="skeleton"></div>`;
         repos.innerHTML = `<div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>`;
-
         try
         {
             allRepos = await fetchRepos();
@@ -648,61 +671,14 @@ document.addEventListener("DOMContentLoaded", () =>
         }
         catch (error)
         {
-            const message = `<div class="empty-state">No se pudieron cargar los repositorios desde GitHub.</div>`;
+            const message = `<div class="empty-state">${t("loadingError")}</div>`;
             featured.innerHTML = message;
             repos.innerHTML = message;
         }
     }
 
-
-    const bridgeObserver = new IntersectionObserver(entries =>
-    {
-        entries.forEach(entry =>
-        {
-            if (entry.isIntersecting)
-            {
-                entry.target.classList.add("visible");
-            }
-        });
-    },
-    {
-        threshold: 0.2
-    });
-
-    document.querySelectorAll(".section-bridge").forEach(bridge =>
-    {
-        bridgeObserver.observe(bridge);
-    });
-
-    document.querySelectorAll(".button").forEach(button =>
-    {
-        button.addEventListener("click", event =>
-        {
-            const ripple = document.createElement("span");
-            ripple.className = "ripple";
-            const rect = button.getBoundingClientRect();
-            ripple.style.left = (event.clientX - rect.left) + "px";
-            ripple.style.top = (event.clientY - rect.top) + "px";
-            button.appendChild(ripple);
-            setTimeout(() =>
-            {
-                ripple.remove();
-            }, 520);
-        });
-    });
-
-    window.addEventListener("scroll", () =>
-    {
-        const scrollY = window.scrollY;
-        root.style.setProperty("--scrollY", String(scrollY));
-    },
-    {
-        passive: true
-    });
-
     initRepos();
 });
 </script>
-
 </body>
 </html>
