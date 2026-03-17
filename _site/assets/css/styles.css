@@ -1130,3 +1130,106 @@ main > .screen > .wrapper > .panel + .panel
         transform: translateY(0);
     }
 }
+
+
+.stats-grid
+{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.stat-card,
+.map-display
+{
+    padding: 18px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--panel-border);
+    background: var(--card-bg);
+}
+
+.stat-card span
+{
+    display: block;
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.stat-card strong
+{
+    font-size: 1.6rem;
+    color: var(--text);
+}
+
+.map-chips
+{
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.map-chip
+{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0.72rem 0.96rem;
+    border-radius: 999px;
+    border: 1px solid var(--panel-border);
+    background: var(--chip-bg);
+    color: var(--text);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.map-chip.active
+{
+    background: var(--button-primary);
+    color: var(--button-primary-text);
+    border-color: transparent;
+}
+
+.map-display strong
+{
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+}
+
+.recruiter-banner
+{
+    display: none;
+    margin-top: 14px;
+    border-style: dashed;
+}
+
+.recruiter-mode #progreso,
+.recruiter-mode #skills,
+.recruiter-mode .section-bridge
+{
+    display: none;
+}
+
+.recruiter-mode .recruiter-banner
+{
+    display: block;
+}
+
+@media (max-width: 1080px)
+{
+    .stats-grid
+    {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px)
+{
+    .stats-grid
+    {
+        grid-template-columns: 1fr;
+    }
+}

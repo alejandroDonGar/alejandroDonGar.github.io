@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alejandro Donate García · Kinetic</title>
+    <title>Alejandro Donate García · CV</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet" />
@@ -30,6 +30,7 @@
 <button type="button" class="lang-btn " data-lang="is">IS</button></div>
                 <a class="button subtle" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">GitHub</a>
                 <a class="button subtle" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">LinkedIn</a>
+                <button class="button subtle" type="button" id="recruiter-toggle-top"></button>
                 <button class="button subtle" type="button" data-theme-toggle id="theme-toggle"></button>
                 <button class="button subtle" type="button" data-copy-email><span class="copy-label"></span></button>
             </div>
@@ -63,6 +64,7 @@
                     <a class="button primary" href="#repositorios" id="hero-projects" class="lang-fade"></a>
                     <a class="button subtle" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">LinkedIn</a>
                     <a class="button subtle" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">GitHub</a>
+                    <button class="button subtle" type="button" id="recruiter-toggle-hero"></button>
                     <button class="button subtle" type="button" data-theme-toggle id="theme-toggle-hero"></button>
                     <button class="button subtle gyro-button" id="gyro-toggle" type="button"></button>
                     <button class="button subtle" type="button" data-copy-email><span class="copy-label"></span></button>
@@ -71,6 +73,15 @@
 <button type="button" class="lang-btn " data-lang="en">EN</button>
 <button type="button" class="lang-btn " data-lang="de">DE</button>
 <button type="button" class="lang-btn " data-lang="is">IS</button></div>
+
+                <div class="recruiter-banner panel reveal" id="recruiter-banner">
+                    <div class="section-head">
+                        <span class="mini-label lang-fade" id="recruiter-label"></span>
+                        <h2 class="lang-fade" id="recruiter-title"></h2>
+                        <p class="lang-fade" id="recruiter-text"></p>
+                    </div>
+                </div>
+
             </article>
             <aside class="hero-stack">
                 <article class="panel reveal visible tilt-card">
@@ -219,6 +230,56 @@
 
         <div class="section-bridge reveal"><span></span><span></span><span></span></div>
 
+        
+        <div class="section-bridge reveal"><span></span><span></span><span></span></div>
+
+        <section class="screen compact-screen" id="insights">
+            <div class="wrapper split-grid">
+                <article class="panel reveal tilt-card">
+                    <div class="section-head">
+                        <span class="mini-label lang-fade" id="stats-label"></span>
+                        <h2 class="lang-fade" id="stats-title"></h2>
+                        <p class="lang-fade" id="stats-text"></p>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="lang-fade" id="stat-repos-label"></span>
+                            <strong id="stat-repos-value">--</strong>
+                        </div>
+                        <div class="stat-card">
+                            <span class="lang-fade" id="stat-showcase-label"></span>
+                            <strong id="stat-showcase-value">--</strong>
+                        </div>
+                        <div class="stat-card">
+                            <span class="lang-fade" id="stat-toplang-label"></span>
+                            <strong id="stat-toplang-value">--</strong>
+                        </div>
+                        <div class="stat-card">
+                            <span class="lang-fade" id="stat-updated-label"></span>
+                            <strong id="stat-updated-value">--</strong>
+                        </div>
+                    </div>
+                </article>
+                <article class="panel reveal">
+                    <div class="section-head">
+                        <span class="mini-label lang-fade" id="map-label"></span>
+                        <h2 class="lang-fade" id="map-title"></h2>
+                        <p class="lang-fade" id="map-text"></p>
+                    </div>
+                    <div class="map-chips">
+                        <button type="button" class="map-chip active" data-map="backend" id="map-chip-backend"></button>
+                        <button type="button" class="map-chip" data-map="frontend" id="map-chip-frontend"></button>
+                        <button type="button" class="map-chip" data-map="db" id="map-chip-db"></button>
+                        <button type="button" class="map-chip" data-map="soft" id="map-chip-soft"></button>
+                    </div>
+                    <div class="map-display tilt-card">
+                        <strong id="map-display-title"></strong>
+                        <p id="map-display-text"></p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
         <section class="screen compact-screen" id="skills">
             <div class="wrapper">
                 <article class="panel reveal">
@@ -273,7 +334,14 @@ document.addEventListener("DOMContentLoaded", () =>
     const toggleRepos = document.getElementById("toggle-repos");
     const filterButtons = document.querySelectorAll("[data-topic]");
     const langButtons = document.querySelectorAll(".lang-btn");
+    const mapChips = document.querySelectorAll(".map-chip");
+    const recruiterButtons = [document.getElementById("recruiter-toggle-top"), document.getElementById("recruiter-toggle-hero")].filter(Boolean);
     const translations = {"es": {"langName": "ES", "siteRole": "Estudiante de Desarrollo de Aplicaciones Multiplataforma · 1º DAM", "navStart": "Inicio", "navProfile": "Perfil", "navProgress": "Progreso", "navRepos": "Repos", "navSkills": "Skills", "navContact": "Contacto", "themeLight": "Modo claro", "themeDark": "Modo nocturno", "gyro": "Activar giroscopio", "gyroOn": "Giroscopio activo", "heroLabel": "Kinetic internacional", "lead": "Estoy empezando mi camino en el desarrollo de software y ahora mismo mi objetivo es seguir aprendiendo, practicar mucho y ganar confianza poco a poco en Java, bases de datos y desarrollo web.", "viewProjects": "Ver proyectos", "copyEmail": "Copiar email", "copiedEmail": "Email copiado", "copyFail": "No se pudo copiar", "current": "Actualmente", "current1": "Buscando prácticas y oportunidades donde pueda aprender desde cero y seguir mejorando.", "current2": "Practicando Java, bases de datos y diseño web para afianzar una base más sólida.", "current3": "Construyendo proyectos sencillos para aplicar lo que voy aprendiendo paso a paso.", "aboutLabel": "Sobre mí", "aboutTitle": "Un perfil junior con mucha constancia y ganas reales de crecer", "aboutText": "Soy estudiante y todavía estoy en una etapa muy inicial de aprendizaje. Me interesa seguir descubriendo cómo funciona el desarrollo de software, especialmente en Java, bases de datos y la parte web con HTML, CSS y XML. Mi objetivo ahora mismo es practicar, entender bien las bases y seguir ganando soltura poco a poco.", "goalTitle": "Objetivo", "goalText": "Seguir aprendiendo y afianzando poco a poco Java, bases de datos y tecnologías web.", "strengthTitle": "Fortaleza", "strengthText": "Constancia, curiosidad y muchas ganas de aprender con práctica y experiencia real.", "skillsLabel": "Skills", "skillsTitle": "Contenidos que estoy trabajando", "bridge1": "Práctica real", "bridge2": "Responsive", "bridge3": "Backend", "bridge4": "BBDD", "progressLabel": "Progreso", "progressTitle": "Mi línea de avance", "timeline1t": "Inicio en DAM", "timeline1d": "Empiezo a formarme en desarrollo de software y a construir una base en programación, bases de datos y desarrollo web.", "timeline2t": "Java y SQL", "timeline2d": "Empiezo a practicar programación orientada a objetos, colecciones y consultas básicas para entender mejor los fundamentos.", "timeline3t": "Frontend y portfolio", "timeline3d": "Voy trabajando la parte visual con HTML y CSS, aprendiendo responsive design y mejorando poco a poco la maquetación.", "timeline4t": "Ahora mismo", "timeline4d": "Sigo construyendo proyectos sencillos, mejorando mi portfolio y buscando una primera oportunidad para aprender en un entorno real.", "langLabel": "Idiomas", "englishTitle": "Nivel de inglés", "spoken": "Hablado", "written": "Escrito", "reading": "Lectura", "roadmapLabel": "Roadmap", "roadmapTitle": "Actualmente aprendiendo", "road1": "Java · seguir entendiendo mejor la POO, las colecciones y la lógica de programación.", "road2": "BBDD · ganar más soltura con consultas SQL, tablas y relaciones.", "road3": "Frontend · mejorar en estructura, responsive design y limpieza visual.", "showcaseLabel": "Showcase", "showcaseTitle": "Proyectos destacados desde GitHub", "showcaseText": "Los repositorios con topic showcase se muestran aquí más grandes y clicables.", "reposLabel": "Repositorios", "reposTitle": "Mis repositorios", "reposText": "Explora mis proyectos y prácticas por nombre, actividad o temática.", "searchPlaceholder": "Buscar repositorios...", "sortUpdated": "Ordenar: actividad reciente", "sortStars": "Ordenar: estrellas", "sortName": "Ordenar: nombre", "all": "Todos", "web": "Web", "backend": "Backend", "loadingRepos": "Cargando repositorios...", "showMore": "Ver más", "showLess": "Ver menos", "personalLabel": "Enfoque personal", "personalTitle": "Cómo trabajo y qué busco", "personalText": "Además de la parte técnica, quiero que la página refleje cómo aprendo y cómo quiero seguir creciendo como desarrollador junior.", "value1t": "Cómo aprendo", "value1d": "Me gusta aprender practicando: entender la teoría, probar por mi cuenta, equivocarme y volver a intentarlo hasta asentar bien cada concepto.", "value2t": "Qué valoro", "value2d": "Valoro los entornos en los que pueda seguir creciendo, recibir feedback y aprender de personas con más experiencia.", "value3t": "Qué busco", "value3d": "Busco una oportunidad para seguir desarrollándome poco a poco en backend, bases de datos y frontend, aportando constancia, actitud y ganas de aprender.", "contactLabel": "Contacto", "contactTitle": "Conectemos", "contactText": "He dejado esta zona final más compacta, más cohesionada con el resto y sin mostrar el email en texto.", "resultsFound": "repositorio(s) encontrados", "featuredBadge": "Destacado", "repoBadge": "Repo", "openRepo": "Abrir", "viewRepo": "Ver repo", "noTopics": "sin topics", "updatedMeta": "Actualizado", "loadingError": "No se pudieron cargar los repositorios desde GitHub.", "noRepos": "No encontramos repositorios que coincidan con", "noFeatured": "Aún no tienes repos con topic showcase."}, "en": {"langName": "EN", "siteRole": "Multiplatform Application Development Student · 1st Year", "navStart": "Home", "navProfile": "Profile", "navProgress": "Progress", "navRepos": "Repos", "navSkills": "Skills", "navContact": "Contact", "themeLight": "Light mode", "themeDark": "Dark mode", "gyro": "Enable gyroscope", "gyroOn": "Gyroscope active", "heroLabel": "Kinetic international", "lead": "I am starting my path in software development and right now my goal is to keep learning, practice a lot, and gradually build confidence in Java, databases, and web development.", "viewProjects": "View projects", "copyEmail": "Copy email", "copiedEmail": "Email copied", "copyFail": "Could not copy", "current": "Currently", "current1": "Looking for internships and opportunities where I can learn from scratch and keep improving.", "current2": "Practicing Java, databases, and web design to build a stronger foundation.", "current3": "Building simple projects to apply what I am learning step by step.", "aboutLabel": "About me", "aboutTitle": "A junior profile with consistency and a real desire to grow", "aboutText": "I am a student and I am still at a very early stage of learning. I am interested in continuing to discover how software development works, especially Java, databases, and the web side with HTML, CSS, and XML. My goal right now is to practice, understand the fundamentals well, and gradually gain more confidence.", "goalTitle": "Goal", "goalText": "Keep learning and steadily strengthen Java, databases, and web technologies.", "strengthTitle": "Strength", "strengthText": "Consistency, curiosity, and a real desire to learn through practice and real experience.", "skillsLabel": "Skills", "skillsTitle": "Topics I am currently working on", "bridge1": "Real practice", "bridge2": "Responsive", "bridge3": "Backend", "bridge4": "Databases", "progressLabel": "Progress", "progressTitle": "My learning path", "timeline1t": "Starting DAM", "timeline1d": "I begin training in software development and building a foundation in programming, databases, and web development.", "timeline2t": "Java and SQL", "timeline2d": "I start practicing object-oriented programming, collections, and basic queries to better understand the fundamentals.", "timeline3t": "Frontend and portfolio", "timeline3d": "I keep working on the visual side with HTML and CSS, learning responsive design and gradually improving my layouts.", "timeline4t": "Right now", "timeline4d": "I continue building simple projects, improving my portfolio, and looking for a first real opportunity to learn in a professional environment.", "langLabel": "Languages", "englishTitle": "English level", "spoken": "Spoken", "written": "Written", "reading": "Reading", "roadmapLabel": "Roadmap", "roadmapTitle": "Currently learning", "road1": "Java · keep improving my understanding of OOP, collections, and programming logic.", "road2": "Databases · gain more confidence with SQL queries, tables, and relationships.", "road3": "Frontend · improve structure, responsive design, and visual polish.", "showcaseLabel": "Showcase", "showcaseTitle": "Featured projects from GitHub", "showcaseText": "Repositories with the showcase topic appear here in a larger and clickable format.", "reposLabel": "Repositories", "reposTitle": "My repositories", "reposText": "Explore my projects and practice work by name, activity, or topic.", "searchPlaceholder": "Search repositories...", "sortUpdated": "Sort: recent activity", "sortStars": "Sort: stars", "sortName": "Sort: name", "all": "All", "web": "Web", "backend": "Backend", "loadingRepos": "Loading repositories...", "showMore": "Show more", "showLess": "Show less", "personalLabel": "Personal approach", "personalTitle": "How I work and what I am looking for", "personalText": "Beyond the technical side, I want the page to reflect how I learn and how I want to keep growing as a junior developer.", "value1t": "How I learn", "value1d": "I like learning by practicing: understanding the theory, trying things on my own, making mistakes, and trying again until each concept becomes solid.", "value2t": "What I value", "value2d": "I value environments where I can keep growing, receive feedback, and learn from people with more experience.", "value3t": "What I am looking for", "value3d": "I am looking for an opportunity to keep developing step by step in backend, databases, and frontend, bringing consistency, attitude, and willingness to learn.", "contactLabel": "Contact", "contactTitle": "Let's connect", "contactText": "I made this final section more compact, more cohesive with the rest, and without showing the email address in plain text.", "resultsFound": "repository(ies) found", "featuredBadge": "Featured", "repoBadge": "Repo", "openRepo": "Open", "viewRepo": "View repo", "noTopics": "no topics", "updatedMeta": "Updated", "loadingError": "Could not load repositories from GitHub.", "noRepos": "No repositories matched", "noFeatured": "You do not have repos with the showcase topic yet."}, "de": {"langName": "DE", "siteRole": "Student für plattformübergreifende Anwendungsentwicklung · 1. Jahr", "navStart": "Start", "navProfile": "Profil", "navProgress": "Fortschritt", "navRepos": "Repos", "navSkills": "Skills", "navContact": "Kontakt", "themeLight": "Heller Modus", "themeDark": "Dunkler Modus", "gyro": "Gyroskop aktivieren", "gyroOn": "Gyroskop aktiv", "heroLabel": "Kinetic international", "lead": "Ich beginne gerade meinen Weg in der Softwareentwicklung und mein aktuelles Ziel ist es, weiter zu lernen, viel zu üben und nach und nach mehr Sicherheit in Java, Datenbanken und Webentwicklung zu gewinnen.", "viewProjects": "Projekte ansehen", "copyEmail": "E-Mail kopieren", "copiedEmail": "E-Mail kopiert", "copyFail": "Konnte nicht kopieren", "current": "Aktuell", "current1": "Ich suche Praktika und Möglichkeiten, bei denen ich von Grund auf lernen und mich weiter verbessern kann.", "current2": "Ich übe Java, Datenbanken und Webdesign, um eine stärkere Grundlage aufzubauen.", "current3": "Ich entwickle einfache Projekte, um das Gelernte Schritt für Schritt anzuwenden.", "aboutLabel": "Über mich", "aboutTitle": "Ein Junior-Profil mit Ausdauer und echtem Wunsch zu wachsen", "aboutText": "Ich bin Student und befinde mich noch in einer sehr frühen Lernphase. Ich möchte weiter entdecken, wie Softwareentwicklung funktioniert, besonders Java, Datenbanken und der Webbereich mit HTML, CSS und XML. Mein Ziel ist es jetzt, zu üben, die Grundlagen gut zu verstehen und Schritt für Schritt mehr Sicherheit zu gewinnen.", "goalTitle": "Ziel", "goalText": "Weiter lernen und Java, Datenbanken und Webtechnologien Schritt für Schritt festigen.", "strengthTitle": "Stärke", "strengthText": "Ausdauer, Neugier und der echte Wunsch, durch Praxis und reale Erfahrung zu lernen.", "skillsLabel": "Skills", "skillsTitle": "Themen, an denen ich gerade arbeite", "bridge1": "Praxis", "bridge2": "Responsive", "bridge3": "Backend", "bridge4": "Datenbanken", "progressLabel": "Fortschritt", "progressTitle": "Mein Lernweg", "timeline1t": "Start in DAM", "timeline1d": "Ich beginne meine Ausbildung in der Softwareentwicklung und baue eine Grundlage in Programmierung, Datenbanken und Webentwicklung auf.", "timeline2t": "Java und SQL", "timeline2d": "Ich übe objektorientierte Programmierung, Collections und grundlegende Abfragen, um die Grundlagen besser zu verstehen.", "timeline3t": "Frontend und Portfolio", "timeline3d": "Ich arbeite weiter am visuellen Teil mit HTML und CSS, lerne Responsive Design und verbessere nach und nach mein Layout.", "timeline4t": "Im Moment", "timeline4d": "Ich entwickle weiterhin einfache Projekte, verbessere mein Portfolio und suche nach einer ersten echten Chance, in einem realen Umfeld zu lernen.", "langLabel": "Sprachen", "englishTitle": "Englischniveau", "spoken": "Sprechen", "written": "Schreiben", "reading": "Lesen", "roadmapLabel": "Roadmap", "roadmapTitle": "Aktuell lerne ich", "road1": "Java · OOP, Collections und Programmierlogik besser verstehen.", "road2": "Datenbanken · mehr Sicherheit bei SQL-Abfragen, Tabellen und Beziehungen gewinnen.", "road3": "Frontend · Struktur, Responsive Design und visuelle Sauberkeit verbessern.", "showcaseLabel": "Showcase", "showcaseTitle": "Hervorgehobene Projekte von GitHub", "showcaseText": "Repositories mit dem Topic showcase werden hier größer und klickbar angezeigt.", "reposLabel": "Repositories", "reposTitle": "Meine Repositories", "reposText": "Erkunde meine Projekte und Übungen nach Name, Aktivität oder Thema.", "searchPlaceholder": "Repositories suchen...", "sortUpdated": "Sortieren: letzte Aktivität", "sortStars": "Sortieren: Sterne", "sortName": "Sortieren: Name", "all": "Alle", "web": "Web", "backend": "Backend", "loadingRepos": "Repositories werden geladen...", "showMore": "Mehr anzeigen", "showLess": "Weniger anzeigen", "personalLabel": "Persönlicher Ansatz", "personalTitle": "Wie ich arbeite und wonach ich suche", "personalText": "Neben dem technischen Teil möchte ich, dass die Seite zeigt, wie ich lerne und wie ich mich als Junior-Entwickler weiterentwickeln möchte.", "value1t": "Wie ich lerne", "value1d": "Ich lerne gern durch Praxis: Theorie verstehen, selbst ausprobieren, Fehler machen und erneut versuchen, bis jedes Konzept wirklich sitzt.", "value2t": "Was ich schätze", "value2d": "Ich schätze Umgebungen, in denen ich wachsen, Feedback erhalten und von erfahreneren Menschen lernen kann.", "value3t": "Was ich suche", "value3d": "Ich suche eine Möglichkeit, mich Schritt für Schritt in Backend, Datenbanken und Frontend weiterzuentwickeln und dabei Ausdauer, Haltung und Lernbereitschaft einzubringen.", "contactLabel": "Kontakt", "contactTitle": "Lass uns vernetzen", "contactText": "Ich habe diesen letzten Bereich kompakter und stimmiger gestaltet und zeige die E-Mail-Adresse nicht direkt an.", "resultsFound": "Repository(s) gefunden", "featuredBadge": "Highlight", "repoBadge": "Repo", "openRepo": "Öffnen", "viewRepo": "Repo ansehen", "noTopics": "keine Topics", "updatedMeta": "Aktualisiert", "loadingError": "Repositories konnten nicht von GitHub geladen werden.", "noRepos": "Keine Repositories gefunden für", "noFeatured": "Du hast noch keine Repos mit dem Topic showcase."}, "is": {"langName": "IS", "siteRole": "Nemandi í fjölvettvangsforritaþróun · 1. ár", "navStart": "Byrjun", "navProfile": "Prófíll", "navProgress": "Framvinda", "navRepos": "Repos", "navSkills": "Skills", "navContact": "Samband", "themeLight": "Ljós stilling", "themeDark": "Dökk stilling", "gyro": "Virkja gyroscope", "gyroOn": "Gyroscope virkt", "heroLabel": "Kinetic international", "lead": "Ég er að byrja leið mína í hugbúnaðarþróun og markmið mitt núna er að halda áfram að læra, æfa mikið og byggja smám saman upp meira öryggi í Java, gagnagrunnum og vefþróun.", "viewProjects": "Skoða verkefni", "copyEmail": "Afrita netfang", "copiedEmail": "Netfang afritað", "copyFail": "Ekki tókst að afrita", "current": "Núna", "current1": "Ég er að leita að starfsnámi og tækifærum þar sem ég get lært frá grunni og haldið áfram að bæta mig.", "current2": "Ég er að æfa Java, gagnagrunna og vefhönnun til að byggja sterkari grunn.", "current3": "Ég er að búa til einföld verkefni til að beita því sem ég er að læra skref fyrir skref.", "aboutLabel": "Um mig", "aboutTitle": "Junior prófíll með mikla þrautseigju og raunverulegan vilja til að vaxa", "aboutText": "Ég er nemandi og enn á mjög byrjunarstigi í námi. Ég hef áhuga á að halda áfram að uppgötva hvernig hugbúnaðarþróun virkar, sérstaklega Java, gagnagrunna og vefhlutann með HTML, CSS og XML. Markmið mitt núna er að æfa, skilja grunnatriðin vel og verða smám saman öruggari.", "goalTitle": "Markmið", "goalText": "Halda áfram að læra og styrkja smám saman Java, gagnagrunna og veftækni.", "strengthTitle": "Styrkur", "strengthText": "Þrautseigja, forvitni og raunverulegur vilji til að læra í gegnum æfingu og raunverulega reynslu.", "skillsLabel": "Skills", "skillsTitle": "Efni sem ég er að vinna í núna", "bridge1": "Raunæfing", "bridge2": "Responsive", "bridge3": "Backend", "bridge4": "Gagnagrunnar", "progressLabel": "Framvinda", "progressTitle": "Námsleiðin mín", "timeline1t": "Byrjun í DAM", "timeline1d": "Ég byrja að læra hugbúnaðarþróun og byggi grunn í forritun, gagnagrunnum og vefþróun.", "timeline2t": "Java og SQL", "timeline2d": "Ég byrja að æfa hlutbundna forritun, söfn og einfaldar fyrirspurnir til að skilja grunnatriðin betur.", "timeline3t": "Frontend og portfolio", "timeline3d": "Ég vinn áfram að sjónræna hlutanum með HTML og CSS, læri responsive design og bæti smám saman útlitið.", "timeline4t": "Akkúrat núna", "timeline4d": "Ég held áfram að búa til einföld verkefni, bæta portfolio mitt og leita að fyrsta raunverulega tækifærinu til að læra í faglegu umhverfi.", "langLabel": "Tungumál", "englishTitle": "Enska", "spoken": "Talað", "written": "Skrifað", "reading": "Lestur", "roadmapLabel": "Roadmap", "roadmapTitle": "Núna að læra", "road1": "Java · skilja betur OOP, söfn og forritunarrökfræði.", "road2": "Gagnagrunnar · verða öruggari með SQL fyrirspurnir, töflur og tengsl.", "road3": "Frontend · bæta uppbyggingu, responsive design og sjónræna hreinsun.", "showcaseLabel": "Showcase", "showcaseTitle": "Valin verkefni frá GitHub", "showcaseText": "Repositories með showcase topic birtast hér stærri og smellanleg.", "reposLabel": "Repositories", "reposTitle": "Mín repositories", "reposText": "Skoðaðu verkefni og æfingar eftir nafni, virkni eða efni.", "searchPlaceholder": "Leita í repositories...", "sortUpdated": "Raða: nýleg virkni", "sortStars": "Raða: stjörnur", "sortName": "Raða: nafn", "all": "Allt", "web": "Web", "backend": "Backend", "loadingRepos": "Hleð repositories...", "showMore": "Sýna meira", "showLess": "Sýna minna", "personalLabel": "Persónuleg nálgun", "personalTitle": "Hvernig ég vinn og hvað ég leita að", "personalText": "Auk tæknilega hlutans vil ég að síðan sýni hvernig ég læri og hvernig ég vil halda áfram að þróast sem junior forritari.", "value1t": "Hvernig ég læri", "value1d": "Mér finnst best að læra með æfingu: skilja fræðin, prófa sjálfur, gera mistök og reyna aftur þar til hvert hugtak verður traust.", "value2t": "Hvað ég met", "value2d": "Ég met umhverfi þar sem ég get haldið áfram að vaxa, fengið endurgjöf og lært af fólki með meiri reynslu.", "value3t": "Að hverju ég leita", "value3d": "Ég leita að tækifæri til að þróast skref fyrir skref í backend, gagnagrunnum og frontend, með þrautseigju, viðhorfi og vilja til að læra.", "contactLabel": "Samband", "contactTitle": "Höfum samband", "contactText": "Ég gerði þennan loka hluta nettari og samræmdari við restina og sýni ekki netfangið beint.", "resultsFound": "repository fannst/fundust", "featuredBadge": "Valið", "repoBadge": "Repo", "openRepo": "Opna", "viewRepo": "Skoða repo", "noTopics": "engin topics", "updatedMeta": "Uppfært", "loadingError": "Ekki tókst að hlaða repositories frá GitHub.", "noRepos": "Engin repositories fundust fyrir", "noFeatured": "Þú ert ekki með repos með showcase topic enn."}};
+    const extraTranslations = {"es": {"recruiterMode": "Modo recruiter", "recruiterModeOff": "Salir recruiter", "statsLabel": "GitHub stats", "statsTitle": "Resumen rápido de actividad", "statsText": "Una lectura rápida de mi perfil, repositorios y foco actual.", "statRepos": "Repos públicos", "statShowcase": "Showcase", "statTopLang": "Lenguaje principal", "statUpdated": "Última actividad", "mapLabel": "Mapa de aprendizaje", "mapTitle": "Ruta de crecimiento", "mapText": "Una vista visual y rápida de en qué estoy centrado ahora mismo.", "mapBackend": "Backend", "mapFrontend": "Frontend", "mapDb": "BBDD", "mapSoft": "Soft skills", "mapBackendDesc": "Java, lógica, POO y bases para seguir creciendo en backend.", "mapFrontendDesc": "HTML, CSS, responsive design y mejor estructura visual.", "mapDbDesc": "SQL, relaciones, consultas y soltura con bases de datos.", "mapSoftDesc": "Constancia, curiosidad, feedback y capacidad de aprendizaje.", "recruiterLabel": "Vista recruiter", "recruiterTitle": "Resumen de 20 segundos", "recruiterText": "Estudiante de 1º DAM, enfocado en Java, BBDD y web. Busco una primera oportunidad para aprender en un entorno real, con constancia, actitud y ganas de crecer."}, "en": {"recruiterMode": "Recruiter mode", "recruiterModeOff": "Exit recruiter", "statsLabel": "GitHub stats", "statsTitle": "Quick activity summary", "statsText": "A fast read of my profile, repositories, and current focus.", "statRepos": "Public repos", "statShowcase": "Showcase", "statTopLang": "Top language", "statUpdated": "Latest activity", "mapLabel": "Learning map", "mapTitle": "Growth route", "mapText": "A fast visual overview of what I am focused on right now.", "mapBackend": "Backend", "mapFrontend": "Frontend", "mapDb": "Databases", "mapSoft": "Soft skills", "mapBackendDesc": "Java, logic, OOP, and fundamentals to keep growing in backend.", "mapFrontendDesc": "HTML, CSS, responsive design, and cleaner visual structure.", "mapDbDesc": "SQL, relationships, queries, and more confidence with databases.", "mapSoftDesc": "Consistency, curiosity, feedback, and learning capacity.", "recruiterLabel": "Recruiter view", "recruiterTitle": "20-second summary", "recruiterText": "1st year DAM student focused on Java, databases, and web development. I am looking for a first opportunity to learn in a real environment, bringing consistency, attitude, and willingness to grow."}, "de": {"recruiterMode": "Recruiter-Modus", "recruiterModeOff": "Recruiter beenden", "statsLabel": "GitHub-Statistiken", "statsTitle": "Schnelle Aktivitätsübersicht", "statsText": "Ein schneller Überblick über mein Profil, meine Repositories und meinen aktuellen Fokus.", "statRepos": "Öffentliche Repos", "statShowcase": "Showcase", "statTopLang": "Hauptsprache", "statUpdated": "Letzte Aktivität", "mapLabel": "Lernkarte", "mapTitle": "Wachstumsroute", "mapText": "Ein schneller visueller Überblick darüber, worauf ich mich gerade konzentriere.", "mapBackend": "Backend", "mapFrontend": "Frontend", "mapDb": "Datenbanken", "mapSoft": "Soft Skills", "mapBackendDesc": "Java, Logik, OOP und Grundlagen, um im Backend weiter zu wachsen.", "mapFrontendDesc": "HTML, CSS, Responsive Design und sauberere visuelle Struktur.", "mapDbDesc": "SQL, Beziehungen, Abfragen und mehr Sicherheit bei Datenbanken.", "mapSoftDesc": "Ausdauer, Neugier, Feedback und Lernfähigkeit.", "recruiterLabel": "Recruiter-Ansicht", "recruiterTitle": "20-Sekunden-Zusammenfassung", "recruiterText": "Student im 1. Jahr DAM mit Fokus auf Java, Datenbanken und Webentwicklung. Ich suche eine erste Gelegenheit, in einem realen Umfeld zu lernen, mit Ausdauer, Haltung und dem Wunsch zu wachsen."}, "is": {"recruiterMode": "Recruiter hamur", "recruiterModeOff": "Loka recruiter", "statsLabel": "GitHub tölfræði", "statsTitle": "Fljótlegt yfirlit um virkni", "statsText": "Hröð yfirsýn yfir prófílinn minn, repositories og núverandi fókus.", "statRepos": "Opin repos", "statShowcase": "Showcase", "statTopLang": "Aðaltungumál", "statUpdated": "Síðasta virkni", "mapLabel": "Námskort", "mapTitle": "Vöxtarleið", "mapText": "Fljótleg sjónræn yfirsýn yfir það sem ég er að einbeita mér að núna.", "mapBackend": "Backend", "mapFrontend": "Frontend", "mapDb": "Gagnagrunnar", "mapSoft": "Mjúk færni", "mapBackendDesc": "Java, rökfræði, OOP og grunnur til að halda áfram að vaxa í backend.", "mapFrontendDesc": "HTML, CSS, responsive design og hreinni sjónræn uppbygging.", "mapDbDesc": "SQL, tengsl, fyrirspurnir og meira öryggi með gagnagrunna.", "mapSoftDesc": "Þrautseigja, forvitni, endurgjöf og hæfni til að læra.", "recruiterLabel": "Recruiter sýn", "recruiterTitle": "20 sekúndna samantekt", "recruiterText": "Nemandi á 1. ári í DAM með fókus á Java, gagnagrunna og vefþróun. Ég leita að fyrsta tækifærinu til að læra í raunverulegu umhverfi með þrautseigju, viðhorfi og vilja til að vaxa."}};
+    Object.keys(extraTranslations).forEach(lang =>
+    {
+        translations[lang] = Object.assign({}, translations[lang] || {}, extraTranslations[lang]);
+    });
     const defaultLang = "es";
     const GITHUB_USERNAME = "alejandroDonGar";
     const FEATURED_TOPIC = "showcase";
@@ -284,6 +352,8 @@ document.addEventListener("DOMContentLoaded", () =>
     let reposExpanded = false;
     let gyroEnabled = false;
     let currentSkill = "java";
+    let currentMap = "backend";
+    let recruiterMode = false;
 
     const skillMap = {
         java: "CLASES · GETTER/SETTER · FECHAS · EXPRESIONES REGULARES · ARRAYS · LISTAS · SETS · MAPS",
@@ -309,6 +379,47 @@ document.addEventListener("DOMContentLoaded", () =>
 
         document.getElementById("skillTitle").textContent = titles[skill];
         document.getElementById("skillText").textContent = skillMap[skill];
+    }
+
+
+    function setMapText(mapKey)
+    {
+        currentMap = mapKey;
+        const titleMap = {
+            backend: t("mapBackend"),
+            frontend: t("mapFrontend"),
+            db: t("mapDb"),
+            soft: t("mapSoft")
+        };
+        const textMap = {
+            backend: t("mapBackendDesc"),
+            frontend: t("mapFrontendDesc"),
+            db: t("mapDbDesc"),
+            soft: t("mapSoftDesc")
+        };
+
+        document.getElementById("map-display-title").textContent = titleMap[mapKey];
+        document.getElementById("map-display-text").textContent = textMap[mapKey];
+
+        mapChips.forEach(chip =>
+        {
+            chip.classList.toggle("active", chip.dataset.map === mapKey);
+        });
+    }
+
+    function updateRecruiterButtons()
+    {
+        recruiterButtons.forEach(button =>
+        {
+            button.textContent = recruiterMode ? t("recruiterModeOff") : t("recruiterMode");
+        });
+    }
+
+    function toggleRecruiterMode()
+    {
+        recruiterMode = !recruiterMode;
+        document.body.classList.toggle("recruiter-mode", recruiterMode);
+        updateRecruiterButtons();
     }
 
     function applyTheme(theme)
@@ -403,7 +514,24 @@ document.addEventListener("DOMContentLoaded", () =>
             "value3d": "value3d",
             "contact-label": "contactLabel",
             "contact-title": "contactTitle",
-            "contact-text": "contactText"
+            "contact-text": "contactText",
+            "stats-label": "statsLabel",
+            "stats-title": "statsTitle",
+            "stats-text": "statsText",
+            "stat-repos-label": "statRepos",
+            "stat-showcase-label": "statShowcase",
+            "stat-toplang-label": "statTopLang",
+            "stat-updated-label": "statUpdated",
+            "map-label": "mapLabel",
+            "map-title": "mapTitle",
+            "map-text": "mapText",
+            "map-chip-backend": "mapBackend",
+            "map-chip-frontend": "mapFrontend",
+            "map-chip-db": "mapDb",
+            "map-chip-soft": "mapSoft",
+            "recruiter-label": "recruiterLabel",
+            "recruiter-title": "recruiterTitle",
+            "recruiter-text": "recruiterText"
         };
 
         Object.entries(map).forEach(([id, key]) =>
@@ -424,6 +552,8 @@ document.addEventListener("DOMContentLoaded", () =>
         updateCopyLabels(t("copyEmail"));
         applyTheme(root.getAttribute("data-theme") || "dark");
         setSkillText(currentSkill);
+        setMapText(currentMap);
+        updateRecruiterButtons();
         animateLanguageSwap();
         renderFeatured(allRepos);
         renderRepos(allRepos);
@@ -450,6 +580,19 @@ document.addEventListener("DOMContentLoaded", () =>
         {
             applyLanguage(button.dataset.lang);
         });
+    });
+
+    mapChips.forEach(chip =>
+    {
+        chip.addEventListener("click", () =>
+        {
+            setMapText(chip.dataset.map);
+        });
+    });
+
+    recruiterButtons.forEach(button =>
+    {
+        button.addEventListener("click", toggleRecruiterMode);
     });
 
     const storedTheme = localStorage.getItem(themeKey) || document.body.dataset.defaultTheme || "dark";
@@ -764,6 +907,28 @@ document.addEventListener("DOMContentLoaded", () =>
         return parsed;
     }
 
+
+    function updateGitHubStats(reposData)
+    {
+        const publicCount = reposData.length;
+        const showcaseCount = reposData.filter(repo => (repo.topics || []).includes(FEATURED_TOPIC)).length;
+        const languageCount = {};
+        reposData.forEach(repo =>
+        {
+            if (repo.language)
+            {
+                languageCount[repo.language] = (languageCount[repo.language] || 0) + 1;
+            }
+        });
+        const topLang = Object.entries(languageCount).sort((a, b) => b[1] - a[1])[0]?.[0] || "—";
+        const latest = reposData.slice().sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))[0];
+
+        document.getElementById("stat-repos-value").textContent = String(publicCount);
+        document.getElementById("stat-showcase-value").textContent = String(showcaseCount);
+        document.getElementById("stat-toplang-value").textContent = topLang;
+        document.getElementById("stat-updated-value").textContent = latest ? formatDate(latest.updated_at) : "—";
+    }
+
     function renderFeatured(reposData)
     {
         const featuredRepos = reposData.filter(repo => repo.topics.includes(FEATURED_TOPIC)).slice(0, 6);
@@ -885,6 +1050,7 @@ document.addEventListener("DOMContentLoaded", () =>
         try
         {
             allRepos = await fetchRepos();
+            updateGitHubStats(allRepos);
             renderFeatured(allRepos);
             renderRepos(allRepos);
         }
