@@ -1,60 +1,68 @@
 :root
 {
-    --bg: radial-gradient(circle at top left, #152347 0%, #08111f 46%, #050914 100%);
-    --text: #f3f7ff;
-    --muted: #b4c2df;
-    --accent: #27d7b5;
-    --panel-bg: rgba(8, 18, 42, 0.78);
-    --card-bg: rgba(20, 30, 58, 0.72);
-    --bridge-bg: rgba(255, 255, 255, 0.04);
-    --button-bg: rgba(255, 255, 255, 0.05);
-    --button-text: #f3f7ff;
-    --button-primary: linear-gradient(135deg, #27d7b5, #7c5cff);
-    --button-primary-text: #08111f;
-    --input-bg: rgba(255, 255, 255, 0.05);
-    --bar-bg: rgba(255, 255, 255, 0.08);
-    --chip-bg: rgba(255, 255, 255, 0.04);
-    --pill-bg: rgba(8, 14, 30, 0.76);
-    --pill-text: #f3f7ff;
-    --pill-active: linear-gradient(135deg, rgba(39, 215, 181, 0.24), rgba(124, 92, 255, 0.3));
-    --ribbon-bg: rgba(7, 13, 28, 0.88);
-    --orb-a: #7c5cff;
-    --orb-b: #27d7b5;
-    --orb-c: #ff6fae;
-    --shape-line: rgba(255, 255, 255, 0.09);
-    --shape-fill: rgba(255, 255, 255, 0.05);
-    --grid: rgba(255, 255, 255, 0.05);
-    --skeleton-shine: rgba(255, 255, 255, 0.08);
-    --panel-border-strong: rgba(255, 255, 255, 0.24);
-}
-:root[data-theme="light"]
-{
-    --bg: radial-gradient(circle at top left, #dfe7ff 0%, #edf3ff 46%, #f8fbff 100%);
-    --text: #18233f;
-    --muted: #566682;
-    --accent: #0fbfa2;
-    --panel-bg: rgba(255, 255, 255, 0.84);
-    --card-bg: rgba(255, 255, 255, 0.88);
-    --bridge-bg: rgba(24, 35, 63, 0.04);
-    --button-bg: rgba(255, 255, 255, 0.95);
-    --button-text: #18233f;
-    --button-primary: linear-gradient(135deg, #11c4a6, #6b57ff);
+    --bg: linear-gradient(180deg, #fff8ed 0%, #f6f1e7 100%);
+    --text: #1f2230;
+    --muted: #646d82;
+    --accent: #ff6f61;
+    --panel-bg: rgba(255, 253, 249, 0.9);
+    --card-bg: rgba(255, 250, 244, 0.95);
+    --bridge-bg: rgba(255, 180, 137, 0.08);
+    --button-bg: #fffdf9;
+    --button-text: #1f2230;
+    --button-primary: linear-gradient(135deg, #ff7a6b, #ffb489);
     --button-primary-text: #ffffff;
-    --input-bg: rgba(255, 255, 255, 0.96);
-    --bar-bg: rgba(24, 35, 63, 0.1);
-    --chip-bg: rgba(255, 255, 255, 0.96);
-    --pill-bg: rgba(255, 255, 255, 0.92);
-    --pill-text: #18233f;
-    --pill-active: linear-gradient(135deg, rgba(17, 196, 166, 0.18), rgba(107, 87, 255, 0.22));
-    --ribbon-bg: rgba(255, 255, 255, 0.92);
-    --shape-line: rgba(24, 35, 63, 0.08);
-    --shape-fill: rgba(24, 35, 63, 0.04);
-    --grid: rgba(24, 35, 63, 0.045);
-    --skeleton-shine: rgba(24, 35, 63, 0.06);
-    --panel-border: rgba(24, 35, 63, 0.12);
-    --panel-border-strong: rgba(24, 35, 63, 0.2);
-    --shadow: 0 24px 56px rgba(50, 72, 122, 0.12);
-    --shadow-hover: 0 28px 64px rgba(50, 72, 122, 0.16);
+    --input-bg: #fffdf9;
+    --bar-bg: #ece4d7;
+    --chip-bg: #fffdf9;
+    --pill-bg: rgba(255, 253, 249, 0.84);
+    --pill-text: #1f2230;
+    --pill-active: linear-gradient(135deg, rgba(255, 180, 137, 0.34), rgba(142, 183, 255, 0.24));
+    --ribbon-bg: rgba(255, 253, 249, 0.9);
+    --orb-a: rgba(255, 180, 137, 0.62);
+    --orb-b: rgba(142, 183, 255, 0.48);
+    --orb-c: rgba(158, 230, 210, 0.4);
+    --shape-line: rgba(31, 34, 48, 0.08);
+    --shape-fill: rgba(31, 34, 48, 0.04);
+    --grid: rgba(31, 34, 48, 0.04);
+    --skeleton-shine: rgba(31, 34, 48, 0.05);
+    --panel-border: rgba(31, 34, 48, 0.1);
+    --panel-border-strong: rgba(31, 34, 48, 0.16);
+    --shadow: 0 20px 44px rgba(31, 34, 48, 0.08);
+    --shadow-hover: 0 24px 52px rgba(31, 34, 48, 0.12);
+}
+:root[data-theme="dark"]
+{
+    --bg: linear-gradient(180deg, #121218 0%, #191a22 100%);
+    --text: #f5efe4;
+    --muted: #bbb3aa;
+    --accent: #ff8a7d;
+    --panel-bg: rgba(28, 29, 39, 0.92);
+    --card-bg: rgba(24, 25, 35, 0.95);
+    --bridge-bg: rgba(255, 138, 125, 0.08);
+    --button-bg: rgba(28, 29, 39, 0.96);
+    --button-text: #f5efe4;
+    --button-primary: linear-gradient(135deg, #ff8a7d, #ffb489);
+    --button-primary-text: #ffffff;
+    --input-bg: rgba(28, 29, 39, 0.96);
+    --bar-bg: rgba(255, 255, 255, 0.08);
+    --chip-bg: rgba(28, 29, 39, 0.96);
+    --pill-bg: rgba(28, 29, 39, 0.9);
+    --pill-text: #f5efe4;
+    --pill-active: linear-gradient(135deg, rgba(255, 138, 125, 0.2), rgba(142, 183, 255, 0.18));
+    --ribbon-bg: rgba(18, 19, 28, 0.9);
+    --shape-line: rgba(255, 255, 255, 0.08);
+    --shape-fill: rgba(255, 255, 255, 0.06);
+    --grid: rgba(255, 255, 255, 0.04);
+    --skeleton-shine: rgba(255, 255, 255, 0.06);
+    --panel-border: rgba(255, 255, 255, 0.1);
+    --panel-border-strong: rgba(255, 255, 255, 0.16);
+    --shadow: 0 24px 56px rgba(0, 0, 0, 0.22);
+    --shadow-hover: 0 28px 60px rgba(0, 0, 0, 0.26);
+}
+.hero-copy h1,
+.section-head h2
+{
+    font-family: "Space Grotesk", Inter, sans-serif;
 }
 :root
 {
