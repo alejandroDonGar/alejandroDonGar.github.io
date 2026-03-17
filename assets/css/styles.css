@@ -265,7 +265,7 @@ select
 .sections-nav
 {
     position: fixed;
-    top: 136px;
+    top: 156px;
     left: 50%;
     transform: translateX(-50%);
     width: min(860px, calc(100% - 28px));
@@ -310,7 +310,7 @@ select
 
 .hero-screen
 {
-    padding-top: 206px;
+    padding-top: 228px;
     padding-bottom: 18px;
 }
 
@@ -996,7 +996,7 @@ select
 
     .sections-nav
     {
-        top: 28px;
+        top: 22px;
     }
 
     .screen
@@ -1007,7 +1007,7 @@ select
 
     .hero-screen
     {
-        padding-top: 142px;
+        padding-top: 148px;
     }
 }
 
@@ -1048,12 +1048,12 @@ select
 
     .screen
     {
-        padding-top: 120px;
+        padding-top: 124px;
     }
 
     .hero-screen
     {
-        padding-top: 120px;
+        padding-top: 124px;
     }
 
     .panel
@@ -1232,4 +1232,90 @@ main > .screen > .wrapper > .panel + .panel
     {
         grid-template-columns: 1fr;
     }
+}
+
+
+.ribbon-inner
+{
+    align-items: start;
+}
+
+.ribbon-copy
+{
+    max-width: 280px;
+}
+
+.ribbon-actions
+{
+    align-items: center;
+    row-gap: 10px;
+}
+
+.lang-switch
+{
+    flex-shrink: 0;
+}
+
+.sections-nav
+{
+    row-gap: 10px;
+}
+
+#insights .split-grid
+{
+    grid-template-columns: 1fr;
+}
+
+.map-chips,
+.map-display
+{
+    display: none;
+}
+
+.section-bridge + .section-bridge
+{
+    display: none;
+}
+
+@media (max-width: 1200px)
+{
+    .ribbon-inner
+    {
+        grid-template-columns: 1fr;
+    }
+
+    .ribbon-copy
+    {
+        max-width: 100%;
+    }
+
+    .sections-nav
+    {
+        top: 172px;
+    }
+
+    .hero-screen
+    {
+        padding-top: 244px;
+    }
+}
+
+@media (max-width: 900px)
+{
+    .sections-nav
+    {
+        top: 18px;
+    }
+
+    .hero-screen
+    {
+        padding-top: 148px;
+    }
+}
+
+
+/* Remove small section descriptions under titles */
+.section-head p
+{
+    display: none;
 }
