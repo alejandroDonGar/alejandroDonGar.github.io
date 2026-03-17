@@ -1,4 +1,33 @@
 
+:root[data-theme="light"]
+{
+    --bg: #eef3ff;
+    --bg-soft: #ffffff;
+    --panel: rgba(255, 255, 255, 0.88);
+    --panel-strong: rgba(255, 255, 255, 0.96);
+    --line: rgba(17, 29, 61, 0.12);
+    --line-strong: rgba(17, 29, 61, 0.2);
+    --text: #18233f;
+    --muted: #4d5b7a;
+    --primary: #6a52ff;
+    --secondary: #10bfa2;
+    --accent: #ff5f9d;
+    --shadow: 0 22px 54px rgba(36, 56, 99, 0.14);
+}
+:root[data-theme="light"] body
+{
+    background: radial-gradient(circle at top left, #dfe8ff 0%, #eef3ff 44%, #f7fbff 100%);
+}
+:root[data-theme="light"] .bg-grid
+{
+    background-image: linear-gradient(rgba(24, 35, 63, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(24, 35, 63, 0.05) 1px, transparent 1px);
+}
+:root[data-theme="light"] .shape-b
+{
+    background: linear-gradient(180deg, rgba(24, 35, 63, 0.04), transparent);
+}
+
+
 :root
 {
     --bg: #08111f;
@@ -701,5 +730,94 @@ button
     .profile-frame
     {
         width: min(100%, 260px);
+    }
+}
+
+.theme-toggle
+{
+    position: relative;
+}
+
+main section[id]
+{
+    scroll-margin-top: 180px;
+}
+.screen
+{
+    padding: 164px 0 92px;
+}
+.hero-screen
+{
+    padding-top: 194px;
+}
+.sections-nav
+{
+    top: 94px;
+}
+.quick-ribbon
+{
+    top: 16px;
+}
+.showcase-grid
+{
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: stretch;
+}
+.showcase-card
+{
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.repo-card
+{
+    min-height: 160px;
+}
+.tilt-card
+{
+    will-change: transform;
+    perspective: 1200px;
+}
+.tilt-card:hover
+{
+    transform: translateY(-4px);
+}
+@media (max-width: 820px)
+{
+    .screen
+    {
+        padding: 132px 0 64px;
+    }
+    .hero-screen
+    {
+        padding-top: 152px;
+    }
+    .sections-nav
+    {
+        top: 82px;
+    }
+}
+@media (max-width: 640px)
+{
+    main section[id]
+    {
+        scroll-margin-top: 142px;
+    }
+    .screen
+    {
+        padding: 122px 0 56px;
+    }
+    .hero-screen
+    {
+        padding-top: 136px;
+    }
+    .sections-nav
+    {
+        top: 58px;
+    }
+    .showcase-grid
+    {
+        grid-template-columns: 1fr;
     }
 }
