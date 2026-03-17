@@ -411,7 +411,7 @@ document.addEventListener("DOMContentLoaded", () =>
     {
         translations[lang] = Object.assign({}, translations[lang] || {}, extraTranslations[lang]);
     });
-    const skillVisualTranslations = {"es": {"radarLabel": "Radar de skills", "radarTitle": "Lectura automática desde GitHub", "skillsAutoNote": "Estas métricas se calculan automáticamente según lenguajes y topics detectados en mis repositorios.", "downloadCv": "Descargar CV PDF"}, "en": {"radarLabel": "Skills radar", "radarTitle": "Automatic read from GitHub", "skillsAutoNote": "These metrics are calculated automatically from languages and topics detected in my repositories.", "downloadCv": "Download CV PDF"}, "de": {"radarLabel": "Skill-Radar", "radarTitle": "Automatische Auswertung aus GitHub", "skillsAutoNote": "Diese Werte werden automatisch aus Sprachen und Topics meiner Repositories berechnet.", "downloadCv": "CV als PDF"}, "is": {"radarLabel": "Færniradar", "radarTitle": "Sjálfvirk lestur úr GitHub", "skillsAutoNote": "Þessi gildi eru reiknuð sjálfkrafa út frá tungumálum og topics í repositories mínum.", "downloadCv": "Sækja CV PDF"}};
+    const skillVisualTranslations = {"es": {"radarLabel": "Radar de skills", "radarTitle": "Lectura automática desde GitHub", "skillsAutoNote": "Estas métricas se calculan automáticamente según lenguajes y topics detectados en mis repositorios.", "downloadCv": "Descargar CV PDF", "radarSummaryLabel": "Resumen del perfil", "radarSummaryDefault": "Perfil orientado a backend con base sólida en Java, BBDD y apoyo visual en frontend."}, "en": {"radarLabel": "Skills radar", "radarTitle": "Automatic read from GitHub", "skillsAutoNote": "These metrics are calculated automatically from languages and topics detected in my repositories.", "downloadCv": "Download CV PDF", "radarSummaryLabel": "Profile summary", "radarSummaryDefault": "Backend-oriented profile with a solid base in Java, databases, and supporting frontend work."}, "de": {"radarLabel": "Skill-Radar", "radarTitle": "Automatische Auswertung aus GitHub", "skillsAutoNote": "Diese Werte werden automatisch aus Sprachen und Topics meiner Repositories berechnet.", "downloadCv": "CV als PDF", "radarSummaryLabel": "Profilzusammenfassung", "radarSummaryDefault": "Backend-orientiertes Profil mit solider Basis in Java, Datenbanken und unterstützendem Frontend."}, "is": {"radarLabel": "Færniradar", "radarTitle": "Sjálfvirk lestur úr GitHub", "skillsAutoNote": "Þessi gildi eru reiknuð sjálfkrafa út frá tungumálum og topics í repositories mínum.", "downloadCv": "Sækja CV PDF", "radarSummaryLabel": "Yfirlit prófíls", "radarSummaryDefault": "Prófíll sem hallar að backend með traustan grunn í Java, gagnagrunnum og stuðningsfærni í frontend."}};
     Object.keys(skillVisualTranslations).forEach(lang =>
     {
         translations[lang] = Object.assign({}, translations[lang] || {}, skillVisualTranslations[lang]);
@@ -604,6 +604,16 @@ document.addEventListener("DOMContentLoaded", () =>
             downloadCvButtonText.textContent = t("downloadCv");
         }
         updateCopyLabels(t("copyEmail"));
+        const radarSummaryLabelNode = document.getElementById("radar-summary-label");
+        if (radarSummaryLabelNode)
+        {
+            radarSummaryLabelNode.textContent = t("radarSummaryLabel");
+        }
+        const radarSummaryTextNode = document.getElementById("radar-summary-text");
+        if (radarSummaryTextNode && !radarSummaryTextNode.textContent.trim())
+        {
+            radarSummaryTextNode.textContent = t("radarSummaryDefault");
+        }
         applyTheme(root.getAttribute("data-theme") || "dark");
         setSkillText(currentSkill);
         updateRecruiterButtons();
@@ -683,6 +693,16 @@ document.addEventListener("DOMContentLoaded", () =>
             setTimeout(() =>
             {
                 updateCopyLabels(t("copyEmail"));
+        const radarSummaryLabelNode = document.getElementById("radar-summary-label");
+        if (radarSummaryLabelNode)
+        {
+            radarSummaryLabelNode.textContent = t("radarSummaryLabel");
+        }
+        const radarSummaryTextNode = document.getElementById("radar-summary-text");
+        if (radarSummaryTextNode && !radarSummaryTextNode.textContent.trim())
+        {
+            radarSummaryTextNode.textContent = t("radarSummaryDefault");
+        }
             }, 1400);
         });
     });
