@@ -73,6 +73,7 @@
                 </div>
                 <div class="action-row">
                     <a class="button primary" href="#repositorios" id="hero-projects" class="lang-fade"></a>
+                    <button class="button subtle" type="button" id="download-cv-btn"></button>
                     <div class="mobile-controls">
                         <div class="lang-switch">
                     <button type="button" class="lang-btn active" data-lang="es">ES</button>
@@ -101,6 +102,49 @@
                     <div class="profile-frame">
                         <img src="assets/img/perfil.jpg" alt="Foto de perfil de Alejandro Donate García" />
                     </div>
+
+                    <div class="skills-radar-card reveal visible">
+                        <div class="skills-radar-head">
+                            <span class="mini-label lang-fade" id="radar-label"></span>
+                            <strong class="lang-fade" id="radar-title"></strong>
+                            <p class="lang-fade" id="skills-auto-note"></p>
+                        </div>
+                        <div class="skills-radar-layout">
+                            <div class="radar-wrap">
+                                <svg viewBox="0 0 240 240" class="radar-svg" aria-hidden="true">
+                                    <polygon class="radar-grid" points="120,28 212,120 120,212 28,120"></polygon>
+                                    <polygon class="radar-grid radar-grid-inner" points="120,52 188,120 120,188 52,120"></polygon>
+                                    <polygon class="radar-grid radar-grid-inner" points="120,76 164,120 120,164 76,120"></polygon>
+                                    <line class="radar-axis" x1="120" y1="20" x2="120" y2="220"></line>
+                                    <line class="radar-axis" x1="20" y1="120" x2="220" y2="120"></line>
+                                    <polygon class="radar-shape" id="radar-shape" points="120,58 170,120 120,182 70,120"></polygon>
+                                    <circle class="radar-dot" id="radar-dot-java" cx="120" cy="58" r="5"></circle>
+                                    <circle class="radar-dot" id="radar-dot-frontend" cx="170" cy="120" r="5"></circle>
+                                    <circle class="radar-dot" id="radar-dot-db" cx="120" cy="182" r="5"></circle>
+                                    <circle class="radar-dot" id="radar-dot-xml" cx="70" cy="120" r="5"></circle>
+                                </svg>
+                            </div>
+                            <div class="radar-legend">
+                                <div class="radar-legend-item">
+                                    <span>Java</span>
+                                    <strong data-skill-value="java">76%</strong>
+                                </div>
+                                <div class="radar-legend-item">
+                                    <span>BBDD</span>
+                                    <strong data-skill-value="db">68%</strong>
+                                </div>
+                                <div class="radar-legend-item">
+                                    <span>Frontend</span>
+                                    <strong data-skill-value="frontend">72%</strong>
+                                </div>
+                                <div class="radar-legend-item">
+                                    <span>XML</span>
+                                    <strong data-skill-value="xml">58%</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </article>
                 <article class="panel reveal visible tilt-card">
                     <span class="mini-label" id="current-label" class="lang-fade"></span>
@@ -156,25 +200,25 @@
                         <span id="bridge-4" class="lang-fade"></span>
                     </div>
                     <div class="skills-chart">
-                        <div class="chart-row">
+                        <div class="chart-row" data-skill="java">
                             <span>Java</span>
                             <div class="chart-bar">
                                 <i style="--value: 76%"></i>
                             </div>
                         </div>
-                        <div class="chart-row">
+                        <div class="chart-row" data-skill="db">
                             <span>BBDD</span>
                             <div class="chart-bar">
                                 <i style="--value: 68%"></i>
                             </div>
                         </div>
-                        <div class="chart-row">
+                        <div class="chart-row" data-skill="frontend">
                             <span>Frontend</span>
                             <div class="chart-bar">
                                 <i style="--value: 72%"></i>
                             </div>
                         </div>
-                        <div class="chart-row">
+                        <div class="chart-row" data-skill="xml">
                             <span>XML</span>
                             <div class="chart-bar">
                                 <i style="--value: 58%"></i>
@@ -364,6 +408,12 @@ document.addEventListener("DOMContentLoaded", () =>
     {
         translations[lang] = Object.assign({}, translations[lang] || {}, extraTranslations[lang]);
     });
+    const skillVisualTranslations = {"es": {"radarLabel": "Radar de skills", "radarTitle": "Lectura automática desde GitHub", "skillsAutoNote": "Estas métricas se calculan automáticamente según lenguajes y topics detectados en mis repositorios.", "downloadCv": "Descargar CV PDF"}, "en": {"radarLabel": "Skills radar", "radarTitle": "Automatic read from GitHub", "skillsAutoNote": "These metrics are calculated automatically from languages and topics detected in my repositories.", "downloadCv": "Download CV PDF"}, "de": {"radarLabel": "Skill-Radar", "radarTitle": "Automatische Auswertung aus GitHub", "skillsAutoNote": "Diese Werte werden automatisch aus Sprachen und Topics meiner Repositories berechnet.", "downloadCv": "CV als PDF"}, "is": {"radarLabel": "Færniradar", "radarTitle": "Sjálfvirk lestur úr GitHub", "skillsAutoNote": "Þessi gildi eru reiknuð sjálfkrafa út frá tungumálum og topics í repositories mínum.", "downloadCv": "Sækja CV PDF"}};
+    Object.keys(skillVisualTranslations).forEach(lang =>
+    {
+        translations[lang] = Object.assign({}, translations[lang] || {}, skillVisualTranslations[lang]);
+    });
+
     const defaultLang = "es";
     const GITHUB_USERNAME = "alejandroDonGar";
     const FEATURED_TOPIC = "showcase";
@@ -512,6 +562,10 @@ document.addEventListener("DOMContentLoaded", () =>
             "contact-label": "contactLabel",
             "contact-title": "contactTitle",
             "contact-text": "contactText",
+            "download-cv-btn": "downloadCv",
+            "radar-label": "radarLabel",
+            "radar-title": "radarTitle",
+            "skills-auto-note": "skillsAutoNote",
             "stats-label": "statsLabel",
             "stats-title": "statsTitle",
             "stats-text": "statsText",
@@ -539,6 +593,11 @@ document.addEventListener("DOMContentLoaded", () =>
         document.querySelector('#sort option[value="name"]').textContent = t("sortName");
         document.getElementById("filter-showcase").textContent = "Showcase";
         document.getElementById("gyro-toggle").textContent = gyroEnabled ? t("gyroOn") : t("gyro");
+        const downloadCvButtonText = document.getElementById("download-cv-btn");
+        if (downloadCvButtonText)
+        {
+            downloadCvButtonText.textContent = t("downloadCv");
+        }
         updateCopyLabels(t("copyEmail"));
         applyTheme(root.getAttribute("data-theme") || "dark");
         setSkillText(currentSkill);
@@ -591,6 +650,16 @@ document.addEventListener("DOMContentLoaded", () =>
             localStorage.setItem(themeKey, nextTheme);
         });
     });
+
+    const downloadCvButton = document.getElementById("download-cv-btn");
+
+    if (downloadCvButton)
+    {
+        downloadCvButton.addEventListener("click", () =>
+        {
+            window.print();
+        });
+    }
 
     document.querySelectorAll("[data-copy-email]").forEach(button =>
     {
@@ -890,6 +959,125 @@ document.addEventListener("DOMContentLoaded", () =>
     }
 
 
+
+    function clamp(value, min, max)
+    {
+        return Math.max(min, Math.min(max, value));
+    }
+
+    function computeSkillMetrics(reposData)
+    {
+        if (!reposData.length)
+        {
+            return {
+                java: 76,
+                db: 68,
+                frontend: 72,
+                xml: 58
+            };
+        }
+
+        const langCount = {};
+        const topics = [];
+
+        reposData.forEach(repo =>
+        {
+            const language = (repo.language || "").toLowerCase();
+            if (language)
+            {
+                langCount[language] = (langCount[language] || 0) + 1;
+            }
+            (repo.topics || []).forEach(topic =>
+            {
+                topics.push(String(topic).toLowerCase());
+            });
+        });
+
+        const countLang = name => langCount[name.toLowerCase()] || 0;
+        const countTopic = list => topics.filter(topic => list.includes(topic)).length;
+
+        const java = clamp(28 + (countLang("java") * 18) + (countTopic(["java", "backend", "poo", "oop"]) * 6), 24, 92);
+        const db = clamp(22 + (countLang("sql") * 18) + (countLang("plpgsql") * 14) + (countTopic(["sql", "database", "bbdd", "postgres", "db"]) * 7), 20, 90);
+        const frontend = clamp(24 + (countLang("html") * 10) + (countLang("css") * 10) + (countLang("javascript") * 12) + (countTopic(["web", "frontend", "css", "html", "responsive"]) * 6), 22, 92);
+        const xml = clamp(16 + (countLang("xml") * 18) + (countTopic(["xml", "xsd"]) * 10), 14, 86);
+
+        return {
+            java,
+            db,
+            frontend,
+            xml
+        };
+    }
+
+    function skillPoint(cx, cy, angle, radius, value)
+    {
+        const r = radius * (value / 100);
+        const x = cx + Math.cos(angle) * r;
+        const y = cy + Math.sin(angle) * r;
+        return [x, y];
+    }
+
+    function updateSkillVisuals(reposData)
+    {
+        const metrics = computeSkillMetrics(reposData);
+        const bars = {
+            java: document.querySelector('.chart-row[data-skill="java"] .chart-bar i') || document.querySelectorAll('.chart-row .chart-bar i')[0],
+            db: document.querySelector('.chart-row[data-skill="db"] .chart-bar i') || document.querySelectorAll('.chart-row .chart-bar i')[1],
+            frontend: document.querySelector('.chart-row[data-skill="frontend"] .chart-bar i') || document.querySelectorAll('.chart-row .chart-bar i')[2],
+            xml: document.querySelector('.chart-row[data-skill="xml"] .chart-bar i') || document.querySelectorAll('.chart-row .chart-bar i')[3]
+        };
+
+        Object.entries(metrics).forEach(([key, value]) =>
+        {
+            if (bars[key])
+            {
+                bars[key].style.setProperty('--value', value + '%');
+            }
+            const legendValue = document.querySelector('[data-skill-value="' + key + '"]');
+            if (legendValue)
+            {
+                legendValue.textContent = value + '%';
+            }
+        });
+
+        const cx = 120;
+        const cy = 120;
+        const radius = 92;
+        const points = {
+            java: skillPoint(cx, cy, -Math.PI / 2, radius, metrics.java),
+            frontend: skillPoint(cx, cy, 0, radius, metrics.frontend),
+            db: skillPoint(cx, cy, Math.PI / 2, radius, metrics.db),
+            xml: skillPoint(cx, cy, Math.PI, radius, metrics.xml)
+        };
+
+        const polygon = document.getElementById('radar-shape');
+        if (polygon)
+        {
+            polygon.setAttribute('points', [
+                points.java.join(','),
+                points.frontend.join(','),
+                points.db.join(','),
+                points.xml.join(',')
+            ].join(' '));
+        }
+
+        const dots = {
+            java: document.getElementById('radar-dot-java'),
+            frontend: document.getElementById('radar-dot-frontend'),
+            db: document.getElementById('radar-dot-db'),
+            xml: document.getElementById('radar-dot-xml')
+        };
+
+        Object.entries(points).forEach(([key, value]) =>
+        {
+            if (dots[key])
+            {
+                dots[key].setAttribute('cx', value[0].toFixed(1));
+                dots[key].setAttribute('cy', value[1].toFixed(1));
+            }
+        });
+    }
+
     function updateGitHubStats(reposData)
     {
         const publicCount = reposData.length;
@@ -1033,6 +1221,7 @@ document.addEventListener("DOMContentLoaded", () =>
         {
             allRepos = await fetchRepos();
             updateGitHubStats(allRepos);
+            updateSkillVisuals(allRepos);
             renderFeatured(allRepos);
             renderRepos(allRepos);
         }
