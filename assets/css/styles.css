@@ -2506,3 +2506,38 @@ main
         justify-content: flex-start;
     }
 }
+
+
+/* ===== v32 nav follow fix ===== */
+
+/* Keep menu following the viewport */
+.sections-nav
+{
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+}
+
+/* Preserve the desktop offsets that were already working */
+@media (max-width: 1220px)
+{
+    .sections-nav
+    {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 50;
+    }
+}
+
+@media (max-width: 900px)
+{
+    .sections-nav
+    {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 50;
+    }
+}
