@@ -2363,3 +2363,65 @@ main
         transform: scale(14);
     }
 }
+
+
+/* ===== v29 light mode tone fix ===== */
+
+/* Softer pill shadows in light mode */
+:root[data-theme="light"] .button,
+:root[data-theme="light"] button,
+:root[data-theme="light"] .section-pill,
+:root[data-theme="light"] .chip-button,
+:root[data-theme="light"] .lang-btn
+{
+    box-shadow:
+        0 10px 22px rgba(120, 104, 72, 0.10),
+        0 0 0 1px rgba(151, 185, 0, 0.04) inset;
+}
+
+:root[data-theme="light"] .button:hover,
+:root[data-theme="light"] button:hover,
+:root[data-theme="light"] .section-pill:hover,
+:root[data-theme="light"] .chip-button:hover,
+:root[data-theme="light"] .lang-btn:hover
+{
+    box-shadow:
+        0 12px 24px rgba(120, 104, 72, 0.12),
+        0 0 0 1px rgba(151, 185, 0, 0.06) inset;
+}
+
+/* Light theme radar visibility */
+:root[data-theme="light"] .radar-grid
+{
+    fill: rgba(80, 72, 52, 0.03);
+    stroke: rgba(80, 72, 52, 0.14);
+}
+
+:root[data-theme="light"] .radar-grid-inner
+{
+    fill: rgba(80, 72, 52, 0.02);
+}
+
+:root[data-theme="light"] .radar-axis
+{
+    stroke: rgba(80, 72, 52, 0.16);
+}
+
+:root[data-theme="light"] .radar-shape
+{
+    fill: rgba(14, 167, 220, 0.22);
+    stroke: rgba(14, 167, 220, 0.9);
+    filter: drop-shadow(0 0 6px rgba(14, 167, 220, 0.16));
+}
+
+:root[data-theme="light"] .radar-dot
+{
+    fill: rgba(34, 34, 34, 0.82);
+    filter: none;
+}
+
+:root[data-theme="light"] .radar-legend-item
+{
+    background: rgba(255, 255, 255, 0.72);
+    border-color: rgba(80, 72, 52, 0.10);
+}
