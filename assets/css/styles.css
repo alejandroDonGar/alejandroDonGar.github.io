@@ -2425,3 +2425,84 @@ main
     background: rgba(255, 255, 255, 0.72);
     border-color: rgba(80, 72, 52, 0.10);
 }
+
+
+/* ===== v31 ribbon shadow + zoom fix ===== */
+
+/* Keep quick ribbon responsive under zoom */
+.quick-ribbon
+{
+    max-width: min(1280px, calc(100% - 28px));
+}
+
+.ribbon-inner
+{
+    grid-template-columns: minmax(240px, 420px) minmax(0, 1fr);
+    align-items: start;
+    column-gap: 18px;
+    row-gap: 14px;
+}
+
+.ribbon-copy
+{
+    max-width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.ribbon-copy strong,
+.ribbon-copy span
+{
+    display: block;
+}
+
+/* Move the shadow to the inner rounded block so it respects the radius */
+.quick-ribbon
+{
+    box-shadow: none !important;
+    z-index: 42;
+}
+
+.ribbon-inner
+{
+    box-shadow:
+        0 14px 28px rgba(0, 0, 0, 0.12),
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+    overflow: hidden;
+}
+
+/* In light mode, use a warmer softer shadow like the rest of the palette */
+:root[data-theme="light"] .ribbon-inner
+{
+    box-shadow:
+        0 14px 26px rgba(120, 104, 72, 0.12),
+        0 0 0 1px rgba(151, 185, 0, 0.03) inset;
+}
+
+/* Keep menu above the ribbon shadow so it never looks darkened */
+.sections-nav
+{
+    position: relative;
+    z-index: 50;
+}
+
+/* Responsive stacking when zoom or reduced width makes the ribbon too tight */
+@media (max-width: 1220px)
+{
+    .ribbon-inner
+    {
+        grid-template-columns: 1fr;
+    }
+
+    .ribbon-actions
+    {
+        justify-items: start;
+    }
+
+    .ribbon-actions-top,
+    .ribbon-actions-bottom
+    {
+        justify-content: flex-start;
+    }
+}
