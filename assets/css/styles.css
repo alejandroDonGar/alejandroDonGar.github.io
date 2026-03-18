@@ -2541,3 +2541,29 @@ main
         z-index: 50;
     }
 }
+
+
+/* ===== v33 ribbon spacing fix ===== */
+
+/* More breathing room inside quick ribbon */
+.ribbon-inner
+{
+    padding: 20px 26px !important;
+}
+
+/* Extra spacing for text block */
+.ribbon-copy
+{
+    padding-right: 12px;
+}
+
+/* Ensure vertical spacing looks balanced */
+.ribbon-copy strong
+{
+    margin-bottom: 6px;
+}
+
+.ribbon-copy span
+{
+    line-height: 1.4;
+}
