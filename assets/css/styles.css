@@ -854,6 +854,7 @@ button, input, select
     .sections-nav
     {
     position: fixed;
+    top: calc(env(safe-area-inset-top, 0px) + 12px);
     left: 50%;
     transform: translateX(-50%);
     width: calc(100% - 18px);
@@ -861,6 +862,8 @@ button, input, select
     justify-content: flex-start;
     flex-wrap: nowrap;
     padding-bottom: 2px;
+    margin: 0;
+    z-index: 60;
     }
 
     .screen
@@ -870,6 +873,7 @@ button, input, select
 
     .hero-screen
     {
+    margin-top: 0;
     padding-top: 124px;
     }
 
