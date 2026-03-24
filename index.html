@@ -159,6 +159,8 @@
     </header>
 
     <main>
+        
+        <div class="section-bridge reveal"><span></span><span></span><span></span></div>
         <section class="screen" id="perfil">
             <div class="wrapper split-grid">
                 <article class="panel reveal tilt-card">
@@ -313,13 +315,8 @@
                 </article>
             </div>
         </section>
-
         <div class="section-bridge reveal"><span></span><span></span><span></span></div>
-
-        
-        <div class="section-bridge reveal"><span></span><span></span><span></span></div>
-
-        <section class="screen compact-screen" id="insights">
+<section class="screen compact-screen" id="insights">
             <div class="wrapper split-grid">
                 <article class="panel reveal tilt-card">
                     <div class="section-head">
@@ -350,6 +347,8 @@
             </div>
         </section>
 
+        
+        <div class="section-bridge reveal"><span></span><span></span><span></span></div>
         <section class="screen compact-screen" id="skills">
             <div class="wrapper">
                 <article class="panel reveal">
@@ -454,8 +453,6 @@ document.addEventListener("DOMContentLoaded", () =>
         document.getElementById("skillTitle").textContent = titles[skill];
         document.getElementById("skillText").textContent = skillMap[skill];
     }
-
-
 
     function updateRecruiterButtons()
     {
@@ -662,7 +659,6 @@ document.addEventListener("DOMContentLoaded", () =>
             applyLanguage(button.dataset.lang);
         });
     });
-
 
     recruiterButtons.forEach(button =>
     {
@@ -1017,8 +1013,6 @@ document.addEventListener("DOMContentLoaded", () =>
         return parsed;
     }
 
-
-
     function clamp(value, min, max)
     {
         return Math.max(min, Math.min(max, value));
@@ -1075,7 +1069,6 @@ document.addEventListener("DOMContentLoaded", () =>
         const y = cy + Math.sin(angle) * r;
         return [x, y];
     }
-
 
     function updateRadarSummary(metrics)
     {
