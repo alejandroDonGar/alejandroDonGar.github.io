@@ -1220,7 +1220,7 @@ main > .screen > .wrapper > .panel + .panel
 
 .hero-screen
 {
-    margin-top: 228px;
+    margin-top: 262px;
     padding-top: 28px;
     padding-bottom: 20px;
 }
@@ -1906,11 +1906,11 @@ main
 .sections-nav
 {
     position: fixed;
-    top: 154px;
+    top: 182px;
     left: 50%;
     transform: translateX(-50%);
     width: min(860px, calc(100% - 28px));
-    z-index: 40;
+    z-index: 46;
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
