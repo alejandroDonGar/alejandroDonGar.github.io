@@ -210,7 +210,7 @@ select
     gap: 14px;
     align-items: center;
     padding: 14px 18px;
-    border-radius: 999px;
+    border-radius: var(--radius-md);
     border: 1px solid var(--panel-border);
     background: var(--ribbon-bg);
     box-shadow: var(--shadow);
@@ -278,7 +278,7 @@ select
     justify-content: center;
     min-height: 42px;
     padding: 0.78rem 1rem;
-    border-radius: 999px;
+    border-radius: var(--radius-md);
     border: 1px solid var(--panel-border);
     background: var(--pill-bg);
     color: var(--pill-text);
@@ -413,7 +413,7 @@ select
     justify-content: center;
     min-height: 40px;
     padding: 0.72rem 0.96rem;
-    border-radius: 999px;
+    border-radius: var(--radius-md);
     border: 1px solid var(--panel-border);
     background: var(--chip-bg);
     color: var(--text);
@@ -439,7 +439,7 @@ select
     justify-content: center;
     min-height: 44px;
     padding: 0.82rem 1.08rem;
-    border-radius: 999px;
+    border-radius: var(--radius-md);
     border: 1px solid var(--panel-border);
     background: var(--button-bg);
     color: var(--button-text);
@@ -597,7 +597,7 @@ select
     align-items: center;
     min-height: 38px;
     padding: 0.68rem 0.9rem;
-    border-radius: 999px;
+    border-radius: var(--radius-md);
     border: 1px solid var(--panel-border);
     background: var(--bridge-bg);
     color: var(--muted);
@@ -634,7 +634,7 @@ select
 .bar
 {
     height: 12px;
-    border-radius: 999px;
+    border-radius: var(--radius-md);
     overflow: hidden;
     background: var(--bar-bg);
 }
@@ -857,7 +857,7 @@ select
 {
     display: block;
     height: 2px;
-    border-radius: 999px;
+    border-radius: var(--radius-md);
     background: var(--panel-border);
 }
 
@@ -1172,7 +1172,7 @@ main > .screen > .wrapper > .panel + .panel
     justify-content: center;
     min-height: 40px;
     padding: 0.72rem 0.96rem;
-    border-radius: 999px;
+    border-radius: var(--radius-md);
     border: 1px solid var(--panel-border);
     background: var(--chip-bg);
     color: var(--text);
@@ -1573,7 +1573,7 @@ main > .screen > .wrapper > .panel + .panel
 {
     height: 12px;
     background: #ddd;
-    border-radius: 999px;
+    border-radius: var(--radius-md);
 }
 
 .chart-bar i
@@ -1621,7 +1621,7 @@ main > .screen > .wrapper > .panel + .panel
 .chart-bar
 {
     height: 12px;
-    border-radius: 999px;
+    border-radius: var(--radius-md);
     background: var(--bar-bg);
     overflow: hidden;
 }
@@ -1673,7 +1673,7 @@ main
     position: relative;
     flex: 1 1 auto;
     height: 8px;
-    border-radius: 999px;
+    border-radius: var(--radius-md);
     background: var(--bar-bg);
     overflow: hidden;
 }
@@ -1735,7 +1735,7 @@ main
 .chart-bar
 {
     height: 12px;
-    border-radius: 999px;
+    border-radius: var(--radius-md);
     background: var(--bar-bg);
     overflow: hidden;
 }
@@ -2217,12 +2217,12 @@ main
 .quick-ribbon
 {
     overflow: visible;
-    border-radius: 999px;
+    border-radius: var(--radius-md);
 }
 
 .ribbon-inner
 {
-    border-radius: 999px;
+    border-radius: var(--radius-md);
     box-shadow:
         0 16px 34px rgba(0, 0, 0, 0.34),
         0 0 0 1px rgba(255, 255, 255, 0.04) inset;
@@ -2332,7 +2332,7 @@ main
     height: 24px;
     margin-left: -12px;
     margin-top: -12px;
-    border-radius: 999px;
+    border-radius: var(--radius-md);
     opacity: 0;
     pointer-events: none;
     background: radial-gradient(circle, rgba(124,255,178,0.18) 0%, rgba(77,166,255,0.10) 40%, rgba(77,166,255,0.0) 72%);
@@ -2626,4 +2626,50 @@ main
     {
         display: none;
     }
+}
+
+
+/* ===== v38 unified radius system ===== */
+:root
+{
+    --radius-lg: 18px;
+    --radius-md: 12px;
+    --radius-sm: 10px;
+}
+
+/* Main containers */
+.section,
+.panel,
+.card,
+.repo-card,
+.hero-card,
+.ribbon-inner
+{
+    border-radius: var(--radius-lg);
+}
+
+/* Images */
+.profile-frame img,
+.card img
+{
+    border-radius: var(--radius-md);
+}
+
+/* Pills / buttons */
+.button,
+.section-pill,
+.chip-button,
+.lang-btn,
+.tag,
+.filter-pill
+{
+    border-radius: var(--radius-md);
+}
+
+/* Small UI */
+input,
+select,
+.small-pill
+{
+    border-radius: var(--radius-sm);
 }
