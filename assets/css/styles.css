@@ -1220,7 +1220,7 @@ main > .screen > .wrapper > .panel + .panel
 
 .hero-screen
 {
-    padding-top: 366px;
+    padding-top: 404px;
     padding-bottom: 20px;
 }
 
@@ -1280,8 +1280,8 @@ main
 {
     position: relative;
     min-height: auto;
-    padding: 82px 0 28px;
-    scroll-margin-top: 220px;
+    padding: 96px 0 28px;
+    scroll-margin-top: 240px;
     scroll-snap-align: start;
 }
 
@@ -1905,7 +1905,7 @@ main
 .sections-nav
 {
     position: fixed;
-    top: 206px;
+    top: 224px;
     left: 50%;
     transform: translateX(-50%);
     width: min(860px, calc(100% - 28px));
