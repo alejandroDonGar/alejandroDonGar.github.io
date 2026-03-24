@@ -1,68 +1,63 @@
 
 :root
 {
-    --scrollY: 0;
-    --mx: 0.5;
-    --my: 0.5;
-    --radius: 28px;
-    --radius-sm: 20px;
-    --shadow: 0 22px 54px rgba(0, 0, 0, 0.22);
-    --shadow-hover: 0 28px 62px rgba(0, 0, 0, 0.26);
-    --bg: linear-gradient(180deg, #0c0c0c, #141414 55%, #0b0b0b);
-    --text: #f4f0ea;
-    --muted: #b8b0a4;
-    --accent: #d7ff62;
-    --panel-bg: linear-gradient(180deg, rgba(25, 25, 25, 0.96), rgba(18, 18, 18, 0.96));
-    --card-bg: rgba(20, 20, 20, 0.95);
-    --bridge-bg: rgba(255, 255, 255, 0.04);
-    --button-bg: #191919;
-    --button-text: #f4f0ea;
-    --button-primary: linear-gradient(135deg, #d7ff62, #65d8ff);
-    --button-primary-text: #111111;
-    --input-bg: #191919;
-    --bar-bg: #2a2a2a;
-    --chip-bg: #161616;
-    --pill-bg: rgba(25, 25, 25, 0.88);
-    --pill-text: #f4f0ea;
-    --pill-active: linear-gradient(135deg, rgba(101, 216, 255, 0.18), rgba(255, 146, 200, 0.18));
-    --ribbon-bg: rgba(18, 18, 18, 0.9);
-    --orb-a: rgba(101, 216, 255, 0.38);
-    --orb-b: rgba(255, 146, 200, 0.3);
-    --orb-c: rgba(215, 255, 98, 0.22);
-    --shape-line: rgba(255, 255, 255, 0.08);
-    --shape-fill: rgba(255, 255, 255, 0.05);
-    --grid: rgba(255, 255, 255, 0.035);
-    --panel-border: rgba(255, 255, 255, 0.1);
-    --panel-border-strong: rgba(255, 255, 255, 0.18);
+ --bg: linear-gradient(180deg, #0d1116, #141a22 55%, #0d1116);
+ --text: #eef1f7;
+ --muted: #b4b9c3;
+ --accent: #d1a892;
+ --panel-bg: linear-gradient(180deg, rgba(18, 22, 30, 0.96), rgba(13, 17, 24, 0.96));
+ --card-bg: rgba(16, 20, 28, 0.95);
+ --bridge-bg: rgba(183, 198, 228, 0.06);
+ --button-bg: #151b24;
+ --button-text: #eef1f7;
+ --button-primary: linear-gradient(135deg, #b7c6e4, #d0ab96);
+ --button-primary-text: #111318;
+ --input-bg: #151b24;
+ --bar-bg: #232b37;
+ --chip-bg: #131923;
+ --pill-bg: rgba(17, 23, 31, 0.90);
+ --pill-text: #eef1f7;
+ --pill-active: linear-gradient(135deg, rgba(183, 198, 228, 0.20), rgba(208, 171, 150, 0.18));
+ --ribbon-bg: rgba(13, 18, 24, 0.90);
+ --orb-a: rgba(183, 198, 228, 0.24);
+ --orb-b: rgba(208, 171, 150, 0.18);
+ --orb-c: rgba(153, 157, 170, 0.14);
+ --shape-line: rgba(255, 255, 255, 0.07);
+ --shape-fill: rgba(255, 255, 255, 0.04);
+ --grid: rgba(255, 255, 255, 0.028);
+ --panel-border: rgba(255, 255, 255, 0.10);
+ --panel-border-strong: rgba(255, 255, 255, 0.18);
+ --shadow: 0 22px 54px rgba(0, 0, 0, 0.24);
+ --shadow-hover: 0 28px 62px rgba(0, 0, 0, 0.28);
 }
 
 :root[data-theme="light"]
 {
-    --bg: linear-gradient(180deg, #faf7f1, #efe9de 55%, #f8f4ec);
-    --text: #1b1b1b;
-    --muted: #5d5b57;
-    --accent: #8cad00;
-    --panel-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(251, 247, 240, 0.96));
-    --card-bg: rgba(255, 255, 255, 0.95);
-    --bridge-bg: rgba(27, 27, 27, 0.04);
-    --button-bg: #ffffff;
-    --button-text: #1b1b1b;
-    --button-primary: linear-gradient(135deg, #97b900, #0ea7dc);
-    --button-primary-text: #ffffff;
-    --input-bg: #ffffff;
-    --bar-bg: rgba(27, 27, 27, 0.08);
-    --chip-bg: #ffffff;
-    --pill-bg: rgba(255, 255, 255, 0.9);
-    --pill-text: #1b1b1b;
-    --pill-active: linear-gradient(135deg, rgba(151, 185, 0, 0.2), rgba(14, 167, 220, 0.18));
-    --ribbon-bg: rgba(255, 255, 255, 0.9);
-    --shape-line: rgba(27, 27, 27, 0.08);
-    --shape-fill: rgba(27, 27, 27, 0.04);
-    --grid: rgba(27, 27, 27, 0.04);
-    --panel-border: rgba(27, 27, 27, 0.1);
-    --panel-border-strong: rgba(27, 27, 27, 0.16);
-    --shadow: 0 20px 44px rgba(78, 67, 44, 0.1);
-    --shadow-hover: 0 24px 52px rgba(78, 67, 44, 0.14);
+ --bg: linear-gradient(180deg, #f5f3ef, #ece8e3 55%, #f6f4f1);
+ --text: #1d222b;
+ --muted: #6f737c;
+ --accent: #9b7766;
+ --panel-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(246, 242, 237, 0.97));
+ --card-bg: rgba(255, 255, 255, 0.96);
+ --bridge-bg: rgba(29, 34, 43, 0.04);
+ --button-bg: #ffffff;
+ --button-text: #1d222b;
+ --button-primary: linear-gradient(135deg, #aebfe0, #c89d88);
+ --button-primary-text: #ffffff;
+ --input-bg: #ffffff;
+ --bar-bg: rgba(29, 34, 43, 0.08);
+ --chip-bg: #ffffff;
+ --pill-bg: rgba(255, 255, 255, 0.92);
+ --pill-text: #1d222b;
+ --pill-active: linear-gradient(135deg, rgba(174, 191, 224, 0.22), rgba(200, 157, 136, 0.18));
+ --ribbon-bg: rgba(255, 255, 255, 0.92);
+ --shape-line: rgba(29, 34, 43, 0.08);
+ --shape-fill: rgba(29, 34, 43, 0.04);
+ --grid: rgba(29, 34, 43, 0.04);
+ --panel-border: rgba(29, 34, 43, 0.10);
+ --panel-border-strong: rgba(29, 34, 43, 0.16);
+ --shadow: 0 20px 44px rgba(104, 93, 76, 0.10);
+ --shadow-hover: 0 24px 52px rgba(104, 93, 76, 0.14);
 }
 
 *
@@ -2476,7 +2471,7 @@ main
 :root[data-theme="light"] .ribbon-inner
 {
     box-shadow:
-        0 14px 26px rgba(120, 104, 72, 0.12),
+        0 14px 26px rgba(104, 93, 76, 0.10),
         0 0 0 1px rgba(151, 185, 0, 0.03) inset;
 }
 
@@ -2543,27 +2538,92 @@ main
 }
 
 
-/* ===== v33 ribbon spacing fix ===== */
 
-/* More breathing room inside quick ribbon */
-.ribbon-inner
+/* ===== v37 performance + palette ===== */
+.bg-icons-scene
 {
-    padding: 20px 26px !important;
+    contain: layout style paint;
+    transform: translateZ(0);
 }
 
-/* Extra spacing for text block */
-.ribbon-copy
+.bg-icons-layer
 {
-    padding-right: 12px;
+    contain: layout paint;
 }
 
-/* Ensure vertical spacing looks balanced */
-.ribbon-copy strong
+.bg-icon
 {
-    margin-bottom: 6px;
+    will-change: transform, opacity;
+    user-select: none;
+    transition: opacity 0.22s ease;
+    mix-blend-mode: normal;
+    text-shadow: none;
 }
 
-.ribbon-copy span
+.bg-icon-back
 {
-    line-height: 1.4;
+    font-size: 9px;
+    opacity: 0.05;
+    color: rgba(183, 198, 228, 0.28);
+    filter: none;
+}
+
+.bg-icon-mid
+{
+    font-size: 11px;
+    opacity: 0.07;
+    color: rgba(170, 177, 194, 0.32);
+    filter: none;
+}
+
+.bg-icon-front
+{
+    font-size: 12px;
+    opacity: 0.09;
+    color: rgba(208, 171, 150, 0.34);
+    filter: none;
+}
+
+:root[data-theme="light"] .bg-icon-back
+{
+    color: rgba(140, 149, 170, 0.18);
+}
+
+:root[data-theme="light"] .bg-icon-mid
+{
+    color: rgba(134, 126, 118, 0.18);
+}
+
+:root[data-theme="light"] .bg-icon-front
+{
+    color: rgba(174, 191, 224, 0.24);
+}
+
+.bg-wave-glow
+{
+    display: none;
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+    .bg-icons-scene
+    {
+        display: none;
+    }
+
+    .tilt-card,
+    .reveal,
+    .lang-fade
+    {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+@media (max-width: 900px), (pointer: coarse)
+{
+    .bg-icons-scene
+    {
+        display: none;
+    }
 }

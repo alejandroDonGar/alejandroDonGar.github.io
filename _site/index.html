@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alejandro Donate García · Kinetic</title>
+    <title>Alejandro Donate García · Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet" />
@@ -1356,8 +1356,24 @@ document.addEventListener("DOMContentLoaded", () =>
 </script>
 
 <script>
+const fxReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches || window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 900;
+let bgIcons = [];
+let bgAnimFrame = 0;
+let bgLastFrame = 0;
+let bgPaused = false;
+
 function initBackgroundIcons()
 {
+    if (fxReduced)
+    {
+        const scene = document.querySelector(".bg-icons-scene");
+        if (scene)
+        {
+            scene.style.display = "none";
+        }
+        return;
+    }
+
     const iconSets = {
         back: ["☕", "💻", "🌐", "📦"],
         mid: ["🐙", "✉️", "🔗", "☕", "💻"],
@@ -1372,7 +1388,7 @@ function initBackgroundIcons()
 
     Object.entries(layers).forEach(([depth, container]) =>
     {
-        const total = depth === "back" ? 60 : depth === "mid" ? 80 : 50;
+        const total = depth === "back" ? 18 : depth === "mid" ? 28 : 16;
 
         for (let i = 0; i < total; i++)
         {
@@ -1381,9 +1397,9 @@ function initBackgroundIcons()
             el.textContent = iconSets[depth][Math.floor(Math.random() * iconSets[depth].length)];
 
             const px = Math.random() * window.innerWidth;
-            const py = Math.random() * (window.innerHeight * 2.2);
-            const driftX = (Math.random() - 0.5) * (depth === "back" ? 10 : depth === "mid" ? 16 : 22);
-            const driftY = (Math.random() - 0.5) * (depth === "back" ? 8 : depth === "mid" ? 12 : 16);
+            const py = Math.random() * (window.innerHeight * 2.1);
+            const driftX = (Math.random() - 0.5) * (depth === "back" ? 6 : depth === "mid" ? 10 : 14);
+            const driftY = (Math.random() - 0.5) * (depth === "back" ? 5 : depth === "mid" ? 8 : 10);
 
             el.dataset.baseX = px.toFixed(2);
             el.dataset.baseY = py.toFixed(2);
@@ -1392,18 +1408,34 @@ function initBackgroundIcons()
             el.dataset.waveX = "0";
             el.dataset.waveY = "0";
             el.dataset.waveZ = "0";
+            el.dataset.light = "0";
             el.dataset.depth = depth === "back" ? "0.35" : depth === "mid" ? "0.65" : "1";
+            el.dataset.renderX = px.toFixed(2);
+            el.dataset.renderY = py.toFixed(2);
 
             container.appendChild(el);
+            bgIcons.push(el);
         }
     });
 }
 
 function renderIcons(time = 0)
 {
+    if (fxReduced || bgPaused)
+    {
+        return;
+    }
+
+    if (time - bgLastFrame < 32)
+    {
+        bgAnimFrame = requestAnimationFrame(renderIcons);
+        return;
+    }
+
+    bgLastFrame = time;
     const scrollY = window.scrollY || 0;
 
-    document.querySelectorAll(".bg-icon").forEach((icon, index) =>
+    bgIcons.forEach((icon, index) =>
     {
         const baseX = parseFloat(icon.dataset.baseX);
         const baseY = parseFloat(icon.dataset.baseY);
@@ -1412,67 +1444,62 @@ function renderIcons(time = 0)
         const waveX = parseFloat(icon.dataset.waveX);
         const waveY = parseFloat(icon.dataset.waveY);
         const waveZ = parseFloat(icon.dataset.waveZ);
+        const light = parseFloat(icon.dataset.light);
         const depth = parseFloat(icon.dataset.depth);
 
-        const t = time * 0.00045 + index * 0.35;
+        const t = time * 0.00032 + index * 0.31;
         const floatX = Math.sin(t) * driftX;
-        const floatY = Math.cos(t * 1.15) * driftY;
-        const parallaxY = scrollY * depth * -0.08;
+        const floatY = Math.cos(t * 1.08) * driftY;
+        const parallaxY = scrollY * depth * -0.05;
         const zScale = 1 + waveZ;
 
         const x = baseX + floatX + waveX;
         const y = baseY + floatY + parallaxY + waveY;
 
         icon.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${zScale})`;
+        icon.style.opacity = String((depth === 1 ? 0.09 : depth > 0.5 ? 0.07 : 0.05) + light * (depth === 1 ? 0.13 : depth > 0.5 ? 0.08 : 0.04));
 
-        icon.dataset.waveX = String(waveX * 0.92);
-        icon.dataset.waveY = String(waveY * 0.92);
-        icon.dataset.waveZ = String(waveZ * 0.88);
+        icon.dataset.renderX = x.toFixed(2);
+        icon.dataset.renderY = y.toFixed(2);
+        icon.dataset.waveX = String(waveX * 0.88);
+        icon.dataset.waveY = String(waveY * 0.88);
+        icon.dataset.waveZ = String(waveZ * 0.84);
+        icon.dataset.light = String(light * 0.82);
     });
 
-    requestAnimationFrame(renderIcons);
+    bgAnimFrame = requestAnimationFrame(renderIcons);
 }
 
 function triggerWave(x, y)
 {
-    const glow = document.getElementById("bg-wave-glow");
-    if (glow)
+    if (fxReduced)
     {
-        glow.style.left = x + "px";
-        glow.style.top = y + "px";
-        glow.classList.remove("active");
-        void glow.offsetWidth;
-        glow.classList.add("active");
+        return;
     }
 
-    document.querySelectorAll(".bg-icon").forEach(icon =>
+    bgIcons.forEach(icon =>
     {
-        const rect = icon.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-
+        const cx = parseFloat(icon.dataset.renderX || icon.dataset.baseX);
+        const cy = parseFloat(icon.dataset.renderY || icon.dataset.baseY) - (window.scrollY || 0);
         const dx = cx - x;
         const dy = cy - y;
         const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-        const depth = parseFloat(icon.dataset.depth);
 
+        if (dist > 260)
+        {
+            return;
+        }
+
+        const depth = parseFloat(icon.dataset.depth);
         const normalizedX = dx / dist;
         const normalizedY = dy / dist;
+        const planeForce = ((260 - dist) / 260) * (depth * 1.2);
+        const light = ((260 - dist) / 260) * (1.15 - depth);
 
-        
-        const planeForce = (180 / (dist + 80)) * depth;
-
-        const light = Math.max(0, 1 - dist / 400) * (1.2 - depth);
-        icon.style.filter = `brightness(${1 + light * 1.5})`;
-        setTimeout(() => {
-            icon.style.filter = "";
-        }, 300);
-        
-        const depthForce = (0.2 / (dist / 180 + 1)) * (1.2 - depth);
-
-        icon.dataset.waveX = String(parseFloat(icon.dataset.waveX) + normalizedX * planeForce * 18);
-        icon.dataset.waveY = String(parseFloat(icon.dataset.waveY) + normalizedY * planeForce * 18);
-        icon.dataset.waveZ = String(parseFloat(icon.dataset.waveZ) + depthForce);
+        icon.dataset.waveX = String(parseFloat(icon.dataset.waveX) + normalizedX * planeForce * 14);
+        icon.dataset.waveY = String(parseFloat(icon.dataset.waveY) + normalizedY * planeForce * 14);
+        icon.dataset.waveZ = String(parseFloat(icon.dataset.waveZ) + light * 0.06);
+        icon.dataset.light = String(Math.max(parseFloat(icon.dataset.light), light));
     });
 }
 
@@ -1483,13 +1510,26 @@ function bindWave()
         btn.addEventListener("click", e =>
         {
             triggerWave(e.clientX, e.clientY);
-        });
+        }, { passive: true });
     });
 }
 
+function handleVisibility()
+{
+    bgPaused = document.hidden;
+    if (!bgPaused && !fxReduced && !bgAnimFrame)
+    {
+        bgAnimFrame = requestAnimationFrame(renderIcons);
+    }
+}
+
 initBackgroundIcons();
-renderIcons();
+if (!fxReduced)
+{
+    bgAnimFrame = requestAnimationFrame(renderIcons);
+}
 bindWave();
+document.addEventListener("visibilitychange", handleVisibility);
 </script>
 </body>
 
