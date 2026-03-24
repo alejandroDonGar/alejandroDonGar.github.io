@@ -78,7 +78,7 @@ button, input, select
     background-repeat: repeat;
     background-size: 120px 120px;
     background-position: 18px 14px;
-    opacity: 0.075;
+    opacity: 0.082;
     will-change: transform;
     transform: translateY(calc(var(--scrollY) * -0.02px));
 }
@@ -1619,11 +1619,9 @@ main
     isolation: isolate;
     transition: transform 0.22s ease,
         box-shadow 0.22s ease,
-        border-color 0.28s ease,
-        background-color 0.28s ease,
-        background-image 0.28s ease,
-        color 0.28s ease,
-        opacity 0.28s ease;
+        border-color 0.22s ease,
+        background 0.22s ease,
+        color 0.22s ease;
 }
 
 .button::before, .section-pill::before, .chip-button::before, .lang-btn::before
@@ -1955,8 +1953,8 @@ input, select, .small-pill
 
 :root[data-theme="light"] .bg-grid
 {
-    opacity: 0.085;
-    filter: sepia(0.22) saturate(0.88) contrast(0.96);
+    opacity: 0.095;
+    filter: sepia(0.18) saturate(0.92) contrast(1.02);
 }
 
 :root:not([data-theme="light"]) .bg-grid
@@ -1971,17 +1969,4 @@ input, select, .small-pill
     {
         transform: none !important;
     }
-}
-
-
-.panel, .repo-card, .mini-card, .value-card, .skill-display, .level-item, .roadmap-item, .ribbon-inner, .section-pill, .button, .lang-btn, .chip-button, .repo-pill, .bg-grid
-{
-    transition:
-        background-color 0.28s ease,
-        background-image 0.28s ease,
-        border-color 0.28s ease,
-        color 0.28s ease,
-        box-shadow 0.28s ease,
-        opacity 0.28s ease,
-        filter 0.28s ease;
 }
