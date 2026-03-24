@@ -664,7 +664,7 @@ button, input, select
 .section-bridge
 {
     width: min(1180px, calc(100% - 28px));
-    margin: 4px auto 6px;
+    margin: 0 auto 2px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1220,7 +1220,7 @@ main > .screen > .wrapper > .panel + .panel
 
 .hero-screen
 {
-    padding-top: 258px;
+    padding-top: 318px;
     padding-bottom: 18px;
 }
 
@@ -1280,8 +1280,8 @@ main
 {
     position: relative;
     min-height: auto;
-    padding: 182px 0 32px;
-    scroll-margin-top: 170px;
+    padding: 112px 0 32px;
+    scroll-margin-top: 200px;
     scroll-snap-align: start;
 }
 
@@ -1863,18 +1863,16 @@ main
 .ribbon-inner
 {
     display: grid;
-    grid-template-columns: minmax(240px, 420px) minmax(0, 1fr);
-    gap: 20px;
+    grid-template-columns: minmax(260px, 440px) minmax(0, 1fr);
+    gap: 18px;
     align-items: start;
-    padding: 18px 24px;
+    padding: 24px 28px;
     border-radius: var(--radius-md);
     border: 1px solid var(--panel-border);
     background: var(--ribbon-bg);
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12),
         0 0 0 1px rgba(255, 255, 255, 0.04) inset;
     backdrop-filter: blur(18px);
-    padding-left: 10px;
-    padding-right: 10px;
     column-gap: 18px;
     row-gap: 14px;
     overflow: hidden;
