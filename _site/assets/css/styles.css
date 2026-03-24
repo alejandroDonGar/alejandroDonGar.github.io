@@ -63,9 +63,13 @@ button, input, select
 .bg-layer
 {
     position: fixed;
-    inset: -120px;
+    top: -25vh;
+    right: -25vw;
+    bottom: -25vh;
+    left: -25vw;
     pointer-events: none;
     z-index: -2;
+    overflow: hidden;
 }
 
 .bg-grid
@@ -73,10 +77,10 @@ button, input, select
     background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27120%27%20height%3D%27120%27%20viewBox%3D%270%200%20120%20120%27%20fill%3D%27none%27%3E%3Crect%20x%3D%2712%27%20y%3D%2712%27%20width%3D%2796%27%20height%3D%2796%27%20rx%3D%2718%27%20stroke%3D%27white%27%20stroke-width%3D%271.6%27%20opacity%3D%270.82%27%2F%3E%3Cpath%20d%3D%27M30%200V10C30%2026%2026%2030%2010%2030H0M90%200V10C90%2026%2094%2030%20110%2030H120M0%2090H10C26%2090%2030%2094%2030%20110V120M120%2090H110C94%2090%2090%2094%2090%20110V120%27%20stroke%3D%27white%27%20stroke-width%3D%271.6%27%20stroke-linecap%3D%27round%27%20opacity%3D%270.82%27%2F%3E%3C%2Fsvg%3E");
     background-repeat: repeat;
     background-size: 120px 120px;
-    background-position: 20px 16px;
-    opacity: 0.1;
+    background-position: 18px 14px;
+    opacity: 0.075;
     will-change: transform;
-    transform: translateY(calc(var(--scrollY) * -0.03px));
+    transform: translateY(calc(var(--scrollY) * -0.02px));
 }
 
 .quick-ribbon.visible
@@ -1949,14 +1953,14 @@ input, select, .small-pill
 
 :root[data-theme="light"] .bg-grid
 {
-    opacity: 0.07;
-    filter: sepia(0.3) saturate(0.9);
+    opacity: 0.045;
+    filter: sepia(0.24) saturate(0.82);
 }
 
 :root:not([data-theme="light"]) .bg-grid
 {
-    opacity: 0.1;
-    filter: hue-rotate(196deg) saturate(1.02) brightness(1.05);
+    opacity: 0.07;
+    filter: hue-rotate(196deg) saturate(0.9) brightness(1.02);
 }
 
 @media (prefers-reduced-motion: reduce), (pointer: coarse)
