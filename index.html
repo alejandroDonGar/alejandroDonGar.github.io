@@ -1216,16 +1216,28 @@ document.addEventListener("DOMContentLoaded", () =>
         }
 
         featured.innerHTML = featuredRepos.map((repo, index) => `
-            <article class="repo-card repo-featured ${index === 0 ? "repo-featured-main" : ""} tilt-card">
+            <article class="repo-card repo-featured ${index === 0 ? "repo-featured-main" : ""} tilt-card"
+                data-repo-name="${repo.name}"
+                data-repo-description="${repo.description || ""}"
+                data-repo-url="${repo.html_url}"
+                data-repo-language="${repo.language || "—"}"
+                data-repo-updated="${repo.updated_at || ""}"
+                data-repo-pushed="${repo.pushed_at || ""}"
+                data-repo-stars="${repo.stargazers_count || 0}"
+                data-repo-topics="${(repo.topics || []).join("|")}"
+                data-repo-languages-url="${repo.languages_url || ""}"
+                data-repo-commits-url="${(repo.commits_url || "").replace("{/sha}", "?per_page=6")}">
                 <div class="repo-topline">
                     <span class="mini-label">Showcase</span>
                     <span>↗</span>
                 </div>
                 <h3>${repo.name}</h3>
-                <p>${repo.description}</p>
+                <p>${repo.description || ""}</p>
                 ${repoTopics(repo, true)}
-                ${repoMeta(repo)}
-                <a class="button repo-button" href="${repo.html_url}" target="_blank" rel="noreferrer">${t("viewRepo")}</a>
+                <div class="repo-card-actions">
+                    <button type="button" class="button subtle">Explorar</button>
+                    <a class="button repo-github-link" href="${repo.html_url}" target="_blank" rel="noreferrer">${t("viewRepo")}</a>
+                </div>
             </article>
         `).join("");
         bindRepoRadarHover();
@@ -1277,15 +1289,27 @@ document.addEventListener("DOMContentLoaded", () =>
         }
 
         repos.innerHTML = visibleList.map(repo => `
-            <article class="repo-card tilt-card">
+            <article class="repo-card tilt-card"
+                data-repo-name="${repo.name}"
+                data-repo-description="${repo.description || ""}"
+                data-repo-url="${repo.html_url}"
+                data-repo-language="${repo.language || "—"}"
+                data-repo-updated="${repo.updated_at || ""}"
+                data-repo-pushed="${repo.pushed_at || ""}"
+                data-repo-stars="${repo.stargazers_count || 0}"
+                data-repo-topics="${(repo.topics || []).join("|")}"
+                data-repo-languages-url="${repo.languages_url || ""}"
+                data-repo-commits-url="${(repo.commits_url || "").replace("{/sha}", "?per_page=6")}">
                 <div class="repo-topline">
                     <span class="mini-label">${repo.topics.includes(FEATURED_TOPIC) ? t("featuredBadge") : t("repoBadge")}</span>
                 </div>
                 <h3>${repo.name}</h3>
-                <p>${repo.description}</p>
+                <p>${repo.description || ""}</p>
                 ${repoTopics(repo, false)}
-                ${repoMeta(repo)}
-                <a class="button repo-button subtle" href="${repo.html_url}" target="_blank" rel="noreferrer">${t("openRepo")}</a>
+                <div class="repo-card-actions">
+                    <button type="button" class="button subtle">Explorar</button>
+                    <a class="button repo-github-link subtle" href="${repo.html_url}" target="_blank" rel="noreferrer">${t("openRepo")}</a>
+                </div>
             </article>
         `).join("");
     }
@@ -1372,40 +1396,229 @@ document.addEventListener("DOMContentLoaded", () =>
 
     const spotlight = document.createElement("div");
     spotlight.className = "repo-spotlight";
-
     spotlight.innerHTML = `
-        <div class="repo-spotlight-panel" id="repo-left"></div>
-        <div class="repo-spotlight-panel" id="repo-right"></div>
+        <div class="repo-spotlight-shell">
+            <div class="repo-spotlight-card" id="repoSpotlightCard"></div>
+            <div class="repo-spotlight-panel">
+                <button type="button" class="button repo-spotlight-close" id="repoSpotlightClose" aria-label="Cerrar">×</button>
+                <div class="repo-spotlight-head" id="repoSpotlightHead"></div>
+                <div class="repo-detail-grid" id="repoSpotlightStats"></div>
+                <div class="repo-spotlight-topics" id="repoSpotlightTopics"></div>
+                <div class="repo-radar-wrap" id="repoSpotlightRadarWrap"></div>
+                <div class="repo-spotlight-actions" id="repoSpotlightActions"></div>
+            </div>
+        </div>
     `;
-
     document.body.appendChild(overlay);
     document.body.appendChild(spotlight);
 
-    const cards = document.querySelectorAll(".repo-card, .repo-featured-main, .repo-featured-side");
-
-    cards.forEach(card =>
+    function parseDate(value)
     {
-        card.addEventListener("click", () =>
+        if (!value)
         {
-            overlay.classList.add("active");
-            spotlight.classList.add("active");
+            return "—";
+        }
 
-            const clone = card.cloneNode(true);
-            clone.style.transform = "none";
-            clone.style.boxShadow = "none";
+        const date = new Date(value);
+        return new Intl.DateTimeFormat(document.documentElement.lang || "es", {
+            day: "numeric",
+            month: "short",
+            year: "numeric"
+        }).format(date);
+    }
 
-            document.getElementById("repo-left").innerHTML = "";
-            document.getElementById("repo-left").appendChild(clone);
+    function buildRadar(languages)
+    {
+        const entries = Object.entries(languages || {}).sort((a, b) => b[1] - a[1]).slice(0, 5);
 
-            document.getElementById("repo-right").innerHTML =
-            "<h3>Repositorio</h3><p>Aquí irá info ampliada (lenguajes, commits, radar...)</p>";
-        });
+        if (!entries.length)
+        {
+            return '<p class="repo-radar-empty">No hay datos de lenguajes disponibles todavía.</p>';
+        }
+
+        const total = entries.reduce((sum, item) => sum + item[1], 0) || 1;
+        const center = 100;
+        const radius = 68;
+        const levels = [1, 0.75, 0.5, 0.25];
+
+        const grid = levels.map(level =>
+        {
+            const pts = entries.map((_, index) =>
+            {
+                const angle = (Math.PI * 2 * index / entries.length) - Math.PI / 2;
+                const r = radius * level;
+                const x = center + Math.cos(angle) * r;
+                const y = center + Math.sin(angle) * r;
+                return `${x.toFixed(1)},${y.toFixed(1)}`;
+            }).join(" ");
+            return `<polygon points="${pts}" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1" />`;
+        }).join("");
+
+        const axes = entries.map((_, index) =>
+        {
+            const angle = (Math.PI * 2 * index / entries.length) - Math.PI / 2;
+            const x = center + Math.cos(angle) * radius;
+            const y = center + Math.sin(angle) * radius;
+            return `<line x1="${center}" y1="${center}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="rgba(255,255,255,0.08)" stroke-width="1" />`;
+        }).join("");
+
+        const dataPts = entries.map((entry, index) =>
+        {
+            const angle = (Math.PI * 2 * index / entries.length) - Math.PI / 2;
+            const r = radius * (entry[1] / total);
+            const x = center + Math.cos(angle) * r;
+            const y = center + Math.sin(angle) * r;
+            return `${x.toFixed(1)},${y.toFixed(1)}`;
+        }).join(" ");
+
+        const labels = entries.map((entry, index) =>
+        {
+            const angle = (Math.PI * 2 * index / entries.length) - Math.PI / 2;
+            const r = radius + 18;
+            const x = center + Math.cos(angle) * r;
+            const y = center + Math.sin(angle) * r;
+            return `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" fill="currentColor" opacity="0.72" font-size="10" text-anchor="middle">${entry[0]}</text>`;
+        }).join("");
+
+        const legend = entries.map(entry =>
+        {
+            const pct = Math.round((entry[1] / total) * 100);
+            return `<div class="repo-radar-item"><strong>${entry[0]}</strong><span>${pct}%</span></div>`;
+        }).join("");
+
+        return `
+            <p class="repo-radar-title">Radar de lenguajes</p>
+            <div class="repo-radar-box">
+                <svg viewBox="0 0 200 200" width="200" height="200" aria-hidden="true">
+                    ${grid}
+                    ${axes}
+                    <polygon points="${dataPts}" fill="rgba(183,198,228,0.22)" stroke="rgba(208,171,150,0.92)" stroke-width="2" />
+                    ${labels}
+                </svg>
+                <div class="repo-radar-legend">${legend}</div>
+            </div>
+        `;
+    }
+
+    async function fillSpotlight(card)
+    {
+        const cardClone = card.cloneNode(true);
+        cardClone.classList.remove("tilt-card");
+        cardClone.style.transform = "none";
+        cardClone.style.boxShadow = "none";
+        cardClone.querySelectorAll(".repo-button").forEach(button => button.remove());
+
+        const cardNode = document.getElementById("repoSpotlightCard");
+        const headNode = document.getElementById("repoSpotlightHead");
+        const statsNode = document.getElementById("repoSpotlightStats");
+        const topicsNode = document.getElementById("repoSpotlightTopics");
+        const radarNode = document.getElementById("repoSpotlightRadarWrap");
+        const actionsNode = document.getElementById("repoSpotlightActions");
+
+        cardNode.innerHTML = "";
+        cardNode.appendChild(cardClone);
+
+        const name = card.dataset.repoName || "";
+        const description = card.dataset.repoDescription || "Sin descripción.";
+        const language = card.dataset.repoLanguage || "—";
+        const updated = card.dataset.repoUpdated || "";
+        const pushed = card.dataset.repoPushed || "";
+        const stars = card.dataset.repoStars || "0";
+        const url = card.dataset.repoUrl || "#";
+        const topics = (card.dataset.repoTopics || "").split("|").filter(Boolean);
+        const languagesUrl = card.dataset.repoLanguagesUrl || "";
+        const commitsUrl = card.dataset.repoCommitsUrl || "";
+
+        headNode.innerHTML = `<h3>${name}</h3><p>${description}</p>`;
+
+        statsNode.innerHTML = `
+            <div class="repo-detail-card"><span class="repo-detail-label">Lenguaje principal</span><span class="repo-detail-value">${language}</span></div>
+            <div class="repo-detail-card"><span class="repo-detail-label">Estrellas</span><span class="repo-detail-value">${stars}</span></div>
+            <div class="repo-detail-card"><span class="repo-detail-label">Actualizado</span><span class="repo-detail-value">${parseDate(updated)}</span></div>
+            <div class="repo-detail-card"><span class="repo-detail-label">Último push</span><span class="repo-detail-value">${parseDate(pushed)}</span></div>
+        `;
+
+        topicsNode.innerHTML = topics.map(topic => `<span class="repo-pill">${topic}</span>`).join("");
+
+        actionsNode.innerHTML = `
+            <a class="button" href="${url}" target="_blank" rel="noreferrer">Ver en GitHub</a>
+        `;
+
+        radarNode.innerHTML = '<p class="repo-radar-empty">Cargando lenguajes…</p>';
+
+        try
+        {
+            const [languagesRes, commitsRes] = await Promise.all([
+                languagesUrl ? fetch(languagesUrl) : Promise.resolve(null),
+                commitsUrl ? fetch(commitsUrl) : Promise.resolve(null)
+            ]);
+
+            const languages = languagesRes && languagesRes.ok ? await languagesRes.json() : {};
+            const commits = commitsRes && commitsRes.ok ? await commitsRes.json() : [];
+
+            radarNode.innerHTML = buildRadar(languages);
+
+            const commitCount = Array.isArray(commits) ? commits.length : 0;
+            statsNode.innerHTML += `
+                <div class="repo-detail-card"><span class="repo-detail-label">Commits recientes</span><span class="repo-detail-value">${commitCount || "—"}</span></div>
+                <div class="repo-detail-card"><span class="repo-detail-label">Lenguajes detectados</span><span class="repo-detail-value">${Object.keys(languages || {}).length || "—"}</span></div>
+            `;
+        }
+        catch (error)
+        {
+            radarNode.innerHTML = '<p class="repo-radar-empty">No se pudieron cargar los datos ampliados del repositorio.</p>';
+        }
+    }
+
+    document.addEventListener("mousemove", event =>
+    {
+        const card = event.target.closest(".repo-card, .repo-featured-main, .repo-featured-side");
+        if (!card)
+        {
+            return;
+        }
+
+        const rect = card.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty("--repo-x", x + "%");
+        card.style.setProperty("--repo-y", y + "%");
+    }, { passive: true });
+
+    document.addEventListener("click", event =>
+    {
+        const githubLink = event.target.closest(".repo-github-link, .repo-button");
+        if (githubLink)
+        {
+            return;
+        }
+
+        const card = event.target.closest(".repo-card, .repo-featured-main, .repo-featured-side");
+        if (!card)
+        {
+            return;
+        }
+
+        event.preventDefault();
+        overlay.classList.add("active");
+        spotlight.classList.add("active");
+        fillSpotlight(card);
     });
 
-    overlay.addEventListener("click", () =>
+    function closeSpotlight()
     {
         overlay.classList.remove("active");
         spotlight.classList.remove("active");
+    }
+
+    overlay.addEventListener("click", closeSpotlight);
+    spotlight.querySelector("#repoSpotlightClose").addEventListener("click", closeSpotlight);
+    document.addEventListener("keydown", event =>
+    {
+        if (event.key === "Escape")
+        {
+            closeSpotlight();
+        }
     });
 });
 </script>
