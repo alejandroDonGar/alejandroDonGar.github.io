@@ -2234,12 +2234,50 @@ input, select, .small-pill
     flex-wrap: wrap;
 }
 
+
+.repo-card,
+.repo-featured-main,
+.repo-featured-side
+{
+    cursor: pointer;
+}
+
+.repo-card p,
+.repo-featured-main p,
+.repo-featured-side p
+{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.repo-card .repo-meta,
+.repo-featured-main .repo-meta,
+.repo-featured-side .repo-meta
+{
+    display: none;
+}
+
+.repo-card-actions
+{
+    margin-top: 16px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.repo-card-actions .button
+{
+    min-width: 124px;
+}
+
 .repo-overlay
 {
     position: fixed;
     inset: 0;
-    background: rgba(8, 12, 18, 0.28);
-    backdrop-filter: blur(12px);
+    background: rgba(8, 12, 18, 0.22);
+    backdrop-filter: blur(14px);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.28s ease;
@@ -2291,13 +2329,48 @@ input, select, .small-pill
 .repo-spotlight-card
 {
     padding: 24px;
-    transform: perspective(1100px) translateZ(0) scale(1.04);
-    transform-origin: center center;
+    transform: none !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    will-change: auto !important;
+    opacity: 0;
+    transition: opacity 0.18s ease;
 }
 
-.repo-spotlight-card .repo-meta
+.repo-spotlight.ready .repo-spotlight-card,
+.repo-spotlight.ready .repo-spotlight-panel
+{
+    opacity: 1;
+}
+
+.repo-spotlight-card .repo-topline
 {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+}
+
+.repo-spotlight-card-title
+{
+    margin: 16px 0 10px;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 0.95;
+}
+
+.repo-spotlight-card-description
+{
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.repo-spotlight-card-topics
+{
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .repo-spotlight-panel
@@ -2305,6 +2378,8 @@ input, select, .small-pill
     padding: 24px;
     position: relative;
     overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.18s ease 0.06s;
 }
 
 .repo-spotlight-close
@@ -2447,6 +2522,38 @@ input, select, .small-pill
     color: var(--muted);
 }
 
+.repo-spotlight-proxy
+{
+    position: fixed;
+    margin: 0;
+    z-index: 135;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    pointer-events: none;
+    transition:
+        top 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+        left 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+        width 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+        height 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.18s ease;
+    transform: translateZ(0);
+    box-shadow: var(--shadow-hover);
+}
+
+.repo-spotlight-proxy::before,
+.repo-spotlight-proxy::after
+{
+    display: none !important;
+}
+
+.repo-spotlight-proxy .repo-card-actions,
+.repo-spotlight-proxy .repo-meta
+{
+    display: none !important;
+}
+
 @media (max-width: 980px)
 {
     .repo-spotlight-shell
@@ -2459,3 +2566,8 @@ input, select, .small-pill
         grid-template-columns: 1fr;
     }
 }
+.repo-radar-box
+    {
+        grid-template-columns: 1fr;
+    }
+
