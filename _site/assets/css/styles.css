@@ -2320,8 +2320,9 @@ input, select, .small-pill
 .repo-spotlight-card-slot
 {
     position: relative;
-    align-self: start;
+    align-self: stretch;
     min-width: 0;
+    display: flex;
 }
 
 .repo-spotlight-card,
@@ -2336,8 +2337,12 @@ input, select, .small-pill
 .repo-spotlight-card
 {
     padding: 24px;
-    align-self: start;
+    align-self: stretch;
+    width: 100%;
+    min-height: 100%;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     transform: none !important;
     filter: none !important;
     backdrop-filter: none !important;
@@ -2655,4 +2660,13 @@ input, select, .small-pill
 .repo-spotlight-card.is-floating
 {
     opacity: 1;
+}
+
+
+.repo-spotlight-card-shell
+{
+    display: grid;
+    align-content: start;
+    gap: 14px;
+    min-height: 100%;
 }
