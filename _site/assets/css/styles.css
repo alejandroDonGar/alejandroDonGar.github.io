@@ -2379,7 +2379,7 @@ input, select, .small-pill
     position: relative;
     overflow: hidden;
     opacity: 0;
-    transition: opacity 0.18s ease 0.06s;
+    transition: opacity 0.18s ease;
 }
 
 .repo-spotlight-close
@@ -2522,6 +2522,60 @@ input, select, .small-pill
     color: var(--muted);
 }
 
+.repo-tree-wrap
+{
+    margin-top: 18px;
+    padding: 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--panel-border);
+    background: var(--card-bg);
+    min-height: 0;
+}
+
+.repo-tree-title
+{
+    margin: 0 0 12px;
+    color: var(--text);
+    font-weight: 700;
+}
+
+.repo-tree-list
+{
+    display: grid;
+    gap: 8px;
+}
+
+.repo-tree-item
+{
+    display: grid;
+    grid-template-columns: 54px minmax(0, 1fr);
+    gap: 10px;
+    align-items: center;
+    padding: 9px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--panel-border);
+    background: var(--bridge-bg);
+}
+
+.repo-tree-kind
+{
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.repo-tree-name
+{
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--text);
+}
+
+
 .repo-spotlight-proxy
 {
     position: fixed;
@@ -2570,4 +2624,3 @@ input, select, .small-pill
     {
         grid-template-columns: 1fr;
     }
-

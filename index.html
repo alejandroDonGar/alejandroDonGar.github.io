@@ -1226,7 +1226,8 @@ document.addEventListener("DOMContentLoaded", () =>
                 data-repo-stars="${repo.stargazers_count || 0}"
                 data-repo-topics="${(repo.topics || []).join("|")}"
                 data-repo-languages-url="${repo.languages_url || ""}"
-                data-repo-commits-url="${(repo.commits_url || "").replace("{/sha}", "?per_page=6")}">
+                data-repo-commits-url="${(repo.commits_url || "").replace("{/sha}", "?per_page=6")}"
+                data-repo-contents-url="${repo.contents_url || ""}">
                 <div class="repo-topline">
                     <span class="mini-label">Showcase</span>
                     <span>↗</span>
@@ -1298,7 +1299,8 @@ document.addEventListener("DOMContentLoaded", () =>
                 data-repo-stars="${repo.stargazers_count || 0}"
                 data-repo-topics="${(repo.topics || []).join("|")}"
                 data-repo-languages-url="${repo.languages_url || ""}"
-                data-repo-commits-url="${(repo.commits_url || "").replace("{/sha}", "?per_page=6")}">
+                data-repo-commits-url="${(repo.commits_url || "").replace("{/sha}", "?per_page=6")}"
+                data-repo-contents-url="${repo.contents_url || ""}">
                 <div class="repo-topline">
                     <span class="mini-label">${repo.topics.includes(FEATURED_TOPIC) ? t("featuredBadge") : t("repoBadge")}</span>
                 </div>
@@ -1388,6 +1390,7 @@ document.addEventListener("DOMContentLoaded", () =>
 
 
 
+
 <script>
 document.addEventListener("DOMContentLoaded", () =>
 {
@@ -1403,6 +1406,7 @@ document.addEventListener("DOMContentLoaded", () =>
                 <button type="button" class="button repo-spotlight-close" id="repoSpotlightClose" aria-label="Cerrar">×</button>
                 <div class="repo-spotlight-head" id="repoSpotlightHead"></div>
                 <div class="repo-detail-grid" id="repoSpotlightStats"></div>
+                <div class="repo-tree-wrap" id="repoSpotlightTreeWrap"></div>
                 <div class="repo-radar-wrap" id="repoSpotlightRadarWrap"></div>
                 <div class="repo-spotlight-actions" id="repoSpotlightActions"></div>
             </div>
@@ -1414,6 +1418,7 @@ document.addEventListener("DOMContentLoaded", () =>
     const cardNode = document.getElementById("repoSpotlightCard");
     const headNode = document.getElementById("repoSpotlightHead");
     const statsNode = document.getElementById("repoSpotlightStats");
+    const treeNode = document.getElementById("repoSpotlightTreeWrap");
     const radarNode = document.getElementById("repoSpotlightRadarWrap");
     const actionsNode = document.getElementById("repoSpotlightActions");
     const closeButton = document.getElementById("repoSpotlightClose");
@@ -1531,6 +1536,37 @@ document.addEventListener("DOMContentLoaded", () =>
         `;
     }
 
+    function buildTree(items)
+    {
+        if (!Array.isArray(items) || !items.length)
+        {
+            return "";
+        }
+
+        const ordered = [...items]
+            .sort((a, b) =>
+            {
+                if (a.type === b.type)
+                {
+                    return a.name.localeCompare(b.name);
+                }
+                return a.type === "dir" ? -1 : 1;
+            })
+            .slice(0, 10);
+
+        return `
+            <p class="repo-tree-title">Estructura del repositorio</p>
+            <div class="repo-tree-list">
+                ${ordered.map(item => `
+                    <div class="repo-tree-item">
+                        <span class="repo-tree-kind">${item.type === "dir" ? "DIR" : "FILE"}</span>
+                        <span class="repo-tree-name">${item.name}</span>
+                    </div>
+                `).join("")}
+            </div>
+        `;
+    }
+
     function animateProxy(card)
     {
         const sourceRect = card.getBoundingClientRect();
@@ -1552,6 +1588,7 @@ document.addEventListener("DOMContentLoaded", () =>
             proxy.style.width = targetRect.width + "px";
             proxy.style.height = targetRect.height + "px";
             proxy.style.transform = "translateZ(0) scale(1.01)";
+            proxy.style.opacity = "0.98";
         });
 
         setTimeout(() =>
@@ -1565,6 +1602,7 @@ document.addEventListener("DOMContentLoaded", () =>
         cardNode.innerHTML = buildSpotlightCard(card);
         headNode.innerHTML = "";
         statsNode.innerHTML = "";
+        treeNode.innerHTML = "";
         radarNode.innerHTML = "";
         actionsNode.innerHTML = "";
 
@@ -1577,6 +1615,7 @@ document.addEventListener("DOMContentLoaded", () =>
         const url = card.dataset.repoUrl || "#";
         const languagesUrl = card.dataset.repoLanguagesUrl || "";
         const commitsUrl = card.dataset.repoCommitsUrl || "";
+        const contentsUrl = (card.dataset.repoContentsUrl || "").replace("{+path}", "");
 
         headNode.innerHTML = `<h3>${name}</h3><p>${description}</p>`;
 
@@ -1598,45 +1637,41 @@ document.addEventListener("DOMContentLoaded", () =>
 
         actionsNode.innerHTML = `<a class="button" href="${url}" target="_blank" rel="noreferrer">Ver en GitHub</a>`;
 
-        try
+        const requests = [
+            languagesUrl ? fetch(languagesUrl).then(r => r.ok ? r.json() : {}).catch(() => ({})) : Promise.resolve({}),
+            commitsUrl ? fetch(commitsUrl).then(r => r.ok ? r.json() : []).catch(() => ([])) : Promise.resolve([]),
+            contentsUrl ? fetch(contentsUrl).then(r => r.ok ? r.json() : []).catch(() => ([])) : Promise.resolve([])
+        ];
+
+        const [languages, commits, contents] = await Promise.all(requests);
+
+        const radarHtml = buildRadar(languages);
+        radarNode.innerHTML = radarHtml || "";
+
+        const treeHtml = buildTree(contents);
+        treeNode.innerHTML = treeHtml || "";
+
+        const extras = [];
+        const commitCount = Array.isArray(commits) ? commits.length : 0;
+        const languageCount = Object.keys(languages || {}).length || 0;
+
+        if (commitCount)
         {
-            const [languagesRes, commitsRes] = await Promise.all([
-                languagesUrl ? fetch(languagesUrl) : Promise.resolve(null),
-                commitsUrl ? fetch(commitsUrl) : Promise.resolve(null)
-            ]);
-
-            const languages = languagesRes && languagesRes.ok ? await languagesRes.json() : {};
-            const commits = commitsRes && commitsRes.ok ? await commitsRes.json() : [];
-
-            const radarHtml = buildRadar(languages);
-            radarNode.innerHTML = radarHtml;
-
-            const extras = [];
-            const commitCount = Array.isArray(commits) ? commits.length : 0;
-            const languageCount = Object.keys(languages || {}).length || 0;
-
-            if (commitCount)
-            {
-                extras.push(`<div class="repo-detail-card"><span class="repo-detail-label">Commits recientes</span><span class="repo-detail-value">${commitCount}</span></div>`);
-            }
-            if (languageCount)
-            {
-                extras.push(`<div class="repo-detail-card"><span class="repo-detail-label">Lenguajes detectados</span><span class="repo-detail-value">${languageCount}</span></div>`);
-            }
-            if (extras.length)
-            {
-                statsNode.innerHTML += extras.join("");
-            }
+            extras.push(`<div class="repo-detail-card"><span class="repo-detail-label">Commits recientes</span><span class="repo-detail-value">${commitCount}</span></div>`);
         }
-        catch (error)
+        if (languageCount)
         {
-            radarNode.innerHTML = "";
+            extras.push(`<div class="repo-detail-card"><span class="repo-detail-label">Lenguajes detectados</span><span class="repo-detail-value">${languageCount}</span></div>`);
+        }
+        if (extras.length)
+        {
+            statsNode.innerHTML += extras.join("");
         }
 
         setTimeout(() =>
         {
             spotlight.classList.add("ready");
-        }, 180);
+        }, 40);
     }
 
     document.addEventListener("mousemove", event =>
@@ -1681,8 +1716,11 @@ document.addEventListener("DOMContentLoaded", () =>
     function closeSpotlight()
     {
         overlay.classList.remove("active");
-        spotlight.classList.remove("active");
         spotlight.classList.remove("ready");
+        setTimeout(() =>
+        {
+            spotlight.classList.remove("active");
+        }, 160);
     }
 
     overlay.addEventListener("click", closeSpotlight);
@@ -1696,6 +1734,7 @@ document.addEventListener("DOMContentLoaded", () =>
     });
 });
 </script>
+
 
 
 
