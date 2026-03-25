@@ -2575,6 +2575,12 @@ input, select, .small-pill
     color: var(--text);
 }
 
+.repo-tree-wrap[hidden],
+.repo-radar-wrap[hidden]
+{
+    display: none;
+}
+
 
 .repo-spotlight-proxy
 {

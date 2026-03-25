@@ -1594,6 +1594,7 @@ document.addEventListener("DOMContentLoaded", () =>
         setTimeout(() =>
         {
             proxy.remove();
+            spotlight.classList.add("ready");
         }, 320);
     }
 
@@ -1605,6 +1606,8 @@ document.addEventListener("DOMContentLoaded", () =>
         treeNode.innerHTML = "";
         radarNode.innerHTML = "";
         actionsNode.innerHTML = "";
+        treeNode.hidden = true;
+        radarNode.hidden = true;
 
         const name = card.dataset.repoName || "";
         const description = card.dataset.repoDescription || "Sin descripción.";
@@ -1650,6 +1653,7 @@ document.addEventListener("DOMContentLoaded", () =>
 
         const treeHtml = buildTree(contents);
         treeNode.innerHTML = treeHtml || "";
+        treeNode.hidden = !treeHtml;
 
         const extras = [];
         const commitCount = Array.isArray(commits) ? commits.length : 0;
@@ -1668,10 +1672,7 @@ document.addEventListener("DOMContentLoaded", () =>
             statsNode.innerHTML += extras.join("");
         }
 
-        setTimeout(() =>
-        {
-            spotlight.classList.add("ready");
-        }, 40);
+
     }
 
     document.addEventListener("mousemove", event =>
