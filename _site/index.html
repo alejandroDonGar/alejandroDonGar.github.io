@@ -1597,8 +1597,13 @@ document.addEventListener("DOMContentLoaded", () =>
 
         setTimeout(() =>
         {
+            proxy.style.opacity = "0";
+        }, 260);
+
+        setTimeout(() =>
+        {
             proxy.remove();
-        }, 320);
+        }, 340);
     }
 
     async function fillSpotlight(card)

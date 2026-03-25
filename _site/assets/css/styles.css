@@ -2333,8 +2333,7 @@ input, select, .small-pill
     filter: none !important;
     backdrop-filter: none !important;
     will-change: auto !important;
-    opacity: 0;
-    transition: opacity 0.18s ease;
+    opacity: 1;
 }
 
 .repo-spotlight-card .repo-topline
@@ -2347,21 +2346,22 @@ input, select, .small-pill
 
 .repo-spotlight-card-title
 {
-    margin: 16px 0 10px;
-    font-size: clamp(2rem, 4vw, 3rem);
-    line-height: 0.95;
+    margin: 6px 0 8px;
+    font-size: clamp(1.8rem, 3.2vw, 2.55rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
 }
 
 .repo-spotlight-card-description
 {
     margin: 0;
     color: var(--muted);
-    line-height: 1.7;
+    line-height: 1.62;
 }
 
 .repo-spotlight-card-topics
 {
-    margin-top: 18px;
+    margin-top: 14px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -2623,6 +2623,7 @@ input, select, .small-pill
     {
         grid-template-columns: 1fr;
     }
+
 
 
 .repo-spotlight-proxy::before,
