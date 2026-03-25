@@ -2337,12 +2337,6 @@ input, select, .small-pill
     transition: opacity 0.18s ease;
 }
 
-.repo-spotlight.ready .repo-spotlight-card,
-.repo-spotlight.ready .repo-spotlight-panel
-{
-    opacity: 1;
-}
-
 .repo-spotlight-card .repo-topline
 {
     display: flex;
@@ -2378,8 +2372,7 @@ input, select, .small-pill
     padding: 24px;
     position: relative;
     overflow: hidden;
-    opacity: 0;
-    transition: opacity 0.18s ease;
+    opacity: 1;
 }
 
 .repo-spotlight-close

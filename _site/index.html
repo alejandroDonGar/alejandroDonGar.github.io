@@ -1598,7 +1598,6 @@ document.addEventListener("DOMContentLoaded", () =>
         setTimeout(() =>
         {
             proxy.remove();
-            spotlight.classList.add("ready");
         }, 320);
     }
 
@@ -1713,7 +1712,6 @@ document.addEventListener("DOMContentLoaded", () =>
         event.preventDefault();
         overlay.classList.add("active");
         spotlight.classList.add("active");
-        spotlight.classList.remove("ready");
         fillSpotlight(card);
         requestAnimationFrame(() => animateProxy(card));
     });
@@ -1721,7 +1719,6 @@ document.addEventListener("DOMContentLoaded", () =>
     function closeSpotlight()
     {
         overlay.classList.remove("active");
-        spotlight.classList.remove("ready");
         setTimeout(() =>
         {
             spotlight.classList.remove("active");
