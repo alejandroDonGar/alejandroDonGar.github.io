@@ -1573,19 +1573,19 @@ document.addEventListener("DOMContentLoaded", () =>
     function animateSpotlightCard(card)
     {
         const sourceRect = card.getBoundingClientRect();
+        const targetRect = cardNode.getBoundingClientRect();
 
+        cardSlot.style.minHeight = targetRect.height + "px";
         cardNode.classList.add("is-floating");
         cardNode.style.top = sourceRect.top + "px";
         cardNode.style.left = sourceRect.left + "px";
         cardNode.style.width = sourceRect.width + "px";
         cardNode.style.height = sourceRect.height + "px";
-        cardNode.style.opacity = "1";
-
-        const targetRect = cardSlot.getBoundingClientRect();
-        cardSlot.style.minHeight = targetRect.height + "px";
+        cardNode.style.opacity = "0";
 
         requestAnimationFrame(() =>
         {
+            cardNode.style.opacity = "1";
             cardNode.style.top = targetRect.top + "px";
             cardNode.style.left = targetRect.left + "px";
             cardNode.style.width = targetRect.width + "px";
@@ -1604,6 +1604,7 @@ document.addEventListener("DOMContentLoaded", () =>
             {
                 cardNode.style.removeProperty("width");
                 cardNode.style.removeProperty("height");
+                cardNode.style.opacity = "1";
             });
         }, 340);
     }
@@ -1721,6 +1722,7 @@ document.addEventListener("DOMContentLoaded", () =>
         overlay.classList.add("active");
         spotlight.classList.add("active");
         fillSpotlight(card);
+        cardNode.style.opacity = "0";
         requestAnimationFrame(() => animateSpotlightCard(card));
     });
 

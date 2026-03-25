@@ -2342,6 +2342,7 @@ input, select, .small-pill
     backdrop-filter: none !important;
     will-change: auto !important;
     opacity: 1;
+    transition: opacity 0.12s ease;
 }
 
 .repo-spotlight-card .repo-topline
@@ -2599,9 +2600,7 @@ input, select, .small-pill
     {
         grid-template-columns: 1fr;
     }
-
-
-
+    
 .repo-spotlight-proxy::before,
 .repo-spotlight-proxy::after
 {
@@ -2647,4 +2646,10 @@ input, select, .small-pill
 .repo-spotlight-card.is-floating::after
 {
     display: none !important;
+}
+
+
+.repo-spotlight-card-slot > .repo-spotlight-card
+{
+    width: 100%;
 }
