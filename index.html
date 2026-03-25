@@ -1573,28 +1573,30 @@ document.addEventListener("DOMContentLoaded", () =>
     function animateSpotlightCard(card)
     {
         const sourceRect = card.getBoundingClientRect();
-        const targetRect = cardNode.getBoundingClientRect();
 
-        cardSlot.style.minHeight = targetRect.height + "px";
         cardNode.classList.add("is-floating");
         cardNode.style.top = sourceRect.top + "px";
         cardNode.style.left = sourceRect.left + "px";
         cardNode.style.width = sourceRect.width + "px";
         cardNode.style.height = sourceRect.height + "px";
-        cardNode.style.opacity = "0";
 
         requestAnimationFrame(() =>
         {
-            cardNode.style.opacity = "1";
+            const targetRect = cardSlot.getBoundingClientRect();
+            const targetHeight = Math.max(cardNode.scrollHeight, targetRect.height);
+
+            cardSlot.style.minHeight = targetHeight + "px";
             cardNode.style.top = targetRect.top + "px";
             cardNode.style.left = targetRect.left + "px";
             cardNode.style.width = targetRect.width + "px";
-            cardNode.style.height = targetRect.height + "px";
+            cardNode.style.height = targetHeight + "px";
             cardNode.style.transform = "translateZ(0)";
+            cardNode.style.opacity = "1";
         });
 
         setTimeout(() =>
         {
+            spotlight.classList.add("ready");
             cardNode.classList.remove("is-floating");
             cardNode.style.removeProperty("top");
             cardNode.style.removeProperty("left");
@@ -1604,7 +1606,6 @@ document.addEventListener("DOMContentLoaded", () =>
             {
                 cardNode.style.removeProperty("width");
                 cardNode.style.removeProperty("height");
-                cardNode.style.opacity = "1";
             });
         }, 340);
     }
@@ -1721,8 +1722,8 @@ document.addEventListener("DOMContentLoaded", () =>
         event.preventDefault();
         overlay.classList.add("active");
         spotlight.classList.add("active");
+        spotlight.classList.remove("ready");
         fillSpotlight(card);
-        cardNode.style.opacity = "0";
         requestAnimationFrame(() => animateSpotlightCard(card));
     });
 
