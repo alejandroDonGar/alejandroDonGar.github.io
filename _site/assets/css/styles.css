@@ -1986,22 +1986,43 @@ input, select, .small-pill
     opacity: 0;
 }
 
-:root[data-theme="light"] .bg-grid-dark
+:root[data-theme="light"] .bg-grid-dark,
+html[data-theme="light"] .bg-grid-dark,
+body[data-theme="light"] .bg-grid-dark
 {
     opacity: 0;
 }
 
-:root[data-theme="light"] .bg-grid-light
+:root[data-theme="light"] .bg-grid-light,
+html[data-theme="light"] .bg-grid-light,
+body[data-theme="light"] .bg-grid-light
 {
-    opacity: 0.12;
+    opacity: 0.18;
 }
 
-:root:not([data-theme="light"]) .bg-grid-dark
+:root:not([data-theme="light"]) .bg-grid-dark,
+html:not([data-theme="light"]) .bg-grid-dark,
+body:not([data-theme="light"]) .bg-grid-dark
 {
-    opacity: 0.08;
+    opacity: 0.06;
 }
 
-:root:not([data-theme="light"]) .bg-grid-light
+:root:not([data-theme="light"]) .bg-grid-light,
+html:not([data-theme="light"]) .bg-grid-light,
+body:not([data-theme="light"]) .bg-grid-light
 {
     opacity: 0;
+}
+
+
+body.theme-light .bg-grid-dark,
+html.theme-light .bg-grid-dark
+{
+    opacity: 0;
+}
+
+body.theme-light .bg-grid-light,
+html.theme-light .bg-grid-light
+{
+    opacity: 0.18;
 }
