@@ -2314,7 +2314,7 @@ input, select, .small-pill
     display: grid;
     grid-template-columns: minmax(320px, 0.95fr) minmax(360px, 1.05fr);
     gap: 18px;
-    align-items: start;
+    align-items: stretch;
 }
 
 .repo-spotlight-card,
@@ -2329,7 +2329,6 @@ input, select, .small-pill
 .repo-spotlight-card
 {
     padding: 24px;
-    align-self: start;
     transform: none !important;
     filter: none !important;
     backdrop-filter: none !important;
@@ -2344,14 +2343,7 @@ input, select, .small-pill
     opacity: 1;
 }
 
-.repo-spotlight-card-shell
-{
-    display: grid;
-    gap: 14px;
-}
-
-.repo-spotlight-card .repo-topline,
-.repo-spotlight-proxy .repo-topline
+.repo-spotlight-card .repo-topline
 {
     display: flex;
     justify-content: space-between;
@@ -2361,23 +2353,21 @@ input, select, .small-pill
 
 .repo-spotlight-card-title
 {
-    margin: 8px 0 0;
+    margin: 16px 0 10px;
     font-size: clamp(2rem, 4vw, 3rem);
     line-height: 0.95;
 }
 
-.repo-spotlight-card-description,
-.repo-spotlight-proxy .repo-spotlight-card-description
+.repo-spotlight-card-description
 {
     margin: 0;
     color: var(--muted);
     line-height: 1.7;
 }
 
-.repo-spotlight-card-topics,
-.repo-spotlight-proxy .repo-spotlight-card-topics
+.repo-spotlight-card-topics
 {
-    margin-top: 6px;
+    margin-top: 18px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -2537,12 +2527,9 @@ input, select, .small-pill
     position: fixed;
     margin: 0;
     z-index: 135;
-    padding: 24px;
     border-radius: var(--radius-md);
     overflow: hidden;
     pointer-events: none;
-    border: 1px solid var(--panel-border);
-    background: var(--panel-bg);
     transition:
         top 0.32s cubic-bezier(0.22, 1, 0.36, 1),
         left 0.32s cubic-bezier(0.22, 1, 0.36, 1),
@@ -2579,3 +2566,8 @@ input, select, .small-pill
         grid-template-columns: 1fr;
     }
 }
+.repo-radar-box
+    {
+        grid-template-columns: 1fr;
+    }
+

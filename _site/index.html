@@ -1387,6 +1387,7 @@ document.addEventListener("DOMContentLoaded", () =>
 
 
 
+
 <script>
 document.addEventListener("DOMContentLoaded", () =>
 {
@@ -1402,7 +1403,6 @@ document.addEventListener("DOMContentLoaded", () =>
                 <button type="button" class="button repo-spotlight-close" id="repoSpotlightClose" aria-label="Cerrar">×</button>
                 <div class="repo-spotlight-head" id="repoSpotlightHead"></div>
                 <div class="repo-detail-grid" id="repoSpotlightStats"></div>
-                <div class="repo-spotlight-topics" id="repoSpotlightTopics"></div>
                 <div class="repo-radar-wrap" id="repoSpotlightRadarWrap"></div>
                 <div class="repo-spotlight-actions" id="repoSpotlightActions"></div>
             </div>
@@ -1414,7 +1414,6 @@ document.addEventListener("DOMContentLoaded", () =>
     const cardNode = document.getElementById("repoSpotlightCard");
     const headNode = document.getElementById("repoSpotlightHead");
     const statsNode = document.getElementById("repoSpotlightStats");
-    const topicsNode = document.getElementById("repoSpotlightTopics");
     const radarNode = document.getElementById("repoSpotlightRadarWrap");
     const actionsNode = document.getElementById("repoSpotlightActions");
     const closeButton = document.getElementById("repoSpotlightClose");
@@ -1423,10 +1422,15 @@ document.addEventListener("DOMContentLoaded", () =>
     {
         if (!value)
         {
-            return "—";
+            return "";
         }
 
         const date = new Date(value);
+        if (Number.isNaN(date.getTime()))
+        {
+            return "";
+        }
+
         return new Intl.DateTimeFormat(document.documentElement.lang || "es", {
             day: "numeric",
             month: "short",
@@ -1440,7 +1444,7 @@ document.addEventListener("DOMContentLoaded", () =>
 
         if (!entries.length)
         {
-            return '<p class="repo-radar-empty">No hay datos de lenguajes disponibles todavía.</p>';
+            return "";
         }
 
         const total = entries.reduce((sum, item) => sum + item[1], 0) || 1;
@@ -1512,7 +1516,7 @@ document.addEventListener("DOMContentLoaded", () =>
         const name = card.dataset.repoName || "";
         const description = card.dataset.repoDescription || "Sin descripción.";
         const label = card.querySelector(".mini-label") ? card.querySelector(".mini-label").textContent : "Repo";
-        const topics = (card.dataset.repoTopics || "").split("|").filter(Boolean);
+        const topics = (card.dataset.repoTopics || "").split("|").filter(Boolean).slice(0, 4);
 
         return `
             <div class="repo-spotlight-card-shell">
@@ -1522,9 +1526,7 @@ document.addEventListener("DOMContentLoaded", () =>
                 </div>
                 <h3 class="repo-spotlight-card-title">${name}</h3>
                 <p class="repo-spotlight-card-description">${description}</p>
-                <div class="repo-spotlight-card-topics">
-                    ${topics.map(topic => `<span class="repo-pill">${topic}</span>`).join("")}
-                </div>
+                ${topics.length ? `<div class="repo-spotlight-card-topics">${topics.map(topic => `<span class="repo-pill">${topic}</span>`).join("")}</div>` : ""}
             </div>
         `;
     }
@@ -1555,7 +1557,6 @@ document.addEventListener("DOMContentLoaded", () =>
         setTimeout(() =>
         {
             proxy.remove();
-            spotlight.classList.add("ready");
         }, 320);
     }
 
@@ -1564,31 +1565,36 @@ document.addEventListener("DOMContentLoaded", () =>
         cardNode.innerHTML = buildSpotlightCard(card);
         headNode.innerHTML = "";
         statsNode.innerHTML = "";
-        topicsNode.innerHTML = "";
-        radarNode.innerHTML = '<p class="repo-radar-empty">Cargando lenguajes…</p>';
+        radarNode.innerHTML = "";
         actionsNode.innerHTML = "";
 
         const name = card.dataset.repoName || "";
         const description = card.dataset.repoDescription || "Sin descripción.";
-        const language = card.dataset.repoLanguage || "—";
-        const updated = card.dataset.repoUpdated || "";
-        const pushed = card.dataset.repoPushed || "";
+        const language = card.dataset.repoLanguage || "";
+        const updated = parseDate(card.dataset.repoUpdated || "");
+        const pushed = parseDate(card.dataset.repoPushed || "");
         const stars = card.dataset.repoStars || "0";
         const url = card.dataset.repoUrl || "#";
-        const topics = (card.dataset.repoTopics || "").split("|").filter(Boolean);
         const languagesUrl = card.dataset.repoLanguagesUrl || "";
         const commitsUrl = card.dataset.repoCommitsUrl || "";
 
         headNode.innerHTML = `<h3>${name}</h3><p>${description}</p>`;
 
-        statsNode.innerHTML = `
-            <div class="repo-detail-card"><span class="repo-detail-label">Lenguaje principal</span><span class="repo-detail-value">${language}</span></div>
-            <div class="repo-detail-card"><span class="repo-detail-label">Estrellas</span><span class="repo-detail-value">${stars}</span></div>
-            <div class="repo-detail-card"><span class="repo-detail-label">Actualizado</span><span class="repo-detail-value">${parseDate(updated)}</span></div>
-            <div class="repo-detail-card"><span class="repo-detail-label">Último push</span><span class="repo-detail-value">${parseDate(pushed)}</span></div>
-        `;
-
-        topicsNode.innerHTML = topics.map(topic => `<span class="repo-pill">${topic}</span>`).join("");
+        const statBlocks = [];
+        if (language)
+        {
+            statBlocks.push(`<div class="repo-detail-card"><span class="repo-detail-label">Lenguaje principal</span><span class="repo-detail-value">${language}</span></div>`);
+        }
+        statBlocks.push(`<div class="repo-detail-card"><span class="repo-detail-label">Estrellas</span><span class="repo-detail-value">${stars}</span></div>`);
+        if (updated)
+        {
+            statBlocks.push(`<div class="repo-detail-card"><span class="repo-detail-label">Actualizado</span><span class="repo-detail-value">${updated}</span></div>`);
+        }
+        if (pushed)
+        {
+            statBlocks.push(`<div class="repo-detail-card"><span class="repo-detail-label">Último push</span><span class="repo-detail-value">${pushed}</span></div>`);
+        }
+        statsNode.innerHTML = statBlocks.join("");
 
         actionsNode.innerHTML = `<a class="button" href="${url}" target="_blank" rel="noreferrer">Ver en GitHub</a>`;
 
@@ -1601,18 +1607,36 @@ document.addEventListener("DOMContentLoaded", () =>
 
             const languages = languagesRes && languagesRes.ok ? await languagesRes.json() : {};
             const commits = commitsRes && commitsRes.ok ? await commitsRes.json() : [];
-            radarNode.innerHTML = buildRadar(languages);
 
+            const radarHtml = buildRadar(languages);
+            radarNode.innerHTML = radarHtml;
+
+            const extras = [];
             const commitCount = Array.isArray(commits) ? commits.length : 0;
-            statsNode.innerHTML += `
-                <div class="repo-detail-card"><span class="repo-detail-label">Commits recientes</span><span class="repo-detail-value">${commitCount || "—"}</span></div>
-                <div class="repo-detail-card"><span class="repo-detail-label">Lenguajes detectados</span><span class="repo-detail-value">${Object.keys(languages || {}).length || "—"}</span></div>
-            `;
+            const languageCount = Object.keys(languages || {}).length || 0;
+
+            if (commitCount)
+            {
+                extras.push(`<div class="repo-detail-card"><span class="repo-detail-label">Commits recientes</span><span class="repo-detail-value">${commitCount}</span></div>`);
+            }
+            if (languageCount)
+            {
+                extras.push(`<div class="repo-detail-card"><span class="repo-detail-label">Lenguajes detectados</span><span class="repo-detail-value">${languageCount}</span></div>`);
+            }
+            if (extras.length)
+            {
+                statsNode.innerHTML += extras.join("");
+            }
         }
         catch (error)
         {
-            radarNode.innerHTML = '<p class="repo-radar-empty">No se pudieron cargar los datos ampliados del repositorio.</p>';
+            radarNode.innerHTML = "";
         }
+
+        setTimeout(() =>
+        {
+            spotlight.classList.add("ready");
+        }, 180);
     }
 
     document.addEventListener("mousemove", event =>
@@ -1672,6 +1696,7 @@ document.addEventListener("DOMContentLoaded", () =>
     });
 });
 </script>
+
 
 
 </body>
