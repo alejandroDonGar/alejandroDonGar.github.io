@@ -1400,18 +1400,21 @@ document.addEventListener("DOMContentLoaded", () =>
     const spotlight = document.createElement("div");
     spotlight.className = "repo-spotlight";
     spotlight.innerHTML = `
-        <div class="repo-spotlight-shell">
-            <div class="repo-spotlight-card-slot" id="repoSpotlightCardSlot">
-                <div class="repo-spotlight-card" id="repoSpotlightCard"></div>
-            </div>
-            <div class="repo-spotlight-panel">
+        <div class="repo-spotlight-shell-wrap">
+            <div class="repo-spotlight-shell">
+                <div class="repo-spotlight-card-slot" id="repoSpotlightCardSlot">
+                    <div class="repo-spotlight-card" id="repoSpotlightCard"></div>
+                </div>
+                <div class="repo-spotlight-panel">
                 <button type="button" class="button repo-spotlight-close" id="repoSpotlightClose" aria-label="Cerrar">×</button>
                 <div class="repo-spotlight-head" id="repoSpotlightHead"></div>
                 <div class="repo-detail-grid" id="repoSpotlightStats"></div>
                 <div class="repo-tree-wrap" id="repoSpotlightTreeWrap"></div>
                 <div class="repo-radar-wrap" id="repoSpotlightRadarWrap"></div>
                 <div class="repo-spotlight-actions" id="repoSpotlightActions"></div>
+                </div>
             </div>
+            <div class="repo-spotlight-tags-row" id="repoSpotlightTagsRow" hidden></div>
         </div>
     `;
     document.body.appendChild(overlay);
@@ -1424,6 +1427,7 @@ document.addEventListener("DOMContentLoaded", () =>
     const treeNode = document.getElementById("repoSpotlightTreeWrap");
     const radarNode = document.getElementById("repoSpotlightRadarWrap");
     const actionsNode = document.getElementById("repoSpotlightActions");
+    const tagsRowNode = document.getElementById("repoSpotlightTagsRow");
     const closeButton = document.getElementById("repoSpotlightClose");
 
     function parseDate(value)
@@ -1609,6 +1613,8 @@ document.addEventListener("DOMContentLoaded", () =>
         treeNode.innerHTML = "";
         radarNode.innerHTML = "";
         actionsNode.innerHTML = "";
+        tagsRowNode.innerHTML = "";
+        tagsRowNode.hidden = true;
         treeNode.hidden = true;
         radarNode.hidden = true;
 
@@ -1622,6 +1628,7 @@ document.addEventListener("DOMContentLoaded", () =>
         const languagesUrl = card.dataset.repoLanguagesUrl || "";
         const commitsUrl = card.dataset.repoCommitsUrl || "";
         const contentsUrl = (card.dataset.repoContentsUrl || "").replace("{+path}", "");
+        const allTopics = (card.dataset.repoTopics || "").split("|").filter(Boolean);
 
         headNode.innerHTML = `<h3>${name}</h3><p>${description}</p>`;
 
@@ -1642,6 +1649,12 @@ document.addEventListener("DOMContentLoaded", () =>
         statsNode.innerHTML = statBlocks.join("");
 
         actionsNode.innerHTML = `<a class="button" href="${url}" target="_blank" rel="noreferrer">Ver en GitHub</a>`;
+
+        if (allTopics.length)
+        {
+            tagsRowNode.innerHTML = allTopics.map(topic => `<button type="button" class="repo-spotlight-tag">${topic}</button>`).join("");
+            tagsRowNode.hidden = false;
+        }
 
         const requests = [
             languagesUrl ? fetch(languagesUrl).then(r => r.ok ? r.json() : {}).catch(() => ({})) : Promise.resolve({}),
