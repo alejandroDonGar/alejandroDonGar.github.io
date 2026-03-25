@@ -14,7 +14,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:image" content="assets/img/perfil.jpg" />
 </head>
-<body data-default-theme="dark">
+<body data-default-theme="dark" data-repo-variant="wow">
     <div class="bg-layer bg-grid bg-grid-dark"></div>
     <div class="bg-layer bg-grid bg-grid-light"></div>
 
@@ -1347,15 +1347,22 @@ document.addEventListener("DOMContentLoaded", () =>
 
 
 <script>
-document.querySelectorAll('.repo-card-wow').forEach(card=>{
-card.addEventListener('mousemove',e=>{
-const rect = card.getBoundingClientRect();
-card.style.setProperty('--mouse-x', ((e.clientX-rect.left)/rect.width*100)+'%');
-card.style.setProperty('--mouse-y', ((e.clientY-rect.top)/rect.height*100)+'%');
-});
+document.addEventListener("DOMContentLoaded", () =>
+{
+    document.querySelectorAll(".repo-card, .repo-featured-main, .repo-featured-side").forEach(card =>
+    {
+        card.addEventListener("mousemove", event =>
+        {
+            const rect = card.getBoundingClientRect();
+            const x = ((event.clientX - rect.left) / rect.width) * 100;
+            const y = ((event.clientY - rect.top) / rect.height) * 100;
+            card.style.setProperty("--repo-x", x + "%");
+            card.style.setProperty("--repo-y", y + "%");
+        });
+    });
 });
 </script>
-</body>
 
+</body>
 
 </html>
