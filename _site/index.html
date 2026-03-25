@@ -1345,6 +1345,17 @@ document.addEventListener("DOMContentLoaded", () =>
 </script>
 
 
+
+<script>
+document.querySelectorAll('.repo-card-wow').forEach(card=>{
+card.addEventListener('mousemove',e=>{
+const rect = card.getBoundingClientRect();
+card.style.setProperty('--mouse-x', ((e.clientX-rect.left)/rect.width*100)+'%');
+card.style.setProperty('--mouse-y', ((e.clientY-rect.top)/rect.height*100)+'%');
+});
+});
+</script>
 </body>
+
 
 </html>

@@ -2005,3 +2005,47 @@ input, select, .small-pill
         transform: none !important;
     }
 }
+
+
+/* ===== REPO MINIMAL ===== */
+
+.repo-card-minimal
+{
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.repo-card-minimal:hover
+{
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+/* ===== REPO WOW ===== */
+
+.repo-card-wow
+{
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.repo-card-wow::before
+{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--mouse-x,50%) var(--mouse-y,50%), rgba(255,255,255,0.12), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.repo-card-wow:hover::before
+{
+    opacity: 1;
+}
+
+.repo-card-wow:hover
+{
+    transform: perspective(600px) rotateX(4deg) rotateY(-4deg) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
