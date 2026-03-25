@@ -2202,18 +2202,16 @@ input, select, .small-pill
 }
 
 
-/* ===== REPO SPOTLIGHT ===== */
-
 .repo-overlay
 {
     position: fixed;
     inset: 0;
-    backdrop-filter: blur(10px);
-    background: rgba(0,0,0,0.25);
+    backdrop-filter: blur(12px);
+    background: rgba(0,0,0,0.3);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
-    z-index: 40;
+    z-index: 200;
 }
 
 .repo-overlay.active
@@ -2227,14 +2225,14 @@ input, select, .small-pill
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.8);
-    width: min(900px, 90vw);
+    transform: translate(-50%, -50%) scale(0.85);
+    width: min(1000px, 92vw);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    gap: 20px;
     opacity: 0;
     transition: all 0.3s ease;
-    z-index: 50;
+    z-index: 210;
 }
 
 .repo-spotlight.active
@@ -2251,7 +2249,7 @@ input, select, .small-pill
     border: 1px solid var(--panel-border);
 }
 
-.repo-card:hover
+.repo-card
 {
     cursor: pointer;
 }

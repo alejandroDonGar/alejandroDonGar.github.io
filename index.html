@@ -1381,15 +1381,24 @@ document.addEventListener("DOMContentLoaded", () =>
     document.body.appendChild(overlay);
     document.body.appendChild(spotlight);
 
-    document.querySelectorAll(".repo-card").forEach(card =>
+    const cards = document.querySelectorAll(".repo-card, .repo-featured-main, .repo-featured-side");
+
+    cards.forEach(card =>
     {
         card.addEventListener("click", () =>
         {
             overlay.classList.add("active");
             spotlight.classList.add("active");
 
-            document.getElementById("repo-left").innerHTML = card.innerHTML;
-            document.getElementById("repo-right").innerHTML = "<h3>Detalles del repo</h3><p>Aquí irán métricas, lenguajes, radar, etc.</p>";
+            const clone = card.cloneNode(true);
+            clone.style.transform = "none";
+            clone.style.boxShadow = "none";
+
+            document.getElementById("repo-left").innerHTML = "";
+            document.getElementById("repo-left").appendChild(clone);
+
+            document.getElementById("repo-right").innerHTML =
+            "<h3>Repositorio</h3><p>Aquí irá info ampliada (lenguajes, commits, radar...)</p>";
         });
     });
 
