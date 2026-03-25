@@ -1363,6 +1363,44 @@ document.addEventListener("DOMContentLoaded", () =>
 });
 </script>
 
+
+<script>
+document.addEventListener("DOMContentLoaded", () =>
+{
+    const overlay = document.createElement("div");
+    overlay.className = "repo-overlay";
+
+    const spotlight = document.createElement("div");
+    spotlight.className = "repo-spotlight";
+
+    spotlight.innerHTML = `
+        <div class="repo-spotlight-panel" id="repo-left"></div>
+        <div class="repo-spotlight-panel" id="repo-right"></div>
+    `;
+
+    document.body.appendChild(overlay);
+    document.body.appendChild(spotlight);
+
+    document.querySelectorAll(".repo-card").forEach(card =>
+    {
+        card.addEventListener("click", () =>
+        {
+            overlay.classList.add("active");
+            spotlight.classList.add("active");
+
+            document.getElementById("repo-left").innerHTML = card.innerHTML;
+            document.getElementById("repo-right").innerHTML = "<h3>Detalles del repo</h3><p>Aquí irán métricas, lenguajes, radar, etc.</p>";
+        });
+    });
+
+    overlay.addEventListener("click", () =>
+    {
+        overlay.classList.remove("active");
+        spotlight.classList.remove("active");
+    });
+});
+</script>
+
 </body>
 
 </html>
