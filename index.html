@@ -1532,10 +1532,9 @@ document.addEventListener("DOMContentLoaded", () =>
     function animateProxy(card)
     {
         const sourceRect = card.getBoundingClientRect();
-        const proxy = card.cloneNode(true);
-        proxy.classList.remove("tilt-card");
-        proxy.classList.add("repo-spotlight-proxy");
-        proxy.querySelectorAll("a, button").forEach(node => node.remove());
+        const proxy = document.createElement("div");
+        proxy.className = "repo-spotlight-proxy";
+        proxy.innerHTML = buildSpotlightCard(card);
         proxy.style.top = sourceRect.top + "px";
         proxy.style.left = sourceRect.left + "px";
         proxy.style.width = sourceRect.width + "px";
@@ -1550,7 +1549,7 @@ document.addEventListener("DOMContentLoaded", () =>
             proxy.style.left = targetRect.left + "px";
             proxy.style.width = targetRect.width + "px";
             proxy.style.height = targetRect.height + "px";
-            proxy.style.transform = "translateZ(0) scale(1.02)";
+            proxy.style.transform = "translateZ(0) scale(1.01)";
         });
 
         setTimeout(() =>
