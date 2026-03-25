@@ -1401,7 +1401,9 @@ document.addEventListener("DOMContentLoaded", () =>
     spotlight.className = "repo-spotlight";
     spotlight.innerHTML = `
         <div class="repo-spotlight-shell">
-            <div class="repo-spotlight-card" id="repoSpotlightCard"></div>
+            <div class="repo-spotlight-card-slot" id="repoSpotlightCardSlot">
+                <div class="repo-spotlight-card" id="repoSpotlightCard"></div>
+            </div>
             <div class="repo-spotlight-panel">
                 <button type="button" class="button repo-spotlight-close" id="repoSpotlightClose" aria-label="Cerrar">×</button>
                 <div class="repo-spotlight-head" id="repoSpotlightHead"></div>
@@ -1415,6 +1417,7 @@ document.addEventListener("DOMContentLoaded", () =>
     document.body.appendChild(overlay);
     document.body.appendChild(spotlight);
 
+    const cardSlot = document.getElementById("repoSpotlightCardSlot");
     const cardNode = document.getElementById("repoSpotlightCard");
     const headNode = document.getElementById("repoSpotlightHead");
     const statsNode = document.getElementById("repoSpotlightStats");
@@ -1567,48 +1570,44 @@ document.addEventListener("DOMContentLoaded", () =>
         `;
     }
 
-    function animateProxy(card)
+    function animateSpotlightCard(card)
     {
         const sourceRect = card.getBoundingClientRect();
-        const proxy = card.cloneNode(true);
 
-        proxy.classList.remove("tilt-card");
-        proxy.classList.add("repo-spotlight-proxy");
-        proxy.querySelectorAll(".repo-card-actions, .repo-meta").forEach(node => node.remove());
+        cardNode.classList.add("is-floating");
+        cardNode.style.top = sourceRect.top + "px";
+        cardNode.style.left = sourceRect.left + "px";
+        cardNode.style.width = sourceRect.width + "px";
+        cardNode.style.height = sourceRect.height + "px";
+        cardNode.style.opacity = "1";
 
-        proxy.style.top = sourceRect.top + "px";
-        proxy.style.left = sourceRect.left + "px";
-        proxy.style.width = sourceRect.width + "px";
-        proxy.style.height = sourceRect.height + "px";
-        proxy.style.opacity = "1";
-
-        document.body.appendChild(proxy);
-
-        const targetRect = cardNode.getBoundingClientRect();
+        const targetRect = cardSlot.getBoundingClientRect();
+        cardSlot.style.minHeight = targetRect.height + "px";
 
         requestAnimationFrame(() =>
         {
-            proxy.style.top = targetRect.top + "px";
-            proxy.style.left = targetRect.left + "px";
-            proxy.style.width = targetRect.width + "px";
-            proxy.style.height = targetRect.height + "px";
-            proxy.style.transform = "translateZ(0)";
+            cardNode.style.top = targetRect.top + "px";
+            cardNode.style.left = targetRect.left + "px";
+            cardNode.style.width = targetRect.width + "px";
+            cardNode.style.height = targetRect.height + "px";
+            cardNode.style.transform = "translateZ(0)";
         });
 
         setTimeout(() =>
         {
-            proxy.style.opacity = "0";
-        }, 260);
-
-        setTimeout(() =>
-        {
-            proxy.remove();
+            cardNode.classList.remove("is-floating");
+            cardNode.style.removeProperty("top");
+            cardNode.style.removeProperty("left");
+            cardNode.style.removeProperty("width");
+            cardNode.style.removeProperty("height");
+            cardNode.style.removeProperty("transform");
         }, 340);
     }
 
     async function fillSpotlight(card)
     {
         cardNode.innerHTML = buildSpotlightCard(card);
+        cardSlot.style.removeProperty("min-height");
         headNode.innerHTML = "";
         statsNode.innerHTML = "";
         treeNode.innerHTML = "";
@@ -1718,7 +1717,7 @@ document.addEventListener("DOMContentLoaded", () =>
         overlay.classList.add("active");
         spotlight.classList.add("active");
         fillSpotlight(card);
-        requestAnimationFrame(() => animateProxy(card));
+        requestAnimationFrame(() => animateSpotlightCard(card));
     });
 
     function closeSpotlight()
