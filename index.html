@@ -1573,47 +1573,37 @@ document.addEventListener("DOMContentLoaded", () =>
     function animateSpotlightCard(card)
     {
         const sourceRect = card.getBoundingClientRect();
+        const targetRect = cardSlot.getBoundingClientRect();
+
+        const deltaX = sourceRect.left - targetRect.left;
+        const deltaY = sourceRect.top - targetRect.top;
+        const scaleX = sourceRect.width / Math.max(targetRect.width, 1);
+        const scaleY = sourceRect.height / Math.max(targetRect.height, 1);
 
         cardNode.classList.add("is-floating");
-        cardNode.style.top = sourceRect.top + "px";
-        cardNode.style.left = sourceRect.left + "px";
-        cardNode.style.width = sourceRect.width + "px";
-        cardNode.style.height = sourceRect.height + "px";
+        cardNode.style.transformOrigin = "top left";
+        cardNode.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scaleX}, ${scaleY})`;
+        cardNode.style.opacity = "1";
 
         requestAnimationFrame(() =>
         {
-            const targetRect = cardSlot.getBoundingClientRect();
-            const targetHeight = Math.max(cardNode.scrollHeight, targetRect.height);
-
-            cardSlot.style.minHeight = targetHeight + "px";
-            cardNode.style.top = targetRect.top + "px";
-            cardNode.style.left = targetRect.left + "px";
-            cardNode.style.width = targetRect.width + "px";
-            cardNode.style.height = targetHeight + "px";
-            cardNode.style.transform = "translateZ(0)";
-            cardNode.style.opacity = "1";
+            requestAnimationFrame(() =>
+            {
+                cardNode.style.transform = "translate(0px, 0px) scale(1, 1)";
+            });
         });
 
         setTimeout(() =>
         {
-            spotlight.classList.add("ready");
             cardNode.classList.remove("is-floating");
-            cardNode.style.removeProperty("top");
-            cardNode.style.removeProperty("left");
             cardNode.style.removeProperty("transform");
-
-            requestAnimationFrame(() =>
-            {
-                cardNode.style.removeProperty("width");
-                cardNode.style.removeProperty("height");
-            });
-        }, 340);
+            cardNode.style.removeProperty("transform-origin");
+        }, 360);
     }
 
     async function fillSpotlight(card)
     {
         cardNode.innerHTML = buildSpotlightCard(card);
-        cardSlot.style.removeProperty("min-height");
         headNode.innerHTML = "";
         statsNode.innerHTML = "";
         treeNode.innerHTML = "";
@@ -1723,8 +1713,10 @@ document.addEventListener("DOMContentLoaded", () =>
         overlay.classList.add("active");
         spotlight.classList.add("active");
         spotlight.classList.remove("ready");
-        fillSpotlight(card);
-        requestAnimationFrame(() => animateSpotlightCard(card));
+        fillSpotlight(card).then(() =>
+        {
+            requestAnimationFrame(() => animateSpotlightCard(card));
+        });
     });
 
     function closeSpotlight()

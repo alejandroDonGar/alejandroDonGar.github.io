@@ -2341,9 +2341,9 @@ input, select, .small-pill
     transform: none !important;
     filter: none !important;
     backdrop-filter: none !important;
-    will-change: auto !important;
-    opacity: 1;
-    transition: opacity 0.12s ease;
+    will-change: transform, opacity;
+    opacity: 0;
+    transition: opacity 0.14s ease;
 }
 
 .repo-spotlight-card .repo-topline
@@ -2601,7 +2601,7 @@ input, select, .small-pill
     {
         grid-template-columns: 1fr;
     }
-}
+
 
 
 .repo-spotlight-proxy::before,
@@ -2631,18 +2631,11 @@ input, select, .small-pill
 
 .repo-spotlight-card.is-floating
 {
-    position: fixed;
-    margin: 0;
-    z-index: 135;
+    position: relative;
+    z-index: 2;
     pointer-events: none;
-    overflow: hidden;
-    box-sizing: border-box;
     transition:
-        top 0.34s cubic-bezier(0.22, 1, 0.36, 1),
-        left 0.34s cubic-bezier(0.22, 1, 0.36, 1),
-        width 0.34s cubic-bezier(0.22, 1, 0.36, 1),
-        height 0.34s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.36s cubic-bezier(0.22, 1, 0.36, 1),
         opacity 0.14s ease;
 }
 
@@ -2656,7 +2649,6 @@ input, select, .small-pill
 .repo-spotlight-card-slot > .repo-spotlight-card
 {
     width: 100%;
-    opacity: 0;
 }
 
 .repo-spotlight.ready .repo-spotlight-card,
