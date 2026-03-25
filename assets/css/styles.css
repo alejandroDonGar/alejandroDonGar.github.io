@@ -2630,3 +2630,28 @@ input, select, .small-pill
     {
         grid-template-columns: 1fr;
     }
+
+
+.repo-spotlight-proxy::before,
+.repo-spotlight-proxy::after
+{
+    display: none !important;
+}
+
+.repo-spotlight-proxy
+{
+    transform-style: flat !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    will-change: top, left, width, height, opacity !important;
+}
+
+.repo-spotlight-proxy h3
+{
+    transform: none !important;
+}
+
+.repo-spotlight-proxy .repo-pill
+{
+    pointer-events: none;
+}
