@@ -2320,7 +2320,7 @@ input, select, .small-pill
 .repo-spotlight-card-slot
 {
     position: relative;
-    min-height: 420px;
+    align-self: start;
 }
 
 .repo-spotlight-card,
@@ -2335,6 +2335,8 @@ input, select, .small-pill
 .repo-spotlight-card
 {
     padding: 24px;
+    align-self: start;
+    box-sizing: border-box;
     transform: none !important;
     filter: none !important;
     backdrop-filter: none !important;
@@ -2599,6 +2601,7 @@ input, select, .small-pill
     }
 
 
+
 .repo-spotlight-proxy::before,
 .repo-spotlight-proxy::after
 {
@@ -2631,6 +2634,7 @@ input, select, .small-pill
     z-index: 135;
     pointer-events: none;
     overflow: hidden;
+    box-sizing: border-box;
     transition:
         top 0.34s cubic-bezier(0.22, 1, 0.36, 1),
         left 0.34s cubic-bezier(0.22, 1, 0.36, 1),

@@ -1598,9 +1598,13 @@ document.addEventListener("DOMContentLoaded", () =>
             cardNode.classList.remove("is-floating");
             cardNode.style.removeProperty("top");
             cardNode.style.removeProperty("left");
-            cardNode.style.removeProperty("width");
-            cardNode.style.removeProperty("height");
             cardNode.style.removeProperty("transform");
+
+            requestAnimationFrame(() =>
+            {
+                cardNode.style.removeProperty("width");
+                cardNode.style.removeProperty("height");
+            });
         }, 340);
     }
 
