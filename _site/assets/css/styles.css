@@ -2607,7 +2607,6 @@ input, select, .small-pill
     }
 
 
-
 .repo-spotlight-proxy::before,
 .repo-spotlight-proxy::after
 {
@@ -2789,4 +2788,23 @@ input, select, .small-pill
     {
         width: min(1180px, calc(100% - 24px));
     }
+}
+
+
+.repo-spotlight-tags-row
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6px;
+    position: relative;
+    z-index: 5;
+}
+
+.repo-spotlight-shell
+{
+    position: relative;
+    z-index: 10;
 }
