@@ -693,16 +693,21 @@ body:not([data-theme="light"]) .bg-grid-light
     transform: translateY(0);
 }
 
-.tilt-card
+.tilt-card, .mini-card, .value-card, .stat-card, .skills-radar-card, .radar-summary-card
 {
     transform-style: preserve-3d;
     will-change: transform;
     transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
-.tilt-card:hover
+.tilt-card:hover, .mini-card:hover, .value-card:hover, .stat-card:hover, .skills-radar-card:hover, .radar-summary-card:hover
 {
-    box-shadow: var(--shadow-hover);
+    transform:
+        perspective(1000px)
+        rotateX(var(--spotlight-rotate-x, 0deg))
+        rotateY(var(--spotlight-rotate-y, 0deg))
+        translateY(-2px);
+    box-shadow: 0 18px 34px rgba(0,0,0,0.16);
     border-color: var(--panel-border-strong);
 }
 
@@ -2002,7 +2007,8 @@ input, select, .small-pill
 {
     .bg-grid
     {
-        }
+        transform: none !important;
+    }
 }
 
 
@@ -2054,12 +2060,13 @@ input, select, .small-pill
 .repo-featured-main:hover,
 .repo-featured-side:hover
 {
-    transform: perspective(900px) rotateX(4deg) rotateY(-4deg) translateY(-8px) scale(1.01);
-    border-color: rgba(183, 198, 228, 0.22);
-    box-shadow:
-        0 22px 44px rgba(0, 0, 0, 0.18),
-        0 0 0 1px rgba(183, 198, 228, 0.10) inset,
-        0 0 28px rgba(183, 198, 228, 0.10);
+    transform:
+        perspective(1000px)
+        rotateX(var(--spotlight-rotate-x, 0deg))
+        rotateY(var(--spotlight-rotate-y, 0deg))
+        translateY(-2px);
+    border-color: var(--panel-border-strong);
+    box-shadow: 0 18px 34px rgba(0,0,0,0.16);
 }
 
 .repo-card:hover::before,
@@ -2615,6 +2622,7 @@ input, select, .small-pill
 
 .repo-spotlight-proxy h3
 {
+    transform: none !important;
 }
 
 .repo-spotlight-proxy .repo-pill
@@ -2942,77 +2950,4 @@ input, select, .small-pill
     {
         transform: scale(1.18);
     }
-}
-
-
-
-
-
-
-.tilt-card,
-.repo-card,
-.repo-featured,
-.repo-featured-main,
-.repo-featured-side,
-.repo-spotlight-card,
-.repo-spotlight-panel,
-.surface-card,
-.panel-card,
-.card,
-.section-card,
-.hero-card,
-.profile-card,
-.stat-card,
-.info-card,
-.content-card,
-.grid-card,
-.contact-card
-{
-    transform-style: preserve-3d;
-    transition:
-        transform 0.18s ease,
-        box-shadow 0.18s ease,
-        border-color 0.18s ease,
-        background-color 0.18s ease,
-        opacity 0.14s ease;
-}
-
-.tilt-card:hover,
-.repo-card:hover,
-.repo-featured:hover,
-.repo-featured-main:hover,
-.repo-featured-side:hover,
-.repo-spotlight-card:hover,
-.repo-spotlight-panel:hover,
-.surface-card:hover,
-.panel-card:hover,
-.card:hover,
-.section-card:hover,
-.hero-card:hover,
-.profile-card:hover,
-.stat-card:hover,
-.info-card:hover,
-.content-card:hover,
-.grid-card:hover,
-.contact-card:hover
-{
-    transform:
-        perspective(1000px)
-        rotateX(var(--spotlight-rotate-x, 0deg))
-        rotateY(var(--spotlight-rotate-y, 0deg))
-        translateY(-2px);
-    box-shadow: 0 18px 34px rgba(0,0,0,0.16);
-}
-
-.repo-spotlight-card.is-floating
-{
-    transition:
-        transform 0.36s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.14s ease;
-}
-
-.repo-radar-wrap[hidden],
-.repo-tree-wrap[hidden]
-{
-    display: none;
 }

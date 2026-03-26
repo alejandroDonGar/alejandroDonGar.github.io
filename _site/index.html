@@ -1241,8 +1241,6 @@ document.addEventListener("DOMContentLoaded", () =>
             </article>
         `).join("");
         bindRepoRadarHover();
-        attachSpotlightTilt(repos);
-        attachSpotlightTilt(featured);
     }
 
     function applyFilters(reposData)
@@ -1713,17 +1711,10 @@ document.addEventListener("DOMContentLoaded", () =>
     }, { passive: true });
 
 
-    function attachSpotlightTilt(rootNode = document)
+    function attachSpotlightTilt()
     {
-        rootNode.querySelectorAll(".tilt-card, .repo-card, .repo-featured-main, .repo-featured-side, .repo-spotlight-card, .repo-spotlight-panel").forEach(panel =>
+        spotlight.querySelectorAll(".repo-spotlight-card, .repo-spotlight-panel").forEach(panel =>
         {
-            if (panel.dataset.tiltBound === "true")
-            {
-                return;
-            }
-
-            panel.dataset.tiltBound = "true";
-
             panel.addEventListener("mousemove", event =>
             {
                 const rect = panel.getBoundingClientRect();
