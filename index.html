@@ -1419,6 +1419,7 @@ document.addEventListener("DOMContentLoaded", () =>
     `;
     document.body.appendChild(overlay);
     document.body.appendChild(spotlight);
+    attachSpotlightTilt();
 
     const cardSlot = document.getElementById("repoSpotlightCardSlot");
     const cardNode = document.getElementById("repoSpotlightCard");
@@ -1515,7 +1516,8 @@ document.addEventListener("DOMContentLoaded", () =>
                 <svg viewBox="0 0 200 200" width="200" height="200" aria-hidden="true">
                     ${grid}
                     ${axes}
-                    <polygon points="${dataPts}" fill="rgba(183,198,228,0.22)" stroke="rgba(208,171,150,0.92)" stroke-width="2" />
+                    <polygon class="repo-radar-shape" points="${dataPts}" fill="rgba(183,198,228,0.22)" stroke="rgba(208,171,150,0.92)" stroke-width="2" />
+                    ${entries.map((entry, index) => { const angle = (Math.PI * 2 * index / entries.length) - Math.PI / 2; const r = radius * (entry[1] / total); const x = center + Math.cos(angle) * r; const y = center + Math.sin(angle) * r; return `<circle class="repo-radar-point" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.2" />`; }).join("")}
                     ${labels}
                 </svg>
                 <div class="repo-radar-legend">${legend}</div>
@@ -1528,8 +1530,6 @@ document.addEventListener("DOMContentLoaded", () =>
         const name = card.dataset.repoName || "";
         const description = card.dataset.repoDescription || "Sin descripción.";
         const label = card.querySelector(".mini-label") ? card.querySelector(".mini-label").textContent : "Repo";
-        const topics = (card.dataset.repoTopics || "").split("|").filter(Boolean).slice(0, 4);
-
         return `
             <div class="repo-spotlight-card-shell">
                 <div class="repo-topline">
@@ -1538,7 +1538,6 @@ document.addEventListener("DOMContentLoaded", () =>
                 </div>
                 <h3 class="repo-spotlight-card-title">${name}</h3>
                 <p class="repo-spotlight-card-description">${description}</p>
-                ${topics.length ? `<div class="repo-spotlight-card-topics">${topics.map(topic => `<span class="repo-pill">${topic}</span>`).join("")}</div>` : ""}
             </div>
         `;
     }
@@ -1705,6 +1704,30 @@ document.addEventListener("DOMContentLoaded", () =>
         card.style.setProperty("--repo-x", x + "%");
         card.style.setProperty("--repo-y", y + "%");
     }, { passive: true });
+
+
+    function attachSpotlightTilt()
+    {
+        spotlight.querySelectorAll(".repo-spotlight-card, .repo-spotlight-panel").forEach(panel =>
+        {
+            panel.addEventListener("mousemove", event =>
+            {
+                const rect = panel.getBoundingClientRect();
+                const px = (event.clientX - rect.left) / rect.width;
+                const py = (event.clientY - rect.top) / rect.height;
+                const rx = (0.5 - py) * 4;
+                const ry = (px - 0.5) * 4;
+                panel.style.setProperty("--spotlight-rotate-x", `${rx.toFixed(2)}deg`);
+                panel.style.setProperty("--spotlight-rotate-y", `${ry.toFixed(2)}deg`);
+            });
+
+            panel.addEventListener("mouseleave", () =>
+            {
+                panel.style.setProperty("--spotlight-rotate-x", "0deg");
+                panel.style.setProperty("--spotlight-rotate-y", "0deg");
+            });
+        });
+    }
 
     document.addEventListener("click", event =>
     {

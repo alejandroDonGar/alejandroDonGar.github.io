@@ -2373,13 +2373,6 @@ input, select, .small-pill
     line-height: 1.62;
 }
 
-.repo-spotlight-card-topics
-{
-    margin-top: 14px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
 
 .repo-spotlight-panel
 {
@@ -2807,4 +2800,147 @@ input, select, .small-pill
 {
     position: relative;
     z-index: 10;
+}
+
+
+.repo-spotlight-shell-wrap
+{
+    overflow: visible;
+}
+
+.repo-spotlight-shell
+{
+    position: relative;
+    z-index: 1;
+}
+
+.repo-spotlight-tags-row
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 14px;
+    padding: 0 8px;
+    position: relative;
+    z-index: 3;
+}
+
+.repo-spotlight-tag
+{
+    border: 1px solid var(--panel-border);
+    background: var(--button-bg);
+    color: var(--button-text);
+    border-radius: var(--radius-sm);
+    padding: 0.72rem 1rem;
+    font: inherit;
+    line-height: 1;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        color 0.2s ease;
+    cursor: default;
+}
+
+.repo-spotlight-tag:hover
+{
+    transform: translateY(-2px);
+    border-color: var(--panel-border-strong, var(--panel-border));
+    box-shadow: var(--shadow-hover);
+}
+
+.repo-spotlight-card,
+.repo-spotlight-panel
+{
+    transform-style: preserve-3d;
+    transition:
+        opacity 0.14s ease,
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.repo-spotlight-card:hover,
+.repo-spotlight-panel:hover
+{
+    transform:
+        perspective(1000px)
+        rotateX(var(--spotlight-rotate-x, 0deg))
+        rotateY(var(--spotlight-rotate-y, 0deg))
+        translateY(-2px);
+}
+
+.repo-radar-wrap
+{
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--panel-border);
+    background: var(--card-bg);
+    overflow: hidden;
+}
+
+.repo-radar-shape
+{
+    transform-origin: 100px 100px;
+    animation: repoRadarPulse 2.6s ease-in-out infinite alternate;
+}
+
+.repo-radar-point
+{
+    fill: rgba(208,171,150,0.96);
+    filter: drop-shadow(0 0 8px rgba(208,171,150,0.24));
+    animation: repoRadarPoint 2.1s ease-in-out infinite;
+}
+
+.repo-radar-legend
+{
+    display: grid;
+    gap: 10px;
+}
+
+.repo-radar-item
+{
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.repo-radar-item:hover
+{
+    transform: translateX(4px);
+    border-color: var(--panel-border-strong, var(--panel-border));
+    box-shadow: var(--shadow);
+}
+
+@keyframes repoRadarPulse
+{
+    0%
+    {
+        transform: scale(0.985);
+        opacity: 0.92;
+    }
+
+    100%
+    {
+        transform: scale(1.015);
+        opacity: 1;
+    }
+}
+
+@keyframes repoRadarPoint
+{
+    0%, 100%
+    {
+        transform: scale(1);
+    }
+
+    50%
+    {
+        transform: scale(1.18);
+    }
 }
