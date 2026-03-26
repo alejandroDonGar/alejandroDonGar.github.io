@@ -2647,6 +2647,7 @@ input, select, .small-pill
     }
 
 
+
 .repo-spotlight-proxy::before,
 .repo-spotlight-proxy::after
 {
@@ -3044,4 +3045,119 @@ input, select, .small-pill
     border-radius: inherit;
     background: var(--button-primary);
     transition: width 0.35s ease;
+}
+
+
+.repo-radar-box,
+.repo-radar-shape,
+.repo-radar-point,
+.repo-radar-legend,
+.repo-radar-item
+{
+    display: none !important;
+}
+
+.repo-bars-list
+{
+    display: grid;
+    gap: 14px;
+    margin-top: 6px;
+}
+
+.repo-bar-item
+{
+    display: grid;
+    gap: 8px;
+}
+
+.repo-bar-head
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--text);
+}
+
+.repo-bar-head strong
+{
+    color: var(--text);
+}
+
+.repo-bar-head span
+{
+    color: var(--muted);
+    font-weight: 700;
+}
+
+.repo-bar-track
+{
+    height: 10px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--bar-bg);
+}
+
+.repo-bar-track i
+{
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--button-primary);
+    min-width: 14px;
+    transition: width 0.35s ease;
+}
+
+.tilt-card,
+.panel,
+.contact-panel,
+.mini-card,
+.value-card,
+.timeline-item,
+.level-item,
+.roadmap-item,
+.skill-display,
+.skills-radar-card,
+.timeline-strip,
+.stat-card,
+.map-display,
+.radar-summary-card,
+.repo-card,
+.repo-featured-main,
+.repo-featured-side,
+.repo-spotlight-card,
+.repo-spotlight-panel
+{
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease,
+        background-color 0.18s ease,
+        opacity 0.14s ease;
+}
+
+.tilt-card:hover,
+.panel:hover,
+.contact-panel:hover,
+.mini-card:hover,
+.value-card:hover,
+.timeline-item:hover,
+.level-item:hover,
+.roadmap-item:hover,
+.skill-display:hover,
+.skills-radar-card:hover,
+.timeline-strip:hover,
+.stat-card:hover,
+.map-display:hover,
+.radar-summary-card:hover,
+.repo-card:hover,
+.repo-featured-main:hover,
+.repo-featured-side:hover,
+.repo-spotlight-card:hover,
+.repo-spotlight-panel:hover
+{
+    box-shadow: 0 18px 34px rgba(0,0,0,0.16);
+    border-color: var(--panel-border-strong);
 }
