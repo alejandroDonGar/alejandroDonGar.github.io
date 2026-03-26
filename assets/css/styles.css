@@ -2998,3 +2998,10 @@ input, select, .small-pill
         transform: scale(1.18);
     }
 }
+
+
+.panel.reveal.tilt-card,
+.panel.contact-panel.reveal.tilt-card
+{
+    will-change: transform;
+}
