@@ -747,6 +747,11 @@ body:not([data-theme="light"]) .bg-grid-light
 .repo-spotlight-panel:hover,
 .contact-panel:hover
 {
+    transform:
+        perspective(1000px)
+        rotateX(var(--spotlight-rotate-x, 0deg))
+        rotateY(var(--spotlight-rotate-y, 0deg))
+        translateY(-2px);
     box-shadow: 0 18px 34px rgba(0,0,0,0.16);
     border-color: var(--panel-border-strong);
 }
@@ -3002,111 +3007,7 @@ input, select, .small-pill
 }
 
 
-.repo-bars-list
-{
-    display: grid;
-    gap: 14px;
-    margin-top: 6px;
-}
 
-.repo-bar-item
-{
-    display: grid;
-    gap: 8px;
-}
-
-.repo-bar-head
-{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    color: var(--text);
-}
-
-.repo-bar-head span
-{
-    color: var(--muted);
-    font-weight: 700;
-}
-
-.repo-bar-track
-{
-    height: 10px;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    background: var(--bar-bg);
-}
-
-.repo-bar-track i
-{
-    display: block;
-    height: 100%;
-    border-radius: inherit;
-    background: var(--button-primary);
-    transition: width 0.35s ease;
-}
-
-
-.repo-radar-box,
-.repo-radar-shape,
-.repo-radar-point,
-.repo-radar-legend,
-.repo-radar-item
-{
-    display: none !important;
-}
-
-.repo-bars-list
-{
-    display: grid;
-    gap: 14px;
-    margin-top: 6px;
-}
-
-.repo-bar-item
-{
-    display: grid;
-    gap: 8px;
-}
-
-.repo-bar-head
-{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    color: var(--text);
-}
-
-.repo-bar-head strong
-{
-    color: var(--text);
-}
-
-.repo-bar-head span
-{
-    color: var(--muted);
-    font-weight: 700;
-}
-
-.repo-bar-track
-{
-    height: 10px;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    background: var(--bar-bg);
-}
-
-.repo-bar-track i
-{
-    display: block;
-    height: 100%;
-    border-radius: inherit;
-    background: var(--button-primary);
-    min-width: 14px;
-    transition: width 0.35s ease;
-}
 
 .tilt-card,
 .panel,
@@ -3160,4 +3061,71 @@ input, select, .small-pill
 {
     box-shadow: 0 18px 34px rgba(0,0,0,0.16);
     border-color: var(--panel-border-strong);
+}
+
+
+.repo-radar-wrap
+{
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--panel-border);
+    background: var(--card-bg);
+    overflow: hidden;
+}
+
+.repo-radar-title
+{
+    margin: 0 0 14px;
+    color: var(--text);
+    font-weight: 700;
+}
+
+.repo-bars-list
+{
+    display: grid;
+    gap: 14px;
+}
+
+.repo-bar-item
+{
+    display: grid;
+    gap: 8px;
+}
+
+.repo-bar-head
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--text);
+}
+
+.repo-bar-head strong
+{
+    color: var(--text);
+}
+
+.repo-bar-head span
+{
+    color: var(--muted);
+    font-weight: 700;
+}
+
+.repo-bar-track
+{
+    height: 10px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--bar-bg);
+}
+
+.repo-bar-track i
+{
+    display: block;
+    height: 100%;
+    min-width: 14px;
+    border-radius: inherit;
+    background: var(--button-primary);
 }
