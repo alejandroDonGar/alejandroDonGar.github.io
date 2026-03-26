@@ -1663,8 +1663,13 @@ document.addEventListener("DOMContentLoaded", () =>
 
         const [languages, commits, contents] = await Promise.all(requests);
 
-        const radarHtml = buildRadar(languages);
+        const normalizedLanguages = Object.keys(languages || {}).length
+            ? languages
+            : (language ? { [language]: 100 } : {});
+
+        const radarHtml = buildRadar(normalizedLanguages);
         radarNode.innerHTML = radarHtml || "";
+        radarNode.hidden = !radarHtml;
 
         const treeHtml = buildTree(contents);
         treeNode.innerHTML = treeHtml || "";
