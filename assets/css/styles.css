@@ -2002,8 +2002,7 @@ input, select, .small-pill
 {
     .bg-grid
     {
-        transform: none !important;
-    }
+        }
 }
 
 
@@ -2616,7 +2615,6 @@ input, select, .small-pill
 
 .repo-spotlight-proxy h3
 {
-    transform: none !important;
 }
 
 .repo-spotlight-proxy .repo-pill
@@ -2947,6 +2945,8 @@ input, select, .small-pill
 }
 
 
+
+
 .tilt-card,
 .repo-card,
 .repo-featured-main,
@@ -2978,14 +2978,15 @@ input, select, .small-pill
     box-shadow: 0 18px 34px rgba(0,0,0,0.16);
 }
 
-.tilt-card.is-floating,
 .repo-spotlight-card.is-floating
 {
     transition:
-        transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.14s ease,
-        top 0.34s cubic-bezier(0.22, 1, 0.36, 1),
-        left 0.34s cubic-bezier(0.22, 1, 0.36, 1),
-        width 0.34s cubic-bezier(0.22, 1, 0.36, 1),
-        height 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+        transform 0.36s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.14s ease;
+}
+
+.repo-radar-wrap[hidden],
+.repo-tree-wrap[hidden]
+{
+    display: none;
 }
