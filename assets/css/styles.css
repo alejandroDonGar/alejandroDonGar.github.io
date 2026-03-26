@@ -2947,12 +2947,26 @@ input, select, .small-pill
 
 
 
+
+
 .tilt-card,
 .repo-card,
+.repo-featured,
 .repo-featured-main,
 .repo-featured-side,
 .repo-spotlight-card,
-.repo-spotlight-panel
+.repo-spotlight-panel,
+.surface-card,
+.panel-card,
+.card,
+.section-card,
+.hero-card,
+.profile-card,
+.stat-card,
+.info-card,
+.content-card,
+.grid-card,
+.contact-card
 {
     transform-style: preserve-3d;
     transition:
@@ -2965,10 +2979,22 @@ input, select, .small-pill
 
 .tilt-card:hover,
 .repo-card:hover,
+.repo-featured:hover,
 .repo-featured-main:hover,
 .repo-featured-side:hover,
 .repo-spotlight-card:hover,
-.repo-spotlight-panel:hover
+.repo-spotlight-panel:hover,
+.surface-card:hover,
+.panel-card:hover,
+.card:hover,
+.section-card:hover,
+.hero-card:hover,
+.profile-card:hover,
+.stat-card:hover,
+.info-card:hover,
+.content-card:hover,
+.grid-card:hover,
+.contact-card:hover
 {
     transform:
         perspective(1000px)
