@@ -693,14 +693,59 @@ body:not([data-theme="light"]) .bg-grid-light
     transform: translateY(0);
 }
 
-.tilt-card, .mini-card, .value-card, .stat-card, .skills-radar-card, .radar-summary-card
+
+
+
+
+.hover-tilt-base,
+.panel,
+.mini-card,
+.value-card,
+.timeline-item,
+.level-item,
+.roadmap-item,
+.skill-display,
+.skills-radar-card,
+.timeline-strip,
+.stat-card,
+.map-display,
+.radar-summary-card,
+.repo-card,
+.repo-featured-main,
+.repo-featured-side,
+.repo-spotlight-card,
+.repo-spotlight-panel,
+.contact-panel
 {
     transform-style: preserve-3d;
     will-change: transform;
-    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease,
+        background-color 0.18s ease,
+        opacity 0.14s ease;
 }
 
-.tilt-card:hover, .mini-card:hover, .value-card:hover, .stat-card:hover, .skills-radar-card:hover, .radar-summary-card:hover
+.hover-tilt-base:hover,
+.panel:hover,
+.mini-card:hover,
+.value-card:hover,
+.timeline-item:hover,
+.level-item:hover,
+.roadmap-item:hover,
+.skill-display:hover,
+.skills-radar-card:hover,
+.timeline-strip:hover,
+.stat-card:hover,
+.map-display:hover,
+.radar-summary-card:hover,
+.repo-card:hover,
+.repo-featured-main:hover,
+.repo-featured-side:hover,
+.repo-spotlight-card:hover,
+.repo-spotlight-panel:hover,
+.contact-panel:hover
 {
     transform:
         perspective(1000px)
@@ -709,6 +754,26 @@ body:not([data-theme="light"]) .bg-grid-light
         translateY(-2px);
     box-shadow: 0 18px 34px rgba(0,0,0,0.16);
     border-color: var(--panel-border-strong);
+}
+
+.repo-card:hover::before,
+.repo-featured-main:hover::before,
+.repo-featured-side:hover::before
+{
+    opacity: 1;
+}
+
+.repo-spotlight-card.is-floating
+{
+    transition:
+        transform 0.36s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.14s ease;
+}
+
+.repo-radar-wrap[hidden],
+.repo-tree-wrap[hidden]
+{
+    display: none;
 }
 
 .gyro-button
@@ -2056,25 +2121,7 @@ input, select, .small-pill
     pointer-events: none;
 }
 
-.repo-card:hover,
-.repo-featured-main:hover,
-.repo-featured-side:hover
-{
-    transform:
-        perspective(1000px)
-        rotateX(var(--spotlight-rotate-x, 0deg))
-        rotateY(var(--spotlight-rotate-y, 0deg))
-        translateY(-2px);
-    border-color: var(--panel-border-strong);
-    box-shadow: 0 18px 34px rgba(0,0,0,0.16);
-}
 
-.repo-card:hover::before,
-.repo-featured-main:hover::before,
-.repo-featured-side:hover::before
-{
-    opacity: 1;
-}
 
 .repo-card .repo-top,
 .repo-featured-main .repo-top,
