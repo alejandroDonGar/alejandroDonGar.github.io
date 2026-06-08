@@ -51,8 +51,8 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                         Especializado en el desarrollo de soluciones robustas con Java y la creación de interfaces interactivas de alto impacto.
                     </p>
                     <div style="display: flex; gap: 1rem;">
-                        <a href="#projects" class="btn-primary" data-t="btn_projects" style="background: var(--primary-gradient);">Explorar Proyectos <i class="fa-solid fa-arrow-right"></i></a>
-                        <a href="#about" class="sidebar-link-btn" data-t="btn_about" style="padding: 0.75rem 1.5rem; border: 1px solid var(--border-color); border-radius: 12px; font-weight: 600; text-decoration: none; color: var(--text-main);">Sobre mí</a>
+                        <a href="#projects" class="btn-primary scroll-link" data-t="btn_projects" style="background: var(--primary-gradient);">Explorar Proyectos <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#about" class="sidebar-link-btn scroll-link" data-t="btn_about" style="padding: 0.75rem 1.5rem; border: 1px solid var(--border-color); border-radius: 12px; font-weight: 600; text-decoration: none; color: var(--text-main);">Sobre mí</a>
                     </div>
                 </div>
                 <div data-aos="fade-left" data-aos-delay="400">
@@ -478,7 +478,7 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
     }
 
     // Smooth Scroll & Active Link
-    document.querySelectorAll('.sidebar-link').forEach(anchor => {
+    document.querySelectorAll('.sidebar-link, .scroll-link').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             if (href.startsWith('#')) {
@@ -489,9 +489,11 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                     targetElement.scrollIntoView({
                         behavior: 'smooth'
                     });
-                    // Actualizar clase activa manualmente
-                    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
-                    this.classList.add('active');
+                    // Actualizar clase activa si es un link de sidebar
+                    if (this.classList.contains('sidebar-link')) {
+                        document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+                        this.classList.add('active');
+                    }
                 }
             }
         });
@@ -520,12 +522,17 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         }
     });
 
+    // Event Listeners para botones de idioma
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => switchLanguage(btn.getAttribute('data-lang')));
+    });
+
     document.addEventListener('DOMContentLoaded', () => {
         if (typeof AOS !== 'undefined') {
             AOS.init({
                 duration: 800,
                 once: true,
-                disable: window.innerWidth < 768 // Desactivar en móvil si da problemas
+                disable: window.innerWidth < 768 
             });
         }
         fetchGitHubData();

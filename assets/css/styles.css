@@ -103,24 +103,25 @@ main {
     padding: 60px;
     width: calc(100% - 280px);
     position: relative;
-    z-index: 10; /* Asegurar que esté por encima de los glows */
+    z-index: 10;
     min-height: 100vh;
+    overflow: visible; /* Asegurar que el contenido no se corte */
 }
 
-/* Forzar visibilidad inicial para evitar el error de AOS */
-[data-aos] {
-    opacity: 1 !important;
-    transform: none !important;
-    visibility: visible !important;
-}
-
+/* Forzar visibilidad absoluta */
 section {
     padding: 60px 0;
     width: 100%;
-    min-height: auto; /* Evitar que las secciones vacías ocupen demasiado */
     opacity: 1 !important;
     visibility: visible !important;
     display: block !important;
+}
+
+#repos-container {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .hero-grid {
