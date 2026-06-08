@@ -38,11 +38,17 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         </div>
     </div>
 
-    <div class="lang-selector" style="border-top: 1px solid var(--border-color);">
-        <button class="lang-btn active" data-lang="es">ES</button>
-        <button class="lang-btn" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="de">DE</button>
-        <button class="lang-btn" data-lang="is">IS</button>
+    <div class="lang-selector" style="border-top: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 1rem; padding: 1.5rem;">
+        <div style="display: flex; gap: 0.5rem; justify-content: center;">
+            <button class="lang-btn active" data-lang="es">ES</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="de">DE</button>
+            <button class="lang-btn" data-lang="is">IS</button>
+        </div>
+        <button id="theme-toggle" class="social-btn" style="width: 100%; justify-content: center; gap: 12px; background: rgba(255,255,255,0.05);">
+            <i class="fa-solid fa-moon"></i>
+            <span id="theme-text">Modo Oscuro</span>
+        </button>
     </div>
 </aside>
 
@@ -363,6 +369,10 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         document.getElementById('prev-page').title = lang === 'es' ? 'Anterior' : (lang === 'en' ? 'Previous' : 'Zurück');
         document.getElementById('next-page').title = lang === 'es' ? 'Siguiente' : (lang === 'en' ? 'Next' : 'Nächste');
 
+        // Actualizar texto del tema al cambiar idioma
+        const currentTheme = html.getAttribute('data-theme') || 'dark';
+        setTheme(currentTheme);
+
         updatePagination(); 
     }
 
@@ -585,6 +595,34 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
             }, 2000);
         });
     }
+
+    // Lógica de Temas (Luz/Oscuro)
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('i');
+    const themeText = document.getElementById('theme-text');
+    const html = document.documentElement;
+
+    function setTheme(theme) {
+        html.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        
+        if (theme === 'light') {
+            themeIcon.className = 'fa-solid fa-sun';
+            themeText.textContent = currentLang === 'es' ? 'Modo Claro' : (currentLang === 'en' ? 'Light Mode' : (currentLang === 'de' ? 'Heller Modus' : 'Ljós stilling'));
+        } else {
+            themeIcon.className = 'fa-solid fa-moon';
+            themeText.textContent = currentLang === 'es' ? 'Modo Oscuro' : (currentLang === 'en' ? 'Dark Mode' : (currentLang === 'de' ? 'Dunkler Modus' : 'Dökk stilling'));
+        }
+    }
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = html.getAttribute('data-theme') || 'dark';
+        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+
+    // Inicializar tema al cargar
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    setTheme(savedTheme);
 
     document.addEventListener('DOMContentLoaded', () => {
         if (typeof AOS !== 'undefined') {
