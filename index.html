@@ -43,11 +43,12 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
     <!-- Hero Section -->
     <section id="home" style="padding-top: 0;">
         <div class="hero-card-container glass-card" data-aos="zoom-in">
-            <div class="hero-grid" style="grid-template-columns: 1.1fr 0.9fr; gap: 4rem;">
-                <div data-aos="fade-right" data-aos-delay="200">
-                    <span data-t="role_junior" style="display: inline-block; padding: 0.5rem 1rem; background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); border-radius: 100px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem;">ESTUDIANTE 1º DAM</span>
-                    <h1 data-t="hero_title" style="margin-bottom: 1.5rem;">Alejandro <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Donate</span></h1>
-                    <p data-t="hero_desc" style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem; line-height: 1.6;">
+            <div class="hero-grid-3">
+                <!-- Columna 1: Información -->
+                <div class="hero-column" data-aos="fade-right" data-aos-delay="200">
+                    <span data-t="role_junior" style="display: inline-block; width: fit-content; padding: 0.5rem 1rem; background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); border-radius: 100px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem;">ESTUDIANTE 1º DAM</span>
+                    <h1 data-t="hero_title" style="margin-bottom: 1rem; font-size: clamp(2rem, 5vw, 3.5rem);">Alejandro <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Donate</span></h1>
+                    <p data-t="hero_desc" style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.5;">
                         Especializado en el desarrollo de soluciones robustas con Java y la creación de interfaces interactivas de alto impacto.
                     </p>
                     <div style="display: flex; gap: 1rem;">
@@ -55,39 +56,23 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                         <a href="#about" class="sidebar-link-btn scroll-link" data-t="btn_about" style="padding: 0.75rem 1.5rem; border: 1px solid var(--border-color); border-radius: 12px; font-weight: 600; text-decoration: none; color: var(--text-main);">Sobre mí</a>
                     </div>
                 </div>
-                <div data-aos="fade-left" data-aos-delay="400">
-                    <div class="hero-profile-container" style="height: 350px; min-height: 350px; margin-bottom: 1.5rem;">
+
+                <!-- Columna 2: Imagen -->
+                <div class="hero-column hero-image-col" data-aos="fade-up" data-aos-delay="400">
+                    <div class="hero-profile-container">
                         <img src="{{ '/assets/img/perfil.jpg' | relative_url }}" alt="Alejandro Donate" class="hero-profile-img">
                     </div>
-                    <!-- Panel de Disciplinas y Lenguajes (NUEVO) -->
-                    <div class="hero-skills-panel">
-                        <div class="mini-bar-group">
-                            <!-- GitHub Languages (Dynamic Placeholder) -->
-                            <div class="mini-bar-item">
-                                <div class="mini-bar-label"><span>Java</span><span>90%</span></div>
-                                <div class="bar-container" style="height:6px;"><div class="bar-fill" style="width: 90%;"></div></div>
-                            </div>
-                            <div class="mini-bar-item">
-                                <div class="mini-bar-label"><span>SQL / BBDD</span><span>85%</span></div>
-                                <div class="bar-container" style="height:6px;"><div class="bar-fill" style="width: 85%;"></div></div>
-                            </div>
-                            <div class="mini-bar-item">
-                                <div class="mini-bar-label"><span>HTML/CSS/JS</span><span>80%</span></div>
-                                <div class="bar-container" style="height:6px;"><div class="bar-fill" style="width: 80%;"></div></div>
-                            </div>
-                            <div class="mini-bar-item">
-                                <div class="mini-bar-label"><span>XML/XPath</span><span>75%</span></div>
-                                <div class="bar-container" style="height:6px;"><div class="bar-fill" style="width: 75%;"></div></div>
-                            </div>
-                            <div class="mini-bar-item">
-                                <div class="mini-bar-label"><span>Mongo / NoSQL</span><span>65%</span></div>
-                                <div class="bar-container" style="height:6px;"><div class="bar-fill" style="width: 65%;"></div></div>
-                            </div>
-                            <div class="mini-bar-item">
-                                <div class="mini-bar-label"><span>BaseX / Cassandra</span><span>60%</span></div>
-                                <div class="bar-container" style="height:6px;"><div class="bar-fill" style="width: 60%;"></div></div>
-                            </div>
-                        </div>
+                </div>
+
+                <!-- Columna 3: Estadísticas / Disciplinas -->
+                <div class="hero-column hero-stats-col" data-aos="fade-left" data-aos-delay="600">
+                    <div class="skills-buttons-grid">
+                        <div class="skill-pill"><i class="fa-brands fa-java"></i> Java Expert</div>
+                        <div class="skill-pill"><i class="fa-solid fa-database"></i> SQL / NoSQL</div>
+                        <div class="skill-pill"><i class="fa-solid fa-globe"></i> Web Dev (JS/CSS)</div>
+                        <div class="skill-pill"><i class="fa-solid fa-file-code"></i> XML / XPath</div>
+                        <div class="skill-pill"><i class="fa-solid fa-leaf"></i> MongoDB / BaseX</div>
+                        <div class="skill-pill"><i class="fa-solid fa-server"></i> Cassandra DB</div>
                     </div>
                 </div>
             </div>
