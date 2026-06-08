@@ -73,7 +73,7 @@ aside {
 main {
     flex: 1;
     margin-left: 280px;
-    padding: 60px;
+    padding: 80px 60px; /* Aumentar padding superior para evitar que se pegue arriba */
     width: calc(100% - 280px);
     position: relative;
     z-index: 10;
@@ -115,6 +115,15 @@ section {
     position: relative !important;
     overflow: hidden !important;
     border: 1px solid var(--border-color) !important;
+    border-radius: 32px !important; /* Restaurar bordes curvos solicitados */
+    padding: 2.5rem !important; /* Restaurar espaciado interno */
+    background: var(--bg-card);
+}
+
+.hero-box, .glass-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .hero-box:hover, .skill-item:hover, .repo-card:hover, .glass-card:hover {
@@ -148,14 +157,14 @@ section {
 }
 
 .hero-image-box {
-    padding: 1.5rem;
+    padding: 1rem !important;
 }
 
 .hero-profile-container {
     width: 100%;
     height: 100%;
     min-height: 250px;
-    border-radius: 20px;
+    border-radius: 24px;
     overflow: hidden;
     border: 1px solid var(--border-color);
 }
@@ -222,8 +231,8 @@ section {
     background: var(--bg-card);
     backdrop-filter: var(--glass-blur);
     border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 2rem;
+    border-radius: 32px;
+    padding: 2.5rem;
 }
 
 /* Unificar efectos de Hover para todas las tarjetas (Glass, Repo, Skill) */
