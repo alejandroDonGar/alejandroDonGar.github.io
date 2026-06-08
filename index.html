@@ -66,8 +66,7 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                 <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap;">
                     <button onclick="copyEmail()" class="social-btn" id="email-btn" style="position: relative;">
                         <i class="fa-solid fa-envelope"></i>
-                        <span class="social-btn-text">Email</span>
-                        <div id="copy-toast" style="position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%); background: #22c55e; color: white; padding: 4px 12px; border-radius: 8px; font-size: 0.7rem; opacity: 0; transition: 0.3s; pointer-events: none; white-space: nowrap; font-weight: 700;">Correo copiado</div>
+                        <span id="email-text" class="social-btn-text">AlexDoGa.work@gmail.com</span>
                     </button>
                     <a href="https://www.linkedin.com/in/alejandrodongar/" target="_blank" class="social-btn">
                         <i class="fa-brands fa-linkedin"></i>
@@ -573,11 +572,16 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
 
     function copyEmail() {
         const email = 'AlexDoGa.work@gmail.com';
+        const emailText = document.getElementById('email-text');
+        const originalText = emailText.textContent;
+        
         navigator.clipboard.writeText(email).then(() => {
-            const toast = document.getElementById('copy-toast');
-            toast.style.opacity = '1';
+            emailText.textContent = 'Correo copiado';
+            emailText.style.color = '#22c55e';
+            
             setTimeout(() => {
-                toast.style.opacity = '0';
+                emailText.textContent = originalText;
+                emailText.style.color = '';
             }, 2000);
         });
     }

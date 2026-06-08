@@ -394,7 +394,7 @@ section {
     border: none;
 }
 
-/* Background Gradients & Pattern */
+/* Background Sci-Fi Grid */
 .bg-glow {
     position: fixed;
     inset: 0;
@@ -402,14 +402,41 @@ section {
     z-index: -1;
     background-color: var(--bg-body);
     background-image: 
-        radial-gradient(circle at 2px 2px, rgba(34, 197, 94, 0.05) 1px, transparent 0);
-    background-size: 40px 40px;
-    animation: bgMove 60s linear infinite;
+        linear-gradient(rgba(34, 197, 94, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34, 197, 94, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(circle at center, black, transparent 90%);
 }
 
-@keyframes bgMove {
-    from { background-position: 0 0; }
-    to { background-position: 400px 400px; }
+.bg-glow::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        linear-gradient(rgba(34, 197, 94, 0.2) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(34, 197, 94, 0.2) 2px, transparent 2px);
+    background-size: 60px 60px;
+    background-position: 0 0;
+    animation: gridGlow 8s linear infinite;
+    opacity: 0.5;
+}
+
+@keyframes gridGlow {
+    0% {
+        mask-image: radial-gradient(circle at 0% 0%, black 10%, transparent 20%);
+    }
+    25% {
+        mask-image: radial-gradient(circle at 100% 0%, black 10%, transparent 20%);
+    }
+    50% {
+        mask-image: radial-gradient(circle at 100% 100%, black 10%, transparent 20%);
+    }
+    75% {
+        mask-image: radial-gradient(circle at 0% 100%, black 10%, transparent 20%);
+    }
+    100% {
+        mask-image: radial-gradient(circle at 0% 0%, black 10%, transparent 20%);
+    }
 }
 
 /* Hero Box */
