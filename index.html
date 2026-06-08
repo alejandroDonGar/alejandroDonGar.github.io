@@ -42,20 +42,22 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
 <main>
     <!-- Hero Section -->
     <section id="home" style="padding-top: 0;">
-        <div class="hero-grid">
-            <div data-aos="fade-right">
-                <span data-t="role_junior" style="display: inline-block; padding: 0.5rem 1rem; background: rgba(34, 197, 94, 0.1); color: #22c55e; border-radius: 100px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem;">ESTUDIANTE 1º DAM</span>
-                <h1 data-t="hero_title" style="margin-bottom: 1.5rem;">Alejandro <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Donate</span></h1>
-                <p data-t="hero_desc" style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem; line-height: 1.6;">
-                    Especializado en el desarrollo de soluciones robustas con Java y la creación de interfaces interactivas de alto impacto.
-                </p>
-                <div style="display: flex; gap: 1rem;">
-                    <a href="#projects" class="btn-primary" data-t="btn_projects">Explorar Proyectos <i class="fa-solid fa-arrow-right"></i></a>
-                    <a href="#about" class="sidebar-link-btn" data-t="btn_about" style="padding: 0.75rem 1.5rem; border: 1px solid var(--border-color); border-radius: 12px; font-weight: 600; text-decoration: none; color: var(--text-main);">Sobre mí</a>
+        <div class="hero-card-container glass-card" data-aos="zoom-in">
+            <div class="hero-grid" style="grid-template-columns: 1fr 1fr; gap: 4rem;">
+                <div data-aos="fade-right" data-aos-delay="200">
+                    <span data-t="role_junior" style="display: inline-block; padding: 0.5rem 1rem; background: rgba(34, 197, 94, 0.1); color: #22c55e; border-radius: 100px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem;">ESTUDIANTE 1º DAM</span>
+                    <h1 data-t="hero_title" style="margin-bottom: 1.5rem;">Alejandro <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Donate</span></h1>
+                    <p data-t="hero_desc" style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem; line-height: 1.6;">
+                        Especializado en el desarrollo de soluciones robustas con Java y la creación de interfaces interactivas de alto impacto.
+                    </p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="#projects" class="btn-primary" data-t="btn_projects">Explorar Proyectos <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#about" class="sidebar-link-btn" data-t="btn_about" style="padding: 0.75rem 1.5rem; border: 1px solid var(--border-color); border-radius: 12px; font-weight: 600; text-decoration: none; color: var(--text-main);">Sobre mí</a>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-profile-container" data-aos="fade-left">
-                <img src="{{ '/assets/img/perfil.jpg' | relative_url }}" alt="Alejandro Donate" class="hero-profile-img">
+                <div class="hero-profile-container" data-aos="fade-left" data-aos-delay="400" style="height: 100%; min-height: 450px;">
+                    <img src="{{ '/assets/img/perfil.jpg' | relative_url }}" alt="Alejandro Donate" class="hero-profile-img">
+                </div>
             </div>
         </div>
     </section>
@@ -166,13 +168,19 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
     <section id="projects">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
             <h2 data-t="projects_title"><i class="fa-solid fa-folder-tree" style="color: #22c55e; margin-right: 15px;"></i> Proyectos GitHub</h2>
-            <div id="github-stats-total" style="display: flex; gap: 1rem;">
-                <!-- Cargado dinámicamente -->
-            </div>
         </div>
         
-        <div id="repos-container" style="display: flex; flex-direction: column; gap: 2rem;">
-            <!-- Fichas detalladas -->
+        <div class="glass-card" style="padding: 3rem; background: rgba(0,0,0,0.2);">
+            <div id="repos-container" style="display: flex; flex-direction: column; gap: 2rem;">
+                <!-- Fichas detalladas -->
+            </div>
+
+            <!-- Pagination Controls -->
+            <div class="pagination-controls">
+                <button id="prev-page" class="page-btn" disabled><i class="fa-solid fa-chevron-left"></i></button>
+                <span id="page-info">Página 1</span>
+                <button id="next-page" class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
         </div>
     </section>
 </main>
@@ -217,6 +225,9 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
 <script>
     const GITHUB_USERNAME = 'alejandroDonGar';
     const API_BASE = `https://api.github.com/users/${GITHUB_USERNAME}`;
+    let allRepos = [];
+    let currentPage = 1;
+    const reposPerPage = 3;
 
     const translations = {
         es: {
@@ -323,12 +334,42 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
             const userRes = await fetch(API_BASE);
             const userData = await userRes.json();
             
-            const reposRes = await fetch(`${API_BASE}/repos?sort=updated&per_page=10`);
-            const repos = await reposRes.json();
+            const reposRes = await fetch(`${API_BASE}/repos?sort=updated&per_page=100`);
+            allRepos = (await reposRes.json()).filter(r => !r.fork && r.name !== `${GITHUB_USERNAME}.github.io`);
             
-            renderRepos(repos);
+            updatePagination();
         } catch (e) { console.error(e); }
     }
+
+    function updatePagination() {
+        const totalPages = Math.ceil(allRepos.length / reposPerPage);
+        const start = (currentPage - 1) * reposPerPage;
+        const end = start + reposPerPage;
+        const currentRepos = allRepos.slice(start, end);
+
+        renderRepos(currentRepos);
+
+        document.getElementById('page-info').textContent = `Página ${currentPage} de ${totalPages}`;
+        document.getElementById('prev-page').disabled = currentPage === 1;
+        document.getElementById('next-page').disabled = currentPage === totalPages;
+    }
+
+    document.getElementById('prev-page').addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            updatePagination();
+            document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+
+    document.getElementById('next-page').addEventListener('click', () => {
+        const totalPages = Math.ceil(allRepos.length / reposPerPage);
+        if (currentPage < totalPages) {
+            currentPage++;
+            updatePagination();
+            document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+        }
+    });
 
     function renderRepos(repos) {
         const container = document.getElementById('repos-container');
