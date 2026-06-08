@@ -9,6 +9,13 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
 
 <!-- Navigation Dock -->
 <nav class="nav-dock glass" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
+    <div class="lang-selector">
+        <button class="lang-btn active" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="de">DE</button>
+        <button class="lang-btn" data-lang="is">IS</button>
+    </div>
+    <div style="width: 1px; background: var(--border-color); height: 20px; margin: 0 5px;"></div>
     <a href="#home" class="nav-link active" title="Inicio"><i class="fas fa-home"></i></a>
     <a href="#about" class="nav-link" title="Sobre mí"><i class="fas fa-user"></i></a>
     <a href="#skills" class="nav-link" title="Skills"><i class="fas fa-code"></i></a>
@@ -23,32 +30,35 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
     <div class="container">
         <div class="hero-grid">
             <div class="hero-content" data-aos="fade-right">
-                <span class="tag" style="margin-bottom: 1.5rem;">Junior Developer</span>
-                <h1>Hola, soy <span class="text-gradient">Alejandro</span></h1>
-                <p class="text-secondary" style="font-size: 1.25rem; margin-bottom: 2.5rem; max-width: 600px;">
+                <span class="tag" style="margin-bottom: 1.5rem;" data-t="role_junior">Junior Developer</span>
+                <h1 data-t="hero_title">Hola, soy <span class="text-gradient">Alejandro</span></h1>
+                <p class="text-secondary" style="font-size: 1.25rem; margin-bottom: 2.5rem; max-width: 600px;" data-t="hero_desc">
                     Estudiante de 1º DAM enfocado en crear soluciones robustas con Java y experiencias web interactivas.
                 </p>
                 <div class="hero-actions" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="#projects" class="btn btn-primary">Ver Proyectos <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
-                    <a href="#contact" class="btn btn-outline">Contacto</a>
+                    <a href="#projects" class="btn btn-primary" data-t="btn_projects">Ver Proyectos <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+                    <a href="#contact" class="btn btn-outline" data-t="btn_contact">Contacto</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
                         <h4 id="stat-repos">--</h4>
-                        <p>Proyectos</p>
+                        <p data-t="stat_repos">Proyectos</p>
                     </div>
                     <div class="stat-item">
                         <h4 id="stat-lang">--</h4>
-                        <p>Top Lenguaje</p>
+                        <p data-t="stat_lang">Top Lenguaje</p>
                     </div>
                     <div class="stat-item">
                         <h4 id="stat-activity">--</h4>
-                        <p>Días Activo</p>
+                        <p data-t="stat_activity">Días Activo</p>
                     </div>
                 </div>
             </div>
             <div class="hero-visual" data-aos="fade-left">
-                <div class="card glass" style="padding: 2rem; position: relative; height: 400px; display: flex; align-items: center; justify-content: center;">
+                <div class="profile-img-container">
+                    <img src="{{ '/assets/img/perfil.jpg' | relative_url }}" alt="Alejandro Donate" class="profile-img">
+                </div>
+                <div class="card glass" style="padding: 1.5rem; margin-top: 2rem; height: 250px;">
                     <canvas id="languagesChart"></canvas>
                 </div>
             </div>
@@ -56,170 +66,191 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
     </div>
 </section>
 
-<!-- Insights Section -->
-<section id="insights" style="padding-top: 0;">
-    <div class="container">
-        <div class="insights-grid">
-            <div class="mini-card card" data-aos="fade-up">
-                <i class="fas fa-bolt"></i>
-                <div>
-                    <h4 style="margin-bottom: 4px;">Foco Actual</h4>
-                    <p class="text-muted" style="margin:0;">Java & PostgreSQL</p>
-                </div>
-            </div>
-            <div class="mini-card card" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-terminal"></i>
-                <div>
-                    <h4 style="margin-bottom: 4px;">Entorno</h4>
-                    <p class="text-muted" style="margin:0;">VS Code & IntelliJ</p>
-                </div>
-            </div>
-            <div class="mini-card card" data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-globe-europe"></i>
-                <div>
-                    <h4 style="margin-bottom: 4px;">Ubicación</h4>
-                    <p class="text-muted" style="margin:0;">España</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- About Section -->
+<!-- Languages & Skills Section -->
 <section id="about">
     <div class="container">
-        <div style="margin-bottom: 3rem;" data-aos="fade-up">
-            <h2 class="text-gradient">Sobre mí</h2>
-            <p class="text-secondary">Mi camino en el mundo del desarrollo.</p>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-            <div class="card" data-aos="fade-up">
-                <h3>Mi Objetivo</h3>
-                <p class="text-secondary">
-                    Como estudiante de DAM, busco aplicar mis conocimientos en proyectos reales mientras sigo aprendiendo nuevas tecnologías. Me apasiona la lógica del backend y la claridad del frontend.
-                </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+            <!-- Sobre Mí -->
+            <div data-aos="fade-up">
+                <h2 class="text-gradient" data-t="about_title">Sobre mí</h2>
+                <div class="card" style="margin-top: 2rem;">
+                    <h3 data-t="goal_title">Mi Objetivo</h3>
+                    <p class="text-secondary" data-t="goal_desc">
+                        Como estudiante de DAM, busco aplicar mis conocimientos en proyectos reales mientras sigo aprendiendo nuevas tecnologías. Me apasiona la lógica del backend y la claridad del frontend.
+                    </p>
+                </div>
             </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="100">
-                <h3>Formación</h3>
-                <ul class="text-secondary" style="list-style: none;">
-                    <li style="margin-bottom: 1rem;"><i class="fas fa-graduation-cap" style="margin-right: 10px; color: var(--accent-primary);"></i> <strong>1º DAM</strong> - Desarrollo de Aplicaciones Multiplataforma</li>
-                    <li><i class="fas fa-book" style="margin-right: 10px; color: var(--accent-primary);"></i> <strong>Autodidacta</strong> - Java, SQL y Web Moderno</li>
-                </ul>
+
+            <!-- Niveles de Idiomas -->
+            <div data-aos="fade-up" data-aos-delay="100">
+                <h2 class="text-gradient" data-t="langs_title">Idiomas</h2>
+                <div class="card" style="margin-top: 2rem;">
+                    <div class="lang-bars">
+                        <!-- Inglés -->
+                        <div class="lang-item">
+                            <div class="lang-label">
+                                <span data-t="lang_en">Inglés</span>
+                                <span class="text-muted">B1/B2 (Oficial)</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 75%;"></div>
+                                <div class="progress-marker" style="left: 65%;"><span class="marker-label">B2</span></div>
+                                <div class="progress-marker" style="left: 85%; border-color: var(--accent-secondary);"><span class="marker-label" style="color:var(--accent-secondary)">Mi Opinión</span></div>
+                            </div>
+                        </div>
+                        <!-- Alemán -->
+                        <div class="lang-item">
+                            <div class="lang-label">
+                                <span data-t="lang_de">Alemán</span>
+                                <span class="text-muted">A2/B1</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                        <!-- Islandés -->
+                        <div class="lang-item">
+                            <div class="lang-label">
+                                <span data-t="lang_is">Islandés</span>
+                                <span class="text-muted">A1</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 20%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Skills Section -->
-<section id="skills" style="background: var(--bg-card);">
-    <div class="container">
-        <div style="text-align: center; margin-bottom: 4rem;" data-aos="fade-up">
-            <h2 class="text-gradient">Mis Skills</h2>
-            <p class="text-secondary">Herramientas que uso para construir.</p>
-        </div>
-        <div class="skills-container">
-            <div class="skill-card card" data-aos="zoom-in">
-                <i class="fab fa-java skill-icon" style="color: #007396;"></i>
-                <h3>Java</h3>
-                <p class="text-muted">POO & Lógica</p>
-            </div>
-            <div class="skill-card card" data-aos="zoom-in" data-aos-delay="100">
-                <i class="fas fa-database skill-icon" style="color: #336791;"></i>
-                <h3>Bases de Datos</h3>
-                <p class="text-muted">SQL & PostgreSQL</p>
-            </div>
-            <div class="skill-card card" data-aos="zoom-in" data-aos-delay="200">
-                <i class="fab fa-html5 skill-icon" style="color: #e34f26;"></i>
-                <h3>Web</h3>
-                <p class="text-muted">HTML, CSS & JS</p>
-            </div>
-            <div class="skill-card card" data-aos="zoom-in" data-aos-delay="300">
-                <i class="fas fa-code-branch skill-icon" style="color: #f05032;"></i>
-                <h3>Git</h3>
-                <p class="text-muted">Control de Versiones</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Projects Section -->
+<!-- Repositories Section -->
 <section id="projects">
     <div class="container">
         <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem;" data-aos="fade-up">
             <div>
-                <h2 class="text-gradient">Repositorios</h2>
-                <p class="text-secondary">Proyectos cargados desde GitHub.</p>
-            </div>
-            <div class="filters" style="display: flex; gap: 0.75rem;">
-                <button class="btn btn-outline btn-sm active" data-filter="all" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Todos</button>
-                <button class="btn btn-outline btn-sm" data-filter="Java" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Java</button>
-                <button class="btn btn-outline btn-sm" data-filter="HTML" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Web</button>
+                <h2 class="text-gradient" data-t="repos_title">Repositorios</h2>
+                <p class="text-secondary" data-t="repos_desc">Proyectos cargados desde GitHub.</p>
             </div>
         </div>
         
         <div id="repos-container" class="repo-grid">
-            <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
-                <i class="fas fa-circle-notch fa-spin fa-2x" style="color: var(--accent-primary);"></i>
-                <p style="margin-top: 1rem;">Cargando proyectos...</p>
-            </div>
-        </div>
-        
-        <div style="text-align: center; margin-top: 4rem;">
-            <a href="https://github.com/alejandroDonGar" target="_blank" class="btn btn-outline">Explorar todo en GitHub <i class="fab fa-github" style="margin-left: 8px;"></i></a>
+            <!-- Cargado dinámicamente -->
         </div>
     </div>
 </section>
-
-<!-- Contact Section -->
-<section id="contact">
-    <div class="container">
-        <div class="card glass" style="text-align: center; padding: 4rem 2rem;" data-aos="zoom-in">
-            <h2 class="text-gradient">¿Hablamos?</h2>
-            <p class="text-secondary" style="max-width: 600px; margin: 0 auto 2.5rem;">
-                Estoy abierto a nuevas oportunidades y colaboraciones. ¡Envíame un mensaje!
-            </p>
-            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                <a href="mailto:alexDoGa.Work@gmail.com" class="btn btn-primary"><i class="fas fa-envelope" style="margin-right: 8px;"></i> Email</a>
-                <a href="https://linkedin.com/in/alejandrodongar" target="_blank" class="btn btn-outline"><i class="fab fa-linkedin" style="margin-right: 8px;"></i> LinkedIn</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer style="padding: 3rem 0; text-align: center; border-top: 1px solid var(--border-color);">
-    <p class="text-muted">© 2024 Alejandro Donate García. Creado con pasión y Jekyll.</p>
-</footer>
-
-<style>
-    .bg-grid-decoration {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
-        background-size: 40px 40px;
-        opacity: 0.3;
-        pointer-events: none;
-    }
-</style>
 
 <script>
     const GITHUB_USERNAME = 'alejandroDonGar';
     const API_BASE = `https://api.github.com/users/${GITHUB_USERNAME}`;
     let allRepos = [];
     let chartInstance = null;
+    let currentLang = 'es';
+
+    const translations = {
+        es: {
+            role_junior: "Junior Developer",
+            hero_title: "Hola, soy Alejandro",
+            hero_desc: "Estudiante de 1º DAM enfocado en crear soluciones robustas con Java y experiencias web interactivas.",
+            btn_projects: "Ver Proyectos",
+            btn_contact: "Contacto",
+            stat_repos: "Proyectos",
+            stat_lang: "Top Lenguaje",
+            stat_activity: "Días Activo",
+            about_title: "Sobre mí",
+            goal_title: "Mi Objetivo",
+            goal_desc: "Como estudiante de DAM, busco aplicar mis conocimientos en proyectos reales mientras sigo aprendiendo nuevas tecnologías.",
+            langs_title: "Idiomas",
+            lang_en: "Inglés",
+            lang_de: "Alemán",
+            lang_is: "Islandés",
+            repos_title: "Repositorios",
+            repos_desc: "Proyectos cargados desde GitHub."
+        },
+        en: {
+            role_junior: "Junior Developer",
+            hero_title: "Hi, I'm Alejandro",
+            hero_desc: "1st year DAM student focused on creating robust solutions with Java and interactive web experiences.",
+            btn_projects: "View Projects",
+            btn_contact: "Contact",
+            stat_repos: "Projects",
+            stat_lang: "Top Language",
+            stat_activity: "Active Days",
+            about_title: "About me",
+            goal_title: "My Goal",
+            goal_desc: "As a DAM student, I seek to apply my knowledge in real projects while continuing to learn new technologies.",
+            langs_title: "Languages",
+            lang_en: "English",
+            lang_de: "German",
+            lang_is: "Icelandic",
+            repos_title: "Repositories",
+            repos_desc: "Projects loaded from GitHub."
+        },
+        de: {
+            role_junior: "Junior-Entwickler",
+            hero_title: "Hallo, ich bin Alejandro",
+            hero_desc: "DAM-Student im 1. Jahr, spezialisiert auf robuste Java-Lösungen und interaktive Weberlebnisse.",
+            btn_projects: "Projekte sehen",
+            btn_contact: "Kontakt",
+            stat_repos: "Projekte",
+            stat_lang: "Hauptsprache",
+            stat_activity: "Aktive Tage",
+            about_title: "Über mich",
+            goal_title: "Mein Ziel",
+            goal_desc: "Als DAM-Student möchte ich mein Wissen in realen Projekten anwenden und ständig neue Technologien erlernen.",
+            langs_title: "Sprachen",
+            lang_en: "Englisch",
+            lang_de: "Deutsch",
+            lang_is: "Isländisch",
+            repos_title: "Repositories",
+            repos_desc: "Von GitHub geladene Projekte."
+        },
+        is: {
+            role_junior: "Aðstoðarforritari",
+            hero_title: "Halló, ég heiti Alejandro",
+            hero_desc: "1. árs DAM nemandi sem einbeitir sér að því að búa til öflugar lausnir með Java og gagnvirka vefupplifun.",
+            btn_projects: "Skoða verkefni",
+            btn_contact: "Hafa samband",
+            stat_repos: "Verkefni",
+            stat_lang: "Helsta tungumál",
+            stat_activity: "Virkir dagar",
+            about_title: "Um mig",
+            goal_title: "Markmið mitt",
+            goal_desc: "Sem DAM nemandi leitast ég við að nýta þekkingu mína í raunverulegum verkefnum á meðan ég held áfram að læra nýja tækni.",
+            langs_title: "Tungumál",
+            lang_en: "Enska",
+            lang_de: "Þýska",
+            lang_is: "Íslenska",
+            repos_title: "Geymslur",
+            repos_desc: "Verkefni hlaðin frá GitHub."
+        }
+    };
+
+    function switchLanguage(lang) {
+        currentLang = lang;
+        document.querySelectorAll('[data-t]').forEach(el => {
+            const key = el.getAttribute('data-t');
+            if (translations[lang][key]) {
+                if (el.tagName === 'A' || el.tagName === 'BUTTON') {
+                    const icon = el.querySelector('i');
+                    el.textContent = translations[lang][key];
+                    if (icon) el.appendChild(icon);
+                } else {
+                    el.textContent = translations[lang][key];
+                }
+            }
+        });
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+        });
+    }
 
     async function fetchGitHubData() {
         try {
             const userRes = await fetch(API_BASE);
             const userData = await userRes.json();
-            
-            if (document.getElementById('stat-repos')) {
-                document.getElementById('stat-repos').textContent = userData.public_repos || '0';
-            }
+            document.getElementById('stat-repos').textContent = userData.public_repos;
             
             const reposRes = await fetch(`${API_BASE}/repos?sort=updated&per_page=100`);
             allRepos = await reposRes.json();
@@ -227,60 +258,66 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
             renderRepos(allRepos);
             renderLanguagesChart(allRepos);
             
-            const languages = allRepos.map(r => r.language).filter(Boolean);
-            const topLang = languages.sort((a,b) =>
-                languages.filter(v => v===a).length - languages.filter(v => v===b).length
-            ).pop();
-            if (document.getElementById('stat-lang')) {
-                document.getElementById('stat-lang').textContent = topLang || 'Java';
-            }
-            
             const createdDate = new Date(userData.created_at);
             const diffDays = Math.ceil(Math.abs(new Date() - createdDate) / (1000 * 60 * 60 * 24));
-            if (document.getElementById('stat-activity')) {
-                document.getElementById('stat-activity').textContent = diffDays;
-            }
-
-        } catch (error) {
-            console.error('GitHub API Error:', error);
-            const container = document.getElementById('repos-container');
-            if (container) container.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">No se pudieron cargar los repositorios. Revisa tu conexión.</p>';
-        }
+            document.getElementById('stat-activity').textContent = diffDays;
+        } catch (e) { console.error(e); }
     }
 
-    function renderRepos(repos, filter = 'all') {
+    async function fetchRepoDetails(repoName) {
+        const [langs, commits] = await Promise.all([
+            fetch(`${API_BASE.replace('users', 'repos')}/${repoName}/languages`).then(r => r.json()),
+            fetch(`${API_BASE.replace('users', 'repos')}/${repoName}/commits?per_page=5`).then(r => r.json())
+        ]);
+        return { langs, commits };
+    }
+
+    function renderRepos(repos) {
         const container = document.getElementById('repos-container');
-        if (!container) return;
         container.innerHTML = '';
         
-        let filtered = repos.filter(r => !r.fork && r.name !== `${GITHUB_USERNAME}.github.io`);
-        if (filter !== 'all') {
-            filtered = filtered.filter(r => r.language === filter || (r.topics && r.topics.includes(filter.toLowerCase())));
-        }
-
-        filtered.slice(0, 6).forEach(repo => {
+        repos.filter(r => !r.fork && r.name !== `${GITHUB_USERNAME}.github.io`).slice(0, 6).forEach(repo => {
             const card = document.createElement('div');
             card.className = 'repo-card card';
             card.setAttribute('data-aos', 'fade-up');
             
             card.innerHTML = `
-                <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                    <h3 style="margin:0; font-size: 1.25rem;">${repo.name}</h3>
-                    <a href="${repo.html_url}" target="_blank" style="color:var(--text-muted);"><i class="fab fa-github fa-lg"></i></a>
+                <div style="display:flex; justify-content:space-between;">
+                    <h3>${repo.name}</h3>
+                    <i class="fab fa-github fa-lg"></i>
                 </div>
-                <p>${repo.description || 'Este repositorio no tiene descripción.'}</p>
-                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <p>${repo.description || '...'}</p>
+                <div class="repo-tags">
                     ${repo.language ? `<span class="tag">${repo.language}</span>` : ''}
-                    ${repo.topics ? repo.topics.slice(0, 2).map(t => `<span class="tag">${t}</span>`).join('') : ''}
                 </div>
-                <div class="repo-footer">
-                    <div style="display:flex; gap:15px; font-size: 0.85rem; color: var(--text-muted);">
-                        <span><i class="far fa-star"></i> ${repo.stargazers_count}</span>
-                        <span><i class="fas fa-code-branch"></i> ${repo.forks_count}</span>
+                <div class="repo-details-overlay glass">
+                    <div class="repo-details-content">
+                        <small><strong>Lenguajes:</strong></small>
+                        <div class="repo-langs-bars" id="langs-${repo.id}">Cargando...</div>
+                        <div style="margin-top:10px;">
+                            <small><strong>Últimos Commits:</strong></small>
+                            <ul id="commits-${repo.id}" style="font-size:0.7rem; list-style:none; padding:0; color:var(--text-secondary);"></ul>
+                        </div>
                     </div>
-                    <a href="${repo.html_url}" target="_blank" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;">Ver Proyecto</a>
                 </div>
             `;
+
+            card.addEventListener('mouseenter', async () => {
+                const details = await fetchRepoDetails(repo.name);
+                const langDiv = document.getElementById(`langs-${repo.id}`);
+                const commitUl = document.getElementById(`commits-${repo.id}`);
+                
+                if (langDiv) {
+                    langDiv.innerHTML = Object.entries(details.langs).slice(0, 3).map(([l, v]) => `
+                        <div style="font-size:0.6rem;">${l}</div>
+                        <div class="repo-mini-bar"><div class="repo-mini-fill" style="width:${Math.random()*100}%"></div></div>
+                    `).join('');
+                }
+                if (commitUl) {
+                    commitUl.innerHTML = details.commits.slice(0, 3).map(c => `<li>- ${c.commit.message.substring(0, 30)}...</li>`).join('');
+                }
+            });
+
             container.appendChild(card);
         });
     }
@@ -288,103 +325,44 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
     function renderLanguagesChart(repos) {
         const langMap = {};
         repos.forEach(repo => { if (repo.language) langMap[repo.language] = (langMap[repo.language] || 0) + 1; });
-
-        const ctx = document.getElementById('languagesChart');
-        if (!ctx) return;
-        
-        if (chartInstance) chartInstance.destroy();
-
-        chartInstance = new Chart(ctx.getContext('2d'), {
+        const ctx = document.getElementById('languagesChart').getContext('2d');
+        chartInstance = new Chart(ctx, {
             type: 'doughnut',
             data: {
                 labels: Object.keys(langMap),
                 datasets: [{
                     data: Object.values(langMap),
                     backgroundColor: ['#6366f1', '#a855f7', '#ec4899', '#f59e0b', '#10b981', '#3b82f6'],
-                    borderWidth: 0,
-                    hoverOffset: 15
+                    borderWidth: 0
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            color: '#94a3b8',
-                            padding: 20,
-                            font: { family: 'Inter', size: 12, weight: '500' }
-                        }
-                    },
-                    tooltip: {
-                        backgroundColor: '#16161a',
-                        titleColor: '#f8fafc',
-                        bodyColor: '#94a3b8',
-                        borderColor: 'rgba(255,255,255,0.1)',
-                        borderWidth: 1,
-                        padding: 12,
-                        displayColors: false
-                    }
-                },
-                cutout: '75%'
+                plugins: { legend: { position: 'right', labels: { color: '#94a3b8', font: { size: 10 } } } },
+                cutout: '70%'
             }
         });
     }
 
-    // Event Listeners
-    document.querySelectorAll('.filters .btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const activeBtn = document.querySelector('.filters .btn.active');
-            if (activeBtn) activeBtn.classList.remove('active');
-            btn.classList.add('active');
-            renderRepos(allRepos, btn.getAttribute('data-filter'));
+    // Mouse glow effect
+    document.addEventListener('mousemove', e => {
+        document.querySelectorAll('.card').forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--x', `${x}px`);
+            card.style.setProperty('--y', `${y}px`);
         });
     });
 
-    // Theme Toggle
-    const themeBtn = document.getElementById('theme-toggle');
-    if (themeBtn) {
-        themeBtn.addEventListener('click', () => {
-            const html = document.documentElement;
-            const current = html.getAttribute('data-theme');
-            const target = current === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', target);
-            themeBtn.innerHTML = target === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-            localStorage.setItem('theme', target);
-            if (chartInstance) renderLanguagesChart(allRepos); // Re-render chart for new theme colors
-        });
-        
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            themeBtn.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-        }
-    }
+    // Event Listeners
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => switchLanguage(btn.getAttribute('data-lang')));
+    });
 
-    // Intersection Observer for Active Nav Links
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('id');
-                const link = document.querySelector(`.nav-link[href="#${id}"]`);
-                if (link) {
-                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                    link.classList.add('active');
-                }
-            }
-        });
-    }, { threshold: 0.5 });
-
-    document.querySelectorAll('section[id]').forEach(section => observer.observe(section));
-
-    // Initialize
     document.addEventListener('DOMContentLoaded', () => {
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100
-        });
+        AOS.init();
         fetchGitHubData();
     });
 </script>
