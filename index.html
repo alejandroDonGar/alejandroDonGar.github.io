@@ -29,6 +29,13 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         <a href="#about" class="sidebar-link" id="nav-about"><i class="fa-solid fa-user"></i> <span>Sobre mí</span></a>
         <a href="#english" class="sidebar-link" id="nav-english"><i class="fa-solid fa-language"></i> <span>Inglés</span></a>
         <a href="#projects" class="sidebar-link" id="nav-projects"><i class="fa-solid fa-laptop-code"></i> <span>Proyectos</span></a>
+        
+        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+            <a href="{{ '/assets/pdf/cv.pdf' | relative_url }}" class="sidebar-link" target="_blank">
+                <i class="fa-solid fa-file-pdf" style="color: #ef4444;"></i> 
+                <span>Descargar PDF</span>
+            </a>
+        </div>
     </div>
 
     <div class="lang-selector" style="border-top: 1px solid var(--border-color);">
@@ -53,6 +60,19 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                     <a href="#projects" class="btn-primary scroll-link" data-t="btn_projects" style="background: var(--primary-gradient); padding: 0.75rem 1.25rem; font-size: 0.9rem;">Proyectos <i class="fa-solid fa-arrow-right"></i></a>
                     <a href="#about" class="sidebar-link-btn scroll-link" data-t="btn_about" style="padding: 0.75rem 1.25rem; border: 1px solid var(--border-color); border-radius: 12px; font-weight: 600; text-decoration: none; color: var(--text-main); font-size: 0.9rem;">Sobre mí</a>
+                </div>
+                
+                <!-- Social & Contact -->
+                <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap;">
+                    <button onclick="copyEmail()" class="social-btn" id="email-btn" style="position: relative;">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span class="social-btn-text">Email</span>
+                        <div id="copy-toast" style="position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%); background: #22c55e; color: white; padding: 4px 12px; border-radius: 8px; font-size: 0.7rem; opacity: 0; transition: 0.3s; pointer-events: none; white-space: nowrap; font-weight: 700;">Correo copiado</div>
+                    </button>
+                    <a href="https://www.linkedin.com/in/alejandrodongar/" target="_blank" class="social-btn">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <span class="social-btn-text">LinkedIn</span>
+                    </a>
                 </div>
             </div>
 
@@ -550,6 +570,17 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => switchLanguage(btn.getAttribute('data-lang')));
     });
+
+    function copyEmail() {
+        const email = 'AlexDoGa.work@gmail.com';
+        navigator.clipboard.writeText(email).then(() => {
+            const toast = document.getElementById('copy-toast');
+            toast.style.opacity = '1';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+            }, 2000);
+        });
+    }
 
     document.addEventListener('DOMContentLoaded', () => {
         if (typeof AOS !== 'undefined') {
