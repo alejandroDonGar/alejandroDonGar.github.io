@@ -42,16 +42,16 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
 <main>
     <!-- Hero Section -->
     <section id="home" style="padding-top: 0;">
-        <div class="hero-grid" style="grid-template-columns: 1fr 1fr; gap: 4rem;">
+        <div class="hero-grid">
             <div data-aos="fade-right">
-                <span style="display: inline-block; padding: 0.5rem 1rem; background: rgba(34, 197, 94, 0.1); color: #22c55e; border-radius: 100px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem;">ESTUDIANTE 1º DAM</span>
-                <h1 style="margin-bottom: 1.5rem;">Alejandro <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Donate</span></h1>
-                <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem; line-height: 1.6;">
+                <span data-t="role_junior" style="display: inline-block; padding: 0.5rem 1rem; background: rgba(34, 197, 94, 0.1); color: #22c55e; border-radius: 100px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem;">ESTUDIANTE 1º DAM</span>
+                <h1 data-t="hero_title" style="margin-bottom: 1.5rem;">Alejandro <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Donate</span></h1>
+                <p data-t="hero_desc" style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem; line-height: 1.6;">
                     Especializado en el desarrollo de soluciones robustas con Java y la creación de interfaces interactivas de alto impacto.
                 </p>
                 <div style="display: flex; gap: 1rem;">
-                    <a href="#projects" class="btn-primary">Explorar Proyectos <i class="fa-solid fa-arrow-right"></i></a>
-                    <a href="mailto:alexDoGa.Work@gmail.com" style="padding: 0.75rem 1.5rem; border: 1px solid var(--border-color); border-radius: 12px; font-weight: 600; text-decoration: none; color: var(--text-main);">Contacto</a>
+                    <a href="#projects" class="btn-primary" data-t="btn_projects">Explorar Proyectos <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#about" class="sidebar-link-btn" data-t="btn_about" style="padding: 0.75rem 1.5rem; border: 1px solid var(--border-color); border-radius: 12px; font-weight: 600; text-decoration: none; color: var(--text-main);">Sobre mí</a>
                 </div>
             </div>
             <div class="hero-profile-container" data-aos="fade-left">
@@ -60,8 +60,19 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         </div>
     </section>
 
-    <section id="english">
-        <h2 style="margin-bottom: 3rem;"><i class="fa-solid fa-graduation-cap" style="color: #22c55e; margin-right: 15px;"></i> Dominio del <span style="color: #22c55e;">Inglés</span></h2>
+    <!-- About Section (Asegurar que el ID existe) -->
+    <section id="about">
+        <h2 data-t="about_title" style="margin-bottom: 3rem;"><i class="fa-solid fa-user" style="color: #22c55e; margin-right: 15px;"></i> <span style="color: #22c55e;">Sobre</span> mí</h2>
+        <div class="glass-card">
+            <h3 data-t="goal_title">Mi Objetivo</h3>
+            <p data-t="goal_desc" style="color: var(--text-muted); font-size: 1.1rem;">
+                Como estudiante de Desarrollo de Aplicaciones Multiplataforma, mi meta es fusionar la eficiencia del backend con experiencias de usuario intuitivas y modernas.
+            </p>
+        </div>
+    </section>
+
+    <!-- English Section --><section id="english">
+        <h2 style="margin-bottom: 3rem;"><i class="fa-solid fa-graduation-cap" style="color: #22c55e; margin-right: 15px;"></i> <span data-t="lang_section">Dominio del Inglés</span></h2>
         
         <div class="skill-grid">
             <!-- Hablado: 70% entre B1 y B2 Oficial | 20% entre B2 y C1 Perspectiva -->
@@ -154,7 +165,7 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
     <!-- Repositories -->
     <section id="projects">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
-            <h2><i class="fa-solid fa-folder-tree" style="color: #22c55e; margin-right: 15px;"></i> Proyectos <span style="color: #22c55e;">GitHub</span></h2>
+            <h2 data-t="projects_title"><i class="fa-solid fa-folder-tree" style="color: #22c55e; margin-right: 15px;"></i> Proyectos GitHub</h2>
             <div id="github-stats-total" style="display: flex; gap: 1rem;">
                 <!-- Cargado dinámicamente -->
             </div>
@@ -211,6 +222,106 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
 <script>
     const GITHUB_USERNAME = 'alejandroDonGar';
     const API_BASE = `https://api.github.com/users/${GITHUB_USERNAME}`;
+
+    const translations = {
+        es: {
+            role_junior: "ESTUDIANTE 1º DAM",
+            hero_title: "Alejandro Donate",
+            hero_desc: "Especializado en el desarrollo de soluciones robustas con Java y la creación de interfaces interactivas de alto impacto.",
+            btn_projects: "Explorar Proyectos",
+            btn_about: "Sobre mí",
+            about_title: "Sobre mí",
+            goal_title: "Mi Objetivo",
+            goal_desc: "Como estudiante de Desarrollo de Aplicaciones Multiplataforma, mi meta es fusionar la eficiencia del backend con experiencias de usuario intuitivas y modernas.",
+            lang_section: "Dominio del Inglés",
+            projects_title: "Proyectos GitHub",
+            stat_updated: "Actualizado",
+            nav_home: "Inicio",
+            nav_about: "Sobre mí",
+            nav_english: "Inglés",
+            nav_projects: "Proyectos"
+        },
+        en: {
+            role_junior: "1st YEAR DAM STUDENT",
+            hero_title: "Alejandro Donate",
+            hero_desc: "Specialized in developing robust solutions with Java and creating high-impact interactive interfaces.",
+            btn_projects: "Explore Projects",
+            btn_about: "About Me",
+            about_title: "About Me",
+            goal_title: "My Goal",
+            goal_desc: "As a Multiplatform Application Development student, my goal is to merge backend efficiency with intuitive and modern user experiences.",
+            lang_section: "English Proficiency",
+            projects_title: "GitHub Projects",
+            stat_updated: "Updated",
+            nav_home: "Home",
+            nav_about: "About Me",
+            nav_english: "English",
+            nav_projects: "Projects"
+        },
+        de: {
+            role_junior: "DAM-STUDENT IM 1. JAHR",
+            hero_title: "Alejandro Donate",
+            hero_desc: "Spezialisiert auf die Entwicklung robuster Lösungen mit Java und die Erstellung hochwirksamer interaktiver Schnittstellen.",
+            btn_projects: "Projekte erkunden",
+            btn_about: "Über mich",
+            about_title: "Über mich",
+            goal_title: "Mein Ziel",
+            goal_desc: "Als Student der plattformübergreifenden Anwendungsentwicklung ist es mein Ziel, Backend-Effizienz mit intuitiven und modernen Benutzererlebnissen zu verschmelzen.",
+            lang_section: "Englischkenntnisse",
+            projects_title: "GitHub-Projekte",
+            stat_updated: "Aktualisiert",
+            nav_home: "Startseite",
+            nav_about: "Über mich",
+            nav_english: "Englisch",
+            nav_projects: "Projekte"
+        },
+        is: {
+            role_junior: "1. ÁRS DAM NEMANDI",
+            hero_title: "Alejandro Donate",
+            hero_desc: "Sérhæfður í að þróa öflugar lausnir með Java og búa til gagnvirk viðmót með miklum áhrifum.",
+            btn_projects: "Skoða verkefni",
+            btn_about: "Um mig",
+            about_title: "Um mig",
+            goal_title: "Markmið mitt",
+            goal_desc: "Sem nemandi í þróun fjölvettvangsforrita er markmið mitt að sameina skilvirkni bakvinnslu við innsæi og nútímalega notendaupplifun.",
+            lang_section: "Enskukunnátta",
+            projects_title: "GitHub verkefni",
+            stat_updated: "Uppfært",
+            nav_home: "Heim",
+            nav_about: "Um mig",
+            nav_english: "Enska",
+            nav_projects: "Verkefni"
+        }
+    };
+
+    function switchLanguage(lang) {
+        currentLang = lang;
+        document.querySelectorAll('[data-t]').forEach(el => {
+            const key = el.getAttribute('data-t');
+            if (translations[lang] && translations[lang][key]) {
+                // Preservar iconos si existen
+                const icon = el.querySelector('i');
+                el.textContent = translations[lang][key];
+                if (icon) el.prepend(icon);
+            }
+        });
+        
+        // Actualizar Sidebar links
+        document.querySelectorAll('.sidebar-link span').forEach(span => {
+            const id = span.parentElement.id.replace('nav-', '');
+            const key = `nav_${id}`;
+            if (translations[lang] && translations[lang][key]) {
+                span.textContent = translations[lang][key];
+            }
+        });
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+        });
+
+        // Re-render repos para aplicar traducciones si fuera necesario (opcional)
+        fetchGitHubData(); 
+    }
 
     async function fetchGitHubData() {
         try {
