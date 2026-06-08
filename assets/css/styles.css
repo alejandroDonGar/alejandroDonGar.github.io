@@ -366,69 +366,116 @@ p { margin-bottom: 1rem; }
     color: var(--accent-primary);
 }
 
-/* Repositories Grid */
+/* Repo Section Redesign */
 .repo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
+    grid-template-columns: 1fr; /* Una columna para mayor detalle */
+    gap: 3rem;
 }
 
 .repo-card {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    padding: 3rem;
+    background: linear-gradient(145deg, var(--bg-card), rgba(99, 102, 241, 0.05));
+    border-radius: 24px;
+}
+
+.repo-main-info {
     display: flex;
     flex-direction: column;
-    height: 100%;
 }
 
-.repo-card p {
-    flex-grow: 1;
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    margin: 1rem 0;
-}
-
-.repo-details-overlay {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--bg-card);
-    border: 1px solid var(--accent-primary);
-    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-    padding: 1rem;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.4s ease;
-    z-index: 10;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-}
-
-.repo-card:hover .repo-details-overlay {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.repo-mini-bar {
-    height: 4px;
-    background: var(--bg-main);
-    border-radius: 2px;
-    margin-top: 5px;
-}
-
-.repo-mini-fill {
-    height: 100%;
-    background: var(--accent-primary);
-}
-
-.repo-footer {
+.repo-title-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+}
+
+.repo-title-row h3 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.repo-meta-sidebar {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+}
+
+.repo-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.repo-stat-box {
+    text-align: center;
+    padding: 0.75rem;
+    background: var(--bg-main);
+    border-radius: 12px;
+}
+
+.repo-stat-box i {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--accent-primary);
+}
+
+.repo-lang-chart-mini {
+    margin-top: 1rem;
+}
+
+.lang-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+}
+
+.lang-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+/* Profile Image Update */
+.profile-img-container {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    overflow: hidden;
+    animation: blobify 8s ease-in-out infinite alternate;
+    border: 6px solid var(--accent-primary);
+    box-shadow: 0 0 40px var(--glow-primary);
+    z-index: 2;
+}
+
+.profile-img-container::before {
+    content: '';
+    position: absolute;
+    inset: -15px;
+    border: 2px solid var(--accent-secondary);
+    border-radius: inherit;
+    z-index: -1;
+    animation: blobify 10s infinite alternate-reverse;
+    opacity: 0.5;
+}
+
+@media (max-width: 992px) {
+    .repo-card {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+    }
+    .repo-meta-sidebar {
+        order: -1;
+    }
 }
 
 /* Skills */

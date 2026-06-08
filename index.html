@@ -276,49 +276,78 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         const container = document.getElementById('repos-container');
         container.innerHTML = '';
         
-        repos.filter(r => !r.fork && r.name !== `${GITHUB_USERNAME}.github.io`).slice(0, 6).forEach(repo => {
+        repos.filter(r => !r.fork && r.name !== `${GITHUB_USERNAME}.github.io`).slice(0, 5).forEach(repo => {
             const card = document.createElement('div');
             card.className = 'repo-card card';
             card.setAttribute('data-aos', 'fade-up');
             
             card.innerHTML = `
-                <div style="display:flex; justify-content:space-between;">
-                    <h3>${repo.name}</h3>
-                    <i class="fab fa-github fa-lg"></i>
-                </div>
-                <p>${repo.description || '...'}</p>
-                <div class="repo-tags">
-                    ${repo.language ? `<span class="tag">${repo.language}</span>` : ''}
-                </div>
-                <div class="repo-details-overlay glass">
-                    <div class="repo-details-content">
-                        <small><strong>Lenguajes:</strong></small>
-                        <div class="repo-langs-bars" id="langs-${repo.id}">Cargando...</div>
-                        <div style="margin-top:10px;">
-                            <small><strong>Últimos Commits:</strong></small>
-                            <ul id="commits-${repo.id}" style="font-size:0.7rem; list-style:none; padding:0; color:var(--text-secondary);"></ul>
+                <div class="repo-main-info">
+                    <div class="repo-title-row">
+                        <h3>${repo.name}</h3>
+                        <div style="display:flex; gap:1rem;">
+                            <a href="${repo.html_url}" target="_blank" class="btn btn-outline" style="padding:0.5rem;"><i class="fab fa-github"></i></a>
+                            ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="btn btn-primary" style="padding:0.5rem;"><i class="fas fa-external-link-alt"></i></a>` : ''}
                         </div>
+                    </div>
+                    <p style="font-size:1.1rem; color:var(--text-secondary); margin-bottom:2rem;">${repo.description || 'Sin descripción detallada disponible en el repositorio.'}</p>
+                    <div style="margin-top:auto;">
+                        <div class="repo-tags">
+                            ${repo.topics ? repo.topics.map(t => `<span class="tag">#${t}</span>`).join('') : ''}
+                        </div>
+                        <div style="margin-top:1.5rem; display:flex; gap:2rem; font-size:0.9rem; color:var(--text-muted);">
+                            <span><i class="far fa-calendar-alt"></i> Actualizado: ${new Date(repo.updated_at).toLocaleDateString()}</span>
+                            <span><i class="fas fa-balance-scale"></i> ${repo.license ? repo.license.name : 'No license'}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="repo-meta-sidebar">
+                    <div class="repo-stats-grid">
+                        <div class="repo-stat-box">
+                            <i class="far fa-star"></i>
+                            <strong>${repo.stargazers_count}</strong>
+                        </div>
+                        <div class="repo-stat-box">
+                            <i class="fas fa-code-branch"></i>
+                            <strong>${repo.forks_count}</strong>
+                        </div>
+                        <div class="repo-stat-box">
+                            <i class="far fa-eye"></i>
+                            <strong>${repo.watchers_count}</strong>
+                        </div>
+                        <div class="repo-stat-box">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <strong>${repo.open_issues_count}</strong>
+                        </div>
+                    </div>
+                    <div class="repo-lang-chart-mini" id="langs-${repo.id}">
+                        <div class="loading-s" style="font-size:0.8rem;">Cargando lenguajes...</div>
                     </div>
                 </div>
             `;
 
-            card.addEventListener('mouseenter', async () => {
-                const details = await fetchRepoDetails(repo.name);
+            container.appendChild(card);
+            
+            // Cargar lenguajes detallados
+            fetchRepoDetails(repo.name).then(details => {
                 const langDiv = document.getElementById(`langs-${repo.id}`);
-                const commitUl = document.getElementById(`commits-${repo.id}`);
-                
                 if (langDiv) {
-                    langDiv.innerHTML = Object.entries(details.langs).slice(0, 3).map(([l, v]) => `
-                        <div style="font-size:0.6rem;">${l}</div>
-                        <div class="repo-mini-bar"><div class="repo-mini-fill" style="width:${Math.random()*100}%"></div></div>
-                    `).join('');
-                }
-                if (commitUl) {
-                    commitUl.innerHTML = details.commits.slice(0, 3).map(c => `<li>- ${c.commit.message.substring(0, 30)}...</li>`).join('');
+                    const total = Object.values(details.langs).reduce((a, b) => a + b, 0);
+                    langDiv.innerHTML = `
+                        <p style="font-size:0.8rem; font-weight:700; margin-bottom:10px;">Composición:</p>
+                        ${Object.entries(details.langs).map(([l, v]) => {
+                            const pct = ((v/total)*100).toFixed(1);
+                            return `
+                                <div class="lang-pill">
+                                    <span class="lang-dot" style="background:var(--accent-primary)"></span>
+                                    <span>${l}</span>
+                                    <span style="margin-left:auto; color:var(--text-muted);">${pct}%</span>
+                                </div>
+                            `;
+                        }).join('')}
+                    `;
                 }
             });
-
-            container.appendChild(card);
         });
     }
 
