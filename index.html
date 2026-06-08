@@ -43,20 +43,52 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
     <!-- Hero Section -->
     <section id="home" style="padding-top: 0;">
         <div class="hero-card-container glass-card" data-aos="zoom-in">
-            <div class="hero-grid" style="grid-template-columns: 1fr 1fr; gap: 4rem;">
+            <div class="hero-grid" style="grid-template-columns: 1.1fr 0.9fr; gap: 4rem;">
                 <div data-aos="fade-right" data-aos-delay="200">
-                    <span data-t="role_junior" style="display: inline-block; padding: 0.5rem 1rem; background: rgba(34, 197, 94, 0.1); color: #22c55e; border-radius: 100px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem;">ESTUDIANTE 1º DAM</span>
+                    <span data-t="role_junior" style="display: inline-block; padding: 0.5rem 1rem; background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); border-radius: 100px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem;">ESTUDIANTE 1º DAM</span>
                     <h1 data-t="hero_title" style="margin-bottom: 1.5rem;">Alejandro <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Donate</span></h1>
                     <p data-t="hero_desc" style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem; line-height: 1.6;">
                         Especializado en el desarrollo de soluciones robustas con Java y la creación de interfaces interactivas de alto impacto.
                     </p>
                     <div style="display: flex; gap: 1rem;">
-                        <a href="#projects" class="btn-primary" data-t="btn_projects">Explorar Proyectos <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#projects" class="btn-primary" data-t="btn_projects" style="background: var(--primary-gradient);">Explorar Proyectos <i class="fa-solid fa-arrow-right"></i></a>
                         <a href="#about" class="sidebar-link-btn" data-t="btn_about" style="padding: 0.75rem 1.5rem; border: 1px solid var(--border-color); border-radius: 12px; font-weight: 600; text-decoration: none; color: var(--text-main);">Sobre mí</a>
                     </div>
                 </div>
-                <div class="hero-profile-container" data-aos="fade-left" data-aos-delay="400" style="height: 100%; min-height: 450px;">
-                    <img src="{{ '/assets/img/perfil.jpg' | relative_url }}" alt="Alejandro Donate" class="hero-profile-img">
+                <div data-aos="fade-left" data-aos-delay="400">
+                    <div class="hero-profile-container" style="height: 350px; min-height: 350px; margin-bottom: 1.5rem;">
+                        <img src="{{ '/assets/img/perfil.jpg' | relative_url }}" alt="Alejandro Donate" class="hero-profile-img">
+                    </div>
+                    <!-- Panel de Disciplinas y Lenguajes (NUEVO) -->
+                    <div class="hero-skills-panel">
+                        <div class="mini-bar-group">
+                            <!-- GitHub Languages (Dynamic Placeholder) -->
+                            <div class="mini-bar-item">
+                                <div class="mini-bar-label"><span>Java</span><span>90%</span></div>
+                                <div class="bar-container" style="height:6px;"><div class="bar-fill" style="width: 90%;"></div></div>
+                            </div>
+                            <div class="mini-bar-item">
+                                <div class="mini-bar-label"><span>SQL / BBDD</span><span>85%</span></div>
+                                <div class="bar-container" style="height:6px;"><div class="bar-fill" style="width: 85%;"></div></div>
+                            </div>
+                            <div class="mini-bar-item">
+                                <div class="mini-bar-label"><span>HTML/CSS/JS</span><span>80%</span></div>
+                                <div class="bar-container" style="height:6px;"><div class="bar-fill" style="width: 80%;"></div></div>
+                            </div>
+                            <div class="mini-bar-item">
+                                <div class="mini-bar-label"><span>XML/XPath</span><span>75%</span></div>
+                                <div class="bar-container" style="height:6px;"><div class="bar-fill" style="width: 75%;"></div></div>
+                            </div>
+                            <div class="mini-bar-item">
+                                <div class="mini-bar-label"><span>Mongo / NoSQL</span><span>65%</span></div>
+                                <div class="bar-container" style="height:6px;"><div class="bar-fill" style="width: 65%;"></div></div>
+                            </div>
+                            <div class="mini-bar-item">
+                                <div class="mini-bar-label"><span>BaseX / Cassandra</span><span>60%</span></div>
+                                <div class="bar-container" style="height:6px;"><div class="bar-fill" style="width: 60%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -305,16 +337,15 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         document.querySelectorAll('[data-t]').forEach(el => {
             const key = el.getAttribute('data-t');
             if (translations[lang] && translations[lang][key]) {
-                // Preservar iconos si existen
                 const icon = el.querySelector('i');
                 el.textContent = translations[lang][key];
                 if (icon) el.prepend(icon);
             }
         });
         
-        // Actualizar Sidebar links
         document.querySelectorAll('.sidebar-link span').forEach(span => {
-            const id = span.parentElement.id.replace('nav-', '');
+            const parent = span.parentElement;
+            const id = parent.id.replace('nav-', '');
             const key = `nav_${id}`;
             if (translations[lang] && translations[lang][key]) {
                 span.textContent = translations[lang][key];
@@ -325,8 +356,11 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
             btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
         });
 
-        // Re-render repos para aplicar traducciones si fuera necesario (opcional)
-        fetchGitHubData(); 
+        // Actualizar placeholders dinámicos
+        document.getElementById('prev-page').title = lang === 'es' ? 'Anterior' : (lang === 'en' ? 'Previous' : 'Zurück');
+        document.getElementById('next-page').title = lang === 'es' ? 'Siguiente' : (lang === 'en' ? 'Next' : 'Nächste');
+
+        updatePagination(); 
     }
 
     async function fetchGitHubData() {
@@ -349,7 +383,8 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
 
         renderRepos(currentRepos);
 
-        document.getElementById('page-info').textContent = `Página ${currentPage} de ${totalPages}`;
+        const pageText = currentLang === 'es' ? 'Página' : (currentLang === 'en' ? 'Page' : (currentLang === 'de' ? 'Seite' : 'Síða'));
+        document.getElementById('page-info').textContent = `${pageText} ${currentPage} / ${totalPages}`;
         document.getElementById('prev-page').disabled = currentPage === 1;
         document.getElementById('next-page').disabled = currentPage === totalPages;
     }
@@ -375,50 +410,55 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         const container = document.getElementById('repos-container');
         container.innerHTML = '';
         
-        repos.filter(r => !r.fork && r.name !== `${GITHUB_USERNAME}.github.io`).slice(0, 6).forEach(repo => {
+        repos.forEach(repo => {
             const card = document.createElement('div');
             card.className = 'repo-card';
             card.setAttribute('data-aos', 'fade-up');
             
+            const updatedText = currentLang === 'es' ? 'Actualizado' : (currentLang === 'en' ? 'Updated' : (currentLang === 'de' ? 'Aktualisiert' : 'Uppfært'));
+            const viewCodeText = currentLang === 'es' ? 'Ver Código' : (currentLang === 'en' ? 'View Code' : (currentLang === 'de' ? 'Code ansehen' : 'Skoða kóða'));
+            const compositionText = currentLang === 'es' ? 'Composición' : (currentLang === 'en' ? 'Composition' : (currentLang === 'de' ? 'Zusammensetzung' : 'Samsetning'));
+
             card.innerHTML = `
                 <div class="repo-info">
                     <h3 style="font-size: 1.75rem; margin-bottom: 1rem;">${repo.name}</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 2rem; line-height: 1.5;">${repo.description || 'Sin descripción disponible.'}</p>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem; line-height: 1.5;">${repo.description || '...'}</p>
                     <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
-                        ${repo.topics ? repo.topics.map(t => `<span style="padding: 4px 12px; background: rgba(34, 197, 94, 0.1); color: #22c55e; border-radius: 100px; font-size: 0.8rem;">#${t}</span>`).join('') : ''}
+                        ${repo.topics ? repo.topics.map(t => `<span style="padding: 4px 12px; background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); border-radius: 100px; font-size: 0.8rem;">#${t}</span>`).join('') : ''}
                     </div>
                     <div style="display: flex; gap: 1rem;">
-                        <a href="${repo.html_url}" target="_blank" class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;"><i class="fa-brands fa-github"></i> Ver Código</a>
+                        <a href="${repo.html_url}" target="_blank" class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem; background: var(--primary-gradient);"><i class="fa-brands fa-github"></i> ${viewCodeText}</a>
                         ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" style="padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: 12px; color: var(--text-main); text-decoration: none; font-size: 0.9rem;">Demo Live</a>` : ''}
+                    </div>
+                    <div style="margin-top: 1.5rem; font-size: 0.75rem; color: var(--text-muted);">
+                        <i class="fa-regular fa-calendar"></i> ${updatedText}: ${new Date(repo.updated_at).toLocaleDateString()}
                     </div>
                 </div>
                 <div style="background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 20px;">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
                         <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 12px;">
-                            <i class="fa-regular fa-star" style="color: #22c55e;"></i>
+                            <i class="fa-regular fa-star" style="color: var(--accent-blue);"></i>
                             <div style="font-size: 1.25rem; font-weight: 700;">${repo.stargazers_count}</div>
                             <small style="color: var(--text-muted);">Stars</small>
                         </div>
                         <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 12px;">
-                            <i class="fa-solid fa-code-branch" style="color: #22c55e;"></i>
+                            <i class="fa-solid fa-code-branch" style="color: var(--accent-blue);"></i>
                             <div style="font-size: 1.25rem; font-weight: 700;">${repo.forks_count}</div>
                             <small style="color: var(--text-muted);">Forks</small>
                         </div>
                     </div>
                     <div id="langs-${repo.id}">
-                        <div style="font-size: 0.8rem; margin-bottom: 0.5rem;">Composición:</div>
-                        <!-- Cargado por API -->
+                        <div style="font-size: 0.8rem; margin-bottom: 0.5rem;">${compositionText}:</div>
                     </div>
                 </div>
             `;
             container.appendChild(card);
             
-            // Cargar lenguajes detallados
             fetch(repo.languages_url).then(r => r.json()).then(langs => {
                 const langDiv = document.getElementById(`langs-${repo.id}`);
                 if (!langDiv) return;
                 const total = Object.values(langs).reduce((a,b) => a+b, 0);
-                langDiv.innerHTML = `
+                langDiv.innerHTML += `
                     <div style="display: flex; flex-direction: column; gap: 8px;">
                         ${Object.entries(langs).slice(0, 4).map(([l, v]) => `
                             <div>
@@ -427,7 +467,7 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                                     <span>${((v/total)*100).toFixed(1)}%</span>
                                 </div>
                                 <div style="height: 4px; background: rgba(0,0,0,0.3); border-radius: 100px;">
-                                    <div style="height: 100%; width: ${(v/total)*100}%; background: #22c55e; border-radius: inherit;"></div>
+                                    <div style="height: 100%; width: ${(v/total)*100}%; background: var(--accent-blue); border-radius: inherit;"></div>
                                 </div>
                             </div>
                         `).join('')}
