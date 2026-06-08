@@ -52,11 +52,37 @@ aside {
 main {
     flex: 1;
     margin-left: 280px;
-    padding: 40px;
+    padding: 60px;
     width: calc(100% - 280px);
+    position: relative;
+    z-index: 10; /* Asegurar que esté por encima de los glows */
+    min-height: 100vh;
 }
 
-/* Components */
+/* Forzar visibilidad inicial para evitar el error de AOS */
+[data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}
+
+section {
+    padding: 60px 0;
+    width: 100%;
+    min-height: auto; /* Evitar que las secciones vacías ocupen demasiado */
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+}
+
 .glass-card {
     background: var(--bg-card);
     backdrop-filter: var(--glass-blur);
