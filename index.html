@@ -42,38 +42,36 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
 <main>
     <!-- Hero Section -->
     <section id="home" style="padding-top: 0;">
-        <div class="hero-card-container glass-card" data-aos="zoom-in">
-            <div class="hero-grid-3">
-                <!-- Columna 1: Información -->
-                <div class="hero-column" data-aos="fade-right" data-aos-delay="200">
-                    <span data-t="role_junior" style="display: inline-block; width: fit-content; padding: 0.5rem 1rem; background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); border-radius: 100px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem;">ESTUDIANTE 1º DAM</span>
-                    <h1 data-t="hero_title" style="margin-bottom: 1rem; font-size: clamp(2rem, 5vw, 3.5rem);">Alejandro <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Donate</span></h1>
-                    <p data-t="hero_desc" style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.5;">
-                        Especializado en el desarrollo de soluciones robustas con Java y la creación de interfaces interactivas de alto impacto.
-                    </p>
-                    <div style="display: flex; gap: 1rem;">
-                        <a href="#projects" class="btn-primary scroll-link" data-t="btn_projects" style="background: var(--primary-gradient);">Explorar Proyectos <i class="fa-solid fa-arrow-right"></i></a>
-                        <a href="#about" class="sidebar-link-btn scroll-link" data-t="btn_about" style="padding: 0.75rem 1.5rem; border: 1px solid var(--border-color); border-radius: 12px; font-weight: 600; text-decoration: none; color: var(--text-main);">Sobre mí</a>
-                    </div>
+        <div class="hero-wrapper">
+            <!-- Contenedor 1: Información -->
+            <div class="hero-box" data-aos="fade-right" data-aos-delay="200">
+                <span data-t="role_junior" style="display: inline-block; width: fit-content; padding: 0.5rem 1rem; background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); border-radius: 100px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem;">ESTUDIANTE 1º DAM</span>
+                <h1 data-t="hero_title" style="margin-bottom: 1rem; font-size: clamp(1.8rem, 4vw, 3rem);">Alejandro <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Donate</span></h1>
+                <p data-t="hero_desc" style="font-size: 1rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.5;">
+                    Especializado en el desarrollo de soluciones robustas con Java y la creación de interfaces interactivas de alto impacto.
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="#projects" class="btn-primary scroll-link" data-t="btn_projects" style="background: var(--primary-gradient); padding: 0.75rem 1.25rem; font-size: 0.9rem;">Proyectos <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#about" class="sidebar-link-btn scroll-link" data-t="btn_about" style="padding: 0.75rem 1.25rem; border: 1px solid var(--border-color); border-radius: 12px; font-weight: 600; text-decoration: none; color: var(--text-main); font-size: 0.9rem;">Sobre mí</a>
                 </div>
+            </div>
 
-                <!-- Columna 2: Imagen -->
-                <div class="hero-column hero-image-col" data-aos="fade-up" data-aos-delay="400">
-                    <div class="hero-profile-container">
-                        <img src="{{ '/assets/img/perfil.jpg' | relative_url }}" alt="Alejandro Donate" class="hero-profile-img">
-                    </div>
+            <!-- Contenedor 2: Imagen -->
+            <div class="hero-box hero-image-box" data-aos="fade-up" data-aos-delay="400">
+                <div class="hero-profile-container">
+                    <img src="{{ '/assets/img/perfil.jpg' | relative_url }}" alt="Alejandro Donate" class="hero-profile-img">
                 </div>
+            </div>
 
-                <!-- Columna 3: Estadísticas / Disciplinas -->
-                <div class="hero-column hero-stats-col" data-aos="fade-left" data-aos-delay="600">
-                    <div class="skills-buttons-grid">
-                        <div class="skill-pill"><i class="fa-brands fa-java"></i> Java Expert</div>
-                        <div class="skill-pill"><i class="fa-solid fa-database"></i> SQL / NoSQL</div>
-                        <div class="skill-pill"><i class="fa-solid fa-globe"></i> Web Dev (JS/CSS)</div>
-                        <div class="skill-pill"><i class="fa-solid fa-file-code"></i> XML / XPath</div>
-                        <div class="skill-pill"><i class="fa-solid fa-leaf"></i> MongoDB / BaseX</div>
-                        <div class="skill-pill"><i class="fa-solid fa-server"></i> Cassandra DB</div>
-                    </div>
+            <!-- Contenedor 3: Estadísticas / Disciplinas -->
+            <div class="hero-box" data-aos="fade-left" data-aos-delay="600">
+                <div class="skills-buttons-grid">
+                    <div class="skill-pill"><i class="fa-brands fa-java"></i> Java Expert</div>
+                    <div class="skill-pill"><i class="fa-solid fa-database"></i> SQL / NoSQL</div>
+                    <div class="skill-pill"><i class="fa-solid fa-globe"></i> Web Dev (JS/CSS)</div>
+                    <div class="skill-pill"><i class="fa-solid fa-file-code"></i> XML / XPath</div>
+                    <div class="skill-pill"><i class="fa-solid fa-leaf"></i> MongoDB / BaseX</div>
+                    <div class="skill-pill"><i class="fa-solid fa-server"></i> Cassandra DB</div>
                 </div>
             </div>
         </div>
@@ -349,15 +347,25 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
     }
 
     async function fetchGitHubData() {
+        console.log('Iniciando carga de GitHub...');
         try {
             const userRes = await fetch(API_BASE);
             const userData = await userRes.json();
             
             const reposRes = await fetch(`${API_BASE}/repos?sort=updated&per_page=100`);
-            allRepos = (await reposRes.json()).filter(r => !r.fork && r.name !== `${GITHUB_USERNAME}.github.io`);
+            const reposData = await reposRes.json();
             
-            updatePagination();
-        } catch (e) { console.error(e); }
+            if (Array.isArray(reposData)) {
+                allRepos = reposData.filter(r => !r.fork && r.name !== `${GITHUB_USERNAME}.github.io`);
+                console.log('Repositorios filtrados:', allRepos.length);
+                updatePagination();
+            } else {
+                console.error('La respuesta de repositorios no es un array:', reposData);
+            }
+        } catch (e) { 
+            console.error('Error cargando GitHub:', e); 
+            document.getElementById('repos-container').innerHTML = '<p style="text-align:center; padding:2rem;">Error conectando con la API de GitHub.</p>';
+        }
     }
 
     function updatePagination() {
@@ -520,6 +528,8 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                 disable: window.innerWidth < 768 
             });
         }
+        // Forzar la carga inicial
+        currentPage = 1;
         fetchGitHubData();
     });
 </script>
