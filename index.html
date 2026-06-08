@@ -1,1789 +1,317 @@
-<!doctype html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alejandro Donate García · Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/styles.css" />
-<meta name="description" content="Portfolio de Alejandro Donate García." />
-<meta property="og:title" content="Alejandro Donate García · Portfolio" />
-<meta property="og:description" content="Portfolio con proyectos y GitHub." />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="assets/img/perfil.jpg" />
-</head>
-<body data-default-theme="dark" data-repo-variant="wow">
-    <div class="bg-layer bg-grid bg-grid-dark"></div>
-    <div class="bg-layer bg-grid bg-grid-light"></div>
+---
+layout: default
+title: "Alejandro Donate García | Full Stack Developer"
+description: "Portfolio de Alejandro Donate García. Junior Developer apasionado por Java y el desarrollo web."
+---
 
-    <div class="quick-ribbon" id="quickRibbon">
-        <div class="ribbon-inner">
-            <div class="ribbon-copy">
-                <strong>Alejandro Donate García</strong>
-                <span id="ribbon-role" class="lang-fade"></span>
+<!-- Navigation Dock -->
+<nav class="nav-dock glass" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
+    <a href="#home" class="nav-link active" title="Inicio"><i class="fas fa-home"></i></a>
+    <a href="#about" class="nav-link" title="Sobre mí"><i class="fas fa-user"></i></a>
+    <a href="#skills" class="nav-link" title="Skills"><i class="fas fa-code"></i></a>
+    <a href="#projects" class="nav-link" title="Proyectos"><i class="fas fa-project-diagram"></i></a>
+    <a href="#contact" class="nav-link" title="Contacto"><i class="fas fa-envelope"></i></a>
+    <div class="nav-separator" style="width: 1px; background: var(--border-color); height: 20px; margin: 0 5px;"></div>
+    <button id="theme-toggle" class="nav-link btn-icon" style="background:none; border:none; cursor:pointer;" title="Cambiar Tema"><i class="fas fa-moon"></i></button>
+    <button id="translate-btn" class="nav-link btn-icon" style="background:none; border:none; cursor:pointer;" title="Traducir (Beta)"><i class="fas fa-language"></i></button>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="container">
+        <div class="hero-grid">
+            <div class="hero-content" data-aos="fade-right">
+                <span class="tag" style="margin-bottom: 1rem;">Junior Developer</span>
+                <h1>Hola, soy <span class="text-gradient">Alejandro</span></h1>
+                <p class="text-secondary" style="font-size: 1.25rem; margin-bottom: 2rem;">
+                    Estudiante de 1º DAM enfocado en crear soluciones robustas con Java y experiencias web interactivas.
+                </p>
+                <div class="hero-actions" style="display: flex; gap: 1rem;">
+                    <a href="#projects" class="btn btn-primary">Ver Proyectos <i class="fas fa-arrow-right"></i></a>
+                    <a href="#contact" class="btn btn-outline">Contacto</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h4 id="stat-repos">--</h4>
+                        <p>Proyectos</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4 id="stat-lang">--</h4>
+                        <p>Top Lenguaje</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4 id="stat-activity">--</h4>
+                        <p>Días Activo</p>
+                    </div>
+                </div>
             </div>
-            <div class="ribbon-actions">
-                <div class="ribbon-actions-top">
-                    <div class="lang-switch">
-                    <button type="button" class="lang-btn active" data-lang="es">ES</button>
-                    <button type="button" class="lang-btn " data-lang="en">EN</button>
-                    <button type="button" class="lang-btn " data-lang="de">DE</button>
-                    <button type="button" class="lang-btn " data-lang="is">IS</button>
-                </div>
-                    <button class="button subtle" type="button" id="recruiter-toggle-top"></button>
-                    <button class="button subtle" type="button" data-theme-toggle id="theme-toggle"></button>
-                </div>
-                <div class="ribbon-actions-bottom">
-                    <a class="button subtle" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">GitHub</a>
-                <a class="button subtle" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">LinkedIn</a>
-                <button class="button subtle" type="button" data-copy-email><span class="copy-label"></span></button>
+            <div class="hero-visual" data-aos="fade-left">
+                <div class="card glass" style="padding: 20px; height: 350px;">
+                    <canvas id="languagesChart"></canvas>
                 </div>
             </div>
         </div>
     </div>
+</section>
 
-    <nav class="sections-nav">
-        <a href="#inicio" class="section-pill active" id="nav-start" class="lang-fade"></a>
-        <a href="#perfil" class="section-pill" id="nav-profile" class="lang-fade"></a>
-        <a href="#progreso" class="section-pill" id="nav-progress" class="lang-fade"></a>
-        <a href="#repositorios" class="section-pill" id="nav-repos" class="lang-fade"></a>
-        <a href="#skills" class="section-pill" id="nav-skills" class="lang-fade"></a>
-        <a href="#contacto" class="section-pill" id="nav-contact" class="lang-fade"></a>
-    </nav>
-
-    <header class="screen hero-screen" id="inicio">
-        <div class="wrapper hero-grid">
-            <article class="panel hero-copy reveal visible tilt-card">
-                <span class="eyebrow" id="hero-label" class="lang-fade"></span>
-                <h1>Alejandro Donate García</h1>
-                <p class="role" id="hero-role" class="lang-fade"></p>
-                <p class="lead" id="hero-lead" class="lang-fade"></p>
-                <div class="pill-row">
-                    <span>Java</span>
-                    <span>SQL</span>
-                    <span>HTML/CSS</span>
-                    <span>Git</span>
-                    <span>XML</span>
+<!-- Insights Section -->
+<section id="insights" style="padding-top: 0;">
+    <div class="container">
+        <div class="insights-grid">
+            <div class="mini-card card" data-aos="fade-up">
+                <i class="fas fa-bolt"></i>
+                <div>
+                    <h4 style="margin:0;">Foco Actual</h4>
+                    <p class="text-muted" style="margin:0; font-size: 0.9rem;">Java & PostgreSQL</p>
                 </div>
-                <div class="action-row">
-                    <a class="button primary" href="#repositorios" id="hero-projects" class="lang-fade"></a>
-                    <button class="button subtle" type="button" id="download-cv-btn"></button>
-                    <div class="mobile-controls">
-                        <div class="lang-switch">
-                    <button type="button" class="lang-btn active" data-lang="es">ES</button>
-                    <button type="button" class="lang-btn " data-lang="en">EN</button>
-                    <button type="button" class="lang-btn " data-lang="de">DE</button>
-                    <button type="button" class="lang-btn " data-lang="is">IS</button>
-                        </div>
-                        <button class="button subtle" type="button" id="recruiter-toggle-hero"></button>
-                        <button class="button subtle" type="button" data-theme-toggle id="theme-toggle-hero"></button>
-                        <button class="button subtle gyro-button" id="gyro-toggle" type="button"></button>
-                        <button class="button subtle" type="button" data-copy-email><span class="copy-label"></span></button>
-                    </div>
+            </div>
+            <div class="mini-card card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-terminal"></i>
+                <div>
+                    <h4 style="margin:0;">Entorno</h4>
+                    <p class="text-muted" style="margin:0; font-size: 0.9rem;">VS Code & IntelliJ</p>
                 </div>
-
-                <div class="recruiter-banner panel reveal" id="recruiter-banner">
-                    <div class="section-head">
-                        <span class="mini-label lang-fade" id="recruiter-label"></span>
-                        <h2 class="lang-fade" id="recruiter-title"></h2>
-                        <p class="lang-fade" id="recruiter-text"></p>
-                    </div>
+            </div>
+            <div class="mini-card card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-globe-europe"></i>
+                <div>
+                    <h4 style="margin:0;">Ubicación</h4>
+                    <p class="text-muted" style="margin:0; font-size: 0.9rem;">España</p>
                 </div>
-
-            </article>
-            <aside class="hero-stack">
-                <article class="panel reveal visible tilt-card">
-                    <div class="profile-frame">
-                        <img src="assets/img/perfil.jpg" alt="Foto de perfil de Alejandro Donate García" />
-                    </div>
-
-                    <div class="skills-radar-card reveal visible">
-                        <div class="skills-radar-head">
-                            <span class="mini-label lang-fade" id="radar-label"></span>
-                            <strong class="lang-fade" id="radar-title"></strong>
-                            <p class="lang-fade" id="skills-auto-note"></p>
-                        </div>
-                        <div class="skills-radar-layout">
-                            <div class="radar-wrap">
-                                <svg viewBox="0 0 240 240" class="radar-svg" aria-hidden="true">
-                                    <polygon class="radar-grid" points="120,28 212,120 120,212 28,120"></polygon>
-                                    <polygon class="radar-grid radar-grid-inner" points="120,52 188,120 120,188 52,120"></polygon>
-                                    <polygon class="radar-grid radar-grid-inner" points="120,76 164,120 120,164 76,120"></polygon>
-                                    <line class="radar-axis" x1="120" y1="20" x2="120" y2="220"></line>
-                                    <line class="radar-axis" x1="20" y1="120" x2="220" y2="120"></line>
-                                    <polygon class="radar-shape" id="radar-shape" points="120,58 170,120 120,182 70,120"></polygon>
-                                    <circle class="radar-dot" id="radar-dot-java" cx="120" cy="58" r="5"></circle>
-                                    <circle class="radar-dot" id="radar-dot-frontend" cx="170" cy="120" r="5"></circle>
-                                    <circle class="radar-dot" id="radar-dot-db" cx="120" cy="182" r="5"></circle>
-                                    <circle class="radar-dot" id="radar-dot-xml" cx="70" cy="120" r="5"></circle>
-                                </svg>
-                            </div>
-                            <div class="radar-legend">
-                                <div class="radar-legend-item">
-                                    <span>Java</span>
-                                    <strong data-skill-value="java">76%</strong>
-                                </div>
-                                <div class="radar-legend-item">
-                                    <span>BBDD</span>
-                                    <strong data-skill-value="db">68%</strong>
-                                </div>
-                                <div class="radar-legend-item">
-                                    <span>Frontend</span>
-                                    <strong data-skill-value="frontend">72%</strong>
-                                </div>
-                                <div class="radar-legend-item">
-                                    <span>XML</span>
-                                    <strong data-skill-value="xml">58%</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </article>
-                <article class="panel reveal visible tilt-card">
-                    <span class="mini-label" id="current-label" class="lang-fade"></span>
-                    <ul class="status-list">
-                        <li id="current-1" class="lang-fade"></li>
-                        <li id="current-2" class="lang-fade"></li>
-                        <li id="current-3" class="lang-fade"></li>
-                    </ul>
-                </article>
-            </aside>
+            </div>
         </div>
-    </header>
+    </div>
+</section>
 
-    <main>
+<!-- About Section -->
+<section id="about">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="text-gradient">Sobre mí</h2>
+            <p class="text-secondary">Mi camino en el mundo del desarrollo.</p>
+        </div>
+        <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px;">
+            <div class="card" data-aos="fade-up">
+                <h3>Mi Objetivo</h3>
+                <p class="text-secondary">
+                    Soy un estudiante de Desarrollo de Aplicaciones Multiplataforma (DAM) con una curiosidad insaciable. Actualmente me centro en dominar Java y las bases de datos, mientras exploro el frontend moderno.
+                </p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <h3>Formación</h3>
+                <ul class="text-secondary">
+                    <li style="margin-bottom: 1rem;"><strong>1º DAM</strong> - Estudiante actual.</li>
+                    <li style="margin-bottom: 1rem;"><strong>Autodidacta</strong> - Aprendiendo frameworks y nuevas tecnologías cada día.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="bg-card-hover" style="background-color: var(--bg-card);">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up" style="text-align: center; margin-bottom: 60px;">
+            <h2 class="text-gradient">Mis Skills</h2>
+            <p class="text-secondary">Herramientas y tecnologías que utilizo.</p>
+        </div>
+        <div class="skills-container">
+            <div class="skill-card card" data-aos="zoom-in">
+                <i class="fab fa-java skill-icon"></i>
+                <h3>Java</h3>
+                <p class="text-muted">POO, Colecciones, Lógica</p>
+            </div>
+            <div class="skill-card card" data-aos="zoom-in" data-aos-delay="100">
+                <i class="fas fa-database skill-icon"></i>
+                <h3>Bases de Datos</h3>
+                <p class="text-muted">SQL, PostgreSQL, Diseño</p>
+            </div>
+            <div class="skill-card card" data-aos="zoom-in" data-aos-delay="200">
+                <i class="fab fa-html5 skill-icon"></i>
+                <h3>Frontend</h3>
+                <p class="text-muted">HTML, CSS, Responsive</p>
+            </div>
+            <div class="skill-card card" data-aos="zoom-in" data-aos-delay="300">
+                <i class="fas fa-code-branch skill-icon"></i>
+                <h3>Git</h3>
+                <p class="text-muted">Control de versiones</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 20px;">
+            <div>
+                <h2 class="text-gradient">Repositorios</h2>
+                <p class="text-secondary">Mis proyectos destacados de GitHub.</p>
+            </div>
+            <div class="filters" style="display: flex; gap: 10px;">
+                <button class="btn btn-outline btn-sm active" data-filter="all">Todos</button>
+                <button class="btn btn-outline btn-sm" data-filter="Java">Java</button>
+                <button class="btn btn-outline btn-sm" data-filter="HTML">Web</button>
+            </div>
+        </div>
         
-        <div class="section-bridge reveal"><span></span><span></span><span></span></div>
-        <section class="screen" id="perfil">
-            <div class="wrapper split-grid">
-                <article class="panel reveal tilt-card">
-                    <div class="section-head">
-                        <span class="mini-label" id="about-label" class="lang-fade"></span>
-                        <h2 id="about-title" class="lang-fade"></h2>
-                    </div>
-                    <p id="about-text" class="lang-fade"></p>
-                    <div class="mini-grid">
-                        <div class="mini-card">
-                            <h3 id="goal-title" class="lang-fade"></h3>
-                            <p id="goal-text" class="lang-fade"></p>
-                        </div>
-                        <div class="mini-card">
-                            <h3 id="strength-title" class="lang-fade"></h3>
-                            <p id="strength-text" class="lang-fade"></p>
-                        </div>
-                    <div class="radar-summary-card" id="radar-summary-card">
-                        <span class="mini-label lang-fade" id="radar-summary-label"></span>
-                        <p class="lang-fade" id="radar-summary-text"></p>
-                    </div>
-                </article>
-                <article class="panel reveal tilt-card">
-                    <div class="section-head">
-                        <span class="mini-label" id="skills-label" class="lang-fade"></span>
-                        <h2 id="skills-title" class="lang-fade"></h2>
-                    </div>
-                    <div class="chip-row">
-                        <button type="button" class="chip-button active" data-skill-button data-skill="java">Java</button>
-                        <button type="button" class="chip-button" data-skill-button data-skill="db">BBDD</button>
-                        <button type="button" class="chip-button" data-skill-button data-skill="frontend">Frontend</button>
-                        <button type="button" class="chip-button" data-skill-button data-skill="xml">XML</button>
-                    </div>
-                    <div class="skill-display tilt-card">
-                        <p id="skillTitle">JAVA</p>
-                        <span id="skillText"></span>
-                    </div>
-                    <div class="bridge-strip">
-                        <span id="bridge-1" class="lang-fade"></span>
-                        <span id="bridge-2" class="lang-fade"></span>
-                        <span id="bridge-3" class="lang-fade"></span>
-                        <span id="bridge-4" class="lang-fade"></span>
-                    </div>
-                    <div class="skills-chart">
-                        <div class="chart-row" data-skill="java">
-                            <span>Java</span>
-                            <div class="chart-bar">
-                                <i style="--value: 76%"></i>
-                            </div>
-                        </div>
-                        <div class="chart-row" data-skill="db">
-                            <span>BBDD</span>
-                            <div class="chart-bar">
-                                <i style="--value: 68%"></i>
-                            </div>
-                        </div>
-                        <div class="chart-row" data-skill="frontend">
-                            <span>Frontend</span>
-                            <div class="chart-bar">
-                                <i style="--value: 72%"></i>
-                            </div>
-                        </div>
-                        <div class="chart-row" data-skill="xml">
-                            <span>XML</span>
-                            <div class="chart-bar">
-                                <i style="--value: 58%"></i>
-                            </div>
-                        </div>
-                    </div>
-                </article>
+        <div id="repos-container" class="repo-grid">
+            <!-- Repositories will be loaded here via JS -->
+            <div class="loading" style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                <i class="fas fa-spinner fa-spin fa-2x"></i>
+                <p>Cargando proyectos...</p>
             </div>
-        </section>
-
-        <div class="section-bridge reveal"><span></span><span></span><span></span></div>
-
-        <section class="screen compact-screen" id="progreso">
-            <div class="wrapper split-grid">
-                <article class="panel reveal">
-                    <div class="section-head">
-                        <span class="mini-label" id="progress-label" class="lang-fade"></span>
-                        <h2 id="progress-title" class="lang-fade"></h2>
-                    </div>
-                    <div class="timeline">
-                        <article class="timeline-item tilt-card"><span class="timeline-dot"></span><div><h3 id="tl1t" class="lang-fade"></h3><p id="tl1d" class="lang-fade"></p></div></article>
-                        <article class="timeline-item tilt-card"><span class="timeline-dot"></span><div><h3 id="tl2t" class="lang-fade"></h3><p id="tl2d" class="lang-fade"></p></div></article>
-                        <article class="timeline-item tilt-card"><span class="timeline-dot"></span><div><h3 id="tl3t" class="lang-fade"></h3><p id="tl3d" class="lang-fade"></p></div></article>
-                        <article class="timeline-item tilt-card"><span class="timeline-dot"></span><div><h3 id="tl4t" class="lang-fade"></h3><p id="tl4d" class="lang-fade"></p></div></article>
-                    </div>
-                </article>
-                <div class="stack-grid">
-                    <article class="panel reveal">
-                        <div class="section-head">
-                            <span class="mini-label" id="lang-label" class="lang-fade"></span>
-                            <h2 id="english-title" class="lang-fade"></h2>
-                        </div>
-                        <div class="levels">
-                            <div class="level-item tilt-card"><label id="spoken-label" class="lang-fade"></label><div class="bar"><i style="width:50%"></i></div><small>B1–B2</small></div>
-                            <div class="level-item tilt-card"><label id="written-label" class="lang-fade"></label><div class="bar"><i style="width:65%"></i></div><small>B1–B2</small></div>
-                            <div class="level-item tilt-card"><label id="reading-label" class="lang-fade"></label><div class="bar"><i style="width:70%"></i></div><small>B1–B2</small></div>
-                        </div>
-                    </article>
-                    <article class="panel reveal">
-                        <div class="section-head">
-                            <span class="mini-label" id="roadmap-label" class="lang-fade"></span>
-                            <h2 id="roadmap-title" class="lang-fade"></h2>
-                        </div>
-                        <div class="roadmap-grid">
-                            <div class="roadmap-item tilt-card" id="road-1" class="lang-fade"></div>
-                            <div class="roadmap-item tilt-card" id="road-2" class="lang-fade"></div>
-                            <div class="roadmap-item tilt-card" id="road-3" class="lang-fade"></div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-bridge reveal"><span></span><span></span><span></span></div>
-
-        <section class="screen compact-screen" id="repositorios">
-            <div class="wrapper">
-                <article class="panel reveal">
-                    <div class="section-head">
-                        <span class="mini-label" id="showcase-label" class="lang-fade"></span>
-                        <h2 id="showcase-title" class="lang-fade"></h2>
-                        <p id="showcase-text" class="lang-fade"></p>
-                    </div>
-                    <div id="featured" class="repo-featured-grid loading"></div>
-                </article>
-                <article class="panel reveal">
-                    <div class="section-head">
-                        <span class="mini-label" id="repos-label" class="lang-fade"></span>
-                        <h2 id="repos-title" class="lang-fade"></h2>
-                        <p id="repos-text" class="lang-fade"></p>
-                    </div>
-                    <div class="toolbar">
-                        <input id="q" class="input" />
-                        <select id="sort" class="select">
-                            <option value="updated"></option>
-                            <option value="stars"></option>
-                            <option value="name"></option>
-                        </select>
-                        <button class="button subtle active" data-topic="all" id="filter-all" class="lang-fade"></button>
-                        <button class="button subtle" data-topic="showcase" id="filter-showcase">Showcase</button>
-                        <button class="button subtle" data-topic="web" id="filter-web" class="lang-fade"></button>
-                        <button class="button subtle" data-topic="backend" id="filter-backend" class="lang-fade"></button>
-                    </div>
-                    <div class="results-meta">
-                        <span id="results-count"></span>
-                        <button id="toggle-repos" class="button subtle" type="button" style="display:none;"></button>
-                    </div>
-                    <div id="repos" class="repo-grid loading"></div>
-                </article>
-            </div>
-        </section>
-        <div class="section-bridge reveal"><span></span><span></span><span></span></div>
-<section class="screen compact-screen" id="insights">
-            <div class="wrapper split-grid">
-                <article class="panel reveal tilt-card">
-                    <div class="section-head">
-                        <span class="mini-label lang-fade" id="stats-label"></span>
-                        <h2 class="lang-fade" id="stats-title"></h2>
-                        <p class="lang-fade" id="stats-text"></p>
-                    </div>
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <span class="lang-fade" id="stat-repos-label"></span>
-                            <strong id="stat-repos-value">--</strong>
-                        </div>
-                        <div class="stat-card">
-                            <span class="lang-fade" id="stat-showcase-label"></span>
-                            <strong id="stat-showcase-value">--</strong>
-                        </div>
-                        <div class="stat-card">
-                            <span class="lang-fade" id="stat-toplang-label"></span>
-                            <strong id="stat-toplang-value">--</strong>
-                        </div>
-                        <div class="stat-card">
-                            <span class="lang-fade" id="stat-updated-label"></span>
-                            <strong id="stat-updated-value">--</strong>
-                        </div>
-                    </div>
-                </article>
-                
-            </div>
-        </section>
-
+        </div>
         
-        <div class="section-bridge reveal"><span></span><span></span><span></span></div>
-        <section class="screen compact-screen" id="skills">
-            <div class="wrapper">
-                <article class="panel reveal">
-                    <div class="section-head">
-                        <span class="mini-label" id="personal-label" class="lang-fade"></span>
-                        <h2 id="personal-title" class="lang-fade"></h2>
-                        <p id="personal-text" class="lang-fade"></p>
-                    </div>
-                    <div class="value-grid">
-                        <article class="value-card tilt-card"><h3 id="value1t" class="lang-fade"></h3><p id="value1d" class="lang-fade"></p></article>
-                        <article class="value-card tilt-card"><h3 id="value2t" class="lang-fade"></h3><p id="value2d" class="lang-fade"></p></article>
-                        <article class="value-card tilt-card"><h3 id="value3t" class="lang-fade"></h3><p id="value3d" class="lang-fade"></p></article>
-                    </div>
-                </article>
-            </div>
-        </section>
+        <div style="text-align: center; margin-top: 60px;">
+            <a href="https://github.com/alejandroDonGar" target="_blank" class="btn btn-outline">Ver todo en GitHub <i class="fab fa-github"></i></a>
+        </div>
+    </div>
+</section>
 
-        <section class="screen contact-screen" id="contacto">
-            <div class="wrapper">
-                <article class="panel contact-panel reveal">
-                    <div class="section-head centered">
-                        <span class="mini-label" id="contact-label" class="lang-fade"></span>
-                        <h2 id="contact-title" class="lang-fade"></h2>
-                        <p id="contact-text" class="lang-fade"></p>
-                    </div>
-                    <div class="contact-actions">
-                        <a class="button primary" href="https://github.com/alejandroDonGar" target="_blank" rel="noreferrer">GitHub</a>
-                        <a class="button subtle" href="https://www.linkedin.com/in/alejandrodongar" target="_blank" rel="noreferrer">LinkedIn</a>
-                        <button class="button subtle" type="button" data-copy-email><span class="copy-label"></span></button>
-                    </div>
-                </article>
+<!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+        <div class="card glass" style="text-align: center; padding: 60px 40px;" data-aos="zoom-in">
+            <h2 class="text-gradient">¿Hablamos?</h2>
+            <p class="text-secondary" style="max-width: 600px; margin: 0 auto 40px;">
+                Estoy en busca de oportunidades para aprender y crecer. Si tienes alguna propuesta o simplemente quieres saludar, ¡no dudes en contactarme!
+            </p>
+            <div class="contact-links" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="mailto:alexDoGa.Work@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://linkedin.com/in/alejandrodongar" target="_blank" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/alejandroDonGar" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
             </div>
-        </section>
-    </main>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer style="padding: 40px 0; text-align: center; border-top: 1px solid var(--border-color);">
+    <p class="text-muted">© 2024 Alejandro Donate García. Hecho con <i class="fas fa-heart" style="color: #ef4444;"></i> y Jekyll.</p>
+</footer>
 
 <script>
-document.addEventListener("DOMContentLoaded", () =>
-{
-    const root = document.documentElement;
-    const themeKey = "portfolio-theme";
-    const langKey = "kinetic-i18n-es-en-de-is";
-    const email = "alexDoGa.Work@gmail.com";
-    const ribbon = document.getElementById("quickRibbon");
-    const hero = document.getElementById("inicio");
-    const pills = document.querySelectorAll(".section-pill");
-    const skillButtons = document.querySelectorAll("[data-skill-button]");
-    const featured = document.getElementById("featured");
-    const repos = document.getElementById("repos");
-    const q = document.getElementById("q");
-    const sort = document.getElementById("sort");
-    const resultsCount = document.getElementById("results-count");
-    const toggleRepos = document.getElementById("toggle-repos");
-    const filterButtons = document.querySelectorAll("[data-topic]");
-    const langButtons = document.querySelectorAll(".lang-btn");
-    const recruiterButtons = [document.getElementById("recruiter-toggle-top"), document.getElementById("recruiter-toggle-hero")].filter(Boolean);
-    const translations = {"es": {"langName": "ES", "siteRole": "Estudiante de Desarrollo de Aplicaciones Multiplataforma · 1º DAM", "navStart": "Inicio", "navProfile": "Perfil", "navProgress": "Progreso", "navRepos": "Repos", "navSkills": "Skills", "navContact": "Contacto", "themeLight": "Modo claro", "themeDark": "Modo nocturno", "gyro": "Activar giroscopio", "gyroOn": "Giroscopio activo", "heroLabel": "CV", "lead": "Estoy empezando mi camino en el desarrollo de software y ahora mismo mi objetivo es seguir aprendiendo, practicar mucho y ganar confianza poco a poco en Java, bases de datos y desarrollo web.", "viewProjects": "Ver proyectos", "copyEmail": "Copiar email", "copiedEmail": "Email copiado", "copyFail": "No se pudo copiar", "current": "Actualmente", "current1": "Buscando prácticas y oportunidades donde pueda aprender desde cero y seguir mejorando.", "current2": "Practicando Java, bases de datos y diseño web para afianzar una base más sólida.", "current3": "Construyendo proyectos sencillos para aplicar lo que voy aprendiendo paso a paso.", "aboutLabel": "Sobre mí", "aboutTitle": "Un perfil junior con mucha constancia y ganas reales de crecer", "aboutText": "Soy estudiante y todavía estoy en una etapa muy inicial de aprendizaje. Me interesa seguir descubriendo cómo funciona el desarrollo de software, especialmente en Java, bases de datos y la parte web con HTML, CSS y XML. Mi objetivo ahora mismo es practicar, entender bien las bases y seguir ganando soltura poco a poco.", "goalTitle": "Objetivo", "goalText": "Seguir aprendiendo y afianzando poco a poco Java, bases de datos y tecnologías web.", "strengthTitle": "Fortaleza", "strengthText": "Constancia, curiosidad y muchas ganas de aprender con práctica y experiencia real.", "skillsLabel": "Skills", "skillsTitle": "Contenidos que estoy trabajando", "bridge1": "Práctica real", "bridge2": "Responsive", "bridge3": "Backend", "bridge4": "BBDD", "progressLabel": "Progreso", "progressTitle": "Mi línea de avance", "timeline1t": "Inicio en DAM", "timeline1d": "Empiezo a formarme en desarrollo de software y a construir una base en programación, bases de datos y desarrollo web.", "timeline2t": "Java y SQL", "timeline2d": "Empiezo a practicar programación orientada a objetos, colecciones y consultas básicas para entender mejor los fundamentos.", "timeline3t": "Frontend y portfolio", "timeline3d": "Voy trabajando la parte visual con HTML y CSS, aprendiendo responsive design y mejorando poco a poco la maquetación.", "timeline4t": "Ahora mismo", "timeline4d": "Sigo construyendo proyectos sencillos, mejorando mi portfolio y buscando una primera oportunidad para aprender en un entorno real.", "langLabel": "Idiomas", "englishTitle": "Nivel de inglés", "spoken": "Hablado", "written": "Escrito", "reading": "Lectura", "roadmapLabel": "Roadmap", "roadmapTitle": "Actualmente aprendiendo", "road1": "Java · seguir entendiendo mejor la POO, las colecciones y la lógica de programación.", "road2": "BBDD · ganar más soltura con consultas SQL, tablas y relaciones.", "road3": "Frontend · mejorar en estructura, responsive design y limpieza visual.", "showcaseLabel": "Showcase", "showcaseTitle": "Proyectos destacados desde GitHub", "showcaseText": "Los repositorios con topic showcase se muestran aquí más grandes y clicables.", "reposLabel": "Repositorios", "reposTitle": "Mis repositorios", "reposText": "Explora mis proyectos y prácticas por nombre, actividad o temática.", "searchPlaceholder": "Buscar repositorios...", "sortUpdated": "Ordenar: actividad reciente", "sortStars": "Ordenar: estrellas", "sortName": "Ordenar: nombre", "all": "Todos", "web": "Web", "backend": "Backend", "loadingRepos": "Cargando repositorios...", "showMore": "Ver más", "showLess": "Ver menos", "personalLabel": "Enfoque personal", "personalTitle": "Cómo trabajo y qué busco", "personalText": "Además de la parte técnica, quiero que la página refleje cómo aprendo y cómo quiero seguir creciendo como desarrollador junior.", "value1t": "Cómo aprendo", "value1d": "Me gusta aprender practicando: entender la teoría, probar por mi cuenta, equivocarme y volver a intentarlo hasta asentar bien cada concepto.", "value2t": "Qué valoro", "value2d": "Valoro los entornos en los que pueda seguir creciendo, recibir feedback y aprender de personas con más experiencia.", "value3t": "Qué busco", "value3d": "Busco una oportunidad para seguir desarrollándome poco a poco en backend, bases de datos y frontend, aportando constancia, actitud y ganas de aprender.", "contactLabel": "Contacto", "contactTitle": "Conectemos", "contactText": "He dejado esta zona final más compacta, más cohesionada con el resto y sin mostrar el email en texto.", "resultsFound": "repositorio(s) encontrados", "featuredBadge": "Destacado", "repoBadge": "Repo", "openRepo": "Abrir", "viewRepo": "Ver repo", "noTopics": "sin topics", "updatedMeta": "Actualizado", "loadingError": "No se pudieron cargar los repositorios desde GitHub.", "noRepos": "No encontramos repositorios que coincidan con", "noFeatured": "Aún no tienes repos con topic showcase."}, "en": {"langName": "EN", "siteRole": "Multiplatform Application Development Student · 1st Year", "navStart": "Home", "navProfile": "Profile", "navProgress": "Progress", "navRepos": "Repos", "navSkills": "Skills", "navContact": "Contact", "themeLight": "Light mode", "themeDark": "Dark mode", "gyro": "Enable gyroscope", "gyroOn": "Gyroscope active", "heroLabel": "CV", "lead": "I am starting my path in software development and right now my goal is to keep learning, practice a lot, and gradually build confidence in Java, databases, and web development.", "viewProjects": "View projects", "copyEmail": "Copy email", "copiedEmail": "Email copied", "copyFail": "Could not copy", "current": "Currently", "current1": "Looking for internships and opportunities where I can learn from scratch and keep improving.", "current2": "Practicing Java, databases, and web design to build a stronger foundation.", "current3": "Building simple projects to apply what I am learning step by step.", "aboutLabel": "About me", "aboutTitle": "A junior profile with consistency and a real desire to grow", "aboutText": "I am a student and I am still at a very early stage of learning. I am interested in continuing to discover how software development works, especially Java, databases, and the web side with HTML, CSS, and XML. My goal right now is to practice, understand the fundamentals well, and gradually gain more confidence.", "goalTitle": "Goal", "goalText": "Keep learning and steadily strengthen Java, databases, and web technologies.", "strengthTitle": "Strength", "strengthText": "Consistency, curiosity, and a real desire to learn through practice and real experience.", "skillsLabel": "Skills", "skillsTitle": "Topics I am currently working on", "bridge1": "Real practice", "bridge2": "Responsive", "bridge3": "Backend", "bridge4": "Databases", "progressLabel": "Progress", "progressTitle": "My learning path", "timeline1t": "Starting DAM", "timeline1d": "I begin training in software development and building a foundation in programming, databases, and web development.", "timeline2t": "Java and SQL", "timeline2d": "I start practicing object-oriented programming, collections, and basic queries to better understand the fundamentals.", "timeline3t": "Frontend and portfolio", "timeline3d": "I keep working on the visual side with HTML and CSS, learning responsive design and gradually improving my layouts.", "timeline4t": "Right now", "timeline4d": "I continue building simple projects, improving my portfolio, and looking for a first real opportunity to learn in a professional environment.", "langLabel": "Languages", "englishTitle": "English level", "spoken": "Spoken", "written": "Written", "reading": "Reading", "roadmapLabel": "Roadmap", "roadmapTitle": "Currently learning", "road1": "Java · keep improving my understanding of OOP, collections, and programming logic.", "road2": "Databases · gain more confidence with SQL queries, tables, and relationships.", "road3": "Frontend · improve structure, responsive design, and visual polish.", "showcaseLabel": "Showcase", "showcaseTitle": "Featured projects from GitHub", "showcaseText": "Repositories with the showcase topic appear here in a larger and clickable format.", "reposLabel": "Repositories", "reposTitle": "My repositories", "reposText": "Explore my projects and practice work by name, activity, or topic.", "searchPlaceholder": "Search repositories...", "sortUpdated": "Sort: recent activity", "sortStars": "Sort: stars", "sortName": "Sort: name", "all": "All", "web": "Web", "backend": "Backend", "loadingRepos": "Loading repositories...", "showMore": "Show more", "showLess": "Show less", "personalLabel": "Personal approach", "personalTitle": "How I work and what I am looking for", "personalText": "Beyond the technical side, I want the page to reflect how I learn and how I want to keep growing as a junior developer.", "value1t": "How I learn", "value1d": "I like learning by practicing: understanding the theory, trying things on my own, making mistakes, and trying again until each concept becomes solid.", "value2t": "What I value", "value2d": "I value environments where I can keep growing, receive feedback, and learn from people with more experience.", "value3t": "What I am looking for", "value3d": "I am looking for an opportunity to keep developing step by step in backend, databases, and frontend, bringing consistency, attitude, and willingness to learn.", "contactLabel": "Contact", "contactTitle": "Let's connect", "contactText": "I made this final section more compact, more cohesive with the rest, and without showing the email address in plain text.", "resultsFound": "repository(ies) found", "featuredBadge": "Featured", "repoBadge": "Repo", "openRepo": "Open", "viewRepo": "View repo", "noTopics": "no topics", "updatedMeta": "Updated", "loadingError": "Could not load repositories from GitHub.", "noRepos": "No repositories matched", "noFeatured": "You do not have repos with the showcase topic yet."}, "de": {"langName": "DE", "siteRole": "Student für plattformübergreifende Anwendungsentwicklung · 1. Jahr", "navStart": "Start", "navProfile": "Profil", "navProgress": "Fortschritt", "navRepos": "Repos", "navSkills": "Skills", "navContact": "Kontakt", "themeLight": "Heller Modus", "themeDark": "Dunkler Modus", "gyro": "Gyroskop aktivieren", "gyroOn": "Gyroskop aktiv", "heroLabel": "CV", "lead": "Ich beginne gerade meinen Weg in der Softwareentwicklung und mein aktuelles Ziel ist es, weiter zu lernen, viel zu üben und nach und nach mehr Sicherheit in Java, Datenbanken und Webentwicklung zu gewinnen.", "viewProjects": "Projekte ansehen", "copyEmail": "E-Mail kopieren", "copiedEmail": "E-Mail kopiert", "copyFail": "Konnte nicht kopieren", "current": "Aktuell", "current1": "Ich suche Praktika und Möglichkeiten, bei denen ich von Grund auf lernen und mich weiter verbessern kann.", "current2": "Ich übe Java, Datenbanken und Webdesign, um eine stärkere Grundlage aufzubauen.", "current3": "Ich entwickle einfache Projekte, um das Gelernte Schritt für Schritt anzuwenden.", "aboutLabel": "Über mich", "aboutTitle": "Ein Junior-Profil mit Ausdauer und echtem Wunsch zu wachsen", "aboutText": "Ich bin Student und befinde mich noch in einer sehr frühen Lernphase. Ich möchte weiter entdecken, wie Softwareentwicklung funktioniert, besonders Java, Datenbanken und der Webbereich mit HTML, CSS und XML. Mein Ziel ist es jetzt, zu üben, die Grundlagen gut zu verstehen und Schritt für Schritt mehr Sicherheit zu gewinnen.", "goalTitle": "Ziel", "goalText": "Weiter lernen und Java, Datenbanken und Webtechnologien Schritt für Schritt festigen.", "strengthTitle": "Stärke", "strengthText": "Ausdauer, Neugier und der echte Wunsch, durch Praxis und reale Erfahrung zu lernen.", "skillsLabel": "Skills", "skillsTitle": "Themen, an denen ich gerade arbeite", "bridge1": "Praxis", "bridge2": "Responsive", "bridge3": "Backend", "bridge4": "Datenbanken", "progressLabel": "Fortschritt", "progressTitle": "Mein Lernweg", "timeline1t": "Start in DAM", "timeline1d": "Ich beginne meine Ausbildung in der Softwareentwicklung und baue eine Grundlage in Programmierung, Datenbanken und Webentwicklung auf.", "timeline2t": "Java und SQL", "timeline2d": "Ich übe objektorientierte Programmierung, Collections und grundlegende Abfragen, um die Grundlagen besser zu verstehen.", "timeline3t": "Frontend und Portfolio", "timeline3d": "Ich arbeite weiter am visuellen Teil mit HTML und CSS, lerne Responsive Design und verbessere nach und nach mein Layout.", "timeline4t": "Im Moment", "timeline4d": "Ich entwickle weiterhin einfache Projekte, verbessere mein Portfolio und suche nach einer ersten echten Chance, in einem realen Umfeld zu lernen.", "langLabel": "Sprachen", "englishTitle": "Englischniveau", "spoken": "Sprechen", "written": "Schreiben", "reading": "Lesen", "roadmapLabel": "Roadmap", "roadmapTitle": "Aktuell lerne ich", "road1": "Java · OOP, Collections und Programmierlogik besser verstehen.", "road2": "Datenbanken · mehr Sicherheit bei SQL-Abfragen, Tabellen und Beziehungen gewinnen.", "road3": "Frontend · Struktur, Responsive Design und visuelle Sauberkeit verbessern.", "showcaseLabel": "Showcase", "showcaseTitle": "Hervorgehobene Projekte von GitHub", "showcaseText": "Repositories mit dem Topic showcase werden hier größer und klickbar angezeigt.", "reposLabel": "Repositories", "reposTitle": "Meine Repositories", "reposText": "Erkunde meine Projekte und Übungen nach Name, Aktivität oder Thema.", "searchPlaceholder": "Repositories suchen...", "sortUpdated": "Sortieren: letzte Aktivität", "sortStars": "Sortieren: Sterne", "sortName": "Sortieren: Name", "all": "Alle", "web": "Web", "backend": "Backend", "loadingRepos": "Repositories werden geladen...", "showMore": "Mehr anzeigen", "showLess": "Weniger anzeigen", "personalLabel": "Persönlicher Ansatz", "personalTitle": "Wie ich arbeite und wonach ich suche", "personalText": "Neben dem technischen Teil möchte ich, dass die Seite zeigt, wie ich lerne und wie ich mich als Junior-Entwickler weiterentwickeln möchte.", "value1t": "Wie ich lerne", "value1d": "Ich lerne gern durch Praxis: Theorie verstehen, selbst ausprobieren, Fehler machen und erneut versuchen, bis jedes Konzept wirklich sitzt.", "value2t": "Was ich schätze", "value2d": "Ich schätze Umgebungen, in denen ich wachsen, Feedback erhalten und von erfahreneren Menschen lernen kann.", "value3t": "Was ich suche", "value3d": "Ich suche eine Möglichkeit, mich Schritt für Schritt in Backend, Datenbanken und Frontend weiterzuentwickeln und dabei Ausdauer, Haltung und Lernbereitschaft einzubringen.", "contactLabel": "Kontakt", "contactTitle": "Lass uns vernetzen", "contactText": "Ich habe diesen letzten Bereich kompakter und stimmiger gestaltet und zeige die E-Mail-Adresse nicht direkt an.", "resultsFound": "Repository(s) gefunden", "featuredBadge": "Highlight", "repoBadge": "Repo", "openRepo": "Öffnen", "viewRepo": "Repo ansehen", "noTopics": "keine Topics", "updatedMeta": "Aktualisiert", "loadingError": "Repositories konnten nicht von GitHub geladen werden.", "noRepos": "Keine Repositories gefunden für", "noFeatured": "Du hast noch keine Repos mit dem Topic showcase."}, "is": {"langName": "IS", "siteRole": "Nemandi í fjölvettvangsforritaþróun · 1. ár", "navStart": "Byrjun", "navProfile": "Prófíll", "navProgress": "Framvinda", "navRepos": "Repos", "navSkills": "Skills", "navContact": "Samband", "themeLight": "Ljós stilling", "themeDark": "Dökk stilling", "gyro": "Virkja gyroscope", "gyroOn": "Gyroscope virkt", "heroLabel": "CV", "lead": "Ég er að byrja leið mína í hugbúnaðarþróun og markmið mitt núna er að halda áfram að læra, æfa mikið og byggja smám saman upp meira öryggi í Java, gagnagrunnum og vefþróun.", "viewProjects": "Skoða verkefni", "copyEmail": "Afrita netfang", "copiedEmail": "Netfang afritað", "copyFail": "Ekki tókst að afrita", "current": "Núna", "current1": "Ég er að leita að starfsnámi og tækifærum þar sem ég get lært frá grunni og haldið áfram að bæta mig.", "current2": "Ég er að æfa Java, gagnagrunna og vefhönnun til að byggja sterkari grunn.", "current3": "Ég er að búa til einföld verkefni til að beita því sem ég er að læra skref fyrir skref.", "aboutLabel": "Um mig", "aboutTitle": "Junior prófíll með mikla þrautseigju og raunverulegan vilja til að vaxa", "aboutText": "Ég er nemandi og enn á mjög byrjunarstigi í námi. Ég hef áhuga á að halda áfram að uppgötva hvernig hugbúnaðarþróun virkar, sérstaklega Java, gagnagrunna og vefhlutann með HTML, CSS og XML. Markmið mitt núna er að æfa, skilja grunnatriðin vel og verða smám saman öruggari.", "goalTitle": "Markmið", "goalText": "Halda áfram að læra og styrkja smám saman Java, gagnagrunna og veftækni.", "strengthTitle": "Styrkur", "strengthText": "Þrautseigja, forvitni og raunverulegur vilji til að læra í gegnum æfingu og raunverulega reynslu.", "skillsLabel": "Skills", "skillsTitle": "Efni sem ég er að vinna í núna", "bridge1": "Raunæfing", "bridge2": "Responsive", "bridge3": "Backend", "bridge4": "Gagnagrunnar", "progressLabel": "Framvinda", "progressTitle": "Námsleiðin mín", "timeline1t": "Byrjun í DAM", "timeline1d": "Ég byrja að læra hugbúnaðarþróun og byggi grunn í forritun, gagnagrunnum og vefþróun.", "timeline2t": "Java og SQL", "timeline2d": "Ég byrja að æfa hlutbundna forritun, söfn og einfaldar fyrirspurnir til að skilja grunnatriðin betur.", "timeline3t": "Frontend og portfolio", "timeline3d": "Ég vinn áfram að sjónræna hlutanum með HTML og CSS, læri responsive design og bæti smám saman útlitið.", "timeline4t": "Akkúrat núna", "timeline4d": "Ég held áfram að búa til einföld verkefni, bæta portfolio mitt og leita að fyrsta raunverulega tækifærinu til að læra í faglegu umhverfi.", "langLabel": "Tungumál", "englishTitle": "Enska", "spoken": "Talað", "written": "Skrifað", "reading": "Lestur", "roadmapLabel": "Roadmap", "roadmapTitle": "Núna að læra", "road1": "Java · skilja betur OOP, söfn og forritunarrökfræði.", "road2": "Gagnagrunnar · verða öruggari með SQL fyrirspurnir, töflur og tengsl.", "road3": "Frontend · bæta uppbyggingu, responsive design og sjónræna hreinsun.", "showcaseLabel": "Showcase", "showcaseTitle": "Valin verkefni frá GitHub", "showcaseText": "Repositories með showcase topic birtast hér stærri og smellanleg.", "reposLabel": "Repositories", "reposTitle": "Mín repositories", "reposText": "Skoðaðu verkefni og æfingar eftir nafni, virkni eða efni.", "searchPlaceholder": "Leita í repositories...", "sortUpdated": "Raða: nýleg virkni", "sortStars": "Raða: stjörnur", "sortName": "Raða: nafn", "all": "Allt", "web": "Web", "backend": "Backend", "loadingRepos": "Hleð repositories...", "showMore": "Sýna meira", "showLess": "Sýna minna", "personalLabel": "Persónuleg nálgun", "personalTitle": "Hvernig ég vinn og hvað ég leita að", "personalText": "Auk tæknilega hlutans vil ég að síðan sýni hvernig ég læri og hvernig ég vil halda áfram að þróast sem junior forritari.", "value1t": "Hvernig ég læri", "value1d": "Mér finnst best að læra með æfingu: skilja fræðin, prófa sjálfur, gera mistök og reyna aftur þar til hvert hugtak verður traust.", "value2t": "Hvað ég met", "value2d": "Ég met umhverfi þar sem ég get haldið áfram að vaxa, fengið endurgjöf og lært af fólki með meiri reynslu.", "value3t": "Að hverju ég leita", "value3d": "Ég leita að tækifæri til að þróast skref fyrir skref í backend, gagnagrunnum og frontend, með þrautseigju, viðhorfi og vilja til að læra.", "contactLabel": "Samband", "contactTitle": "Höfum samband", "contactText": "Ég gerði þennan loka hluta nettari og samræmdari við restina og sýni ekki netfangið beint.", "resultsFound": "repository fannst/fundust", "featuredBadge": "Valið", "repoBadge": "Repo", "openRepo": "Opna", "viewRepo": "Skoða repo", "noTopics": "engin topics", "updatedMeta": "Uppfært", "loadingError": "Ekki tókst að hlaða repositories frá GitHub.", "noRepos": "Engin repositories fundust fyrir", "noFeatured": "Þú ert ekki með repos með showcase topic enn."}};
-    const extraTranslations = {"es": {"recruiterMode": "Modo recruiter", "recruiterModeOff": "Salir recruiter", "statsLabel": "GitHub stats", "statsTitle": "Resumen rápido de actividad", "statsText": "Una lectura rápida de mi perfil, repositorios y foco actual.", "statRepos": "Repos públicos", "statShowcase": "Showcase", "statTopLang": "Lenguaje principal", "statUpdated": "Última actividad", "mapLabel": "Mapa de aprendizaje", "mapTitle": "Ruta de crecimiento", "mapText": "Una vista visual y rápida de en qué estoy centrado ahora mismo.", "mapBackend": "Backend", "mapFrontend": "Frontend", "mapDb": "BBDD", "mapSoft": "Soft skills", "mapBackendDesc": "Java, lógica, POO y bases para seguir creciendo en backend.", "mapFrontendDesc": "HTML, CSS, responsive design y mejor estructura visual.", "mapDbDesc": "SQL, relaciones, consultas y soltura con bases de datos.", "mapSoftDesc": "Constancia, curiosidad, feedback y capacidad de aprendizaje.", "recruiterLabel": "Vista recruiter", "recruiterTitle": "Resumen de 20 segundos", "recruiterText": "Estudiante de 1º DAM, enfocado en Java, BBDD y web. Busco una primera oportunidad para aprender en un entorno real, con constancia, actitud y ganas de crecer."}, "en": {"recruiterMode": "Recruiter mode", "recruiterModeOff": "Exit recruiter", "statsLabel": "GitHub stats", "statsTitle": "Quick activity summary", "statsText": "A fast read of my profile, repositories, and current focus.", "statRepos": "Public repos", "statShowcase": "Showcase", "statTopLang": "Top language", "statUpdated": "Latest activity", "mapLabel": "Learning map", "mapTitle": "Growth route", "mapText": "A fast visual overview of what I am focused on right now.", "mapBackend": "Backend", "mapFrontend": "Frontend", "mapDb": "Databases", "mapSoft": "Soft skills", "mapBackendDesc": "Java, logic, OOP, and fundamentals to keep growing in backend.", "mapFrontendDesc": "HTML, CSS, responsive design, and cleaner visual structure.", "mapDbDesc": "SQL, relationships, queries, and more confidence with databases.", "mapSoftDesc": "Consistency, curiosity, feedback, and learning capacity.", "recruiterLabel": "Recruiter view", "recruiterTitle": "20-second summary", "recruiterText": "1st year DAM student focused on Java, databases, and web development. I am looking for a first opportunity to learn in a real environment, bringing consistency, attitude, and willingness to grow."}, "de": {"recruiterMode": "Recruiter-Modus", "recruiterModeOff": "Recruiter beenden", "statsLabel": "GitHub-Statistiken", "statsTitle": "Schnelle Aktivitätsübersicht", "statsText": "Ein schneller Überblick über mein Profil, meine Repositories und meinen aktuellen Fokus.", "statRepos": "Öffentliche Repos", "statShowcase": "Showcase", "statTopLang": "Hauptsprache", "statUpdated": "Letzte Aktivität", "mapLabel": "Lernkarte", "mapTitle": "Wachstumsroute", "mapText": "Ein schneller visueller Überblick darüber, worauf ich mich gerade konzentriere.", "mapBackend": "Backend", "mapFrontend": "Frontend", "mapDb": "Datenbanken", "mapSoft": "Soft Skills", "mapBackendDesc": "Java, Logik, OOP und Grundlagen, um im Backend weiter zu wachsen.", "mapFrontendDesc": "HTML, CSS, Responsive Design und sauberere visuelle Struktur.", "mapDbDesc": "SQL, Beziehungen, Abfragen und mehr Sicherheit bei Datenbanken.", "mapSoftDesc": "Ausdauer, Neugier, Feedback und Lernfähigkeit.", "recruiterLabel": "Recruiter-Ansicht", "recruiterTitle": "20-Sekunden-Zusammenfassung", "recruiterText": "Student im 1. Jahr DAM mit Fokus auf Java, Datenbanken und Webentwicklung. Ich suche eine erste Gelegenheit, in einem realen Umfeld zu lernen, mit Ausdauer, Haltung und dem Wunsch zu wachsen."}, "is": {"recruiterMode": "Recruiter hamur", "recruiterModeOff": "Loka recruiter", "statsLabel": "GitHub tölfræði", "statsTitle": "Fljótlegt yfirlit um virkni", "statsText": "Hröð yfirsýn yfir prófílinn minn, repositories og núverandi fókus.", "statRepos": "Opin repos", "statShowcase": "Showcase", "statTopLang": "Aðaltungumál", "statUpdated": "Síðasta virkni", "mapLabel": "Námskort", "mapTitle": "Vöxtarleið", "mapText": "Fljótleg sjónræn yfirsýn yfir það sem ég er að einbeita mér að núna.", "mapBackend": "Backend", "mapFrontend": "Frontend", "mapDb": "Gagnagrunnar", "mapSoft": "Mjúk færni", "mapBackendDesc": "Java, rökfræði, OOP og grunnur til að halda áfram að vaxa í backend.", "mapFrontendDesc": "HTML, CSS, responsive design og hreinni sjónræn uppbygging.", "mapDbDesc": "SQL, tengsl, fyrirspurnir og meira öryggi með gagnagrunna.", "mapSoftDesc": "Þrautseigja, forvitni, endurgjöf og hæfni til að læra.", "recruiterLabel": "Recruiter sýn", "recruiterTitle": "20 sekúndna samantekt", "recruiterText": "Nemandi á 1. ári í DAM með fókus á Java, gagnagrunna og vefþróun. Ég leita að fyrsta tækifærinu til að læra í raunverulegu umhverfi með þrautseigju, viðhorfi og vilja til að vaxa."}};
-    Object.keys(extraTranslations).forEach(lang =>
-    {
-        translations[lang] = Object.assign({}, translations[lang] || {}, extraTranslations[lang]);
-    });
-    const skillVisualTranslations = {"es": {"radarLabel": "Radar de skills", "radarTitle": "Lectura automática desde GitHub", "skillsAutoNote": "Estas métricas se calculan automáticamente según lenguajes y topics detectados en mis repositorios.", "downloadCv": "Descargar CV PDF", "radarSummaryLabel": "Resumen del perfil", "radarSummaryDefault": "Perfil orientado a backend con base sólida en Java, BBDD y apoyo visual en frontend.", "recruiterDemoOn": "Modo recruiter", "recruiterDemoOff": "Salir recruiter"}, "en": {"radarLabel": "Skills radar", "radarTitle": "Automatic read from GitHub", "skillsAutoNote": "These metrics are calculated automatically from languages and topics detected in my repositories.", "downloadCv": "Download CV PDF", "radarSummaryLabel": "Profile summary", "radarSummaryDefault": "Backend-oriented profile with a solid base in Java, databases, and supporting frontend work.", "recruiterDemoOn": "Recruiter mode", "recruiterDemoOff": "Exit recruiter"}, "de": {"radarLabel": "Skill-Radar", "radarTitle": "Automatische Auswertung aus GitHub", "skillsAutoNote": "Diese Werte werden automatisch aus Sprachen und Topics meiner Repositories berechnet.", "downloadCv": "CV als PDF", "radarSummaryLabel": "Profilzusammenfassung", "radarSummaryDefault": "Backend-orientiertes Profil mit solider Basis in Java, Datenbanken und unterstützendem Frontend.", "recruiterDemoOn": "Recruiter-Modus", "recruiterDemoOff": "Recruiter beenden"}, "is": {"radarLabel": "Færniradar", "radarTitle": "Sjálfvirk lestur úr GitHub", "skillsAutoNote": "Þessi gildi eru reiknuð sjálfkrafa út frá tungumálum og topics í repositories mínum.", "downloadCv": "Sækja CV PDF", "radarSummaryLabel": "Yfirlit prófíls", "radarSummaryDefault": "Prófíll sem hallar að backend með traustan grunn í Java, gagnagrunnum og stuðningsfærni í frontend.", "recruiterDemoOn": "Recruiter hamur", "recruiterDemoOff": "Loka recruiter"}};
-    Object.keys(skillVisualTranslations).forEach(lang =>
-    {
-        translations[lang] = Object.assign({}, translations[lang] || {}, skillVisualTranslations[lang]);
-    });
-
-    const defaultLang = "es";
-    const GITHUB_USERNAME = "alejandroDonGar";
-    const FEATURED_TOPIC = "showcase";
-    const REPOS_PREVIEW_COUNT = 6;
-    let currentLang = localStorage.getItem(langKey) || defaultLang;
+    const GITHUB_USERNAME = 'alejandroDonGar';
+    const API_BASE = `https://api.github.com/users/${GITHUB_USERNAME}`;
     let allRepos = [];
-    let activeTopic = "all";
-    let reposExpanded = false;
-    let gyroEnabled = false;
-    let currentSkill = "java";
-    let recruiterMode = false;
 
-    const skillMap = {
-        java: "CLASES · GETTER/SETTER · FECHAS · EXPRESIONES REGULARES · ARRAYS · LISTAS · SETS · MAPS",
-        db: "CREATE TABLES · ALTER · DROP · INSERT INTO · JOINS · POSTGRES",
-        frontend: "HTML GENERAL · CSS GRID · FLEXBOX · RESPONSIVE DESIGN",
-        xml: "XSD · VALIDACIÓN · ESTRUCTURAS DE DATOS"
-    };
-
-    function t(key)
-    {
-        return translations[currentLang][key] || translations[defaultLang][key] || key;
-    }
-
-    function setSkillText(skill)
-    {
-        currentSkill = skill;
-        const titles = {
-            java: "JAVA",
-            db: currentLang === "es" ? "BBDD" : currentLang === "en" ? "DATABASES" : currentLang === "de" ? "DATENBANKEN" : "GAGNAGRUNNAR",
-            frontend: "FRONTEND",
-            xml: "XML"
-        };
-
-        document.getElementById("skillTitle").textContent = titles[skill];
-        document.getElementById("skillText").textContent = skillMap[skill];
-    }
-
-    function updateRecruiterButtons()
-    {
-        recruiterButtons.forEach(button =>
-        {
-            button.textContent = recruiterMode
-                ? (currentLang === "en" ? "Exit recruiter" : currentLang === "de" ? "Recruiter beenden" : currentLang === "is" ? "Loka recruiter" : "Salir recruiter")
-                : (currentLang === "en" ? "Recruiter mode" : currentLang === "de" ? "Recruiter-Modus" : currentLang === "is" ? "Recruiter hamur" : "Modo recruiter");
-        });
-    }
-
-    function toggleRecruiterMode()
-    {
-        recruiterMode = !recruiterMode;
-        document.body.classList.toggle("recruiter-mode", recruiterMode);
-        updateRecruiterButtons();
-    }
-
-    function applyTheme(theme)
-    {
-        root.setAttribute("data-theme", theme);
-        document.querySelectorAll("[data-theme-toggle]").forEach(button =>
-        {
-            button.textContent = theme === "light" ? t("themeDark") : t("themeLight");
-        });
-    }
-
-    function updateCopyLabels(text)
-    {
-        document.querySelectorAll(".copy-label").forEach(node =>
-        {
-            node.textContent = text;
-        });
-    }
-
-    function applyLanguage(lang)
-    {
-        currentLang = lang;
-        localStorage.setItem(langKey, lang);
-        document.documentElement.lang = lang;
-
-        const map = {
-            "ribbon-role": "siteRole",
-            "nav-start": "navStart",
-            "nav-profile": "navProfile",
-            "nav-progress": "navProgress",
-            "nav-repos": "navRepos",
-            "nav-skills": "navSkills",
-            "nav-contact": "navContact",
-            "hero-label": "heroLabel",
-            "hero-role": "siteRole",
-            "hero-lead": "lead",
-            "hero-projects": "viewProjects",
-            "current-label": "current",
-            "current-1": "current1",
-            "current-2": "current2",
-            "current-3": "current3",
-            "about-label": "aboutLabel",
-            "about-title": "aboutTitle",
-            "about-text": "aboutText",
-            "goal-title": "goalTitle",
-            "goal-text": "goalText",
-            "strength-title": "strengthTitle",
-            "strength-text": "strengthText",
-            "skills-label": "skillsLabel",
-            "skills-title": "skillsTitle",
-            "bridge-1": "bridge1",
-            "bridge-2": "bridge2",
-            "bridge-3": "bridge3",
-            "bridge-4": "bridge4",
-            "progress-label": "progressLabel",
-            "progress-title": "progressTitle",
-            "tl1t": "timeline1t",
-            "tl1d": "timeline1d",
-            "tl2t": "timeline2t",
-            "tl2d": "timeline2d",
-            "tl3t": "timeline3t",
-            "tl3d": "timeline3d",
-            "tl4t": "timeline4t",
-            "tl4d": "timeline4d",
-            "lang-label": "langLabel",
-            "english-title": "englishTitle",
-            "spoken-label": "spoken",
-            "written-label": "written",
-            "reading-label": "reading",
-            "roadmap-label": "roadmapLabel",
-            "roadmap-title": "roadmapTitle",
-            "road-1": "road1",
-            "road-2": "road2",
-            "road-3": "road3",
-            "showcase-label": "showcaseLabel",
-            "showcase-title": "showcaseTitle",
-            "showcase-text": "showcaseText",
-            "repos-label": "reposLabel",
-            "repos-title": "reposTitle",
-            "repos-text": "reposText",
-            "filter-all": "all",
-            "filter-web": "web",
-            "filter-backend": "backend",
-            "personal-label": "personalLabel",
-            "personal-title": "personalTitle",
-            "personal-text": "personalText",
-            "value1t": "value1t",
-            "value1d": "value1d",
-            "value2t": "value2t",
-            "value2d": "value2d",
-            "value3t": "value3t",
-            "value3d": "value3d",
-            "contact-label": "contactLabel",
-            "contact-title": "contactTitle",
-            "contact-text": "contactText",
-            "download-cv-btn": "downloadCv",
-            "radar-label": "radarLabel",
-            "radar-title": "radarTitle",
-            "skills-auto-note": "skillsAutoNote",
-            "radar-summary-label": "radarSummaryLabel",
-            "radar-summary-text": "radarSummaryDefault",
-            "stats-label": "statsLabel",
-            "stats-title": "statsTitle",
-            "stats-text": "statsText",
-            "stat-repos-label": "statRepos",
-            "stat-showcase-label": "statShowcase",
-            "stat-toplang-label": "statTopLang",
-            "stat-updated-label": "statUpdated",
-            "recruiter-label": "recruiterLabel",
-            "recruiter-title": "recruiterTitle",
-            "recruiter-text": "recruiterText"
-        };
-
-        Object.entries(map).forEach(([id, key]) =>
-        {
-            const node = document.getElementById(id);
-            if (node)
-            {
-                node.textContent = t(key);
-            }
-        });
-
-        q.placeholder = t("searchPlaceholder");
-        document.querySelector('#sort option[value="updated"]').textContent = t("sortUpdated");
-        document.querySelector('#sort option[value="stars"]').textContent = t("sortStars");
-        document.querySelector('#sort option[value="name"]').textContent = t("sortName");
-        document.getElementById("filter-showcase").textContent = "Showcase";
-        document.getElementById("gyro-toggle").textContent = gyroEnabled ? t("gyroOn") : t("gyro");
-        const downloadCvButtonText = document.getElementById("download-cv-btn");
-        if (downloadCvButtonText)
-        {
-            downloadCvButtonText.textContent = t("downloadCv");
-        }
-        updateCopyLabels(t("copyEmail"));
-        const radarSummaryLabelNode = document.getElementById("radar-summary-label");
-        if (radarSummaryLabelNode)
-        {
-            radarSummaryLabelNode.textContent = t("radarSummaryLabel");
-        }
-        const radarSummaryTextNode = document.getElementById("radar-summary-text");
-        if (radarSummaryTextNode && !radarSummaryTextNode.textContent.trim())
-        {
-            radarSummaryTextNode.textContent = t("radarSummaryDefault");
-        }
-        const recruiterTitleNode = document.getElementById("recruiter-title");
-        if (recruiterTitleNode)
-        {
-            recruiterTitleNode.textContent = currentLang === "en" ? "20-second summary" : currentLang === "de" ? "20-Sekunden-Zusammenfassung" : currentLang === "is" ? "20 sekúndna samantekt" : "Resumen de 20 segundos";
-        }
-        const recruiterTextNode = document.getElementById("recruiter-text");
-        if (recruiterTextNode)
-        {
-            recruiterTextNode.textContent = currentLang === "en"
-                ? "Junior profile focused on Java, databases, and web development. Looking for a first real opportunity to grow with consistency, attitude, and hands-on learning."
-                : currentLang === "de"
-                    ? "Junior-Profil mit Fokus auf Java, Datenbanken und Webentwicklung. Ich suche eine erste echte Gelegenheit, mit Ausdauer, Haltung und praxisnahem Lernen zu wachsen."
-                    : currentLang === "is"
-                        ? "Junior prófíll með fókus á Java, gagnagrunna og vefþróun. Ég leita að fyrsta raunverulega tækifærinu til að vaxa með þrautseigju, viðhorfi og verklegu námi."
-                        : "Perfil junior centrado en Java, bases de datos y desarrollo web. Busco una primera oportunidad real para crecer con constancia, actitud y aprendizaje práctico.";
-        }
-        applyTheme(root.getAttribute("data-theme") || "dark");
-        setSkillText(currentSkill);
-        updateRecruiterButtons();
-        animateLanguageSwap();
-        renderFeatured(allRepos);
-        renderRepos(allRepos);
-
-        langButtons.forEach(button =>
-        {
-            button.classList.toggle("active", button.dataset.lang === lang);
-        });
-    }
-
-    skillButtons.forEach(button =>
-    {
-        button.addEventListener("click", () =>
-        {
-            skillButtons.forEach(item => item.classList.remove("active"));
-            button.classList.add("active");
-            setSkillText(button.dataset.skill);
-        });
-    });
-
-    langButtons.forEach(button =>
-    {
-        button.addEventListener("click", () =>
-        {
-            applyLanguage(button.dataset.lang);
-        });
-    });
-
-    recruiterButtons.forEach(button =>
-    {
-        button.addEventListener("click", toggleRecruiterMode);
-    });
-
-    const storedTheme = localStorage.getItem(themeKey) || document.body.dataset.defaultTheme || "dark";
-    applyTheme(storedTheme);
-    applyLanguage(currentLang);
-    setSkillText("java");
-
-    document.querySelectorAll("[data-theme-toggle]").forEach(button =>
-    {
-        button.addEventListener("click", () =>
-        {
-            const nextTheme = root.getAttribute("data-theme") === "light" ? "dark" : "light";
-            applyTheme(nextTheme);
-            localStorage.setItem(themeKey, nextTheme);
-        });
-    });
-
-    const downloadCvButton = document.getElementById("download-cv-btn");
-
-    if (downloadCvButton)
-    {
-        downloadCvButton.addEventListener("click", () =>
-        {
-            window.print();
-        });
-    }
-
-    document.querySelectorAll("[data-copy-email]").forEach(button =>
-    {
-        button.addEventListener("click", async () =>
-        {
-            try
-            {
-                await navigator.clipboard.writeText(email);
-                updateCopyLabels(t("copiedEmail"));
-            }
-            catch (error)
-            {
-                updateCopyLabels(t("copyFail"));
-            }
-
-            setTimeout(() =>
-            {
-                updateCopyLabels(t("copyEmail"));
-        const radarSummaryLabelNode = document.getElementById("radar-summary-label");
-        if (radarSummaryLabelNode)
-        {
-            radarSummaryLabelNode.textContent = t("radarSummaryLabel");
-        }
-        const radarSummaryTextNode = document.getElementById("radar-summary-text");
-        if (radarSummaryTextNode && !radarSummaryTextNode.textContent.trim())
-        {
-            radarSummaryTextNode.textContent = t("radarSummaryDefault");
-        }
-        const recruiterTitleNode = document.getElementById("recruiter-title");
-        if (recruiterTitleNode)
-        {
-            recruiterTitleNode.textContent = currentLang === "en" ? "20-second summary" : currentLang === "de" ? "20-Sekunden-Zusammenfassung" : currentLang === "is" ? "20 sekúndna samantekt" : "Resumen de 20 segundos";
-        }
-        const recruiterTextNode = document.getElementById("recruiter-text");
-        if (recruiterTextNode)
-        {
-            recruiterTextNode.textContent = currentLang === "en"
-                ? "Junior profile focused on Java, databases, and web development. Looking for a first real opportunity to grow with consistency, attitude, and hands-on learning."
-                : currentLang === "de"
-                    ? "Junior-Profil mit Fokus auf Java, Datenbanken und Webentwicklung. Ich suche eine erste echte Gelegenheit, mit Ausdauer, Haltung und praxisnahem Lernen zu wachsen."
-                    : currentLang === "is"
-                        ? "Junior prófíll með fókus á Java, gagnagrunna og vefþróun. Ég leita að fyrsta raunverulega tækifærinu til að vaxa með þrautseigju, viðhorfi og verklegu námi."
-                        : "Perfil junior centrado en Java, bases de datos y desarrollo web. Busco una primera oportunidad real para crecer con constancia, actitud y aprendizaje práctico.";
-        }
-            }, 1400);
-        });
-    });
-
-    const revealObserver = new IntersectionObserver(entries =>
-    {
-        entries.forEach(entry =>
-        {
-            if (entry.isIntersecting)
-            {
-                entry.target.classList.add("visible");
-            }
-        });
-    }, { threshold: 0.14 });
-
-    document.querySelectorAll(".reveal").forEach(element =>
-    {
-        revealObserver.observe(element);
-    });
-
-    const sectionObserver = new IntersectionObserver(entries =>
-    {
-        entries.forEach(entry =>
-        {
-            if (!entry.isIntersecting)
-            {
-                return;
-            }
-
-            const pill = document.querySelector('.section-pill[href="#' + entry.target.id + '"]');
-
-            if (pill)
-            {
-                pills.forEach(item => item.classList.remove("active"));
-                pill.classList.add("active");
-            }
-        });
-    }, { threshold: 0.42 });
-
-    document.querySelectorAll("section[id], header[id]").forEach(section =>
-    {
-        sectionObserver.observe(section);
-    });
-
-    if (hero && ribbon)
-    {
-        const ribbonObserver = new IntersectionObserver(entries =>
-        {
-            entries.forEach(entry =>
-            {
-                ribbon.classList.toggle("visible", !entry.isIntersecting);
-            });
-        }, { threshold: 0.72 });
-
-        ribbonObserver.observe(hero);
-    }
-
-    document.querySelectorAll(".tilt-card").forEach(card =>
-    {
-        card.addEventListener("mousemove", event =>
-        {
-            if (window.innerWidth < 900)
-            {
-                return;
-            }
-
-            const rect = card.getBoundingClientRect();
-            const x = event.clientX - rect.left;
-            const y = event.clientY - rect.top;
-            const rotateX = ((y / rect.height) - 0.5) * -10;
-            const rotateY = ((x / rect.width) - 0.5) * 10;
-            card.style.transform = "translateY(-8px) rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg)";
-        });
-
-        card.addEventListener("mouseleave", () =>
-        {
-            card.style.transform = "";
-        });
-    });
-
-    document.addEventListener("mousemove", event =>
-    {
-        root.style.setProperty("--mx", (event.clientX / window.innerWidth).toFixed(3));
-        root.style.setProperty("--my", (event.clientY / window.innerHeight).toFixed(3));
-    });
-
-    window.addEventListener("scroll", () =>
-    {
-        root.style.setProperty("--scrollY", String(window.scrollY));
-    }, { passive: true });
-
-    document.querySelectorAll(".button").forEach(button =>
-    {
-        button.addEventListener("click", event =>
-        {
-            const ripple = document.createElement("span");
-            ripple.className = "ripple";
-            const rect = button.getBoundingClientRect();
-            ripple.style.left = (event.clientX - rect.left) + "px";
-            ripple.style.top = (event.clientY - rect.top) + "px";
-            button.appendChild(ripple);
-            setTimeout(() => ripple.remove(), 520);
-        });
-    });
-
-    function requestGyro()
-    {
-        if (window.innerWidth > 900)
-        {
-            return;
-        }
-
-        const applyGyro = () =>
-        {
-            if (gyroEnabled)
-            {
-                return;
-            }
-
-            gyroEnabled = true;
-            document.getElementById("gyro-toggle").textContent = t("gyroOn");
-
-            window.addEventListener("deviceorientation", event =>
-            {
-                const gamma = Math.max(-18, Math.min(18, event.gamma || 0));
-                const beta = Math.max(-18, Math.min(18, event.beta || 0));
-
-                document.querySelectorAll(".tilt-card").forEach(card =>
-                {
-                    const rotateY = gamma * 0.35;
-                    const rotateX = (beta - 8) * -0.18;
-                    card.style.transform = "translateY(-4px) rotateX(" + rotateX.toFixed(2) + "deg) rotateY(" + rotateY.toFixed(2) + "deg)";
-                });
-            });
-        };
-
-        if (typeof DeviceOrientationEvent !== "undefined" && typeof DeviceOrientationEvent.requestPermission === "function")
-        {
-            DeviceOrientationEvent.requestPermission().then(permission =>
-            {
-                if (permission === "granted")
-                {
-                    applyGyro();
-                }
-            }).catch(() => {});
-        }
-        else if ("DeviceOrientationEvent" in window)
-        {
-            applyGyro();
-        }
-    }
-
-    document.getElementById("gyro-toggle").addEventListener("click", requestGyro);
-
-    function formatDate(iso)
-    {
-        const d = new Date(iso);
-        const locale = currentLang === "is" ? "is-IS" : currentLang === "de" ? "de-DE" : currentLang === "en" ? "en-GB" : "es-ES";
-
-        return new Intl.DateTimeFormat(locale, {
-            year: "numeric",
-            month: "short",
-            day: "2-digit"
-        }).format(d);
-    }
-
-    function repoMeta(repo)
-    {
-        return `
-            <div class="repo-meta">
-                <span>⭐ ${repo.stargazers_count || 0}</span>
-                <span>🧩 ${repo.language || "—"}</span>
-                <span>🕒 ${t("updatedMeta")}: ${formatDate(repo.updated_at)}</span>
-            </div>
-        `;
-    }
-
-    function repoTopics(repo, featuredCard)
-    {
-        const topics = (repo.topics && repo.topics.length)
-            ? repo.topics.slice(0, featuredCard ? 5 : 6).map(topic => `<span class="repo-pill ${topic === FEATURED_TOPIC ? "highlight" : ""}">${topic}</span>`).join("")
-            : `<span class="repo-pill">${t("noTopics")}</span>`;
-
-        return `<div class="repo-pills">${featuredCard ? `<span class="repo-pill highlight">${t("featuredBadge")}</span>` : ""}${topics}</div>`;
-    }
-
-    function animateLanguageSwap()
-    {
-        document.querySelectorAll(".lang-fade").forEach(node =>
-        {
-            node.classList.remove("lang-fade-active");
-            void node.offsetWidth;
-            node.classList.add("lang-fade-active");
-        });
-    }
-
-    function renderRepoFallback()
-    {
-        const fallbackFeatured = [
-            {
-                name: "alejandroDonGar",
-                description: "Repositorio presentación Alejandro Donate García",
-                language: "HTML",
-                updated_at: new Date().toISOString(),
-                stargazers_count: 0,
-                topics: ["showcase"]
-            }
-        ];
-
-        const fallbackRepos = [
-            {
-                name: "alejandroDonGar.github.io",
-                description: "CV",
-                language: "HTML",
-                updated_at: new Date().toISOString(),
-                stargazers_count: 0,
-                topics: []
-            },
-            {
-                name: "repositorio_SSII",
-                description: "Repositorio para la asignatura de Sistemas Informáticos 1ºDAM",
-                language: "Shell",
-                updated_at: new Date().toISOString(),
-                stargazers_count: 0,
-                topics: []
-            },
-            {
-                name: "etsdam_alejandro",
-                description: "Repositorio de trabajo para 1ºDAM",
-                language: "—",
-                updated_at: new Date().toISOString(),
-                stargazers_count: 0,
-                topics: []
-            }
-        ];
-
-        allRepos = [...fallbackFeatured, ...fallbackRepos];
-        renderFeatured(allRepos);
-        renderRepos(allRepos);
-    }
-
-    async function fetchRepos()
-    {
-        const cacheKey = "kinetic-github-cache";
-        const cacheTimeKey = "kinetic-github-cache-time";
-        const maxAge = 1000 * 60 * 20;
-        const cached = localStorage.getItem(cacheKey);
-        const cachedTime = Number(localStorage.getItem(cacheTimeKey) || 0);
-
-        if (cached && (Date.now() - cachedTime) < maxAge)
-        {
-            return JSON.parse(cached);
-        }
-
-        const url = `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
-        const res = await fetch(url, { headers: { "Accept": "application/vnd.github+json" } });
-
-        if (!res.ok)
-        {
-            throw new Error("GitHub error");
-        }
-
-        const data = await res.json();
-
-        const parsed = data.filter(repo => !repo.fork).map(repo => ({
-            name: repo.name,
-            html_url: repo.html_url,
-            description: repo.description || "—",
-            language: repo.language || "—",
-            stargazers_count: repo.stargazers_count || 0,
-            updated_at: repo.updated_at,
-            topics: repo.topics || []
-        }));
-
-        localStorage.setItem(cacheKey, JSON.stringify(parsed));
-        localStorage.setItem(cacheTimeKey, String(Date.now()));
-
-        return parsed;
-    }
-
-    function clamp(value, min, max)
-    {
-        return Math.max(min, Math.min(max, value));
-    }
-
-    function computeSkillMetrics(reposData)
-    {
-        if (!reposData.length)
-        {
-            return {
-                java: 76,
-                db: 68,
-                frontend: 72,
-                xml: 58
-            };
-        }
-
-        const langCount = {};
-        const topics = [];
-
-        reposData.forEach(repo =>
-        {
-            const language = (repo.language || "").toLowerCase();
-            if (language)
-            {
-                langCount[language] = (langCount[language] || 0) + 1;
-            }
-            (repo.topics || []).forEach(topic =>
-            {
-                topics.push(String(topic).toLowerCase());
-            });
-        });
-
-        const countLang = name => langCount[name.toLowerCase()] || 0;
-        const countTopic = list => topics.filter(topic => list.includes(topic)).length;
-
-        const java = clamp(48 + (countLang("java") * 14) + (countTopic(["java", "backend", "poo", "oop"]) * 5), 42, 92);
-        const db = clamp(42 + (countLang("sql") * 14) + (countLang("plpgsql") * 12) + (countTopic(["sql", "database", "bbdd", "postgres", "db"]) * 5), 38, 90);
-        const frontend = clamp(44 + (countLang("html") * 8) + (countLang("css") * 8) + (countLang("javascript") * 10) + (countTopic(["web", "frontend", "css", "html", "responsive"]) * 5), 40, 92);
-        const xml = clamp(34 + (countLang("xml") * 14) + (countTopic(["xml", "xsd"]) * 8), 32, 86);
-
-        return {
-            java,
-            db,
-            frontend,
-            xml
-        };
-    }
-
-    function skillPoint(cx, cy, angle, radius, value)
-    {
-        const r = radius * (value / 100);
-        const x = cx + Math.cos(angle) * r;
-        const y = cy + Math.sin(angle) * r;
-        return [x, y];
-    }
-
-    function updateRadarSummary(metrics)
-    {
-        const summary = document.getElementById("radar-summary-text");
-        if (!summary)
-        {
-            return;
-        }
-
-        const ordered = Object.entries(metrics).sort((a, b) => b[1] - a[1]);
-        const first = ordered[0]?.[0] || "java";
-        const second = ordered[1]?.[0] || "db";
-
-        const labels = {
-            java: "Java",
-            db: currentLang === "en" ? "Databases" : currentLang === "de" ? "Datenbanken" : currentLang === "is" ? "Gagnagrunnar" : "BBDD",
-            frontend: "Frontend",
-            xml: "XML"
-        };
-
-        const summaries = {
-            es: "Perfil orientado a " + (first === "frontend" ? "frontend" : "backend") + " con más peso en " + labels[first] + " y apoyo en " + labels[second] + ".",
-            en: (first === "frontend" ? "Frontend" : "Backend") + "-leaning profile with strongest weight in " + labels[first] + " and support from " + labels[second] + ".",
-            de: (first === "frontend" ? "Frontend" : "Backend") + "-orientiertes Profil mit Schwerpunkt auf " + labels[first] + " und Unterstützung durch " + labels[second] + ".",
-            is: "Prófíll sem hallar að " + (first === "frontend" ? "frontend" : "backend") + " með mesta áherslu á " + labels[first] + " og stuðning frá " + labels[second] + "."
-        };
-
-        summary.textContent = summaries[currentLang] || t("radarSummaryDefault");
-    }
-
-    function bindRepoRadarHover()
-    {
-        document.querySelectorAll(".repo-card").forEach(card =>
-        {
-            card.addEventListener("mouseenter", () =>
-            {
-                const text = card.textContent.toLowerCase();
-                const metrics = {
-                    java: text.includes("java") || text.includes("backend") ? 84 : 56,
-                    db: text.includes("sql") || text.includes("bbdd") || text.includes("database") ? 80 : 48,
-                    frontend: text.includes("web") || text.includes("frontend") || text.includes("html") || text.includes("css") ? 82 : 46,
-                    xml: text.includes("xml") || text.includes("xsd") ? 74 : 34
-                };
-                updateSkillVisuals([], metrics);
-                updateRadarSummary(metrics);
-            });
-
-            card.addEventListener("mouseleave", () =>
-            {
-                updateSkillVisuals(allRepos);
-            });
-        });
-    }
-
-    function updateSkillVisuals(reposData, forcedMetrics = null)
-    {
-        const metrics = forcedMetrics || computeSkillMetrics(reposData);
-        const bars = {
-            java: document.querySelector('.chart-row[data-skill="java"] .chart-bar i') || document.querySelectorAll('.chart-row .chart-bar i')[0],
-            db: document.querySelector('.chart-row[data-skill="db"] .chart-bar i') || document.querySelectorAll('.chart-row .chart-bar i')[1],
-            frontend: document.querySelector('.chart-row[data-skill="frontend"] .chart-bar i') || document.querySelectorAll('.chart-row .chart-bar i')[2],
-            xml: document.querySelector('.chart-row[data-skill="xml"] .chart-bar i') || document.querySelectorAll('.chart-row .chart-bar i')[3]
-        };
-
-        Object.entries(metrics).forEach(([key, value]) =>
-        {
-            if (bars[key])
-            {
-                bars[key].style.setProperty('--value', value + '%');
-            }
-            const legendValue = document.querySelector('[data-skill-value="' + key + '"]');
-            if (legendValue)
-            {
-                legendValue.textContent = value + '%';
-            }
-        });
-
-        const cx = 120;
-        const cy = 120;
-        const radius = 92;
-        const points = {
-            java: skillPoint(cx, cy, -Math.PI / 2, radius, metrics.java),
-            frontend: skillPoint(cx, cy, 0, radius, metrics.frontend),
-            db: skillPoint(cx, cy, Math.PI / 2, radius, metrics.db),
-            xml: skillPoint(cx, cy, Math.PI, radius, metrics.xml)
-        };
-
-        updateRadarSummary(metrics);
-
-        const polygon = document.getElementById('radar-shape');
-        if (polygon)
-        {
-            polygon.setAttribute('points', [
-                points.java.join(','),
-                points.frontend.join(','),
-                points.db.join(','),
-                points.xml.join(',')
-            ].join(' '));
-        }
-
-        const dots = {
-            java: document.getElementById('radar-dot-java'),
-            frontend: document.getElementById('radar-dot-frontend'),
-            db: document.getElementById('radar-dot-db'),
-            xml: document.getElementById('radar-dot-xml')
-        };
-
-        Object.entries(points).forEach(([key, value]) =>
-        {
-            if (dots[key])
-            {
-                dots[key].setAttribute('cx', value[0].toFixed(1));
-                dots[key].setAttribute('cy', value[1].toFixed(1));
-            }
-        });
-    }
-
-    function updateGitHubStats(reposData)
-    {
-        const publicCount = reposData.length;
-        const showcaseCount = reposData.filter(repo => (repo.topics || []).includes(FEATURED_TOPIC)).length;
-        const languageCount = {};
-        reposData.forEach(repo =>
-        {
-            if (repo.language)
-            {
-                languageCount[repo.language] = (languageCount[repo.language] || 0) + 1;
-            }
-        });
-        const topLang = Object.entries(languageCount)
-            .filter(([name]) => name && name !== "—")
-            .sort((a, b) => b[1] - a[1])[0]?.[0] || "—";
-        const latest = reposData.slice().sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))[0];
-
-        document.getElementById("stat-repos-value").textContent = String(publicCount);
-        document.getElementById("stat-showcase-value").textContent = String(showcaseCount);
-        document.getElementById("stat-toplang-value").textContent = String(topLang || "—");
-        document.getElementById("stat-updated-value").textContent = latest ? formatDate(latest.updated_at) : "—";
-    }
-
-    function renderFeatured(reposData)
-    {
-        const featuredRepos = reposData.filter(repo => repo.topics.includes(FEATURED_TOPIC)).slice(0, 6);
-
-        if (!featuredRepos.length)
-        {
-            featured.innerHTML = `<div class="empty-state">${t("noFeatured")}</div>`;
-            return;
-        }
-
-        featured.innerHTML = featuredRepos.map((repo, index) => `
-            <article class="repo-card repo-featured ${index === 0 ? "repo-featured-main" : ""} tilt-card"
-                data-repo-name="${repo.name}"
-                data-repo-description="${repo.description || ""}"
-                data-repo-url="${repo.html_url}"
-                data-repo-language="${repo.language || "—"}"
-                data-repo-updated="${repo.updated_at || ""}"
-                data-repo-pushed="${repo.pushed_at || ""}"
-                data-repo-stars="${repo.stargazers_count || 0}"
-                data-repo-topics="${(repo.topics || []).join("|")}"
-                data-repo-languages-url="${repo.languages_url || ""}"
-                data-repo-commits-url="${(repo.commits_url || "").replace("{/sha}", "?per_page=6")}"
-                data-repo-contents-url="${repo.contents_url || ""}">
-                <div class="repo-topline">
-                    <span class="mini-label">Showcase</span>
-                    <span>↗</span>
-                </div>
-                <h3>${repo.name}</h3>
-                <p>${repo.description || ""}</p>
-                ${repoTopics(repo, true)}
-                <div class="repo-card-actions">
-                    <button type="button" class="button subtle">Explorar</button>
-                </div>
-            </article>
-        `).join("");
-        bindRepoRadarHover();
-    }
-
-    function applyFilters(reposData)
-    {
-        const query = (q.value || "").toLowerCase().trim();
-        const sortValue = sort.value || "updated";
-
-        let list = reposData.filter(repo =>
-        {
-            const matchesText = repo.name.toLowerCase().includes(query) || (repo.description || "").toLowerCase().includes(query);
-            const matchesTopic = activeTopic === "all" ? true : repo.topics.includes(activeTopic);
-            return matchesText && matchesTopic;
-        });
-
-        if (sortValue === "updated")
-        {
-            list.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
-        }
-
-        if (sortValue === "stars")
-        {
-            list.sort((a, b) => (b.stargazers_count || 0) - (a.stargazers_count || 0));
-        }
-
-        if (sortValue === "name")
-        {
-            list.sort((a, b) => a.name.localeCompare(b.name));
-        }
-
-        return list;
-    }
-
-    function renderRepos(reposData)
-    {
-        const list = applyFilters(reposData);
-        const visibleList = reposExpanded ? list : list.slice(0, REPOS_PREVIEW_COUNT);
-
-        resultsCount.textContent = `${list.length} ${t("resultsFound")}`;
-        toggleRepos.style.display = list.length > REPOS_PREVIEW_COUNT ? "inline-flex" : "none";
-        toggleRepos.textContent = reposExpanded ? t("showLess") : t("showMore");
-
-        if (!list.length)
-        {
-            repos.innerHTML = `<div class="empty-state">${t("noRepos")} "<b>${q.value || ""}</b>"</div>`;
-            return;
-        }
-
-        repos.innerHTML = visibleList.map(repo => `
-            <article class="repo-card tilt-card"
-                data-repo-name="${repo.name}"
-                data-repo-description="${repo.description || ""}"
-                data-repo-url="${repo.html_url}"
-                data-repo-language="${repo.language || "—"}"
-                data-repo-updated="${repo.updated_at || ""}"
-                data-repo-pushed="${repo.pushed_at || ""}"
-                data-repo-stars="${repo.stargazers_count || 0}"
-                data-repo-topics="${(repo.topics || []).join("|")}"
-                data-repo-languages-url="${repo.languages_url || ""}"
-                data-repo-commits-url="${(repo.commits_url || "").replace("{/sha}", "?per_page=6")}"
-                data-repo-contents-url="${repo.contents_url || ""}">
-                <div class="repo-topline">
-                    <span class="mini-label">${repo.topics.includes(FEATURED_TOPIC) ? t("featuredBadge") : t("repoBadge")}</span>
-                </div>
-                <h3>${repo.name}</h3>
-                <p>${repo.description || ""}</p>
-                ${repoTopics(repo, false)}
-                <div class="repo-card-actions">
-                    <button type="button" class="button subtle">Explorar</button>
-                </div>
-            </article>
-        `).join("");
-    }
-
-    filterButtons.forEach(button =>
-    {
-        button.addEventListener("click", () =>
-        {
-            activeTopic = button.dataset.topic || "all";
-            reposExpanded = false;
-            filterButtons.forEach(item => item.classList.remove("active"));
-            button.classList.add("active");
+    // Fetch GitHub Stats & Repos
+    async function fetchGitHubData() {
+        try {
+            const userResponse = await fetch(API_BASE);
+            const userData = await userResponse.json();
+            document.getElementById('stat-repos').textContent = userData.public_repos;
+            
+            const reposResponse = await fetch(`${API_BASE}/repos?sort=updated&per_page=100`);
+            allRepos = await reposResponse.json();
+            
             renderRepos(allRepos);
-        });
-    });
+            renderLanguagesChart(allRepos);
+            
+            const languages = allRepos.map(r => r.language).filter(Boolean);
+            const topLang = languages.sort((a,b) =>
+                languages.filter(v => v===a).length - languages.filter(v => v===b).length
+            ).pop();
+            document.getElementById('stat-lang').textContent = topLang || 'Java';
+            
+            const createdDate = new Date(userData.created_at);
+            const diffDays = Math.ceil(Math.abs(new Date() - createdDate) / (1000 * 60 * 60 * 24));
+            document.getElementById('stat-activity').textContent = diffDays;
 
-    q.addEventListener("input", () =>
-    {
-        reposExpanded = false;
-        renderRepos(allRepos);
-    });
-
-    sort.addEventListener("change", () =>
-    {
-        renderRepos(allRepos);
-    });
-
-    toggleRepos.addEventListener("click", () =>
-    {
-        reposExpanded = !reposExpanded;
-        renderRepos(allRepos);
-    });
-
-    async function initRepos()
-    {
-        featured.innerHTML = `<div class="skeleton"></div><div class="skeleton"></div>`;
-        repos.innerHTML = `<div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>`;
-
-        try
-        {
-            allRepos = await fetchRepos();
-            updateGitHubStats(allRepos);
-            updateSkillVisuals(allRepos);
-            renderFeatured(allRepos);
-            renderRepos(allRepos);
-        }
-        catch (error)
-        {
-            renderRepoFallback();
-            const message = `<div class="empty-state">${t("loadingError")}</div>`;
-            featured.insertAdjacentHTML("beforeend", message);
+        } catch (error) {
+            console.error('Error:', error);
+            document.getElementById('repos-container').innerHTML = '<p style="grid-column: 1/-1; text-align: center;">Error al cargar repositorios.</p>';
         }
     }
 
-    initRepos();
-});
-</script>
+    function renderRepos(repos, filter = 'all') {
+        const container = document.getElementById('repos-container');
+        container.innerHTML = '';
+        
+        let filtered = repos.filter(r => !r.fork && r.name !== `${GITHUB_USERNAME}.github.io`);
+        if (filter !== 'all') {
+            filtered = filtered.filter(r => r.language === filter || (r.topics && r.topics.includes(filter.toLowerCase())));
+        }
 
-
-
-<script>
-document.addEventListener("DOMContentLoaded", () =>
-{
-    document.querySelectorAll(".repo-card, .repo-featured-main, .repo-featured-side").forEach(card =>
-    {
-        card.addEventListener("mousemove", event =>
-        {
-            const rect = card.getBoundingClientRect();
-            const x = ((event.clientX - rect.left) / rect.width) * 100;
-            const y = ((event.clientY - rect.top) / rect.height) * 100;
-            card.style.setProperty("--repo-x", x + "%");
-            card.style.setProperty("--repo-y", y + "%");
-        });
-    });
-});
-</script>
-
-
-
-
-
-<script>
-document.addEventListener("DOMContentLoaded", () =>
-{
-    const overlay = document.createElement("div");
-    overlay.className = "repo-overlay";
-
-    const spotlight = document.createElement("div");
-    spotlight.className = "repo-spotlight";
-    spotlight.innerHTML = `
-        <div class="repo-spotlight-shell-wrap">
-            <div class="repo-spotlight-shell">
-                <div class="repo-spotlight-card-slot" id="repoSpotlightCardSlot">
-                    <div class="repo-spotlight-card" id="repoSpotlightCard"></div>
+        filtered.slice(0, 6).forEach(repo => {
+            const card = document.createElement('div');
+            card.className = 'repo-card card';
+            card.setAttribute('data-aos', 'fade-up');
+            
+            card.innerHTML = `
+                <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                    <h3 style="margin:0;">${repo.name}</h3>
+                    <a href="${repo.html_url}" target="_blank" style="color:var(--text-muted);"><i class="fab fa-github fa-lg"></i></a>
                 </div>
-                <div class="repo-spotlight-panel">
-                <button type="button" class="button repo-spotlight-close" id="repoSpotlightClose" aria-label="Cerrar">×</button>
-                <div class="repo-spotlight-head" id="repoSpotlightHead"></div>
-                <div class="repo-detail-grid" id="repoSpotlightStats"></div>
-                <div class="repo-tree-wrap" id="repoSpotlightTreeWrap"></div>
-                <div class="repo-radar-wrap" id="repoSpotlightRadarWrap"></div>
-                <div class="repo-spotlight-actions" id="repoSpotlightActions"></div>
+                <p style="margin: 1rem 0;">${repo.description || 'Sin descripción disponible.'}</p>
+                <div class="repo-tags">
+                    ${repo.language ? `<span class="tag">${repo.language}</span>` : ''}
+                    ${repo.topics ? repo.topics.slice(0, 3).map(t => `<span class="tag">${t}</span>`).join('') : ''}
                 </div>
-            </div>
-            <div class="repo-spotlight-tags-row" id="repoSpotlightTagsRow" hidden></div>
-        </div>
-    `;
-    document.body.appendChild(overlay);
-    document.body.appendChild(spotlight);
-    attachSpotlightTilt();
-
-    const cardSlot = document.getElementById("repoSpotlightCardSlot");
-    const cardNode = document.getElementById("repoSpotlightCard");
-    const headNode = document.getElementById("repoSpotlightHead");
-    const statsNode = document.getElementById("repoSpotlightStats");
-    const treeNode = document.getElementById("repoSpotlightTreeWrap");
-    const radarNode = document.getElementById("repoSpotlightRadarWrap");
-    const actionsNode = document.getElementById("repoSpotlightActions");
-    const tagsRowNode = document.getElementById("repoSpotlightTagsRow");
-    const closeButton = document.getElementById("repoSpotlightClose");
-
-    function parseDate(value)
-    {
-        if (!value)
-        {
-            return "";
-        }
-
-        const date = new Date(value);
-        if (Number.isNaN(date.getTime()))
-        {
-            return "";
-        }
-
-        return new Intl.DateTimeFormat(document.documentElement.lang || "es", {
-            day: "numeric",
-            month: "short",
-            year: "numeric"
-        }).format(date);
-    }
-
-    function buildRadar(languages)
-    {
-        const entries = Object.entries(languages || {}).sort((a, b) => b[1] - a[1]).slice(0, 5);
-
-        if (!entries.length)
-        {
-            return "";
-        }
-
-        const total = entries.reduce((sum, item) => sum + item[1], 0) || 1;
-        const center = 100;
-        const radius = 68;
-        const levels = [1, 0.75, 0.5, 0.25];
-
-        const grid = levels.map(level =>
-        {
-            const pts = entries.map((_, index) =>
-            {
-                const angle = (Math.PI * 2 * index / entries.length) - Math.PI / 2;
-                const r = radius * level;
-                const x = center + Math.cos(angle) * r;
-                const y = center + Math.sin(angle) * r;
-                return `${x.toFixed(1)},${y.toFixed(1)}`;
-            }).join(" ");
-            return `<polygon points="${pts}" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1" />`;
-        }).join("");
-
-        const axes = entries.map((_, index) =>
-        {
-            const angle = (Math.PI * 2 * index / entries.length) - Math.PI / 2;
-            const x = center + Math.cos(angle) * radius;
-            const y = center + Math.sin(angle) * radius;
-            return `<line x1="${center}" y1="${center}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="rgba(255,255,255,0.08)" stroke-width="1" />`;
-        }).join("");
-
-        const dataPts = entries.map((entry, index) =>
-        {
-            const angle = (Math.PI * 2 * index / entries.length) - Math.PI / 2;
-            const r = radius * (entry[1] / total);
-            const x = center + Math.cos(angle) * r;
-            const y = center + Math.sin(angle) * r;
-            return `${x.toFixed(1)},${y.toFixed(1)}`;
-        }).join(" ");
-
-        const labels = entries.map((entry, index) =>
-        {
-            const angle = (Math.PI * 2 * index / entries.length) - Math.PI / 2;
-            const r = radius + 18;
-            const x = center + Math.cos(angle) * r;
-            const y = center + Math.sin(angle) * r;
-            return `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" fill="currentColor" opacity="0.72" font-size="10" text-anchor="middle">${entry[0]}</text>`;
-        }).join("");
-
-        const legend = entries.map(entry =>
-        {
-            const pct = Math.round((entry[1] / total) * 100);
-            return `<div class="repo-radar-item"><strong>${entry[0]}</strong><span>${pct}%</span></div>`;
-        }).join("");
-
-        return `
-            <p class="repo-radar-title">Radar de lenguajes</p>
-            <div class="repo-radar-box">
-                <svg viewBox="0 0 200 200" width="200" height="200" aria-hidden="true">
-                    ${grid}
-                    ${axes}
-                    <polygon class="repo-radar-shape" points="${dataPts}" fill="rgba(183,198,228,0.22)" stroke="rgba(208,171,150,0.92)" stroke-width="2" />
-                    ${entries.map((entry, index) => { const angle = (Math.PI * 2 * index / entries.length) - Math.PI / 2; const r = radius * (entry[1] / total); const x = center + Math.cos(angle) * r; const y = center + Math.sin(angle) * r; return `<circle class="repo-radar-point" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.2" />`; }).join("")}
-                    ${labels}
-                </svg>
-                <div class="repo-radar-legend">${legend}</div>
-            </div>
-        `;
-    }
-
-    function buildSpotlightCard(card)
-    {
-        const name = card.dataset.repoName || "";
-        const description = card.dataset.repoDescription || "Sin descripción.";
-        const label = card.querySelector(".mini-label") ? card.querySelector(".mini-label").textContent : "Repo";
-        return `
-            <div class="repo-spotlight-card-shell">
-                <div class="repo-topline">
-                    <span class="mini-label">${label}</span>
-                    <span>↗</span>
-                </div>
-                <h3 class="repo-spotlight-card-title">${name}</h3>
-                <p class="repo-spotlight-card-description">${description}</p>
-            </div>
-        `;
-    }
-
-    function buildTree(items)
-    {
-        if (!Array.isArray(items) || !items.length)
-        {
-            return "";
-        }
-
-        const ordered = [...items]
-            .sort((a, b) =>
-            {
-                if (a.type === b.type)
-                {
-                    return a.name.localeCompare(b.name);
-                }
-                return a.type === "dir" ? -1 : 1;
-            })
-            .slice(0, 10);
-
-        return `
-            <p class="repo-tree-title">Estructura del repositorio</p>
-            <div class="repo-tree-list">
-                ${ordered.map(item => `
-                    <div class="repo-tree-item">
-                        <span class="repo-tree-kind">${item.type === "dir" ? "DIR" : "FILE"}</span>
-                        <span class="repo-tree-name">${item.name}</span>
+                <div class="repo-footer">
+                    <div style="display:flex; gap:15px; font-size: 0.85rem; color: var(--text-muted);">
+                        <span><i class="far fa-star"></i> ${repo.stargazers_count}</span>
+                        <span><i class="fas fa-code-branch"></i> ${repo.forks_count}</span>
                     </div>
-                `).join("")}
-            </div>
-        `;
-    }
-
-    function animateSpotlightCard(card)
-    {
-        const sourceRect = card.getBoundingClientRect();
-        const targetRect = cardSlot.getBoundingClientRect();
-
-        const deltaX = sourceRect.left - targetRect.left;
-        const deltaY = sourceRect.top - targetRect.top;
-        const scaleX = sourceRect.width / Math.max(targetRect.width, 1);
-        const scaleY = sourceRect.height / Math.max(targetRect.height, 1);
-
-        cardNode.classList.add("is-floating");
-        cardNode.style.transformOrigin = "top left";
-        cardNode.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scaleX}, ${scaleY})`;
-        cardNode.style.opacity = "1";
-
-        requestAnimationFrame(() =>
-        {
-            requestAnimationFrame(() =>
-            {
-                cardNode.style.transform = "translate(0px, 0px) scale(1, 1)";
-            });
-        });
-
-        setTimeout(() =>
-        {
-            cardNode.classList.remove("is-floating");
-            cardNode.style.removeProperty("transform");
-            cardNode.style.removeProperty("transform-origin");
-        }, 360);
-    }
-
-    async function fillSpotlight(card)
-    {
-        cardNode.innerHTML = buildSpotlightCard(card);
-        headNode.innerHTML = "";
-        statsNode.innerHTML = "";
-        treeNode.innerHTML = "";
-        radarNode.innerHTML = "";
-        actionsNode.innerHTML = "";
-        tagsRowNode.innerHTML = "";
-        tagsRowNode.hidden = true;
-        treeNode.hidden = true;
-        radarNode.hidden = true;
-
-        const name = card.dataset.repoName || "";
-        const description = card.dataset.repoDescription || "Sin descripción.";
-        const language = card.dataset.repoLanguage || "";
-        const updated = parseDate(card.dataset.repoUpdated || "");
-        const pushed = parseDate(card.dataset.repoPushed || "");
-        const stars = card.dataset.repoStars || "0";
-        const url = card.dataset.repoUrl || "#";
-        const languagesUrl = card.dataset.repoLanguagesUrl || "";
-        const commitsUrl = card.dataset.repoCommitsUrl || "";
-        const contentsUrl = (card.dataset.repoContentsUrl || "").replace("{+path}", "");
-        const allTopics = (card.dataset.repoTopics || "").split("|").filter(Boolean);
-
-        headNode.innerHTML = `<h3>${name}</h3><p>${description}</p>`;
-
-        const statBlocks = [];
-        if (language)
-        {
-            statBlocks.push(`<div class="repo-detail-card"><span class="repo-detail-label">Lenguaje principal</span><span class="repo-detail-value">${language}</span></div>`);
-        }
-        statBlocks.push(`<div class="repo-detail-card"><span class="repo-detail-label">Estrellas</span><span class="repo-detail-value">${stars}</span></div>`);
-        if (updated)
-        {
-            statBlocks.push(`<div class="repo-detail-card"><span class="repo-detail-label">Actualizado</span><span class="repo-detail-value">${updated}</span></div>`);
-        }
-        if (pushed)
-        {
-            statBlocks.push(`<div class="repo-detail-card"><span class="repo-detail-label">Último push</span><span class="repo-detail-value">${pushed}</span></div>`);
-        }
-        statsNode.innerHTML = statBlocks.join("");
-
-        actionsNode.innerHTML = `<a class="button" href="${url}" target="_blank" rel="noreferrer">Ver en GitHub</a>`;
-
-        if (allTopics.length)
-        {
-            tagsRowNode.innerHTML = allTopics.map(topic => `<button type="button" class="repo-spotlight-tag">${topic}</button>`).join("");
-            tagsRowNode.hidden = false;
-        }
-
-        const requests = [
-            languagesUrl ? fetch(languagesUrl).then(r => r.ok ? r.json() : {}).catch(() => ({})) : Promise.resolve({}),
-            commitsUrl ? fetch(commitsUrl).then(r => r.ok ? r.json() : []).catch(() => ([])) : Promise.resolve([]),
-            contentsUrl ? fetch(contentsUrl).then(r => r.ok ? r.json() : []).catch(() => ([])) : Promise.resolve([])
-        ];
-
-        const [languages, commits, contents] = await Promise.all(requests);
-
-        const normalizedLanguages = Object.keys(languages || {}).length
-            ? languages
-            : (language ? { [language]: 100 } : {});
-
-        const radarHtml = buildRadar(normalizedLanguages);
-        radarNode.innerHTML = radarHtml || "";
-        radarNode.hidden = !radarHtml;
-
-        const treeHtml = buildTree(contents);
-        treeNode.innerHTML = treeHtml || "";
-        treeNode.hidden = !treeHtml;
-
-        const extras = [];
-        const commitCount = Array.isArray(commits) ? commits.length : 0;
-        const languageCount = Object.keys(languages || {}).length || 0;
-
-        if (commitCount)
-        {
-            extras.push(`<div class="repo-detail-card"><span class="repo-detail-label">Commits recientes</span><span class="repo-detail-value">${commitCount}</span></div>`);
-        }
-        if (languageCount)
-        {
-            extras.push(`<div class="repo-detail-card"><span class="repo-detail-label">Lenguajes detectados</span><span class="repo-detail-value">${languageCount}</span></div>`);
-        }
-        if (extras.length)
-        {
-            statsNode.innerHTML += extras.join("");
-        }
-
-
-    }
-
-    document.addEventListener("mousemove", event =>
-    {
-        const card = event.target.closest(".repo-card, .repo-featured-main, .repo-featured-side");
-        if (!card)
-        {
-            return;
-        }
-
-        const rect = card.getBoundingClientRect();
-        const x = ((event.clientX - rect.left) / rect.width) * 100;
-        const y = ((event.clientY - rect.top) / rect.height) * 100;
-        card.style.setProperty("--repo-x", x + "%");
-        card.style.setProperty("--repo-y", y + "%");
-    }, { passive: true });
-
-
-    function attachSpotlightTilt()
-    {
-        spotlight.querySelectorAll(".repo-spotlight-card, .repo-spotlight-panel").forEach(panel =>
-        {
-            panel.addEventListener("mousemove", event =>
-            {
-                const rect = panel.getBoundingClientRect();
-                const px = (event.clientX - rect.left) / rect.width;
-                const py = (event.clientY - rect.top) / rect.height;
-                const rx = (0.5 - py) * 4;
-                const ry = (px - 0.5) * 4;
-                panel.style.setProperty("--spotlight-rotate-x", `${rx.toFixed(2)}deg`);
-                panel.style.setProperty("--spotlight-rotate-y", `${ry.toFixed(2)}deg`);
-            });
-
-            panel.addEventListener("mouseleave", () =>
-            {
-                panel.style.setProperty("--spotlight-rotate-x", "0deg");
-                panel.style.setProperty("--spotlight-rotate-y", "0deg");
-            });
+                    <a href="${repo.html_url}" target="_blank" class="btn btn-outline btn-sm" style="padding: 4px 10px; font-size: 0.75rem;">Ver Repo</a>
+                </div>
+            `;
+            container.appendChild(card);
         });
     }
 
-    document.addEventListener("click", event =>
-    {
-        const githubLink = event.target.closest(".repo-github-link");
-        if (githubLink)
-        {
-            return;
-        }
+    function renderLanguagesChart(repos) {
+        const langMap = {};
+        repos.forEach(repo => { if (repo.language) langMap[repo.language] = (langMap[repo.language] || 0) + 1; });
 
-        const trigger = event.target.closest(".repo-card .button, .repo-featured-main .button, .repo-featured-side .button, .repo-card, .repo-featured-main, .repo-featured-side");
-        const card = trigger ? trigger.closest(".repo-card, .repo-featured-main, .repo-featured-side") : null;
+        const ctx = document.getElementById('languagesChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: Object.keys(langMap),
+                datasets: [{
+                    data: Object.values(langMap),
+                    backgroundColor: ['#6366f1', '#a855f7', '#ec4899', '#f59e0b', '#10b981', '#3b82f6'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { color: '#94a3b8', padding: 15, font: { family: 'Inter', size: 11 } } }
+                },
+                cutout: '70%'
+            }
+        });
+    }
 
-        if (!card)
-        {
-            return;
-        }
-
-        event.preventDefault();
-        overlay.classList.add("active");
-        spotlight.classList.add("active");
-        spotlight.classList.remove("ready");
-        fillSpotlight(card).then(() =>
-        {
-            requestAnimationFrame(() => animateSpotlightCard(card));
+    // Filters Logic
+    document.querySelectorAll('.filters .btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelector('.filters .btn.active').classList.remove('active');
+            btn.classList.add('active');
+            renderRepos(allRepos, btn.getAttribute('data-filter'));
         });
     });
 
-    function closeSpotlight()
-    {
-        overlay.classList.remove("active");
-        setTimeout(() =>
-        {
-            spotlight.classList.remove("active");
-        }, 160);
-    }
-
-    overlay.addEventListener("click", closeSpotlight);
-    closeButton.addEventListener("click", closeSpotlight);
-    document.addEventListener("keydown", event =>
-    {
-        if (event.key === "Escape")
-        {
-            closeSpotlight();
-        }
+    // Translate Placeholder
+    document.getElementById('translate-btn').addEventListener('click', () => {
+        alert('Funcionalidad de traducción en desarrollo. Próximamente disponible.');
     });
-});
+
+    // Smooth Scroll Active Link
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        let current = '';
+        sections.forEach(section => { if (pageYOffset >= section.offsetTop - 150) current = section.getAttribute('id'); });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+        });
+    });
+
+    fetchGitHubData();
 </script>
-
-
-
-
-</body>
-
-</html>
