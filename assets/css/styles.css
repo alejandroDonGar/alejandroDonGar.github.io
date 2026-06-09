@@ -1991,3 +1991,308 @@ aside > div:nth-child(2) {
         animation: none !important;
     }
 }
+
+/* ========================================================================== 
+   NETSCANNER NETWORK DISCOVERY LAYER
+   Capa adicional sobre las olas: router, dispositivos encontrados, IP/MAC
+   y estado de escaneo ARP. Mantiene las olas y los iconos de tecnologías.
+   ========================================================================== */
+
+.repo-network-overlay {
+    position: absolute;
+    inset: 38px 14px 12px;
+    z-index: 9;
+    pointer-events: none;
+}
+
+.repo-network-overlay::before,
+.repo-network-overlay::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 35px;
+    width: 35%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(169, 181, 208, 0.42), transparent);
+    transform-origin: left center;
+    opacity: 0.75;
+    animation: repoNetworkLinePulse 2.8s ease-in-out infinite;
+}
+
+.repo-network-overlay::before {
+    transform: rotate(18deg);
+}
+
+.repo-network-overlay::after {
+    transform: rotate(-18deg);
+    animation-delay: -1.4s;
+}
+
+.repo-network-router {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 88px;
+    display: grid;
+    place-items: center;
+    gap: 3px;
+    padding: 8px 8px 7px;
+    border: 1px solid rgba(34, 211, 238, 0.30);
+    border-radius: 16px;
+    background: rgba(10, 15, 24, 0.58);
+    color: #dffaff;
+    box-shadow:
+        0 12px 24px rgba(0, 0, 0, 0.24),
+        0 0 18px rgba(34, 211, 238, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    animation: repoRouterPulse 3s ease-in-out infinite;
+}
+
+.repo-network-router i {
+    font-size: 0.95rem;
+    color: #22d3ee;
+}
+
+.repo-network-router span {
+    font-size: 0.52rem;
+    font-weight: 900;
+    letter-spacing: 0.03em;
+}
+
+.repo-network-device {
+    position: absolute;
+    width: 92px;
+    min-height: 54px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 6px;
+    row-gap: 1px;
+    align-items: center;
+    padding: 7px 8px;
+    border: 1px solid rgba(125, 140, 170, 0.24);
+    border-radius: 14px;
+    background: rgba(15, 23, 42, 0.56);
+    color: var(--text-main);
+    box-shadow:
+        0 10px 22px rgba(0, 0, 0, 0.20),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    animation: repoDeviceFound 6s ease-in-out infinite;
+}
+
+.repo-network-device i {
+    grid-row: span 3;
+    font-size: 0.95rem;
+    color: #a9b5d0;
+}
+
+.repo-network-device strong {
+    overflow: hidden;
+    font-size: 0.52rem;
+    font-weight: 900;
+    line-height: 1.05;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.repo-network-device span,
+.repo-network-device small {
+    overflow: hidden;
+    color: var(--text-muted);
+    font-size: 0.48rem;
+    font-weight: 800;
+    line-height: 1.05;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.repo-device-laptop {
+    left: 3%;
+    top: 46px;
+    animation-delay: 0s;
+}
+
+.repo-device-phone {
+    left: 50%;
+    top: 64px;
+    transform: translateX(-50%);
+    animation-delay: -2s;
+}
+
+.repo-device-printer {
+    right: 3%;
+    top: 46px;
+    animation-delay: -4s;
+}
+
+.repo-device-laptop i { color: #60a5fa; }
+.repo-device-phone i { color: #34d399; }
+.repo-device-printer i { color: #fbbf24; }
+
+.repo-scan-status {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    max-width: 94%;
+    padding: 5px 10px;
+    border: 1px solid rgba(34, 211, 238, 0.24);
+    border-radius: 999px;
+    background: rgba(10, 15, 24, 0.55);
+    color: #dffaff;
+    font-size: 0.56rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    backdrop-filter: blur(10px);
+}
+
+.repo-scan-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: #34d399;
+    box-shadow: 0 0 12px rgba(52, 211, 153, 0.65);
+    animation: repoScanDot 1.2s ease-in-out infinite;
+}
+
+/* Reposicionar un poco los iconos tech para que convivan con los nodos */
+.repo-tech-python { left: 14%; bottom: 12%; }
+.repo-tech-mongodb { left: 36%; bottom: 8%; }
+.repo-tech-django { left: 66%; bottom: 8%; }
+.repo-tech-scapy { left: 82%; bottom: 12%; }
+
+[data-theme="light"] .repo-network-router,
+[data-theme="light"] .repo-network-device,
+[data-theme="light"] .repo-scan-status {
+    background: rgba(255, 255, 255, 0.74);
+    border-color: rgba(110, 117, 142, 0.20);
+    color: #334155;
+    box-shadow:
+        0 10px 20px rgba(32, 37, 49, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.80);
+}
+
+@keyframes repoRouterPulse {
+    0%, 100% {
+        transform: translateX(-50%) scale(1);
+        box-shadow:
+            0 12px 24px rgba(0, 0, 0, 0.24),
+            0 0 18px rgba(34, 211, 238, 0.12),
+            inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.04);
+        box-shadow:
+            0 14px 26px rgba(0, 0, 0, 0.26),
+            0 0 26px rgba(34, 211, 238, 0.22),
+            inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    }
+}
+
+@keyframes repoDeviceFound {
+    0%, 12% {
+        opacity: 0;
+        transform: translateY(12px) scale(0.92);
+    }
+    24%, 72% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0.55;
+        transform: translateY(-4px) scale(0.98);
+    }
+}
+
+.repo-device-phone {
+    animation-name: repoDeviceFoundCenter;
+}
+
+@keyframes repoDeviceFoundCenter {
+    0%, 12% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(12px) scale(0.92);
+    }
+    24%, 72% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0.55;
+        transform: translateX(-50%) translateY(-4px) scale(0.98);
+    }
+}
+
+@keyframes repoNetworkLinePulse {
+    0%, 100% {
+        opacity: 0.28;
+    }
+    50% {
+        opacity: 0.84;
+    }
+}
+
+@keyframes repoScanDot {
+    0%, 100% {
+        opacity: 0.45;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 1200px) {
+    .repo-network-overlay {
+        inset: 40px 12px 12px;
+    }
+
+    .repo-network-device {
+        width: 86px;
+    }
+}
+
+@media (max-width: 640px) {
+    .repo-network-device small,
+    .repo-floating-tech::after {
+        display: none;
+    }
+
+    .repo-network-device {
+        width: 74px;
+        min-height: 46px;
+        padding: 6px;
+    }
+
+    .repo-network-device strong,
+    .repo-network-device span {
+        font-size: 0.45rem;
+    }
+
+    .repo-scan-status {
+        font-size: 0.48rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .repo-network-router,
+    .repo-network-device,
+    .repo-network-overlay::before,
+    .repo-network-overlay::after,
+    .repo-scan-dot {
+        animation: none !important;
+    }
+
+    .repo-network-device {
+        opacity: 1;
+    }
+}
