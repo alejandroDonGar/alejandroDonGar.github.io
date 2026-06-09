@@ -459,15 +459,81 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         }
     });
 
+    function isNetScannerRepo(repo) {
+        const normalizedName = repo.name.toLowerCase();
+        const topics = (repo.topics || []).map(topic => topic.toLowerCase());
+
+        return (
+            normalizedName.includes('escaner-de-red-netscanner') ||
+            normalizedName.includes('netscanner') ||
+            (topics.includes('scapy') && topics.includes('nmap')) ||
+            (topics.includes('scapy') && topics.includes('django'))
+        );
+    }
+
+    function createNetScannerWavePreview() {
+        return `
+            <div class="repo-wave-preview" aria-label="Animación de olas inspirada en NetScanner">
+                <div class="repo-wave-label">
+                    <i class="fa-solid fa-water"></i>
+                    NetScanner scan
+                </div>
+
+                <div class="repo-wave-scene">
+                    <div class="repo-pulse-glow repo-pulse-glow-1"></div>
+                    <div class="repo-pulse-glow repo-pulse-glow-2"></div>
+
+                    <div class="repo-liquid-layer repo-liquid-back">
+                        <div class="repo-shark repo-shark-back">
+                            <div class="repo-shark-body"></div>
+                            <div class="repo-shark-dorsal"></div>
+                        </div>
+                        <div class="repo-wave-track repo-wave-track-1">
+                            <svg class="repo-wave-svg" viewBox="0 0 2880 1000" preserveAspectRatio="none">
+                                <path d="M0,70 C240,20 480,20 720,70 C960,120 1200,120 1440,70 C1680,20 1920,20 2160,70 C2400,120 2640,120 2880,70 L2880,1000 L0,1000 Z"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="repo-liquid-layer repo-liquid-mid">
+                        <div class="repo-shark repo-shark-mid">
+                            <div class="repo-shark-body"></div>
+                            <div class="repo-shark-dorsal"></div>
+                        </div>
+                        <div class="repo-wave-track repo-wave-track-2">
+                            <svg class="repo-wave-svg" viewBox="0 0 2880 1000" preserveAspectRatio="none">
+                                <path d="M0,70 C240,40 480,40 720,70 C960,100 1200,100 1440,70 C1680,40 1920,40 2160,70 C2400,100 2640,100 2880,70 L2880,1000 L0,1000 Z"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="repo-liquid-layer repo-liquid-front">
+                        <div class="repo-shark repo-shark-front">
+                            <div class="repo-shark-body"></div>
+                            <div class="repo-shark-dorsal"></div>
+                        </div>
+                        <div class="repo-wave-track repo-wave-track-3">
+                            <svg class="repo-wave-svg" viewBox="0 0 2880 1000" preserveAspectRatio="none">
+                                <path d="M0,75 C240,55 480,55 720,75 C960,95 1200,95 1440,75 C1680,55 1920,55 2160,75 C2400,95 2640,95 2880,75 L2880,1000 L0,1000 Z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
     function renderRepos(repos) {
         const container = document.getElementById('repos-container');
         container.innerHTML = '';
-        
+
         repos.forEach(repo => {
             const card = document.createElement('div');
-            card.className = 'repo-card';
+            const netScanner = isNetScannerRepo(repo);
+
+            card.className = netScanner ? 'repo-card repo-card-featured-net' : 'repo-card';
             card.setAttribute('data-aos', 'fade-up');
-            
+
             const updatedText = currentLang === 'es' ? 'Actualizado' : (currentLang === 'en' ? 'Updated' : (currentLang === 'de' ? 'Aktualisiert' : 'Uppfært'));
             const viewCodeText = currentLang === 'es' ? 'Ver Código' : (currentLang === 'en' ? 'View Code' : (currentLang === 'de' ? 'Code ansehen' : 'Skoða kóða'));
             const compositionText = currentLang === 'es' ? 'Composición' : (currentLang === 'en' ? 'Composition' : (currentLang === 'de' ? 'Zusammensetzung' : 'Samsetning'));
@@ -479,6 +545,9 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                     <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
                         ${repo.topics ? repo.topics.map(t => `<span style="padding: 4px 12px; background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); border-radius: 100px; font-size: 0.8rem;">#${t}</span>`).join('') : ''}
                     </div>
+
+                    ${netScanner ? createNetScannerWavePreview() : ''}
+
                     <div style="display: flex; gap: 1rem;">
                         <a href="${repo.html_url}" target="_blank" class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem; background: var(--primary-gradient);"><i class="fa-brands fa-github"></i> ${viewCodeText}</a>
                         ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" style="padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: 12px; color: var(--text-main); text-decoration: none; font-size: 0.9rem;">Demo Live</a>` : ''}
@@ -506,7 +575,7 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                 </div>
             `;
             container.appendChild(card);
-            
+
             fetch(repo.languages_url).then(r => r.json()).then(langs => {
                 const langDiv = document.getElementById(`langs-${repo.id}`);
                 if (!langDiv) return;
@@ -517,10 +586,10 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                             <div>
                                 <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 4px;">
                                     <span>${l}</span>
-                                    <span>${((v/total)*100).toFixed(1)}%</span>
+                                    <span>${total ? ((v/total)*100).toFixed(1) : '0.0'}%</span>
                                 </div>
                                 <div style="height: 4px; background: rgba(0,0,0,0.3); border-radius: 100px;">
-                                    <div style="height: 100%; width: ${(v/total)*100}%; background: var(--accent-blue); border-radius: inherit;"></div>
+                                    <div style="height: 100%; width: ${total ? (v/total)*100 : 0}%; background: var(--accent-blue); border-radius: inherit;"></div>
                                 </div>
                             </div>
                         `).join('')}
