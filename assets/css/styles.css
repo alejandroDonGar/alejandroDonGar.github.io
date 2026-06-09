@@ -2855,9 +2855,9 @@ aside > div:nth-child(2) {
 }
 
 .roadmap-track-stacked {
-    min-height: 82px;
+    min-height: 105px;
     grid-template-rows: repeat(2, 1fr);
-    row-gap: 10px;
+    row-gap: 18px;
 }
 
 .roadmap-bar {
