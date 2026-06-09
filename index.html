@@ -398,11 +398,29 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
             
             if (Array.isArray(data)) {
                 // Filtrar el repo del portfolio y forks
-                allRepos = data.filter(repo => {
+                const FEATURED_REPOS = {
+                    'Escaner-de-Red-NetScanner': 1,
+                    'centroplus-connect': 2
+                };
+
+                const filteredRepos = data.filter(repo => {
                     const isNotPortfolio = repo.name.toLowerCase() !== 'alejandrodongar.github.io';
                     const isNotFork = !repo.fork;
                     return isNotPortfolio && isNotFork;
                 });
+
+                const featuredRepos = filteredRepos
+                    .filter(repo => FEATURED_REPOS[repo.name])
+                    .sort((a, b) => FEATURED_REPOS[a.name] - FEATURED_REPOS[b.name]);
+
+                const regularRepos = filteredRepos
+                    .filter(repo => !FEATURED_REPOS[repo.name])
+                    .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+
+                allRepos = [
+                    ...featuredRepos,
+                    ...regularRepos
+                ];
 
                 console.log('Repositorios encontrados:', allRepos.length);
                 
