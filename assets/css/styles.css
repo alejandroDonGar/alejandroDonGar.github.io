@@ -23,11 +23,15 @@
     --radius-sm: 12px;
     --radius-md: 20px;
     --radius-lg: 32px;
-
     --space-card: 2.5rem;
+
+    --repo-section-bg: rgba(27, 33, 45, 0.55);
+    --repo-card-bg: rgba(27, 33, 45, 0.82);
+    --repo-stats-bg: rgba(0, 0, 0, 0.2);
+    --repo-stat-box-bg: rgba(255, 255, 255, 0.02);
+
     --hover-lift: translateY(-8px) scale(1.01);
     --hover-shadow: 0 24px 50px rgba(0, 0, 0, 0.42), 0 0 24px rgba(125, 140, 170, 0.18);
-    --transition-fast: 0.25s ease;
     --transition-card: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -49,6 +53,13 @@
     --accent-glow: rgba(110, 117, 142, 0.12);
     --grid-opacity: 0.045;
     --grid-glow-opacity: 0.18;
+
+    --repo-section-bg: #ffffff;
+    --repo-card-bg: #ffffff;
+    --repo-stats-bg: #f3f6fb;
+    --repo-stat-box-bg: rgba(125, 140, 170, 0.06);
+
+    --hover-shadow: 0 24px 48px rgba(32, 37, 49, 0.12), 0 0 24px rgba(110, 117, 142, 0.12);
 }
 
 /* ==========================================================================
@@ -394,13 +405,6 @@ aside > div:nth-child(2) {
     z-index: 50;
 }
 
-[data-theme="light"] .hero-box:hover,
-[data-theme="light"] .skill-item:hover,
-[data-theme="light"] .repo-card:hover,
-[data-theme="light"] .glass-card:hover {
-    box-shadow: 0 24px 48px rgba(32, 37, 49, 0.12), 0 0 24px rgba(110, 117, 142, 0.12);
-}
-
 .hero-box:hover::before,
 .skill-item:hover::before,
 .repo-card:hover::before,
@@ -719,11 +723,7 @@ aside > div:nth-child(2) {
 
 #projects > .glass-card {
     padding: 3rem;
-    background: rgba(0, 0, 0, 0.2);
-}
-
-[data-theme="light"] #projects > .glass-card {
-    background: #e8edf5;
+    background: var(--repo-section-bg);
 }
 
 .repo-card {
@@ -731,11 +731,7 @@ aside > div:nth-child(2) {
     grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
     gap: 2rem;
     align-items: start;
-    background: var(--bg-card);
-}
-
-[data-theme="light"] .repo-card {
-    background: #ffffff;
+    background: var(--repo-card-bg);
 }
 
 .repo-info h3 {
@@ -749,16 +745,15 @@ aside > div:nth-child(2) {
     line-height: 1.5;
 }
 
-.repo-info > div:nth-of-type(1) {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 1.5rem;
-}
-
+.repo-info > div:nth-of-type(1),
 .repo-info > div:nth-of-type(2) {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.repo-info > div:nth-of-type(1) {
+    margin-bottom: 1.5rem;
 }
 
 .repo-info > div:nth-of-type(3) {
@@ -781,14 +776,14 @@ aside > div:nth-child(2) {
 .repo-stats {
     min-width: 0;
     padding: 1.5rem;
+    border: 1px solid transparent;
     border-radius: var(--radius-md);
-    background: rgba(0, 0, 0, 0.2);
+    background: var(--repo-stats-bg);
 }
 
 [data-theme="light"] .repo-card > div:last-child,
 [data-theme="light"] .repo-stats {
-    background: #f3f6fb !important;
-    border: 1px solid #dbe4f0;
+    border-color: #dbe4f0;
 }
 
 .repo-card > div:last-child > div:first-child,
@@ -803,13 +798,8 @@ aside > div:nth-child(2) {
 .repo-stat-box {
     padding: 1rem;
     border-radius: var(--radius-sm);
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--repo-stat-box-bg);
     text-align: center;
-}
-
-[data-theme="light"] .repo-card > div:last-child > div:first-child > div,
-[data-theme="light"] .repo-stat-box {
-    background: rgba(125, 140, 170, 0.06);
 }
 
 .repo-language-bar {
@@ -826,15 +816,12 @@ aside > div:nth-child(2) {
 
 .repo-composition-label,
 .repo-language-row,
-.repo-no-langs {
-    color: var(--text-muted);
-}
-
+.repo-no-langs,
 [data-theme="light"] .repo-info p,
 [data-theme="light"] .repo-info > div:nth-of-type(3),
 [data-theme="light"] .repo-composition-label,
 [data-theme="light"] .repo-language-row {
-    color: #64748b;
+    color: var(--text-muted);
 }
 
 .pagination-controls {
