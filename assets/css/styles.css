@@ -1,35 +1,40 @@
 :root {
-    /* Tema Oscuro por Defecto (Technological/Sci-Fi) */
-    --bg-body: #0f172a;
-    --bg-sidebar: #1e293b;
-    --bg-card: rgba(30, 41, 59, 0.7);
-    --bg-card-solid: #1e293b;
-    --text-main: #f1f5f9;
-    --text-muted: #94a3b8;
-    --border-color: rgba(241, 245, 249, 0.1);
+    /* Paleta profesional basada en la nueva foto */
+    --bg-body: #12151c;
+    --bg-sidebar: #1a202b;
+    --bg-card: rgba(27, 33, 45, 0.82);
+    --bg-card-solid: #1b212d;
+    --text-main: #f3f4f6;
+    --text-muted: #a8b0bf;
+    --border-color: rgba(229, 231, 235, 0.12);
     --glass-blur: blur(16px);
-    
-    --primary-blue: #3b82f6;
-    --accent-blue: #3b82f6;
-    --primary-gradient: linear-gradient(135deg, #22c55e, #10b981);
-    --accent-glow: rgba(34, 197, 94, 0.2);
-    --grid-opacity: 0.03;
-    --grid-glow-opacity: 0.5;
+
+    --primary-blue: #7d8caa;
+    --accent-blue: #c99779;
+    --primary-green: #7d8caa;
+    --primary-green-2: #a9b5d0;
+    --primary-gradient: linear-gradient(135deg, #6e758e, #a9b5d0);
+    --accent-glow: rgba(125, 140, 170, 0.2);
+    --grid-opacity: 0.035;
+    --grid-glow-opacity: 0.42;
 }
 
 [data-theme="light"] {
-    --bg-body: #f8fafc;
+    --bg-body: #f5f6f8;
     --bg-sidebar: #ffffff;
-    --bg-card: #ffffff;
+    --bg-card: rgba(255, 255, 255, 0.88);
     --bg-card-solid: #ffffff;
-    --text-main: #1e293b;
-    --text-muted: #64748b;
-    --border-color: rgba(30, 41, 59, 0.1);
-    
-    --primary-gradient: linear-gradient(135deg, #16a34a, #22c55e);
-    --accent-glow: rgba(34, 197, 94, 0.1);
-    --grid-opacity: 0.05;
-    --grid-glow-opacity: 0.2;
+    --text-main: #202531;
+    --text-muted: #6b7280;
+    --border-color: rgba(32, 37, 49, 0.12);
+    --primary-blue: #6e758e;
+    --accent-blue: #976c5c;
+    --primary-green: #6e758e;
+    --primary-green-2: #969db4;
+    --primary-gradient: linear-gradient(135deg, #6e758e, #969db4);
+    --accent-glow: rgba(110, 117, 142, 0.12);
+    --grid-opacity: 0.045;
+    --grid-glow-opacity: 0.18;
 }
 
 html {
@@ -133,9 +138,9 @@ section {
 }
 
 .hero-box:hover, .skill-item:hover, .repo-card:hover, .glass-card:hover {
-    border-color: rgba(34, 197, 94, 0.6) !important;
+    border-color: rgba(125, 140, 170, 0.62) !important;
     transform: translateY(-12px) scale(1.02) !important;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(34, 197, 94, 0.2) !important;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(125, 140, 170, 0.2) !important;
     z-index: 50 !important;
 }
 
@@ -186,8 +191,8 @@ section {
 .skill-pill {
     width: 100%;
     padding: 1rem;
-    background: rgba(34, 197, 94, 0.1);
-    border: 1px solid rgba(34, 197, 94, 0.2);
+    background: rgba(125, 140, 170, 0.12);
+    border: 1px solid rgba(125, 140, 170, 0.2);
     border-radius: 12px;
     color: var(--text-main);
     font-weight: 600;
@@ -202,10 +207,10 @@ section {
 }
 
 .skill-pill:hover {
-    background: linear-gradient(135deg, #22c55e, #4ade80);
+    background: linear-gradient(135deg, var(--primary-green), #a9b5d0);
     color: white;
     transform: translateX(5px);
-    box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
+    box-shadow: 0 5px 15px rgba(125, 140, 170, 0.28);
 }
 
 @media (max-width: 1400px) {
@@ -257,7 +262,7 @@ section {
 .btn-primary:hover {
     transform: scale(1.08) translateY(-2px);
     filter: brightness(1.2);
-    box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+    box-shadow: 0 0 20px rgba(125, 140, 170, 0.32);
 }
 
 /* Social Buttons */
@@ -278,8 +283,8 @@ section {
 }
 
 .social-btn:hover {
-    background: rgba(34, 197, 94, 0.1);
-    border-color: rgba(34, 197, 94, 0.4);
+    background: rgba(125, 140, 170, 0.12);
+    border-color: rgba(125, 140, 170, 0.32);
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
@@ -290,7 +295,7 @@ section {
 }
 
 .social-btn:hover i {
-    color: #22c55e;
+    color: var(--primary-green);
 }
 
 /* English Section - Double Bars */
@@ -346,16 +351,16 @@ section {
 
 .bar-fill {
     height: 100%;
-    background: #22c55e;
+    background: var(--primary-green);
     border-radius: inherit;
     width: 0;
     transition: width 1.5s cubic-bezier(0.1, 0, 0.1, 1);
-    box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+    box-shadow: 0 0 10px rgba(125, 140, 170, 0.28);
 }
 
 .bar-fill.perspective {
-    background: #a855f7;
-    box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+    background: #c99779;
+    box-shadow: 0 0 10px rgba(201, 151, 121, 0.28);
 }
 
 .level-markers {
@@ -419,8 +424,8 @@ section {
     position: absolute;
     inset: 0;
     background: 
-        linear-gradient(rgba(34, 197, 94, 0.2) 2px, transparent 2px),
-        linear-gradient(90deg, rgba(34, 197, 94, 0.2) 2px, transparent 2px);
+        linear-gradient(rgba(125, 140, 170, 0.2) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(125, 140, 170, 0.2) 2px, transparent 2px);
     background-size: 60px 60px;
     background-position: 0 0;
     animation: gridGlow 8s linear infinite;
@@ -500,14 +505,14 @@ section {
     position: absolute;
     top: 0; left: 0;
     width: 50vw; height: 50vh;
-    background: radial-gradient(circle at 0% 0%, rgba(34, 197, 94, 0.05), transparent 70%);
+    background: radial-gradient(circle at 0% 0%, rgba(125, 140, 170, 0.06), transparent 70%);
 }
 
 .glow-2 {
     position: absolute;
     bottom: 0; right: 0;
     width: 50vw; height: 50vh;
-    background: radial-gradient(circle at 100% 100%, rgba(8, 145, 178, 0.05), transparent 70%);
+    background: radial-gradient(circle at 100% 100%, rgba(201, 151, 121, 0.08), transparent 70%);
 }
 
 @media (max-width: 1024px) {
@@ -594,8 +599,8 @@ section {
 }
 
 .sidebar-link.active {
-    background: rgba(34, 197, 94, 0.1);
-    color: #22c55e;
+    background: rgba(125, 140, 170, 0.12);
+    color: var(--primary-green);
     font-weight: 600;
 }
 
@@ -655,9 +660,9 @@ section {
 .skill-item:hover,
 .repo-card:hover,
 .glass-card:hover {
-    border-color: rgba(34, 197, 94, 0.6) !important;
+    border-color: rgba(125, 140, 170, 0.62) !important;
     transform: translateY(-8px) scale(1.01) !important;
-    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.42), 0 0 24px rgba(34, 197, 94, 0.18) !important;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.42), 0 0 24px rgba(125, 140, 170, 0.18) !important;
     z-index: 50 !important;
 }
 
@@ -678,7 +683,7 @@ a {
 
 button:focus-visible,
 a:focus-visible {
-    outline: 2px solid #22c55e;
+    outline: 2px solid var(--primary-green);
     outline-offset: 3px;
 }
 
@@ -772,9 +777,9 @@ aside .sidebar-link:hover {
 aside .sidebar-link.active,
 aside .sidebar-link.active:link,
 aside .sidebar-link.active:visited {
-    color: #22c55e !important;
+    color: var(--primary-green) !important;
     background: rgba(34, 197, 94, 0.12) !important;
-    border-color: rgba(34, 197, 94, 0.22) !important;
+    border-color: rgba(125, 140, 170, 0.22) !important;
     box-shadow: 0 10px 24px rgba(34, 197, 94, 0.10) !important;
 }
 
@@ -810,4 +815,124 @@ aside .theme-btn:visited {
     background: linear-gradient(to right, #0f172a, #64748b) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
+}
+
+
+/* ==========================================================================
+   PHOTO PALETTE POLISH
+   Azul acero + gris perla + acento cálido basado en la foto profesional.
+   ========================================================================== */
+
+.brand-icon,
+.lang-btn.active,
+.btn-primary,
+.page-btn:hover:not(:disabled),
+.repo-language-bar div,
+.bar-fill {
+    background: var(--primary-gradient);
+}
+
+.hero-title span,
+.brand-copy h1 {
+    background: linear-gradient(135deg, #f3f4f6, #a9b5d0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .brand-copy h1 {
+    background: linear-gradient(135deg, #202531, #6e758e) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+.tag-blue,
+.repo-topic,
+.social-btn i,
+.repo-stat-box i {
+    color: var(--accent-blue);
+}
+
+.section-title i,
+.section-title span,
+.skill-header i,
+.sidebar-link.active,
+aside .sidebar-link.active,
+aside .sidebar-link.active:link,
+aside .sidebar-link.active:visited {
+    color: var(--primary-green) !important;
+}
+
+.sidebar-link.active,
+aside .sidebar-link.active,
+aside .sidebar-link.active:link,
+aside .sidebar-link.active:visited {
+    background: rgba(125, 140, 170, 0.14) !important;
+    border-color: rgba(125, 140, 170, 0.26) !important;
+    box-shadow: 0 10px 24px rgba(125, 140, 170, 0.11) !important;
+}
+
+.sidebar-link:hover,
+aside .sidebar-link:hover,
+.social-btn:hover {
+    border-color: rgba(125, 140, 170, 0.34) !important;
+}
+
+.skill-pill {
+    background: rgba(125, 140, 170, 0.12);
+    border-color: rgba(125, 140, 170, 0.22);
+}
+
+.skill-pill:hover {
+    background: linear-gradient(135deg, #6e758e, #a9b5d0);
+    color: #ffffff;
+    box-shadow: 0 5px 15px rgba(125, 140, 170, 0.28);
+}
+
+.bar-fill.perspective {
+    background: linear-gradient(135deg, #976c5c, #c99779);
+    box-shadow: 0 0 10px rgba(201, 151, 121, 0.26);
+}
+
+.bg-glow {
+    background-image:
+        linear-gradient(rgba(125, 140, 170, var(--grid-opacity)) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(125, 140, 170, var(--grid-opacity)) 1px, transparent 1px);
+}
+
+.bg-glow::after {
+    background:
+        linear-gradient(rgba(125, 140, 170, 0.18) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(125, 140, 170, 0.18) 2px, transparent 2px);
+}
+
+.glow-1 {
+    background: radial-gradient(circle at 0% 0%, rgba(125, 140, 170, 0.08), transparent 70%);
+}
+
+.glow-2 {
+    background: radial-gradient(circle at 100% 100%, rgba(201, 151, 121, 0.08), transparent 70%);
+}
+
+.hero-box:hover,
+.skill-item:hover,
+.repo-card:hover,
+.glass-card:hover {
+    border-color: rgba(125, 140, 170, 0.62) !important;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.42), 0 0 24px rgba(125, 140, 170, 0.18) !important;
+}
+
+[data-theme="light"] .hero-box:hover,
+[data-theme="light"] .skill-item:hover,
+[data-theme="light"] .repo-card:hover,
+[data-theme="light"] .glass-card:hover {
+    box-shadow: 0 24px 48px rgba(32, 37, 49, 0.12), 0 0 24px rgba(110, 117, 142, 0.12) !important;
+}
+
+.hero-profile-container {
+    border-color: rgba(125, 140, 170, 0.35);
+    box-shadow: 0 18px 45px rgba(18, 21, 28, 0.28);
+}
+
+[data-theme="light"] .hero-profile-container {
+    box-shadow: 0 18px 45px rgba(32, 37, 49, 0.12);
 }
