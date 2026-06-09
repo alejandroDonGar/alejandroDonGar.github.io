@@ -1276,7 +1276,7 @@ aside > div:nth-child(2) {
 .repo-wave-preview {
     position: relative;
     width: 100%;
-    min-height: 128px;
+    min-height: 140px;
     margin: -0.35rem 0 1.35rem;
     overflow: hidden;
     border: 1px solid rgba(125, 140, 170, 0.22);
@@ -1382,10 +1382,10 @@ aside > div:nth-child(2) {
 
 .repo-wave-track {
     position: absolute;
-    top: -72px;
+    top: -34px;
     left: 0;
     width: 220%;
-    height: 270px;
+    height: 245px;
 }
 
 .repo-wave-svg {
@@ -1398,81 +1398,46 @@ aside > div:nth-child(2) {
 }
 
 .repo-wave-track-1 {
-    color: rgba(14, 116, 144, 0.62);
+    z-index: 1;
+    color: #f87171;
+    opacity: 0.42;
     animation: repoWaveMove1 9s linear infinite;
 }
 
 .repo-wave-track-2 {
-    color: rgba(6, 182, 212, 0.52);
+    z-index: 2;
+    color: #fbbf24;
+    opacity: 0.36;
     animation: repoWaveMove2 12s linear infinite;
 }
 
 .repo-wave-track-3 {
-    color: rgba(34, 211, 238, 0.68);
+    z-index: 3;
+    color: #22d3ee;
+    opacity: 0.86;
     animation: repoWaveMove3 15s linear infinite;
 }
 
 [data-theme="light"] .repo-wave-track-1 {
-    color: rgba(14, 116, 144, 0.28);
+    color: #ef4444;
+    opacity: 0.30;
 }
 
 [data-theme="light"] .repo-wave-track-2 {
-    color: rgba(6, 182, 212, 0.22);
+    color: #f59e0b;
+    opacity: 0.26;
 }
 
 [data-theme="light"] .repo-wave-track-3 {
-    color: rgba(34, 211, 238, 0.32);
+    color: #06b6d4;
+    opacity: 0.48;
 }
 
-.repo-shark {
-    position: absolute;
-    top: -55px;
-    left: 0;
-    width: 210px;
-    height: 90px;
-    z-index: 6;
-    pointer-events: none;
-    opacity: 0;
-    will-change: transform, opacity;
-}
 
-.repo-shark-body {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 210px;
-    height: 40px;
-    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-    background: rgba(51, 65, 85, 0.78);
-}
 
-.repo-shark-dorsal {
-    position: absolute;
-    left: 92px;
-    bottom: 34px;
-    width: 34px;
-    height: 58px;
-    clip-path: polygon(0% 100%, 100% 100%, 25% 0%);
-    border-radius: 0 0 15% 15%;
-    background: rgba(51, 65, 85, 0.78);
-}
 
-.repo-shark-back {
-    transform: scale(0.72);
-    animation: repoSharkBackSwim 20s linear infinite;
-}
 
-.repo-shark-mid {
-    transform: scale(0.88);
-    animation: repoSharkMidSwim 20s linear infinite;
-    animation-delay: -7s;
-}
 
-.repo-shark-front {
-    transform: scale(1);
-    animation: repoSharkFrontSwim 20s linear infinite;
-    animation-delay: -14s;
-}
 
 @keyframes repoWaveMove1 {
     from { transform: translateX(0); }
@@ -1500,29 +1465,8 @@ aside > div:nth-child(2) {
     }
 }
 
-@keyframes repoSharkBackSwim {
-    0% { opacity: 0; transform: translateX(-230px) scale(0.72); }
-    8% { opacity: 0.7; }
-    46% { opacity: 0.7; }
-    54% { opacity: 0; transform: translateX(calc(100% + 230px)) scale(0.72); }
-    100% { opacity: 0; transform: translateX(calc(100% + 230px)) scale(0.72); }
-}
 
-@keyframes repoSharkMidSwim {
-    0% { opacity: 0; transform: translateX(calc(100% + 230px)) scaleX(-1) scale(0.88); }
-    8% { opacity: 0.72; }
-    46% { opacity: 0.72; }
-    54% { opacity: 0; transform: translateX(-230px) scaleX(-1) scale(0.88); }
-    100% { opacity: 0; transform: translateX(-230px) scaleX(-1) scale(0.88); }
-}
 
-@keyframes repoSharkFrontSwim {
-    0% { opacity: 0; transform: translateX(-230px) scale(1); }
-    8% { opacity: 0.78; }
-    46% { opacity: 0.78; }
-    54% { opacity: 0; transform: translateX(calc(100% + 230px)) scale(1); }
-    100% { opacity: 0; transform: translateX(calc(100% + 230px)) scale(1); }
-}
 
 @media (max-width: 1200px) {
     .repo-wave-preview {
@@ -1542,13 +1486,21 @@ aside > div:nth-child(2) {
 
 @media (prefers-reduced-motion: reduce) {
     .repo-wave-track,
-    .repo-shark,
     .repo-pulse-glow {
         animation: none !important;
     }
-
-    .repo-shark {
-        opacity: 0.35;
-        transform: translateX(24%) scale(0.85) !important;
-    }
 }
+
+/* Ajuste final NetScanner: solo olas, sin tiburones */
+.repo-liquid-back {
+    height: 48%;
+}
+
+.repo-liquid-mid {
+    height: 42%;
+}
+
+.repo-liquid-front {
+    height: 36%;
+}
+
