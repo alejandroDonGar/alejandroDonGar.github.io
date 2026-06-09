@@ -404,19 +404,31 @@ aside > div:nth-child(2) {
 .skill-item:hover,
 .repo-card:hover,
 .glass-card:hover,
-#projects > .glass-card:hover {
-    border-color: rgba(125, 140, 170, 0.62);
-    transform: var(--hover-lift);
-    box-shadow: var(--hover-shadow);
-    z-index: 50;
+#projects > .glass-card:hover,
+[data-aos].hero-box:hover,
+[data-aos].skill-item:hover,
+[data-aos].repo-card:hover,
+[data-aos].glass-card:hover,
+[data-aos].aos-animate.hero-box:hover,
+[data-aos].aos-animate.skill-item:hover,
+[data-aos].aos-animate.repo-card:hover,
+[data-aos].aos-animate.glass-card:hover {
+    border-color: rgba(125, 140, 170, 0.62) !important;
+    transform: var(--hover-lift) !important;
+    box-shadow: var(--hover-shadow) !important;
+    z-index: 50 !important;
 }
 
 .hero-box:hover::before,
 .skill-item:hover::before,
 .repo-card:hover::before,
 .glass-card:hover::before,
-#projects > .glass-card:hover::before {
-    left: 100%;
+#projects > .glass-card:hover::before,
+[data-aos].hero-box:hover::before,
+[data-aos].skill-item:hover::before,
+[data-aos].repo-card:hover::before,
+[data-aos].glass-card:hover::before {
+    left: 100% !important;
 }
 
 .hero-box,
@@ -1031,4 +1043,31 @@ aside > div:nth-child(2) {
     .pagination-controls {
         gap: 1rem;
     }
+}
+
+/* ==========================================================================
+   AOS COMPATIBILITY
+   AOS usa transform para sus animaciones; estas reglas hacen que el hover
+   tenga prioridad sin duplicar todo el sistema de tarjetas.
+   ========================================================================== */
+
+[data-aos].hero-box,
+[data-aos].skill-item,
+[data-aos].repo-card,
+[data-aos].glass-card {
+    transition-property: transform, opacity, border-color, box-shadow, background-color !important;
+}
+
+[data-aos].aos-animate.hero-box:hover,
+[data-aos].aos-animate.skill-item:hover,
+[data-aos].aos-animate.repo-card:hover,
+[data-aos].aos-animate.glass-card:hover {
+    transform: var(--hover-lift) !important;
+}
+
+[data-aos].aos-animate.hero-box:hover::before,
+[data-aos].aos-animate.skill-item:hover::before,
+[data-aos].aos-animate.repo-card:hover::before,
+[data-aos].aos-animate.glass-card:hover::before {
+    left: 100% !important;
 }
