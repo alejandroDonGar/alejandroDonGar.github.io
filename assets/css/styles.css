@@ -2600,3 +2600,113 @@ aside > div:nth-child(2) {
         right: auto;
     }
 }
+
+/* ========================================================================== 
+   HERO FINAL POLISH
+   Limpia solapes, elimina duplicación visual y reparte mejor la información.
+   ========================================================================== */
+
+.hero-wrapper-upgraded {
+    grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.75fr) minmax(300px, 0.85fr);
+    align-items: stretch;
+}
+
+.hero-intro-box {
+    justify-content: center;
+}
+
+.hero-profile-box {
+    justify-content: center;
+    gap: 0.9rem;
+}
+
+.hero-profile-box::after {
+    opacity: 0.7;
+}
+
+.hero-status-badge {
+    display: none !important;
+}
+
+.hero-profile-container {
+    width: 100%;
+    max-height: 430px;
+    margin-inline: auto;
+}
+
+.hero-profile-img {
+    object-position: center 18%;
+}
+
+.hero-photo-caption {
+    margin-top: 0;
+    padding: 0.65rem 0.9rem;
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--text-muted);
+    font-size: 0.76rem;
+    letter-spacing: 0.02em;
+}
+
+.hero-mini-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.hero-stat {
+    min-height: 58px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-stat strong {
+    font-size: 0.98rem;
+}
+
+.hero-stat span {
+    font-size: 0.68rem;
+}
+
+.hero-skills-heading {
+    margin-bottom: 1.1rem;
+}
+
+.hero-skills-box .skill-pill {
+    min-height: 42px;
+}
+
+@media (max-width: 1400px) {
+    .hero-wrapper-upgraded {
+        grid-template-columns: 1fr 0.8fr;
+    }
+
+    .hero-skills-box {
+        grid-column: 1 / -1;
+    }
+
+    .hero-skills-box .skills-buttons-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-wrapper-upgraded {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-skills-box .skills-buttons-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-mini-stats,
+    .hero-skills-box .skills-buttons-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-photo-caption {
+        font-size: 0.7rem;
+    }
+}
