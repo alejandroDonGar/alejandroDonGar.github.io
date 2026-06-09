@@ -534,8 +534,6 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                         ${repo.topics ? repo.topics.map(t => `<span style="padding: 4px 12px; background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); border-radius: 100px; font-size: 0.8rem;">#${t}</span>`).join('') : ''}
                     </div>
 
-                    ${netScanner ? createNetScannerWavePreview() : ''}
-
                     <div style="display: flex; gap: 1rem;">
                         <a href="${repo.html_url}" target="_blank" class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem; background: var(--primary-gradient);"><i class="fa-brands fa-github"></i> ${viewCodeText}</a>
                         ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" style="padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: 12px; color: var(--text-main); text-decoration: none; font-size: 0.9rem;">Demo Live</a>` : ''}
@@ -544,7 +542,10 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                         <i class="fa-regular fa-calendar"></i> ${updatedText}: ${new Date(repo.updated_at).toLocaleDateString()}
                     </div>
                 </div>
-                <div style="background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 20px;">
+
+                ${netScanner ? `<div class="repo-wave-column">${createNetScannerWavePreview()}</div>` : ''}
+
+                <div class="repo-stats-panel" style="background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 20px;">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
                         <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 12px;">
                             <i class="fa-regular fa-star" style="color: var(--accent-blue);"></i>
