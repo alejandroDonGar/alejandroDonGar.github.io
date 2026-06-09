@@ -1186,8 +1186,6 @@ aside > div:nth-child(2) {
 .skill-pill:hover,
 .repo-card > div:last-child > div:first-child > div:hover,
 .repo-stat-box:hover,
-.bar-wrapper:hover,
-.bar-container:hover,
 .social-btn:hover,
 .sidebar-link-btn:hover,
 .btn-primary:hover,
@@ -1218,11 +1216,6 @@ aside > div:nth-child(2) {
 .btn-primary:hover::before,
 .repo-demo-link:hover::before {
     left: 100% !important;
-}
-
-/* Las barras no deben deformarse demasiado; solo brillo suave */
-.bar-container:hover {
-    transform: translateY(-2px) scale(1.005) !important;
 }
 
 /* Evita saltos raros por hover anidado dentro de repos */
