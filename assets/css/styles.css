@@ -1582,3 +1582,163 @@ aside > div:nth-child(2) {
         min-height: 145px;
     }
 }
+
+/* ==========================================================================
+   NETSCANNER FLOATING TECH ICONS
+   Iconos flotando/saliendo de la superficie para reforzar tecnologías:
+   Python, MongoDB, Django y Scapy.
+   ========================================================================== */
+
+.repo-floating-tech {
+    position: absolute;
+    z-index: 8;
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background:
+        linear-gradient(180deg, rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.42));
+    color: #f8fafc;
+    box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.26),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    pointer-events: none;
+    animation: repoTechFloat 7s ease-in-out infinite;
+}
+
+.repo-floating-tech i {
+    font-size: 1rem;
+}
+
+.repo-tech-python {
+    left: 18%;
+    bottom: 16%;
+    color: #facc15;
+    animation-delay: 0s;
+}
+
+.repo-tech-mongodb {
+    left: 42%;
+    bottom: 10%;
+    color: #34d399;
+    animation-delay: -1.8s;
+}
+
+.repo-tech-django {
+    left: 64%;
+    bottom: 15%;
+    color: #86efac;
+    animation-delay: -3.4s;
+}
+
+.repo-tech-scapy {
+    left: 80%;
+    bottom: 12%;
+    color: #38bdf8;
+    animation-delay: -5.1s;
+}
+
+.repo-floating-tech::after {
+    content: attr(title);
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 2px 7px;
+    border-radius: 999px;
+    background: rgba(10, 15, 24, 0.62);
+    color: #dbeafe;
+    font-size: 0.56rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+[data-theme="light"] .repo-floating-tech {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.50));
+    border-color: rgba(32, 37, 49, 0.12);
+    box-shadow:
+        0 10px 20px rgba(32, 37, 49, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.80);
+}
+
+[data-theme="light"] .repo-floating-tech::after {
+    background: rgba(255, 255, 255, 0.72);
+    color: #334155;
+    border-color: rgba(32, 37, 49, 0.10);
+}
+
+@keyframes repoTechFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(34px) scale(0.82) rotate(-6deg);
+    }
+    12% {
+        opacity: 0.88;
+    }
+    45% {
+        opacity: 0.92;
+        transform: translateY(-16px) scale(1) rotate(5deg);
+    }
+    70% {
+        opacity: 0.45;
+        transform: translateY(-34px) scale(0.94) rotate(-4deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-52px) scale(0.86) rotate(4deg);
+    }
+}
+
+/* Pequeñas burbujas en la columna de animación */
+.repo-wave-scene::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 7;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 22% 70%, rgba(255,255,255,0.35) 0 2px, transparent 3px),
+        radial-gradient(circle at 48% 62%, rgba(255,255,255,0.30) 0 1.5px, transparent 3px),
+        radial-gradient(circle at 72% 74%, rgba(255,255,255,0.28) 0 2px, transparent 3px),
+        radial-gradient(circle at 86% 58%, rgba(255,255,255,0.22) 0 1.5px, transparent 3px);
+    animation: repoBubbleDrift 4.8s ease-in-out infinite;
+    opacity: 0.55;
+}
+
+@keyframes repoBubbleDrift {
+    0%, 100% {
+        transform: translateY(8px);
+        opacity: 0.34;
+    }
+    50% {
+        transform: translateY(-16px);
+        opacity: 0.62;
+    }
+}
+
+@media (max-width: 1200px) {
+    .repo-floating-tech {
+        width: 32px;
+        height: 32px;
+    }
+
+    .repo-floating-tech::after {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .repo-floating-tech,
+    .repo-wave-scene::after {
+        animation: none !important;
+        opacity: 0.75;
+    }
+}
