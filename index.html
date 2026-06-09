@@ -471,6 +471,64 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         );
     }
 
+    function isCentroPlusRepo(repo) {
+        const normalizedName = repo.name.toLowerCase();
+        const topics = (repo.topics || []).map(topic => topic.toLowerCase());
+
+        return (
+            normalizedName.includes('centroplus-connect') ||
+            normalizedName.includes('centroplus') ||
+            (topics.includes('spring') && topics.includes('javafx')) ||
+            (topics.includes('swagger') && topics.includes('junit'))
+        );
+    }
+
+    function createCentroPlusApiPreview() {
+        return `
+            <div class="repo-api-preview" aria-label="Preview animada de CentroPlus REST API">
+                <div class="repo-api-label">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    CentroPlus REST Flow
+                </div>
+
+                <div class="repo-api-scene">
+                    <div class="repo-api-node repo-api-client">
+                        <i class="fa-brands fa-java"></i>
+                        <span>JavaFX</span>
+                    </div>
+
+                    <div class="repo-api-node repo-api-server">
+                        <i class="fa-solid fa-leaf"></i>
+                        <span>Spring API</span>
+                    </div>
+
+                    <div class="repo-api-node repo-api-docs">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>Swagger</span>
+                    </div>
+
+                    <div class="repo-api-connection repo-api-connection-main">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="repo-api-endpoints">
+                        <div><i class="fa-solid fa-users"></i> /usuarios</div>
+                        <div><i class="fa-solid fa-calendar-check"></i> /reservas</div>
+                        <div><i class="fa-solid fa-dumbbell"></i> /actividades</div>
+                        <div><i class="fa-solid fa-triangle-exclamation"></i> /incidencias</div>
+                    </div>
+
+                    <div class="repo-api-tests">
+                        <span><i class="fa-solid fa-vial"></i> JUnit</span>
+                        <span><i class="fa-solid fa-mask"></i> Mockito</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
     function createNetScannerWavePreview() {
         return `
             <div class="repo-wave-preview" aria-label="Animación de olas inspirada en NetScanner">
@@ -531,8 +589,9 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         repos.forEach(repo => {
             const card = document.createElement('div');
             const netScanner = isNetScannerRepo(repo);
+            const centroPlus = isCentroPlusRepo(repo);
 
-            card.className = netScanner ? 'repo-card repo-card-featured-net' : 'repo-card';
+            card.className = (netScanner || centroPlus) ? 'repo-card repo-card-featured-net' : 'repo-card';
             card.setAttribute('data-aos', 'fade-up');
 
             const updatedText = currentLang === 'es' ? 'Actualizado' : (currentLang === 'en' ? 'Updated' : (currentLang === 'de' ? 'Aktualisiert' : 'Uppfært'));
@@ -557,6 +616,7 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                 </div>
 
                 ${netScanner ? `<div class="repo-wave-column">${createNetScannerWavePreview()}</div>` : ''}
+                ${centroPlus ? `<div class="repo-wave-column">${createCentroPlusApiPreview()}</div>` : ''}
 
                 <div class="repo-stats-panel" style="background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 20px;">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">

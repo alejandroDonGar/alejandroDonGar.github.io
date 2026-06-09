@@ -1742,3 +1742,330 @@ aside > div:nth-child(2) {
         opacity: 0.75;
     }
 }
+
+/* ==========================================================================
+   CENTROPLUS REST API PREVIEW
+   Preview exclusiva para centroplus-connect:
+   JavaFX -> Spring REST API -> Swagger + endpoints + testing.
+   ========================================================================== */
+
+.repo-api-preview {
+    position: relative;
+    width: 100%;
+    min-height: 170px;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid rgba(125, 140, 170, 0.22);
+    border-radius: 22px;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(125, 140, 170, 0.18), transparent 34%),
+        radial-gradient(circle at 85% 78%, rgba(201, 151, 121, 0.16), transparent 36%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.72));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 14px 30px rgba(0, 0, 0, 0.22);
+    isolation: isolate;
+}
+
+[data-theme="light"] .repo-api-preview {
+    background:
+        radial-gradient(circle at 20% 20%, rgba(110, 117, 142, 0.14), transparent 34%),
+        radial-gradient(circle at 85% 78%, rgba(151, 108, 92, 0.12), transparent 36%),
+        linear-gradient(180deg, #ffffff, #f3f6fb);
+    border-color: rgba(110, 117, 142, 0.20);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        0 12px 24px rgba(32, 37, 49, 0.08);
+}
+
+.repo-api-label {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border: 1px solid rgba(125, 140, 170, 0.30);
+    border-radius: 999px;
+    background: rgba(10, 15, 24, 0.52);
+    color: #e2e8f0;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="light"] .repo-api-label {
+    background: rgba(255, 255, 255, 0.72);
+    color: #334155;
+    border-color: rgba(110, 117, 142, 0.22);
+}
+
+.repo-api-scene {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 0.9fr 1fr 0.9fr;
+    align-items: center;
+    gap: 12px;
+    padding: 46px 18px 18px;
+}
+
+.repo-api-node {
+    position: relative;
+    z-index: 5;
+    min-height: 70px;
+    display: grid;
+    place-items: center;
+    gap: 6px;
+    padding: 12px 8px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(15, 23, 42, 0.56);
+    color: var(--text-main);
+    text-align: center;
+    box-shadow:
+        0 12px 26px rgba(0,0,0,0.22),
+        inset 0 1px 0 rgba(255,255,255,0.06);
+    animation: repoApiNodePulse 3.6s ease-in-out infinite;
+}
+
+[data-theme="light"] .repo-api-node {
+    background: rgba(255,255,255,0.70);
+    border-color: rgba(32,37,49,0.10);
+    box-shadow:
+        0 10px 22px rgba(32,37,49,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.80);
+}
+
+.repo-api-node i {
+    font-size: 1.2rem;
+}
+
+.repo-api-node span {
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.03em;
+}
+
+.repo-api-client i {
+    color: #f97316;
+}
+
+.repo-api-server {
+    transform: scale(1.05);
+    border-color: rgba(125,140,170,0.28);
+    animation-delay: -1.2s;
+}
+
+.repo-api-server i {
+    color: #86efac;
+}
+
+.repo-api-docs {
+    animation-delay: -2.4s;
+}
+
+.repo-api-docs i {
+    color: #fbbf24;
+}
+
+.repo-api-connection {
+    position: absolute;
+    left: 18%;
+    right: 18%;
+    top: 50%;
+    height: 2px;
+    transform: translateY(-50%);
+    z-index: 2;
+    background: linear-gradient(90deg, transparent, rgba(125,140,170,0.40), transparent);
+    overflow: hidden;
+}
+
+.repo-api-connection span {
+    position: absolute;
+    top: 50%;
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    transform: translateY(-50%);
+    background: #a9b5d0;
+    box-shadow: 0 0 12px rgba(169,181,208,0.55);
+    animation: repoApiPacket 2.7s linear infinite;
+}
+
+.repo-api-connection span:nth-child(2) {
+    animation-delay: -0.9s;
+}
+
+.repo-api-connection span:nth-child(3) {
+    animation-delay: -1.8s;
+}
+
+.repo-api-endpoints {
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    z-index: 6;
+    width: min(82%, 330px);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    transform: translateX(-50%);
+}
+
+.repo-api-endpoints div {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+    border-radius: 999px;
+    background: rgba(125, 140, 170, 0.13);
+    border: 1px solid rgba(125, 140, 170, 0.18);
+    color: #dbeafe;
+    font-size: 0.58rem;
+    font-weight: 800;
+    white-space: nowrap;
+    animation: repoEndpointBlink 4s ease-in-out infinite;
+}
+
+.repo-api-endpoints div:nth-child(2) {
+    animation-delay: -1s;
+}
+
+.repo-api-endpoints div:nth-child(3) {
+    animation-delay: -2s;
+}
+
+.repo-api-endpoints div:nth-child(4) {
+    animation-delay: -3s;
+}
+
+[data-theme="light"] .repo-api-endpoints div {
+    color: #334155;
+    background: rgba(110, 117, 142, 0.10);
+    border-color: rgba(110, 117, 142, 0.15);
+}
+
+.repo-api-tests {
+    position: absolute;
+    right: 14px;
+    top: 12px;
+    z-index: 10;
+    display: flex;
+    gap: 6px;
+}
+
+.repo-api-tests span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 8px;
+    border-radius: 999px;
+    background: rgba(151, 108, 92, 0.16);
+    border: 1px solid rgba(201, 151, 121, 0.24);
+    color: #fed7aa;
+    font-size: 0.56rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+[data-theme="light"] .repo-api-tests span {
+    color: #7c2d12;
+    background: rgba(151, 108, 92, 0.10);
+    border-color: rgba(151, 108, 92, 0.16);
+}
+
+@keyframes repoApiPacket {
+    0% {
+        left: -10px;
+        opacity: 0;
+        transform: translateY(-50%) scale(0.7);
+    }
+    12% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        left: calc(100% + 10px);
+        opacity: 0;
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+@keyframes repoApiNodePulse {
+    0%, 100% {
+        box-shadow:
+            0 12px 26px rgba(0,0,0,0.22),
+            inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    50% {
+        box-shadow:
+            0 16px 34px rgba(0,0,0,0.26),
+            0 0 18px rgba(125,140,170,0.18),
+            inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+}
+
+@keyframes repoEndpointBlink {
+    0%, 100% {
+        opacity: 0.72;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-2px);
+    }
+}
+
+@media (max-width: 1200px) {
+    .repo-api-preview {
+        min-height: 170px;
+    }
+
+    .repo-api-scene {
+        padding-inline: 14px;
+    }
+
+    .repo-api-tests {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .repo-api-scene {
+        grid-template-columns: 1fr;
+        padding-top: 52px;
+    }
+
+    .repo-api-node {
+        min-height: 48px;
+        grid-template-columns: auto auto;
+        justify-content: center;
+    }
+
+    .repo-api-connection {
+        display: none;
+    }
+
+    .repo-api-endpoints {
+        position: static;
+        transform: none;
+        width: 100%;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .repo-api-node,
+    .repo-api-connection span,
+    .repo-api-endpoints div {
+        animation: none !important;
+    }
+}
