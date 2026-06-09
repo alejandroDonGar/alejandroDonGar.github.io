@@ -1045,29 +1045,221 @@ aside > div:nth-child(2) {
     }
 }
 
+
 /* ==========================================================================
-   AOS COMPATIBILITY
-   AOS usa transform para sus animaciones; estas reglas hacen que el hover
-   tenga prioridad sin duplicar todo el sistema de tarjetas.
+   FINAL UNIFIED HOVER SYSTEM
+   Unifica hero, repos, inglés, cards internas y botones tipo skill.
+   También elimina delays de AOS en el hero para que el hover responda rápido.
    ========================================================================== */
 
-[data-aos].hero-box,
-[data-aos].skill-item,
-[data-aos].repo-card,
-[data-aos].glass-card {
-    transition-property: transform, opacity, border-color, box-shadow, background-color !important;
+:root {
+    --hover-lift: translateY(-10px) scale(1.015);
+    --hover-shadow: 0 26px 56px rgba(0, 0, 0, 0.46), 0 0 28px rgba(125, 140, 170, 0.22);
+    --inner-hover-lift: translateY(-5px) scale(1.01);
+    --inner-hover-shadow: 0 14px 30px rgba(0, 0, 0, 0.24), 0 0 18px rgba(125, 140, 170, 0.16);
 }
 
-[data-aos].aos-animate.hero-box:hover,
-[data-aos].aos-animate.skill-item:hover,
-[data-aos].aos-animate.repo-card:hover,
-[data-aos].aos-animate.glass-card:hover {
+[data-theme="light"] {
+    --hover-shadow: 0 26px 52px rgba(32, 37, 49, 0.14), 0 0 26px rgba(110, 117, 142, 0.16);
+    --inner-hover-shadow: 0 14px 28px rgba(32, 37, 49, 0.10), 0 0 16px rgba(110, 117, 142, 0.12);
+}
+
+/* Quitar la sensación de delay en Hero/AOS */
+.hero-box[data-aos],
+.skill-item[data-aos],
+.repo-card[data-aos],
+.glass-card[data-aos] {
+    transition-delay: 0s !important;
+}
+
+.hero-box[data-aos].aos-animate,
+.skill-item[data-aos].aos-animate,
+.repo-card[data-aos].aos-animate,
+.glass-card[data-aos].aos-animate {
+    transition-delay: 0s !important;
+}
+
+/* Contenedores principales */
+.hero-box,
+.skill-item,
+.repo-card,
+.glass-card,
+#projects > .glass-card {
+    position: relative !important;
+    overflow: hidden !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-lg) !important;
+    transition:
+        transform 0.28s ease,
+        box-shadow 0.28s ease,
+        border-color 0.28s ease,
+        background-color 0.28s ease !important;
+    will-change: transform, box-shadow, border-color !important;
+}
+
+/* Elementos internos que también deben tener el mismo lenguaje de hover */
+.skill-pill,
+.repo-card > div:last-child > div:first-child > div,
+.repo-stat-box,
+.bar-wrapper,
+.bar-container,
+.page-btn,
+.lang-btn,
+.social-btn,
+.sidebar-link-btn,
+.btn-primary,
+.repo-demo-link {
+    position: relative !important;
+    overflow: hidden !important;
+    transition:
+        transform 0.24s ease,
+        box-shadow 0.24s ease,
+        border-color 0.24s ease,
+        background-color 0.24s ease,
+        color 0.24s ease !important;
+}
+
+/* Barrido de luz compartido */
+.hero-box::before,
+.skill-item::before,
+.repo-card::before,
+.glass-card::before,
+#projects > .glass-card::before,
+.skill-pill::before,
+.repo-card > div:last-child > div:first-child > div::before,
+.repo-stat-box::before,
+.bar-wrapper::before,
+.social-btn::before,
+.sidebar-link-btn::before,
+.btn-primary::before,
+.repo-demo-link::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.06), transparent) !important;
+    transition: left 0.5s ease !important;
+}
+
+.hero-box > *,
+.skill-item > *,
+.repo-card > *,
+.glass-card > *,
+#projects > .glass-card > *,
+.skill-pill > *,
+.repo-card > div:last-child > div:first-child > div > *,
+.repo-stat-box > *,
+.bar-wrapper > *,
+.social-btn > *,
+.sidebar-link-btn > *,
+.btn-primary > *,
+.repo-demo-link > * {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* Hover principal: hero, inglés, repos y contenedores grandes */
+.hero-box:hover,
+.skill-item:hover,
+.repo-card:hover,
+.glass-card:hover,
+#projects > .glass-card:hover,
+.hero-box[data-aos]:hover,
+.skill-item[data-aos]:hover,
+.repo-card[data-aos]:hover,
+.glass-card[data-aos]:hover,
+.hero-box[data-aos].aos-animate:hover,
+.skill-item[data-aos].aos-animate:hover,
+.repo-card[data-aos].aos-animate:hover,
+.glass-card[data-aos].aos-animate:hover {
+    border-color: rgba(125, 140, 170, 0.62) !important;
     transform: var(--hover-lift) !important;
+    box-shadow: var(--hover-shadow) !important;
+    z-index: 50 !important;
 }
 
-[data-aos].aos-animate.hero-box:hover::before,
-[data-aos].aos-animate.skill-item:hover::before,
-[data-aos].aos-animate.repo-card:hover::before,
-[data-aos].aos-animate.glass-card:hover::before {
+/* Hover secundario: pills, stats, barras y botones */
+.skill-pill:hover,
+.repo-card > div:last-child > div:first-child > div:hover,
+.repo-stat-box:hover,
+.bar-wrapper:hover,
+.bar-container:hover,
+.social-btn:hover,
+.sidebar-link-btn:hover,
+.btn-primary:hover,
+.repo-demo-link:hover {
+    border-color: rgba(125, 140, 170, 0.42) !important;
+    transform: var(--inner-hover-lift) !important;
+    box-shadow: var(--inner-hover-shadow) !important;
+}
+
+/* Mantener el carácter de los skill pills, pero con la misma animación */
+.skill-pill:hover {
+    background: var(--primary-gradient) !important;
+    color: #ffffff !important;
+}
+
+/* Barrido visible en todos */
+.hero-box:hover::before,
+.skill-item:hover::before,
+.repo-card:hover::before,
+.glass-card:hover::before,
+#projects > .glass-card:hover::before,
+.skill-pill:hover::before,
+.repo-card > div:last-child > div:first-child > div:hover::before,
+.repo-stat-box:hover::before,
+.bar-wrapper:hover::before,
+.social-btn:hover::before,
+.sidebar-link-btn:hover::before,
+.btn-primary:hover::before,
+.repo-demo-link:hover::before {
     left: 100% !important;
+}
+
+/* Las barras no deben deformarse demasiado; solo brillo suave */
+.bar-container:hover {
+    transform: translateY(-2px) scale(1.005) !important;
+}
+
+/* Evita saltos raros por hover anidado dentro de repos */
+.repo-card:hover .repo-stat-box:hover,
+.repo-card:hover > div:last-child > div:first-child > div:hover {
+    transform: var(--inner-hover-lift) !important;
+}
+
+/* Respeta usuarios con reducción de movimiento */
+@media (prefers-reduced-motion: reduce) {
+    .hero-box,
+    .skill-item,
+    .repo-card,
+    .glass-card,
+    #projects > .glass-card,
+    .skill-pill,
+    .repo-stat-box,
+    .bar-wrapper,
+    .bar-container,
+    .page-btn,
+    .lang-btn,
+    .social-btn,
+    .sidebar-link-btn,
+    .btn-primary,
+    .repo-demo-link {
+        transition: none !important;
+    }
+
+    .hero-box:hover,
+    .skill-item:hover,
+    .repo-card:hover,
+    .glass-card:hover,
+    #projects > .glass-card:hover,
+    .skill-pill:hover,
+    .repo-stat-box:hover,
+    .bar-wrapper:hover,
+    .bar-container:hover {
+        transform: none !important;
+    }
 }
