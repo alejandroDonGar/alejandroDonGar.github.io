@@ -543,13 +543,22 @@ aside > div:nth-child(2) {
     -webkit-text-fill-color: transparent;
 }
 
-.hero-box p {
+.hero-box p,
+.repo-info p,
+.large-muted {
     color: var(--text-muted);
     line-height: 1.5;
 }
 
+#about p,
+.large-muted {
+    font-size: 1.1rem;
+}
+
 .hero-box [data-t="role_junior"],
-.tag-blue {
+.tag-blue,
+.repo-topic,
+.repo-info span[style*="border-radius: 100px"] {
     display: inline-block;
     width: fit-content;
     padding: 0.5rem 1rem;
@@ -569,7 +578,9 @@ aside > div:nth-child(2) {
 .hero-box > div[style*="display: flex"],
 .social-row,
 .repo-actions,
-.repo-topics {
+.repo-topics,
+.repo-info > div:nth-of-type(1),
+.repo-info > div:nth-of-type(2) {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
@@ -580,7 +591,10 @@ aside > div:nth-child(2) {
     margin-top: 1.5rem;
 }
 
-.sidebar-link-btn {
+.sidebar-link-btn,
+.skill-pill,
+.repo-card > div:last-child > div:first-child > div,
+.repo-stat-box {
     padding: 0.75rem 1.25rem;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
@@ -588,6 +602,15 @@ aside > div:nth-child(2) {
     font-size: 0.9rem;
     font-weight: 600;
     text-decoration: none;
+}
+
+.skill-pill,
+.repo-stat-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(125, 140, 170, 0.12);
 }
 
 .hero-image-box {
@@ -615,10 +638,6 @@ aside > div:nth-child(2) {
     object-position: center 20%;
 }
 
-/* ==========================================================================
-   SKILL PILLS
-   ========================================================================== */
-
 .skills-buttons-grid {
     width: 100%;
     display: flex;
@@ -626,44 +645,10 @@ aside > div:nth-child(2) {
     gap: 0.75rem;
 }
 
-.skill-pill {
-    width: 100%;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    border: 1px solid rgba(125, 140, 170, 0.22);
-    border-radius: var(--radius-sm);
-    background: rgba(125, 140, 170, 0.12);
-    color: var(--text-main);
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-align: center;
-    cursor: default;
-}
-
-.skill-pill:hover {
-    background: var(--primary-gradient);
-    color: #fff;
-    transform: translateX(5px);
-    box-shadow: 0 5px 15px rgba(125, 140, 170, 0.28);
-}
-
-/* ==========================================================================
-   ABOUT / ENGLISH
-   ========================================================================== */
-
 #about h2,
 #about h3,
 #about p {
     color: var(--text-main);
-}
-
-#about p,
-.large-muted {
-    color: var(--text-muted);
-    font-size: 1.1rem;
 }
 
 .skill-grid {
@@ -758,37 +743,10 @@ aside > div:nth-child(2) {
     font-size: 1.75rem;
 }
 
-.repo-info p {
-    margin-bottom: 2rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-}
-
-.repo-info > div:nth-of-type(1),
-.repo-info > div:nth-of-type(2) {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.repo-info > div:nth-of-type(1) {
-    margin-bottom: 1.5rem;
-}
-
 .repo-info > div:nth-of-type(3) {
     margin-top: 1.5rem;
     color: var(--text-muted);
     font-size: 0.75rem;
-}
-
-.repo-topic,
-.repo-info span[style*="border-radius: 100px"] {
-    padding: 4px 12px;
-    border: 1px solid rgba(125, 140, 170, 0.15);
-    border-radius: 100px;
-    background: rgba(125, 140, 170, 0.12);
-    color: var(--accent-blue);
-    font-size: 0.8rem;
 }
 
 .repo-card > div:last-child,
@@ -800,11 +758,6 @@ aside > div:nth-child(2) {
     background: var(--repo-stats-bg);
 }
 
-[data-theme="light"] .repo-card > div:last-child,
-[data-theme="light"] .repo-stats {
-    border-color: #dbe4f0;
-}
-
 .repo-card > div:last-child > div:first-child,
 .repo-stat-grid {
     display: grid;
@@ -813,12 +766,9 @@ aside > div:nth-child(2) {
     margin-bottom: 1.5rem;
 }
 
-.repo-card > div:last-child > div:first-child > div,
-.repo-stat-box {
-    padding: 1rem;
-    border-radius: var(--radius-sm);
-    background: var(--repo-stat-box-bg);
-    text-align: center;
+[data-theme="light"] .repo-card > div:last-child,
+[data-theme="light"] .repo-stats {
+    border-color: #dbe4f0;
 }
 
 .repo-language-bar {
@@ -1079,7 +1029,7 @@ aside > div:nth-child(2) {
     transition-delay: 0s !important;
 }
 
-/* Contenedores principales */
+/* Contenedores Principales */
 .hero-box,
 .skill-item,
 .repo-card,
@@ -1089,15 +1039,12 @@ aside > div:nth-child(2) {
     overflow: hidden !important;
     border: 1px solid var(--border-color) !important;
     border-radius: var(--radius-lg) !important;
-    transition:
-        transform 0.18s ease-out,
-        box-shadow 0.18s ease-out,
-        border-color 0.18s ease-out,
-        background-color 0.28s ease !important;
+    background: var(--bg-card);
+    transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out, background-color 0.28s ease !important;
     will-change: transform, box-shadow, border-color !important;
 }
 
-/* Elementos internos que también deben tener el mismo lenguaje de hover */
+/* Elementos Internos y Botones */
 .skill-pill,
 .repo-card > div:last-child > div:first-child > div,
 .repo-stat-box,
@@ -1109,27 +1056,14 @@ aside > div:nth-child(2) {
 .repo-demo-link {
     position: relative !important;
     overflow: hidden !important;
-    transition:
-        transform 0.24s ease,
-        box-shadow 0.24s ease,
-        border-color 0.24s ease,
-        background-color 0.24s ease,
-        color 0.24s ease !important;
+    transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease, background-color 0.24s ease, color 0.24s ease !important;
 }
 
-/* Barrido de luz compartido */
-.hero-box::before,
-.skill-item::before,
-.repo-card::before,
-.glass-card::before,
-#projects > .glass-card::before,
-.skill-pill::before,
-.repo-card > div:last-child > div:first-child > div::before,
-.repo-stat-box::before,
-.social-btn::before,
-.sidebar-link-btn::before,
-.btn-primary::before,
-.repo-demo-link::before {
+/* Efecto de Barrido de Luz Unificado */
+.hero-box::before, .skill-item::before, .repo-card::before, .glass-card::before,
+#projects > .glass-card::before, .skill-pill::before, .repo-stat-box::before,
+.social-btn::before, .sidebar-link-btn::before, .btn-primary::before,
+.repo-card > div:last-child > div:first-child > div::before {
     content: "" !important;
     position: absolute !important;
     top: 0 !important;
@@ -1142,74 +1076,39 @@ aside > div:nth-child(2) {
     transition: left 0.25s ease !important;
 }
 
-.hero-box > *,
-.skill-item > *,
-.repo-card > *,
-.glass-card > *,
-#projects > .glass-card > *,
-.skill-pill > *,
-.repo-card > div:last-child > div:first-child > div > *,
-.repo-stat-box > *,
-.social-btn > *,
-.sidebar-link-btn > *,
-.btn-primary > *,
-.repo-demo-link > * {
+/* Asegurar que el contenido esté sobre el barrido */
+.hero-box > *, .skill-item > *, .repo-card > *, .glass-card > *,
+#projects > .glass-card > *, .skill-pill > *, .repo-stat-box > *,
+.social-btn > *, .sidebar-link-btn > *, .btn-primary > *,
+.repo-card > div:last-child > div:first-child > div > * {
     position: relative !important;
     z-index: 2 !important;
 }
 
-/* Hover principal: hero, inglés, repos y contenedores grandes */
-.hero-box:hover,
-.skill-item:hover,
-.repo-card:hover,
-.glass-card:hover,
-#projects > .glass-card:hover,
-.hero-box[data-aos]:hover,
-.skill-item[data-aos]:hover,
-.repo-card[data-aos]:hover,
-.glass-card[data-aos]:hover,
-.hero-box[data-aos].aos-animate:hover,
-.skill-item[data-aos].aos-animate:hover,
-.repo-card[data-aos].aos-animate:hover,
-.glass-card[data-aos].aos-animate:hover {
+/* Hover de Contenedores */
+.hero-box:hover, .skill-item:hover, .repo-card:hover, .glass-card:hover,
+#projects > .glass-card:hover {
     border-color: rgba(125, 140, 170, 0.62) !important;
     transform: var(--hover-lift) !important;
     box-shadow: var(--hover-shadow) !important;
     z-index: 50 !important;
 }
 
-/* Hover secundario: pills, stats, barras y botones */
-.skill-pill:hover,
-.repo-card > div:last-child > div:first-child > div:hover,
-.repo-stat-box:hover,
-.social-btn:hover,
-.sidebar-link-btn:hover,
-.btn-primary:hover,
-.repo-demo-link:hover {
+/* Hover de Elementos Internos */
+.skill-pill:hover, .repo-stat-box:hover, .social-btn:hover,
+.sidebar-link-btn:hover, .btn-primary:hover,
+.repo-card > div:last-child > div:first-child > div:hover {
     border-color: rgba(125, 140, 170, 0.42) !important;
     transform: var(--inner-hover-lift) !important;
     box-shadow: var(--inner-hover-shadow) !important;
 }
 
-/* Mantener el carácter de los skill pills, pero con la misma animación */
-.skill-pill:hover {
-    background: var(--primary-gradient) !important;
-    color: #ffffff !important;
-}
-
-/* Barrido visible en todos */
-.hero-box:hover::before,
-.skill-item:hover::before,
-.repo-card:hover::before,
-.glass-card:hover::before,
-#projects > .glass-card:hover::before,
-.skill-pill:hover::before,
-.repo-card > div:last-child > div:first-child > div:hover::before,
-.repo-stat-box:hover::before,
-.social-btn:hover::before,
-.sidebar-link-btn:hover::before,
-.btn-primary:hover::before,
-.repo-demo-link:hover::before {
+/* Disparo del Barrido */
+.hero-box:hover::before, .skill-item:hover::before, .repo-card:hover::before,
+.glass-card:hover::before, #projects > .glass-card:hover::before,
+.skill-pill:hover::before, .repo-stat-box:hover::before,
+.social-btn:hover::before, .sidebar-link-btn:hover::before,
+.btn-primary:hover::before, .repo-card > div:last-child > div:first-child > div:hover::before {
     left: 100% !important;
 }
 
@@ -1244,8 +1143,11 @@ aside > div:nth-child(2) {
     #projects > .glass-card:hover,
     .skill-pill:hover,
     .repo-stat-box:hover,
-    .bar-wrapper:hover,
+    .bar-wrapper:hover {
+        transform: none !important;
+        box-shadow: none !important;
     }
+}
 
 
 /* ==========================================================================
