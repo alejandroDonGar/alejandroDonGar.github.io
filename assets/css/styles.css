@@ -2916,6 +2916,10 @@ aside > div:nth-child(2) {
     background: linear-gradient(135deg, #0e7490, #22d3ee);
 }
 
+.bar-practice {
+    background: linear-gradient(135deg, #0e7490, #22d3ee);
+}
+
 .bar-future {
     border: 1px dashed rgba(255, 255, 255, 0.42);
     background: linear-gradient(135deg, rgba(151, 108, 92, 0.46), rgba(201, 151, 121, 0.32));
