@@ -1101,8 +1101,6 @@ aside > div:nth-child(2) {
 .skill-pill,
 .repo-card > div:last-child > div:first-child > div,
 .repo-stat-box,
-.bar-wrapper,
-.bar-container,
 .page-btn,
 .lang-btn,
 .social-btn,
@@ -1128,7 +1126,6 @@ aside > div:nth-child(2) {
 .skill-pill::before,
 .repo-card > div:last-child > div:first-child > div::before,
 .repo-stat-box::before,
-.bar-wrapper::before,
 .social-btn::before,
 .sidebar-link-btn::before,
 .btn-primary::before,
@@ -1153,7 +1150,6 @@ aside > div:nth-child(2) {
 .skill-pill > *,
 .repo-card > div:last-child > div:first-child > div > *,
 .repo-stat-box > *,
-.bar-wrapper > *,
 .social-btn > *,
 .sidebar-link-btn > *,
 .btn-primary > *,
@@ -1210,7 +1206,6 @@ aside > div:nth-child(2) {
 .skill-pill:hover::before,
 .repo-card > div:last-child > div:first-child > div:hover::before,
 .repo-stat-box:hover::before,
-.bar-wrapper:hover::before,
 .social-btn:hover::before,
 .sidebar-link-btn:hover::before,
 .btn-primary:hover::before,
@@ -1233,8 +1228,6 @@ aside > div:nth-child(2) {
     #projects > .glass-card,
     .skill-pill,
     .repo-stat-box,
-    .bar-wrapper,
-    .bar-container,
     .page-btn,
     .lang-btn,
     .social-btn,
@@ -1252,7 +1245,43 @@ aside > div:nth-child(2) {
     .skill-pill:hover,
     .repo-stat-box:hover,
     .bar-wrapper:hover,
-    .bar-container:hover {
-        transform: none !important;
     }
+
+
+/* ==========================================================================
+   ENGLISH BARS HOVER GUARD
+   Las barras de Oficial/Perspectiva no se elevan ni generan glow propio.
+   El hover queda únicamente en el contenedor .skill-item.
+   ========================================================================== */
+
+.bar-wrapper,
+.bar-container,
+.bar-fill,
+.bar-fill.perspective {
+    transform: none !important;
+    box-shadow: none;
+}
+
+.bar-wrapper:hover,
+.bar-container:hover,
+.bar-fill:hover,
+.bar-fill.perspective:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    border-color: inherit !important;
+}
+
+.bar-wrapper::before,
+.bar-container::before,
+.bar-fill::before,
+.bar-fill.perspective::before {
+    content: none !important;
+    display: none !important;
+}
+
+.skill-item:hover .bar-wrapper,
+.skill-item:hover .bar-container,
+.skill-item:hover .bar-fill,
+.skill-item:hover .bar-fill.perspective {
+    transform: none !important;
 }
