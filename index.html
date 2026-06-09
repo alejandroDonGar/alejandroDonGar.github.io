@@ -55,22 +55,50 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
 <main>
     <!-- Hero Section -->
     <section id="home">
-        <div class="hero-wrapper">
-            <!-- Contenedor 1: Información -->
-            <div class="hero-box" data-aos="fade-right" data-aos-delay="200">
-                <span data-t="role_junior" style="display: inline-block; width: fit-content; padding: 0.5rem 1rem; background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); border-radius: 100px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem;">ESTUDIANTE 1º DAM</span>
-                <h1 data-t="hero_title" style="margin-bottom: 1rem; font-size: clamp(1.8rem, 4vw, 3rem);">Alejandro <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Donate</span></h1>
-                <p data-t="hero_desc" style="font-size: 1rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.5;">
-                    Especializado en el desarrollo de soluciones robustas con Java y la creación de interfaces interactivas de alto impacto.
+        <div class="hero-wrapper hero-wrapper-upgraded">
+            <!-- Contenedor 1: Presentación -->
+            <div class="hero-box hero-intro-box" data-aos="fade-right" data-aos-delay="120">
+                <span data-t="role_junior" class="hero-kicker">ESTUDIANTE 1º DAM</span>
+
+                <h1 data-t="hero_title">
+                    Alejandro <span>Donate</span>
+                </h1>
+
+                <p data-t="hero_desc" class="hero-description">
+                    Estudiante de Desarrollo de Aplicaciones Multiplataforma, enfocado en Java, Python, bases de datos y desarrollo web. Construyendo proyectos para convertir conocimiento en experiencia.
                 </p>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="#projects" class="btn-primary scroll-link" data-t="btn_projects" style="background: var(--primary-gradient); padding: 0.75rem 1.25rem; font-size: 0.9rem;">Proyectos <i class="fa-solid fa-arrow-right"></i></a>
-                    <a href="#about" class="sidebar-link-btn scroll-link" data-t="btn_about" style="padding: 0.75rem 1.25rem; border: 1px solid var(--border-color); border-radius: 12px; font-weight: 600; text-decoration: none; color: var(--text-main); font-size: 0.9rem;">Sobre mí</a>
+
+                <div class="hero-actions">
+                    <a href="#projects" class="btn-primary scroll-link" data-t="btn_projects">
+                        Proyectos <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#about" class="sidebar-link-btn scroll-link" data-t="btn_about">
+                        Sobre mí
+                    </a>
                 </div>
-                
+
+                <div class="hero-mini-stats" aria-label="Resumen rápido">
+                    <div class="hero-stat">
+                        <strong>1º</strong>
+                        <span>DAM</span>
+                    </div>
+                    <div class="hero-stat">
+                        <strong>Java</strong>
+                        <span>Principal</span>
+                    </div>
+                    <div class="hero-stat">
+                        <strong>Python</strong>
+                        <span>Aprendiendo</span>
+                    </div>
+                    <div class="hero-stat">
+                        <strong>Web</strong>
+                        <span>Base sólida</span>
+                    </div>
+                </div>
+
                 <!-- Social & Contact -->
-                <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap;">
-                    <button onclick="copyEmail()" class="social-btn" id="email-btn" style="position: relative;">
+                <div class="hero-social-row">
+                    <button onclick="copyEmail()" class="social-btn" id="email-btn">
                         <i class="fa-solid fa-envelope"></i>
                         <span id="email-text" class="social-btn-text">AlexDoGa.work@gmail.com</span>
                     </button>
@@ -82,21 +110,36 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
             </div>
 
             <!-- Contenedor 2: Imagen -->
-            <div class="hero-box hero-image-box" data-aos="fade-up" data-aos-delay="400">
+            <div class="hero-box hero-image-box hero-profile-box" data-aos="fade-up" data-aos-delay="180">
+                <div class="hero-status-badge">
+                    <span class="status-dot"></span>
+                    Aprendiendo y construyendo
+                </div>
+
                 <div class="hero-profile-container">
                     <img src="{{ '/assets/img/perfil.jpg' | relative_url }}" alt="Alejandro Donate" class="hero-profile-img">
                 </div>
+
+                <div class="hero-photo-caption">
+                    Java • Python • Web • Bases de Datos
+                </div>
             </div>
 
-            <!-- Contenedor 3: Estadísticas / Disciplinas -->
-            <div class="hero-box" data-aos="fade-left" data-aos-delay="600">
+            <!-- Contenedor 3: Skills -->
+            <div class="hero-box hero-skills-box" data-aos="fade-left" data-aos-delay="240">
+                <div class="hero-skills-heading">
+                    <span>Stack en aprendizaje</span>
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+
                 <div class="skills-buttons-grid">
-                    <div class="skill-pill"><i class="fa-brands fa-java"></i> Java Expert</div>
+                    <div class="skill-pill"><i class="fa-brands fa-java"></i> Java (principal)</div>
+                    <div class="skill-pill"><i class="fa-brands fa-python"></i> Python (aprendiendo)</div>
                     <div class="skill-pill"><i class="fa-solid fa-database"></i> SQL / NoSQL</div>
-                    <div class="skill-pill"><i class="fa-solid fa-globe"></i> Web Dev (JS/CSS)</div>
+                    <div class="skill-pill"><i class="fa-solid fa-globe"></i> HTML / CSS / JS</div>
                     <div class="skill-pill"><i class="fa-solid fa-file-code"></i> XML / XPath</div>
                     <div class="skill-pill"><i class="fa-solid fa-leaf"></i> MongoDB / BaseX</div>
-                    <div class="skill-pill"><i class="fa-solid fa-server"></i> Cassandra DB</div>
+                    <div class="skill-pill"><i class="fa-brands fa-git-alt"></i> Git / GitHub</div>
                 </div>
             </div>
         </div>
@@ -108,7 +151,7 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         <div class="glass-card">
             <h3 data-t="goal_title">Mi Objetivo</h3>
             <p data-t="goal_desc" style="color: var(--text-muted); font-size: 1.1rem;">
-                Como estudiante de Desarrollo de Aplicaciones Multiplataforma, mi meta es fusionar la eficiencia del backend con experiencias de usuario intuitivas y modernas.
+                Como estudiante de Desarrollo de Aplicaciones Multiplataforma, mi objetivo es seguir aprendiendo con proyectos prácticos y construir una base sólida en programación, bases de datos y desarrollo web.
             </p>
         </div>
     </section>
@@ -225,42 +268,6 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
     </section>
 </main>
 
-<style>
-    .sidebar-link {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 12px 16px;
-        border-radius: 12px;
-        color: var(--text-muted);
-        text-decoration: none;
-        transition: all 0.3s ease;
-    }
-    .sidebar-link:hover {
-        background: rgba(255, 255, 255, 0.05);
-        color: var(--text-main);
-        transform: translateX(5px);
-    }
-    .sidebar-link.active {
-        background: rgba(34, 197, 94, 0.1);
-        color: #22c55e;
-        font-weight: 600;
-    }
-    
-    .repo-card {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 2rem;
-        background: var(--bg-card);
-        border: 1px solid var(--border-color);
-        border-radius: 32px;
-        padding: 2.5rem;
-    }
-    
-    @media (max-width: 1200px) {
-        .repo-card { grid-template-columns: 1fr; }
-    }
-</style>
 
 <script>
     const GITHUB_USERNAME = 'alejandroDonGar';
@@ -274,12 +281,12 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         es: {
             role_junior: "ESTUDIANTE 1º DAM",
             hero_title: "Alejandro Donate",
-            hero_desc: "Especializado en el desarrollo de soluciones robustas con Java y la creación de interfaces interactivas de alto impacto.",
+            hero_desc: "Estudiante de Desarrollo de Aplicaciones Multiplataforma, enfocado en Java, Python, bases de datos y desarrollo web. Construyendo proyectos para convertir conocimiento en experiencia.",
             btn_projects: "Explorar Proyectos",
             btn_about: "Sobre mí",
             about_title: "Sobre mí",
             goal_title: "Mi Objetivo",
-            goal_desc: "Como estudiante de Desarrollo de Aplicaciones Multiplataforma, mi meta es fusionar la eficiencia del backend con experiencias de usuario intuitivas y modernas.",
+            goal_desc: "Como estudiante de Desarrollo de Aplicaciones Multiplataforma, mi objetivo es seguir aprendiendo con proyectos prácticos y construir una base sólida en programación, bases de datos y desarrollo web.",
             lang_section: "Dominio del Inglés",
             projects_title: "Proyectos GitHub",
             stat_updated: "Actualizado",
@@ -291,12 +298,12 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         en: {
             role_junior: "1st YEAR DAM STUDENT",
             hero_title: "Alejandro Donate",
-            hero_desc: "Specialized in developing robust solutions with Java and creating high-impact interactive interfaces.",
+            hero_desc: "Multiplatform Application Development student focused on Java, Python, databases and web development. Building projects to turn knowledge into experience.",
             btn_projects: "Explore Projects",
             btn_about: "About Me",
             about_title: "About Me",
             goal_title: "My Goal",
-            goal_desc: "As a Multiplatform Application Development student, my goal is to merge backend efficiency with intuitive and modern user experiences.",
+            goal_desc: "As a Multiplatform Application Development student, my goal is to keep learning through practical projects and build a solid foundation in programming, databases and web development.",
             lang_section: "English Proficiency",
             projects_title: "GitHub Projects",
             stat_updated: "Updated",
@@ -308,12 +315,12 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         de: {
             role_junior: "DAM-STUDENT IM 1. JAHR",
             hero_title: "Alejandro Donate",
-            hero_desc: "Spezialisiert auf die Entwicklung robuster Lösungen mit Java und die Erstellung hochwirksamer interaktiver Schnittstellen.",
+            hero_desc: "Student der plattformübergreifenden Anwendungsentwicklung mit Fokus auf Java, Python, Datenbanken und Webentwicklung. Ich baue Projekte, um Wissen in Erfahrung umzuwandeln.",
             btn_projects: "Projekte erkunden",
             btn_about: "Über mich",
             about_title: "Über mich",
             goal_title: "Mein Ziel",
-            goal_desc: "Als Student der plattformübergreifenden Anwendungsentwicklung ist es mein Ziel, Backend-Effizienz mit intuitiven und modernen Benutzererlebnissen zu verschmelzen.",
+            goal_desc: "Als Student der plattformübergreifenden Anwendungsentwicklung möchte ich durch praktische Projekte weiterlernen und eine solide Grundlage in Programmierung, Datenbanken und Webentwicklung aufbauen.",
             lang_section: "Englischkenntnisse",
             projects_title: "GitHub-Projekte",
             stat_updated: "Aktualisiert",
@@ -325,12 +332,12 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         is: {
             role_junior: "1. ÁRS DAM NEMANDI",
             hero_title: "Alejandro Donate",
-            hero_desc: "Sérhæfður í að þróa öflugar lausnir með Java og búa til gagnvirk viðmót með miklum áhrifum.",
+            hero_desc: "Nemandi í þróun fjölvettvangsforrita með áherslu á Java, Python, gagnagrunna og vefþróun. Ég byggi verkefni til að breyta þekkingu í reynslu.",
             btn_projects: "Skoða verkefni",
             btn_about: "Um mig",
             about_title: "Um mig",
             goal_title: "Markmið mitt",
-            goal_desc: "Sem nemandi í þróun fjölvettvangsforrita er markmið mitt að sameina skilvirkni bakvinnslu við innsæi og nútímalega notendaupplifun.",
+            goal_desc: "Sem nemandi í þróun fjölvettvangsforrita er markmið mitt að halda áfram að læra með hagnýtum verkefnum og byggja góðan grunn í forritun, gagnagrunnum og vefþróun.",
             lang_section: "Enskukunnátta",
             projects_title: "GitHub verkefni",
             stat_updated: "Uppfært",
@@ -370,7 +377,7 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         document.getElementById('next-page').title = lang === 'es' ? 'Siguiente' : (lang === 'en' ? 'Next' : 'Nächste');
 
         // Actualizar texto del tema al cambiar idioma
-        const currentTheme = html.getAttribute('data-theme') || 'dark';
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
         setTheme(currentTheme);
 
         updatePagination(); 
@@ -785,7 +792,7 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
     }
 
     themeToggle.addEventListener('click', () => {
-        const currentTheme = html.getAttribute('data-theme') || 'dark';
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
         setTheme(currentTheme === 'dark' ? 'light' : 'dark');
     });
 
