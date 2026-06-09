@@ -1,990 +1,2997 @@
----
-layout: default
-title: "Alejandro Donate García | Full Stack Developer"
-description: "Portfolio de Alejandro Donate García. Junior Developer apasionado por Java y el desarrollo web."
----
+:root {
+    /* Paleta profesional basada en la foto */
+    --bg-body: #12151c;
+    --bg-sidebar: #1a202b;
+    --bg-card: rgba(27, 33, 45, 0.82);
+    --bg-card-solid: #1b212d;
+    --text-main: #f3f4f6;
+    --text-muted: #a8b0bf;
+    --border-color: rgba(229, 231, 235, 0.12);
+    --glass-blur: blur(16px);
 
-<div class="bg-glow">
-    <div class="glow-1"></div>
-    <div class="glow-2"></div>
-</div>
+    --primary-blue: #7d8caa;
+    --accent-blue: #c99779;
+    --primary-green: #7d8caa;
+    --primary-green-2: #a9b5d0;
+    --primary-gradient: linear-gradient(135deg, #6e758e, #a9b5d0);
+    --warm-gradient: linear-gradient(135deg, #976c5c, #c99779);
 
-<!-- Sidebar Navigation (Estilo NetScanner) -->
-<aside>
-    <div style="padding: 2rem; border-bottom: 1px solid var(--border-color);">
-        <div style="display: flex; items: center; gap: 1rem;">
-            <div style="width: 48px; height: 48px; border-radius: 12px; background: var(--primary-gradient); display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(34, 197, 94, 0.2);">
-                <i class="fa-solid fa-code text-white text-xl"></i>
-            </div>
-            <div>
-                <h1 style="font-size: 1.25rem; font-weight: 800; background: linear-gradient(to right, #fff, #9ca3af); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ADG Dev</h1>
-                <p style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Portfolio Pro</p>
-            </div>
-        </div>
-    </div>
+    --accent-glow: rgba(125, 140, 170, 0.2);
+    --grid-opacity: 0.035;
+    --grid-glow-opacity: 0.42;
 
-    <div style="flex: 1; padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
-        <p style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; padding-left: 0.75rem;">Navegación</p>
-        <a href="#home" class="sidebar-link active" id="nav-home"><i class="fa-solid fa-house"></i> <span>Inicio</span></a>
-        <a href="#about" class="sidebar-link" id="nav-about"><i class="fa-solid fa-user"></i> <span>Sobre mí</span></a>
-        <a href="#tech" class="sidebar-link" id="nav-tech"><i class="fa-solid fa-layer-group"></i> <span>Tecnologías</span></a>
-        <a href="#projects" class="sidebar-link" id="nav-projects"><i class="fa-solid fa-laptop-code"></i> <span>Proyectos</span></a>
-        <a href="#english" class="sidebar-link" id="nav-english"><i class="fa-solid fa-language"></i> <span>Inglés</span></a>
-        
-        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
-            <a href="{{ '/assets/pdf/cv.pdf' | relative_url }}" class="sidebar-link" target="_blank">
-                <i class="fa-solid fa-file-pdf" style="color: #ef4444;"></i> 
-                <span>Descargar PDF</span>
-            </a>
-        </div>
-    </div>
+    --radius-sm: 12px;
+    --radius-md: 20px;
+    --radius-lg: 32px;
+    --space-card: 2.5rem;
 
-    <div class="lang-selector" style="border-top: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 1rem; padding: 1.5rem;">
-        <div style="display: flex; gap: 0.5rem; justify-content: center;">
-            <button class="lang-btn active" data-lang="es">ES</button>
-            <button class="lang-btn" data-lang="en">EN</button>
-            <button class="lang-btn" data-lang="de">DE</button>
-            <button class="lang-btn" data-lang="is">IS</button>
-        </div>
-        <button id="theme-toggle" class="social-btn" style="width: 100%; justify-content: center; gap: 12px; background: rgba(255,255,255,0.05);">
-            <i class="fa-solid fa-moon"></i>
-            <span id="theme-text">Modo Oscuro</span>
-        </button>
-    </div>
-</aside>
+    --repo-section-bg: rgba(27, 33, 45, 0.55);
+    --repo-card-bg: rgba(27, 33, 45, 0.82);
+    --repo-stats-bg: rgba(0, 0, 0, 0.2);
+    --repo-stat-box-bg: rgba(255, 255, 255, 0.02);
 
-<main>
-    <!-- Hero Section -->
-    <section id="home">
-        <div class="hero-wrapper hero-wrapper-upgraded">
-            <!-- Contenedor 1: Presentación -->
-            <div class="hero-box hero-intro-box" data-aos="fade-right" data-aos-delay="120">
-                <span data-t="role_junior" class="hero-kicker">ESTUDIANTE 1º DAM</span>
+    --hover-lift: translateY(-12px) scale(1.02);
+    --hover-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(125, 140, 170, 0.22);
+    --transition-card: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-                <h1 data-t="hero_title">
-                    Alejandro <span>Donate</span>
-                </h1>
+[data-theme="light"] {
+    --bg-body: #f5f6f8;
+    --bg-sidebar: #ffffff;
+    --bg-card: rgba(255, 255, 255, 0.88);
+    --bg-card-solid: #ffffff;
+    --text-main: #202531;
+    --text-muted: #64748b;
+    --border-color: rgba(32, 37, 49, 0.12);
 
-                <p data-t="hero_desc" class="hero-description">
-                    Estudiante de Desarrollo de Aplicaciones Multiplataforma, enfocado en Java, Python, bases de datos y desarrollo web. Construyendo proyectos para convertir conocimiento en experiencia.
-                </p>
+    --primary-blue: #6e758e;
+    --accent-blue: #976c5c;
+    --primary-green: #6e758e;
+    --primary-green-2: #969db4;
+    --primary-gradient: linear-gradient(135deg, #6e758e, #969db4);
 
-                <div class="hero-actions">
-                    <a href="#projects" class="btn-primary scroll-link" data-t="btn_projects">
-                        Proyectos <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                    <a href="#about" class="sidebar-link-btn scroll-link" data-t="btn_about">
-                        Sobre mí
-                    </a>
-                </div>
+    --accent-glow: rgba(110, 117, 142, 0.12);
+    --grid-opacity: 0.045;
+    --grid-glow-opacity: 0.18;
 
-                <div class="hero-mini-stats" aria-label="Resumen rápido">
-                    <div class="hero-stat">
-                        <strong>1º</strong>
-                        <span>DAM</span>
-                    </div>
-                    <div class="hero-stat">
-                        <strong>Open</strong>
-                        <span>Source</span>
-                    </div>
-                    <div class="hero-stat">
-                        <strong>B1/B2</strong>
-                        <span>Inglés</span>
-                    </div>
-                    <div class="hero-stat">
-                        <strong>2025</strong>
-                        <span>Inicio</span>
-                    </div>
-                </div>
+    --repo-section-bg: #ffffff;
+    --repo-card-bg: #ffffff;
+    --repo-stats-bg: #f3f6fb;
+    --repo-stat-box-bg: rgba(125, 140, 170, 0.06);
 
-                <!-- Social & Contact -->
-                <div class="hero-social-row">
-                    <button onclick="copyEmail()" class="social-btn" id="email-btn">
-                        <i class="fa-solid fa-envelope"></i>
-                        <span id="email-text" class="social-btn-text">AlexDoGa.work@gmail.com</span>
-                    </button>
-                    <a href="https://www.linkedin.com/in/alejandrodongar/" target="_blank" class="social-btn">
-                        <i class="fa-brands fa-linkedin"></i>
-                        <span class="social-btn-text">LinkedIn</span>
-                    </a>
-                </div>
-            </div>
+    --hover-shadow: 0 30px 60px rgba(32, 37, 49, 0.14), 0 0 30px rgba(110, 117, 142, 0.16);
+}
 
-            <!-- Contenedor 2: Imagen -->
-            <div class="hero-box hero-image-box hero-profile-box" data-aos="fade-up" data-aos-delay="180">
-<div class="hero-profile-container">
-                    <img src="{{ '/assets/img/perfil.jpg' | relative_url }}" alt="Alejandro Donate" class="hero-profile-img">
-                </div>
+/* ==========================================================================
+   BASE
+   ========================================================================== */
 
-                <div class="hero-photo-caption">
-                    Java · Python · SQL · Web Development
-                </div>
-            </div>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-            <!-- Contenedor 3: Skills -->
-            <div class="hero-box hero-skills-box" data-aos="fade-left" data-aos-delay="240">
-                <div class="hero-skills-heading">
-                    <span>Stack Tecnológico</span>
-                    <i class="fa-solid fa-layer-group"></i>
-                </div>
+html {
+    scroll-behavior: smooth;
+}
 
-                <div class="skills-buttons-grid">
-                    <div class="skill-pill"><i class="fa-brands fa-java"></i> Java (principal)</div>
-                    <div class="skill-pill"><i class="fa-brands fa-python"></i> Python (aprendiendo)</div>
-                    <div class="skill-pill"><i class="fa-solid fa-database"></i> SQL / NoSQL</div>
-                    <div class="skill-pill"><i class="fa-solid fa-globe"></i> HTML / CSS / JS</div>
-                    <div class="skill-pill"><i class="fa-solid fa-file-code"></i> XML / XPath</div>
-                    <div class="skill-pill"><i class="fa-solid fa-leaf"></i> MongoDB / BaseX</div>
-                    <div class="skill-pill"><i class="fa-brands fa-git-alt"></i> Git / GitHub</div>
-                </div>
-            </div>
-        </div>
-    </section>
+body {
+    min-height: 100vh;
+    display: flex;
+    overflow-x: hidden;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
 
-    <!-- About Section -->
-    <section id="about">
-        <h2 data-t="about_title" class="section-title">
-            <i class="fa-solid fa-user"></i>
-            <span>Sobre mí</span>
-        </h2>
+body,
+button,
+a,
+input,
+select {
+    transition:
+        background-color 0.4s ease,
+        color 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
 
-        <div class="about-layout">
-            <article class="glass-card about-card" data-aos="fade-up">
-                <span class="section-kicker">Perfil</span>
-                <h3 data-t="about_card_title">Desarrollo, aprendizaje y proyectos reales</h3>
-                <p data-t="about_card_desc">
-                    Soy estudiante de Desarrollo de Aplicaciones Multiplataforma (DAM), con interés en el desarrollo backend, las bases de datos y la creación de aplicaciones web útiles. Me gusta aprender construyendo proyectos prácticos, documentarlos y convertir cada asignatura en una oportunidad para mejorar mi forma de programar.
-                </p>
-            </article>
+a {
+    color: inherit;
+}
 
-            <article class="glass-card about-card" data-aos="fade-up" data-aos-delay="100">
-                <span class="section-kicker">Enfoque actual</span>
-                <h3>Qué estoy reforzando</h3>
-                <div class="focus-grid">
-                    <div class="focus-pill"><i class="fa-brands fa-java"></i> Java y POO</div>
-                    <div class="focus-pill"><i class="fa-solid fa-database"></i> Bases de datos</div>
-                    <div class="focus-pill"><i class="fa-brands fa-python"></i> Python aplicado</div>
-                    <div class="focus-pill"><i class="fa-solid fa-code"></i> Web y APIs</div>
-                </div>
-            </article>
-        </div>
+button {
+    font-family: inherit;
+}
 
-        <div class="glass-card roadmap-card" data-aos="fade-up" data-aos-delay="160">
-            <div class="roadmap-header">
-                <div>
-                    <span class="section-kicker">Timeline</span>
-                    <h3>Mi evolución durante 1º DAM</h3>
-                </div>
-                <p>Septiembre 2025 · Junio 2026</p>
-            </div>
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
 
-            <div class="roadmap-months" aria-hidden="true">
-                <span>Sep</span><span>Oct</span><span>Nov</span><span>Dic</span><span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span><span>May</span><span>Jun</span>
-            </div>
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--primary-green);
+    outline-offset: 3px;
+}
 
-            <div class="roadmap-grid">
-                <div class="roadmap-label"><i class="fa-solid fa-graduation-cap"></i> DAM 1º</div>
-                <div class="roadmap-track">
-                    <span class="roadmap-bar bar-education" style="--start: 1; --span: 10;">DAM 1º · Sep-Jun</span>
-                </div>
+section {
+    width: 100%;
+    padding: 60px 0;
+}
 
-                <div class="roadmap-label"><i class="fa-brands fa-java"></i> Java</div>
-                <div class="roadmap-track">
-                    <span class="roadmap-bar bar-tech" style="--start: 1; --span: 2;">Básico</span>
-                    <span class="roadmap-bar bar-tech" style="--start: 2; --span: 2;">Arrays</span>
-                    <span class="roadmap-bar bar-tech" style="--start: 4; --span: 2;">Listas</span>
-                    <span class="roadmap-bar bar-tech" style="--start: 6; --span: 2;">CSV/JSON</span>
-                    <span class="roadmap-bar bar-tech" style="--start: 7; --span: 2;">SQLite</span>
-                    <span class="roadmap-bar bar-tech" style="--start: 9; --span: 1;">JavaFX</span>
-                </div>
+main {
+    flex: 1;
+    width: calc(100% - 280px);
+    min-height: 100vh;
+    margin-left: 280px;
+    padding: 80px 60px;
+    position: relative;
+    z-index: 10;
+}
 
-                <div class="roadmap-label"><i class="fa-solid fa-globe"></i> Web / XML</div>
-                <div class="roadmap-track">
-                    <span class="roadmap-bar bar-web" style="--start: 1; --span: 4;">HTML · CSS · JS</span>
-                    <span class="roadmap-bar bar-web" style="--start: 5; --span: 3;">XML · XSL</span>
-                    <span class="roadmap-bar bar-web" style="--start: 8; --span: 1;">XPath</span>
-                    <span class="roadmap-bar bar-web" style="--start: 9; --span: 1;">BaseX</span>
-                </div>
+/* ==========================================================================
+   BACKGROUND
+   ========================================================================== */
 
-                <div class="roadmap-label"><i class="fa-solid fa-database"></i> BBDD</div>
-                <div class="roadmap-track">
-                    <span class="roadmap-bar bar-db" style="--start: 1; --span: 5;">PostgreSQL · Docker · E/R</span>
-                    <span class="roadmap-bar bar-db" style="--start: 6; --span: 4;">Apache Cassandra</span>
-                </div>
+.bg-glow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-color: var(--bg-body);
+    background-image:
+        linear-gradient(rgba(125, 140, 170, var(--grid-opacity)) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(125, 140, 170, var(--grid-opacity)) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(circle at center, black, transparent 90%);
+}
 
-                <div class="roadmap-label"><i class="fa-solid fa-folder-open"></i> Portfolio</div>
-                <div class="roadmap-track">
-                    <span class="roadmap-bar bar-project" style="--start: 5; --span: 6;">Portfolio personal · activo</span>
-                </div>
+.bg-glow::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(125, 140, 170, 0.18) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(125, 140, 170, 0.18) 2px, transparent 2px);
+    background-size: 60px 60px;
+    animation: gridGlow 8s linear infinite;
+    opacity: var(--grid-glow-opacity);
+}
 
-                <div class="roadmap-label"><i class="fa-solid fa-diagram-project"></i> Proyectos</div>
-                <div class="roadmap-track">
-                    <span class="roadmap-bar bar-project" style="--start: 9; --span: 2;">CentroPlus</span>
-                </div>
+.glow-1,
+.glow-2 {
+    position: absolute;
+    width: 50vw;
+    height: 50vh;
+}
 
-                <div class="roadmap-label"><i class="fa-solid fa-briefcase"></i> Prácticas</div>
-                <div class="roadmap-track">
-                    <span class="roadmap-bar bar-practice" style="--start: 9; --span: 2;">NetScanner</span>
-                </div>
+.glow-1 {
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle at 0% 0%, rgba(125, 140, 170, 0.08), transparent 70%);
+}
 
-                <div class="roadmap-label"><i class="fa-solid fa-bullseye"></i> Próximo proyecto</div>
-                <div class="roadmap-track">
-                    <span class="roadmap-bar bar-future" style="--start: 10; --span: 1;">Proyecto personal</span>
-                </div>
-            </div>
-        </div>
-    </section>
+.glow-2 {
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 100% 100%, rgba(201, 151, 121, 0.08), transparent 70%);
+}
 
-    <!-- Technologies Section -->
-    <section id="tech">
-        <h2 class="section-title">
-            <i class="fa-solid fa-layer-group"></i>
-            <span>Tecnologías</span>
-        </h2>
+@keyframes gridGlow {
+    0%, 100% {
+        mask-image: radial-gradient(circle at 0% 0%, black 10%, transparent 20%);
+    }
+    25% {
+        mask-image: radial-gradient(circle at 100% 0%, black 10%, transparent 20%);
+    }
+    50% {
+        mask-image: radial-gradient(circle at 100% 100%, black 10%, transparent 20%);
+    }
+    75% {
+        mask-image: radial-gradient(circle at 0% 100%, black 10%, transparent 20%);
+    }
+}
 
-        <div class="tech-grid">
-            <article class="tech-card glass-card" data-aos="fade-up">
-                <div class="tech-card-header">
-                    <i class="fa-solid fa-server"></i>
-                    <h3>Backend</h3>
-                </div>
-                <div class="tech-chip-list">
-                    <span>Java</span>
-                    <span>Spring</span>
-                    <span>Python</span>
-                    <span>APIs REST</span>
-                </div>
-            </article>
+/* ==========================================================================
+   SIDEBAR
+   ========================================================================== */
 
-            <article class="tech-card glass-card" data-aos="fade-up" data-aos-delay="80">
-                <div class="tech-card-header">
-                    <i class="fa-solid fa-window-maximize"></i>
-                    <h3>Frontend / Interfaces</h3>
-                </div>
-                <div class="tech-chip-list">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                    <span>JavaFX</span>
-                </div>
-            </article>
+aside {
+    width: 280px;
+    height: 100vh;
+    position: fixed;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border-color);
+}
 
-            <article class="tech-card glass-card" data-aos="fade-up" data-aos-delay="160">
-                <div class="tech-card-header">
-                    <i class="fa-solid fa-database"></i>
-                    <h3>Bases de datos</h3>
-                </div>
-                <div class="tech-chip-list">
-                    <span>PostgreSQL</span>
-                    <span>SQLite</span>
-                    <span>MongoDB</span>
-                    <span>Cassandra</span>
-                    <span>BaseX</span>
-                </div>
-            </article>
+aside > div:first-child {
+    padding: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
 
-            <article class="tech-card glass-card" data-aos="fade-up" data-aos-delay="240">
-                <div class="tech-card-header">
-                    <i class="fa-solid fa-toolbox"></i>
-                    <h3>Herramientas</h3>
-                </div>
-                <div class="tech-chip-list">
-                    <span>Git</span>
-                    <span>GitHub</span>
-                    <span>Docker</span>
-                    <span>Swagger</span>
-                    <span>JUnit</span>
-                    <span>Mockito</span>
-                </div>
-            </article>
-        </div>
-    </section>
+aside > div:first-child > div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
 
-    <!-- Repositories -->
-    <section id="projects">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
-            <h2 data-t="projects_title"><i class="fa-solid fa-folder-tree" style="color: #22c55e; margin-right: 15px;"></i> Proyectos GitHub</h2>
-        </div>
-        
-        <div class="glass-card" style="padding: 3rem; background: rgba(0,0,0,0.2);">
-            <div id="repos-container" style="display: flex; flex-direction: column; gap: 2rem;">
-                <!-- Fichas detalladas -->
-            </div>
+aside > div:first-child > div > div:first-child,
+.brand-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    border-radius: var(--radius-sm);
+    background: var(--primary-gradient);
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(125, 140, 170, 0.2);
+}
 
-            <!-- Pagination Controls -->
-            <div class="pagination-controls">
-                <button id="prev-page" class="page-btn" disabled><i class="fa-solid fa-chevron-left"></i></button>
-                <span id="page-info">Página 1</span>
-                <button id="next-page" class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
-        </div>
-    </section>
+aside h1 {
+    line-height: 1.1;
+    font-size: 1.25rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #f3f4f6, #a9b5d0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-    <!-- English Section --><section id="english">
-        <h2 style="margin-bottom: 3rem;"><i class="fa-solid fa-graduation-cap" style="color: #22c55e; margin-right: 15px;"></i> <span data-t="lang_section">Dominio del Inglés</span></h2>
-        
-        <div class="skill-grid">
-            <!-- Hablado: 70% entre B1 y B2 Oficial | 20% entre B2 y C1 Perspectiva -->
-            <!-- Escala B1(0%) - B2(33%) - C1(66%) - C2(100%) -->
-            <div class="skill-item glass-card" data-aos="fade-up">
-                <div class="skill-header">
-                    <span>Hablado (Speaking)</span>
-                    <i class="fa-solid fa-comment-dots text-green-500"></i>
-                </div>
-                <div class="bar-group">
-                    <div class="bar-wrapper">
-                        <span class="bar-label">Oficial (70% B1→B2)</span>
-                        <div class="bar-container"><div class="bar-fill" style="width: 23.1%;"></div></div>
-                    </div>
-                    <div class="bar-wrapper">
-                        <span class="bar-label">Perspectiva (20% B2→C1)</span>
-                        <div class="bar-container"><div class="bar-fill perspective" style="width: 39.6%;"></div></div>
-                    </div>
-                </div>
-                <div class="level-markers">
-                    <span>B1</span><span>B2</span><span>C1</span><span>C2</span>
-                </div>
-            </div>
+[data-theme="light"] aside h1 {
+    background: linear-gradient(135deg, #202531, #6e758e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-            <!-- Leída: 90% entre B1 y B2 Oficial | 10% entre C1 y C2 Perspectiva -->
-            <div class="skill-item glass-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="skill-header">
-                    <span>Leído (Reading)</span>
-                    <i class="fa-solid fa-book-open text-green-500"></i>
-                </div>
-                <div class="bar-group">
-                    <div class="bar-wrapper">
-                        <span class="bar-label">Oficial (90% B1→B2)</span>
-                        <div class="bar-container"><div class="bar-fill" style="width: 29.7%;"></div></div>
-                    </div>
-                    <div class="bar-wrapper">
-                        <span class="bar-label">Perspectiva (10% C1→C2)</span>
-                        <div class="bar-container"><div class="bar-fill perspective" style="width: 69.3%;"></div></div>
-                    </div>
-                </div>
-                <div class="level-markers">
-                    <span>B1</span><span>B2</span><span>C1</span><span>C2</span>
-                </div>
-            </div>
+aside p {
+    line-height: 1.2;
+    color: var(--text-muted);
+}
 
-            <!-- Escrita: B2 Oficial | 80% entre B2 y C1 Perspectiva -->
-            <div class="skill-item glass-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="skill-header">
-                    <span>Escrito (Writing)</span>
-                    <i class="fa-solid fa-pen-nib text-green-500"></i>
-                </div>
-                <div class="bar-group">
-                    <div class="bar-wrapper">
-                        <span class="bar-label">Oficial (B2)</span>
-                        <div class="bar-container"><div class="bar-fill" style="width: 33.3%;"></div></div>
-                    </div>
-                    <div class="bar-wrapper">
-                        <span class="bar-label">Perspectiva (80% B2→C1)</span>
-                        <div class="bar-container"><div class="bar-fill perspective" style="width: 59.7%;"></div></div>
-                    </div>
-                </div>
-                <div class="level-markers">
-                    <span>B1</span><span>B2</span><span>C1</span><span>C2</span>
-                </div>
-            </div>
+aside > div:nth-child(2) {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 
-            <!-- Oída: 90% del B1 al B2 Oficial | 60% del C1 al C2 Perspectiva -->
-            <div class="skill-item glass-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="skill-header">
-                    <span>Oído (Listening)</span>
-                    <i class="fa-solid fa-headphones text-green-500"></i>
-                </div>
-                <div class="bar-group">
-                    <div class="bar-wrapper">
-                        <span class="bar-label">Oficial (90% B1→B2)</span>
-                        <div class="bar-container"><div class="bar-fill" style="width: 29.7%;"></div></div>
-                    </div>
-                    <div class="bar-wrapper">
-                        <span class="bar-label">Perspectiva (60% C1→C2)</span>
-                        <div class="bar-container"><div class="bar-fill perspective" style="width: 85.8%;"></div></div>
-                    </div>
-                </div>
-                <div class="level-markers">
-                    <span>B1</span><span>B2</span><span>C1</span><span>C2</span>
-                </div>
-            </div>
-        </div>
-    </section>
+.sidebar-link,
+.sidebar-link:link,
+.sidebar-link:visited {
+    width: 100%;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    background: transparent;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    line-height: 1;
+}
 
-</main>
+.sidebar-link i {
+    width: 18px;
+    min-width: 18px;
+    text-align: center;
+    color: inherit;
+}
 
+.sidebar-link span {
+    color: inherit;
+    text-decoration: none;
+}
 
-<script>
-    const GITHUB_USERNAME = 'alejandroDonGar';
-    const API_BASE = `https://api.github.com/users/${GITHUB_USERNAME}`;
-    let allRepos = [];
-    let currentPage = 1;
-    let currentLang = 'es'; // Definir idioma actual globalmente
-    const reposPerPage = 3;
+.sidebar-link:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--border-color);
+    transform: translateX(5px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
 
-    const translations = {
-        es: {
-            role_junior: "ESTUDIANTE 1º DAM",
-            hero_title: "Alejandro Donate",
-            hero_desc: "Estudiante de Desarrollo de Aplicaciones Multiplataforma, enfocado en Java, Python, bases de datos y desarrollo web. Construyendo proyectos para convertir conocimiento en experiencia.",
-            btn_projects: "Explorar Proyectos",
-            btn_about: "Sobre mí",
-            about_title: "Sobre mí",
-            goal_title: "Mi Objetivo",
-            goal_desc: "Como estudiante de Desarrollo de Aplicaciones Multiplataforma, mi objetivo es seguir aprendiendo con proyectos prácticos y construir una base sólida en programación, bases de datos y desarrollo web.",
-            about_card_title: "Desarrollo, aprendizaje y proyectos reales",
-            about_card_desc: "Soy estudiante de Desarrollo de Aplicaciones Multiplataforma (DAM), con interés en el desarrollo backend, las bases de datos y la creación de aplicaciones web útiles. Me gusta aprender construyendo proyectos prácticos, documentarlos y convertir cada asignatura en una oportunidad para mejorar mi forma de programar.",
-            lang_section: "Dominio del Inglés",
-            projects_title: "Proyectos GitHub",
-            stat_updated: "Actualizado",
-            nav_home: "Inicio",
-            nav_about: "Sobre mí",
-            nav_tech: "Tecnologías",
-            nav_projects: "Proyectos",
-            nav_english: "Inglés"
-        },
-        en: {
-            role_junior: "1st YEAR DAM STUDENT",
-            hero_title: "Alejandro Donate",
-            hero_desc: "Multiplatform Application Development student focused on Java, Python, databases and web development. Building projects to turn knowledge into experience.",
-            btn_projects: "Explore Projects",
-            btn_about: "About Me",
-            about_title: "About Me",
-            goal_title: "My Goal",
-            goal_desc: "As a Multiplatform Application Development student, my goal is to keep learning through practical projects and build a solid foundation in programming, databases and web development.",
-            about_card_title: "Development, learning and real projects",
-            about_card_desc: "I am a Multiplatform Application Development student interested in backend development, databases and useful web applications. I enjoy learning by building practical projects, documenting them and turning each subject into an opportunity to improve the way I code.",
-            lang_section: "English Proficiency",
-            projects_title: "GitHub Projects",
-            stat_updated: "Updated",
-            nav_home: "Home",
-            nav_about: "About Me",
-            nav_tech: "Technologies",
-            nav_projects: "Projects",
-            nav_english: "English"
-        },
-        de: {
-            role_junior: "DAM-STUDENT IM 1. JAHR",
-            hero_title: "Alejandro Donate",
-            hero_desc: "Student der plattformübergreifenden Anwendungsentwicklung mit Fokus auf Java, Python, Datenbanken und Webentwicklung. Ich baue Projekte, um Wissen in Erfahrung umzuwandeln.",
-            btn_projects: "Projekte erkunden",
-            btn_about: "Über mich",
-            about_title: "Über mich",
-            goal_title: "Mein Ziel",
-            goal_desc: "Als Student der plattformübergreifenden Anwendungsentwicklung möchte ich durch praktische Projekte weiterlernen und eine solide Grundlage in Programmierung, Datenbanken und Webentwicklung aufbauen.",
-            about_card_title: "Entwicklung, Lernen und echte Projekte",
-            about_card_desc: "Ich bin Student der plattformübergreifenden Anwendungsentwicklung mit Interesse an Backend-Entwicklung, Datenbanken und nützlichen Webanwendungen. Ich lerne gerne durch praktische Projekte und nutze jedes Fach, um meine Programmierweise zu verbessern.",
-            lang_section: "Englischkenntnisse",
-            projects_title: "GitHub-Projekte",
-            stat_updated: "Aktualisiert",
-            nav_home: "Startseite",
-            nav_about: "Über mich",
-            nav_tech: "Technologien",
-            nav_projects: "Projekte",
-            nav_english: "Englisch"
-        },
-        is: {
-            role_junior: "1. ÁRS DAM NEMANDI",
-            hero_title: "Alejandro Donate",
-            hero_desc: "Nemandi í þróun fjölvettvangsforrita með áherslu á Java, Python, gagnagrunna og vefþróun. Ég byggi verkefni til að breyta þekkingu í reynslu.",
-            btn_projects: "Skoða verkefni",
-            btn_about: "Um mig",
-            about_title: "Um mig",
-            goal_title: "Markmið mitt",
-            goal_desc: "Sem nemandi í þróun fjölvettvangsforrita er markmið mitt að halda áfram að læra með hagnýtum verkefnum og byggja góðan grunn í forritun, gagnagrunnum og vefþróun.",
-            about_card_title: "Þróun, nám og raunveruleg verkefni",
-            about_card_desc: "Ég er nemandi í þróun fjölvettvangsforrita með áhuga á bakendaforritun, gagnagrunnum og nytsamlegum vefforritum. Mér finnst best að læra með hagnýtum verkefnum og nýta hvert fag til að bæta forritunina mína.",
-            lang_section: "Enskukunnátta",
-            projects_title: "GitHub verkefni",
-            stat_updated: "Uppfært",
-            nav_home: "Heim",
-            nav_about: "Um mig",
-            nav_tech: "Tækni",
-            nav_projects: "Verkefni",
-            nav_english: "Enska"
-        }
-    };
+[data-theme="light"] .sidebar-link:hover {
+    background: rgba(15, 23, 42, 0.04);
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.06);
+}
 
-    function switchLanguage(lang) {
-        currentLang = lang;
-        document.querySelectorAll('[data-t]').forEach(el => {
-            const key = el.getAttribute('data-t');
-            if (translations[lang] && translations[lang][key]) {
-                const icon = el.querySelector('i');
-                el.textContent = translations[lang][key];
-                if (icon) el.prepend(icon);
-            }
-        });
-        
-        document.querySelectorAll('.sidebar-link span').forEach(span => {
-            const parent = span.parentElement;
-            const id = parent.id.replace('nav-', '');
-            const key = `nav_${id}`;
-            if (translations[lang] && translations[lang][key]) {
-                span.textContent = translations[lang][key];
-            }
-        });
+.sidebar-link.active,
+.sidebar-link.active:link,
+.sidebar-link.active:visited {
+    color: var(--primary-green);
+    background: rgba(125, 140, 170, 0.14);
+    border-color: rgba(125, 140, 170, 0.26);
+    box-shadow: 0 10px 24px rgba(125, 140, 170, 0.11);
+}
 
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-        });
+.pdf-icon,
+.fa-file-pdf {
+    color: #ef4444;
+}
 
-        // Actualizar placeholders dinámicos
-        document.getElementById('prev-page').title = lang === 'es' ? 'Anterior' : (lang === 'en' ? 'Previous' : 'Zurück');
-        document.getElementById('next-page').title = lang === 'es' ? 'Siguiente' : (lang === 'en' ? 'Next' : 'Nächste');
+.lang-selector {
+    border-top: 1px solid var(--border-color);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
 
-        // Actualizar texto del tema al cambiar idioma
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-        setTheme(currentTheme);
+.lang-selector > div {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
 
-        updatePagination(); 
+.lang-btn {
+    min-width: 42px;
+    height: 36px;
+    display: inline-grid;
+    place-items: center;
+    padding: 6px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.lang-btn.active {
+    background: var(--primary-gradient);
+    color: #fff;
+    border-color: transparent;
+}
+
+/* ==========================================================================
+   SISTEMA DE HOVER UNIFICADO
+   Aplica a todos los contenedores principales.
+   ========================================================================== */
+
+.hero-box,
+.skill-item,
+.repo-card,
+.glass-card,
+#projects > .glass-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-card);
+    background: var(--bg-card);
+    transition: var(--transition-card);
+    will-change: transform, box-shadow, border-color;
+}
+
+.hero-box::before,
+.skill-item::before,
+.repo-card::before,
+.glass-card::before,
+#projects > .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transition: 0.6s;
+}
+
+.hero-box > *,
+.skill-item > *,
+.repo-card > *,
+.glass-card > *,
+#projects > .glass-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-box:hover,
+.skill-item:hover,
+.repo-card:hover,
+.glass-card:hover,
+#projects > .glass-card:hover,
+[data-aos].hero-box:hover,
+[data-aos].skill-item:hover,
+[data-aos].repo-card:hover,
+[data-aos].glass-card:hover,
+[data-aos].aos-animate.hero-box:hover,
+[data-aos].aos-animate.skill-item:hover,
+[data-aos].aos-animate.repo-card:hover,
+[data-aos].aos-animate.glass-card:hover {
+    border-color: rgba(125, 140, 170, 0.62) !important;
+    transform: var(--hover-lift) !important;
+    box-shadow: var(--hover-shadow) !important;
+    z-index: 50 !important;
+}
+
+.hero-box:hover::before,
+.skill-item:hover::before,
+.repo-card:hover::before,
+.glass-card:hover::before,
+#projects > .glass-card:hover::before,
+[data-aos].hero-box:hover::before,
+[data-aos].skill-item:hover::before,
+[data-aos].repo-card:hover::before,
+[data-aos].glass-card:hover::before {
+    left: 100% !important;
+}
+
+.hero-box,
+.glass-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.glass-card {
+    backdrop-filter: var(--glass-blur);
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 3rem;
+}
+
+.section-title i,
+.section-title span,
+.skill-header i {
+    color: var(--primary-green);
+}
+
+.btn-primary,
+.social-btn,
+.repo-demo-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    padding: 0.75rem 1.5rem;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: var(--primary-gradient);
+    color: #fff;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    transform: scale(1.08) translateY(-2px);
+    filter: brightness(1.2);
+    box-shadow: 0 0 20px rgba(125, 140, 170, 0.32);
+}
+
+.social-btn {
+    gap: 10px;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.social-btn:hover {
+    background: rgba(125, 140, 170, 0.12);
+    border-color: rgba(125, 140, 170, 0.34);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.social-btn i,
+.repo-stat-box i,
+.tag-blue,
+.repo-topic {
+    color: var(--accent-blue);
+}
+
+.social-btn:hover i {
+    color: var(--primary-green);
+}
+
+#theme-toggle {
+    width: 100%;
+    justify-content: center;
+    gap: 12px;
+}
+
+#email-text.copied {
+    color: var(--primary-green);
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+.hero-wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 1fr;
+    gap: 2rem;
+    align-items: stretch;
+}
+
+.hero-box h1 {
+    margin-bottom: 1rem;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+.hero-box h1 span {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-box p {
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.hero-box [data-t="role_junior"],
+.tag-blue {
+    display: inline-block;
+    width: fit-content;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 100px;
+    background: rgba(110, 117, 142, 0.13);
+    color: var(--accent-blue);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.hero-box [data-t="hero_desc"] {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+.hero-box > div[style*="display: flex"],
+.social-row,
+.repo-actions,
+.repo-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.hero-box > div[style*="margin-top: 1.5rem"] {
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.sidebar-link-btn {
+    padding: 0.75rem 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.hero-image-box {
+    padding: 1rem;
+}
+
+.hero-profile-container {
+    width: 100%;
+    height: 100%;
+    min-height: 250px;
+    overflow: hidden;
+    border: 1px solid rgba(125, 140, 170, 0.35);
+    border-radius: 24px;
+    box-shadow: 0 18px 45px rgba(18, 21, 28, 0.28);
+}
+
+[data-theme="light"] .hero-profile-container {
+    box-shadow: 0 18px 45px rgba(32, 37, 49, 0.12);
+}
+
+.hero-profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+/* ==========================================================================
+   SKILL PILLS
+   ========================================================================== */
+
+.skills-buttons-grid {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.skill-pill {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid rgba(125, 140, 170, 0.22);
+    border-radius: var(--radius-sm);
+    background: rgba(125, 140, 170, 0.12);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: default;
+}
+
+.skill-pill:hover {
+    background: var(--primary-gradient);
+    color: #fff;
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(125, 140, 170, 0.28);
+}
+
+/* ==========================================================================
+   ABOUT / ENGLISH
+   ========================================================================== */
+
+#about h2,
+#about h3,
+#about p {
+    color: var(--text-main);
+}
+
+#about p,
+.large-muted {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.bar-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.bar-label {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.bar-container,
+.repo-language-bar {
+    overflow: hidden;
+    border-radius: 100px;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.bar-container {
+    height: 12px;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: inherit;
+    background: var(--primary-gradient);
+    box-shadow: 0 0 10px rgba(125, 140, 170, 0.28);
+    transition: width 1.5s cubic-bezier(0.1, 0, 0.1, 1);
+}
+
+.bar-fill.perspective {
+    background: var(--warm-gradient);
+    box-shadow: 0 0 10px rgba(201, 151, 121, 0.26);
+}
+
+.level-markers {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+    padding: 0 2px;
+    color: var(--text-muted);
+    font-size: 0.6rem;
+}
+
+/* ==========================================================================
+   PROJECTS
+   ========================================================================== */
+
+#repos-container {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#projects > .glass-card {
+    padding: 3rem;
+    background: var(--repo-section-bg);
+}
+
+.repo-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+    gap: 2rem;
+    align-items: start;
+    background: var(--repo-card-bg);
+}
+
+.repo-info h3 {
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+}
+
+.repo-info p {
+    margin-bottom: 2rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.repo-info > div:nth-of-type(1),
+.repo-info > div:nth-of-type(2) {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.repo-info > div:nth-of-type(1) {
+    margin-bottom: 1.5rem;
+}
+
+.repo-info > div:nth-of-type(3) {
+    margin-top: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.repo-topic,
+.repo-info span[style*="border-radius: 100px"] {
+    padding: 4px 12px;
+    border: 1px solid rgba(125, 140, 170, 0.15);
+    border-radius: 100px;
+    background: rgba(125, 140, 170, 0.12);
+    color: var(--accent-blue);
+    font-size: 0.8rem;
+}
+
+.repo-card > div:last-child,
+.repo-stats {
+    min-width: 0;
+    padding: 1.5rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    background: var(--repo-stats-bg);
+}
+
+[data-theme="light"] .repo-card > div:last-child,
+[data-theme="light"] .repo-stats {
+    border-color: #dbe4f0;
+}
+
+.repo-card > div:last-child > div:first-child,
+.repo-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.repo-card > div:last-child > div:first-child > div,
+.repo-stat-box {
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    background: var(--repo-stat-box-bg);
+    text-align: center;
+}
+
+.repo-language-bar {
+    height: 4px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.repo-language-bar div,
+.repo-card [style*="height: 100%; width"] {
+    height: 100%;
+    border-radius: inherit;
+    background: var(--primary-gradient) !important;
+}
+
+.repo-composition-label,
+.repo-language-row,
+.repo-no-langs,
+[data-theme="light"] .repo-info p,
+[data-theme="light"] .repo-info > div:nth-of-type(3),
+[data-theme="light"] .repo-composition-label,
+[data-theme="light"] .repo-language-row {
+    color: var(--text-muted);
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.page-btn {
+    width: 50px;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    background: var(--bg-card);
+    color: var(--text-main);
+    cursor: pointer;
+}
+
+.page-btn:hover:not(:disabled) {
+    border-color: transparent;
+    background: var(--primary-gradient);
+    transform: scale(1.1);
+}
+
+.page-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+#page-info {
+    color: var(--text-muted);
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 1400px) {
+    .hero-wrapper {
+        grid-template-columns: 1fr 1fr;
     }
 
-    async function fetchGitHubData() {
-        console.log('Iniciando carga de GitHub...');
-        const container = document.getElementById('repos-container');
-        if (!container) return;
-        
-        container.innerHTML = '<div style="text-align:center; padding:4rem;"><i class="fa-solid fa-circle-notch fa-spin fa-2x"></i><p style="margin-top:1rem;">Conectando con GitHub API...</p></div>';
-        
-        try {
-            // Intentar fetch directo con manejo de errores robusto
-            const response = await fetch('https://api.github.com/users/alejandroDonGar/repos?sort=updated&per_page=100');
-            
-            if (!response.ok) {
-                if (response.status === 403) throw new Error("Límite de la API de GitHub alcanzado. Espera unos minutos.");
-                throw new Error(`GitHub retornó estado: ${response.status}`);
-            }
-
-            const data = await response.json();
-            
-            if (Array.isArray(data)) {
-                // Filtrar el repo del portfolio y forks
-                const FEATURED_REPOS = {
-                    'Escaner-de-Red-NetScanner': 1,
-                    'centroplus-connect': 2
-                };
-
-                const filteredRepos = data.filter(repo => {
-                    const isNotPortfolio = repo.name.toLowerCase() !== 'alejandrodongar.github.io';
-                    const isNotFork = !repo.fork;
-                    return isNotPortfolio && isNotFork;
-                });
-
-                const featuredRepos = filteredRepos
-                    .filter(repo => FEATURED_REPOS[repo.name])
-                    .sort((a, b) => FEATURED_REPOS[a.name] - FEATURED_REPOS[b.name]);
-
-                const regularRepos = filteredRepos
-                    .filter(repo => !FEATURED_REPOS[repo.name])
-                    .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
-
-                allRepos = [
-                    ...featuredRepos,
-                    ...regularRepos
-                ];
-
-                console.log('Repositorios encontrados:', allRepos.length);
-                
-                if (allRepos.length === 0) {
-                    container.innerHTML = '<div style="text-align:center; padding:2rem;">No se encontraron repositorios públicos.</div>';
-                } else {
-                    currentPage = 1;
-                    updatePagination();
-                }
-            } else {
-                throw new Error("La respuesta de la API no es válida.");
-            }
-        } catch (error) {
-            console.error('ERROR CRÍTICO GITHUB:', error);
-            container.innerHTML = `
-                <div style="text-align:center; padding:3rem; background: rgba(239, 68, 68, 0.1); border-radius: 20px; border: 1px solid rgba(239, 68, 68, 0.2);">
-                    <i class="fa-solid fa-triangle-exclamation fa-3x" style="color:#ef4444;"></i>
-                    <h3 style="margin-top:1.5rem;">No se pudieron cargar los proyectos</h3>
-                    <p style="opacity:0.8; margin: 1rem 0;">${error.message}</p>
-                    <button onclick="location.reload()" class="btn-primary" style="background:#ef4444; border:none;">
-                        <i class="fa-solid fa-rotate"></i> Intentar de nuevo
-                    </button>
-                </div>
-            `;
-        }
+    .hero-wrapper > .hero-box:last-child {
+        grid-column: span 2;
     }
 
-    function updatePagination() {
-        const totalPages = Math.ceil(allRepos.length / reposPerPage);
-        const start = (currentPage - 1) * reposPerPage;
-        const end = start + reposPerPage;
-        const currentRepos = allRepos.slice(start, end);
+    .skills-buttons-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
 
-        renderRepos(currentRepos);
+@media (max-width: 1200px) {
+    .repo-card {
+        grid-template-columns: 1fr;
+    }
+}
 
-        const pageText = currentLang === 'es' ? 'Página' : (currentLang === 'en' ? 'Page' : (currentLang === 'de' ? 'Seite' : 'Síða'));
-        document.getElementById('page-info').textContent = `${pageText} ${currentPage} / ${totalPages}`;
-        document.getElementById('prev-page').disabled = currentPage === 1;
-        document.getElementById('next-page').disabled = currentPage === totalPages;
+@media (max-width: 1024px) {
+    :root {
+        --space-card: 1.5rem;
     }
 
-    document.getElementById('prev-page').addEventListener('click', () => {
-        if (currentPage > 1) {
-            currentPage--;
-            updatePagination();
-            document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-
-    document.getElementById('next-page').addEventListener('click', () => {
-        const totalPages = Math.ceil(allRepos.length / reposPerPage);
-        if (currentPage < totalPages) {
-            currentPage++;
-            updatePagination();
-            document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-
-    function isNetScannerRepo(repo) {
-        const normalizedName = repo.name.toLowerCase();
-        const topics = (repo.topics || []).map(topic => topic.toLowerCase());
-
-        return (
-            normalizedName.includes('escaner-de-red-netscanner') ||
-            normalizedName.includes('netscanner') ||
-            (topics.includes('scapy') && topics.includes('nmap')) ||
-            (topics.includes('scapy') && topics.includes('django'))
-        );
+    aside {
+        width: 80px;
     }
 
-    function isCentroPlusRepo(repo) {
-        const normalizedName = repo.name.toLowerCase();
-        const topics = (repo.topics || []).map(topic => topic.toLowerCase());
-
-        return (
-            normalizedName.includes('centroplus-connect') ||
-            normalizedName.includes('centroplus') ||
-            (topics.includes('spring') && topics.includes('javafx')) ||
-            (topics.includes('swagger') && topics.includes('junit'))
-        );
+    aside h1,
+    aside p,
+    .lang-selector span,
+    .sidebar-link span {
+        display: none;
     }
 
-    function createNetScannerWavePreview() {
-        return `
-            <div class="repo-wave-preview" aria-label="Animación de olas inspirada en NetScanner">
-                <div class="repo-wave-label">
-                    <i class="fa-solid fa-water"></i>
-                    NetScanner scan
-                </div>
+    main {
+        width: calc(100% - 80px);
+        margin-left: 80px;
+        padding: 40px 20px;
+    }
+}
 
-                <div class="repo-wave-scene">
-                    <div class="repo-pulse-glow repo-pulse-glow-1"></div>
-                    <div class="repo-pulse-glow repo-pulse-glow-2"></div>
-
-                    <div class="repo-network-overlay" aria-hidden="true">
-                        <div class="repo-network-router">
-                            <i class="fa-solid fa-wifi"></i>
-                            <span>192.168.1.1</span>
-                        </div>
-
-                        <div class="repo-network-device repo-device-laptop">
-                            <i class="fa-solid fa-laptop"></i>
-                            <strong>DESKTOP-A12</strong>
-                            <span>192.168.1.24</span>
-                            <small>MAC · 3C:52</small>
-                        </div>
-
-                        <div class="repo-network-device repo-device-phone">
-                            <i class="fa-solid fa-mobile-screen-button"></i>
-                            <strong>Galaxy-S23</strong>
-                            <span>192.168.1.37</span>
-                            <small>MAC · A8:09</small>
-                        </div>
-
-                        <div class="repo-network-device repo-device-printer">
-                            <i class="fa-solid fa-print"></i>
-                            <strong>HP-OfficeJet</strong>
-                            <span>192.168.1.52</span>
-                            <small>MAC · E4:7B</small>
-                        </div>
-
-                        <div class="repo-scan-status">
-                            <span class="repo-scan-dot"></span>
-                            6 hosts online · ARP scan complete
-                        </div>
-                    </div>
-
-                    <div class="repo-floating-tech repo-tech-python" title="Python">
-                        <i class="fa-brands fa-python"></i>
-                    </div>
-                    <div class="repo-floating-tech repo-tech-mongodb" title="MongoDB">
-                        <i class="fa-solid fa-leaf"></i>
-                    </div>
-                    <div class="repo-floating-tech repo-tech-django" title="Django">
-                        <i class="fa-solid fa-server"></i>
-                    </div>
-                    <div class="repo-floating-tech repo-tech-scapy" title="Scapy">
-                        <i class="fa-solid fa-network-wired"></i>
-                    </div>
-
-                    <div class="repo-liquid-layer repo-liquid-back">
-                        <div class="repo-wave-track repo-wave-track-1">
-                            <svg class="repo-wave-svg" viewBox="0 0 2880 1000" preserveAspectRatio="none">
-                                <path d="M0,70 C240,20 480,20 720,70 C960,120 1200,120 1440,70 C1680,20 1920,20 2160,70 C2400,120 2640,120 2880,70 L2880,1000 L0,1000 Z"></path>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="repo-liquid-layer repo-liquid-mid">
-                        <div class="repo-wave-track repo-wave-track-2">
-                            <svg class="repo-wave-svg" viewBox="0 0 2880 1000" preserveAspectRatio="none">
-                                <path d="M0,70 C240,40 480,40 720,70 C960,100 1200,100 1440,70 C1680,40 1920,40 2160,70 C2400,100 2640,100 2880,70 L2880,1000 L0,1000 Z"></path>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="repo-liquid-layer repo-liquid-front">
-                        <div class="repo-wave-track repo-wave-track-3">
-                            <svg class="repo-wave-svg" viewBox="0 0 2880 1000" preserveAspectRatio="none">
-                                <path d="M0,75 C240,55 480,55 720,75 C960,95 1200,95 1440,75 C1680,55 1920,55 2160,75 C2400,95 2640,95 2880,75 L2880,1000 L0,1000 Z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
+@media (max-width: 992px) {
+    .hero-wrapper {
+        grid-template-columns: 1fr;
     }
 
-    function createCentroPlusApiPreview() {
-        return `
-            <div class="repo-sports-dashboard-preview" aria-label="Preview animada de dashboard deportivo CentroPlus">
-                <div class="repo-sports-label">
-                    <i class="fa-solid fa-dumbbell"></i>
-                    CentroPlus dashboard
-                </div>
-
-                <div class="repo-sports-scene">
-                    <div class="repo-sports-grid">
-                        <div class="repo-sports-card sports-users">
-                            <i class="fa-solid fa-users"></i>
-                            <span>Usuarios</span>
-                            <strong>124</strong>
-                        </div>
-
-                        <div class="repo-sports-card sports-bookings">
-                            <i class="fa-solid fa-calendar-check"></i>
-                            <span>Reservas</span>
-                            <strong>32</strong>
-                        </div>
-
-                        <div class="repo-sports-card sports-activities">
-                            <i class="fa-solid fa-volleyball"></i>
-                            <span>Actividades</span>
-                            <strong>18</strong>
-                        </div>
-
-                        <div class="repo-sports-card sports-incidents">
-                            <i class="fa-solid fa-triangle-exclamation"></i>
-                            <span>Incidencias</span>
-                            <strong>4</strong>
-                        </div>
-                    </div>
-
-                    <div class="repo-sports-calendar">
-                        <span></span><span class="active"></span><span></span><span class="active soft"></span><span></span><span></span><span class="active"></span>
-                        <span class="active soft"></span><span></span><span></span><span></span><span class="active"></span><span></span><span></span>
-                    </div>
-
-                    <div class="repo-sports-tech-row">
-                        <span><i class="fa-brands fa-java"></i> Java</span>
-                        <span><i class="fa-solid fa-leaf"></i> Spring</span>
-                        <span><i class="fa-solid fa-book-open"></i> Swagger</span>
-                        <span><i class="fa-solid fa-vial"></i> JUnit</span>
-                    </div>
-                </div>
-            </div>
-        `;
+    .hero-wrapper > .hero-box:last-child {
+        grid-column: span 1;
     }
 
-    function renderRepos(repos) {
-        const container = document.getElementById('repos-container');
-        container.innerHTML = '';
+    .skills-buttons-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
-        repos.forEach(repo => {
-            const card = document.createElement('div');
-            const netScanner = isNetScannerRepo(repo);
-            const centroPlus = isCentroPlusRepo(repo);
-
-            card.className = (netScanner || centroPlus) ? 'repo-card repo-card-featured-net' : 'repo-card';
-            card.setAttribute('data-aos', 'fade-up');
-
-            const updatedText = currentLang === 'es' ? 'Actualizado' : (currentLang === 'en' ? 'Updated' : (currentLang === 'de' ? 'Aktualisiert' : 'Uppfært'));
-            const viewCodeText = currentLang === 'es' ? 'Ver Código' : (currentLang === 'en' ? 'View Code' : (currentLang === 'de' ? 'Code ansehen' : 'Skoða kóða'));
-            const compositionText = currentLang === 'es' ? 'Composición' : (currentLang === 'en' ? 'Composition' : (currentLang === 'de' ? 'Zusammensetzung' : 'Samsetning'));
-
-            card.innerHTML = `
-                <div class="repo-info">
-                    <h3 style="font-size: 1.75rem; margin-bottom: 1rem;">${repo.name}</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 2rem; line-height: 1.5;">${repo.description || '...'}</p>
-                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
-                        ${repo.topics ? repo.topics.map(t => `<span style="padding: 4px 12px; background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); border-radius: 100px; font-size: 0.8rem;">#${t}</span>`).join('') : ''}
-                    </div>
-
-                    <div style="display: flex; gap: 1rem;">
-                        <a href="${repo.html_url}" target="_blank" class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem; background: var(--primary-gradient);"><i class="fa-brands fa-github"></i> ${viewCodeText}</a>
-                        ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" style="padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: 12px; color: var(--text-main); text-decoration: none; font-size: 0.9rem;">Demo Live</a>` : ''}
-                    </div>
-                    <div style="margin-top: 1.5rem; font-size: 0.75rem; color: var(--text-muted);">
-                        <i class="fa-regular fa-calendar"></i> ${updatedText}: ${new Date(repo.updated_at).toLocaleDateString()}
-                    </div>
-                </div>
-
-                ${netScanner ? `<div class="repo-wave-column">${createNetScannerWavePreview()}</div>` : ''}
-                ${centroPlus ? `<div class="repo-wave-column">${createCentroPlusApiPreview()}</div>` : ''}
-
-                <div class="repo-stats-panel" style="background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 20px;">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
-                        <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 12px;">
-                            <i class="fa-regular fa-star" style="color: var(--accent-blue);"></i>
-                            <div style="font-size: 1.25rem; font-weight: 700;">${repo.stargazers_count}</div>
-                            <small style="color: var(--text-muted);">Stars</small>
-                        </div>
-                        <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 12px;">
-                            <i class="fa-solid fa-code-branch" style="color: var(--accent-blue);"></i>
-                            <div style="font-size: 1.25rem; font-weight: 700;">${repo.forks_count}</div>
-                            <small style="color: var(--text-muted);">Forks</small>
-                        </div>
-                    </div>
-                    <div id="langs-${repo.id}">
-                        <div style="font-size: 0.8rem; margin-bottom: 0.5rem;">${compositionText}:</div>
-                    </div>
-                </div>
-            `;
-            container.appendChild(card);
-
-            fetch(repo.languages_url).then(r => r.json()).then(langs => {
-                const langDiv = document.getElementById(`langs-${repo.id}`);
-                if (!langDiv) return;
-                const total = Object.values(langs).reduce((a,b) => a+b, 0);
-                langDiv.innerHTML += `
-                    <div style="display: flex; flex-direction: column; gap: 8px;">
-                        ${Object.entries(langs).slice(0, 4).map(([l, v]) => `
-                            <div>
-                                <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 4px;">
-                                    <span>${l}</span>
-                                    <span>${total ? ((v/total)*100).toFixed(1) : '0.0'}%</span>
-                                </div>
-                                <div style="height: 4px; background: rgba(0,0,0,0.3); border-radius: 100px;">
-                                    <div style="height: 100%; width: ${total ? (v/total)*100 : 0}%; background: var(--accent-blue); border-radius: inherit;"></div>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
-            });
-        });
+@media (max-width: 768px) {
+    body {
+        display: block;
     }
 
-    // Smooth Scroll & Active Link
-    document.querySelectorAll('.sidebar-link, .scroll-link').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            if (href.startsWith('#')) {
-                e.preventDefault();
-                const targetId = href.substring(1);
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                    // Actualizar clase activa si es un link de sidebar
-                    if (this.classList.contains('sidebar-link')) {
-                        document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
-                        this.classList.add('active');
-                    }
-                }
-            }
-        });
-    });
-
-    window.addEventListener('scroll', () => {
-        let current = '';
-        const sections = document.querySelectorAll('section');
-        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            if (scrollPosition >= sectionTop - 200) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        if (current) {
-            document.querySelectorAll('.sidebar-link').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    });
-
-    // Event Listeners para botones de idioma
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => switchLanguage(btn.getAttribute('data-lang')));
-    });
-
-    function copyEmail() {
-        const email = 'AlexDoGa.work@gmail.com';
-        const emailText = document.getElementById('email-text');
-        const originalText = emailText.textContent;
-        
-        navigator.clipboard.writeText(email).then(() => {
-            emailText.textContent = 'Correo copiado';
-            emailText.style.color = '#22c55e';
-            
-            setTimeout(() => {
-                emailText.textContent = originalText;
-                emailText.style.color = '';
-            }, 2000);
-        });
+    aside {
+        width: 100%;
+        height: auto;
+        position: relative;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+        border-right: 0;
+        border-bottom: 1px solid var(--border-color);
     }
 
-    // Lógica de Temas (Luz/Oscuro)
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = themeToggle.querySelector('i');
-    const themeText = document.getElementById('theme-text');
-    const html = document.documentElement;
-
-    function setTheme(theme) {
-        html.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        
-        if (theme === 'light') {
-            themeIcon.className = 'fa-solid fa-sun';
-            themeText.textContent = currentLang === 'es' ? 'Modo Claro' : (currentLang === 'en' ? 'Light Mode' : (currentLang === 'de' ? 'Heller Modus' : 'Ljós stilling'));
-        } else {
-            themeIcon.className = 'fa-solid fa-moon';
-            themeText.textContent = currentLang === 'es' ? 'Modo Oscuro' : (currentLang === 'en' ? 'Dark Mode' : (currentLang === 'de' ? 'Dunkler Modus' : 'Dökk stilling'));
-        }
+    aside > div:first-child {
+        padding: 0.5rem !important;
+        border-bottom: 0 !important;
     }
 
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-    });
+    aside > div:first-child h1,
+    aside > div:first-child p,
+    aside div[style*="flex: 1"] p,
+    .lang-selector,
+    #theme-toggle {
+        display: none !important;
+    }
 
-    // Inicializar tema al cargar
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    setTheme(savedTheme);
+    aside div[style*="flex: 1"] {
+        flex-direction: row !important;
+        align-items: center;
+        gap: 0.5rem !important;
+        padding: 0 !important;
+    }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        if (typeof AOS !== 'undefined') {
-            AOS.init({
-                duration: 800,
-                once: true,
-                disable: window.innerWidth < 768 
-            });
-        }
-        // Forzar la carga inicial
-        currentPage = 1;
-        fetchGitHubData();
-    });
-</script>
+    aside .sidebar-link {
+        padding: 0.5rem !important;
+    }
+
+    main {
+        width: 100%;
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    section {
+        padding: 40px 0;
+    }
+
+    .hero-wrapper {
+        gap: 1rem;
+    }
+
+    .skills-buttons-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-box,
+    .skill-item,
+    .repo-card,
+    .glass-card {
+        border-radius: 24px;
+    }
+
+    #projects > .glass-card {
+        padding: 1.5rem;
+    }
+
+    .skill-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --space-card: 1rem;
+    }
+
+    .hero-box h1 {
+        font-size: 1.8rem !important;
+    }
+
+    .hero-profile-container {
+        min-height: 200px;
+        height: 300px;
+    }
+
+    .repo-card {
+        padding: 1rem;
+    }
+
+    .repo-card > div:last-child > div:first-child,
+    .repo-stat-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pagination-controls {
+        gap: 1rem;
+    }
+}
+
+
+/* ==========================================================================
+   FINAL UNIFIED HOVER SYSTEM
+   Unifica hero, repos, inglés, cards internas y botones tipo skill.
+   También elimina delays de AOS en el hero para que el hover responda rápido.
+   ========================================================================== */
+
+:root {
+    --hover-lift: translateY(-8px) scale(1.01);
+    --hover-shadow: 0 18px 35px rgba(0, 0, 0, 0.32), 0 0 18px rgba(125, 140, 170, 0.12);
+    --inner-hover-lift: translateY(-5px) scale(1.01);
+    --inner-hover-shadow: 0 14px 30px rgba(0, 0, 0, 0.24), 0 0 18px rgba(125, 140, 170, 0.16);
+}
+
+[data-theme="light"] {
+    --hover-shadow: 0 18px 35px rgba(32, 37, 49, 0.10), 0 0 18px rgba(110, 117, 142, 0.10);
+    --inner-hover-shadow: 0 14px 28px rgba(32, 37, 49, 0.10), 0 0 16px rgba(110, 117, 142, 0.12);
+}
+
+/* Quitar la sensación de delay en Hero/AOS */
+.hero-box[data-aos],
+.skill-item[data-aos],
+.repo-card[data-aos],
+.glass-card[data-aos] {
+    transition-delay: 0s !important;
+}
+
+.hero-box[data-aos].aos-animate,
+.skill-item[data-aos].aos-animate,
+.repo-card[data-aos].aos-animate,
+.glass-card[data-aos].aos-animate {
+    transition-delay: 0s !important;
+}
+
+/* Contenedores principales */
+.hero-box,
+.skill-item,
+.repo-card,
+.glass-card,
+#projects > .glass-card {
+    position: relative !important;
+    overflow: hidden !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-lg) !important;
+    transition:
+        transform 0.18s ease-out,
+        box-shadow 0.18s ease-out,
+        border-color 0.18s ease-out,
+        background-color 0.28s ease !important;
+    will-change: transform, box-shadow, border-color !important;
+}
+
+/* Elementos internos que también deben tener el mismo lenguaje de hover */
+.skill-pill,
+.repo-card > div:last-child > div:first-child > div,
+.repo-stat-box,
+.bar-wrapper,
+.bar-container,
+.page-btn,
+.lang-btn,
+.social-btn,
+.sidebar-link-btn,
+.btn-primary,
+.repo-demo-link {
+    position: relative !important;
+    overflow: hidden !important;
+    transition:
+        transform 0.24s ease,
+        box-shadow 0.24s ease,
+        border-color 0.24s ease,
+        background-color 0.24s ease,
+        color 0.24s ease !important;
+}
+
+/* Barrido de luz compartido */
+.hero-box::before,
+.skill-item::before,
+.repo-card::before,
+.glass-card::before,
+#projects > .glass-card::before,
+.skill-pill::before,
+.repo-card > div:last-child > div:first-child > div::before,
+.repo-stat-box::before,
+.bar-wrapper::before,
+.social-btn::before,
+.sidebar-link-btn::before,
+.btn-primary::before,
+.repo-demo-link::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.06), transparent) !important;
+    transition: left 0.25s ease !important;
+}
+
+.hero-box > *,
+.skill-item > *,
+.repo-card > *,
+.glass-card > *,
+#projects > .glass-card > *,
+.skill-pill > *,
+.repo-card > div:last-child > div:first-child > div > *,
+.repo-stat-box > *,
+.bar-wrapper > *,
+.social-btn > *,
+.sidebar-link-btn > *,
+.btn-primary > *,
+.repo-demo-link > * {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* Hover principal: hero, inglés, repos y contenedores grandes */
+.hero-box:hover,
+.skill-item:hover,
+.repo-card:hover,
+.glass-card:hover,
+#projects > .glass-card:hover,
+.hero-box[data-aos]:hover,
+.skill-item[data-aos]:hover,
+.repo-card[data-aos]:hover,
+.glass-card[data-aos]:hover,
+.hero-box[data-aos].aos-animate:hover,
+.skill-item[data-aos].aos-animate:hover,
+.repo-card[data-aos].aos-animate:hover,
+.glass-card[data-aos].aos-animate:hover {
+    border-color: rgba(125, 140, 170, 0.62) !important;
+    transform: var(--hover-lift) !important;
+    box-shadow: var(--hover-shadow) !important;
+    z-index: 50 !important;
+}
+
+/* Hover secundario: pills, stats, barras y botones */
+.skill-pill:hover,
+.repo-card > div:last-child > div:first-child > div:hover,
+.repo-stat-box:hover,
+.social-btn:hover,
+.sidebar-link-btn:hover,
+.btn-primary:hover,
+.repo-demo-link:hover {
+    border-color: rgba(125, 140, 170, 0.42) !important;
+    transform: var(--inner-hover-lift) !important;
+    box-shadow: var(--inner-hover-shadow) !important;
+}
+
+/* Mantener el carácter de los skill pills, pero con la misma animación */
+.skill-pill:hover {
+    background: var(--primary-gradient) !important;
+    color: #ffffff !important;
+}
+
+/* Barrido visible en todos */
+.hero-box:hover::before,
+.skill-item:hover::before,
+.repo-card:hover::before,
+.glass-card:hover::before,
+#projects > .glass-card:hover::before,
+.skill-pill:hover::before,
+.repo-card > div:last-child > div:first-child > div:hover::before,
+.repo-stat-box:hover::before,
+.bar-wrapper:hover::before,
+.social-btn:hover::before,
+.sidebar-link-btn:hover::before,
+.btn-primary:hover::before,
+.repo-demo-link:hover::before {
+    left: 100% !important;
+}
+
+/* Evita saltos raros por hover anidado dentro de repos */
+.repo-card:hover .repo-stat-box:hover,
+.repo-card:hover > div:last-child > div:first-child > div:hover {
+    transform: var(--inner-hover-lift) !important;
+}
+
+/* Respeta usuarios con reducción de movimiento */
+@media (prefers-reduced-motion: reduce) {
+    .hero-box,
+    .skill-item,
+    .repo-card,
+    .glass-card,
+    #projects > .glass-card,
+    .skill-pill,
+    .repo-stat-box,
+    .bar-wrapper,
+    .bar-container,
+    .page-btn,
+    .lang-btn,
+    .social-btn,
+    .sidebar-link-btn,
+    .btn-primary,
+    .repo-demo-link {
+        transition: none !important;
+    }
+
+    .hero-box:hover,
+    .skill-item:hover,
+    .repo-card:hover,
+    .glass-card:hover,
+    #projects > .glass-card:hover,
+    .skill-pill:hover,
+    .repo-stat-box:hover,
+    .bar-wrapper:hover,
+    .bar-container:hover {
+        transform: none !important;
+    }
+}
+
+
+/* ==========================================================================
+   NETSCANNER REPO CUSTOM PREVIEW
+   Animación personalizada para el repositorio Escaner-de-Red-NetScanner.
+   Inspirada en las olas y cola de tiburón del proyecto NetScanner.
+   ========================================================================== */
+
+.repo-card-featured-net {
+    position: relative;
+}
+
+.repo-card-featured-net .repo-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.repo-wave-preview {
+    position: relative;
+    width: 100%;
+    min-height: 140px;
+    margin: -0.35rem 0 1.35rem;
+    overflow: hidden;
+    border: 1px solid rgba(125, 140, 170, 0.22);
+    border-radius: 22px;
+    background:
+        radial-gradient(circle at 16% 20%, rgba(6, 182, 212, 0.20), transparent 32%),
+        radial-gradient(circle at 85% 80%, rgba(125, 140, 170, 0.18), transparent 36%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.70));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 14px 30px rgba(0, 0, 0, 0.22);
+    isolation: isolate;
+}
+
+[data-theme="light"] .repo-wave-preview {
+    background:
+        radial-gradient(circle at 16% 20%, rgba(6, 182, 212, 0.16), transparent 32%),
+        radial-gradient(circle at 85% 80%, rgba(110, 117, 142, 0.14), transparent 36%),
+        linear-gradient(180deg, #f7fbff, #eaf2fb);
+    border-color: rgba(110, 117, 142, 0.20);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        0 12px 24px rgba(32, 37, 49, 0.08);
+}
+
+.repo-wave-label {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border: 1px solid rgba(34, 211, 238, 0.24);
+    border-radius: 999px;
+    background: rgba(10, 15, 24, 0.52);
+    color: #dffaff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="light"] .repo-wave-label {
+    background: rgba(255, 255, 255, 0.72);
+    color: #334155;
+    border-color: rgba(110, 117, 142, 0.22);
+}
+
+.repo-wave-scene {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.repo-pulse-glow {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 999px;
+    filter: blur(12px);
+    opacity: 0.35;
+    animation: repoPulseGlow 3.5s ease-in-out infinite;
+}
+
+.repo-pulse-glow-1 {
+    left: -35px;
+    bottom: -30px;
+    background: rgba(6, 182, 212, 0.38);
+}
+
+.repo-pulse-glow-2 {
+    right: -40px;
+    top: -35px;
+    background: rgba(125, 140, 170, 0.34);
+    animation-delay: -1.2s;
+}
+
+.repo-liquid-layer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow: visible;
+}
+
+.repo-liquid-back {
+    height: 54%;
+    z-index: 1;
+}
+
+.repo-liquid-mid {
+    height: 47%;
+    z-index: 2;
+}
+
+.repo-liquid-front {
+    height: 40%;
+    z-index: 3;
+}
+
+.repo-wave-track {
+    position: absolute;
+    top: -34px;
+    left: 0;
+    width: 220%;
+    height: 245px;
+}
+
+.repo-wave-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.repo-wave-svg path {
+    fill: currentColor;
+}
+
+.repo-wave-track-1 {
+    z-index: 1;
+    color: #f87171;
+    opacity: 0.42;
+    animation: repoWaveMove1 9s linear infinite;
+}
+
+.repo-wave-track-2 {
+    z-index: 2;
+    color: #fbbf24;
+    opacity: 0.36;
+    animation: repoWaveMove2 12s linear infinite;
+}
+
+.repo-wave-track-3 {
+    z-index: 3;
+    color: #22d3ee;
+    opacity: 0.86;
+    animation: repoWaveMove3 15s linear infinite;
+}
+
+[data-theme="light"] .repo-wave-track-1 {
+    color: #ef4444;
+    opacity: 0.30;
+}
+
+[data-theme="light"] .repo-wave-track-2 {
+    color: #f59e0b;
+    opacity: 0.26;
+}
+
+[data-theme="light"] .repo-wave-track-3 {
+    color: #06b6d4;
+    opacity: 0.48;
+}
+
+
+
+
+
+
+
+@keyframes repoWaveMove1 {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@keyframes repoWaveMove2 {
+    from { transform: translateX(-45%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes repoWaveMove3 {
+    from { transform: translateX(0); }
+    to { transform: translateX(-48%); }
+}
+
+@keyframes repoPulseGlow {
+    0%, 100% {
+        transform: scale(0.92);
+        opacity: 0.24;
+    }
+    50% {
+        transform: scale(1.08);
+        opacity: 0.42;
+    }
+}
+
+
+
+
+@media (max-width: 1200px) {
+    .repo-wave-preview {
+        min-height: 118px;
+    }
+}
+
+@media (max-width: 640px) {
+    .repo-wave-preview {
+        min-height: 104px;
+    }
+
+    .repo-wave-label {
+        font-size: 0.64rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .repo-wave-track,
+    .repo-pulse-glow {
+        animation: none !important;
+    }
+}
+
+/* Ajuste final NetScanner: solo olas, sin tiburones */
+.repo-liquid-back {
+    height: 48%;
+}
+
+.repo-liquid-mid {
+    height: 42%;
+}
+
+.repo-liquid-front {
+    height: 36%;
+}
+
+/* ==========================================================================
+   NETSCANNER REPO HERO-LIKE LAYOUT
+   Info | Animación | Stats en tres columnas.
+   ========================================================================== */
+
+.repo-card-featured-net {
+    grid-template-columns:
+        minmax(300px, 1fr)
+        minmax(480px, 1.15fr)
+        minmax(240px, 0.65fr) !important;
+
+    gap: 2rem;
+    align-items: stretch !important;
+}
+
+.repo-card-featured-net .repo-info,
+.repo-card-featured-net .repo-wave-column,
+.repo-card-featured-net .repo-stats-panel {
+    min-width: 0;
+}
+
+.repo-card-featured-net .repo-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.repo-wave-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.repo-card-featured-net .repo-wave-preview {
+    width: 100%;
+    min-height: 170px;
+    height: 100%;
+    margin: 0;
+}
+
+.repo-card-featured-net .repo-stats-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+[data-theme="light"] .repo-card-featured-net .repo-stats-panel {
+    background: var(--repo-stats-bg) !important;
+    border: 1px solid #dbe4f0;
+}
+
+@media (max-width: 1450px) {
+    .repo-card-featured-net {
+        grid-template-columns:
+            minmax(280px, 1fr)
+            minmax(420px, 1fr) !important;
+    }
+
+    .repo-card-featured-net .repo-wave-column {
+        grid-column: 1 / -1;
+        order: 2;
+    }
+
+    .repo-card-featured-net .repo-stats-panel {
+        order: 3;
+    }
+
+    .repo-card-featured-net .repo-info {
+        order: 1;
+    }
+}
+
+@media (max-width: 1200px) {
+    .repo-card-featured-net {
+        grid-template-columns: 1fr !important;
+    }
+
+    .repo-card-featured-net .repo-wave-column {
+        grid-column: auto;
+    }
+
+    .repo-card-featured-net .repo-wave-preview {
+        min-height: 145px;
+    }
+}
+
+/* ==========================================================================
+   NETSCANNER FLOATING TECH ICONS
+   Iconos flotando/saliendo de la superficie para reforzar tecnologías:
+   Python, MongoDB, Django y Scapy.
+   ========================================================================== */
+
+.repo-floating-tech {
+    position: absolute;
+    z-index: 8;
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background:
+        linear-gradient(180deg, rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.42));
+    color: #f8fafc;
+    box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.26),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    pointer-events: none;
+    animation: repoTechFloat 7s ease-in-out infinite;
+}
+
+.repo-floating-tech i {
+    font-size: 1rem;
+}
+
+.repo-tech-python {
+    left: 18%;
+    bottom: 16%;
+    color: #facc15;
+    animation-delay: 0s;
+}
+
+.repo-tech-mongodb {
+    left: 42%;
+    bottom: 10%;
+    color: #34d399;
+    animation-delay: -1.8s;
+}
+
+.repo-tech-django {
+    left: 64%;
+    bottom: 15%;
+    color: #86efac;
+    animation-delay: -3.4s;
+}
+
+.repo-tech-scapy {
+    left: 80%;
+    bottom: 12%;
+    color: #38bdf8;
+    animation-delay: -5.1s;
+}
+
+.repo-floating-tech::after {
+    content: attr(title);
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 2px 7px;
+    border-radius: 999px;
+    background: rgba(10, 15, 24, 0.62);
+    color: #dbeafe;
+    font-size: 0.56rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+[data-theme="light"] .repo-floating-tech {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.50));
+    border-color: rgba(32, 37, 49, 0.12);
+    box-shadow:
+        0 10px 20px rgba(32, 37, 49, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.80);
+}
+
+[data-theme="light"] .repo-floating-tech::after {
+    background: rgba(255, 255, 255, 0.72);
+    color: #334155;
+    border-color: rgba(32, 37, 49, 0.10);
+}
+
+@keyframes repoTechFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(34px) scale(0.82) rotate(-6deg);
+    }
+    12% {
+        opacity: 0.88;
+    }
+    45% {
+        opacity: 0.92;
+        transform: translateY(-16px) scale(1) rotate(5deg);
+    }
+    70% {
+        opacity: 0.45;
+        transform: translateY(-34px) scale(0.94) rotate(-4deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-52px) scale(0.86) rotate(4deg);
+    }
+}
+
+/* Pequeñas burbujas en la columna de animación */
+.repo-wave-scene::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 7;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 22% 70%, rgba(255,255,255,0.35) 0 2px, transparent 3px),
+        radial-gradient(circle at 48% 62%, rgba(255,255,255,0.30) 0 1.5px, transparent 3px),
+        radial-gradient(circle at 72% 74%, rgba(255,255,255,0.28) 0 2px, transparent 3px),
+        radial-gradient(circle at 86% 58%, rgba(255,255,255,0.22) 0 1.5px, transparent 3px);
+    animation: repoBubbleDrift 4.8s ease-in-out infinite;
+    opacity: 0.55;
+}
+
+@keyframes repoBubbleDrift {
+    0%, 100% {
+        transform: translateY(8px);
+        opacity: 0.34;
+    }
+    50% {
+        transform: translateY(-16px);
+        opacity: 0.62;
+    }
+}
+
+@media (max-width: 1200px) {
+    .repo-floating-tech {
+        width: 32px;
+        height: 32px;
+    }
+
+    .repo-floating-tech::after {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .repo-floating-tech,
+    .repo-wave-scene::after {
+        animation: none !important;
+        opacity: 0.75;
+    }
+}
+
+/* ==========================================================================
+   CENTROPLUS SPORTS DASHBOARD PREVIEW
+   Preview exclusiva para centroplus-connect:
+   dashboard deportivo con usuarios, reservas, actividades e incidencias.
+   ========================================================================== */
+
+.repo-sports-dashboard-preview {
+    position: relative;
+    width: 100%;
+    min-height: 170px;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid rgba(125, 140, 170, 0.22);
+    border-radius: 22px;
+    background:
+        radial-gradient(circle at 18% 24%, rgba(34, 197, 94, 0.15), transparent 32%),
+        radial-gradient(circle at 82% 82%, rgba(201, 151, 121, 0.16), transparent 36%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.76));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 14px 30px rgba(0, 0, 0, 0.22);
+    isolation: isolate;
+}
+
+[data-theme="light"] .repo-sports-dashboard-preview {
+    background:
+        radial-gradient(circle at 18% 24%, rgba(34, 197, 94, 0.11), transparent 32%),
+        radial-gradient(circle at 82% 82%, rgba(151, 108, 92, 0.10), transparent 36%),
+        linear-gradient(180deg, #ffffff, #f3f6fb);
+    border-color: rgba(110, 117, 142, 0.20);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        0 12px 24px rgba(32, 37, 49, 0.08);
+}
+
+.repo-sports-label {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border: 1px solid rgba(125, 140, 170, 0.30);
+    border-radius: 999px;
+    background: rgba(10, 15, 24, 0.52);
+    color: #e2e8f0;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="light"] .repo-sports-label {
+    background: rgba(255, 255, 255, 0.72);
+    color: #334155;
+    border-color: rgba(110, 117, 142, 0.22);
+}
+
+.repo-sports-scene {
+    position: absolute;
+    inset: 0;
+    padding: 48px 16px 16px;
+    display: grid;
+    grid-template-rows: 1fr auto auto;
+    gap: 10px;
+}
+
+.repo-sports-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+}
+
+.repo-sports-card {
+    position: relative;
+    min-height: 54px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 11px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(15, 23, 42, 0.56);
+    color: var(--text-main);
+    box-shadow:
+        0 10px 22px rgba(0,0,0,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.06);
+    overflow: hidden;
+    animation: sportsCardPulse 4s ease-in-out infinite;
+}
+
+[data-theme="light"] .repo-sports-card {
+    background: rgba(255,255,255,0.72);
+    border-color: rgba(32,37,49,0.10);
+    box-shadow:
+        0 10px 20px rgba(32,37,49,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.80);
+}
+
+.repo-sports-card::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 3px;
+    background: var(--primary-gradient);
+    opacity: 0.75;
+}
+
+.repo-sports-card i {
+    font-size: 1rem;
+}
+
+.repo-sports-card span {
+    color: var(--text-muted);
+    font-size: 0.66rem;
+    font-weight: 800;
+}
+
+.repo-sports-card strong {
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+.sports-users i { color: #60a5fa; }
+.sports-bookings i { color: #fbbf24; }
+.sports-activities i { color: #34d399; }
+.sports-incidents i { color: #fb7185; }
+
+.sports-bookings {
+    animation-delay: -1s;
+}
+
+.sports-activities {
+    animation-delay: -2s;
+}
+
+.sports-incidents {
+    animation-delay: -3s;
+}
+
+.sports-incidents::after {
+    background: linear-gradient(135deg, #fb7185, #f97316);
+}
+
+.repo-sports-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 8px;
+    border-radius: 15px;
+    background: rgba(125, 140, 170, 0.10);
+    border: 1px solid rgba(125, 140, 170, 0.16);
+}
+
+.repo-sports-calendar span {
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.22);
+}
+
+.repo-sports-calendar span.active {
+    background: #34d399;
+    box-shadow: 0 0 12px rgba(52, 211, 153, 0.40);
+    animation: sportsCalendarBlink 2.6s ease-in-out infinite;
+}
+
+.repo-sports-calendar span.active.soft {
+    background: #fbbf24;
+    box-shadow: 0 0 12px rgba(251, 191, 36, 0.32);
+    animation-delay: -1.3s;
+}
+
+.repo-sports-tech-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+}
+
+.repo-sports-tech-row span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 8px;
+    border-radius: 999px;
+    background: rgba(151, 108, 92, 0.14);
+    border: 1px solid rgba(201, 151, 121, 0.22);
+    color: #fed7aa;
+    font-size: 0.54rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+[data-theme="light"] .repo-sports-tech-row span {
+    color: #7c2d12;
+    background: rgba(151, 108, 92, 0.10);
+    border-color: rgba(151, 108, 92, 0.16);
+}
+
+@keyframes sportsCardPulse {
+    0%, 100% {
+        transform: translateY(0);
+        border-color: rgba(255,255,255,0.12);
+    }
+    50% {
+        transform: translateY(-3px);
+        border-color: rgba(125,140,170,0.32);
+    }
+}
+
+@keyframes sportsCalendarBlink {
+    0%, 100% {
+        opacity: 0.72;
+        transform: scaleX(0.82);
+    }
+    50% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+@media (max-width: 1200px) {
+    .repo-sports-dashboard-preview {
+        min-height: 170px;
+    }
+}
+
+@media (max-width: 640px) {
+    .repo-sports-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .repo-sports-dashboard-preview {
+        min-height: 260px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .repo-sports-card,
+    .repo-sports-calendar span.active {
+        animation: none !important;
+    }
+}
+
+/* ========================================================================== 
+   NETSCANNER NETWORK DISCOVERY LAYER
+   Capa adicional sobre las olas: router, dispositivos encontrados, IP/MAC
+   y estado de escaneo ARP. Mantiene las olas y los iconos de tecnologías.
+   ========================================================================== */
+
+.repo-network-overlay {
+    position: absolute;
+    inset: 38px 14px 12px;
+    z-index: 9;
+    pointer-events: none;
+}
+
+.repo-network-overlay::before,
+.repo-network-overlay::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 35px;
+    width: 35%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(169, 181, 208, 0.42), transparent);
+    transform-origin: left center;
+    opacity: 0.75;
+    animation: repoNetworkLinePulse 2.8s ease-in-out infinite;
+}
+
+.repo-network-overlay::before {
+    transform: rotate(18deg);
+}
+
+.repo-network-overlay::after {
+    transform: rotate(-18deg);
+    animation-delay: -1.4s;
+}
+
+.repo-network-router {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 88px;
+    display: grid;
+    place-items: center;
+    gap: 3px;
+    padding: 8px 8px 7px;
+    border: 1px solid rgba(34, 211, 238, 0.30);
+    border-radius: 16px;
+    background: rgba(10, 15, 24, 0.58);
+    color: #dffaff;
+    box-shadow:
+        0 12px 24px rgba(0, 0, 0, 0.24),
+        0 0 18px rgba(34, 211, 238, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    animation: repoRouterPulse 3s ease-in-out infinite;
+}
+
+.repo-network-router i {
+    font-size: 0.95rem;
+    color: #22d3ee;
+}
+
+.repo-network-router span {
+    font-size: 0.52rem;
+    font-weight: 900;
+    letter-spacing: 0.03em;
+}
+
+.repo-network-device {
+    position: absolute;
+    width: 92px;
+    min-height: 54px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 6px;
+    row-gap: 1px;
+    align-items: center;
+    padding: 7px 8px;
+    border: 1px solid rgba(125, 140, 170, 0.24);
+    border-radius: 14px;
+    background: rgba(15, 23, 42, 0.56);
+    color: var(--text-main);
+    box-shadow:
+        0 10px 22px rgba(0, 0, 0, 0.20),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    animation: repoDeviceFound 6s ease-in-out infinite;
+}
+
+.repo-network-device i {
+    grid-row: span 3;
+    font-size: 0.95rem;
+    color: #a9b5d0;
+}
+
+.repo-network-device strong {
+    overflow: hidden;
+    font-size: 0.52rem;
+    font-weight: 900;
+    line-height: 1.05;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.repo-network-device span,
+.repo-network-device small {
+    overflow: hidden;
+    color: var(--text-muted);
+    font-size: 0.48rem;
+    font-weight: 800;
+    line-height: 1.05;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.repo-device-laptop {
+    left: 3%;
+    top: 46px;
+    animation-delay: 0s;
+}
+
+.repo-device-phone {
+    left: 50%;
+    top: 64px;
+    transform: translateX(-50%);
+    animation-delay: -2s;
+}
+
+.repo-device-printer {
+    right: 3%;
+    top: 46px;
+    animation-delay: -4s;
+}
+
+.repo-device-laptop i { color: #60a5fa; }
+.repo-device-phone i { color: #34d399; }
+.repo-device-printer i { color: #fbbf24; }
+
+.repo-scan-status {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    max-width: 94%;
+    padding: 5px 10px;
+    border: 1px solid rgba(34, 211, 238, 0.24);
+    border-radius: 999px;
+    background: rgba(10, 15, 24, 0.55);
+    color: #dffaff;
+    font-size: 0.56rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    backdrop-filter: blur(10px);
+}
+
+.repo-scan-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: #34d399;
+    box-shadow: 0 0 12px rgba(52, 211, 153, 0.65);
+    animation: repoScanDot 1.2s ease-in-out infinite;
+}
+
+/* Reposicionar un poco los iconos tech para que convivan con los nodos */
+.repo-tech-python { left: 14%; bottom: 12%; }
+.repo-tech-mongodb { left: 36%; bottom: 8%; }
+.repo-tech-django { left: 66%; bottom: 8%; }
+.repo-tech-scapy { left: 82%; bottom: 12%; }
+
+[data-theme="light"] .repo-network-router,
+[data-theme="light"] .repo-network-device,
+[data-theme="light"] .repo-scan-status {
+    background: rgba(255, 255, 255, 0.74);
+    border-color: rgba(110, 117, 142, 0.20);
+    color: #334155;
+    box-shadow:
+        0 10px 20px rgba(32, 37, 49, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.80);
+}
+
+@keyframes repoRouterPulse {
+    0%, 100% {
+        transform: translateX(-50%) scale(1);
+        box-shadow:
+            0 12px 24px rgba(0, 0, 0, 0.24),
+            0 0 18px rgba(34, 211, 238, 0.12),
+            inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.04);
+        box-shadow:
+            0 14px 26px rgba(0, 0, 0, 0.26),
+            0 0 26px rgba(34, 211, 238, 0.22),
+            inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    }
+}
+
+@keyframes repoDeviceFound {
+    0%, 12% {
+        opacity: 0;
+        transform: translateY(12px) scale(0.92);
+    }
+    24%, 72% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0.55;
+        transform: translateY(-4px) scale(0.98);
+    }
+}
+
+.repo-device-phone {
+    animation-name: repoDeviceFoundCenter;
+}
+
+@keyframes repoDeviceFoundCenter {
+    0%, 12% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(12px) scale(0.92);
+    }
+    24%, 72% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0.55;
+        transform: translateX(-50%) translateY(-4px) scale(0.98);
+    }
+}
+
+@keyframes repoNetworkLinePulse {
+    0%, 100% {
+        opacity: 0.28;
+    }
+    50% {
+        opacity: 0.84;
+    }
+}
+
+@keyframes repoScanDot {
+    0%, 100% {
+        opacity: 0.45;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 1200px) {
+    .repo-network-overlay {
+        inset: 40px 12px 12px;
+    }
+
+    .repo-network-device {
+        width: 86px;
+    }
+}
+
+@media (max-width: 640px) {
+    .repo-network-device small,
+    .repo-floating-tech::after {
+        display: none;
+    }
+
+    .repo-network-device {
+        width: 74px;
+        min-height: 46px;
+        padding: 6px;
+    }
+
+    .repo-network-device strong,
+    .repo-network-device span {
+        font-size: 0.45rem;
+    }
+
+    .repo-scan-status {
+        font-size: 0.48rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .repo-network-router,
+    .repo-network-device,
+    .repo-network-overlay::before,
+    .repo-network-overlay::after,
+    .repo-scan-dot {
+        animation: none !important;
+    }
+
+    .repo-network-device {
+        opacity: 1;
+    }
+}
+
+/* ==========================================================================
+   HERO UPGRADE
+   Presentación más compacta, foto integrada y skills realistas.
+   ========================================================================== */
+
+.hero-wrapper-upgraded {
+    grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.75fr) minmax(280px, 0.85fr);
+    gap: 1.6rem;
+}
+
+.hero-intro-box,
+.hero-skills-box,
+.hero-profile-box {
+    min-height: 100%;
+}
+
+.hero-intro-box {
+    justify-content: center;
+}
+
+.hero-kicker {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(125, 140, 170, 0.20);
+    border-radius: 100px;
+    background: rgba(110, 117, 142, 0.13);
+    color: var(--accent-blue);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+
+.hero-kicker::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--primary-green);
+    box-shadow: 0 0 12px rgba(125, 140, 170, 0.6);
+}
+
+.hero-description {
+    max-width: 62ch;
+    margin-bottom: 1.5rem !important;
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.65 !important;
+}
+
+.hero-actions,
+.hero-social-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+}
+
+.hero-social-row {
+    margin-top: 1.35rem;
+}
+
+.hero-mini-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.hero-stat {
+    padding: 0.85rem 0.65rem;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(125, 140, 170, 0.14), transparent 72%),
+        rgba(255, 255, 255, 0.035);
+    text-align: center;
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease,
+        background-color 0.22s ease;
+}
+
+[data-theme="light"] .hero-stat {
+    background:
+        radial-gradient(circle at 50% 0%, rgba(110, 117, 142, 0.10), transparent 72%),
+        rgba(255, 255, 255, 0.76);
+}
+
+.hero-stat:hover {
+    border-color: rgba(125, 140, 170, 0.42);
+    transform: translateY(-4px);
+    box-shadow: var(--inner-hover-shadow);
+}
+
+.hero-stat strong {
+    display: block;
+    color: var(--text-main);
+    font-size: 1rem;
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+.hero-stat span {
+    display: block;
+    margin-top: 0.25rem;
+    color: var(--text-muted);
+    font-size: 0.68rem;
+    font-weight: 700;
+}
+
+.hero-profile-box {
+    justify-content: space-between;
+    padding: 1rem !important;
+}
+
+.hero-profile-box::after {
+    content: "";
+    position: absolute;
+    inset: 18px;
+    z-index: 0;
+    border-radius: 26px;
+    background:
+        radial-gradient(circle at 50% 12%, rgba(169, 181, 208, 0.18), transparent 34%),
+        radial-gradient(circle at 82% 88%, rgba(201, 151, 121, 0.14), transparent 36%);
+    pointer-events: none;
+}
+
+.hero-profile-container {
+    position: relative;
+    z-index: 2;
+    aspect-ratio: 3 / 4;
+    min-height: 0;
+    height: auto;
+    max-height: 430px;
+}
+
+.hero-status-badge {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 5;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: calc(100% - 36px);
+    padding: 0.48rem 0.85rem;
+    border: 1px solid rgba(125, 140, 170, 0.28);
+    border-radius: 999px;
+    background: rgba(10, 15, 24, 0.58);
+    color: #e2e8f0;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+[data-theme="light"] .hero-status-badge {
+    background: rgba(255, 255, 255, 0.72);
+    color: #334155;
+    border-color: rgba(110, 117, 142, 0.20);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    flex: 0 0 auto;
+    border-radius: 999px;
+    background: #34d399;
+    box-shadow: 0 0 0 5px rgba(52, 211, 153, 0.12), 0 0 16px rgba(52, 211, 153, 0.45);
+    animation: heroStatusPulse 2.2s ease-in-out infinite;
+}
+
+.hero-photo-caption {
+    position: relative;
+    z-index: 2;
+    margin-top: 0.85rem;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+[data-theme="light"] .hero-photo-caption {
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.hero-skills-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+    font-size: 0.82rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.hero-skills-heading i {
+    color: var(--primary-green);
+}
+
+.hero-skills-box .skills-buttons-grid {
+    gap: 0.65rem;
+}
+
+.hero-skills-box .skill-pill {
+    justify-content: flex-start;
+    padding: 0.82rem 0.95rem;
+    font-size: 0.82rem;
+}
+
+.hero-skills-box .skill-pill i {
+    width: 20px;
+    text-align: center;
+}
+
+@keyframes heroStatusPulse {
+    0%, 100% {
+        transform: scale(0.92);
+        opacity: 0.78;
+    }
+    50% {
+        transform: scale(1.12);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1400px) {
+    .hero-wrapper-upgraded {
+        grid-template-columns: 1.15fr 0.85fr;
+    }
+
+    .hero-skills-box {
+        grid-column: 1 / -1;
+    }
+
+    .hero-skills-box .skills-buttons-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-wrapper-upgraded {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-skills-box {
+        grid-column: auto;
+    }
+
+    .hero-mini-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero-skills-box .skills-buttons-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero-profile-container {
+        max-height: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-actions,
+    .hero-social-row {
+        flex-direction: column;
+    }
+
+    .hero-actions > *,
+    .hero-social-row > * {
+        width: 100%;
+    }
+
+    .hero-mini-stats,
+    .hero-skills-box .skills-buttons-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-status-badge {
+        left: 18px;
+        right: auto;
+    }
+}
+
+/* ========================================================================== 
+   HERO FINAL POLISH
+   Limpia solapes, elimina duplicación visual y reparte mejor la información.
+   ========================================================================== */
+
+.hero-wrapper-upgraded {
+    grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.75fr) minmax(300px, 0.85fr);
+    align-items: stretch;
+}
+
+.hero-intro-box {
+    justify-content: center;
+}
+
+.hero-profile-box {
+    justify-content: center;
+    gap: 0.9rem;
+}
+
+.hero-profile-box::after {
+    opacity: 0.7;
+}
+
+.hero-status-badge {
+    display: none !important;
+}
+
+.hero-profile-container {
+    width: 100%;
+    max-height: 430px;
+    margin-inline: auto;
+}
+
+.hero-profile-img {
+    object-position: center 18%;
+}
+
+.hero-photo-caption {
+    margin-top: 0;
+    padding: 0.65rem 0.9rem;
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--text-muted);
+    font-size: 0.76rem;
+    letter-spacing: 0.02em;
+}
+
+.hero-mini-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.hero-stat {
+    min-height: 58px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-stat strong {
+    font-size: 0.98rem;
+}
+
+.hero-stat span {
+    font-size: 0.68rem;
+}
+
+.hero-skills-heading {
+    margin-bottom: 1.1rem;
+}
+
+.hero-skills-box .skill-pill {
+    min-height: 42px;
+}
+
+@media (max-width: 1400px) {
+    .hero-wrapper-upgraded {
+        grid-template-columns: 1fr 0.8fr;
+    }
+
+    .hero-skills-box {
+        grid-column: 1 / -1;
+    }
+
+    .hero-skills-box .skills-buttons-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-wrapper-upgraded {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-skills-box .skills-buttons-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-mini-stats,
+    .hero-skills-box .skills-buttons-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-photo-caption {
+        font-size: 0.7rem;
+    }
+}
+
+
+/* ==========================================================================
+   ABOUT ROADMAP + TECHNOLOGIES
+   ========================================================================== */
+
+.about-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.about-card {
+    gap: 1rem;
+}
+
+.section-kicker {
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.42rem 0.85rem;
+    border: 1px solid rgba(125, 140, 170, 0.22);
+    border-radius: 999px;
+    background: rgba(125, 140, 170, 0.12);
+    color: var(--accent-blue);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.about-card h3,
+.roadmap-card h3,
+.tech-card h3 {
+    color: var(--text-main);
+}
+
+.about-card p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.focus-grid,
+.tech-chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.focus-pill,
+.tech-chip-list span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid rgba(125, 140, 170, 0.18);
+    border-radius: 999px;
+    background: rgba(125, 140, 170, 0.10);
+    color: var(--text-main);
+    font-size: 0.84rem;
+    font-weight: 700;
+}
+
+.focus-pill i {
+    color: var(--accent-blue);
+}
+
+.roadmap-card {
+    gap: 1.5rem;
+}
+
+.roadmap-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.roadmap-header p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.roadmap-months,
+.roadmap-track {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+}
+
+.roadmap-months {
+    margin-left: 170px;
+    padding: 0 0.6rem;
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.roadmap-grid {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    gap: 0.85rem 1.25rem;
+    align-items: center;
+}
+
+.roadmap-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-main);
+    font-size: 0.86rem;
+    font-weight: 800;
+}
+
+.roadmap-label i {
+    width: 18px;
+    color: var(--accent-blue);
+    text-align: center;
+}
+
+.roadmap-track {
+    min-height: 42px;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid rgba(125, 140, 170, 0.14);
+    border-radius: 16px;
+    background:
+        linear-gradient(90deg, rgba(125,140,170,0.10) 1px, transparent 1px),
+        rgba(0, 0, 0, 0.12);
+    background-size: 10% 100%;
+}
+
+[data-theme="light"] .roadmap-track {
+    background:
+        linear-gradient(90deg, rgba(110,117,142,0.11) 1px, transparent 1px),
+        rgba(125, 140, 170, 0.06);
+}
+
+.roadmap-track-stacked {
+    min-height: 105px;
+    grid-template-rows: repeat(2, 1fr);
+    row-gap: 18px;
+}
+
+.roadmap-bar {
+    grid-column: var(--start) / span var(--span);
+    min-width: 0;
+    height: 26px;
+    margin-inline: 4px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.75rem;
+    border-radius: 999px;
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 900;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.20),
+        0 10px 20px rgba(0, 0, 0, 0.18);
+}
+
+.roadmap-track-stacked .roadmap-bar:first-child {
+    grid-row: 1;
+}
+
+.roadmap-track-stacked .roadmap-bar:last-child {
+    grid-row: 2;
+}
+
+.bar-education {
+    background: linear-gradient(135deg, #6e758e, #a9b5d0);
+}
+
+.bar-tech {
+    background: linear-gradient(135deg, #7d8caa, #8ea3c5);
+}
+
+.bar-web {
+    background: linear-gradient(135deg, #6b8ea8, #8bb8d8);
+}
+
+.bar-db {
+    background: linear-gradient(135deg, #64748b, #94a3b8);
+}
+
+.bar-project {
+    background: linear-gradient(135deg, #976c5c, #c99779);
+}
+
+.bar-project.alt {
+    background: linear-gradient(135deg, #0e7490, #22d3ee);
+}
+
+.bar-practice {
+    background: linear-gradient(135deg, #0e7490, #22d3ee);
+}
+
+.bar-future {
+    border: 1px dashed rgba(255, 255, 255, 0.42);
+    background: linear-gradient(135deg, rgba(151, 108, 92, 0.46), rgba(201, 151, 121, 0.32));
+    color: #f8fafc;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.tech-card {
+    justify-content: flex-start;
+    gap: 1.25rem;
+}
+
+.tech-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.tech-card-header i {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background: rgba(125, 140, 170, 0.14);
+    color: var(--accent-blue);
+}
+
+.tech-chip-list span {
+    font-size: 0.78rem;
+}
+
+@media (max-width: 1400px) {
+    .tech-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 992px) {
+    .about-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .roadmap-months {
+        margin-left: 0;
+    }
+
+    .roadmap-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .roadmap-label {
+        margin-top: 0.4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .tech-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .roadmap-card {
+        overflow-x: auto !important;
+    }
+
+    .roadmap-months,
+    .roadmap-grid {
+        min-width: 760px;
+    }
+}

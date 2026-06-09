@@ -2860,6 +2860,12 @@ aside > div:nth-child(2) {
     row-gap: 18px;
 }
 
+.roadmap-track-projects {
+    min-height: 190px;
+    grid-template-rows: repeat(4, 1fr);
+    row-gap: 16px;
+}
+
 .roadmap-bar {
     grid-column: var(--start) / span var(--span);
     min-width: 0;
@@ -2884,12 +2890,20 @@ aside > div:nth-child(2) {
         0 10px 20px rgba(0, 0, 0, 0.18);
 }
 
-.roadmap-track-stacked .roadmap-bar:first-child {
+.roadmap-track-stacked .roadmap-bar:nth-child(1) {
     grid-row: 1;
 }
 
-.roadmap-track-stacked .roadmap-bar:last-child {
+.roadmap-track-stacked .roadmap-bar:nth-child(2) {
     grid-row: 2;
+}
+
+.roadmap-track-projects .roadmap-bar:nth-child(3) {
+    grid-row: 3;
+}
+
+.roadmap-track-projects .roadmap-bar:nth-child(4) {
+    grid-row: 4;
 }
 
 .bar-education {
@@ -2924,6 +2938,11 @@ aside > div:nth-child(2) {
     border: 1px dashed rgba(255, 255, 255, 0.42);
     background: linear-gradient(135deg, rgba(151, 108, 92, 0.46), rgba(201, 151, 121, 0.32));
     color: #f8fafc;
+}
+
+.bar-future.future-2 {
+    border-color: rgba(169, 181, 208, 0.42);
+    background: linear-gradient(135deg, rgba(110, 117, 142, 0.38), rgba(169, 181, 208, 0.24));
 }
 
 .tech-grid {
