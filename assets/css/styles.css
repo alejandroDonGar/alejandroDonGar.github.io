@@ -2837,9 +2837,9 @@ aside > div:nth-child(2) {
 }
 
 .roadmap-track {
-    min-height: 38px;
+    min-height: 42px;
     align-items: center;
-    padding: 6px;
+    padding: 8px;
     border: 1px solid rgba(125, 140, 170, 0.14);
     border-radius: 16px;
     background:
@@ -2855,15 +2855,16 @@ aside > div:nth-child(2) {
 }
 
 .roadmap-track-stacked {
-    min-height: 72px;
+    min-height: 82px;
     grid-template-rows: repeat(2, 1fr);
-    row-gap: 6px;
+    row-gap: 10px;
 }
 
 .roadmap-bar {
     grid-column: var(--start) / span var(--span);
     min-width: 0;
     height: 26px;
+    margin-inline: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
