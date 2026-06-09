@@ -1510,7 +1510,12 @@ aside > div:nth-child(2) {
    ========================================================================== */
 
 .repo-card-featured-net {
-    grid-template-columns: minmax(280px, 1fr) minmax(280px, 0.9fr) minmax(320px, 0.95fr) !important;
+    grid-template-columns:
+        minmax(300px, 1fr)
+        minmax(480px, 1.15fr)
+        minmax(240px, 0.65fr) !important;
+
+    gap: 2rem;
     align-items: stretch !important;
 }
 
@@ -1552,7 +1557,9 @@ aside > div:nth-child(2) {
 
 @media (max-width: 1450px) {
     .repo-card-featured-net {
-        grid-template-columns: 1fr 0.9fr !important;
+        grid-template-columns:
+            minmax(280px, 1fr)
+            minmax(420px, 1fr) !important;
     }
 
     .repo-card-featured-net .repo-wave-column {
