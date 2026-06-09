@@ -27,8 +27,9 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         <p style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; padding-left: 0.75rem;">Navegación</p>
         <a href="#home" class="sidebar-link active" id="nav-home"><i class="fa-solid fa-house"></i> <span>Inicio</span></a>
         <a href="#about" class="sidebar-link" id="nav-about"><i class="fa-solid fa-user"></i> <span>Sobre mí</span></a>
-        <a href="#english" class="sidebar-link" id="nav-english"><i class="fa-solid fa-language"></i> <span>Inglés</span></a>
+        <a href="#tech" class="sidebar-link" id="nav-tech"><i class="fa-solid fa-layer-group"></i> <span>Tecnologías</span></a>
         <a href="#projects" class="sidebar-link" id="nav-projects"><i class="fa-solid fa-laptop-code"></i> <span>Proyectos</span></a>
+        <a href="#english" class="sidebar-link" id="nav-english"><i class="fa-solid fa-language"></i> <span>Inglés</span></a>
         
         <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
             <a href="{{ '/assets/pdf/cv.pdf' | relative_url }}" class="sidebar-link" target="_blank">
@@ -140,14 +141,178 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         </div>
     </section>
 
-    <!-- About Section (Asegurar que el ID existe) -->
+    <!-- About Section -->
     <section id="about">
-        <h2 data-t="about_title" style="margin-bottom: 3rem;"><i class="fa-solid fa-user" style="color: #22c55e; margin-right: 15px;"></i> <span style="color: #22c55e;">Sobre</span> mí</h2>
-        <div class="glass-card">
-            <h3 data-t="goal_title">Mi Objetivo</h3>
-            <p data-t="goal_desc" style="color: var(--text-muted); font-size: 1.1rem;">
-                Como estudiante de Desarrollo de Aplicaciones Multiplataforma, mi objetivo es seguir aprendiendo con proyectos prácticos y construir una base sólida en programación, bases de datos y desarrollo web.
-            </p>
+        <h2 data-t="about_title" class="section-title">
+            <i class="fa-solid fa-user"></i>
+            <span>Sobre mí</span>
+        </h2>
+
+        <div class="about-layout">
+            <article class="glass-card about-card" data-aos="fade-up">
+                <span class="section-kicker">Perfil</span>
+                <h3 data-t="about_card_title">Desarrollo, aprendizaje y proyectos reales</h3>
+                <p data-t="about_card_desc">
+                    Soy estudiante de Desarrollo de Aplicaciones Multiplataforma (DAM), con interés en el desarrollo backend, las bases de datos y la creación de aplicaciones web útiles. Me gusta aprender construyendo proyectos prácticos, documentarlos y convertir cada asignatura en una oportunidad para mejorar mi forma de programar.
+                </p>
+            </article>
+
+            <article class="glass-card about-card" data-aos="fade-up" data-aos-delay="100">
+                <span class="section-kicker">Enfoque actual</span>
+                <h3>Qué estoy reforzando</h3>
+                <div class="focus-grid">
+                    <div class="focus-pill"><i class="fa-brands fa-java"></i> Java y POO</div>
+                    <div class="focus-pill"><i class="fa-solid fa-database"></i> Bases de datos</div>
+                    <div class="focus-pill"><i class="fa-brands fa-python"></i> Python aplicado</div>
+                    <div class="focus-pill"><i class="fa-solid fa-code"></i> Web y APIs</div>
+                </div>
+            </article>
+        </div>
+
+        <div class="glass-card roadmap-card" data-aos="fade-up" data-aos-delay="160">
+            <div class="roadmap-header">
+                <div>
+                    <span class="section-kicker">Timeline</span>
+                    <h3>Mi evolución durante 1º DAM</h3>
+                </div>
+                <p>Septiembre 2025 · Junio 2026</p>
+            </div>
+
+            <div class="roadmap-months" aria-hidden="true">
+                <span>Sep</span><span>Oct</span><span>Nov</span><span>Dic</span><span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span><span>May</span><span>Jun</span>
+            </div>
+
+            <div class="roadmap-grid">
+                <div class="roadmap-label"><i class="fa-solid fa-graduation-cap"></i> DAM 1º</div>
+                <div class="roadmap-track">
+                    <span class="roadmap-bar bar-education" style="--start: 1; --span: 10;">DAM 1º · Sep-Jun</span>
+                </div>
+
+                <div class="roadmap-label"><i class="fa-brands fa-java"></i> Java</div>
+                <div class="roadmap-track">
+                    <span class="roadmap-bar bar-tech" style="--start: 1; --span: 2;">Básico</span>
+                    <span class="roadmap-bar bar-tech" style="--start: 2; --span: 2;">Arrays</span>
+                    <span class="roadmap-bar bar-tech" style="--start: 4; --span: 2;">Listas</span>
+                    <span class="roadmap-bar bar-tech" style="--start: 6; --span: 2;">CSV/JSON</span>
+                    <span class="roadmap-bar bar-tech" style="--start: 7; --span: 2;">SQLite</span>
+                    <span class="roadmap-bar bar-tech" style="--start: 9; --span: 1;">JavaFX</span>
+                </div>
+
+                <div class="roadmap-label"><i class="fa-solid fa-globe"></i> Web / XML</div>
+                <div class="roadmap-track">
+                    <span class="roadmap-bar bar-web" style="--start: 1; --span: 4;">HTML · CSS · JS</span>
+                    <span class="roadmap-bar bar-web" style="--start: 5; --span: 3;">XML · XSL</span>
+                    <span class="roadmap-bar bar-web" style="--start: 8; --span: 1;">XPath</span>
+                    <span class="roadmap-bar bar-web" style="--start: 9; --span: 1;">BaseX</span>
+                </div>
+
+                <div class="roadmap-label"><i class="fa-solid fa-database"></i> BBDD</div>
+                <div class="roadmap-track">
+                    <span class="roadmap-bar bar-db" style="--start: 1; --span: 5;">PostgreSQL · Docker · E/R</span>
+                    <span class="roadmap-bar bar-db" style="--start: 6; --span: 4;">Apache Cassandra</span>
+                </div>
+
+                <div class="roadmap-label"><i class="fa-solid fa-folder-open"></i> Portfolio</div>
+                <div class="roadmap-track">
+                    <span class="roadmap-bar bar-project" style="--start: 5; --span: 6;">Portfolio personal · activo</span>
+                </div>
+
+                <div class="roadmap-label"><i class="fa-solid fa-diagram-project"></i> Proyectos</div>
+                <div class="roadmap-track roadmap-track-stacked">
+                    <span class="roadmap-bar bar-project" style="--start: 9; --span: 2;">CentroPlus</span>
+                    <span class="roadmap-bar bar-project alt" style="--start: 9; --span: 2;">NetScanner</span>
+                </div>
+
+                <div class="roadmap-label"><i class="fa-solid fa-bullseye"></i> Próximo paso</div>
+                <div class="roadmap-track">
+                    <span class="roadmap-bar bar-future" style="--start: 10; --span: 1;">Prácticas / nuevo proyecto</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section id="tech">
+        <h2 class="section-title">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Tecnologías</span>
+        </h2>
+
+        <div class="tech-grid">
+            <article class="tech-card glass-card" data-aos="fade-up">
+                <div class="tech-card-header">
+                    <i class="fa-solid fa-server"></i>
+                    <h3>Backend</h3>
+                </div>
+                <div class="tech-chip-list">
+                    <span>Java</span>
+                    <span>Spring</span>
+                    <span>Python</span>
+                    <span>APIs REST</span>
+                </div>
+            </article>
+
+            <article class="tech-card glass-card" data-aos="fade-up" data-aos-delay="80">
+                <div class="tech-card-header">
+                    <i class="fa-solid fa-window-maximize"></i>
+                    <h3>Frontend / Interfaces</h3>
+                </div>
+                <div class="tech-chip-list">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                    <span>JavaFX</span>
+                </div>
+            </article>
+
+            <article class="tech-card glass-card" data-aos="fade-up" data-aos-delay="160">
+                <div class="tech-card-header">
+                    <i class="fa-solid fa-database"></i>
+                    <h3>Bases de datos</h3>
+                </div>
+                <div class="tech-chip-list">
+                    <span>PostgreSQL</span>
+                    <span>SQLite</span>
+                    <span>MongoDB</span>
+                    <span>Cassandra</span>
+                    <span>BaseX</span>
+                </div>
+            </article>
+
+            <article class="tech-card glass-card" data-aos="fade-up" data-aos-delay="240">
+                <div class="tech-card-header">
+                    <i class="fa-solid fa-toolbox"></i>
+                    <h3>Herramientas</h3>
+                </div>
+                <div class="tech-chip-list">
+                    <span>Git</span>
+                    <span>GitHub</span>
+                    <span>Docker</span>
+                    <span>Swagger</span>
+                    <span>JUnit</span>
+                    <span>Mockito</span>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Repositories -->
+    <section id="projects">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
+            <h2 data-t="projects_title"><i class="fa-solid fa-folder-tree" style="color: #22c55e; margin-right: 15px;"></i> Proyectos GitHub</h2>
+        </div>
+        
+        <div class="glass-card" style="padding: 3rem; background: rgba(0,0,0,0.2);">
+            <div id="repos-container" style="display: flex; flex-direction: column; gap: 2rem;">
+                <!-- Fichas detalladas -->
+            </div>
+
+            <!-- Pagination Controls -->
+            <div class="pagination-controls">
+                <button id="prev-page" class="page-btn" disabled><i class="fa-solid fa-chevron-left"></i></button>
+                <span id="page-info">Página 1</span>
+                <button id="next-page" class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
         </div>
     </section>
 
@@ -242,25 +407,6 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         </div>
     </section>
 
-    <!-- Repositories -->
-    <section id="projects">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
-            <h2 data-t="projects_title"><i class="fa-solid fa-folder-tree" style="color: #22c55e; margin-right: 15px;"></i> Proyectos GitHub</h2>
-        </div>
-        
-        <div class="glass-card" style="padding: 3rem; background: rgba(0,0,0,0.2);">
-            <div id="repos-container" style="display: flex; flex-direction: column; gap: 2rem;">
-                <!-- Fichas detalladas -->
-            </div>
-
-            <!-- Pagination Controls -->
-            <div class="pagination-controls">
-                <button id="prev-page" class="page-btn" disabled><i class="fa-solid fa-chevron-left"></i></button>
-                <span id="page-info">Página 1</span>
-                <button id="next-page" class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
-        </div>
-    </section>
 </main>
 
 
@@ -282,13 +428,16 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
             about_title: "Sobre mí",
             goal_title: "Mi Objetivo",
             goal_desc: "Como estudiante de Desarrollo de Aplicaciones Multiplataforma, mi objetivo es seguir aprendiendo con proyectos prácticos y construir una base sólida en programación, bases de datos y desarrollo web.",
+            about_card_title: "Desarrollo, aprendizaje y proyectos reales",
+            about_card_desc: "Soy estudiante de Desarrollo de Aplicaciones Multiplataforma (DAM), con interés en el desarrollo backend, las bases de datos y la creación de aplicaciones web útiles. Me gusta aprender construyendo proyectos prácticos, documentarlos y convertir cada asignatura en una oportunidad para mejorar mi forma de programar.",
             lang_section: "Dominio del Inglés",
             projects_title: "Proyectos GitHub",
             stat_updated: "Actualizado",
             nav_home: "Inicio",
             nav_about: "Sobre mí",
-            nav_english: "Inglés",
-            nav_projects: "Proyectos"
+            nav_tech: "Tecnologías",
+            nav_projects: "Proyectos",
+            nav_english: "Inglés"
         },
         en: {
             role_junior: "1st YEAR DAM STUDENT",
@@ -299,13 +448,16 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
             about_title: "About Me",
             goal_title: "My Goal",
             goal_desc: "As a Multiplatform Application Development student, my goal is to keep learning through practical projects and build a solid foundation in programming, databases and web development.",
+            about_card_title: "Development, learning and real projects",
+            about_card_desc: "I am a Multiplatform Application Development student interested in backend development, databases and useful web applications. I enjoy learning by building practical projects, documenting them and turning each subject into an opportunity to improve the way I code.",
             lang_section: "English Proficiency",
             projects_title: "GitHub Projects",
             stat_updated: "Updated",
             nav_home: "Home",
             nav_about: "About Me",
-            nav_english: "English",
-            nav_projects: "Projects"
+            nav_tech: "Technologies",
+            nav_projects: "Projects",
+            nav_english: "English"
         },
         de: {
             role_junior: "DAM-STUDENT IM 1. JAHR",
@@ -316,13 +468,16 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
             about_title: "Über mich",
             goal_title: "Mein Ziel",
             goal_desc: "Als Student der plattformübergreifenden Anwendungsentwicklung möchte ich durch praktische Projekte weiterlernen und eine solide Grundlage in Programmierung, Datenbanken und Webentwicklung aufbauen.",
+            about_card_title: "Entwicklung, Lernen und echte Projekte",
+            about_card_desc: "Ich bin Student der plattformübergreifenden Anwendungsentwicklung mit Interesse an Backend-Entwicklung, Datenbanken und nützlichen Webanwendungen. Ich lerne gerne durch praktische Projekte und nutze jedes Fach, um meine Programmierweise zu verbessern.",
             lang_section: "Englischkenntnisse",
             projects_title: "GitHub-Projekte",
             stat_updated: "Aktualisiert",
             nav_home: "Startseite",
             nav_about: "Über mich",
-            nav_english: "Englisch",
-            nav_projects: "Projekte"
+            nav_tech: "Technologien",
+            nav_projects: "Projekte",
+            nav_english: "Englisch"
         },
         is: {
             role_junior: "1. ÁRS DAM NEMANDI",
@@ -333,13 +488,16 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
             about_title: "Um mig",
             goal_title: "Markmið mitt",
             goal_desc: "Sem nemandi í þróun fjölvettvangsforrita er markmið mitt að halda áfram að læra með hagnýtum verkefnum og byggja góðan grunn í forritun, gagnagrunnum og vefþróun.",
+            about_card_title: "Þróun, nám og raunveruleg verkefni",
+            about_card_desc: "Ég er nemandi í þróun fjölvettvangsforrita með áhuga á bakendaforritun, gagnagrunnum og nytsamlegum vefforritum. Mér finnst best að læra með hagnýtum verkefnum og nýta hvert fag til að bæta forritunina mína.",
             lang_section: "Enskukunnátta",
             projects_title: "GitHub verkefni",
             stat_updated: "Uppfært",
             nav_home: "Heim",
             nav_about: "Um mig",
-            nav_english: "Enska",
-            nav_projects: "Verkefni"
+            nav_tech: "Tækni",
+            nav_projects: "Verkefni",
+            nav_english: "Enska"
         }
     };
 
