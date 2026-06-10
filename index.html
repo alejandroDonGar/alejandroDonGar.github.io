@@ -713,22 +713,62 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
 
     function createEtsDamPreview() {
         return `
-            <div class="repo-ets-preview" aria-label="Preview visual del temario de Entornos de Desarrollo">
-                <div class="repo-ets-label">
-                    <i class="fa-solid fa-diagram-project"></i>
-                    Entornos de desarrollo
+            <div class="repo-ets-terminal-preview" aria-label="Preview visual de Entornos de Desarrollo: terminal y workflow">
+                <div class="repo-ets-terminal-header">
+                    <div class="repo-ets-window-dots" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <span><i class="fa-solid fa-terminal"></i> etsdam_alejandro</span>
+                    <small>dev workflow</small>
                 </div>
 
-                <div class="repo-ets-board">
-                    <div class="repo-ets-card workflow"><span>Workflow</span><strong>Flujo de trabajo</strong></div>
-                    <div class="repo-ets-card restricted"><span>FEOE</span><strong>Organización</strong><small>Restringido</small></div>
-                    <div class="repo-ets-card"><span>UT1</span><strong>Documentación y Git</strong></div>
-                    <div class="repo-ets-card"><span>UT2</span><strong>Desarrollo software</strong></div>
-                    <div class="repo-ets-card"><span>UT3</span><strong>Entornos IDE</strong></div>
-                    <div class="repo-ets-card"><span>UT4</span><strong>Diagramas de clases</strong></div>
-                    <div class="repo-ets-card"><span>UT5</span><strong>Comportamiento</strong></div>
-                    <div class="repo-ets-card"><span>UT6</span><strong>Pruebas</strong></div>
-                    <div class="repo-ets-card urgent"><span>UT7</span><strong>Optimización</strong></div>
+                <div class="repo-ets-terminal-body">
+                    <div class="repo-ets-terminal-lines">
+                        <p><span class="repo-ets-prompt">alejandro@etsdam</span>:~$ git status</p>
+                        <p><i class="fa-solid fa-check"></i> rama main sincronizada</p>
+                        <p><span class="repo-ets-prompt">alejandro@etsdam</span>:~$ mvn test</p>
+                        <p><i class="fa-solid fa-check"></i> build success · tests passed</p>
+                        <p><span class="repo-ets-prompt">alejandro@etsdam</span>:~$ git push origin main<span class="repo-ets-cursor">_</span></p>
+                    </div>
+
+                    <div class="repo-ets-flow" aria-hidden="true">
+                        <span class="repo-ets-flow-line"></span>
+                        <span class="repo-ets-flow-pulse"></span>
+
+                        <div class="repo-ets-flow-node node-docs">
+                            <i class="fa-solid fa-file-lines"></i>
+                            <small>Docs</small>
+                        </div>
+                        <div class="repo-ets-flow-node node-git">
+                            <i class="fa-brands fa-git-alt"></i>
+                            <small>Git</small>
+                        </div>
+                        <div class="repo-ets-flow-node node-ide">
+                            <i class="fa-solid fa-code"></i>
+                            <small>IDE</small>
+                        </div>
+                        <div class="repo-ets-flow-node node-debug">
+                            <i class="fa-solid fa-bug"></i>
+                            <small>Debug</small>
+                        </div>
+                        <div class="repo-ets-flow-node node-test">
+                            <i class="fa-solid fa-vial"></i>
+                            <small>Tests</small>
+                        </div>
+                        <div class="repo-ets-flow-node node-opt">
+                            <i class="fa-solid fa-bolt"></i>
+                            <small>Opt</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="repo-ets-tags">
+                    <span>Git</span>
+                    <span>GitHub</span>
+                    <span>Maven</span>
+                    <span>JUnit</span>
+                    <span>UML</span>
+                    <span>Optimización</span>
                 </div>
             </div>
         `;
