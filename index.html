@@ -413,7 +413,7 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
     let allRepos = [];
     let currentPage = 1;
     let currentLang = 'es'; // Definir idioma actual globalmente
-    const reposPerPage = 3;
+    const reposPerPage = 4;
 
     const translations = {
         es: {
@@ -555,7 +555,9 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                 // Filtrar el repo del portfolio y forks
                 const FEATURED_REPOS = {
                     'Escaner-de-Red-NetScanner': 1,
-                    'centroplus-connect': 2
+                    'centroplus-connect': 2,
+                    'alejandroDonGar': 3,
+                    'etsdam_alejandro': 4
                 };
 
                 const filteredRepos = data.filter(repo => {
@@ -656,6 +658,80 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
             (topics.includes('spring') && topics.includes('javafx')) ||
             (topics.includes('swagger') && topics.includes('junit'))
         );
+    }
+
+
+    function isGitHubProfileRepo(repo) {
+        const normalizedName = repo.name.toLowerCase();
+        return normalizedName === 'alejandrodongar';
+    }
+
+    function isEtsDamRepo(repo) {
+        const normalizedName = repo.name.toLowerCase();
+        return normalizedName === 'etsdam_alejandro' || normalizedName.includes('etsdam');
+    }
+
+    function createGitHubProfilePreview() {
+        return `
+            <div class="repo-profile-readme-preview" aria-label="Preview visual del README principal de GitHub">
+                <div class="repo-profile-topbar">
+                    <span>alejandroDonGar / README.md</span>
+                    <i class="fa-solid fa-pen"></i>
+                </div>
+
+                <div class="repo-profile-readme-body">
+                    <div class="repo-profile-avatar-wrap">
+                        <div class="repo-profile-avatar">
+                            <i class="fa-solid fa-user-astronaut"></i>
+                        </div>
+                        <span class="repo-profile-status-dot"></span>
+                    </div>
+
+                    <div class="repo-profile-content">
+                        <h4>Hola, soy Alejandro Donate García 👋</h4>
+                        <p>Estudiante DAM · Java · SQL · Web</p>
+
+                        <div class="repo-profile-lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div class="repo-profile-techs">
+                            <span><i class="fa-brands fa-java"></i></span>
+                            <span><i class="fa-solid fa-database"></i></span>
+                            <span><i class="fa-brands fa-html5"></i></span>
+                            <span><i class="fa-brands fa-css3-alt"></i></span>
+                            <span><i class="fa-brands fa-js"></i></span>
+                            <span><i class="fa-brands fa-github"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function createEtsDamPreview() {
+        return `
+            <div class="repo-ets-preview" aria-label="Preview visual del temario de Entornos de Desarrollo">
+                <div class="repo-ets-label">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    Entornos de desarrollo
+                </div>
+
+                <div class="repo-ets-board">
+                    <div class="repo-ets-card workflow"><span>Workflow</span><strong>Flujo de trabajo</strong></div>
+                    <div class="repo-ets-card restricted"><span>FEOE</span><strong>Organización</strong><small>Restringido</small></div>
+                    <div class="repo-ets-card"><span>UT1</span><strong>Documentación y Git</strong></div>
+                    <div class="repo-ets-card"><span>UT2</span><strong>Desarrollo software</strong></div>
+                    <div class="repo-ets-card"><span>UT3</span><strong>Entornos IDE</strong></div>
+                    <div class="repo-ets-card"><span>UT4</span><strong>Diagramas de clases</strong></div>
+                    <div class="repo-ets-card"><span>UT5</span><strong>Comportamiento</strong></div>
+                    <div class="repo-ets-card"><span>UT6</span><strong>Pruebas</strong></div>
+                    <div class="repo-ets-card urgent"><span>UT7</span><strong>Optimización</strong></div>
+                </div>
+            </div>
+        `;
     }
 
     function createNetScannerWavePreview() {
@@ -803,8 +879,11 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
             const card = document.createElement('div');
             const netScanner = isNetScannerRepo(repo);
             const centroPlus = isCentroPlusRepo(repo);
+            const githubProfile = isGitHubProfileRepo(repo);
+            const etsDam = isEtsDamRepo(repo);
+            const hasCustomPreview = netScanner || centroPlus || githubProfile || etsDam;
 
-            card.className = (netScanner || centroPlus) ? 'repo-card repo-card-featured-net' : 'repo-card';
+            card.className = hasCustomPreview ? 'repo-card repo-card-featured-net' : 'repo-card';
             card.setAttribute('data-aos', 'fade-up');
 
             const updatedText = currentLang === 'es' ? 'Actualizado' : (currentLang === 'en' ? 'Updated' : (currentLang === 'de' ? 'Aktualisiert' : 'Uppfært'));
@@ -830,6 +909,8 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
 
                 ${netScanner ? `<div class="repo-wave-column">${createNetScannerWavePreview()}</div>` : ''}
                 ${centroPlus ? `<div class="repo-wave-column">${createCentroPlusApiPreview()}</div>` : ''}
+                ${githubProfile ? `<div class="repo-wave-column">${createGitHubProfilePreview()}</div>` : ''}
+                ${etsDam ? `<div class="repo-wave-column">${createEtsDamPreview()}</div>` : ''}
 
                 <div class="repo-stats-panel" style="background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 20px;">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
