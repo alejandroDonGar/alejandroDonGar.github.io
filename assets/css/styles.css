@@ -4241,3 +4241,98 @@ aside > div:nth-child(2) {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* ========================================================================== 
+   FIX FINAL: ALTURA UNIFICADA EN PREVIEWS DE REPOS
+   Hace que alejandroDonGar y etsdam_alejandro tengan el mismo alto visual
+   que su panel de estadísticas, igual que NetScanner y CentroPlus.
+   ========================================================================== */
+
+.repo-card-featured-net {
+    align-items: stretch !important;
+}
+
+.repo-card-featured-net .repo-info,
+.repo-card-featured-net .repo-wave-column,
+.repo-card-featured-net .repo-stats-panel {
+    height: 100% !important;
+    min-height: 0 !important;
+}
+
+.repo-card-featured-net .repo-wave-column {
+    display: flex !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+}
+
+.repo-card-featured-net .repo-stats-panel {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+}
+
+.repo-card-featured-net .repo-wave-preview,
+.repo-card-featured-net .repo-sports-preview,
+.repo-card-featured-net .repo-profile-readme-preview,
+.repo-card-featured-net .repo-profile-overview-preview,
+.repo-card-featured-net .repo-profile-compact-preview,
+.repo-card-featured-net .repo-ets-terminal-preview {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    margin: 0 !important;
+}
+
+.repo-profile-compact-preview,
+.repo-ets-terminal-preview {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.repo-profile-compact-preview .repo-profile-topbar,
+.repo-ets-terminal-header {
+    flex: 0 0 auto !important;
+}
+
+.repo-profile-compact-body {
+    flex: 1 1 auto !important;
+    align-content: center !important;
+}
+
+.repo-ets-terminal-body {
+    flex: 1 1 auto !important;
+    align-items: center !important;
+}
+
+.repo-ets-tags {
+    flex: 0 0 auto !important;
+}
+
+@media (max-width: 1450px) {
+    .repo-card-featured-net .repo-wave-column,
+    .repo-card-featured-net .repo-stats-panel {
+        height: auto !important;
+    }
+
+    .repo-card-featured-net .repo-wave-preview,
+    .repo-card-featured-net .repo-sports-preview,
+    .repo-card-featured-net .repo-profile-readme-preview,
+    .repo-card-featured-net .repo-profile-overview-preview,
+    .repo-card-featured-net .repo-profile-compact-preview,
+    .repo-card-featured-net .repo-ets-terminal-preview {
+        min-height: 220px !important;
+        height: auto !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .repo-card-featured-net .repo-wave-preview,
+    .repo-card-featured-net .repo-sports-preview,
+    .repo-card-featured-net .repo-profile-readme-preview,
+    .repo-card-featured-net .repo-profile-overview-preview,
+    .repo-card-featured-net .repo-profile-compact-preview,
+    .repo-card-featured-net .repo-ets-terminal-preview {
+        min-height: 200px !important;
+    }
+}
