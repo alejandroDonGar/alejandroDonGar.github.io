@@ -3400,173 +3400,93 @@ aside > div:nth-child(2) {
     }
 }
 
+
 /* ==========================================================================
-   REPO VISUAL PIXEL DISSOLVE EFFECT
-   Inspirado en la gráfica de contribuciones de GitHub. Cada preview mantiene
-   su identidad visual, pero empieza con una capa de píxeles que se disuelve
-   hacia la derecha para dejar ver la información animada.
+   ALEJANDRODONGAR CUSTOM PIXEL DISSOLVE
+   Efecto exclusivo para el repositorio alejandroDonGar.
+   No afecta a NetScanner, CentroPlus ni etsdam_alejandro.
    ========================================================================== */
 
-.repo-visual-pixelized {
-    --pixel-main: rgba(34, 197, 94, 0.75);
-    --pixel-soft: rgba(34, 197, 94, 0.28);
-    --pixel-glow: rgba(34, 197, 94, 0.18);
-    position: relative;
-    overflow: hidden;
+.repo-profile-pixel-preview {
     isolation: isolate;
 }
 
-.repo-visual-pixelized > * {
-    position: relative;
-    z-index: 2;
-}
-
-.repo-visual-pixelized::before,
-.repo-visual-pixelized::after {
-    content: "";
+.profile-pixel-stream {
     position: absolute;
     inset: 0;
-    pointer-events: none;
-}
-
-.repo-visual-pixelized::before {
     z-index: 8;
-    opacity: 0.76;
+    pointer-events: none;
+    border-radius: inherit;
     background:
-        repeating-conic-gradient(from 0deg,
-            var(--pixel-main) 0% 25%,
-            transparent 0% 100%) 0 0 / 13px 13px,
-        repeating-conic-gradient(from 0deg,
-            var(--pixel-soft) 0% 25%,
-            transparent 0% 100%) 7px 7px / 23px 23px;
-    -webkit-mask-image: linear-gradient(90deg,
-        #000 0%,
-        #000 14%,
-        rgba(0, 0, 0, 0.72) 34%,
-        rgba(0, 0, 0, 0.22) 52%,
-        transparent 72%);
-    mask-image: linear-gradient(90deg,
-        #000 0%,
-        #000 14%,
-        rgba(0, 0, 0, 0.72) 34%,
-        rgba(0, 0, 0, 0.22) 52%,
-        transparent 72%);
+        radial-gradient(circle at 12% 24%, rgba(34, 197, 94, 0.18), transparent 30%),
+        repeating-conic-gradient(
+            from 0deg,
+            rgba(34, 197, 94, 0.58) 0% 25%,
+            transparent 0% 100%
+        ) 0 0 / 14px 14px;
     mix-blend-mode: screen;
-    animation: repoPixelDissolve 6.5s ease-in-out infinite;
+    opacity: 0.72;
+    mask-image: linear-gradient(90deg, #000 0%, #000 38%, rgba(0, 0, 0, 0.56) 58%, transparent 84%);
+    -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 38%, rgba(0, 0, 0, 0.56) 58%, transparent 84%);
+    animation: profilePixelDissolve 5.8s ease-in-out infinite;
 }
 
-.repo-visual-pixelized::after {
-    z-index: 7;
-    opacity: 0.58;
-    background:
-        linear-gradient(90deg,
-            var(--pixel-glow) 0%,
-            rgba(255, 255, 255, 0.035) 34%,
-            transparent 66%);
-    transform: translateX(-18%);
-    animation: repoPixelLightSweep 6.5s ease-in-out infinite;
+.repo-profile-pixel-preview:hover .profile-pixel-stream {
+    animation-duration: 3.4s;
 }
 
-.repo-visual-pixelized:hover::before {
-    animation-duration: 3.5s;
-    opacity: 0.38;
-}
-
-.repo-visual-pixelized:hover::after {
-    animation-duration: 3.5s;
-    opacity: 0.34;
-}
-
-.repo-pixel-net {
-    --pixel-main: rgba(34, 211, 238, 0.82);
-    --pixel-soft: rgba(16, 185, 129, 0.32);
-    --pixel-glow: rgba(34, 211, 238, 0.22);
-}
-
-.repo-pixel-sports {
-    --pixel-main: rgba(251, 191, 36, 0.72);
-    --pixel-soft: rgba(248, 113, 113, 0.30);
-    --pixel-glow: rgba(251, 191, 36, 0.18);
-}
-
-.repo-pixel-github {
-    --pixel-main: rgba(34, 197, 94, 0.78);
-    --pixel-soft: rgba(74, 222, 128, 0.30);
-    --pixel-glow: rgba(34, 197, 94, 0.18);
-}
-
-.repo-pixel-ets {
-    --pixel-main: rgba(168, 85, 247, 0.72);
-    --pixel-soft: rgba(239, 68, 68, 0.28);
-    --pixel-glow: rgba(168, 85, 247, 0.18);
-}
-
-@keyframes repoPixelDissolve {
+@keyframes profilePixelDissolve {
     0% {
-        opacity: 0.78;
-        transform: translateX(-2%) scale(1);
-        filter: blur(0px);
-        background-size: 12px 12px, 22px 22px;
+        opacity: 0.82;
+        transform: translateX(-3%) scale(1);
+        filter: blur(0);
+        background-size: 14px 14px;
     }
-    36% {
-        opacity: 0.54;
-        transform: translateX(5%) scale(1.01);
-        filter: blur(0px);
-        background-size: 16px 16px, 28px 28px;
+
+    38% {
+        opacity: 0.48;
+        transform: translateX(8%) scale(1.01);
+        filter: blur(0.2px);
+        background-size: 18px 18px;
     }
+
     68% {
-        opacity: 0.24;
-        transform: translateX(13%) scale(1.015);
-        filter: blur(0.7px);
-        background-size: 24px 24px, 38px 38px;
-    }
-    100% {
-        opacity: 0.10;
-        transform: translateX(22%) scale(1.02);
-        filter: blur(1.2px);
-        background-size: 34px 34px, 54px 54px;
-    }
-}
-
-@keyframes repoPixelLightSweep {
-    0% {
-        transform: translateX(-22%);
-        opacity: 0.55;
-    }
-    50% {
-        transform: translateX(8%);
-        opacity: 0.32;
-    }
-    100% {
-        transform: translateX(28%);
         opacity: 0.12;
+        transform: translateX(20%) scale(1.01);
+        filter: blur(0.6px);
+        background-size: 26px 26px;
+    }
+
+    100% {
+        opacity: 0.78;
+        transform: translateX(-3%) scale(1);
+        filter: blur(0);
+        background-size: 14px 14px;
     }
 }
 
-[data-theme="light"] .repo-visual-pixelized::before {
-    opacity: 0.50;
+[data-theme="light"] .profile-pixel-stream {
+    background:
+        radial-gradient(circle at 12% 24%, rgba(34, 197, 94, 0.12), transparent 30%),
+        repeating-conic-gradient(
+            from 0deg,
+            rgba(22, 163, 74, 0.32) 0% 25%,
+            transparent 0% 100%
+        ) 0 0 / 14px 14px;
+    opacity: 0.48;
     mix-blend-mode: multiply;
 }
 
-[data-theme="light"] .repo-visual-pixelized::after {
-    opacity: 0.28;
-}
-
-@media (max-width: 768px) {
-    .repo-visual-pixelized::before {
-        background-size: 10px 10px, 18px 18px;
-        -webkit-mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,.58) 42%, transparent 68%);
-        mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,.58) 42%, transparent 68%);
+@media (max-width: 640px) {
+    .profile-pixel-stream {
+        background-size: 12px 12px;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .repo-visual-pixelized::before,
-    .repo-visual-pixelized::after {
+    .profile-pixel-stream {
         animation: none !important;
-    }
-
-    .repo-visual-pixelized::before {
         opacity: 0.18;
+        transform: none;
     }
 }
