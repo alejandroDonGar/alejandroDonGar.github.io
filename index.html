@@ -672,20 +672,14 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
     }
 
     function createGitHubProfilePreview() {
-        const activityCells = Array.from({ length: 72 }, (_, index) => {
-            const level = [0, 1, 0, 2, 3, 1, 0, 4, 2, 0, 1, 3][index % 12];
-            const delay = (index % 18) * 0.08;
-            return `<span class="activity-cell level-${level}" style="--delay:${delay}s"></span>`;
-        }).join('');
-
         return `
-            <div class="repo-profile-readme-preview repo-profile-overview-preview" aria-label="Preview visual del README principal de GitHub">
+            <div class="repo-profile-readme-preview repo-profile-overview-preview repo-profile-compact-preview" aria-label="Preview visual del README principal de GitHub">
                 <div class="repo-profile-topbar">
                     <span>alejandroDonGar / README.md</span>
                     <i class="fa-solid fa-pen"></i>
                 </div>
 
-                <div class="repo-profile-readme-body repo-profile-overview-body">
+                <div class="repo-profile-readme-body repo-profile-overview-body repo-profile-compact-body">
                     <div class="repo-profile-avatar-wrap">
                         <div class="repo-profile-avatar">
                             <i class="fa-solid fa-user-astronaut"></i>
@@ -699,7 +693,6 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                                 <h4>Hola, soy Alejandro Donate García 👋</h4>
                                 <p>Estudiante DAM · Java · SQL · Web</p>
                             </div>
-                            <span class="repo-profile-live-pill"><i class="fa-solid fa-circle"></i> learning</span>
                         </div>
 
                         <div class="repo-profile-lines">
@@ -708,7 +701,7 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                             <span></span>
                         </div>
 
-                        <div class="repo-profile-techs">
+                        <div class="repo-profile-techs" aria-label="Tecnologías del perfil GitHub">
                             <span><i class="fa-brands fa-java"></i></span>
                             <span><i class="fa-solid fa-database"></i></span>
                             <span><i class="fa-brands fa-html5"></i></span>
@@ -719,19 +712,9 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
 
                         <div class="repo-profile-meta-grid" aria-label="Resumen del perfil GitHub">
                             <div><strong>10+</strong><small>Repos</small></div>
-                            <div><strong>678</strong><small>Contrib.</small></div>
                             <div><strong>Open</strong><small>Source</small></div>
+                            <div><strong>C1</strong><small>Inglés</small></div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="repo-profile-activity-panel" aria-hidden="true">
-                    <div class="repo-profile-activity-header">
-                        <span><i class="fa-solid fa-chart-simple"></i> Actividad GitHub</span>
-                        <small>último año</small>
-                    </div>
-                    <div class="repo-profile-activity-grid">
-                        ${activityCells}
                     </div>
                 </div>
             </div>

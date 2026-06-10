@@ -4118,3 +4118,126 @@ aside > div:nth-child(2) {
         animation: none !important;
     }
 }
+
+
+/* ========================================================================== 
+   GITHUB PROFILE PREVIEW COMPACTA
+   Versión limpia: README card sin panel de actividad para mantener altura uniforme.
+   ========================================================================== */
+
+.repo-profile-compact-preview {
+    min-height: 190px !important;
+    height: 100%;
+    padding-bottom: 0 !important;
+}
+
+.repo-profile-compact-preview .repo-profile-topbar {
+    min-height: 42px;
+}
+
+.repo-profile-compact-body {
+    display: grid !important;
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 1.35rem;
+    align-items: center;
+    padding: 1.35rem 1.5rem 1.45rem !important;
+}
+
+.repo-profile-compact-preview .repo-profile-avatar {
+    width: 86px;
+    height: 86px;
+}
+
+.repo-profile-compact-preview .repo-profile-status-dot {
+    right: 2px;
+    bottom: 8px;
+}
+
+.repo-profile-compact-preview .repo-profile-heading-row {
+    margin-bottom: 0.75rem;
+}
+
+.repo-profile-compact-preview .repo-profile-heading-row h4 {
+    font-size: clamp(1rem, 1.25vw, 1.35rem);
+    line-height: 1.2;
+}
+
+.repo-profile-compact-preview .repo-profile-heading-row p {
+    margin-top: 0.25rem;
+    font-size: 0.95rem;
+}
+
+.repo-profile-compact-preview .repo-profile-lines {
+    gap: 0.42rem;
+    margin: 0.8rem 0 0.85rem;
+}
+
+.repo-profile-compact-preview .repo-profile-lines span {
+    height: 8px;
+}
+
+.repo-profile-compact-preview .repo-profile-techs {
+    margin-top: 0;
+    margin-bottom: 0.9rem;
+}
+
+.repo-profile-compact-preview .repo-profile-techs span {
+    width: 34px;
+    height: 34px;
+}
+
+.repo-profile-compact-preview .repo-profile-meta-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.65rem;
+}
+
+.repo-profile-compact-preview .repo-profile-meta-grid div {
+    min-height: 44px;
+    padding: 0.5rem 0.75rem;
+}
+
+.repo-profile-compact-preview .repo-profile-meta-grid strong {
+    font-size: 1rem;
+}
+
+.repo-profile-compact-preview .repo-profile-meta-grid small {
+    font-size: 0.62rem;
+}
+
+.repo-profile-compact-preview .repo-profile-activity-panel,
+.repo-profile-compact-preview .repo-profile-activity-grid,
+.repo-profile-compact-preview .repo-profile-activity-header,
+.repo-profile-compact-preview .repo-profile-live-pill {
+    display: none !important;
+}
+
+@media (max-width: 1450px) {
+    .repo-profile-compact-body {
+        grid-template-columns: 80px minmax(0, 1fr);
+        gap: 1rem;
+    }
+
+    .repo-profile-compact-preview .repo-profile-avatar {
+        width: 76px;
+        height: 76px;
+    }
+}
+
+@media (max-width: 768px) {
+    .repo-profile-compact-body {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .repo-profile-compact-preview .repo-profile-avatar-wrap {
+        justify-content: center;
+    }
+
+    .repo-profile-compact-preview .repo-profile-techs {
+        justify-content: center;
+    }
+
+    .repo-profile-compact-preview .repo-profile-meta-grid {
+        grid-template-columns: 1fr;
+    }
+}
