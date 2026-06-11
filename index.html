@@ -872,50 +872,69 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
 
     function createCentroPlusApiPreview() {
         return `
-            <div class="repo-sports-dashboard-preview" aria-label="Preview animada de dashboard deportivo CentroPlus">
-                <div class="repo-sports-label">
-                    <i class="fa-solid fa-dumbbell"></i>
-                    CentroPlus dashboard
+            <div class="repo-centroplus-connect-preview" aria-label="Preview visual de CentroPlus Connect: dashboard, API REST y Swagger">
+                <div class="centroplus-preview-bg" aria-hidden="true"></div>
+
+                <div class="centroplus-preview-topbar">
+                    <div class="centroplus-preview-brand">
+                        <span class="centroplus-logo-mark"><i class="fa-solid fa-plus"></i></span>
+                        <div>
+                            <strong>CentroPlus</strong>
+                            <small>Connect</small>
+                        </div>
+                    </div>
+                    <span class="centroplus-api-pill">API REST · JavaFX · SQLite</span>
                 </div>
 
-                <div class="repo-sports-scene">
-                    <div class="repo-sports-grid">
-                        <div class="repo-sports-card sports-users">
-                            <i class="fa-solid fa-users"></i>
+                <div class="centroplus-preview-main">
+                    <div class="centroplus-dashboard-zone">
+                        <div class="centroplus-metric metric-users">
+                            <i class="fa-solid fa-user-group"></i>
                             <span>Usuarios</span>
-                            <strong>124</strong>
+                            <strong>3</strong>
                         </div>
 
-                        <div class="repo-sports-card sports-bookings">
+                        <div class="centroplus-metric metric-activities">
+                            <i class="fa-solid fa-chart-simple"></i>
+                            <span>Actividades</span>
+                            <strong>5</strong>
+                        </div>
+
+                        <div class="centroplus-metric metric-bookings">
                             <i class="fa-solid fa-calendar-check"></i>
                             <span>Reservas</span>
-                            <strong>32</strong>
+                            <strong>2</strong>
                         </div>
 
-                        <div class="repo-sports-card sports-activities">
-                            <i class="fa-solid fa-volleyball"></i>
-                            <span>Actividades</span>
-                            <strong>18</strong>
-                        </div>
-
-                        <div class="repo-sports-card sports-incidents">
+                        <div class="centroplus-metric metric-incidents">
                             <i class="fa-solid fa-triangle-exclamation"></i>
                             <span>Incidencias</span>
-                            <strong>4</strong>
+                            <strong>2</strong>
                         </div>
                     </div>
 
-                    <div class="repo-sports-calendar">
-                        <span></span><span class="active"></span><span></span><span class="active soft"></span><span></span><span></span><span class="active"></span>
-                        <span class="active soft"></span><span></span><span></span><span></span><span class="active"></span><span></span><span></span>
-                    </div>
+                    <div class="centroplus-swagger-zone">
+                        <div class="swagger-title-row">
+                            <span><i class="fa-solid fa-book-open"></i> Swagger integrado</span>
+                            <small>OAS 3.0</small>
+                        </div>
 
-                    <div class="repo-sports-tech-row">
-                        <span><i class="fa-brands fa-java"></i> Java</span>
-                        <span><i class="fa-solid fa-leaf"></i> Spring</span>
-                        <span><i class="fa-solid fa-book-open"></i> Swagger</span>
-                        <span><i class="fa-solid fa-vial"></i> JUnit</span>
+                        <div class="swagger-endpoint endpoint-get"><strong>GET</strong><span>/api/v1/actividades</span></div>
+                        <div class="swagger-endpoint endpoint-post"><strong>POST</strong><span>/api/v1/usuarios</span></div>
+                        <div class="swagger-endpoint endpoint-patch"><strong>PATCH</strong><span>/api/v1/reservas/{id}</span></div>
+                        <div class="swagger-endpoint endpoint-delete"><strong>DELETE</strong><span>/api/v1/incidencias/{id}</span></div>
                     </div>
+                </div>
+
+                <div class="centroplus-tech-row">
+                    <span><i class="fa-brands fa-java"></i> Java 17</span>
+                    <span><i class="fa-solid fa-leaf"></i> Spring</span>
+                    <span><i class="fa-solid fa-database"></i> H2 DB</span>
+                    <span><i class="fa-solid fa-code-branch"></i> JPA</span>
+                    <span><i class="fa-solid fa-arrows-turn-to-dots"></i> MapStruct</span>
+                    <span><i class="fa-solid fa-book-open"></i> Swagger</span>
+                    <span><i class="fa-solid fa-vial"></i> JUnit</span>
+                    <span><i class="fa-solid fa-mask"></i> Mockito</span>
                 </div>
             </div>
         `;
