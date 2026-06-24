@@ -869,14 +869,14 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         return `
             <div class="repo-zeeboard-preview" aria-label="Preview visual de ZeeBoard: gestor de comisiones tipo kanban">
                 <div class="zeeboard-shell">
-                    <aside class="zeeboard-mini-sidebar" aria-hidden="true">
+                    <div class="zeeboard-mini-sidebar" aria-hidden="true">
                         <div class="zeeboard-logo"><i class="fa-solid fa-feather-pointed"></i></div>
                         <span class="active">Commissions</span>
                         <span>Clients</span>
                         <span>Tags</span>
-                    </aside>
+                    </div>
 
-                    <main class="zeeboard-mini-main">
+                    <div class="zeeboard-mini-main">
                         <div class="zeeboard-topbar">
                             <div>
                                 <small>Main workspace</small>
@@ -932,7 +932,7 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                             <span>Templates</span>
                             <span>Deadlines</span>
                         </div>
-                    </main>
+                    </div>
                 </div>
             </div>
         `;
@@ -1021,7 +1021,7 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
             const zeeBoard = isZeeBoardRepo(repo);
             const hasCustomPreview = netScanner || centroPlus || githubProfile || etsDam || zeeBoard;
 
-            card.className = hasCustomPreview ? 'repo-card repo-card-featured-net' : 'repo-card';
+            card.className = hasCustomPreview ? `repo-card repo-card-featured-net${zeeBoard ? ' repo-card-featured-zeeboard' : ''}` : 'repo-card';
             card.setAttribute('data-aos', 'fade-up');
 
             const updatedText = currentLang === 'es' ? 'Actualizado' : (currentLang === 'en' ? 'Updated' : (currentLang === 'de' ? 'Aktualisiert' : 'Uppfært'));

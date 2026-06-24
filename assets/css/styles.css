@@ -4919,3 +4919,89 @@ aside > div:nth-child(2) {
         animation: none !important;
     }
 }
+
+
+/* ==========================================================================
+   ZEEBOARD FIX FINAL
+   Evita que la preview herede estilos globales de aside/main y mantiene
+   la misma altura visual que el panel de estadísticas.
+   ========================================================================== */
+
+.repo-card-featured-zeeboard {
+    align-items: stretch !important;
+}
+
+.repo-card-featured-zeeboard .repo-wave-column,
+.repo-card-featured-zeeboard .repo-stats-panel {
+    height: 245px !important;
+    min-height: 245px !important;
+    max-height: 245px !important;
+}
+
+.repo-card-featured-zeeboard .repo-zeeboard-preview {
+    height: 245px !important;
+    min-height: 245px !important;
+    max-height: 245px !important;
+    margin: 0 !important;
+}
+
+.repo-card-featured-zeeboard .zeeboard-shell {
+    height: 100% !important;
+    min-height: 0 !important;
+}
+
+.zeeboard-mini-sidebar,
+.zeeboard-mini-main {
+    position: static !important;
+    z-index: auto !important;
+    flex: initial !important;
+    width: auto !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+}
+
+.zeeboard-mini-sidebar {
+    display: flex !important;
+}
+
+.zeeboard-mini-main {
+    display: block !important;
+    padding: 12px !important;
+}
+
+.repo-card-featured-zeeboard .zeeboard-board-row {
+    min-height: 0 !important;
+}
+
+.repo-card-featured-zeeboard .zeeboard-commission-card,
+.repo-card-featured-zeeboard .zeeboard-calendar-card {
+    min-height: 0 !important;
+}
+
+.repo-card-featured-zeeboard .zeeboard-art {
+    height: 34px !important;
+}
+
+@media (max-width: 1450px) {
+    .repo-card-featured-zeeboard .repo-wave-column,
+    .repo-card-featured-zeeboard .repo-stats-panel {
+        height: auto !important;
+        min-height: 220px !important;
+        max-height: none !important;
+    }
+
+    .repo-card-featured-zeeboard .repo-zeeboard-preview {
+        height: 220px !important;
+        min-height: 220px !important;
+        max-height: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .repo-card-featured-zeeboard .repo-zeeboard-preview {
+        height: auto !important;
+        min-height: 200px !important;
+    }
+}
