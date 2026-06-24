@@ -868,65 +868,72 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
     function createZeeBoardPreview() {
         return `
             <div class="repo-zeeboard-preview" aria-label="Preview visual de ZeeBoard: gestor de comisiones tipo kanban">
-                <div class="zeeboard-shell">
-                    <div class="zeeboard-mini-sidebar" aria-hidden="true">
-                        <div class="zeeboard-logo"><i class="fa-solid fa-feather-pointed"></i></div>
+                <div class="zeeboard-app-shell">
+                    <div class="zeeboard-app-sidebar" aria-hidden="true">
+                        <div class="zeeboard-app-brand">
+                            <span class="zeeboard-brand-icon"><i class="fa-solid fa-feather-pointed"></i></span>
+                            <strong>ZeeBoard</strong>
+                        </div>
                         <span class="active">Commissions</span>
                         <span>Clients</span>
                         <span>Tags</span>
+                        <span>Templates</span>
                     </div>
 
-                    <div class="zeeboard-mini-main">
-                        <div class="zeeboard-topbar">
+                    <div class="zeeboard-app-main">
+                        <div class="zeeboard-app-topbar">
                             <div>
                                 <small>Main workspace</small>
-                                <strong>ZeeBoard</strong>
+                                <strong>Commission board</strong>
                             </div>
                             <button type="button">+ New</button>
                         </div>
 
-                        <div class="zeeboard-stats-row" aria-hidden="true">
-                            <div><small>Total</small><strong>700€</strong></div>
+                        <div class="zeeboard-app-stats" aria-hidden="true">
+                            <div><small>Total earned</small><strong>700€</strong></div>
                             <div><small>Active</small><strong>3</strong></div>
                             <div><small>Unpaid</small><strong>1</strong></div>
                         </div>
 
-                        <div class="zeeboard-board-row" aria-hidden="true">
-                            <article class="zeeboard-commission-card card-sketch">
-                                <span class="zeeboard-stage done"><i class="fa-solid fa-check"></i> Sketch</span>
-                                <h4>Train bear/dragon</h4>
-                                <p>Ginko · Twitter / X</p>
-                                <div class="zeeboard-art art-one"></div>
-                                <div class="zeeboard-card-bottom">
-                                    <span class="not-paid">Not Paid</span>
-                                    <strong>33%</strong>
-                                </div>
-                                <div class="zeeboard-progress"><span style="width: 33%;"></span></div>
-                            </article>
+                        <div class="zeeboard-app-content" aria-hidden="true">
+                            <div class="zeeboard-board-mini">
+                                <article class="zeeboard-kanban-card is-sketch">
+                                    <span class="zeeboard-status status-sketch"><i class="fa-solid fa-check"></i> Sketch</span>
+                                    <h4>Commission #01</h4>
+                                    <p>2 characters · render</p>
+                                    <div class="zeeboard-image-slot"></div>
+                                    <div class="zeeboard-card-meta">
+                                        <span class="not-paid">Not paid</span>
+                                        <strong>33%</strong>
+                                    </div>
+                                    <div class="zeeboard-mini-progress"><span style="width: 33%;"></span></div>
+                                </article>
 
-                            <article class="zeeboard-commission-card card-lineart">
-                                <span class="zeeboard-stage active"><i class="fa-solid fa-pen-nib"></i> Lineart</span>
-                                <h4>Panda Bathtub</h4>
-                                <p>Agraaors · Bluesky</p>
-                                <div class="zeeboard-art art-two"></div>
-                                <div class="zeeboard-card-bottom">
-                                    <span class="paid">Paid</span>
-                                    <strong>60%</strong>
-                                </div>
-                                <div class="zeeboard-progress"><span style="width: 60%;"></span></div>
-                            </article>
+                                <article class="zeeboard-kanban-card is-lineart">
+                                    <span class="zeeboard-status status-lineart"><i class="fa-solid fa-pen-nib"></i> Lineart</span>
+                                    <h4>Commission #02</h4>
+                                    <p>1 character · background</p>
+                                    <div class="zeeboard-image-slot slot-two"></div>
+                                    <div class="zeeboard-card-meta">
+                                        <span class="paid">Paid</span>
+                                        <strong>60%</strong>
+                                    </div>
+                                    <div class="zeeboard-mini-progress"><span style="width: 60%;"></span></div>
+                                </article>
+                            </div>
 
-                            <aside class="zeeboard-calendar-card">
+                            <div class="zeeboard-side-widget">
                                 <small>Calendar</small>
                                 <strong>Jun 2026</strong>
-                                <div class="zeeboard-calendar-grid">
-                                    <span></span><span></span><span></span><span class="hot">24</span><span>25</span><span class="soon">26</span><span class="soon">27</span>
+                                <div class="zeeboard-mini-calendar">
+                                    <span>24</span><span class="soon">25</span><span class="soon">26</span>
+                                    <span>27</span><span class="marked">28</span><span>29</span>
                                 </div>
-                                <div class="zeeboard-deadline">23 days left</div>
-                            </aside>
+                                <em>23 days left</em>
+                            </div>
                         </div>
 
-                        <div class="zeeboard-tag-row" aria-label="Características de ZeeBoard">
+                        <div class="zeeboard-app-tags" aria-label="Características de ZeeBoard">
                             <span>Clients</span>
                             <span>Tags</span>
                             <span>Templates</span>
@@ -1021,7 +1028,7 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
             const zeeBoard = isZeeBoardRepo(repo);
             const hasCustomPreview = netScanner || centroPlus || githubProfile || etsDam || zeeBoard;
 
-            card.className = hasCustomPreview ? `repo-card repo-card-featured-net${zeeBoard ? ' repo-card-featured-zeeboard' : ''}` : 'repo-card';
+            card.className = hasCustomPreview ? `repo-card repo-card-featured-net${zeeBoard ? ' repo-card-featured-zee' : ''}` : 'repo-card';
             card.setAttribute('data-aos', 'fade-up');
 
             const updatedText = currentLang === 'es' ? 'Actualizado' : (currentLang === 'en' ? 'Updated' : (currentLang === 'de' ? 'Aktualisiert' : 'Uppfært'));

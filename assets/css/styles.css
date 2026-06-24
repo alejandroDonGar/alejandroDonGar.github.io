@@ -4416,7 +4416,8 @@ aside > div:nth-child(2) {
 .repo-card-featured-net .repo-profile-readme-preview,
 .repo-card-featured-net .repo-profile-overview-preview,
 .repo-card-featured-net .repo-profile-compact-preview,
-.repo-card-featured-net .repo-ets-terminal-preview {
+.repo-card-featured-net .repo-ets-terminal-preview,
+.repo-card-featured-net .repo-zeeboard-preview {
     width: 100% !important;
     height: 100% !important;
     min-height: 100% !important;
@@ -4459,7 +4460,8 @@ aside > div:nth-child(2) {
     .repo-card-featured-net .repo-profile-readme-preview,
     .repo-card-featured-net .repo-profile-overview-preview,
     .repo-card-featured-net .repo-profile-compact-preview,
-    .repo-card-featured-net .repo-ets-terminal-preview {
+    .repo-card-featured-net .repo-ets-terminal-preview,
+.repo-card-featured-net .repo-zeeboard-preview {
         min-height: 220px !important;
         height: auto !important;
     }
@@ -4471,275 +4473,299 @@ aside > div:nth-child(2) {
     .repo-card-featured-net .repo-profile-readme-preview,
     .repo-card-featured-net .repo-profile-overview-preview,
     .repo-card-featured-net .repo-profile-compact-preview,
-    .repo-card-featured-net .repo-ets-terminal-preview {
+    .repo-card-featured-net .repo-ets-terminal-preview,
+.repo-card-featured-net .repo-zeeboard-preview {
         min-height: 200px !important;
     }
 }
 
-/* ==========================================================================
+/* ============================================================================
    ZEEBOARD REPO CUSTOM PREVIEW
-   Mini kanban de comisiones con calendario, tags y estética crema/oscura.
-   Mantiene la misma altura visual que el resto de previews personalizadas.
-   ========================================================================== */
+   Mini interfaz inspirada en la app real: paleta crema, sidebar navy,
+   board de comisiones, calendario y tags. Sin nombres reales.
+   ============================================================================ */
+
+.repo-card-featured-zee {
+    grid-template-columns:
+        minmax(300px, 1fr)
+        minmax(520px, 1.15fr)
+        minmax(240px, 0.65fr) !important;
+}
 
 .repo-zeeboard-preview {
-    width: 100%;
-    height: 100%;
-    min-height: 170px;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    margin: 0 !important;
     overflow: hidden;
-    border: 1px solid rgba(201, 151, 121, 0.22);
+    border: 1px solid rgba(224, 211, 192, 0.32);
     border-radius: 22px;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(250, 204, 21, 0.10), transparent 28%),
-        radial-gradient(circle at 88% 78%, rgba(124, 58, 237, 0.13), transparent 34%),
-        linear-gradient(135deg, #151b24 0%, #1b1b28 45%, #2a2230 100%);
+    background: #f7efe4;
+    color: #17202c;
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.06),
-        0 14px 30px rgba(0, 0, 0, 0.20);
+        inset 0 1px 0 rgba(255, 255, 255, 0.85),
+        0 16px 34px rgba(0, 0, 0, 0.22);
+    isolation: isolate;
 }
 
-[data-theme="light"] .repo-zeeboard-preview {
-    border-color: rgba(151, 108, 92, 0.20);
-    background:
-        radial-gradient(circle at 18% 20%, rgba(251, 191, 36, 0.13), transparent 30%),
-        radial-gradient(circle at 86% 78%, rgba(124, 58, 237, 0.10), transparent 34%),
-        linear-gradient(135deg, #fffaf1 0%, #f8efe2 48%, #f2e7d8 100%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.9),
-        0 12px 24px rgba(32, 37, 49, 0.08);
+.repo-zeeboard-preview,
+.repo-zeeboard-preview * {
+    box-sizing: border-box;
 }
 
-.zeeboard-shell {
+.repo-zeeboard-preview::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(246, 190, 82, 0.18), transparent 30%),
+        radial-gradient(circle at 88% 76%, rgba(112, 85, 190, 0.14), transparent 32%),
+        linear-gradient(90deg, rgba(23, 32, 44, 0.03) 1px, transparent 1px),
+        linear-gradient(rgba(23, 32, 44, 0.03) 1px, transparent 1px);
+    background-size: auto, auto, 28px 28px, 28px 28px;
+    z-index: 0;
+}
+
+.repo-zeeboard-preview > * {
+    position: relative;
+    z-index: 1;
+}
+
+.zeeboard-app-shell {
     height: 100%;
     min-height: inherit;
     display: grid;
-    grid-template-columns: 86px 1fr;
-    color: #f8fafc;
+    grid-template-columns: 96px minmax(0, 1fr);
+    background: linear-gradient(135deg, #fbf5ec 0%, #f7efe4 50%, #f1e4d3 100%);
 }
 
-[data-theme="light"] .zeeboard-shell {
-    color: #17202c;
-}
-
-.zeeboard-mini-sidebar {
+.zeeboard-app-sidebar {
     display: flex;
     flex-direction: column;
     gap: 7px;
     padding: 12px 10px;
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(5, 12, 24, 0.72);
+    background: #0d213c;
+    color: rgba(255, 255, 255, 0.78);
 }
 
-[data-theme="light"] .zeeboard-mini-sidebar {
-    border-right-color: rgba(151, 108, 92, 0.18);
-    background: rgba(15, 35, 58, 0.94);
-    color: #f8fafc;
+.zeeboard-app-brand {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 8px;
 }
 
-.zeeboard-logo {
-    width: 26px;
-    height: 26px;
+.zeeboard-brand-icon {
+    width: 28px;
+    height: 28px;
     display: grid;
     place-items: center;
-    margin-bottom: 4px;
-    border-radius: 9px;
-    background: linear-gradient(135deg, #17202c, #344154);
+    flex: 0 0 auto;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #17202c, #314157);
     color: #f8fafc;
-    font-size: 0.72rem;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.20);
+    font-size: 0.7rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.26);
 }
 
-.zeeboard-mini-sidebar span {
+.zeeboard-app-brand strong {
+    overflow: hidden;
+    color: #ffffff;
+    font-size: 0.64rem;
+    line-height: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.zeeboard-app-sidebar > span {
     width: 100%;
     overflow: hidden;
-    padding: 6px 7px;
-    border-radius: 9px;
-    color: rgba(248, 250, 252, 0.78);
-    font-size: 0.54rem;
+    padding: 6px 8px;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 0.55rem;
     font-weight: 800;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-.zeeboard-mini-sidebar span.active {
+.zeeboard-app-sidebar > span.active {
     background: #17202c;
     color: #ffffff;
+    box-shadow: 0 6px 13px rgba(0, 0, 0, 0.18);
 }
 
-.zeeboard-mini-main {
+.zeeboard-app-main {
     min-width: 0;
     padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.zeeboard-topbar,
-.zeeboard-stats-row,
-.zeeboard-board-row,
-.zeeboard-tag-row {
-    position: relative;
-    z-index: 2;
-}
-
-.zeeboard-topbar {
+.zeeboard-app-topbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 8px;
+    gap: 12px;
 }
 
-.zeeboard-topbar small,
-.zeeboard-calendar-card small {
+.zeeboard-app-topbar small,
+.zeeboard-side-widget small {
     display: block;
-    color: rgba(201, 151, 121, 0.92);
+    color: #a77c5f;
     font-size: 0.48rem;
     font-weight: 900;
     letter-spacing: 0.22em;
     text-transform: uppercase;
 }
 
-.zeeboard-topbar strong {
+.zeeboard-app-topbar strong {
     display: block;
     margin-top: 2px;
-    font-size: 0.88rem;
+    color: #17202c;
+    font-size: 0.92rem;
     line-height: 1;
 }
 
-.zeeboard-topbar button {
-    padding: 6px 10px;
+.zeeboard-app-topbar button {
+    flex: 0 0 auto;
+    padding: 7px 11px;
     border: 0;
-    border-radius: 10px;
+    border-radius: 12px;
     background: #17202c;
-    color: #fff;
+    color: #ffffff;
     font-size: 0.58rem;
     font-weight: 900;
+    box-shadow: 0 8px 18px rgba(23, 32, 44, 0.18);
 }
 
-.zeeboard-stats-row {
+.zeeboard-app-stats {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 8px;
-    margin-bottom: 8px;
 }
 
-.zeeboard-stats-row div,
-.zeeboard-calendar-card,
-.zeeboard-commission-card {
-    border: 1px solid rgba(201, 151, 121, 0.18);
-    border-radius: 13px;
-    background: rgba(255, 250, 241, 0.08);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+.zeeboard-app-stats > div,
+.zeeboard-kanban-card,
+.zeeboard-side-widget {
+    border: 1px solid #e3d6c4;
+    border-radius: 14px;
+    background: rgba(255, 252, 246, 0.88);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.72),
+        0 8px 16px rgba(23, 32, 44, 0.06);
 }
 
-[data-theme="light"] .zeeboard-stats-row div,
-[data-theme="light"] .zeeboard-calendar-card,
-[data-theme="light"] .zeeboard-commission-card {
-    border-color: rgba(151, 108, 92, 0.18);
-    background: rgba(255, 255, 255, 0.56);
-}
-
-.zeeboard-stats-row div {
+.zeeboard-app-stats > div {
     padding: 7px 9px;
 }
 
-.zeeboard-stats-row small {
+.zeeboard-app-stats small {
     display: block;
-    color: rgba(168, 176, 191, 0.88);
+    color: #a77c5f;
     font-size: 0.48rem;
     font-weight: 900;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
 }
 
-[data-theme="light"] .zeeboard-stats-row small {
-    color: #6b7280;
-}
-
-.zeeboard-stats-row strong {
+.zeeboard-app-stats strong {
     display: block;
     margin-top: 2px;
-    font-size: 0.82rem;
+    color: #17202c;
+    font-size: 0.9rem;
+    line-height: 1;
 }
 
-.zeeboard-board-row {
+.zeeboard-app-content {
+    flex: 1 1 auto;
+    min-height: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr 0.9fr;
+    grid-template-columns: minmax(0, 1fr) 118px;
     gap: 9px;
     align-items: stretch;
 }
 
-.zeeboard-commission-card {
+.zeeboard-board-mini {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+}
+
+.zeeboard-kanban-card {
     min-width: 0;
     padding: 9px;
+    overflow: hidden;
     animation: zeeCardFloat 4.5s ease-in-out infinite;
 }
 
-.zeeboard-commission-card.card-lineart {
+.zeeboard-kanban-card.is-lineart {
     animation-delay: -1.5s;
 }
 
-.zeeboard-stage {
+.zeeboard-status {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    padding: 4px 7px;
+    padding: 4px 8px;
     border-radius: 999px;
     font-size: 0.48rem;
     font-weight: 900;
     white-space: nowrap;
 }
 
-.zeeboard-stage.done {
-    background: rgba(34, 197, 94, 0.18);
-    color: #4ade80;
+.status-sketch {
+    background: #dcfce7;
+    color: #16a34a;
 }
 
-.zeeboard-stage.active {
-    background: rgba(250, 204, 21, 0.20);
-    color: #facc15;
+.status-lineart {
+    background: #fef3c7;
+    color: #d97706;
 }
 
-.zeeboard-commission-card h4 {
+.zeeboard-kanban-card h4 {
     margin: 7px 0 2px;
     overflow: hidden;
-    color: currentColor;
-    font-size: 0.62rem;
+    color: #17202c;
+    font-size: 0.64rem;
     line-height: 1.1;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-.zeeboard-commission-card p {
+.zeeboard-kanban-card p {
     margin: 0 0 7px;
     overflow: hidden;
-    color: rgba(168, 176, 191, 0.86);
+    color: #6f6257;
     font-size: 0.5rem;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-[data-theme="light"] .zeeboard-commission-card p {
-    color: #64748b;
-}
-
-.zeeboard-art {
+.zeeboard-image-slot {
     height: 34px;
     margin-bottom: 7px;
     overflow: hidden;
-    border: 1px dashed rgba(201, 151, 121, 0.24);
-    border-radius: 10px;
-    background:
-        linear-gradient(115deg, transparent 15%, rgba(255, 255, 255, 0.10) 16% 18%, transparent 19%),
-        linear-gradient(165deg, transparent 35%, rgba(255, 255, 255, 0.12) 36% 38%, transparent 39%),
-        rgba(255, 255, 255, 0.06);
-}
-
-[data-theme="light"] .zeeboard-art {
+    border: 1px dashed #d8c8b5;
+    border-radius: 11px;
     background:
         linear-gradient(115deg, transparent 15%, rgba(23, 32, 44, 0.10) 16% 18%, transparent 19%),
         linear-gradient(165deg, transparent 35%, rgba(23, 32, 44, 0.10) 36% 38%, transparent 39%),
-        rgba(255, 255, 255, 0.78);
+        rgba(250, 250, 250, 0.92);
 }
 
-.zeeboard-card-bottom {
+.zeeboard-image-slot.slot-two {
+    background:
+        radial-gradient(circle at 30% 52%, rgba(23, 32, 44, 0.12), transparent 24%),
+        linear-gradient(145deg, transparent 25%, rgba(23, 32, 44, 0.09) 26% 29%, transparent 30%),
+        rgba(250, 250, 250, 0.92);
+}
+
+.zeeboard-card-meta {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -4747,40 +4773,36 @@ aside > div:nth-child(2) {
     margin-bottom: 5px;
 }
 
-.zeeboard-card-bottom span {
-    padding: 3px 6px;
+.zeeboard-card-meta span {
+    padding: 3px 7px;
     border-radius: 999px;
-    color: #fff;
+    color: #ffffff;
     font-size: 0.46rem;
     font-weight: 900;
     white-space: nowrap;
 }
 
-.zeeboard-card-bottom .paid {
+.zeeboard-card-meta .paid {
     background: #22c55e;
 }
 
-.zeeboard-card-bottom .not-paid {
+.zeeboard-card-meta .not-paid {
     background: #ef4444;
 }
 
-.zeeboard-card-bottom strong {
-    color: rgba(248, 250, 252, 0.86);
+.zeeboard-card-meta strong {
+    color: #66594e;
     font-size: 0.48rem;
 }
 
-[data-theme="light"] .zeeboard-card-bottom strong {
-    color: #334155;
-}
-
-.zeeboard-progress {
+.zeeboard-mini-progress {
     height: 5px;
     overflow: hidden;
     border-radius: 999px;
-    background: rgba(0, 0, 0, 0.22);
+    background: #ece3d8;
 }
 
-.zeeboard-progress span {
+.zeeboard-mini-progress span {
     display: block;
     height: 100%;
     border-radius: inherit;
@@ -4788,89 +4810,78 @@ aside > div:nth-child(2) {
     animation: zeeProgressPulse 2.8s ease-in-out infinite;
 }
 
-.zeeboard-calendar-card {
+.zeeboard-side-widget {
+    min-width: 0;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
-.zeeboard-calendar-card strong {
+.zeeboard-side-widget strong {
     display: block;
     margin: 5px 0 8px;
+    color: #17202c;
     font-size: 0.62rem;
 }
 
-.zeeboard-calendar-grid {
+.zeeboard-mini-calendar {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 4px;
     margin-bottom: 8px;
 }
 
-.zeeboard-calendar-grid span {
-    width: 18px;
-    height: 18px;
+.zeeboard-mini-calendar span {
+    width: 20px;
+    height: 20px;
     display: grid;
     place-items: center;
+    justify-self: center;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.08);
-    color: rgba(248, 250, 252, 0.88);
-    font-size: 0.45rem;
-    font-weight: 800;
-}
-
-[data-theme="light"] .zeeboard-calendar-grid span {
     background: #ffffff;
-    color: #334155;
+    color: #66594e;
+    font-size: 0.45rem;
+    font-weight: 900;
 }
 
-.zeeboard-calendar-grid span.hot {
+.zeeboard-mini-calendar .marked {
     background: #17202c;
-    color: #fff;
+    color: #ffffff;
 }
 
-.zeeboard-calendar-grid span.soon {
-    background: rgba(250, 204, 21, 0.28);
-    color: #facc15;
-}
-
-[data-theme="light"] .zeeboard-calendar-grid span.soon {
+.zeeboard-mini-calendar .soon {
+    background: #fef3c7;
     color: #92400e;
 }
 
-.zeeboard-deadline {
+.zeeboard-side-widget em {
+    margin-top: auto;
     padding: 5px 7px;
     border-radius: 999px;
-    background: rgba(250, 204, 21, 0.20);
-    color: #fde68a;
+    background: #fef3c7;
+    color: #92400e;
     font-size: 0.48rem;
+    font-style: normal;
     font-weight: 900;
     text-align: center;
 }
 
-[data-theme="light"] .zeeboard-deadline {
-    color: #92400e;
-}
-
-.zeeboard-tag-row {
+.zeeboard-app-tags {
+    flex: 0 0 auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 6px;
-    margin-top: 9px;
 }
 
-.zeeboard-tag-row span {
+.zeeboard-app-tags span {
     padding: 4px 8px;
-    border: 1px solid rgba(201, 151, 121, 0.18);
+    border: 1px solid #e3d6c4;
     border-radius: 999px;
-    background: rgba(255, 250, 241, 0.08);
-    color: #f2c18d;
+    background: rgba(255, 252, 246, 0.84);
+    color: #976c5c;
     font-size: 0.5rem;
     font-weight: 900;
-}
-
-[data-theme="light"] .zeeboard-tag-row span {
-    background: rgba(255, 255, 255, 0.68);
-    color: #976c5c;
 }
 
 @keyframes zeeCardFloat {
@@ -4880,128 +4891,66 @@ aside > div:nth-child(2) {
 
 @keyframes zeeProgressPulse {
     0%, 100% { filter: brightness(0.95); }
-    50% { filter: brightness(1.18); }
+    50% { filter: brightness(1.12); }
 }
 
 @media (max-width: 1450px) {
-    .repo-zeeboard-preview {
-        min-height: 160px;
+    .repo-card-featured-zee {
+        grid-template-columns:
+            minmax(280px, 1fr)
+            minmax(420px, 1fr) !important;
+    }
+
+    .repo-card-featured-zee .repo-wave-column {
+        grid-column: 1 / -1;
+        order: 2;
+    }
+
+    .repo-card-featured-zee .repo-stats-panel {
+        order: 3;
+    }
+
+    .repo-card-featured-zee .repo-info {
+        order: 1;
+    }
+
+    .repo-card-featured-zee .repo-zeeboard-preview {
+        min-height: 220px !important;
+        height: auto !important;
     }
 }
 
 @media (max-width: 1200px) {
-    .repo-zeeboard-preview {
-        min-height: 145px;
+    .repo-card-featured-zee {
+        grid-template-columns: 1fr !important;
+    }
+
+    .repo-card-featured-zee .repo-wave-column {
+        grid-column: auto;
     }
 }
 
 @media (max-width: 720px) {
-    .zeeboard-shell {
+    .zeeboard-app-shell {
         grid-template-columns: 1fr;
     }
 
-    .zeeboard-mini-sidebar {
+    .zeeboard-app-sidebar {
         display: none;
     }
 
-    .zeeboard-board-row {
+    .zeeboard-app-content {
         grid-template-columns: 1fr;
     }
 
-    .zeeboard-calendar-card {
+    .zeeboard-side-widget {
         display: none;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .zeeboard-commission-card,
-    .zeeboard-progress span {
+    .zeeboard-kanban-card,
+    .zeeboard-mini-progress span {
         animation: none !important;
-    }
-}
-
-
-/* ==========================================================================
-   ZEEBOARD FIX FINAL
-   Evita que la preview herede estilos globales de aside/main y mantiene
-   la misma altura visual que el panel de estadísticas.
-   ========================================================================== */
-
-.repo-card-featured-zeeboard {
-    align-items: stretch !important;
-}
-
-.repo-card-featured-zeeboard .repo-wave-column,
-.repo-card-featured-zeeboard .repo-stats-panel {
-    height: 245px !important;
-    min-height: 245px !important;
-    max-height: 245px !important;
-}
-
-.repo-card-featured-zeeboard .repo-zeeboard-preview {
-    height: 245px !important;
-    min-height: 245px !important;
-    max-height: 245px !important;
-    margin: 0 !important;
-}
-
-.repo-card-featured-zeeboard .zeeboard-shell {
-    height: 100% !important;
-    min-height: 0 !important;
-}
-
-.zeeboard-mini-sidebar,
-.zeeboard-mini-main {
-    position: static !important;
-    z-index: auto !important;
-    flex: initial !important;
-    width: auto !important;
-    min-width: 0 !important;
-    height: auto !important;
-    min-height: 0 !important;
-    margin: 0 !important;
-}
-
-.zeeboard-mini-sidebar {
-    display: flex !important;
-}
-
-.zeeboard-mini-main {
-    display: block !important;
-    padding: 12px !important;
-}
-
-.repo-card-featured-zeeboard .zeeboard-board-row {
-    min-height: 0 !important;
-}
-
-.repo-card-featured-zeeboard .zeeboard-commission-card,
-.repo-card-featured-zeeboard .zeeboard-calendar-card {
-    min-height: 0 !important;
-}
-
-.repo-card-featured-zeeboard .zeeboard-art {
-    height: 34px !important;
-}
-
-@media (max-width: 1450px) {
-    .repo-card-featured-zeeboard .repo-wave-column,
-    .repo-card-featured-zeeboard .repo-stats-panel {
-        height: auto !important;
-        min-height: 220px !important;
-        max-height: none !important;
-    }
-
-    .repo-card-featured-zeeboard .repo-zeeboard-preview {
-        height: 220px !important;
-        min-height: 220px !important;
-        max-height: none !important;
-    }
-}
-
-@media (max-width: 768px) {
-    .repo-card-featured-zeeboard .repo-zeeboard-preview {
-        height: auto !important;
-        min-height: 200px !important;
     }
 }
