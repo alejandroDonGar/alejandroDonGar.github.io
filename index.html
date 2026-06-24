@@ -552,32 +552,15 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
             const data = await response.json();
             
             if (Array.isArray(data)) {
-                // Filtrar el repo del portfolio y forks
-                const FEATURED_REPOS = {
-                    'Escaner-de-Red-NetScanner': 1,
-                    'centroplus-connect': 2,
-                    'alejandroDonGar': 3,
-                    'etsdam_alejandro': 4
-                };
-
-                const filteredRepos = data.filter(repo => {
-                    const isNotPortfolio = repo.name.toLowerCase() !== 'alejandrodongar.github.io';
-                    const isNotFork = !repo.fork;
-                    return isNotPortfolio && isNotFork;
-                });
-
-                const featuredRepos = filteredRepos
-                    .filter(repo => FEATURED_REPOS[repo.name])
-                    .sort((a, b) => FEATURED_REPOS[a.name] - FEATURED_REPOS[b.name]);
-
-                const regularRepos = filteredRepos
-                    .filter(repo => !FEATURED_REPOS[repo.name])
+                // Filtrar el repo del portfolio y forks, manteniendo el orden real por actualización.
+                // La API ya devuelve los repositorios con sort=updated, así que no forzamos proyectos destacados arriba.
+                allRepos = data
+                    .filter(repo => {
+                        const isNotPortfolio = repo.name.toLowerCase() !== 'alejandrodongar.github.io';
+                        const isNotFork = !repo.fork;
+                        return isNotPortfolio && isNotFork;
+                    })
                     .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
-
-                allRepos = [
-                    ...featuredRepos,
-                    ...regularRepos
-                ];
 
                 console.log('Repositorios encontrados:', allRepos.length);
                 
@@ -669,6 +652,18 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
     function isEtsDamRepo(repo) {
         const normalizedName = repo.name.toLowerCase();
         return normalizedName === 'etsdam_alejandro' || normalizedName.includes('etsdam');
+    }
+
+    function isZeeBoardRepo(repo) {
+        const normalizedName = repo.name.toLowerCase();
+        const topics = (repo.topics || []).map(topic => topic.toLowerCase());
+
+        return (
+            normalizedName.includes('zeeboard') ||
+            normalizedName.includes('zee-board') ||
+            (topics.includes('commissions') && topics.includes('kanban')) ||
+            (topics.includes('javafx') && topics.includes('sqlite') && topics.includes('commissions'))
+        );
     }
 
     function createGitHubProfilePreview() {
@@ -870,6 +865,79 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
         `;
     }
 
+    function createZeeBoardPreview() {
+        return `
+            <div class="repo-zeeboard-preview" aria-label="Preview visual de ZeeBoard: gestor de comisiones tipo kanban">
+                <div class="zeeboard-shell">
+                    <aside class="zeeboard-mini-sidebar" aria-hidden="true">
+                        <div class="zeeboard-logo"><i class="fa-solid fa-feather-pointed"></i></div>
+                        <span class="active">Commissions</span>
+                        <span>Clients</span>
+                        <span>Tags</span>
+                    </aside>
+
+                    <main class="zeeboard-mini-main">
+                        <div class="zeeboard-topbar">
+                            <div>
+                                <small>Main workspace</small>
+                                <strong>ZeeBoard</strong>
+                            </div>
+                            <button type="button">+ New</button>
+                        </div>
+
+                        <div class="zeeboard-stats-row" aria-hidden="true">
+                            <div><small>Total</small><strong>700€</strong></div>
+                            <div><small>Active</small><strong>3</strong></div>
+                            <div><small>Unpaid</small><strong>1</strong></div>
+                        </div>
+
+                        <div class="zeeboard-board-row" aria-hidden="true">
+                            <article class="zeeboard-commission-card card-sketch">
+                                <span class="zeeboard-stage done"><i class="fa-solid fa-check"></i> Sketch</span>
+                                <h4>Train bear/dragon</h4>
+                                <p>Ginko · Twitter / X</p>
+                                <div class="zeeboard-art art-one"></div>
+                                <div class="zeeboard-card-bottom">
+                                    <span class="not-paid">Not Paid</span>
+                                    <strong>33%</strong>
+                                </div>
+                                <div class="zeeboard-progress"><span style="width: 33%;"></span></div>
+                            </article>
+
+                            <article class="zeeboard-commission-card card-lineart">
+                                <span class="zeeboard-stage active"><i class="fa-solid fa-pen-nib"></i> Lineart</span>
+                                <h4>Panda Bathtub</h4>
+                                <p>Agraaors · Bluesky</p>
+                                <div class="zeeboard-art art-two"></div>
+                                <div class="zeeboard-card-bottom">
+                                    <span class="paid">Paid</span>
+                                    <strong>60%</strong>
+                                </div>
+                                <div class="zeeboard-progress"><span style="width: 60%;"></span></div>
+                            </article>
+
+                            <aside class="zeeboard-calendar-card">
+                                <small>Calendar</small>
+                                <strong>Jun 2026</strong>
+                                <div class="zeeboard-calendar-grid">
+                                    <span></span><span></span><span></span><span class="hot">24</span><span>25</span><span class="soon">26</span><span class="soon">27</span>
+                                </div>
+                                <div class="zeeboard-deadline">23 days left</div>
+                            </aside>
+                        </div>
+
+                        <div class="zeeboard-tag-row" aria-label="Características de ZeeBoard">
+                            <span>Clients</span>
+                            <span>Tags</span>
+                            <span>Templates</span>
+                            <span>Deadlines</span>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        `;
+    }
+
     function createCentroPlusApiPreview() {
         return `
             <div class="repo-centroplus-connect-preview" aria-label="Preview visual de CentroPlus Connect: dashboard, API REST y Swagger">
@@ -950,7 +1018,8 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
             const centroPlus = isCentroPlusRepo(repo);
             const githubProfile = isGitHubProfileRepo(repo);
             const etsDam = isEtsDamRepo(repo);
-            const hasCustomPreview = netScanner || centroPlus || githubProfile || etsDam;
+            const zeeBoard = isZeeBoardRepo(repo);
+            const hasCustomPreview = netScanner || centroPlus || githubProfile || etsDam || zeeBoard;
 
             card.className = hasCustomPreview ? 'repo-card repo-card-featured-net' : 'repo-card';
             card.setAttribute('data-aos', 'fade-up');
@@ -980,6 +1049,7 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                 ${centroPlus ? `<div class="repo-wave-column">${createCentroPlusApiPreview()}</div>` : ''}
                 ${githubProfile ? `<div class="repo-wave-column">${createGitHubProfilePreview()}</div>` : ''}
                 ${etsDam ? `<div class="repo-wave-column">${createEtsDamPreview()}</div>` : ''}
+                ${zeeBoard ? `<div class="repo-wave-column">${createZeeBoardPreview()}</div>` : ''}
 
                 <div class="repo-stats-panel" style="background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 20px;">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
