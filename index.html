@@ -662,7 +662,8 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
             normalizedName.includes('zeeboard') ||
             normalizedName.includes('zee-board') ||
             (topics.includes('commissions') && topics.includes('kanban')) ||
-            (topics.includes('javafx') && topics.includes('sqlite') && topics.includes('commissions'))
+            (topics.includes('tauri-app') && topics.includes('typescript')) ||
+            (topics.includes('react') && topics.includes('sqlite') && topics.includes('typescript'))
         );
     }
 
@@ -868,77 +869,78 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
     function createZeeBoardPreview() {
         return `
             <div class="repo-zeeboard-preview" aria-label="Preview visual de ZeeBoard: gestor de comisiones tipo kanban">
-                <div class="zeeboard-app-shell">
-                    <div class="zeeboard-app-sidebar" aria-hidden="true">
-                        <div class="zeeboard-app-brand">
-                            <span class="zeeboard-brand-icon"><i class="fa-solid fa-feather-pointed"></i></span>
-                            <strong>ZeeBoard</strong>
-                        </div>
-                        <span class="active">Commissions</span>
+                <div class="zeeboard-shell">
+                    <aside class="zeeboard-mini-sidebar" aria-hidden="true">
+                        <div class="zeeboard-logo"><i class="fa-solid fa-feather-pointed"></i></div>
+                        <span class="active">Board</span>
                         <span>Clients</span>
                         <span>Tags</span>
                         <span>Templates</span>
-                    </div>
+                    </aside>
 
-                    <div class="zeeboard-app-main">
-                        <div class="zeeboard-app-topbar">
+                    <div class="zeeboard-board-area">
+                        <header class="zeeboard-header">
                             <div>
                                 <small>Main workspace</small>
-                                <strong>Commission board</strong>
+                                <strong>ZeeBoard</strong>
+                                <span>Commission workspace</span>
                             </div>
                             <button type="button">+ New</button>
-                        </div>
+                        </header>
 
-                        <div class="zeeboard-app-stats" aria-hidden="true">
+                        <div class="zeeboard-metrics" aria-hidden="true">
                             <div><small>Total earned</small><strong>700€</strong></div>
                             <div><small>Active</small><strong>3</strong></div>
                             <div><small>Unpaid</small><strong>1</strong></div>
                         </div>
 
-                        <div class="zeeboard-app-content" aria-hidden="true">
-                            <div class="zeeboard-board-mini">
-                                <article class="zeeboard-kanban-card is-sketch">
-                                    <span class="zeeboard-status status-sketch"><i class="fa-solid fa-check"></i> Sketch</span>
-                                    <h4>Commission #01</h4>
+                        <div class="zeeboard-kanban" aria-hidden="true">
+                            <section class="zeeboard-column">
+                                <div class="zeeboard-column-title"><span class="dot sketch"></span> Sketch</div>
+                                <article class="zeeboard-commission-card">
+                                    <div class="zeeboard-card-top">
+                                        <strong>Commission #01</strong>
+                                        <span class="payment unpaid">Not paid</span>
+                                    </div>
                                     <p>2 characters · render</p>
-                                    <div class="zeeboard-image-slot"></div>
-                                    <div class="zeeboard-card-meta">
-                                        <span class="not-paid">Not paid</span>
-                                        <strong>33%</strong>
-                                    </div>
-                                    <div class="zeeboard-mini-progress"><span style="width: 33%;"></span></div>
+                                    <div class="zeeboard-thumb-lines"><span></span><span></span><span></span></div>
+                                    <div class="zeeboard-progress-row"><span>33%</span><div><em style="width:33%"></em></div></div>
                                 </article>
+                            </section>
 
-                                <article class="zeeboard-kanban-card is-lineart">
-                                    <span class="zeeboard-status status-lineart"><i class="fa-solid fa-pen-nib"></i> Lineart</span>
-                                    <h4>Commission #02</h4>
+                            <section class="zeeboard-column">
+                                <div class="zeeboard-column-title"><span class="dot lineart"></span> Lineart</div>
+                                <article class="zeeboard-commission-card focused">
+                                    <div class="zeeboard-card-top">
+                                        <strong>Commission #02</strong>
+                                        <span class="payment paid">Paid</span>
+                                    </div>
                                     <p>1 character · background</p>
-                                    <div class="zeeboard-image-slot slot-two"></div>
-                                    <div class="zeeboard-card-meta">
-                                        <span class="paid">Paid</span>
-                                        <strong>60%</strong>
-                                    </div>
-                                    <div class="zeeboard-mini-progress"><span style="width: 60%;"></span></div>
+                                    <div class="zeeboard-thumb-lines"><span></span><span></span><span></span></div>
+                                    <div class="zeeboard-progress-row"><span>60%</span><div><em style="width:60%"></em></div></div>
                                 </article>
-                            </div>
+                            </section>
 
-                            <div class="zeeboard-side-widget">
-                                <small>Calendar</small>
-                                <strong>Jun 2026</strong>
-                                <div class="zeeboard-mini-calendar">
-                                    <span>24</span><span class="soon">25</span><span class="soon">26</span>
-                                    <span>27</span><span class="marked">28</span><span>29</span>
-                                </div>
-                                <em>23 days left</em>
-                            </div>
+                            <section class="zeeboard-column compact">
+                                <div class="zeeboard-column-title"><span class="dot colour"></span> Base colour</div>
+                                <article class="zeeboard-commission-card small-card">
+                                    <div class="zeeboard-card-top">
+                                        <strong>Commission #03</strong>
+                                        <span class="payment unpaid">Not paid</span>
+                                    </div>
+                                    <p>0% · queued</p>
+                                </article>
+                            </section>
                         </div>
 
-                        <div class="zeeboard-app-tags" aria-label="Características de ZeeBoard">
-                            <span>Clients</span>
-                            <span>Tags</span>
-                            <span>Templates</span>
-                            <span>Deadlines</span>
-                        </div>
+                        <footer class="zeeboard-stack" aria-label="Stack de ZeeBoard">
+                            <span>TypeScript</span>
+                            <span>React</span>
+                            <span>Tauri</span>
+                            <span>Rust</span>
+                            <span>SQLite</span>
+                            <span>Node.js</span>
+                        </footer>
                     </div>
                 </div>
             </div>

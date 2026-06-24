@@ -4480,9 +4480,9 @@ aside > div:nth-child(2) {
 }
 
 /* ============================================================================
-   ZEEBOARD REPO CUSTOM PREVIEW
-   Mini interfaz inspirada en la app real: paleta crema, sidebar navy,
-   board de comisiones, calendario y tags. Sin nombres reales.
+   ZEEBOARD REPO CUSTOM PREVIEW V2
+   Mini kanban integrado con el portfolio: borde suave, paleta crema/navy,
+   nombres genéricos y stack real: TypeScript, React, Tauri, Rust, SQLite, Node.js.
    ============================================================================ */
 
 .repo-card-featured-zee {
@@ -4498,14 +4498,24 @@ aside > div:nth-child(2) {
     min-height: 100% !important;
     margin: 0 !important;
     overflow: hidden;
-    border: 1px solid rgba(224, 211, 192, 0.32);
+    border: 1px solid rgba(125, 140, 170, 0.20);
     border-radius: 22px;
-    background: #f7efe4;
-    color: #17202c;
+    background:
+        radial-gradient(circle at 20% 12%, rgba(246, 190, 82, 0.10), transparent 28%),
+        radial-gradient(circle at 88% 88%, rgba(93, 63, 211, 0.10), transparent 32%),
+        linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(18, 25, 38, 0.86));
+    color: #162033;
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.85),
-        0 16px 34px rgba(0, 0, 0, 0.22);
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 14px 30px rgba(0, 0, 0, 0.22);
     isolation: isolate;
+}
+
+[data-theme="light"] .repo-zeeboard-preview {
+    border-color: rgba(32, 37, 49, 0.12);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.7),
+        0 12px 26px rgba(32, 37, 49, 0.08);
 }
 
 .repo-zeeboard-preview,
@@ -4517,14 +4527,14 @@ aside > div:nth-child(2) {
     content: "";
     position: absolute;
     inset: 0;
-    pointer-events: none;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(246, 190, 82, 0.18), transparent 30%),
-        radial-gradient(circle at 88% 76%, rgba(112, 85, 190, 0.14), transparent 32%),
-        linear-gradient(90deg, rgba(23, 32, 44, 0.03) 1px, transparent 1px),
-        linear-gradient(rgba(23, 32, 44, 0.03) 1px, transparent 1px);
-    background-size: auto, auto, 28px 28px, 28px 28px;
     z-index: 0;
+    pointer-events: none;
+    opacity: 0.55;
+    background:
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,0.030) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: linear-gradient(90deg, transparent, black 20%, black 80%, transparent);
 }
 
 .repo-zeeboard-preview > * {
@@ -4532,341 +4542,310 @@ aside > div:nth-child(2) {
     z-index: 1;
 }
 
-.zeeboard-app-shell {
+.zeeboard-shell {
     height: 100%;
     min-height: inherit;
     display: grid;
-    grid-template-columns: 96px minmax(0, 1fr);
-    background: linear-gradient(135deg, #fbf5ec 0%, #f7efe4 50%, #f1e4d3 100%);
+    grid-template-columns: 78px minmax(0, 1fr);
+    padding: 10px;
+    gap: 10px;
 }
 
-.zeeboard-app-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-    padding: 12px 10px;
-    background: #0d213c;
-    color: rgba(255, 255, 255, 0.78);
+.zeeboard-mini-sidebar {
+    width: auto !important;
+    height: auto !important;
+    position: static !important;
+    z-index: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px;
+    padding: 9px 8px;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    border-radius: 16px;
+    background: linear-gradient(180deg, #0d213c, #071523) !important;
+    color: rgba(255,255,255,0.78) !important;
+    box-shadow: none !important;
 }
 
-.zeeboard-app-brand {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    margin-bottom: 8px;
-}
-
-.zeeboard-brand-icon {
-    width: 28px;
-    height: 28px;
+.zeeboard-logo {
+    width: 26px;
+    height: 26px;
     display: grid;
     place-items: center;
-    flex: 0 0 auto;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #17202c, #314157);
-    color: #f8fafc;
-    font-size: 0.7rem;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.26);
+    margin-bottom: 4px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #233955, #17263a);
+    color: #f6efe5;
+    font-size: 0.68rem;
 }
 
-.zeeboard-app-brand strong {
-    overflow: hidden;
-    color: #ffffff;
-    font-size: 0.64rem;
-    line-height: 1;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.zeeboard-app-sidebar > span {
+.zeeboard-mini-sidebar span {
     width: 100%;
     overflow: hidden;
-    padding: 6px 8px;
-    border-radius: 10px;
-    color: rgba(255, 255, 255, 0.76);
-    font-size: 0.55rem;
-    font-weight: 800;
+    padding: 6px 7px;
+    border-radius: 9px;
+    color: rgba(255,255,255,0.72);
+    font-size: 0.52rem;
+    font-weight: 900;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-.zeeboard-app-sidebar > span.active {
-    background: #17202c;
+.zeeboard-mini-sidebar span.active {
+    background: rgba(255,255,255,0.12);
     color: #ffffff;
-    box-shadow: 0 6px 13px rgba(0, 0, 0, 0.18);
 }
 
-.zeeboard-app-main {
+.zeeboard-board-area {
     min-width: 0;
-    padding: 12px;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 9px;
+    padding: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(151, 108, 92, 0.18);
+    border-radius: 18px;
+    background:
+        radial-gradient(circle at 78% 18%, rgba(245, 158, 11, 0.08), transparent 25%),
+        linear-gradient(135deg, #fffaf2 0%, #f7efe4 52%, #efe1cf 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.82),
+        0 10px 22px rgba(0,0,0,0.16);
 }
 
-.zeeboard-app-topbar {
+.zeeboard-header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: 12px;
+    gap: 10px;
 }
 
-.zeeboard-app-topbar small,
-.zeeboard-side-widget small {
-    display: block;
-    color: #a77c5f;
-    font-size: 0.48rem;
-    font-weight: 900;
-    letter-spacing: 0.22em;
+.zeeboard-header div {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.zeeboard-header small {
+    color: #a17860;
+    font-size: 0.5rem;
+    font-weight: 1000;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
 }
 
-.zeeboard-app-topbar strong {
-    display: block;
-    margin-top: 2px;
-    color: #17202c;
-    font-size: 0.92rem;
-    line-height: 1;
+.zeeboard-header strong {
+    color: #162033;
+    font-size: 0.86rem;
+    line-height: 1.05;
 }
 
-.zeeboard-app-topbar button {
+.zeeboard-header span {
+    color: #7c6f64;
+    font-size: 0.55rem;
+    font-weight: 800;
+}
+
+.zeeboard-header button {
     flex: 0 0 auto;
-    padding: 7px 11px;
+    padding: 7px 12px;
     border: 0;
     border-radius: 12px;
-    background: #17202c;
+    background: #172333;
     color: #ffffff;
-    font-size: 0.58rem;
-    font-weight: 900;
-    box-shadow: 0 8px 18px rgba(23, 32, 44, 0.18);
+    font-size: 0.62rem;
+    font-weight: 1000;
 }
 
-.zeeboard-app-stats {
+.zeeboard-metrics {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
 }
 
-.zeeboard-app-stats > div,
-.zeeboard-kanban-card,
-.zeeboard-side-widget {
-    border: 1px solid #e3d6c4;
-    border-radius: 14px;
-    background: rgba(255, 252, 246, 0.88);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.72),
-        0 8px 16px rgba(23, 32, 44, 0.06);
+.zeeboard-metrics > div {
+    min-width: 0;
+    padding: 8px 10px;
+    border: 1px solid #e3d5c1;
+    border-radius: 13px;
+    background: rgba(255, 252, 246, 0.78);
+    box-shadow: 0 6px 14px rgba(80, 61, 41, 0.06);
 }
 
-.zeeboard-app-stats > div {
-    padding: 7px 9px;
-}
-
-.zeeboard-app-stats small {
+.zeeboard-metrics small {
     display: block;
-    color: #a77c5f;
-    font-size: 0.48rem;
-    font-weight: 900;
-    letter-spacing: 0.14em;
+    color: #a17860;
+    font-size: 0.46rem;
+    font-weight: 1000;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
 }
 
-.zeeboard-app-stats strong {
+.zeeboard-metrics strong {
     display: block;
-    margin-top: 2px;
-    color: #17202c;
-    font-size: 0.9rem;
-    line-height: 1;
+    color: #162033;
+    font-size: 0.92rem;
+    line-height: 1.1;
 }
 
-.zeeboard-app-content {
+.zeeboard-kanban {
     flex: 1 1 auto;
     min-height: 0;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 118px;
-    gap: 9px;
-    align-items: stretch;
-}
-
-.zeeboard-board-mini {
-    min-width: 0;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr 1fr 0.62fr;
     gap: 9px;
 }
 
-.zeeboard-kanban-card {
+.zeeboard-column {
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 9px;
+    border: 1px solid #e7dac8;
+    border-radius: 16px;
+    background: rgba(255, 250, 242, 0.58);
+}
+
+.zeeboard-column.compact {
+    display: flex;
+}
+
+.zeeboard-column-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #5f5147;
+    font-size: 0.56rem;
+    font-weight: 1000;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.zeeboard-column-title .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.8);
+}
+
+.zeeboard-column-title .sketch { background: #22c55e; }
+.zeeboard-column-title .lineart { background: #f59e0b; }
+.zeeboard-column-title .colour { background: #3b82f6; }
+
+.zeeboard-commission-card {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
     padding: 9px;
     overflow: hidden;
-    animation: zeeCardFloat 4.5s ease-in-out infinite;
+    border: 1px solid #e5d6c3;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.72);
+    box-shadow: 0 7px 16px rgba(80, 61, 41, 0.07);
+    animation: zeeCardFloat 5s ease-in-out infinite;
 }
 
-.zeeboard-kanban-card.is-lineart {
-    animation-delay: -1.5s;
+.zeeboard-commission-card.focused {
+    animation-delay: -1.7s;
 }
 
-.zeeboard-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 4px 8px;
-    border-radius: 999px;
-    font-size: 0.48rem;
-    font-weight: 900;
-    white-space: nowrap;
+.zeeboard-commission-card.small-card {
+    flex: 0 1 auto;
+    min-height: 58px;
 }
 
-.status-sketch {
-    background: #dcfce7;
-    color: #16a34a;
-}
-
-.status-lineart {
-    background: #fef3c7;
-    color: #d97706;
-}
-
-.zeeboard-kanban-card h4 {
-    margin: 7px 0 2px;
-    overflow: hidden;
-    color: #17202c;
-    font-size: 0.64rem;
-    line-height: 1.1;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.zeeboard-kanban-card p {
-    margin: 0 0 7px;
-    overflow: hidden;
-    color: #6f6257;
-    font-size: 0.5rem;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.zeeboard-image-slot {
-    height: 34px;
-    margin-bottom: 7px;
-    overflow: hidden;
-    border: 1px dashed #d8c8b5;
-    border-radius: 11px;
-    background:
-        linear-gradient(115deg, transparent 15%, rgba(23, 32, 44, 0.10) 16% 18%, transparent 19%),
-        linear-gradient(165deg, transparent 35%, rgba(23, 32, 44, 0.10) 36% 38%, transparent 39%),
-        rgba(250, 250, 250, 0.92);
-}
-
-.zeeboard-image-slot.slot-two {
-    background:
-        radial-gradient(circle at 30% 52%, rgba(23, 32, 44, 0.12), transparent 24%),
-        linear-gradient(145deg, transparent 25%, rgba(23, 32, 44, 0.09) 26% 29%, transparent 30%),
-        rgba(250, 250, 250, 0.92);
-}
-
-.zeeboard-card-meta {
+.zeeboard-card-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
-    margin-bottom: 5px;
+    gap: 6px;
 }
 
-.zeeboard-card-meta span {
-    padding: 3px 7px;
-    border-radius: 999px;
-    color: #ffffff;
-    font-size: 0.46rem;
-    font-weight: 900;
+.zeeboard-card-top strong {
+    min-width: 0;
+    overflow: hidden;
+    color: #17202c;
+    font-size: 0.66rem;
     white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
-.zeeboard-card-meta .paid {
-    background: #22c55e;
+.zeeboard-commission-card p {
+    color: #7c6f64;
+    font-size: 0.50rem;
+    font-weight: 800;
 }
 
-.zeeboard-card-meta .not-paid {
-    background: #ef4444;
+.payment {
+    flex: 0 0 auto;
+    padding: 3px 6px;
+    border-radius: 999px;
+    color: #fff;
+    font-size: 0.44rem;
+    font-weight: 1000;
+    text-transform: uppercase;
 }
 
-.zeeboard-card-meta strong {
-    color: #66594e;
-    font-size: 0.48rem;
+.payment.paid { background: #22c55e; }
+.payment.unpaid { background: #ef4444; }
+
+.zeeboard-thumb-lines {
+    flex: 1 1 auto;
+    min-height: 38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    padding: 8px;
+    border: 1px dashed #ddcbb5;
+    border-radius: 11px;
+    background:
+        linear-gradient(115deg, transparent 32%, rgba(15, 23, 42, 0.08) 33%, transparent 46%),
+        rgba(248, 250, 252, 0.65);
 }
 
-.zeeboard-mini-progress {
+.zeeboard-thumb-lines span {
+    height: 5px;
+    border-radius: 999px;
+    background: rgba(23, 32, 44, 0.10);
+}
+
+.zeeboard-thumb-lines span:nth-child(2) { width: 74%; }
+.zeeboard-thumb-lines span:nth-child(3) { width: 52%; }
+
+.zeeboard-progress-row {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    align-items: center;
+    gap: 7px;
+}
+
+.zeeboard-progress-row span {
+    color: #7c6f64;
+    font-size: 0.52rem;
+    font-weight: 1000;
+}
+
+.zeeboard-progress-row div {
     height: 5px;
     overflow: hidden;
     border-radius: 999px;
-    background: #ece3d8;
+    background: #eadfce;
 }
 
-.zeeboard-mini-progress span {
+.zeeboard-progress-row em {
     display: block;
     height: 100%;
     border-radius: inherit;
-    background: linear-gradient(90deg, #17202c, #7c3aed, #f59e0b);
-    animation: zeeProgressPulse 2.8s ease-in-out infinite;
+    background: linear-gradient(90deg, #13253a, #7c3aed, #f59e0b);
+    animation: zeeProgressPulse 3.5s ease-in-out infinite;
 }
 
-.zeeboard-side-widget {
-    min-width: 0;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-}
-
-.zeeboard-side-widget strong {
-    display: block;
-    margin: 5px 0 8px;
-    color: #17202c;
-    font-size: 0.62rem;
-}
-
-.zeeboard-mini-calendar {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4px;
-    margin-bottom: 8px;
-}
-
-.zeeboard-mini-calendar span {
-    width: 20px;
-    height: 20px;
-    display: grid;
-    place-items: center;
-    justify-self: center;
-    border-radius: 999px;
-    background: #ffffff;
-    color: #66594e;
-    font-size: 0.45rem;
-    font-weight: 900;
-}
-
-.zeeboard-mini-calendar .marked {
-    background: #17202c;
-    color: #ffffff;
-}
-
-.zeeboard-mini-calendar .soon {
-    background: #fef3c7;
-    color: #92400e;
-}
-
-.zeeboard-side-widget em {
-    margin-top: auto;
-    padding: 5px 7px;
-    border-radius: 999px;
-    background: #fef3c7;
-    color: #92400e;
-    font-size: 0.48rem;
-    font-style: normal;
-    font-weight: 900;
-    text-align: center;
-}
-
-.zeeboard-app-tags {
+.zeeboard-stack {
     flex: 0 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -4874,14 +4853,14 @@ aside > div:nth-child(2) {
     gap: 6px;
 }
 
-.zeeboard-app-tags span {
+.zeeboard-stack span {
     padding: 4px 8px;
-    border: 1px solid #e3d6c4;
+    border: 1px solid #e4d6c3;
     border-radius: 999px;
-    background: rgba(255, 252, 246, 0.84);
-    color: #976c5c;
-    font-size: 0.5rem;
-    font-weight: 900;
+    background: rgba(255,255,255,0.70);
+    color: #8a6a58;
+    font-size: 0.49rem;
+    font-weight: 1000;
 }
 
 @keyframes zeeCardFloat {
@@ -4890,8 +4869,8 @@ aside > div:nth-child(2) {
 }
 
 @keyframes zeeProgressPulse {
-    0%, 100% { filter: brightness(0.95); }
-    50% { filter: brightness(1.12); }
+    0%, 100% { filter: brightness(0.96); }
+    50% { filter: brightness(1.15); }
 }
 
 @media (max-width: 1450px) {
@@ -4931,26 +4910,26 @@ aside > div:nth-child(2) {
 }
 
 @media (max-width: 720px) {
-    .zeeboard-app-shell {
+    .zeeboard-shell {
         grid-template-columns: 1fr;
     }
 
-    .zeeboard-app-sidebar {
-        display: none;
+    .zeeboard-mini-sidebar {
+        display: none !important;
     }
 
-    .zeeboard-app-content {
+    .zeeboard-kanban {
         grid-template-columns: 1fr;
     }
 
-    .zeeboard-side-widget {
+    .zeeboard-column.compact {
         display: none;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .zeeboard-kanban-card,
-    .zeeboard-mini-progress span {
+    .zeeboard-commission-card,
+    .zeeboard-progress-row em {
         animation: none !important;
     }
 }
