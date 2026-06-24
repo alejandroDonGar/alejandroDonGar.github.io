@@ -869,21 +869,28 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
     function createZeeBoardPreview() {
         return `
             <div class="repo-zeeboard-preview" aria-label="Preview visual de ZeeBoard: gestor de comisiones tipo kanban">
-                <div class="zeeboard-shell">
-                    <aside class="zeeboard-mini-sidebar" aria-hidden="true">
-                        <div class="zeeboard-logo"><i class="fa-solid fa-feather-pointed"></i></div>
-                        <span class="active">Board</span>
+                <div class="zeeboard-window">
+                    <nav class="zeeboard-mini-sidebar" aria-hidden="true">
+                        <div class="zeeboard-brand-row">
+                            <div class="zeeboard-logo"><i class="fa-solid fa-feather-pointed"></i></div>
+                            <div>
+                                <strong>ZeeBoard</strong>
+                                <span>Commission workspace</span>
+                            </div>
+                        </div>
+
+                        <span class="active">Commissions</span>
                         <span>Clients</span>
                         <span>Tags</span>
                         <span>Templates</span>
-                    </aside>
+                    </nav>
 
                     <div class="zeeboard-board-area">
                         <header class="zeeboard-header">
                             <div>
                                 <small>Main workspace</small>
-                                <strong>ZeeBoard</strong>
-                                <span>Commission workspace</span>
+                                <strong>Commissions</strong>
+                                <span>Organiza encargos, clientes, fechas y etiquetas.</span>
                             </div>
                             <button type="button">+ New</button>
                         </header>
@@ -894,43 +901,47 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                             <div><small>Unpaid</small><strong>1</strong></div>
                         </div>
 
-                        <div class="zeeboard-kanban" aria-hidden="true">
-                            <section class="zeeboard-column">
-                                <div class="zeeboard-column-title"><span class="dot sketch"></span> Sketch</div>
-                                <article class="zeeboard-commission-card">
-                                    <div class="zeeboard-card-top">
-                                        <strong>Commission #01</strong>
-                                        <span class="payment unpaid">Not paid</span>
-                                    </div>
-                                    <p>2 characters · render</p>
-                                    <div class="zeeboard-thumb-lines"><span></span><span></span><span></span></div>
-                                    <div class="zeeboard-progress-row"><span>33%</span><div><em style="width:33%"></em></div></div>
-                                </article>
-                            </section>
+                        <div class="zeeboard-preview-main" aria-hidden="true">
+                            <div class="zeeboard-kanban">
+                                <section class="zeeboard-column">
+                                    <div class="zeeboard-column-title"><span class="dot sketch"></span> Sketch</div>
+                                    <article class="zeeboard-commission-card">
+                                        <div class="zeeboard-card-top">
+                                            <strong>Commission #01</strong>
+                                            <span class="payment unpaid">Not paid</span>
+                                        </div>
+                                        <p>2 characters · render</p>
+                                        <div class="zeeboard-thumb-lines"><span></span><span></span><span></span></div>
+                                        <div class="zeeboard-progress-row"><span>33%</span><div><em style="width:33%"></em></div></div>
+                                    </article>
+                                </section>
 
-                            <section class="zeeboard-column">
-                                <div class="zeeboard-column-title"><span class="dot lineart"></span> Lineart</div>
-                                <article class="zeeboard-commission-card focused">
-                                    <div class="zeeboard-card-top">
-                                        <strong>Commission #02</strong>
-                                        <span class="payment paid">Paid</span>
-                                    </div>
-                                    <p>1 character · background</p>
-                                    <div class="zeeboard-thumb-lines"><span></span><span></span><span></span></div>
-                                    <div class="zeeboard-progress-row"><span>60%</span><div><em style="width:60%"></em></div></div>
-                                </article>
-                            </section>
+                                <section class="zeeboard-column">
+                                    <div class="zeeboard-column-title"><span class="dot lineart"></span> Lineart</div>
+                                    <article class="zeeboard-commission-card focused">
+                                        <div class="zeeboard-card-top">
+                                            <strong>Commission #02</strong>
+                                            <span class="payment paid">Paid</span>
+                                        </div>
+                                        <p>1 character · background</p>
+                                        <div class="zeeboard-thumb-lines"><span></span><span></span><span></span></div>
+                                        <div class="zeeboard-progress-row"><span>60%</span><div><em style="width:60%"></em></div></div>
+                                    </article>
+                                </section>
+                            </div>
 
-                            <section class="zeeboard-column compact">
-                                <div class="zeeboard-column-title"><span class="dot colour"></span> Base colour</div>
-                                <article class="zeeboard-commission-card small-card">
-                                    <div class="zeeboard-card-top">
-                                        <strong>Commission #03</strong>
-                                        <span class="payment unpaid">Not paid</span>
-                                    </div>
-                                    <p>0% · queued</p>
-                                </article>
-                            </section>
+                            <aside class="zeeboard-calendar-card">
+                                <small>Calendar</small>
+                                <strong>Jun 2026</strong>
+                                <div class="zeeboard-days">
+                                    <span>24</span>
+                                    <span class="today">25</span>
+                                    <span class="due">26</span>
+                                    <span>27</span>
+                                    <span>28</span>
+                                </div>
+                                <div class="zeeboard-deadline">23 days left</div>
+                            </aside>
                         </div>
 
                         <footer class="zeeboard-stack" aria-label="Stack de ZeeBoard">
@@ -940,6 +951,7 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                             <span>Rust</span>
                             <span>SQLite</span>
                             <span>Node.js</span>
+                            <span>Drag & Drop</span>
                         </footer>
                     </div>
                 </div>

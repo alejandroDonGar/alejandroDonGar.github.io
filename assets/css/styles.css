@@ -4479,11 +4479,11 @@ aside > div:nth-child(2) {
     }
 }
 
-/* ============================================================================
-   ZEEBOARD REPO CUSTOM PREVIEW V2
-   Mini kanban integrado con el portfolio: borde suave, paleta crema/navy,
-   nombres genéricos y stack real: TypeScript, React, Tauri, Rust, SQLite, Node.js.
-   ============================================================================ */
+/* ==========================================================================
+   ZEEBOARD REPO CUSTOM PREVIEW V3
+   Mockup claro inspirado en la app real: crema, tarjetas suaves, kanban,
+   calendario compacto y stack real.
+   ========================================================================== */
 
 .repo-card-featured-zee {
     grid-template-columns:
@@ -4498,24 +4498,25 @@ aside > div:nth-child(2) {
     min-height: 100% !important;
     margin: 0 !important;
     overflow: hidden;
-    border: 1px solid rgba(125, 140, 170, 0.20);
+    border: 1px solid rgba(125, 140, 170, 0.16);
     border-radius: 22px;
     background:
-        radial-gradient(circle at 20% 12%, rgba(246, 190, 82, 0.10), transparent 28%),
-        radial-gradient(circle at 88% 88%, rgba(93, 63, 211, 0.10), transparent 32%),
-        linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(18, 25, 38, 0.86));
-    color: #162033;
+        radial-gradient(circle at 82% 18%, rgba(201, 151, 121, 0.10), transparent 26%),
+        radial-gradient(circle at 14% 84%, rgba(125, 140, 170, 0.10), transparent 28%),
+        linear-gradient(135deg, rgba(19, 25, 36, 0.78), rgba(18, 21, 28, 0.92));
+    color: #17202c;
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.045),
-        0 14px 30px rgba(0, 0, 0, 0.22);
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 14px 30px rgba(0, 0, 0, 0.20);
     isolation: isolate;
 }
 
 [data-theme="light"] .repo-zeeboard-preview {
-    border-color: rgba(32, 37, 49, 0.12);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.7),
-        0 12px 26px rgba(32, 37, 49, 0.08);
+    background:
+        radial-gradient(circle at 82% 18%, rgba(201, 151, 121, 0.10), transparent 26%),
+        linear-gradient(135deg, #f3eee5, #ede3d6);
+    border-color: rgba(32, 37, 49, 0.10);
+    box-shadow: 0 12px 26px rgba(32, 37, 49, 0.08);
 }
 
 .repo-zeeboard-preview,
@@ -4527,14 +4528,14 @@ aside > div:nth-child(2) {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: 0;
     pointer-events: none;
-    opacity: 0.55;
+    z-index: 0;
+    opacity: 0.38;
     background:
-        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
-        linear-gradient(rgba(255,255,255,0.030) 1px, transparent 1px);
-    background-size: 28px 28px;
-    mask-image: linear-gradient(90deg, transparent, black 20%, black 80%, transparent);
+        linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,0.040) 1px, transparent 1px);
+    background-size: 30px 30px;
+    mask-image: linear-gradient(90deg, transparent, black 22%, black 82%, transparent);
 }
 
 .repo-zeeboard-preview > * {
@@ -4542,13 +4543,13 @@ aside > div:nth-child(2) {
     z-index: 1;
 }
 
-.zeeboard-shell {
+.zeeboard-window {
     height: 100%;
     min-height: inherit;
     display: grid;
-    grid-template-columns: 78px minmax(0, 1fr);
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 0;
     padding: 10px;
-    gap: 10px;
 }
 
 .zeeboard-mini-sidebar {
@@ -4558,13 +4559,30 @@ aside > div:nth-child(2) {
     z-index: 1 !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 8px;
-    padding: 9px 8px;
-    border: 1px solid rgba(255,255,255,0.06) !important;
-    border-radius: 16px;
-    background: linear-gradient(180deg, #0d213c, #071523) !important;
-    color: rgba(255,255,255,0.78) !important;
-    box-shadow: none !important;
+    gap: 9px;
+    padding: 12px 10px;
+    overflow: hidden;
+    border: 1px solid #e3d7c6 !important;
+    border-right: 0 !important;
+    border-radius: 18px 0 0 18px;
+    background:
+        linear-gradient(180deg, #fbf6ee, #f3eadf) !important;
+    color: #17202c !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.9),
+        6px 0 20px rgba(80, 61, 41, 0.06) !important;
+}
+
+.zeeboard-brand-row {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 8px;
+}
+
+.zeeboard-brand-row strong,
+.zeeboard-brand-row span {
+    display: none;
 }
 
 .zeeboard-logo {
@@ -4572,28 +4590,29 @@ aside > div:nth-child(2) {
     height: 26px;
     display: grid;
     place-items: center;
-    margin-bottom: 4px;
     border-radius: 9px;
-    background: linear-gradient(135deg, #233955, #17263a);
+    background: #172333;
     color: #f6efe5;
-    font-size: 0.68rem;
+    font-size: 0.65rem;
+    box-shadow: 0 7px 14px rgba(23, 35, 51, 0.18);
 }
 
-.zeeboard-mini-sidebar span {
+.zeeboard-mini-sidebar > span {
     width: 100%;
     overflow: hidden;
     padding: 6px 7px;
     border-radius: 9px;
-    color: rgba(255,255,255,0.72);
+    color: #5f5147;
     font-size: 0.52rem;
     font-weight: 900;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-.zeeboard-mini-sidebar span.active {
-    background: rgba(255,255,255,0.12);
+.zeeboard-mini-sidebar > span.active {
+    background: #172333;
     color: #ffffff;
+    box-shadow: 0 8px 14px rgba(23, 35, 51, 0.14);
 }
 
 .zeeboard-board-area {
@@ -4601,17 +4620,17 @@ aside > div:nth-child(2) {
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 9px;
-    padding: 12px;
+    gap: 8px;
+    padding: 12px 13px;
     overflow: hidden;
-    border: 1px solid rgba(151, 108, 92, 0.18);
-    border-radius: 18px;
+    border: 1px solid #e3d7c6;
+    border-radius: 0 18px 18px 0;
     background:
-        radial-gradient(circle at 78% 18%, rgba(245, 158, 11, 0.08), transparent 25%),
-        linear-gradient(135deg, #fffaf2 0%, #f7efe4 52%, #efe1cf 100%);
+        radial-gradient(circle at 78% 0%, rgba(235, 211, 182, 0.45), transparent 32%),
+        linear-gradient(135deg, #fffaf2 0%, #f8f1e7 54%, #efe1cf 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.82),
-        0 10px 22px rgba(0,0,0,0.16);
+        inset 0 1px 0 rgba(255,255,255,0.92),
+        0 12px 24px rgba(80, 61, 41, 0.10);
 }
 
 .zeeboard-header {
@@ -4622,29 +4641,34 @@ aside > div:nth-child(2) {
 }
 
 .zeeboard-header div {
+    min-width: 0;
     display: flex;
     flex-direction: column;
-    min-width: 0;
 }
 
 .zeeboard-header small {
     color: #a17860;
-    font-size: 0.5rem;
+    font-size: 0.48rem;
     font-weight: 1000;
     letter-spacing: 0.28em;
+    line-height: 1;
     text-transform: uppercase;
 }
 
 .zeeboard-header strong {
-    color: #162033;
-    font-size: 0.86rem;
-    line-height: 1.05;
+    margin-top: 3px;
+    color: #17202c;
+    font-size: 0.94rem;
+    line-height: 1;
 }
 
 .zeeboard-header span {
     color: #7c6f64;
-    font-size: 0.55rem;
-    font-weight: 800;
+    font-size: 0.52rem;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .zeeboard-header button {
@@ -4654,8 +4678,9 @@ aside > div:nth-child(2) {
     border-radius: 12px;
     background: #172333;
     color: #ffffff;
-    font-size: 0.62rem;
+    font-size: 0.60rem;
     font-weight: 1000;
+    box-shadow: 0 8px 15px rgba(23, 35, 51, 0.18);
 }
 
 .zeeboard-metrics {
@@ -4666,35 +4691,44 @@ aside > div:nth-child(2) {
 
 .zeeboard-metrics > div {
     min-width: 0;
-    padding: 8px 10px;
-    border: 1px solid #e3d5c1;
+    padding: 7px 10px;
+    border: 1px solid #e1d3bf;
     border-radius: 13px;
-    background: rgba(255, 252, 246, 0.78);
-    box-shadow: 0 6px 14px rgba(80, 61, 41, 0.06);
+    background: rgba(255, 253, 248, 0.72);
+    box-shadow: 0 6px 12px rgba(80, 61, 41, 0.045);
 }
 
 .zeeboard-metrics small {
     display: block;
     color: #a17860;
-    font-size: 0.46rem;
+    font-size: 0.45rem;
     font-weight: 1000;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.16em;
+    line-height: 1;
     text-transform: uppercase;
 }
 
 .zeeboard-metrics strong {
     display: block;
-    color: #162033;
-    font-size: 0.92rem;
-    line-height: 1.1;
+    margin-top: 3px;
+    color: #17202c;
+    font-size: 0.88rem;
+    line-height: 1;
 }
 
-.zeeboard-kanban {
+.zeeboard-preview-main {
     flex: 1 1 auto;
     min-height: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr 0.62fr;
-    gap: 9px;
+    grid-template-columns: minmax(0, 1fr) 122px;
+    gap: 8px;
+}
+
+.zeeboard-kanban {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
 }
 
 .zeeboard-column {
@@ -4702,14 +4736,10 @@ aside > div:nth-child(2) {
     display: flex;
     flex-direction: column;
     gap: 7px;
-    padding: 9px;
-    border: 1px solid #e7dac8;
-    border-radius: 16px;
-    background: rgba(255, 250, 242, 0.58);
-}
-
-.zeeboard-column.compact {
-    display: flex;
+    padding: 8px;
+    border: 1px solid #e4d6c3;
+    border-radius: 15px;
+    background: rgba(255, 250, 242, 0.62);
 }
 
 .zeeboard-column-title {
@@ -4717,7 +4747,7 @@ aside > div:nth-child(2) {
     align-items: center;
     gap: 6px;
     color: #5f5147;
-    font-size: 0.56rem;
+    font-size: 0.54rem;
     font-weight: 1000;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -4726,13 +4756,13 @@ aside > div:nth-child(2) {
 .zeeboard-column-title .dot {
     width: 8px;
     height: 8px;
+    flex: 0 0 auto;
     border-radius: 999px;
-    box-shadow: 0 0 0 3px rgba(255,255,255,0.8);
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.75);
 }
 
 .zeeboard-column-title .sketch { background: #22c55e; }
 .zeeboard-column-title .lineart { background: #f59e0b; }
-.zeeboard-column-title .colour { background: #3b82f6; }
 
 .zeeboard-commission-card {
     flex: 1 1 auto;
@@ -4744,18 +4774,13 @@ aside > div:nth-child(2) {
     overflow: hidden;
     border: 1px solid #e5d6c3;
     border-radius: 14px;
-    background: rgba(255,255,255,0.72);
+    background: rgba(255, 255, 255, 0.72);
     box-shadow: 0 7px 16px rgba(80, 61, 41, 0.07);
     animation: zeeCardFloat 5s ease-in-out infinite;
 }
 
 .zeeboard-commission-card.focused {
-    animation-delay: -1.7s;
-}
-
-.zeeboard-commission-card.small-card {
-    flex: 0 1 auto;
-    min-height: 58px;
+    animation-delay: -1.6s;
 }
 
 .zeeboard-card-top {
@@ -4769,14 +4794,14 @@ aside > div:nth-child(2) {
     min-width: 0;
     overflow: hidden;
     color: #17202c;
-    font-size: 0.66rem;
+    font-size: 0.64rem;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
 .zeeboard-commission-card p {
     color: #7c6f64;
-    font-size: 0.50rem;
+    font-size: 0.49rem;
     font-weight: 800;
 }
 
@@ -4785,7 +4810,7 @@ aside > div:nth-child(2) {
     padding: 3px 6px;
     border-radius: 999px;
     color: #fff;
-    font-size: 0.44rem;
+    font-size: 0.42rem;
     font-weight: 1000;
     text-transform: uppercase;
 }
@@ -4795,7 +4820,7 @@ aside > div:nth-child(2) {
 
 .zeeboard-thumb-lines {
     flex: 1 1 auto;
-    min-height: 38px;
+    min-height: 34px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -4804,8 +4829,8 @@ aside > div:nth-child(2) {
     border: 1px dashed #ddcbb5;
     border-radius: 11px;
     background:
-        linear-gradient(115deg, transparent 32%, rgba(15, 23, 42, 0.08) 33%, transparent 46%),
-        rgba(248, 250, 252, 0.65);
+        linear-gradient(115deg, transparent 32%, rgba(15, 23, 42, 0.07) 33%, transparent 46%),
+        rgba(248, 250, 252, 0.66);
 }
 
 .zeeboard-thumb-lines span {
@@ -4814,12 +4839,12 @@ aside > div:nth-child(2) {
     background: rgba(23, 32, 44, 0.10);
 }
 
-.zeeboard-thumb-lines span:nth-child(2) { width: 74%; }
-.zeeboard-thumb-lines span:nth-child(3) { width: 52%; }
+.zeeboard-thumb-lines span:nth-child(2) { width: 76%; }
+.zeeboard-thumb-lines span:nth-child(3) { width: 54%; }
 
 .zeeboard-progress-row {
     display: grid;
-    grid-template-columns: 32px 1fr;
+    grid-template-columns: 30px 1fr;
     align-items: center;
     gap: 7px;
 }
@@ -4831,7 +4856,7 @@ aside > div:nth-child(2) {
 }
 
 .zeeboard-progress-row div {
-    height: 5px;
+    height: 6px;
     overflow: hidden;
     border-radius: 999px;
     background: #eadfce;
@@ -4841,8 +4866,78 @@ aside > div:nth-child(2) {
     display: block;
     height: 100%;
     border-radius: inherit;
-    background: linear-gradient(90deg, #13253a, #7c3aed, #f59e0b);
+    background: linear-gradient(90deg, #172333, #7c3aed, #f59e0b);
     animation: zeeProgressPulse 3.5s ease-in-out infinite;
+}
+
+.zeeboard-calendar-card {
+    min-width: 0;
+    width: auto !important;
+    height: auto !important;
+    position: static !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between;
+    gap: 7px;
+    padding: 10px;
+    border: 1px solid #e4d6c3 !important;
+    border-radius: 15px;
+    background: rgba(255, 253, 248, 0.66) !important;
+    color: #17202c !important;
+    box-shadow: 0 7px 16px rgba(80, 61, 41, 0.06) !important;
+}
+
+.zeeboard-calendar-card small {
+    color: #a17860;
+    font-size: 0.48rem;
+    font-weight: 1000;
+    letter-spacing: 0.22em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.zeeboard-calendar-card strong {
+    color: #17202c;
+    font-size: 0.64rem;
+    line-height: 1;
+}
+
+.zeeboard-days {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+
+.zeeboard-days span {
+    min-width: 0;
+    height: 20px;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #7c6f64;
+    font-size: 0.50rem;
+    font-weight: 900;
+}
+
+.zeeboard-days .today {
+    background: #172333;
+    color: #ffffff;
+}
+
+.zeeboard-days .due {
+    background: #fff0b8;
+    color: #8a5a10;
+}
+
+.zeeboard-deadline {
+    padding: 5px 8px;
+    border-radius: 999px;
+    background: #fff0b8;
+    color: #8a5a10;
+    font-size: 0.48rem;
+    font-weight: 1000;
+    text-align: center;
 }
 
 .zeeboard-stack {
@@ -4850,7 +4945,7 @@ aside > div:nth-child(2) {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 6px;
+    gap: 5px;
 }
 
 .zeeboard-stack span {
@@ -4859,7 +4954,7 @@ aside > div:nth-child(2) {
     border-radius: 999px;
     background: rgba(255,255,255,0.70);
     color: #8a6a58;
-    font-size: 0.49rem;
+    font-size: 0.47rem;
     font-weight: 1000;
 }
 
@@ -4910,7 +5005,7 @@ aside > div:nth-child(2) {
 }
 
 @media (max-width: 720px) {
-    .zeeboard-shell {
+    .zeeboard-window {
         grid-template-columns: 1fr;
     }
 
@@ -4918,12 +5013,12 @@ aside > div:nth-child(2) {
         display: none !important;
     }
 
-    .zeeboard-kanban {
+    .zeeboard-preview-main {
         grid-template-columns: 1fr;
     }
 
-    .zeeboard-column.compact {
-        display: none;
+    .zeeboard-calendar-card {
+        display: none !important;
     }
 }
 
