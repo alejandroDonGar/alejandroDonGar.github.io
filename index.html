@@ -869,7 +869,7 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
     function createZeeBoardPreview() {
         return `
             <div class="repo-zeeboard-preview" aria-label="Preview visual de ZeeBoard: gestor de comisiones tipo kanban">
-                <div class="zeeboard-window">
+                <div class="zeeboard-window zeeboard-window-animated">
                     <nav class="zeeboard-mini-sidebar" aria-hidden="true">
                         <div class="zeeboard-brand-row">
                             <div class="zeeboard-logo"><i class="fa-solid fa-feather-pointed"></i></div>
@@ -895,53 +895,131 @@ description: "Portfolio de Alejandro Donate García. Junior Developer apasionado
                             <button type="button">+ New</button>
                         </header>
 
-                        <div class="zeeboard-metrics" aria-hidden="true">
-                            <div><small>Total earned</small><strong>700€</strong></div>
-                            <div><small>Active</small><strong>3</strong></div>
-                            <div><small>Unpaid</small><strong>1</strong></div>
+                        <div class="zeeboard-metrics zeeboard-metrics-animated" aria-hidden="true">
+                            <div>
+                                <small>Total earned</small>
+                                <div class="metric-value-stack metric-total">
+                                    <strong>700€</strong>
+                                    <strong>900€</strong>
+                                    <strong>1100€</strong>
+                                </div>
+                            </div>
+                            <div>
+                                <small>Active</small>
+                                <div class="metric-value-stack metric-active">
+                                    <strong>3</strong>
+                                    <strong>2</strong>
+                                    <strong>4</strong>
+                                </div>
+                            </div>
+                            <div>
+                                <small>Unpaid</small>
+                                <div class="metric-value-stack metric-unpaid">
+                                    <strong>1</strong>
+                                    <strong>0</strong>
+                                    <strong>2</strong>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="zeeboard-preview-main" aria-hidden="true">
-                            <div class="zeeboard-kanban">
-                                <section class="zeeboard-column">
-                                    <div class="zeeboard-column-title"><span class="dot sketch"></span> Sketch</div>
-                                    <article class="zeeboard-commission-card">
-                                        <div class="zeeboard-card-top">
-                                            <strong>Commission #01</strong>
-                                            <span class="payment unpaid">Not paid</span>
-                                        </div>
-                                        <p>2 characters · render</p>
-                                        <div class="zeeboard-thumb-lines"><span></span><span></span><span></span></div>
-                                        <div class="zeeboard-progress-row"><span>33%</span><div><em style="width:33%"></em></div></div>
-                                    </article>
-                                </section>
+                        <div class="zeeboard-preview-main zeeboard-preview-main-animated" aria-hidden="true">
+                            <div class="zeeboard-live-board">
+                                <div class="zeeboard-board-topline">
+                                    <span><i class="fa-solid fa-layer-group"></i> Live commission flow</span>
+                                    <em>paid → completed → new</em>
+                                </div>
 
-                                <section class="zeeboard-column">
-                                    <div class="zeeboard-column-title"><span class="dot lineart"></span> Lineart</div>
-                                    <article class="zeeboard-commission-card focused">
-                                        <div class="zeeboard-card-top">
-                                            <strong>Commission #02</strong>
-                                            <span class="payment paid">Paid</span>
-                                        </div>
-                                        <p>1 character · background</p>
-                                        <div class="zeeboard-thumb-lines"><span></span><span></span><span></span></div>
-                                        <div class="zeeboard-progress-row"><span>60%</span><div><em style="width:60%"></em></div></div>
-                                    </article>
-                                </section>
+                                <div class="zeeboard-rotating-slots">
+                                    <div class="zeeboard-rotating-slot slot-one">
+                                        <article class="zeeboard-commission-card zee-card-cycle zee-cycle-a changing-status">
+                                            <div class="zeeboard-card-top">
+                                                <strong>Commission #01</strong>
+                                                <span class="payment payment-sequence">
+                                                    <b class="state-unpaid">Not paid</b>
+                                                    <b class="state-paid">Paid</b>
+                                                    <b class="state-done">Completed</b>
+                                                </span>
+                                            </div>
+                                            <p>2 characters · render</p>
+                                            <div class="zeeboard-thumb-lines"><span></span><span></span><span></span></div>
+                                            <div class="zeeboard-progress-row"><span class="progress-sequence"><b>33%</b><b>60%</b><b>100%</b></span><div><em class="progress-animated"></em></div></div>
+                                        </article>
+
+                                        <article class="zeeboard-commission-card zee-card-cycle zee-cycle-b">
+                                            <div class="zeeboard-card-top">
+                                                <strong>Commission #03</strong>
+                                                <span class="payment unpaid">Not paid</span>
+                                            </div>
+                                            <p>1 character · sketch</p>
+                                            <div class="zeeboard-thumb-lines"><span></span><span></span><span></span></div>
+                                            <div class="zeeboard-progress-row"><span>18%</span><div><em style="width:18%"></em></div></div>
+                                        </article>
+
+                                        <article class="zeeboard-commission-card zee-card-cycle zee-cycle-c">
+                                            <div class="zeeboard-card-top">
+                                                <strong>Commission #05</strong>
+                                                <span class="payment paid">Paid</span>
+                                            </div>
+                                            <p>Full body · colour</p>
+                                            <div class="zeeboard-thumb-lines"><span></span><span></span><span></span></div>
+                                            <div class="zeeboard-progress-row"><span>72%</span><div><em style="width:72%"></em></div></div>
+                                        </article>
+                                    </div>
+
+                                    <div class="zeeboard-rotating-slot slot-two">
+                                        <article class="zeeboard-commission-card zee-card-cycle zee-cycle-a">
+                                            <div class="zeeboard-card-top">
+                                                <strong>Commission #02</strong>
+                                                <span class="payment paid">Paid</span>
+                                            </div>
+                                            <p>1 character · background</p>
+                                            <div class="zeeboard-thumb-lines"><span></span><span></span><span></span></div>
+                                            <div class="zeeboard-progress-row"><span>60%</span><div><em style="width:60%"></em></div></div>
+                                        </article>
+
+                                        <article class="zeeboard-commission-card zee-card-cycle zee-cycle-b changing-status">
+                                            <div class="zeeboard-card-top">
+                                                <strong>Commission #04</strong>
+                                                <span class="payment payment-sequence">
+                                                    <b class="state-unpaid">Not paid</b>
+                                                    <b class="state-paid">Paid</b>
+                                                    <b class="state-done">Completed</b>
+                                                </span>
+                                            </div>
+                                            <p>Complex background · render</p>
+                                            <div class="zeeboard-thumb-lines"><span></span><span></span><span></span></div>
+                                            <div class="zeeboard-progress-row"><span class="progress-sequence"><b>25%</b><b>80%</b><b>100%</b></span><div><em class="progress-animated"></em></div></div>
+                                        </article>
+
+                                        <article class="zeeboard-commission-card zee-card-cycle zee-cycle-c">
+                                            <div class="zeeboard-card-top">
+                                                <strong>Commission #06</strong>
+                                                <span class="payment unpaid">Not paid</span>
+                                            </div>
+                                            <p>Reference sheet · queue</p>
+                                            <div class="zeeboard-thumb-lines"><span></span><span></span><span></span></div>
+                                            <div class="zeeboard-progress-row"><span>0%</span><div><em style="width:6%"></em></div></div>
+                                        </article>
+                                    </div>
+                                </div>
                             </div>
 
-                            <aside class="zeeboard-calendar-card">
+                            <div class="zeeboard-calendar-card zeeboard-calendar-animated">
                                 <small>Calendar</small>
                                 <strong>Jun 2026</strong>
                                 <div class="zeeboard-days">
                                     <span>24</span>
                                     <span class="today">25</span>
-                                    <span class="due">26</span>
-                                    <span>27</span>
+                                    <span class="due due-one">26</span>
+                                    <span class="due due-two">27</span>
                                     <span>28</span>
                                 </div>
-                                <div class="zeeboard-deadline">23 days left</div>
-                            </aside>
+                                <div class="zeeboard-deadline">
+                                    <span>23 days left</span>
+                                    <span>6 days left</span>
+                                    <span>Done</span>
+                                </div>
+                            </div>
                         </div>
 
                         <footer class="zeeboard-stack" aria-label="Stack de ZeeBoard">

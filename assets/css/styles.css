@@ -5028,3 +5028,316 @@ aside > div:nth-child(2) {
         animation: none !important;
     }
 }
+
+
+/* ==========================================================================
+   ZEEBOARD ANIMATED PREVIEW V4
+   Preview tipo mockup claro con rotación de comisiones, estados y métricas.
+   ========================================================================== */
+
+.repo-card-featured-zee .repo-zeeboard-preview {
+    border-color: rgba(125, 140, 170, 0.14) !important;
+    background:
+        radial-gradient(circle at 88% 18%, rgba(201, 151, 121, 0.10), transparent 26%),
+        radial-gradient(circle at 16% 82%, rgba(125, 140, 170, 0.08), transparent 30%),
+        linear-gradient(135deg, rgba(19, 25, 36, 0.78), rgba(18, 21, 28, 0.94)) !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.04),
+        0 14px 30px rgba(0,0,0,0.20) !important;
+}
+
+.repo-card-featured-zee .zeeboard-window-animated {
+    grid-template-columns: 76px minmax(0, 1fr);
+}
+
+.repo-card-featured-zee .zeeboard-mini-sidebar {
+    background: linear-gradient(180deg, #fbf6ee, #f4eadc) !important;
+    border-color: rgba(147, 120, 86, 0.22) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 8px 0 18px rgba(80,61,41,0.05) !important;
+}
+
+.repo-card-featured-zee .zeeboard-board-area {
+    background:
+        radial-gradient(circle at 82% 0%, rgba(235, 211, 182, 0.34), transparent 30%),
+        linear-gradient(135deg, #fffaf2 0%, #f8f1e7 56%, #efe1cf 100%) !important;
+    border-color: rgba(147, 120, 86, 0.20) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.88), 0 12px 24px rgba(80,61,41,0.08) !important;
+}
+
+.metric-value-stack {
+    position: relative;
+    height: 1.05rem;
+    margin-top: 3px;
+    overflow: hidden;
+}
+
+.metric-value-stack strong {
+    position: absolute;
+    inset: 0 auto auto 0;
+    display: block;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: zeeMetricCycle 12s ease-in-out infinite;
+}
+
+.metric-value-stack strong:nth-child(2) { animation-delay: 4s; }
+.metric-value-stack strong:nth-child(3) { animation-delay: 8s; }
+
+.zeeboard-preview-main-animated {
+    grid-template-columns: minmax(0, 1fr) 112px;
+}
+
+.zeeboard-live-board {
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 8px;
+    border: 1px solid #e4d6c3;
+    border-radius: 15px;
+    background: rgba(255, 250, 242, 0.62);
+    overflow: hidden;
+}
+
+.zeeboard-board-topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    color: #5f5147;
+    font-size: 0.52rem;
+    font-weight: 1000;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.zeeboard-board-topline span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    min-width: 0;
+}
+
+.zeeboard-board-topline i {
+    color: #22c55e;
+}
+
+.zeeboard-board-topline em {
+    color: #a17860;
+    font-style: normal;
+    white-space: nowrap;
+}
+
+.zeeboard-rotating-slots {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.zeeboard-rotating-slot {
+    position: relative;
+    min-width: 0;
+    min-height: 112px;
+    overflow: hidden;
+}
+
+.zeeboard-rotating-slot .zeeboard-commission-card {
+    position: absolute;
+    inset: 0;
+    min-height: 0;
+    animation: zeeCardRotate 12s ease-in-out infinite;
+    will-change: transform, opacity;
+}
+
+.zeeboard-rotating-slot.slot-two .zeeboard-commission-card {
+    animation-delay: 2s;
+}
+
+.zeeboard-rotating-slot .zee-cycle-b { animation-delay: 4s; }
+.zeeboard-rotating-slot .zee-cycle-c { animation-delay: 8s; }
+.zeeboard-rotating-slot.slot-two .zee-cycle-b { animation-delay: 6s; }
+.zeeboard-rotating-slot.slot-two .zee-cycle-c { animation-delay: 10s; }
+
+.zeeboard-commission-card.changing-status {
+    animation-name: zeeCardRotate, zeeCardCompleteGlow;
+    animation-duration: 12s, 12s;
+    animation-timing-function: ease-in-out, ease-in-out;
+    animation-iteration-count: infinite, infinite;
+}
+
+.zeeboard-rotating-slot.slot-two .zeeboard-commission-card.changing-status {
+    animation-delay: 6s, 6s;
+}
+
+.payment-sequence {
+    position: relative;
+    width: 58px;
+    height: 19px;
+    padding: 0;
+    overflow: hidden;
+    background: transparent;
+}
+
+.payment-sequence b {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    color: #ffffff;
+    font-size: 0.40rem;
+    font-weight: 1000;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: scale(0.88);
+    animation: zeeStatusCycle 12s ease-in-out infinite;
+}
+
+.payment-sequence .state-unpaid { background: #ef4444; }
+.payment-sequence .state-paid { background: #22c55e; animation-delay: 3.4s; }
+.payment-sequence .state-done { background: #16a34a; animation-delay: 6.8s; }
+
+.progress-sequence {
+    position: relative;
+    height: 12px;
+    overflow: hidden;
+}
+
+.progress-sequence b {
+    position: absolute;
+    inset: 0 auto auto 0;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: zeeProgressTextCycle 12s ease-in-out infinite;
+}
+
+.progress-sequence b:nth-child(2) { animation-delay: 3.4s; }
+.progress-sequence b:nth-child(3) { animation-delay: 6.8s; }
+
+.zeeboard-progress-row em.progress-animated {
+    width: 33%;
+    animation: zeeProgressFillCycle 12s ease-in-out infinite;
+}
+
+.zeeboard-deadline {
+    position: relative;
+    height: 22px;
+    overflow: hidden;
+}
+
+.zeeboard-deadline span {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    transform: translateY(9px);
+    animation: zeeMetricCycle 12s ease-in-out infinite;
+}
+
+.zeeboard-deadline span:nth-child(2) { animation-delay: 4s; }
+.zeeboard-deadline span:nth-child(3) { animation-delay: 8s; color: #166534; }
+
+.zeeboard-days .due-one,
+.zeeboard-days .due-two,
+.zeeboard-days .today {
+    animation: zeeCalendarPulse 12s ease-in-out infinite;
+}
+
+.zeeboard-days .due-two { animation-delay: 4s; }
+.zeeboard-days .today { animation-delay: 8s; }
+
+@keyframes zeeMetricCycle {
+    0%, 8% { opacity: 0; transform: translateY(12px); }
+    12%, 29% { opacity: 1; transform: translateY(0); }
+    33%, 100% { opacity: 0; transform: translateY(-12px); }
+}
+
+@keyframes zeeCardRotate {
+    0%, 6% { opacity: 0; transform: translateX(26px) scale(0.96); }
+    10%, 29% { opacity: 1; transform: translateX(0) scale(1); }
+    35%, 100% { opacity: 0; transform: translateX(-26px) scale(0.96); }
+}
+
+@keyframes zeeCardCompleteGlow {
+    0%, 19% { border-color: #e5d6c3; background: rgba(255,255,255,0.72); }
+    24%, 31% { border-color: rgba(34, 197, 94, 0.56); background: rgba(236, 253, 245, 0.88); }
+    35%, 100% { border-color: #e5d6c3; background: rgba(255,255,255,0.72); }
+}
+
+@keyframes zeeStatusCycle {
+    0%, 7% { opacity: 0; transform: scale(0.88); }
+    10%, 26% { opacity: 1; transform: scale(1); }
+    30%, 100% { opacity: 0; transform: scale(0.88); }
+}
+
+@keyframes zeeProgressTextCycle {
+    0%, 7% { opacity: 0; transform: translateY(8px); }
+    10%, 26% { opacity: 1; transform: translateY(0); }
+    30%, 100% { opacity: 0; transform: translateY(-8px); }
+}
+
+@keyframes zeeProgressFillCycle {
+    0%, 12% { width: 33%; }
+    28% { width: 60%; }
+    44%, 100% { width: 100%; }
+}
+
+@keyframes zeeCalendarPulse {
+    0%, 9%, 34%, 100% { transform: scale(1); box-shadow: none; }
+    16%, 25% { transform: scale(1.08); box-shadow: 0 0 0 4px rgba(245, 196, 79, 0.20); }
+}
+
+@media (max-width: 1450px) {
+    .repo-card-featured-zee .zeeboard-preview-main-animated {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .repo-card-featured-zee .zeeboard-calendar-card {
+        display: none !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .repo-card-featured-zee .zeeboard-window-animated {
+        grid-template-columns: 1fr;
+    }
+
+    .repo-card-featured-zee .zeeboard-mini-sidebar {
+        display: none !important;
+    }
+
+    .zeeboard-rotating-slots {
+        grid-template-columns: 1fr;
+    }
+
+    .zeeboard-rotating-slot:nth-child(2) {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .metric-value-stack strong,
+    .zeeboard-rotating-slot .zeeboard-commission-card,
+    .payment-sequence b,
+    .progress-sequence b,
+    .zeeboard-progress-row em.progress-animated,
+    .zeeboard-deadline span,
+    .zeeboard-days .due-one,
+    .zeeboard-days .due-two,
+    .zeeboard-days .today {
+        animation: none !important;
+    }
+
+    .metric-value-stack strong:first-child,
+    .zeeboard-rotating-slot .zeeboard-commission-card:first-child,
+    .payment-sequence b:first-child,
+    .progress-sequence b:first-child,
+    .zeeboard-deadline span:first-child {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
