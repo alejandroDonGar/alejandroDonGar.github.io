@@ -5028,3 +5028,283 @@ aside > div:nth-child(2) {
         animation: none !important;
     }
 }
+
+/* ==========================================================================
+   ZEEBOARD SUBTLE MOTION PATCH
+   Animaciones discretas para que la preview se sienta viva sin cambiar datos,
+   tarjetas ni layout.
+   ========================================================================== */
+
+.repo-zeeboard-preview .zeeboard-board-area {
+    position: relative;
+}
+
+.repo-zeeboard-preview .zeeboard-board-area::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.26;
+    background:
+        radial-gradient(circle at 82% 10%, rgba(255,255,255,0.42), transparent 18%),
+        linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.16) 45%, transparent 62%);
+    transform: translateX(-18%);
+    animation: zeeBoardAmbientSheen 11s ease-in-out infinite;
+}
+
+.zeeboard-header button {
+    position: relative;
+    overflow: hidden;
+    animation: zeeNewButtonBreath 6.5s ease-in-out infinite;
+}
+
+.zeeboard-header button::after {
+    content: "";
+    position: absolute;
+    inset: -40% -80%;
+    pointer-events: none;
+    background: linear-gradient(115deg, transparent 42%, rgba(255,255,255,0.30) 50%, transparent 58%);
+    transform: translateX(-65%);
+    animation: zeeButtonSheen 8s ease-in-out infinite;
+}
+
+.zeeboard-metrics > div {
+    animation: zeeMetricSoftEnter 0.9s ease both;
+}
+
+.zeeboard-metrics > div:nth-child(2) {
+    animation-delay: 0.08s;
+}
+
+.zeeboard-metrics > div:nth-child(3) {
+    animation-delay: 0.16s;
+}
+
+.zeeboard-commission-card {
+    animation: zeeCardSoftFloat 8s ease-in-out infinite !important;
+}
+
+.zeeboard-commission-card.focused {
+    animation-delay: -2.4s !important;
+}
+
+.zeeboard-commission-card:hover {
+    transform: translateY(-2px);
+}
+
+.payment {
+    animation: zeePaymentBadgePulse 6.5s ease-in-out infinite;
+}
+
+.payment.paid {
+    animation-delay: -2s;
+}
+
+.payment.unpaid {
+    animation-delay: -4s;
+}
+
+.zeeboard-thumb-lines {
+    position: relative;
+    overflow: hidden;
+}
+
+.zeeboard-thumb-lines::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(110deg, transparent 12%, rgba(255,255,255,0.58) 42%, transparent 70%);
+    transform: translateX(-120%);
+    animation: zeeSketchShimmer 7s ease-in-out infinite;
+}
+
+.zeeboard-progress-row div {
+    position: relative;
+    overflow: hidden;
+}
+
+.zeeboard-progress-row em {
+    position: relative;
+    overflow: hidden;
+    animation: zeeProgressSoftGlow 5.8s ease-in-out infinite !important;
+}
+
+.zeeboard-progress-row em::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 34px;
+    left: -38px;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+    animation: zeeProgressSheen 6.2s ease-in-out infinite;
+}
+
+.zeeboard-column-title .dot {
+    animation: zeeColumnDotPulse 5.5s ease-in-out infinite;
+}
+
+.zeeboard-column:nth-child(2) .zeeboard-column-title .dot {
+    animation-delay: -2.2s;
+}
+
+.zeeboard-days .today {
+    animation: zeeCalendarTodayPulse 7s ease-in-out infinite;
+}
+
+.zeeboard-stack span {
+    transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease,
+        background-color 0.22s ease;
+}
+
+.zeeboard-stack span:hover {
+    transform: translateY(-1px);
+    border-color: rgba(161, 120, 96, 0.34);
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 6px 12px rgba(80, 61, 41, 0.08);
+}
+
+@keyframes zeeBoardAmbientSheen {
+    0%, 100% {
+        transform: translateX(-18%);
+        opacity: 0.18;
+    }
+    48% {
+        transform: translateX(8%);
+        opacity: 0.30;
+    }
+}
+
+@keyframes zeeNewButtonBreath {
+    0%, 100% {
+        box-shadow: 0 8px 15px rgba(23, 35, 51, 0.18);
+    }
+    50% {
+        box-shadow: 0 10px 20px rgba(23, 35, 51, 0.24), 0 0 18px rgba(161, 120, 96, 0.12);
+    }
+}
+
+@keyframes zeeButtonSheen {
+    0%, 58%, 100% {
+        transform: translateX(-65%);
+        opacity: 0;
+    }
+    68% {
+        opacity: 1;
+    }
+    82% {
+        transform: translateX(65%);
+        opacity: 0;
+    }
+}
+
+@keyframes zeeMetricSoftEnter {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zeeCardSoftFloat {
+    0%, 100% {
+        transform: translateY(0);
+        box-shadow: 0 7px 16px rgba(80, 61, 41, 0.07);
+    }
+    50% {
+        transform: translateY(-1.5px);
+        box-shadow: 0 9px 18px rgba(80, 61, 41, 0.09);
+    }
+}
+
+@keyframes zeePaymentBadgePulse {
+    0%, 100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    50% {
+        transform: scale(1.035);
+        filter: brightness(1.06);
+    }
+}
+
+@keyframes zeeSketchShimmer {
+    0%, 64%, 100% {
+        transform: translateX(-120%);
+        opacity: 0;
+    }
+    74% {
+        opacity: 0.85;
+    }
+    92% {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+}
+
+@keyframes zeeProgressSoftGlow {
+    0%, 100% {
+        filter: brightness(0.98) saturate(1);
+    }
+    50% {
+        filter: brightness(1.10) saturate(1.08);
+    }
+}
+
+@keyframes zeeProgressSheen {
+    0%, 48%, 100% {
+        left: -38px;
+        opacity: 0;
+    }
+    58% {
+        opacity: 0.75;
+    }
+    78% {
+        left: calc(100% + 38px);
+        opacity: 0;
+    }
+}
+
+@keyframes zeeColumnDotPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 3px rgba(255,255,255,0.75);
+    }
+    50% {
+        box-shadow: 0 0 0 3px rgba(255,255,255,0.75), 0 0 0 7px rgba(34, 197, 94, 0.09);
+    }
+}
+
+@keyframes zeeCalendarTodayPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: none;
+    }
+    50% {
+        transform: scale(1.04);
+        box-shadow: 0 4px 10px rgba(23, 35, 51, 0.12);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .repo-zeeboard-preview .zeeboard-board-area::after,
+    .zeeboard-header button,
+    .zeeboard-header button::after,
+    .zeeboard-metrics > div,
+    .zeeboard-commission-card,
+    .payment,
+    .zeeboard-thumb-lines::after,
+    .zeeboard-progress-row em,
+    .zeeboard-progress-row em::after,
+    .zeeboard-column-title .dot,
+    .zeeboard-days .today {
+        animation: none !important;
+    }
+}
