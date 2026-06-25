@@ -5849,3 +5849,151 @@ aside > div:nth-child(2) {
     23%, 31% { width: 100%; }
     34%, 100% { width: 100%; }
 }
+
+/* =======================================================================
+   ZEEBOARD FLOW V7 - STATUS SYNC FIX
+   Mantiene el estado visible durante toda la vida visible de cada commission.
+   Secuencia por tarjeta: Not paid -> Paid -> Completed -> salida individual.
+   ======================================================================= */
+
+.repo-card-featured-zee .payment-sequence b {
+    animation-duration: 18s !important;
+    animation-delay: var(--zee-delay) !important;
+    animation-fill-mode: both !important;
+}
+
+.repo-card-featured-zee .payment-sequence .state-unpaid {
+    animation-name: zeeStatusUnpaidV7 !important;
+}
+
+.repo-card-featured-zee .payment-sequence .state-paid {
+    animation-name: zeeStatusPaidV7 !important;
+}
+
+.repo-card-featured-zee .payment-sequence .state-done {
+    animation-name: zeeStatusDoneV7 !important;
+}
+
+.repo-card-featured-zee .progress-sequence b:nth-child(1) {
+    animation-name: zeeProgressTextStartV7 !important;
+}
+
+.repo-card-featured-zee .progress-sequence b:nth-child(2) {
+    animation-name: zeeProgressTextPaidV7 !important;
+}
+
+.repo-card-featured-zee .progress-sequence b:nth-child(3) {
+    animation-name: zeeProgressTextDoneV7 !important;
+}
+
+.repo-card-featured-zee .zeeboard-progress-row em.progress-animated {
+    animation-name: zeeProgressFillV7 !important;
+}
+
+@keyframes zeeStatusUnpaidV7 {
+    0%, 4.8% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    5%, 13.5% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    14%, 100% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
+
+@keyframes zeeStatusPaidV7 {
+    0%, 13.5% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    14%, 22.5% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    23%, 100% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
+
+@keyframes zeeStatusDoneV7 {
+    0%, 22.5% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    23%, 31.5% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    32%, 100% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
+
+@keyframes zeeProgressTextStartV7 {
+    0%, 4.8% {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    5%, 13.5% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    14%, 100% {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes zeeProgressTextPaidV7 {
+    0%, 13.5% {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    14%, 22.5% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    23%, 100% {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes zeeProgressTextDoneV7 {
+    0%, 22.5% {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    23%, 31.5% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    32%, 100% {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes zeeProgressFillV7 {
+    0%, 4.8% {
+        width: 16%;
+    }
+    5%, 13.5% {
+        width: 34%;
+    }
+    14%, 22.5% {
+        width: 68%;
+    }
+    23%, 31.5% {
+        width: 100%;
+    }
+    32%, 100% {
+        width: 100%;
+    }
+}
