@@ -1279,7 +1279,12 @@
     animation: zeeProgressSheen 6.2s ease-in-out infinite;
 }
 
+/* .zeeboard-calendar-card es un <aside>: fuerza layout normal para que no
+   herede el `position: fixed; height: 100vh` del <aside> real del sidebar. */
 .zeeboard-calendar-card {
+    width: auto;
+    height: auto;
+    position: static;
     min-width: 0;
     display: flex;
     flex-direction: column;
