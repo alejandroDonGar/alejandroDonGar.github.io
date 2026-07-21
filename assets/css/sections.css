@@ -1,0 +1,581 @@
+/* ==========================================================================
+   SECTIONS
+   Hero, about/roadmap, tecnologías, inglés, footer.
+   ========================================================================== */
+
+/* ---- Hero ---- */
+
+.hero {
+    padding-top: 40px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(240px, 0.9fr);
+    gap: 3.5rem;
+    align-items: center;
+}
+
+.hero-title {
+    margin-bottom: 1.1rem;
+    font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+    font-weight: 600;
+}
+
+.hero-title em {
+    color: var(--accent);
+    font-style: italic;
+}
+
+.hero-pitch {
+    max-width: 52ch;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+    line-height: 1.65;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-bottom: 2.25rem;
+}
+
+.hero-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--border);
+}
+
+.hero-facts div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.hero-facts dt {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+}
+
+.hero-facts dd {
+    color: var(--text-muted);
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.hero-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.hero-photo {
+    position: relative;
+}
+
+.hero-photo-frame {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+}
+
+.hero-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+.hero-photo figcaption {
+    margin-top: 0.85rem;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-photo {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-actions,
+    .hero-contact {
+        flex-direction: column;
+    }
+
+    .hero-actions .btn,
+    .hero-contact .btn {
+        width: 100%;
+    }
+
+    .hero-facts {
+        gap: 1.25rem 1.75rem;
+    }
+}
+
+/* ---- About ---- */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.about-text h3,
+.about-focus h3 {
+    margin-bottom: 0.9rem;
+    font-size: 1.4rem;
+}
+
+.about-text p {
+    font-size: 1.02rem;
+    line-height: 1.7;
+}
+
+.focus-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    list-style: none;
+}
+
+.focus-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    font-size: 0.92rem;
+    font-weight: 500;
+}
+
+.focus-list i {
+    width: 18px;
+    color: var(--accent);
+    text-align: center;
+}
+
+/* Roadmap */
+
+.roadmap {
+    padding: 2.25rem;
+}
+
+.roadmap-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 1.75rem;
+}
+
+.roadmap-head h3 {
+    font-size: 1.3rem;
+}
+
+.roadmap-head span {
+    color: var(--text-faint);
+    font-size: 0.8rem;
+}
+
+.roadmap-months {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    margin-left: 150px;
+    padding: 0 0.5rem;
+    color: var(--text-faint);
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.roadmap-grid {
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr);
+    gap: 0.7rem 1rem;
+    align-items: center;
+    margin-top: 0.6rem;
+}
+
+.roadmap-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+    font-size: 0.84rem;
+    font-weight: 600;
+}
+
+.roadmap-label i {
+    width: 16px;
+    color: var(--accent);
+    text-align: center;
+}
+
+.roadmap-track {
+    position: relative;
+    min-height: 36px;
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    align-items: center;
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+}
+
+.roadmap-track-stacked {
+    min-height: 84px;
+    grid-template-rows: repeat(2, 1fr);
+    row-gap: 6px;
+}
+
+.roadmap-track-projects {
+    min-height: 128px;
+    grid-template-rows: repeat(4, 1fr);
+    row-gap: 6px;
+}
+
+.roadmap-bar {
+    grid-column: var(--start) / span var(--span);
+    height: 22px;
+    margin: 0 3px;
+    display: flex;
+    align-items: center;
+    padding: 0 0.65rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--accent-contrast);
+    font-size: 0.68rem;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0.9;
+}
+
+.roadmap-bar.muted {
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    color: var(--text-muted);
+    opacity: 1;
+}
+
+.roadmap-bar.faint {
+    background: transparent;
+    border: 1px dashed var(--border-strong);
+    color: var(--text-faint);
+}
+
+@media (max-width: 992px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .roadmap {
+        overflow-x: auto;
+    }
+
+    .roadmap-months,
+    .roadmap-grid {
+        min-width: 680px;
+    }
+}
+
+/* ---- Tech grid ---- */
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.tech-group {
+    padding: 1.75rem;
+}
+
+.tech-group h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    font-weight: 700;
+}
+
+.tech-group h3 i {
+    color: var(--accent);
+}
+
+.tech-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    list-style: none;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+}
+
+@media (max-width: 1400px) {
+    .tech-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .tech-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---- Projects ---- */
+
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.repo-card {
+    padding: 1.75rem;
+}
+
+.repo-card-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.75fr);
+    gap: 1.75rem;
+    align-items: start;
+}
+
+.repo-card.repo-card-featured .repo-card-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 1.05fr) minmax(220px, 0.6fr);
+}
+
+.repo-info h3 {
+    margin-bottom: 0.6rem;
+    font-size: 1.35rem;
+    font-family: var(--font-body);
+    font-weight: 700;
+}
+
+.repo-info > p {
+    margin-bottom: 1.1rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+.repo-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    list-style: none;
+}
+
+.repo-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.repo-updated {
+    margin-top: 1.25rem;
+    color: var(--text-faint);
+    font-size: 0.72rem;
+}
+
+.repo-stats {
+    padding: 1.1rem;
+    border-radius: var(--radius-md);
+    background: var(--surface-2);
+}
+
+.repo-stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1.1rem;
+}
+
+.repo-stat {
+    padding: 0.75rem;
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    text-align: center;
+}
+
+.repo-stat i {
+    color: var(--accent);
+}
+
+.repo-stat strong {
+    display: block;
+    margin-top: 2px;
+    font-size: 1.1rem;
+}
+
+.repo-stat span {
+    color: var(--text-faint);
+    font-size: 0.68rem;
+}
+
+.repo-langs-label {
+    margin-bottom: 0.6rem;
+    color: var(--text-muted);
+    font-size: 0.76rem;
+    font-weight: 700;
+}
+
+.repo-lang-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+    color: var(--text-muted);
+    font-size: 0.68rem;
+}
+
+.repo-lang-track {
+    height: 4px;
+    margin-bottom: 8px;
+    border-radius: 999px;
+    background: var(--surface);
+    overflow: hidden;
+}
+
+.repo-lang-fill {
+    height: 100%;
+    background: var(--accent);
+}
+
+/* Los repo-card se insertan de forma asíncrona (fetch a la API de GitHub), por
+   lo que no dependen de AOS: la librería solo detecta elementos presentes en
+   el DOM al iniciar y nunca los revelaría. Esta animación se dispara sola. */
+.repo-card-reveal {
+    animation: repoCardReveal 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes repoCardReveal {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .repo-card-reveal {
+        animation: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .repo-card-grid,
+    .repo-card.repo-card-featured .repo-card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---- English proficiency ---- */
+
+.lang-levels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.lang-level {
+    padding: 1.75rem;
+}
+
+.lang-level-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.1rem;
+}
+
+.lang-level-head span:first-child {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+}
+
+.lang-level-head i {
+    color: var(--accent);
+}
+
+.level-track {
+    position: relative;
+    height: 8px;
+    margin-bottom: 0.6rem;
+    border-radius: 999px;
+    background: var(--surface-2);
+}
+
+.level-fill {
+    height: 100%;
+    border-radius: inherit;
+    background: var(--accent);
+}
+
+.level-markers {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.9rem;
+    color: var(--text-faint);
+    font-size: 0.66rem;
+    font-weight: 700;
+}
+
+.lang-level-note {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+/* ---- Footer ---- */
+
+.site-footer {
+    padding: 56px 0 40px;
+}
+
+.footer-inner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.footer-inner .brand-name {
+    font-size: 1.15rem;
+}
+
+.footer-inner p {
+    margin-top: 0.3rem;
+    max-width: 40ch;
+    font-size: 0.88rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.footer-note {
+    color: var(--text-faint);
+    font-size: 0.78rem;
+}

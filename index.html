@@ -4,407 +4,272 @@ title: "Alejandro Donate García | Full Stack Developer"
 description: "Portfolio de Alejandro Donate García. Junior Developer apasionado por Java y el desarrollo web."
 ---
 
-<div class="bg-glow">
-    <div class="glow-1"></div>
-    <div class="glow-2"></div>
-</div>
-
-<!-- Sidebar Navigation (Estilo NetScanner) -->
 <aside>
-    <div style="padding: 2rem; border-bottom: 1px solid var(--border-color);">
-        <div style="display: flex; items: center; gap: 1rem;">
-            <div style="width: 48px; height: 48px; border-radius: 12px; background: var(--primary-gradient); display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(34, 197, 94, 0.2);">
-                <i class="fa-solid fa-code text-white text-xl"></i>
-            </div>
-            <div>
-                <h1 style="font-size: 1.25rem; font-weight: 800; background: linear-gradient(to right, #fff, #9ca3af); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ADG Dev</h1>
-                <p style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Portfolio Pro</p>
-            </div>
-        </div>
+    <div class="brand">
+        <div class="brand-name">Alejandro Donate</div>
+        <div class="brand-role">Full Stack Developer</div>
     </div>
 
-    <div style="flex: 1; padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
-        <p style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; padding-left: 0.75rem;">Navegación</p>
+    <nav class="sidebar-nav">
+        <p class="sidebar-nav-label">Navegación</p>
         <a href="#home" class="sidebar-link active" id="nav-home"><i class="fa-solid fa-house"></i> <span>Inicio</span></a>
         <a href="#about" class="sidebar-link" id="nav-about"><i class="fa-solid fa-user"></i> <span>Sobre mí</span></a>
         <a href="#tech" class="sidebar-link" id="nav-tech"><i class="fa-solid fa-layer-group"></i> <span>Tecnologías</span></a>
         <a href="#projects" class="sidebar-link" id="nav-projects"><i class="fa-solid fa-laptop-code"></i> <span>Proyectos</span></a>
         <a href="#english" class="sidebar-link" id="nav-english"><i class="fa-solid fa-language"></i> <span>Inglés</span></a>
-        
-        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
-            <a href="{{ '/assets/pdf/cv.pdf' | relative_url }}" class="sidebar-link" target="_blank">
-                <i class="fa-solid fa-file-pdf" style="color: #ef4444;"></i> 
-                <span>Descargar PDF</span>
-            </a>
-        </div>
-    </div>
+    </nav>
 
-    <div class="lang-selector" style="border-top: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 1rem; padding: 1.5rem;">
-        <div style="display: flex; gap: 0.5rem; justify-content: center;">
+    <div class="sidebar-footer">
+        <a href="{{ '/assets/pdf/cv.pdf' | relative_url }}" class="sidebar-link" target="_blank">
+            <i class="fa-solid fa-file-pdf"></i> <span>Descargar PDF</span>
+        </a>
+        <div class="lang-group">
             <button class="lang-btn active" data-lang="es">ES</button>
             <button class="lang-btn" data-lang="en">EN</button>
             <button class="lang-btn" data-lang="de">DE</button>
             <button class="lang-btn" data-lang="is">IS</button>
         </div>
-        <button id="theme-toggle" class="social-btn" style="width: 100%; justify-content: center; gap: 12px; background: rgba(255,255,255,0.05);">
+        <button id="theme-toggle" class="theme-toggle">
             <i class="fa-solid fa-moon"></i>
-            <span id="theme-text">Modo Oscuro</span>
+            <span id="theme-text">Modo oscuro</span>
         </button>
     </div>
 </aside>
 
 <main>
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section id="home">
-        <div class="hero-wrapper hero-wrapper-upgraded">
-            <!-- Contenedor 1: Presentación -->
-            <div class="hero-box hero-intro-box" data-aos="fade-right" data-aos-delay="120">
-                <span data-t="role_junior" class="hero-kicker">ESTUDIANTE 1º DAM</span>
+        <div class="hero content-width">
+            <div class="hero-main">
+                <span data-t="role_junior" class="section-kicker">Estudiante 1º DAM</span>
 
-                <h1 data-t="hero_title">
-                    Alejandro <span>Donate</span>
-                </h1>
+                <h1 class="hero-title" data-t="hero_title">Alejandro <em>Donate</em></h1>
 
-                <p data-t="hero_desc" class="hero-description">
+                <p data-t="hero_desc" class="hero-pitch">
                     Estudiante de Desarrollo de Aplicaciones Multiplataforma, enfocado en Java, Python, bases de datos y desarrollo web. Construyendo proyectos para convertir conocimiento en experiencia.
                 </p>
 
                 <div class="hero-actions">
-                    <a href="#projects" class="btn-primary scroll-link" data-t="btn_projects">
-                        Proyectos <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                    <a href="#about" class="sidebar-link-btn scroll-link" data-t="btn_about">
-                        Sobre mí
-                    </a>
+                    <a href="#projects" class="btn btn-primary scroll-link" data-t="btn_projects">Explorar proyectos</a>
+                    <a href="#about" class="btn btn-outline scroll-link" data-t="btn_about">Sobre mí</a>
                 </div>
 
-                <div class="hero-mini-stats" aria-label="Resumen rápido">
-                    <div class="hero-stat">
-                        <strong>1º</strong>
-                        <span>DAM</span>
-                    </div>
-                    <div class="hero-stat">
-                        <strong>Open</strong>
-                        <span>Source</span>
-                    </div>
-                    <div class="hero-stat">
-                        <strong>B2/C1</strong>
-                        <span>Inglés</span>
-                    </div>
-                    <div class="hero-stat">
-                        <strong>2025</strong>
-                        <span>Inicio</span>
-                    </div>
-                </div>
+                <dl class="hero-facts">
+                    <div><dt>1º</dt><dd>DAM</dd></div>
+                    <div><dt>Open</dt><dd>Source</dd></div>
+                    <div><dt>B2/C1</dt><dd>Inglés</dd></div>
+                    <div><dt>2025</dt><dd>Inicio</dd></div>
+                </dl>
 
-                <!-- Social & Contact -->
-                <div class="hero-social-row">
-                    <button onclick="copyEmail()" class="social-btn" id="email-btn">
+                <div class="hero-contact">
+                    <button onclick="copyEmail()" class="btn btn-outline" id="email-btn">
                         <i class="fa-solid fa-envelope"></i>
-                        <span id="email-text" class="social-btn-text">AlexDoGa.work@gmail.com</span>
+                        <span id="email-text">AlexDoGa.work@gmail.com</span>
                     </button>
-                    <a href="https://www.linkedin.com/in/alejandrodongar/" target="_blank" class="social-btn">
-                        <i class="fa-brands fa-linkedin"></i>
-                        <span class="social-btn-text">LinkedIn</span>
+                    <a href="https://www.linkedin.com/in/alejandrodongar/" target="_blank" class="btn btn-outline">
+                        <i class="fa-brands fa-linkedin"></i> LinkedIn
                     </a>
                 </div>
             </div>
 
-            <!-- Contenedor 2: Imagen -->
-            <div class="hero-box hero-image-box hero-profile-box" data-aos="fade-up" data-aos-delay="180">
-<div class="hero-profile-container">
-                    <img src="{{ '/assets/img/perfil.jpg' | relative_url }}" alt="Alejandro Donate" class="hero-profile-img">
+            <figure class="hero-photo">
+                <div class="hero-photo-frame">
+                    <img src="{{ '/assets/img/perfil.jpg' | relative_url }}" alt="Alejandro Donate">
                 </div>
-
-                <div class="hero-photo-caption">
-                    Java · Python · SQL · Web Development
-                </div>
-            </div>
-
-            <!-- Contenedor 3: Skills -->
-            <div class="hero-box hero-skills-box" data-aos="fade-left" data-aos-delay="240">
-                <div class="hero-skills-heading">
-                    <span>Stack Tecnológico</span>
-                    <i class="fa-solid fa-layer-group"></i>
-                </div>
-
-                <div class="skills-buttons-grid">
-                    <div class="skill-pill"><i class="fa-brands fa-java"></i> Java (principal)</div>
-                    <div class="skill-pill"><i class="fa-brands fa-python"></i> Python (aprendiendo)</div>
-                    <div class="skill-pill"><i class="fa-solid fa-database"></i> SQL / NoSQL</div>
-                    <div class="skill-pill"><i class="fa-solid fa-globe"></i> HTML / CSS / JS</div>
-                    <div class="skill-pill"><i class="fa-solid fa-file-code"></i> XML / XPath</div>
-                    <div class="skill-pill"><i class="fa-solid fa-leaf"></i> MongoDB / BaseX</div>
-                    <div class="skill-pill"><i class="fa-brands fa-git-alt"></i> Git / GitHub</div>
-                </div>
-            </div>
+                <figcaption>Java · Python · SQL · Web Development</figcaption>
+            </figure>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About -->
     <section id="about">
-        <h2 data-t="about_title" class="section-title">
-            <i class="fa-solid fa-user"></i>
-            <span>Sobre mí</span>
-        </h2>
+        <div class="content-width">
+            <h2 data-t="about_title" class="section-title"><span>Sobre mí</span></h2>
 
-        <div class="about-layout">
-            <article class="glass-card about-card" data-aos="fade-up">
-                <span class="section-kicker">Perfil</span>
-                <h3 data-t="about_card_title">Desarrollo, aprendizaje y proyectos reales</h3>
-                <p data-t="about_card_desc">
-                    Soy estudiante de Desarrollo de Aplicaciones Multiplataforma (DAM), con interés en el desarrollo backend, las bases de datos y la creación de aplicaciones web útiles. Me gusta aprender construyendo proyectos prácticos, documentarlos y convertir cada asignatura en una oportunidad para mejorar mi forma de programar.
-                </p>
-            </article>
-
-            <article class="glass-card about-card" data-aos="fade-up" data-aos-delay="100">
-                <span class="section-kicker">Enfoque actual</span>
-                <h3>Qué estoy reforzando</h3>
-                <div class="focus-grid">
-                    <div class="focus-pill"><i class="fa-brands fa-java"></i> Java y POO</div>
-                    <div class="focus-pill"><i class="fa-solid fa-database"></i> Bases de datos</div>
-                    <div class="focus-pill"><i class="fa-brands fa-python"></i> Python aplicado</div>
-                    <div class="focus-pill"><i class="fa-solid fa-code"></i> Web y APIs</div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <span class="section-kicker">Perfil</span>
+                    <h3 data-t="about_card_title">Desarrollo, aprendizaje y proyectos reales</h3>
+                    <p data-t="about_card_desc">
+                        Soy estudiante de Desarrollo de Aplicaciones Multiplataforma (DAM), con interés en el desarrollo backend, las bases de datos y la creación de aplicaciones web útiles. Me gusta aprender construyendo proyectos prácticos, documentarlos y convertir cada asignatura en una oportunidad para mejorar mi forma de programar.
+                    </p>
                 </div>
-            </article>
-        </div>
 
-        <div class="glass-card roadmap-card" data-aos="fade-up" data-aos-delay="160">
-            <div class="roadmap-header">
-                <div>
-                    <span class="section-kicker">Timeline</span>
-                    <h3>Mi evolución durante 1º DAM</h3>
+                <div class="about-focus">
+                    <span class="section-kicker">Enfoque actual</span>
+                    <h3>Qué estoy reforzando</h3>
+                    <ul class="focus-list">
+                        <li><i class="fa-brands fa-java"></i> Java y programación orientada a objetos</li>
+                        <li><i class="fa-solid fa-database"></i> Bases de datos relacionales y NoSQL</li>
+                        <li><i class="fa-brands fa-python"></i> Python aplicado</li>
+                        <li><i class="fa-solid fa-code"></i> Desarrollo web y APIs</li>
+                    </ul>
                 </div>
-                <p>Septiembre 2025 · Junio 2026</p>
             </div>
 
-            <div class="roadmap-months" aria-hidden="true">
-                <span>Sep</span><span>Oct</span><span>Nov</span><span>Dic</span><span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span><span>May</span><span>Jun</span>
-            </div>
-
-            <div class="roadmap-grid">
-                <div class="roadmap-label"><i class="fa-solid fa-graduation-cap"></i> DAM 1º</div>
-                <div class="roadmap-track">
-                    <span class="roadmap-bar bar-education" style="--start: 1; --span: 10;">DAM 1º · Sep-Jun</span>
+            <div class="roadmap panel">
+                <div class="roadmap-head">
+                    <div>
+                        <span class="section-kicker">Timeline</span>
+                        <h3>Mi evolución durante 1º DAM</h3>
+                    </div>
+                    <span>Septiembre 2025 · Junio 2026</span>
                 </div>
 
-                <div class="roadmap-label"><i class="fa-brands fa-java"></i> Java</div>
-                <div class="roadmap-track">
-                    <span class="roadmap-bar bar-tech" style="--start: 1; --span: 2;">Básico</span>
-                    <span class="roadmap-bar bar-tech" style="--start: 2; --span: 2;">Arrays</span>
-                    <span class="roadmap-bar bar-tech" style="--start: 4; --span: 2;">Listas</span>
-                    <span class="roadmap-bar bar-tech" style="--start: 6; --span: 2;">CSV/JSON</span>
-                    <span class="roadmap-bar bar-tech" style="--start: 7; --span: 2;">SQLite</span>
-                    <span class="roadmap-bar bar-tech" style="--start: 9; --span: 1;">JavaFX</span>
+                <div class="roadmap-months" aria-hidden="true">
+                    <span>Sep</span><span>Oct</span><span>Nov</span><span>Dic</span><span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span><span>May</span><span>Jun</span>
                 </div>
 
-                <div class="roadmap-label"><i class="fa-solid fa-globe"></i> Web / XML</div>
-                <div class="roadmap-track">
-                    <span class="roadmap-bar bar-web" style="--start: 1; --span: 4;">HTML · CSS · JS</span>
-                    <span class="roadmap-bar bar-web" style="--start: 5; --span: 3;">XML · XSL</span>
-                    <span class="roadmap-bar bar-web" style="--start: 8; --span: 1;">XPath</span>
-                    <span class="roadmap-bar bar-web" style="--start: 9; --span: 1;">BaseX</span>
-                </div>
+                <div class="roadmap-grid">
+                    <div class="roadmap-label"><i class="fa-solid fa-graduation-cap"></i> DAM 1º</div>
+                    <div class="roadmap-track">
+                        <span class="roadmap-bar" style="--start: 1; --span: 10;">DAM 1º · Sep-Jun</span>
+                    </div>
 
-                <div class="roadmap-label"><i class="fa-solid fa-database"></i> BBDD</div>
-                <div class="roadmap-track">
-                    <span class="roadmap-bar bar-db" style="--start: 1; --span: 5;">PostgreSQL · Docker · E/R</span>
-                    <span class="roadmap-bar bar-db" style="--start: 6; --span: 4;">Apache Cassandra</span>
-                </div>
+                    <div class="roadmap-label"><i class="fa-brands fa-java"></i> Java</div>
+                    <div class="roadmap-track">
+                        <span class="roadmap-bar" style="--start: 1; --span: 2;">Básico</span>
+                        <span class="roadmap-bar" style="--start: 2; --span: 2;">Arrays</span>
+                        <span class="roadmap-bar" style="--start: 4; --span: 2;">Listas</span>
+                        <span class="roadmap-bar" style="--start: 6; --span: 2;">CSV/JSON</span>
+                        <span class="roadmap-bar" style="--start: 7; --span: 2;">SQLite</span>
+                        <span class="roadmap-bar" style="--start: 9; --span: 1;">JavaFX</span>
+                    </div>
 
-                <div class="roadmap-label"><i class="fa-solid fa-folder-open"></i> Portfolio</div>
-                <div class="roadmap-track">
-                    <span class="roadmap-bar bar-project" style="--start: 5; --span: 6;">Portfolio personal · activo</span>
-                </div>
+                    <div class="roadmap-label"><i class="fa-solid fa-globe"></i> Web / XML</div>
+                    <div class="roadmap-track">
+                        <span class="roadmap-bar" style="--start: 1; --span: 4;">HTML · CSS · JS</span>
+                        <span class="roadmap-bar" style="--start: 5; --span: 3;">XML · XSL</span>
+                        <span class="roadmap-bar" style="--start: 8; --span: 1;">XPath</span>
+                        <span class="roadmap-bar" style="--start: 9; --span: 1;">BaseX</span>
+                    </div>
 
-                <div class="roadmap-label"><i class="fa-solid fa-diagram-project"></i> Proyectos</div>
-                <div class="roadmap-track roadmap-track-stacked roadmap-track-projects">
-                    <span class="roadmap-bar bar-project" style="--start: 9; --span: 2;">CentroPlus</span>
-                    <span class="roadmap-bar bar-project alt" style="--start: 9; --span: 2;">NetScanner</span>
-                    <span class="roadmap-bar bar-future" style="--start: 10; --span: 1;">Nuevo proyecto</span>
-                    <span class="roadmap-bar bar-future future-2" style="--start: 10; --span: 1;">Futuros proyectos</span>
+                    <div class="roadmap-label"><i class="fa-solid fa-database"></i> BBDD</div>
+                    <div class="roadmap-track">
+                        <span class="roadmap-bar" style="--start: 1; --span: 5;">PostgreSQL · Docker · E/R</span>
+                        <span class="roadmap-bar" style="--start: 6; --span: 4;">Apache Cassandra</span>
+                    </div>
+
+                    <div class="roadmap-label"><i class="fa-solid fa-folder-open"></i> Portfolio</div>
+                    <div class="roadmap-track">
+                        <span class="roadmap-bar" style="--start: 5; --span: 6;">Portfolio personal · activo</span>
+                    </div>
+
+                    <div class="roadmap-label"><i class="fa-solid fa-diagram-project"></i> Proyectos</div>
+                    <div class="roadmap-track roadmap-track-projects">
+                        <span class="roadmap-bar" style="--start: 9; --span: 2; grid-row: 1;">CentroPlus</span>
+                        <span class="roadmap-bar muted" style="--start: 9; --span: 2; grid-row: 2;">NetScanner</span>
+                        <span class="roadmap-bar faint" style="--start: 10; --span: 1; grid-row: 3;">Nuevo proyecto</span>
+                        <span class="roadmap-bar faint" style="--start: 10; --span: 1; grid-row: 4;">Futuros proyectos</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Technologies Section -->
+    <!-- Technologies -->
     <section id="tech">
-        <h2 class="section-title">
-            <i class="fa-solid fa-layer-group"></i>
-            <span>Tecnologías</span>
-        </h2>
+        <div class="content-width">
+            <h2 class="section-title"><span>Tecnologías</span></h2>
 
-        <div class="tech-grid">
-            <article class="tech-card glass-card" data-aos="fade-up">
-                <div class="tech-card-header">
-                    <i class="fa-solid fa-server"></i>
-                    <h3>Backend</h3>
+            <div class="tech-grid">
+                <div class="tech-group panel">
+                    <h3><i class="fa-solid fa-server"></i> Backend</h3>
+                    <ul class="tech-list"><li>Java</li><li>Spring</li><li>Python</li><li>APIs REST</li></ul>
                 </div>
-                <div class="tech-chip-list">
-                    <span>Java</span>
-                    <span>Spring</span>
-                    <span>Python</span>
-                    <span>APIs REST</span>
-                </div>
-            </article>
 
-            <article class="tech-card glass-card" data-aos="fade-up" data-aos-delay="80">
-                <div class="tech-card-header">
-                    <i class="fa-solid fa-window-maximize"></i>
-                    <h3>Frontend / Interfaces</h3>
+                <div class="tech-group panel">
+                    <h3><i class="fa-solid fa-window-maximize"></i> Frontend / Interfaces</h3>
+                    <ul class="tech-list"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>JavaFX</li></ul>
                 </div>
-                <div class="tech-chip-list">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                    <span>JavaFX</span>
-                </div>
-            </article>
 
-            <article class="tech-card glass-card" data-aos="fade-up" data-aos-delay="160">
-                <div class="tech-card-header">
-                    <i class="fa-solid fa-database"></i>
-                    <h3>Bases de datos</h3>
+                <div class="tech-group panel">
+                    <h3><i class="fa-solid fa-database"></i> Bases de datos</h3>
+                    <ul class="tech-list"><li>PostgreSQL</li><li>SQLite</li><li>MongoDB</li><li>Cassandra</li><li>BaseX</li></ul>
                 </div>
-                <div class="tech-chip-list">
-                    <span>PostgreSQL</span>
-                    <span>SQLite</span>
-                    <span>MongoDB</span>
-                    <span>Cassandra</span>
-                    <span>BaseX</span>
-                </div>
-            </article>
 
-            <article class="tech-card glass-card" data-aos="fade-up" data-aos-delay="240">
-                <div class="tech-card-header">
-                    <i class="fa-solid fa-toolbox"></i>
-                    <h3>Herramientas</h3>
+                <div class="tech-group panel">
+                    <h3><i class="fa-solid fa-toolbox"></i> Herramientas</h3>
+                    <ul class="tech-list"><li>Git</li><li>GitHub</li><li>Docker</li><li>Swagger</li><li>JUnit</li><li>Mockito</li></ul>
                 </div>
-                <div class="tech-chip-list">
-                    <span>Git</span>
-                    <span>GitHub</span>
-                    <span>Docker</span>
-                    <span>Swagger</span>
-                    <span>JUnit</span>
-                    <span>Mockito</span>
-                </div>
-            </article>
+            </div>
         </div>
     </section>
 
     <!-- Repositories -->
     <section id="projects">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
-            <h2 data-t="projects_title"><i class="fa-solid fa-folder-tree" style="color: #22c55e; margin-right: 15px;"></i> Proyectos GitHub</h2>
-        </div>
-        
-        <div class="glass-card" style="padding: 3rem; background: rgba(0,0,0,0.2);">
-            <div id="repos-container" style="display: flex; flex-direction: column; gap: 2rem;">
-                <!-- Fichas detalladas -->
-            </div>
+        <div class="content-width">
+            <h2 data-t="projects_title" class="section-title"><span>Proyectos GitHub</span></h2>
 
-            <!-- Pagination Controls -->
-            <div class="pagination-controls">
+            <div id="repos-container" class="projects-list"></div>
+
+            <div class="pagination">
                 <button id="prev-page" class="page-btn" disabled><i class="fa-solid fa-chevron-left"></i></button>
-                <span id="page-info">Página 1</span>
+                <span id="page-info" class="page-info">Página 1</span>
                 <button id="next-page" class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
 
-    <!-- English Section --><section id="english">
-        <h2 style="margin-bottom: 3rem;"><i class="fa-solid fa-graduation-cap" style="color: #22c55e; margin-right: 15px;"></i> <span data-t="lang_section">Dominio del Inglés</span></h2>
-        
-        <div class="skill-grid">
-            <!-- Hablado: 70% entre B1 y B2 Oficial | 20% entre B2 y C1 Perspectiva -->
-            <!-- Escala B1(0%) - B2(33%) - C1(66%) - C2(100%) -->
-            <div class="skill-item glass-card" data-aos="fade-up">
-                <div class="skill-header">
-                    <span>Hablado (Speaking)</span>
-                    <i class="fa-solid fa-comment-dots text-green-500"></i>
-                </div>
-                <div class="bar-group">
-                    <div class="bar-wrapper">
-                        <span class="bar-label">Oficial (70% B1→B2)</span>
-                        <div class="bar-container"><div class="bar-fill" style="width: 23.1%;"></div></div>
-                    </div>
-                    <div class="bar-wrapper">
-                        <span class="bar-label">Perspectiva (20% B2→C1)</span>
-                        <div class="bar-container"><div class="bar-fill perspective" style="width: 39.6%;"></div></div>
-                    </div>
-                </div>
-                <div class="level-markers">
-                    <span>B1</span><span>B2</span><span>C1</span><span>C2</span>
-                </div>
-            </div>
+    <!-- English -->
+    <section id="english">
+        <div class="content-width">
+            <h2 class="section-title"><span data-t="lang_section">Dominio del inglés</span></h2>
 
-            <!-- Leída: 90% entre B1 y B2 Oficial | 10% entre C1 y C2 Perspectiva -->
-            <div class="skill-item glass-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="skill-header">
-                    <span>Leído (Reading)</span>
-                    <i class="fa-solid fa-book-open text-green-500"></i>
-                </div>
-                <div class="bar-group">
-                    <div class="bar-wrapper">
-                        <span class="bar-label">Oficial (90% B1→B2)</span>
-                        <div class="bar-container"><div class="bar-fill" style="width: 29.7%;"></div></div>
+            <div class="lang-levels">
+                <div class="lang-level panel">
+                    <div class="lang-level-head">
+                        <span><i class="fa-solid fa-comment-dots"></i> Hablado</span>
                     </div>
-                    <div class="bar-wrapper">
-                        <span class="bar-label">Perspectiva (10% C1→C2)</span>
-                        <div class="bar-container"><div class="bar-fill perspective" style="width: 69.3%;"></div></div>
-                    </div>
+                    <div class="level-track"><div class="level-fill" style="width: 40%;"></div></div>
+                    <div class="level-markers"><span>B1</span><span>B2</span><span>C1</span><span>C2</span></div>
+                    <p class="lang-level-note">Certificado oficial B1-B2 · progresando hacia C1</p>
                 </div>
-                <div class="level-markers">
-                    <span>B1</span><span>B2</span><span>C1</span><span>C2</span>
-                </div>
-            </div>
 
-            <!-- Escrita: B2 Oficial | 80% entre B2 y C1 Perspectiva -->
-            <div class="skill-item glass-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="skill-header">
-                    <span>Escrito (Writing)</span>
-                    <i class="fa-solid fa-pen-nib text-green-500"></i>
-                </div>
-                <div class="bar-group">
-                    <div class="bar-wrapper">
-                        <span class="bar-label">Oficial (B2)</span>
-                        <div class="bar-container"><div class="bar-fill" style="width: 33.3%;"></div></div>
+                <div class="lang-level panel">
+                    <div class="lang-level-head">
+                        <span><i class="fa-solid fa-book-open"></i> Leído</span>
                     </div>
-                    <div class="bar-wrapper">
-                        <span class="bar-label">Perspectiva (80% B2→C1)</span>
-                        <div class="bar-container"><div class="bar-fill perspective" style="width: 59.7%;"></div></div>
-                    </div>
+                    <div class="level-track"><div class="level-fill" style="width: 62%;"></div></div>
+                    <div class="level-markers"><span>B1</span><span>B2</span><span>C1</span><span>C2</span></div>
+                    <p class="lang-level-note">Certificado oficial B1-B2 · nivel percibido cercano a C1</p>
                 </div>
-                <div class="level-markers">
-                    <span>B1</span><span>B2</span><span>C1</span><span>C2</span>
-                </div>
-            </div>
 
-            <!-- Oída: 90% del B1 al B2 Oficial | 60% del C1 al C2 Perspectiva -->
-            <div class="skill-item glass-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="skill-header">
-                    <span>Oído (Listening)</span>
-                    <i class="fa-solid fa-headphones text-green-500"></i>
-                </div>
-                <div class="bar-group">
-                    <div class="bar-wrapper">
-                        <span class="bar-label">Oficial (90% B1→B2)</span>
-                        <div class="bar-container"><div class="bar-fill" style="width: 29.7%;"></div></div>
+                <div class="lang-level panel">
+                    <div class="lang-level-head">
+                        <span><i class="fa-solid fa-pen-nib"></i> Escrito</span>
                     </div>
-                    <div class="bar-wrapper">
-                        <span class="bar-label">Perspectiva (60% C1→C2)</span>
-                        <div class="bar-container"><div class="bar-fill perspective" style="width: 85.8%;"></div></div>
-                    </div>
+                    <div class="level-track"><div class="level-fill" style="width: 58%;"></div></div>
+                    <div class="level-markers"><span>B1</span><span>B2</span><span>C1</span><span>C2</span></div>
+                    <p class="lang-level-note">Certificado oficial B2 · progresando hacia C1</p>
                 </div>
-                <div class="level-markers">
-                    <span>B1</span><span>B2</span><span>C1</span><span>C2</span>
+
+                <div class="lang-level panel">
+                    <div class="lang-level-head">
+                        <span><i class="fa-solid fa-headphones"></i> Oído</span>
+                    </div>
+                    <div class="level-track"><div class="level-fill" style="width: 68%;"></div></div>
+                    <div class="level-markers"><span>B1</span><span>B2</span><span>C1</span><span>C2</span></div>
+                    <p class="lang-level-note">Certificado oficial B1-B2 · nivel percibido entre C1 y C2</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <footer class="site-footer">
+        <div class="content-width footer-inner">
+            <div>
+                <span class="brand-name">Alejandro Donate García</span>
+                <p>Estudiante de Desarrollo de Aplicaciones Multiplataforma, construyendo proyectos reales con Java, Python y bases de datos.</p>
+            </div>
+            <div class="footer-links">
+                <button onclick="copyEmail()" class="btn btn-outline"><i class="fa-solid fa-envelope"></i></button>
+                <a href="https://www.linkedin.com/in/alejandrodongar/" target="_blank" class="btn btn-outline"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/alejandroDonGar" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
+        <div class="content-width">
+            <p class="footer-note">© 2026 Alejandro Donate García</p>
+        </div>
+    </footer>
 </main>
-
-
-<script src="{{ '/assets/js/main.js' | relative_url }}"></script>

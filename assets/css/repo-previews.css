@@ -1,0 +1,408 @@
+/* ==========================================================================
+   REPO PREVIEWS
+   Una escena visual por proyecto destacado. Chrome de "ventana" fijo (oscuro,
+   como una captura de terminal/app) independiente del tema de la página, con
+   un único acento de color y como mucho 1-2 animaciones con propósito claro
+   por escena — no un enjambre de keyframes simultáneos.
+   ========================================================================== */
+
+.repo-scene {
+    position: relative;
+    width: 100%;
+    min-height: 210px;
+    padding: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    background: #17161a;
+    color: #e9e7e2;
+    font-family: var(--font-body);
+    isolation: isolate;
+}
+
+.scene-topbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.scene-dots {
+    display: inline-flex;
+    gap: 5px;
+}
+
+.scene-dots i {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.18);
+    font-style: normal;
+}
+
+.scene-title {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.scene-stack {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.42);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.scene-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 12px;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.scene-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--accent-strong);
+    box-shadow: 0 0 10px rgba(224, 176, 140, 0.6);
+    animation: scenePulse 1.6s ease-in-out infinite;
+}
+
+@keyframes scenePulse {
+    0%, 100% { opacity: 0.55; transform: scale(0.85); }
+    50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* ---- NetScanner: mapa de red ---- */
+
+.netscan-map {
+    position: relative;
+    min-height: 132px;
+}
+
+.netscan-radar {
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgba(224, 176, 140, 0.14);
+    border-radius: 999px;
+    transform: translateX(-50%);
+}
+
+.netscan-node {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    text-align: center;
+}
+
+.netscan-router {
+    width: fit-content;
+    margin: 0 auto 26px;
+    padding: 8px 12px;
+    border: 1px solid rgba(224, 176, 140, 0.3);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.netscan-router i {
+    color: var(--accent-strong);
+}
+
+.netscan-router span {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.netscan-devices {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.netscan-device {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.netscan-device i {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.9rem;
+}
+
+.netscan-device strong {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.6rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.netscan-device span {
+    display: block;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.56rem;
+}
+
+/* ---- CentroPlus: dashboard + swagger ---- */
+
+.centro-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.centro-metrics div {
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    text-align: center;
+}
+
+.centro-metrics span {
+    display: block;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.56rem;
+    text-transform: uppercase;
+}
+
+.centro-metrics strong {
+    display: block;
+    margin-top: 2px;
+    font-size: 1.05rem;
+}
+
+.centro-endpoints {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.endpoint {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.endpoint strong {
+    font-size: 0.56rem;
+    font-weight: 800;
+}
+
+.endpoint span {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.62rem;
+    font-family: var(--font-mono);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.endpoint.get strong { color: #7bb0e8; }
+.endpoint.post strong { color: #7bc99a; }
+.endpoint.patch strong { color: var(--accent-strong); }
+.endpoint.delete strong { color: #e08a8a; }
+
+/* ---- ZeeBoard: kanban ---- */
+
+.zee-board {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.zee-col-title {
+    margin-bottom: 6px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.64rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.zee-card {
+    padding: 9px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.zee-card strong {
+    display: block;
+    font-size: 0.68rem;
+}
+
+.zee-card p {
+    margin-top: 4px;
+    color: rgba(255, 255, 255, 0.42);
+    font-size: 0.6rem;
+}
+
+.zee-tag {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-size: 0.54rem;
+    font-weight: 700;
+}
+
+.zee-tag.paid {
+    background: rgba(123, 201, 154, 0.16);
+    color: #7bc99a;
+}
+
+.zee-tag.unpaid {
+    background: rgba(224, 138, 138, 0.16);
+    color: #e08a8a;
+}
+
+/* ---- ETSDAM: terminal ---- */
+
+.etsdam-terminal {
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.28);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    line-height: 1.65;
+}
+
+.etsdam-terminal .prompt {
+    color: var(--accent-strong);
+    font-weight: 700;
+}
+
+.etsdam-terminal .ok {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.etsdam-terminal .ok i {
+    margin-right: 5px;
+    color: #7bc99a;
+}
+
+.etsdam-terminal .cursor {
+    margin-left: 2px;
+    animation: cursorBlink 1s steps(2, start) infinite;
+}
+
+@keyframes cursorBlink {
+    0%, 50% { opacity: 1; }
+    50.01%, 100% { opacity: 0; }
+}
+
+/* ---- GitHub profile ---- */
+
+.profile-body {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 14px;
+    align-items: center;
+}
+
+.profile-avatar {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    color: #211a15;
+    font-size: 1.5rem;
+}
+
+.profile-status {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    width: 13px;
+    height: 13px;
+    border: 2px solid #17161a;
+    border-radius: 999px;
+    background: #7bc99a;
+}
+
+.profile-body h4 {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.profile-body p {
+    margin-top: 2px;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.7rem;
+}
+
+.profile-techs {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.profile-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+}
+
+.profile-stats strong {
+    display: block;
+    font-size: 0.9rem;
+}
+
+.profile-stats span {
+    color: rgba(255, 255, 255, 0.42);
+    font-size: 0.58rem;
+    text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scene-status-dot,
+    .etsdam-terminal .cursor {
+        animation: none !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .repo-scene {
+        min-height: 190px;
+    }
+
+    .centro-metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
