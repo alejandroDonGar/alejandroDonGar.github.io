@@ -20,7 +20,10 @@
             lang_section: "Dominio del Inglés",
             projects_title: "Proyectos GitHub",
             stat_updated: "Actualizado",
+            education_title: "Educación",
+            education_status: "En curso · 1º",
             nav_home: "Inicio",
+            nav_education: "Educación",
             nav_about: "Sobre mí",
             nav_tech: "Tecnologías",
             nav_projects: "Proyectos",
@@ -40,7 +43,10 @@
             lang_section: "English Proficiency",
             projects_title: "GitHub Projects",
             stat_updated: "Updated",
+            education_title: "Education",
+            education_status: "In progress · Year 1",
             nav_home: "Home",
+            nav_education: "Education",
             nav_about: "About Me",
             nav_tech: "Technologies",
             nav_projects: "Projects",
@@ -60,7 +66,10 @@
             lang_section: "Englischkenntnisse",
             projects_title: "GitHub-Projekte",
             stat_updated: "Aktualisiert",
+            education_title: "Ausbildung",
+            education_status: "Laufend · 1. Jahr",
             nav_home: "Startseite",
+            nav_education: "Ausbildung",
             nav_about: "Über mich",
             nav_tech: "Technologien",
             nav_projects: "Projekte",
@@ -80,7 +89,10 @@
             lang_section: "Enskukunnátta",
             projects_title: "GitHub verkefni",
             stat_updated: "Uppfært",
+            education_title: "Menntun",
+            education_status: "Í gangi · 1. ár",
             nav_home: "Heim",
+            nav_education: "Menntun",
             nav_about: "Um mig",
             nav_tech: "Tækni",
             nav_projects: "Verkefni",
@@ -430,6 +442,32 @@
         `;
     }
 
+    function timeAgoText(dateStr) {
+        const days = Math.max(0, Math.floor((Date.now() - new Date(dateStr).getTime()) / 86400000));
+
+        if (days < 1) {
+            return currentLang === 'es' ? 'Hoy' : (currentLang === 'en' ? 'Today' : (currentLang === 'de' ? 'Heute' : 'Í dag'));
+        }
+
+        let value, unit;
+        if (days < 30) { value = days; unit = 'day'; }
+        else if (days < 365) { value = Math.floor(days / 30); unit = 'month'; }
+        else { value = Math.floor(days / 365); unit = 'year'; }
+
+        const labels = {
+            day: { es: ['día', 'días'], en: ['day', 'days'], de: ['Tag', 'Tage'], is: ['dagur', 'dagar'] },
+            month: { es: ['mes', 'meses'], en: ['month', 'months'], de: ['Monat', 'Monate'], is: ['mánuður', 'mánuðir'] },
+            year: { es: ['año', 'años'], en: ['year', 'years'], de: ['Jahr', 'Jahre'], is: ['ár', 'ár'] }
+        };
+        const [singular, plural] = labels[unit][currentLang] || labels[unit].es;
+        const word = value === 1 ? singular : plural;
+
+        if (currentLang === 'en') return `${value} ${word} ago`;
+        if (currentLang === 'de') return `Vor ${value} ${word}`;
+        if (currentLang === 'is') return `Fyrir ${value} ${word}`;
+        return `Hace ${value} ${word}`;
+    }
+
     function renderRepos(repos) {
         const container = document.getElementById('repos-container');
         container.innerHTML = '';
@@ -448,6 +486,9 @@
             const updatedText = currentLang === 'es' ? 'Actualizado' : (currentLang === 'en' ? 'Updated' : (currentLang === 'de' ? 'Aktualisiert' : 'Uppfært'));
             const viewCodeText = currentLang === 'es' ? 'Ver código' : (currentLang === 'en' ? 'View code' : (currentLang === 'de' ? 'Code ansehen' : 'Skoða kóða'));
             const compositionText = currentLang === 'es' ? 'Composición' : (currentLang === 'en' ? 'Composition' : (currentLang === 'de' ? 'Zusammensetzung' : 'Samsetning'));
+            const activityText = currentLang === 'es' ? 'Actividad' : (currentLang === 'en' ? 'Activity' : (currentLang === 'de' ? 'Aktivität' : 'Virkni'));
+            const languageText = currentLang === 'es' ? 'Lenguaje' : (currentLang === 'en' ? 'Language' : (currentLang === 'de' ? 'Sprache' : 'Tungumál'));
+            const hasSocialStats = repo.stargazers_count > 0 || repo.forks_count > 0;
 
             let scene = '';
             if (netScanner) scene = createNetScannerWavePreview();
@@ -475,16 +516,29 @@
 
                     <div class="repo-stats">
                         <div class="repo-stats-row">
-                            <div class="repo-stat">
-                                <i class="fa-regular fa-star"></i>
-                                <strong>${repo.stargazers_count}</strong>
-                                <span>Stars</span>
-                            </div>
-                            <div class="repo-stat">
-                                <i class="fa-solid fa-code-branch"></i>
-                                <strong>${repo.forks_count}</strong>
-                                <span>Forks</span>
-                            </div>
+                            ${hasSocialStats ? `
+                                <div class="repo-stat">
+                                    <i class="fa-regular fa-star"></i>
+                                    <strong>${repo.stargazers_count}</strong>
+                                    <span>Stars</span>
+                                </div>
+                                <div class="repo-stat">
+                                    <i class="fa-solid fa-code-branch"></i>
+                                    <strong>${repo.forks_count}</strong>
+                                    <span>Forks</span>
+                                </div>
+                            ` : `
+                                <div class="repo-stat repo-stat-compact">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <strong>${timeAgoText(repo.updated_at)}</strong>
+                                    <span>${activityText}</span>
+                                </div>
+                                <div class="repo-stat repo-stat-compact">
+                                    <i class="fa-solid fa-code"></i>
+                                    <strong>${repo.language || '—'}</strong>
+                                    <span>${languageText}</span>
+                                </div>
+                            `}
                         </div>
                         <p class="repo-langs-label">${compositionText}</p>
                         <div id="langs-${repo.id}"></div>
