@@ -271,19 +271,22 @@
             <div class="repo-scene scene-profile" aria-label="Preview del README principal de GitHub">
                 ${sceneTopbar('alejandroDonGar / README.md')}
                 <div class="profile-body">
-                    <div class="profile-avatar">
-                        <i class="fa-solid fa-user-astronaut"></i>
+                    <div class="profile-avatar-wrap">
+                        <div class="profile-avatar">
+                            <i class="fa-solid fa-user-astronaut"></i>
+                        </div>
                         <span class="profile-status"></span>
                     </div>
-                    <div>
+                    <div class="profile-info">
                         <h4>Hola, soy Alejandro 👋</h4>
                         <p>Estudiante DAM · Java · SQL · Web</p>
+                        <div class="profile-lines" aria-hidden="true"><span></span><span></span><span></span></div>
                         <div class="profile-techs">
-                            <i class="fa-brands fa-java"></i>
-                            <i class="fa-solid fa-database"></i>
-                            <i class="fa-brands fa-html5"></i>
-                            <i class="fa-brands fa-js"></i>
-                            <i class="fa-brands fa-github"></i>
+                            <i class="fa-brands fa-java" style="--i:0"></i>
+                            <i class="fa-solid fa-database" style="--i:1"></i>
+                            <i class="fa-brands fa-html5" style="--i:2"></i>
+                            <i class="fa-brands fa-js" style="--i:3"></i>
+                            <i class="fa-brands fa-github" style="--i:4"></i>
                         </div>
                     </div>
                 </div>
@@ -298,14 +301,24 @@
 
     function createEtsDamPreview() {
         return `
-            <div class="repo-scene scene-etsdam" aria-label="Preview de Entornos de Desarrollo: terminal">
+            <div class="repo-scene scene-etsdam" aria-label="Preview de Entornos de Desarrollo: terminal y flujo de trabajo">
                 ${sceneTopbar('etsdam_alejandro · terminal')}
                 <div class="etsdam-terminal">
-                    <p><span class="prompt">alejandro@etsdam</span>:~$ git status</p>
-                    <p class="ok"><i class="fa-solid fa-check"></i> rama main sincronizada</p>
-                    <p><span class="prompt">alejandro@etsdam</span>:~$ mvn test</p>
-                    <p class="ok"><i class="fa-solid fa-check"></i> build success · tests passed</p>
-                    <p><span class="prompt">alejandro@etsdam</span>:~$ git push origin main<span class="cursor">_</span></p>
+                    <p style="--i:0"><span class="prompt">alejandro@etsdam</span>:~$ git status</p>
+                    <p class="ok" style="--i:1"><i class="fa-solid fa-check"></i> rama main sincronizada</p>
+                    <p style="--i:2"><span class="prompt">alejandro@etsdam</span>:~$ mvn test</p>
+                    <p class="ok" style="--i:3"><i class="fa-solid fa-check"></i> build success · tests passed</p>
+                    <p style="--i:4"><span class="prompt">alejandro@etsdam</span>:~$ git push origin main<span class="cursor">_</span></p>
+                </div>
+                <div class="etsdam-flow" aria-hidden="true">
+                    <span class="etsdam-flow-line"></span>
+                    <span class="etsdam-flow-pulse"></span>
+                    <div class="etsdam-node"><i class="fa-solid fa-file-lines"></i><small>Docs</small></div>
+                    <div class="etsdam-node"><i class="fa-brands fa-git-alt"></i><small>Git</small></div>
+                    <div class="etsdam-node"><i class="fa-solid fa-code"></i><small>IDE</small></div>
+                    <div class="etsdam-node"><i class="fa-solid fa-bug"></i><small>Debug</small></div>
+                    <div class="etsdam-node"><i class="fa-solid fa-vial"></i><small>Tests</small></div>
+                    <div class="etsdam-node"><i class="fa-solid fa-bolt"></i><small>Opt</small></div>
                 </div>
                 <div class="scene-stack">Git · GitHub · Maven · JUnit · UML · Optimización</div>
             </div>
@@ -317,28 +330,31 @@
             <div class="repo-scene scene-netscanner" aria-label="Preview de NetScanner: mapa de red">
                 ${sceneTopbar('NetScanner · escaneo local')}
                 <div class="netscan-map">
-                    <div class="netscan-radar" aria-hidden="true"></div>
+                    <div class="netscan-radar" aria-hidden="true"><span class="netscan-sweep"></span></div>
                     <div class="netscan-node netscan-router">
                         <i class="fa-solid fa-wifi"></i>
                         <span>192.168.1.1</span>
                     </div>
                     <div class="netscan-devices">
-                        <div class="netscan-device">
+                        <div class="netscan-device" style="--d:0">
                             <i class="fa-solid fa-laptop"></i>
                             <strong>DESKTOP-A12</strong>
-                            <span>.24 · Python</span>
+                            <span>.24</span>
                         </div>
-                        <div class="netscan-device">
+                        <div class="netscan-device" style="--d:1">
                             <i class="fa-solid fa-mobile-screen-button"></i>
                             <strong>Galaxy-S23</strong>
-                            <span>.37 · MongoDB</span>
+                            <span>.37</span>
                         </div>
-                        <div class="netscan-device">
+                        <div class="netscan-device" style="--d:2">
                             <i class="fa-solid fa-print"></i>
                             <strong>HP-OfficeJet</strong>
-                            <span>.52 · Scapy</span>
+                            <span>.52</span>
                         </div>
                     </div>
+                    <div class="netscan-tech netscan-tech-1" title="Python"><i class="fa-brands fa-python"></i></div>
+                    <div class="netscan-tech netscan-tech-2" title="MongoDB"><i class="fa-solid fa-leaf"></i></div>
+                    <div class="netscan-tech netscan-tech-3" title="Scapy"><i class="fa-solid fa-network-wired"></i></div>
                 </div>
                 <div class="scene-status"><span class="scene-status-dot"></span> 6 hosts detectados · ARP scan</div>
             </div>
@@ -349,21 +365,42 @@
         return `
             <div class="repo-scene scene-zeeboard" aria-label="Preview de ZeeBoard: gestor de comisiones tipo kanban">
                 ${sceneTopbar('ZeeBoard · Commissions')}
-                <div class="zee-board">
-                    <div class="zee-col">
-                        <div class="zee-col-title">Sketch</div>
-                        <div class="zee-card">
-                            <strong>Commission #01</strong>
-                            <span class="zee-tag unpaid">Sin pagar</span>
-                            <p>2 personajes · render</p>
+                <div class="zee-app">
+                    <nav class="zee-sidebar" aria-hidden="true">
+                        <span class="active">Commissions</span>
+                        <span>Clients</span>
+                        <span>Tags</span>
+                        <span>Templates</span>
+                    </nav>
+                    <div class="zee-main">
+                        <div class="zee-board">
+                            <div class="zee-col">
+                                <div class="zee-col-title">Sketch</div>
+                                <div class="zee-card">
+                                    <strong>Commission #01</strong>
+                                    <span class="zee-tag unpaid">Sin pagar</span>
+                                    <p>2 personajes · render</p>
+                                    <div class="zee-progress"><em style="--w: 33%;"></em></div>
+                                </div>
+                            </div>
+                            <div class="zee-col">
+                                <div class="zee-col-title">Lineart</div>
+                                <div class="zee-card">
+                                    <strong>Commission #02</strong>
+                                    <span class="zee-tag paid">Pagado</span>
+                                    <p>1 personaje · fondo</p>
+                                    <div class="zee-progress"><em style="--w: 60%;"></em></div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="zee-col">
-                        <div class="zee-col-title">Lineart</div>
-                        <div class="zee-card">
-                            <strong>Commission #02</strong>
-                            <span class="zee-tag paid">Pagado</span>
-                            <p>1 personaje · fondo</p>
+                        <div class="zee-calendar-strip">
+                            <small><i class="fa-regular fa-calendar"></i> Jun 2026</small>
+                            <div class="zee-days">
+                                <span>24</span>
+                                <span class="today">25</span>
+                                <span class="due">26</span>
+                                <span>27</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -377,10 +414,10 @@
             <div class="repo-scene scene-centroplus" aria-label="Preview de CentroPlus Connect: dashboard y API REST">
                 ${sceneTopbar('CentroPlus Connect · API')}
                 <div class="centro-metrics">
-                    <div><span>Usuarios</span><strong>3</strong></div>
-                    <div><span>Actividades</span><strong>5</strong></div>
-                    <div><span>Reservas</span><strong>2</strong></div>
-                    <div><span>Incidencias</span><strong>2</strong></div>
+                    <div style="--i:0"><span>Usuarios</span><strong>3</strong></div>
+                    <div style="--i:1"><span>Actividades</span><strong>5</strong></div>
+                    <div style="--i:2"><span>Reservas</span><strong>2</strong></div>
+                    <div style="--i:3"><span>Incidencias</span><strong>2</strong></div>
                 </div>
                 <div class="centro-endpoints">
                     <div class="endpoint get"><strong>GET</strong><span>/api/v1/actividades</span></div>

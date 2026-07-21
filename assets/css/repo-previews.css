@@ -86,7 +86,8 @@
 
 .netscan-map {
     position: relative;
-    min-height: 132px;
+    min-height: 156px;
+    padding-bottom: 26px;
 }
 
 .netscan-radar {
@@ -95,9 +96,21 @@
     left: 50%;
     width: 150px;
     height: 150px;
+    overflow: hidden;
     border: 1px solid rgba(224, 176, 140, 0.14);
     border-radius: 999px;
     transform: translateX(-50%);
+}
+
+.netscan-sweep {
+    position: absolute;
+    inset: 0;
+    background: conic-gradient(from 0deg, var(--accent-glow), transparent 22%, transparent 100%);
+    animation: radarSweep 4s linear infinite;
+}
+
+@keyframes radarSweep {
+    to { transform: rotate(360deg); }
 }
 
 .netscan-node {
@@ -141,6 +154,36 @@
     border: 1px solid rgba(255, 255, 255, 0.09);
     border-radius: 12px;
     background: rgba(255, 255, 255, 0.03);
+    animation: netscanDeviceFound 6s ease-in-out infinite;
+    animation-delay: calc(var(--d, 0) * 1.1s);
+}
+
+@keyframes netscanDeviceFound {
+    0%, 100% { opacity: 0.4; transform: translateY(3px); }
+    18%, 55% { opacity: 1; transform: translateY(0); }
+}
+
+.netscan-tech {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.66rem;
+    animation: netscanTechFloat 5s ease-in-out infinite;
+}
+
+.netscan-tech-1 { left: 2%; bottom: 2px; animation-delay: 0s; }
+.netscan-tech-2 { left: 43%; bottom: 2px; animation-delay: -1.6s; }
+.netscan-tech-3 { right: 2%; bottom: 2px; animation-delay: -3.2s; }
+
+@keyframes netscanTechFloat {
+    0%, 100% { transform: translateY(0); opacity: 0.55; }
+    50% { transform: translateY(-5px); opacity: 0.95; }
 }
 
 .netscan-device i {
@@ -173,11 +216,32 @@
 }
 
 .centro-metrics div {
+    position: relative;
+    overflow: hidden;
     padding: 8px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.03);
     text-align: center;
+}
+
+.centro-metrics div::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--accent);
+    opacity: 0.85;
+    transform-origin: left;
+    animation: centroMetricLoad 3.2s ease-in-out infinite;
+    animation-delay: calc(var(--i, 0) * -0.6s);
+}
+
+@keyframes centroMetricLoad {
+    0%, 100% { transform: scaleX(0.35); opacity: 0.45; }
+    50% { transform: scaleX(1); opacity: 0.9; }
 }
 
 .centro-metrics span {
@@ -231,10 +295,127 @@
 
 /* ---- ZeeBoard: kanban ---- */
 
+.zee-app {
+    display: grid;
+    grid-template-columns: 62px minmax(0, 1fr);
+    gap: 10px;
+}
+
+.zee-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding-top: 2px;
+}
+
+.zee-sidebar span {
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 0.56rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.zee-sidebar span.active {
+    color: var(--accent-strong);
+}
+
+.zee-main {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .zee-board {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
+}
+
+.zee-calendar-strip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.zee-calendar-strip small {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.6rem;
+    font-weight: 700;
+}
+
+.zee-days {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+}
+
+.zee-days span {
+    width: 19px;
+    height: 19px;
+    display: grid;
+    place-items: center;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.42);
+    font-size: 0.54rem;
+}
+
+.zee-days .today {
+    background: var(--accent-soft);
+    color: var(--accent-strong);
+    font-weight: 700;
+}
+
+.zee-days .due {
+    position: relative;
+    background: rgba(224, 138, 138, 0.16);
+    color: #e08a8a;
+    font-weight: 700;
+}
+
+.zee-days .due::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border: 1px solid rgba(224, 138, 138, 0.45);
+    border-radius: 7px;
+    animation: zeeDuePulse 1.8s ease-in-out infinite;
+}
+
+@keyframes zeeDuePulse {
+    0%, 100% { opacity: 0.4; transform: scale(0.92); }
+    50% { opacity: 0.9; transform: scale(1.05); }
+}
+
+.zee-progress {
+    height: 4px;
+    margin-top: 7px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+.zee-progress em {
+    display: block;
+    height: 100%;
+    width: var(--w, 40%);
+    border-radius: inherit;
+    background: var(--accent);
+    animation: zeeProgressGrow 3.5s ease-out infinite;
+}
+
+@keyframes zeeProgressGrow {
+    0% { width: 0; }
+    55%, 100% { width: var(--w, 40%); }
 }
 
 .zee-col-title {
@@ -293,6 +474,19 @@
     line-height: 1.65;
 }
 
+.etsdam-terminal p {
+    opacity: 0;
+    transform: translateY(3px);
+    animation: etsdamLineReveal 7.5s ease-in-out infinite;
+    animation-delay: calc(var(--i, 0) * 0.45s);
+}
+
+@keyframes etsdamLineReveal {
+    0% { opacity: 0; transform: translateY(3px); }
+    8%, 80% { opacity: 1; transform: translateY(0); }
+    92%, 100% { opacity: 0.7; transform: translateY(0); }
+}
+
 .etsdam-terminal .prompt {
     color: var(--accent-strong);
     font-weight: 700;
@@ -317,6 +511,71 @@
     50.01%, 100% { opacity: 0; }
 }
 
+.etsdam-flow {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 5px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.etsdam-flow-line {
+    position: absolute;
+    left: 6%;
+    right: 6%;
+    top: calc(50% + 5px);
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-strong), transparent);
+    opacity: 0.4;
+}
+
+.etsdam-flow-pulse {
+    position: absolute;
+    top: calc(50% + 1px);
+    left: 6%;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--accent-strong);
+    box-shadow: 0 0 10px var(--accent-glow);
+    animation: etsdamFlowPulse 5s ease-in-out infinite;
+}
+
+@keyframes etsdamFlowPulse {
+    0%, 100% { left: 6%; }
+    20% { left: 22%; }
+    40% { left: 38%; }
+    60% { left: 54%; }
+    80% { left: 70%; }
+    92% { left: 86%; }
+}
+
+.etsdam-node {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 6px 2px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.etsdam-node i {
+    color: var(--accent-strong);
+    font-size: 0.78rem;
+}
+
+.etsdam-node small {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
 /* ---- GitHub profile ---- */
 
 .profile-body {
@@ -326,8 +585,14 @@
     align-items: center;
 }
 
-.profile-avatar {
+.profile-avatar-wrap {
     position: relative;
+    width: 64px;
+    height: 64px;
+    animation: profileAvatarFloat 4s ease-in-out infinite;
+}
+
+.profile-avatar {
     width: 64px;
     height: 64px;
     display: grid;
@@ -336,6 +601,11 @@
     background: linear-gradient(135deg, var(--accent), var(--accent-strong));
     color: #211a15;
     font-size: 1.5rem;
+}
+
+@keyframes profileAvatarFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
 }
 
 .profile-status {
@@ -347,19 +617,58 @@
     border: 2px solid #17161a;
     border-radius: 999px;
     background: #7bc99a;
+    box-shadow: 0 0 0 0 rgba(123, 201, 154, 0.55);
+    animation: profileStatusPulse 2.2s ease-out infinite;
 }
 
-.profile-body h4 {
+@keyframes profileStatusPulse {
+    0% { box-shadow: 0 0 0 0 rgba(123, 201, 154, 0.55); }
+    70%, 100% { box-shadow: 0 0 0 6px rgba(123, 201, 154, 0); }
+}
+
+.profile-info h4 {
     font-family: var(--font-body);
     font-size: 0.88rem;
     font-weight: 700;
     color: #fff;
 }
 
-.profile-body p {
+.profile-info p {
     margin-top: 2px;
     color: rgba(255, 255, 255, 0.45);
     font-size: 0.7rem;
+}
+
+.profile-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 8px;
+}
+
+.profile-lines span {
+    height: 5px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+.profile-lines span::after {
+    content: "";
+    display: block;
+    width: 55%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+    animation: profileLineGlow 3.4s ease-in-out infinite;
+}
+
+.profile-lines span:nth-child(2)::after { width: 74%; animation-delay: -0.8s; }
+.profile-lines span:nth-child(3)::after { width: 40%; animation-delay: -1.6s; }
+
+@keyframes profileLineGlow {
+    0%, 100% { opacity: 0.5; transform: translateX(0); }
+    50% { opacity: 1; transform: translateX(12%); }
 }
 
 .profile-techs {
@@ -367,6 +676,16 @@
     gap: 8px;
     margin-top: 8px;
     color: rgba(255, 255, 255, 0.55);
+}
+
+.profile-techs i {
+    animation: profileTechPop 3s ease-in-out infinite;
+    animation-delay: calc(var(--i, 0) * 0.15s);
+}
+
+@keyframes profileTechPop {
+    0%, 100% { transform: translateY(0); opacity: 0.7; }
+    50% { transform: translateY(-3px); opacity: 1; }
 }
 
 .profile-stats {
@@ -392,8 +711,29 @@
 
 @media (prefers-reduced-motion: reduce) {
     .scene-status-dot,
-    .etsdam-terminal .cursor {
+    .etsdam-terminal .cursor,
+    .etsdam-terminal p,
+    .etsdam-flow-pulse,
+    .netscan-sweep,
+    .netscan-device,
+    .netscan-tech,
+    .centro-metrics div::after,
+    .zee-days .due::after,
+    .zee-progress em,
+    .profile-avatar-wrap,
+    .profile-status,
+    .profile-lines span::after,
+    .profile-techs i {
         animation: none !important;
+    }
+
+    .etsdam-terminal p {
+        opacity: 1;
+        transform: none;
+    }
+
+    .netscan-device {
+        opacity: 1;
     }
 }
 

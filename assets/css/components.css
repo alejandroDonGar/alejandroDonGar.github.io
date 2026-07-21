@@ -72,11 +72,30 @@ aside {
 .sidebar-link:hover {
     color: var(--text);
     background: var(--surface-2);
+    transform: translateX(3px);
 }
 
 .sidebar-link.active {
+    position: relative;
     color: var(--accent);
     background: var(--accent-soft);
+    box-shadow: inset 0 0 0 1px rgba(201, 151, 121, 0.22);
+}
+
+.sidebar-link.active::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    margin-left: auto;
+    border-radius: 999px;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent-glow);
+    animation: navDotPulse 2s ease-in-out infinite;
+}
+
+@keyframes navDotPulse {
+    0%, 100% { opacity: 0.6; transform: scale(0.85); }
+    50% { opacity: 1; transform: scale(1.15); }
 }
 
 .sidebar-footer {
@@ -106,8 +125,9 @@ aside {
 }
 
 .lang-btn:hover {
-    border-color: var(--border-strong);
+    border-color: var(--accent);
     color: var(--text);
+    transform: translateY(-2px);
 }
 
 .lang-btn.active {
@@ -130,8 +150,10 @@ aside {
 }
 
 .theme-toggle:hover {
-    border-color: var(--border-strong);
+    border-color: var(--accent);
     color: var(--text);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
 }
 
 /* ---- Buttons ---- */
@@ -157,6 +179,8 @@ aside {
 
 .btn-primary:hover {
     background: var(--accent-strong);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px -6px var(--accent-glow);
 }
 
 .btn-outline {
@@ -167,6 +191,8 @@ aside {
 .btn-outline:hover {
     border-color: var(--accent);
     color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -8px var(--accent-glow);
 }
 
 /* ---- Cards ---- */
@@ -177,13 +203,10 @@ aside {
     background: var(--surface);
 }
 
-.panel-hover {
-    transition: border-color var(--transition-base), box-shadow var(--transition-base);
-}
-
 .panel-hover:hover {
-    border-color: var(--border-strong);
-    box-shadow: var(--shadow-sm);
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
 }
 
 /* ---- Chips / tags ---- */
@@ -198,6 +221,12 @@ aside {
     color: var(--text-muted);
     font-size: 0.78rem;
     font-weight: 600;
+}
+
+.chip:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
 }
 
 .chip-accent {
@@ -229,6 +258,8 @@ aside {
 .page-btn:hover:not(:disabled) {
     border-color: var(--accent);
     color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px -8px var(--accent-glow);
 }
 
 .page-btn:disabled {
@@ -290,5 +321,22 @@ aside {
 
     .sidebar-footer {
         display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sidebar-link.active::after {
+        animation: none;
+    }
+
+    .panel-hover:hover,
+    .btn-primary:hover,
+    .btn-outline:hover,
+    .chip:hover,
+    .lang-btn:hover,
+    .theme-toggle:hover,
+    .page-btn:hover:not(:disabled),
+    .sidebar-link:hover {
+        transform: none;
     }
 }
