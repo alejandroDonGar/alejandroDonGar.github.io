@@ -269,43 +269,51 @@
         );
     }
 
-    function sceneTopbar(title) {
-        return `
-            <div class="scene-topbar">
-                <span class="scene-dots"><i></i><i></i><i></i></span>
-                <span class="scene-title">${title}</span>
-            </div>
-        `;
-    }
-
     function createGitHubProfilePreview() {
         return `
-            <div class="repo-scene scene-profile" aria-label="Preview del README principal de GitHub">
-                ${sceneTopbar('alejandroDonGar / README.md')}
-                <div class="profile-body">
-                    <div class="profile-avatar-wrap">
-                        <div class="profile-avatar">
+            <div class="repo-profile-readme-preview" aria-label="Preview visual del README principal de GitHub">
+                <div class="repo-profile-topbar">
+                    <span>alejandroDonGar / README.md</span>
+                    <i class="fa-solid fa-pen"></i>
+                </div>
+
+                <div class="repo-profile-readme-body">
+                    <div class="repo-profile-avatar-wrap">
+                        <div class="repo-profile-avatar">
                             <i class="fa-solid fa-user-astronaut"></i>
                         </div>
-                        <span class="profile-status"></span>
+                        <span class="repo-profile-status-dot"></span>
                     </div>
-                    <div class="profile-info">
-                        <h4>Hola, soy Alejandro 👋</h4>
-                        <p>Estudiante DAM · Java · SQL · Web</p>
-                        <div class="profile-lines" aria-hidden="true"><span></span><span></span><span></span></div>
-                        <div class="profile-techs">
-                            <i class="fa-brands fa-java" style="--i:0"></i>
-                            <i class="fa-solid fa-database" style="--i:1"></i>
-                            <i class="fa-brands fa-html5" style="--i:2"></i>
-                            <i class="fa-brands fa-js" style="--i:3"></i>
-                            <i class="fa-brands fa-github" style="--i:4"></i>
+
+                    <div class="repo-profile-content">
+                        <div class="repo-profile-heading-row">
+                            <div>
+                                <h4>Hola, soy Alejandro Donate García 👋</h4>
+                                <p>Estudiante DAM · Java · SQL · Web</p>
+                            </div>
+                        </div>
+
+                        <div class="repo-profile-lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div class="repo-profile-techs" aria-label="Tecnologías del perfil GitHub">
+                            <span><i class="fa-brands fa-java"></i></span>
+                            <span><i class="fa-solid fa-database"></i></span>
+                            <span><i class="fa-brands fa-html5"></i></span>
+                            <span><i class="fa-brands fa-css3-alt"></i></span>
+                            <span><i class="fa-brands fa-js"></i></span>
+                            <span><i class="fa-brands fa-github"></i></span>
+                        </div>
+
+                        <div class="repo-profile-meta-grid" aria-label="Resumen del perfil GitHub">
+                            <div><strong>10+</strong><small>Repos</small></div>
+                            <div><strong>Open</strong><small>Source</small></div>
+                            <div><strong>C1</strong><small>Inglés</small></div>
                         </div>
                     </div>
-                </div>
-                <div class="profile-stats">
-                    <div><strong>10+</strong><span>Repos</span></div>
-                    <div><strong>Open</strong><span>Source</span></div>
-                    <div><strong>C1</strong><span>Inglés</span></div>
                 </div>
             </div>
         `;
@@ -313,131 +321,310 @@
 
     function createEtsDamPreview() {
         return `
-            <div class="repo-scene scene-etsdam" aria-label="Preview de Entornos de Desarrollo: terminal y flujo de trabajo">
-                ${sceneTopbar('etsdam_alejandro · terminal')}
-                <div class="etsdam-terminal">
-                    <p style="--i:0"><span class="prompt">alejandro@etsdam</span>:~$ git status</p>
-                    <p class="ok" style="--i:1"><i class="fa-solid fa-check"></i> rama main sincronizada</p>
-                    <p style="--i:2"><span class="prompt">alejandro@etsdam</span>:~$ mvn test</p>
-                    <p class="ok" style="--i:3"><i class="fa-solid fa-check"></i> build success · tests passed</p>
-                    <p style="--i:4"><span class="prompt">alejandro@etsdam</span>:~$ git push origin main<span class="cursor">_</span></p>
+            <div class="repo-ets-terminal-preview" aria-label="Preview visual de Entornos de Desarrollo: terminal y workflow">
+                <div class="repo-ets-terminal-header">
+                    <div class="repo-ets-window-dots" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <span><i class="fa-solid fa-terminal"></i> etsdam_alejandro</span>
+                    <small>dev workflow</small>
                 </div>
-                <div class="etsdam-flow" aria-hidden="true">
-                    <span class="etsdam-flow-line"></span>
-                    <span class="etsdam-flow-pulse"></span>
-                    <div class="etsdam-node"><i class="fa-solid fa-file-lines"></i><small>Docs</small></div>
-                    <div class="etsdam-node"><i class="fa-brands fa-git-alt"></i><small>Git</small></div>
-                    <div class="etsdam-node"><i class="fa-solid fa-code"></i><small>IDE</small></div>
-                    <div class="etsdam-node"><i class="fa-solid fa-bug"></i><small>Debug</small></div>
-                    <div class="etsdam-node"><i class="fa-solid fa-vial"></i><small>Tests</small></div>
-                    <div class="etsdam-node"><i class="fa-solid fa-bolt"></i><small>Opt</small></div>
+
+                <div class="repo-ets-terminal-body">
+                    <div class="repo-ets-terminal-lines">
+                        <p><span class="repo-ets-prompt">alejandro@etsdam</span>:~$ git status</p>
+                        <p><i class="fa-solid fa-check"></i> rama main sincronizada</p>
+                        <p><span class="repo-ets-prompt">alejandro@etsdam</span>:~$ mvn test</p>
+                        <p><i class="fa-solid fa-check"></i> build success · tests passed</p>
+                        <p><span class="repo-ets-prompt">alejandro@etsdam</span>:~$ git push origin main<span class="repo-ets-cursor">_</span></p>
+                    </div>
+
+                    <div class="repo-ets-flow" aria-hidden="true">
+                        <span class="repo-ets-flow-line"></span>
+                        <span class="repo-ets-flow-pulse"></span>
+
+                        <div class="repo-ets-flow-node node-docs">
+                            <i class="fa-solid fa-file-lines"></i>
+                            <small>Docs</small>
+                        </div>
+                        <div class="repo-ets-flow-node node-git">
+                            <i class="fa-brands fa-git-alt"></i>
+                            <small>Git</small>
+                        </div>
+                        <div class="repo-ets-flow-node node-ide">
+                            <i class="fa-solid fa-code"></i>
+                            <small>IDE</small>
+                        </div>
+                        <div class="repo-ets-flow-node node-debug">
+                            <i class="fa-solid fa-bug"></i>
+                            <small>Debug</small>
+                        </div>
+                        <div class="repo-ets-flow-node node-test">
+                            <i class="fa-solid fa-vial"></i>
+                            <small>Tests</small>
+                        </div>
+                        <div class="repo-ets-flow-node node-opt">
+                            <i class="fa-solid fa-bolt"></i>
+                            <small>Opt</small>
+                        </div>
+                    </div>
                 </div>
-                <div class="scene-stack">Git · GitHub · Maven · JUnit · UML · Optimización</div>
+
+                <div class="repo-ets-tags">
+                    <span>Git</span>
+                    <span>GitHub</span>
+                    <span>Maven</span>
+                    <span>JUnit</span>
+                    <span>UML</span>
+                    <span>Optimización</span>
+                </div>
             </div>
         `;
     }
 
     function createNetScannerWavePreview() {
         return `
-            <div class="repo-scene scene-netscanner" aria-label="Preview de NetScanner: mapa de red">
-                ${sceneTopbar('NetScanner · escaneo local')}
-                <div class="netscan-map">
-                    <div class="netscan-radar" aria-hidden="true"><span class="netscan-sweep"></span></div>
-                    <div class="netscan-node netscan-router">
-                        <i class="fa-solid fa-wifi"></i>
-                        <span>192.168.1.1</span>
-                    </div>
-                    <div class="netscan-devices">
-                        <div class="netscan-device" style="--d:0">
+            <div class="repo-wave-preview" aria-label="Animación de olas inspirada en NetScanner">
+                <div class="repo-wave-label">
+                    <i class="fa-solid fa-water"></i>
+                    NetScanner scan
+                </div>
+
+                <div class="repo-wave-scene">
+                    <div class="repo-pulse-glow repo-pulse-glow-1"></div>
+                    <div class="repo-pulse-glow repo-pulse-glow-2"></div>
+
+                    <div class="repo-network-overlay" aria-hidden="true">
+                        <div class="repo-network-router">
+                            <i class="fa-solid fa-wifi"></i>
+                            <span>192.168.1.1</span>
+                        </div>
+
+                        <div class="repo-network-device repo-device-laptop">
                             <i class="fa-solid fa-laptop"></i>
                             <strong>DESKTOP-A12</strong>
-                            <span>.24</span>
+                            <span>192.168.1.24</span>
+                            <small>MAC · 3C:52</small>
                         </div>
-                        <div class="netscan-device" style="--d:1">
+
+                        <div class="repo-network-device repo-device-phone">
                             <i class="fa-solid fa-mobile-screen-button"></i>
                             <strong>Galaxy-S23</strong>
-                            <span>.37</span>
+                            <span>192.168.1.37</span>
+                            <small>MAC · A8:09</small>
                         </div>
-                        <div class="netscan-device" style="--d:2">
+
+                        <div class="repo-network-device repo-device-printer">
                             <i class="fa-solid fa-print"></i>
                             <strong>HP-OfficeJet</strong>
-                            <span>.52</span>
+                            <span>192.168.1.52</span>
+                            <small>MAC · E4:7B</small>
+                        </div>
+
+                        <div class="repo-scan-status">
+                            <span class="repo-scan-dot"></span>
+                            6 hosts online · ARP scan complete
                         </div>
                     </div>
-                    <div class="netscan-tech netscan-tech-1" title="Python"><i class="fa-brands fa-python"></i></div>
-                    <div class="netscan-tech netscan-tech-2" title="MongoDB"><i class="fa-solid fa-leaf"></i></div>
-                    <div class="netscan-tech netscan-tech-3" title="Scapy"><i class="fa-solid fa-network-wired"></i></div>
+
+                    <div class="repo-floating-tech repo-tech-python" title="Python">
+                        <i class="fa-brands fa-python"></i>
+                    </div>
+                    <div class="repo-floating-tech repo-tech-mongodb" title="MongoDB">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <div class="repo-floating-tech repo-tech-django" title="Django">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <div class="repo-floating-tech repo-tech-scapy" title="Scapy">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+
+                    <div class="repo-liquid-layer repo-liquid-back">
+                        <div class="repo-wave-track repo-wave-track-1">
+                            <svg class="repo-wave-svg" viewBox="0 0 2880 1000" preserveAspectRatio="none">
+                                <path d="M0,70 C240,20 480,20 720,70 C960,120 1200,120 1440,70 C1680,20 1920,20 2160,70 C2400,120 2640,120 2880,70 L2880,1000 L0,1000 Z"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="repo-liquid-layer repo-liquid-mid">
+                        <div class="repo-wave-track repo-wave-track-2">
+                            <svg class="repo-wave-svg" viewBox="0 0 2880 1000" preserveAspectRatio="none">
+                                <path d="M0,70 C240,40 480,40 720,70 C960,100 1200,100 1440,70 C1680,40 1920,40 2160,70 C2400,100 2640,100 2880,70 L2880,1000 L0,1000 Z"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="repo-liquid-layer repo-liquid-front">
+                        <div class="repo-wave-track repo-wave-track-3">
+                            <svg class="repo-wave-svg" viewBox="0 0 2880 1000" preserveAspectRatio="none">
+                                <path d="M0,75 C240,55 480,55 720,75 C960,95 1200,95 1440,75 C1680,55 1920,55 2160,75 C2400,95 2640,95 2880,75 L2880,1000 L0,1000 Z"></path>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
-                <div class="scene-status"><span class="scene-status-dot"></span> 6 hosts detectados · ARP scan</div>
             </div>
         `;
     }
 
     function createZeeBoardPreview() {
         return `
-            <div class="repo-scene scene-zeeboard" aria-label="Preview de ZeeBoard: gestor de comisiones tipo kanban">
-                ${sceneTopbar('ZeeBoard · Commissions')}
-                <div class="zee-app">
-                    <nav class="zee-sidebar" aria-hidden="true">
+            <div class="repo-zeeboard-preview" aria-label="Preview visual de ZeeBoard: gestor de comisiones tipo kanban">
+                <div class="zeeboard-window">
+                    <nav class="zeeboard-mini-sidebar" aria-hidden="true">
+                        <div class="zeeboard-brand-row">
+                            <div class="zeeboard-logo"><i class="fa-solid fa-feather-pointed"></i></div>
+                            <div>
+                                <strong>ZeeBoard</strong>
+                                <span>Commission workspace</span>
+                            </div>
+                        </div>
+
                         <span class="active">Commissions</span>
                         <span>Clients</span>
                         <span>Tags</span>
                         <span>Templates</span>
                     </nav>
-                    <div class="zee-main">
-                        <div class="zee-board">
-                            <div class="zee-col">
-                                <div class="zee-col-title">Sketch</div>
-                                <div class="zee-card">
-                                    <strong>Commission #01</strong>
-                                    <span class="zee-tag unpaid">Sin pagar</span>
-                                    <p>2 personajes · render</p>
-                                    <div class="zee-progress"><em style="--w: 33%;"></em></div>
-                                </div>
+
+                    <div class="zeeboard-board-area">
+                        <header class="zeeboard-header">
+                            <div>
+                                <small>Main workspace</small>
+                                <strong>Commissions</strong>
+                                <span>Organiza encargos, clientes, fechas y etiquetas.</span>
                             </div>
-                            <div class="zee-col">
-                                <div class="zee-col-title">Lineart</div>
-                                <div class="zee-card">
-                                    <strong>Commission #02</strong>
-                                    <span class="zee-tag paid">Pagado</span>
-                                    <p>1 personaje · fondo</p>
-                                    <div class="zee-progress"><em style="--w: 60%;"></em></div>
-                                </div>
-                            </div>
+                            <button type="button">+ New</button>
+                        </header>
+
+                        <div class="zeeboard-metrics" aria-hidden="true">
+                            <div><small>Total earned</small><strong>700€</strong></div>
+                            <div><small>Active</small><strong>3</strong></div>
+                            <div><small>Unpaid</small><strong>1</strong></div>
                         </div>
-                        <div class="zee-calendar-strip">
-                            <small><i class="fa-regular fa-calendar"></i> Jun 2026</small>
-                            <div class="zee-days">
-                                <span>24</span>
-                                <span class="today">25</span>
-                                <span class="due">26</span>
-                                <span>27</span>
+
+                        <div class="zeeboard-preview-main" aria-hidden="true">
+                            <div class="zeeboard-kanban">
+                                <section class="zeeboard-column">
+                                    <div class="zeeboard-column-title"><span class="dot sketch"></span> Sketch</div>
+                                    <article class="zeeboard-commission-card">
+                                        <div class="zeeboard-card-top">
+                                            <strong>Commission #01</strong>
+                                            <span class="payment unpaid">Not paid</span>
+                                        </div>
+                                        <p>2 characters · render</p>
+                                        <div class="zeeboard-thumb-lines"><span></span><span></span><span></span></div>
+                                        <div class="zeeboard-progress-row"><span>33%</span><div><em style="width:33%"></em></div></div>
+                                    </article>
+                                </section>
+
+                                <section class="zeeboard-column">
+                                    <div class="zeeboard-column-title"><span class="dot lineart"></span> Lineart</div>
+                                    <article class="zeeboard-commission-card focused">
+                                        <div class="zeeboard-card-top">
+                                            <strong>Commission #02</strong>
+                                            <span class="payment paid">Paid</span>
+                                        </div>
+                                        <p>1 character · background</p>
+                                        <div class="zeeboard-thumb-lines"><span></span><span></span><span></span></div>
+                                        <div class="zeeboard-progress-row"><span>60%</span><div><em style="width:60%"></em></div></div>
+                                    </article>
+                                </section>
                             </div>
+
+                            <aside class="zeeboard-calendar-card">
+                                <small>Calendar</small>
+                                <strong>Jun 2026</strong>
+                                <div class="zeeboard-days">
+                                    <span>24</span>
+                                    <span class="today">25</span>
+                                    <span class="due">26</span>
+                                    <span>27</span>
+                                    <span>28</span>
+                                </div>
+                                <div class="zeeboard-deadline">23 days left</div>
+                            </aside>
                         </div>
+
+                        <footer class="zeeboard-stack" aria-label="Stack de ZeeBoard">
+                            <span>TypeScript</span>
+                            <span>React</span>
+                            <span>Tauri</span>
+                            <span>Rust</span>
+                            <span>SQLite</span>
+                            <span>Node.js</span>
+                            <span>Drag & Drop</span>
+                        </footer>
                     </div>
                 </div>
-                <div class="scene-stack">TypeScript · React · Tauri · Rust · SQLite</div>
             </div>
         `;
     }
 
     function createCentroPlusApiPreview() {
         return `
-            <div class="repo-scene scene-centroplus" aria-label="Preview de CentroPlus Connect: dashboard y API REST">
-                ${sceneTopbar('CentroPlus Connect · API')}
-                <div class="centro-metrics">
-                    <div style="--i:0"><span>Usuarios</span><strong>3</strong></div>
-                    <div style="--i:1"><span>Actividades</span><strong>5</strong></div>
-                    <div style="--i:2"><span>Reservas</span><strong>2</strong></div>
-                    <div style="--i:3"><span>Incidencias</span><strong>2</strong></div>
+            <div class="repo-centroplus-connect-preview" aria-label="Preview visual de CentroPlus Connect: dashboard, API REST y Swagger">
+                <div class="centroplus-preview-topbar">
+                    <div class="centroplus-preview-brand">
+                        <span class="centroplus-logo-mark"><i class="fa-solid fa-plus"></i></span>
+                        <div>
+                            <strong>CentroPlus</strong>
+                            <small>Connect</small>
+                        </div>
+                    </div>
+                    <span class="centroplus-api-pill">API REST · JavaFX · SQLite</span>
                 </div>
-                <div class="centro-endpoints">
-                    <div class="endpoint get"><strong>GET</strong><span>/api/v1/actividades</span></div>
-                    <div class="endpoint post"><strong>POST</strong><span>/api/v1/usuarios</span></div>
-                    <div class="endpoint patch"><strong>PATCH</strong><span>/api/v1/reservas/{id}</span></div>
-                    <div class="endpoint delete"><strong>DELETE</strong><span>/api/v1/incidencias/{id}</span></div>
+
+                <div class="centroplus-preview-main">
+                    <div class="centroplus-dashboard-zone">
+                        <div class="centroplus-metric metric-users">
+                            <i class="fa-solid fa-user-group"></i>
+                            <span>Usuarios</span>
+                            <strong>3</strong>
+                        </div>
+
+                        <div class="centroplus-metric metric-activities">
+                            <i class="fa-solid fa-chart-simple"></i>
+                            <span>Actividades</span>
+                            <strong>5</strong>
+                        </div>
+
+                        <div class="centroplus-metric metric-bookings">
+                            <i class="fa-solid fa-calendar-check"></i>
+                            <span>Reservas</span>
+                            <strong>2</strong>
+                        </div>
+
+                        <div class="centroplus-metric metric-incidents">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <span>Incidencias</span>
+                            <strong>2</strong>
+                        </div>
+                    </div>
+
+                    <div class="centroplus-swagger-zone">
+                        <div class="swagger-title-row">
+                            <span><i class="fa-solid fa-book-open"></i> Swagger integrado</span>
+                            <small>OAS 3.0</small>
+                        </div>
+
+                        <div class="swagger-endpoint endpoint-get"><strong>GET</strong><span>/api/v1/actividades</span></div>
+                        <div class="swagger-endpoint endpoint-post"><strong>POST</strong><span>/api/v1/usuarios</span></div>
+                        <div class="swagger-endpoint endpoint-patch"><strong>PATCH</strong><span>/api/v1/reservas/{id}</span></div>
+                        <div class="swagger-endpoint endpoint-delete"><strong>DELETE</strong><span>/api/v1/incidencias/{id}</span></div>
+                    </div>
                 </div>
-                <div class="scene-stack">Java 17 · Spring · H2 · JPA · Swagger · JUnit</div>
+
+                <div class="centroplus-tech-row">
+                    <span><i class="fa-brands fa-java"></i> Java 17</span>
+                    <span><i class="fa-solid fa-leaf"></i> Spring</span>
+                    <span><i class="fa-solid fa-database"></i> H2 DB</span>
+                    <span><i class="fa-solid fa-code-branch"></i> JPA</span>
+                    <span><i class="fa-solid fa-arrows-turn-to-dots"></i> MapStruct</span>
+                    <span><i class="fa-solid fa-book-open"></i> Swagger</span>
+                    <span><i class="fa-solid fa-vial"></i> JUnit</span>
+                    <span><i class="fa-solid fa-mask"></i> Mockito</span>
+                </div>
             </div>
         `;
     }
