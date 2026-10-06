@@ -1,0 +1,132 @@
+/* ==========================================================================
+   VERSIÓN IMPRIMIBLE (botón "Descargar CV")
+   Se aplica solo al imprimir / guardar como PDF: página limpia, sin
+   menú lateral, sin animaciones y con las dos páginas del timeline.
+   ========================================================================== */
+
+@page {
+    size: A4;
+    margin: 14mm;
+}
+
+:root,
+[data-theme="dark"],
+[data-theme="light"] {
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --surface-2: #f3f1ed;
+    --border: #d9d4cc;
+    --border-strong: #bdb6ab;
+    --text: #1a1714;
+    --text-muted: #4a453e;
+    --text-faint: #6b665d;
+    --accent: #8a5240;
+    --accent-soft: #f3e7e1;
+    --accent-contrast: #ffffff;
+}
+
+* {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+}
+
+body {
+    background: #ffffff !important;
+    color: var(--text);
+    font-size: 10.5pt;
+}
+
+/* Fuera: navegación, botones, mapa, vistas previas y paginación */
+aside,
+.hero-actions,
+.hero-contact .btn:not(#email-btn),
+.education-map,
+.roadmap-pager,
+.projects-tabs,
+.pagination,
+.repo-card-grid > :nth-child(2):not(.repo-stats),
+.repo-actions,
+.footer-links,
+.footer-cta .btn,
+.theme-toggle,
+.hero-photo::before {
+    display: none !important;
+}
+
+main {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+section {
+    padding: 0 0 1.2rem !important;
+    min-height: 0 !important;
+}
+
+.content-width {
+    max-width: none !important;
+    padding: 0 !important;
+}
+
+.hero {
+    grid-template-columns: 1fr 140px !important;
+    gap: 1.5rem !important;
+    min-height: 0 !important;
+}
+
+.hero-photo {
+    max-width: 140px !important;
+}
+
+.hero-photo figcaption {
+    display: none;
+}
+
+.hero-title {
+    font-size: 26pt !important;
+}
+
+.panel {
+    border: 1px solid var(--border) !important;
+    background: #ffffff !important;
+    break-inside: avoid;
+}
+
+/* Las dos páginas del timeline, una debajo de la otra */
+.roadmap-page[hidden] {
+    display: block !important;
+    margin-top: 1.5rem;
+}
+
+.roadmap-bar {
+    border: 1px solid var(--accent);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+.repo-card {
+    break-inside: avoid;
+}
+
+/* En papel solo el nombre, la descripción y las etiquetas de cada proyecto */
+.repo-stats,
+.repo-updated {
+    display: none !important;
+}
+
+.repo-card-grid,
+.repo-card.repo-card-featured .repo-card-grid {
+    grid-template-columns: 1fr !important;
+}
+
+a {
+    color: var(--text) !important;
+    text-decoration: none !important;
+}
+
+.site-footer {
+    border-top: 1px solid var(--border);
+    padding-top: 1rem !important;
+}

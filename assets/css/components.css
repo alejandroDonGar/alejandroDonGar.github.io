@@ -277,6 +277,11 @@ aside {
 /* ---- Responsive sidebar ---- */
 
 @media (max-width: 1024px) {
+    /* Barra estrecha (solo iconos): mismo ancho que el margen de main en base.css */
+    aside {
+        width: 76px;
+    }
+
     .brand-name, .brand-role,
     .sidebar-nav-label, .sidebar-link span,
     .sidebar-footer {

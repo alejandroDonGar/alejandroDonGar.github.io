@@ -1,208 +1,146 @@
     const GITHUB_USERNAME = 'alejandroDonGar';
-    const API_BASE = `https://api.github.com/users/${GITHUB_USERNAME}`;
-    let allRepos = [];
-    let currentPage = 1;
-    let currentLang = 'es'; // Definir idioma actual globalmente
+    const API_REPOS = `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`;
     const reposPerPage = 4;
+    const CACHE_MINUTES = 30;
 
-    const translations = {
-        es: {
-            role_junior: "ESTUDIANTE 1º DAM",
-            hero_title: "Alejandro Donate",
-            hero_desc: "Estudiante de Desarrollo de Aplicaciones Multiplataforma, enfocado en Java, Python, bases de datos y desarrollo web. Construyendo proyectos para convertir conocimiento en experiencia.",
-            btn_projects: "Explorar Proyectos",
-            btn_about: "Sobre mí",
-            about_title: "Sobre mí",
-            goal_title: "Mi Objetivo",
-            goal_desc: "Como estudiante de Desarrollo de Aplicaciones Multiplataforma, mi objetivo es seguir aprendiendo con proyectos prácticos y construir una base sólida en programación, bases de datos y desarrollo web.",
-            about_card_title: "Desarrollo, aprendizaje y proyectos reales",
-            about_card_desc: "Soy estudiante de Desarrollo de Aplicaciones Multiplataforma (DAM), con interés en el desarrollo backend, las bases de datos y la creación de aplicaciones web útiles. Me gusta aprender construyendo proyectos prácticos, documentarlos y convertir cada asignatura en una oportunidad para mejorar mi forma de programar.",
-            lang_section: "Dominio del Inglés",
-            projects_title: "Proyectos GitHub",
-            stat_updated: "Actualizado",
-            education_title: "Educación",
-            education_status: "En curso · 1º",
-            nav_home: "Inicio",
-            nav_education: "Educación",
-            nav_about: "Sobre mí",
-            nav_tech: "Tecnologías",
-            nav_projects: "Proyectos",
-            nav_english: "Inglés"
-        },
-        en: {
-            role_junior: "1st YEAR DAM STUDENT",
-            hero_title: "Alejandro Donate",
-            hero_desc: "Multiplatform Application Development student focused on Java, Python, databases and web development. Building projects to turn knowledge into experience.",
-            btn_projects: "Explore Projects",
-            btn_about: "About Me",
-            about_title: "About Me",
-            goal_title: "My Goal",
-            goal_desc: "As a Multiplatform Application Development student, my goal is to keep learning through practical projects and build a solid foundation in programming, databases and web development.",
-            about_card_title: "Development, learning and real projects",
-            about_card_desc: "I am a Multiplatform Application Development student interested in backend development, databases and useful web applications. I enjoy learning by building practical projects, documenting them and turning each subject into an opportunity to improve the way I code.",
-            lang_section: "English Proficiency",
-            projects_title: "GitHub Projects",
-            stat_updated: "Updated",
-            education_title: "Education",
-            education_status: "In progress · Year 1",
-            nav_home: "Home",
-            nav_education: "Education",
-            nav_about: "About Me",
-            nav_tech: "Technologies",
-            nav_projects: "Projects",
-            nav_english: "English"
-        },
-        de: {
-            role_junior: "DAM-STUDENT IM 1. JAHR",
-            hero_title: "Alejandro Donate",
-            hero_desc: "Student der plattformübergreifenden Anwendungsentwicklung mit Fokus auf Java, Python, Datenbanken und Webentwicklung. Ich baue Projekte, um Wissen in Erfahrung umzuwandeln.",
-            btn_projects: "Projekte erkunden",
-            btn_about: "Über mich",
-            about_title: "Über mich",
-            goal_title: "Mein Ziel",
-            goal_desc: "Als Student der plattformübergreifenden Anwendungsentwicklung möchte ich durch praktische Projekte weiterlernen und eine solide Grundlage in Programmierung, Datenbanken und Webentwicklung aufbauen.",
-            about_card_title: "Entwicklung, Lernen und echte Projekte",
-            about_card_desc: "Ich bin Student der plattformübergreifenden Anwendungsentwicklung mit Interesse an Backend-Entwicklung, Datenbanken und nützlichen Webanwendungen. Ich lerne gerne durch praktische Projekte und nutze jedes Fach, um meine Programmierweise zu verbessern.",
-            lang_section: "Englischkenntnisse",
-            projects_title: "GitHub-Projekte",
-            stat_updated: "Aktualisiert",
-            education_title: "Ausbildung",
-            education_status: "Laufend · 1. Jahr",
-            nav_home: "Startseite",
-            nav_education: "Ausbildung",
-            nav_about: "Über mich",
-            nav_tech: "Technologien",
-            nav_projects: "Projekte",
-            nav_english: "Englisch"
-        },
-        is: {
-            role_junior: "1. ÁRS DAM NEMANDI",
-            hero_title: "Alejandro Donate",
-            hero_desc: "Nemandi í þróun fjölvettvangsforrita með áherslu á Java, Python, gagnagrunna og vefþróun. Ég byggi verkefni til að breyta þekkingu í reynslu.",
-            btn_projects: "Skoða verkefni",
-            btn_about: "Um mig",
-            about_title: "Um mig",
-            goal_title: "Markmið mitt",
-            goal_desc: "Sem nemandi í þróun fjölvettvangsforrita er markmið mitt að halda áfram að læra með hagnýtum verkefnum og byggja góðan grunn í forritun, gagnagrunnum og vefþróun.",
-            about_card_title: "Þróun, nám og raunveruleg verkefni",
-            about_card_desc: "Ég er nemandi í þróun fjölvettvangsforrita með áhuga á bakendaforritun, gagnagrunnum og nytsamlegum vefforritum. Mér finnst best að læra með hagnýtum verkefnum og nýta hvert fag til að bæta forritunina mína.",
-            lang_section: "Enskukunnátta",
-            projects_title: "GitHub verkefni",
-            stat_updated: "Uppfært",
-            education_title: "Menntun",
-            education_status: "Í gangi · 1. ár",
-            nav_home: "Heim",
-            nav_education: "Menntun",
-            nav_about: "Um mig",
-            nav_tech: "Tækni",
-            nav_projects: "Verkefni",
-            nav_english: "Enska"
-        }
-    };
+    let currentLang = 'es';
+    let showcaseRepos = [];   // proyectos propios (topic "showcase")
+    let courseRepos = [];     // repositorios de asignaturas
+    let activeTab = 'showcase';
+    let currentPage = 1;
 
+    // Devuelve el texto en el idioma actual: t('Hola', 'Hello')
+    const t = (es, en) => (currentLang === 'en' ? en : es);
+
+    // ------------------------------------------------------------------
+    // Idiomas (ES / EN)
+    // Los textos traducibles llevan el inglés en data-en. El español
+    // original se guarda en data-es la primera vez que se cambia.
+    // ------------------------------------------------------------------
     function switchLanguage(lang) {
         currentLang = lang;
-        document.querySelectorAll('[data-t]').forEach(el => {
-            const key = el.getAttribute('data-t');
-            if (translations[lang] && translations[lang][key]) {
-                const icon = el.querySelector('i');
-                el.textContent = translations[lang][key];
-                if (icon) el.prepend(icon);
-            }
+        document.documentElement.lang = lang;
+
+        document.querySelectorAll('[data-en]').forEach(el => {
+            if (el.dataset.es === undefined) el.dataset.es = el.innerHTML;
+            el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.es;
         });
-        
-        document.querySelectorAll('.sidebar-link span').forEach(span => {
-            const parent = span.parentElement;
-            const id = parent.id.replace('nav-', '');
-            const key = `nav_${id}`;
-            if (translations[lang] && translations[lang][key]) {
-                span.textContent = translations[lang][key];
-            }
+
+        document.querySelectorAll('[data-en-title]').forEach(el => {
+            if (el.dataset.esTitle === undefined) el.dataset.esTitle = el.getAttribute('aria-label') || '';
+            const label = lang === 'en' ? el.dataset.enTitle : el.dataset.esTitle;
+            el.setAttribute('aria-label', label);
+            el.title = label;
         });
 
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
         });
 
-        // Actualizar placeholders dinámicos
-        document.getElementById('prev-page').title = lang === 'es' ? 'Anterior' : (lang === 'en' ? 'Previous' : 'Zurück');
-        document.getElementById('next-page').title = lang === 'es' ? 'Siguiente' : (lang === 'en' ? 'Next' : 'Nächste');
+        try { localStorage.setItem('lang', lang); } catch (e) { /* sin almacenamiento */ }
 
-        // Actualizar texto del tema al cambiar idioma
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
         setTheme(currentTheme);
 
-        updatePagination(); 
+        if (showcaseRepos.length || courseRepos.length) updatePagination();
+    }
+
+    // ------------------------------------------------------------------
+    // Caché de la API de GitHub (sessionStorage)
+    // GitHub permite 60 peticiones/hora sin autenticar: guardamos las
+    // respuestas un rato para no repetirlas en cada página o idioma.
+    // ------------------------------------------------------------------
+    async function fetchJsonCached(url) {
+        const key = `gh-cache:${url}`;
+        try {
+            const saved = JSON.parse(sessionStorage.getItem(key));
+            if (saved && Date.now() - saved.time < CACHE_MINUTES * 60000) return saved.data;
+        } catch (e) { /* caché no disponible o corrupta */ }
+
+        const response = await fetch(url);
+        if (!response.ok) {
+            if (response.status === 403) throw new Error(t('Límite de la API de GitHub alcanzado. Espera unos minutos.', 'GitHub API rate limit reached. Please wait a few minutes.'));
+            throw new Error(t(`GitHub respondió con estado ${response.status}`, `GitHub responded with status ${response.status}`));
+        }
+
+        const data = await response.json();
+        try { sessionStorage.setItem(key, JSON.stringify({ time: Date.now(), data })); } catch (e) { /* sin espacio */ }
+        return data;
     }
 
     async function fetchGitHubData() {
-        console.log('Iniciando carga de GitHub...');
         const container = document.getElementById('repos-container');
         if (!container) return;
-        
-        container.innerHTML = '<div style="text-align:center; padding:4rem;"><i class="fa-solid fa-circle-notch fa-spin fa-2x"></i><p style="margin-top:1rem;">Conectando con GitHub API...</p></div>';
-        
+
+        container.innerHTML = `<div style="text-align:center; padding:4rem;"><i class="fa-solid fa-circle-notch fa-spin fa-2x"></i><p style="margin-top:1rem;">${t('Conectando con GitHub...', 'Connecting to GitHub...')}</p></div>`;
+
         try {
-            // Intentar fetch directo con manejo de errores robusto
-            const response = await fetch('https://api.github.com/users/alejandroDonGar/repos?sort=updated&per_page=100');
-            
-            if (!response.ok) {
-                if (response.status === 403) throw new Error("Límite de la API de GitHub alcanzado. Espera unos minutos.");
-                throw new Error(`GitHub retornó estado: ${response.status}`);
+            const data = await fetchJsonCached(API_REPOS);
+            if (!Array.isArray(data)) throw new Error(t('La respuesta de la API no es válida.', 'Invalid API response.'));
+
+            const repos = data
+                .filter(repo => repo.name.toLowerCase() !== 'alejandrodongar.github.io' && !repo.fork)
+                .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+
+            // Pestañas: proyectos propios (topic "showcase") y asignaturas (el resto)
+            showcaseRepos = repos.filter(repo => (repo.topics || []).includes('showcase'));
+            courseRepos = repos.filter(repo => !(repo.topics || []).includes('showcase'));
+
+            if (repos.length === 0) {
+                container.innerHTML = `<div style="text-align:center; padding:2rem;">${t('No se encontraron repositorios públicos.', 'No public repositories found.')}</div>`;
+                return;
             }
 
-            const data = await response.json();
-            
-            if (Array.isArray(data)) {
-                // Filtrar el repo del portfolio y forks, manteniendo el orden real por actualización.
-                // La API ya devuelve los repositorios con sort=updated, así que no forzamos proyectos destacados arriba.
-                allRepos = data
-                    .filter(repo => {
-                        const isNotPortfolio = repo.name.toLowerCase() !== 'alejandrodongar.github.io';
-                        const isNotFork = !repo.fork;
-                        return isNotPortfolio && isNotFork;
-                    })
-                    .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
-
-                console.log('Repositorios encontrados:', allRepos.length);
-                
-                if (allRepos.length === 0) {
-                    container.innerHTML = '<div style="text-align:center; padding:2rem;">No se encontraron repositorios públicos.</div>';
-                } else {
-                    currentPage = 1;
-                    updatePagination();
-                }
-            } else {
-                throw new Error("La respuesta de la API no es válida.");
-            }
+            if (showcaseRepos.length === 0) activeTab = 'course';
+            currentPage = 1;
+            updatePagination();
         } catch (error) {
-            console.error('ERROR CRÍTICO GITHUB:', error);
+            console.error('Error al cargar GitHub:', error);
             container.innerHTML = `
                 <div style="text-align:center; padding:3rem; background: rgba(239, 68, 68, 0.1); border-radius: 20px; border: 1px solid rgba(239, 68, 68, 0.2);">
                     <i class="fa-solid fa-triangle-exclamation fa-3x" style="color:#ef4444;"></i>
-                    <h3 style="margin-top:1.5rem;">No se pudieron cargar los proyectos</h3>
+                    <h3 style="margin-top:1.5rem;">${t('No se pudieron cargar los proyectos', 'Projects could not be loaded')}</h3>
                     <p style="opacity:0.8; margin: 1rem 0;">${error.message}</p>
                     <button onclick="location.reload()" class="btn btn-primary" style="background:#ef4444;">
-                        <i class="fa-solid fa-rotate"></i> Intentar de nuevo
+                        <i class="fa-solid fa-rotate"></i> ${t('Intentar de nuevo', 'Try again')}
                     </button>
                 </div>
             `;
         }
     }
 
+    function activeRepos() {
+        return activeTab === 'showcase' ? showcaseRepos : courseRepos;
+    }
+
     function updatePagination() {
-        const totalPages = Math.ceil(allRepos.length / reposPerPage);
+        const repos = activeRepos();
+        const totalPages = Math.max(1, Math.ceil(repos.length / reposPerPage));
+        currentPage = Math.min(currentPage, totalPages);
         const start = (currentPage - 1) * reposPerPage;
-        const end = start + reposPerPage;
-        const currentRepos = allRepos.slice(start, end);
 
-        renderRepos(currentRepos);
+        renderRepos(repos.slice(start, start + reposPerPage));
 
-        const pageText = currentLang === 'es' ? 'Página' : (currentLang === 'en' ? 'Page' : (currentLang === 'de' ? 'Seite' : 'Síða'));
-        document.getElementById('page-info').textContent = `${pageText} ${currentPage} / ${totalPages}`;
+        document.querySelectorAll('.projects-tab').forEach(tab => {
+            const selected = tab.dataset.tab === activeTab;
+            tab.classList.toggle('active', selected);
+            tab.setAttribute('aria-selected', selected);
+        });
+        document.querySelector('[data-tab="showcase"] .projects-tab-count').textContent = showcaseRepos.length;
+        document.querySelector('[data-tab="course"] .projects-tab-count').textContent = courseRepos.length;
+
+        document.getElementById('page-info').textContent = `${t('Página', 'Page')} ${currentPage} / ${totalPages}`;
         document.getElementById('prev-page').disabled = currentPage === 1;
         document.getElementById('next-page').disabled = currentPage === totalPages;
     }
+
+    document.querySelectorAll('.projects-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            activeTab = tab.dataset.tab;
+            currentPage = 1;
+            updatePagination();
+        });
+    });
 
     document.getElementById('prev-page').addEventListener('click', () => {
         if (currentPage > 1) {
@@ -213,7 +151,7 @@
     });
 
     document.getElementById('next-page').addEventListener('click', () => {
-        const totalPages = Math.ceil(allRepos.length / reposPerPage);
+        const totalPages = Math.ceil(activeRepos().length / reposPerPage);
         if (currentPage < totalPages) {
             currentPage++;
             updatePagination();
@@ -267,6 +205,76 @@
             (topics.includes('tauri-app') && topics.includes('typescript')) ||
             (topics.includes('react') && topics.includes('sqlite') && topics.includes('typescript'))
         );
+    }
+
+    function isPmdmRepo(repo) {
+        const normalizedName = repo.name.toLowerCase();
+        return normalizedName.includes('programacion-multimedia') || normalizedName.includes('pokedex');
+    }
+
+    // Preview de Programación Multimedia: de momento muestra la Mini-Pokédex retro (UT1)
+    function createPokedexPreview() {
+        const sprite = (id, back) =>
+            `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${back ? 'back/' : ''}${id}.png`;
+
+        const cards = [
+            { id: 4, name: 'Charmander' },
+            { id: 5, name: 'Charmeleon' },
+            { id: 6, name: 'Charizard' }
+        ].map(({ id, name }) => `
+            <div class="pokedex-card">
+                <small>Nº${String(id).padStart(3, '0')}</small>
+                <span class="pokedex-sprite">
+                    <img class="sprite-back" src="${sprite(id, true)}" alt="${name} de espaldas" loading="lazy">
+                    <img class="sprite-front" src="${sprite(id, false)}" alt="${name} de frente" loading="lazy">
+                </span>
+                <strong>${name}</strong>
+                <span class="pokedex-type type-fire">Fire</span>
+            </div>
+        `).join('');
+
+        return `
+            <div class="repo-pokedex-preview" aria-label="Preview visual de la Mini-Pokédex retro: PokéAPI, búsqueda, filtros y panel de detalles">
+                <div class="pokedex-topbar">
+                    <span class="pokedex-ball" aria-hidden="true"></span>
+                    <strong>MINI-POKéDEX</strong>
+                    <small>UT1 · en curso</small>
+                </div>
+
+                <div class="pokedex-body">
+                    <div class="pokedex-grid-zone">
+                        <div class="pokedex-search" aria-hidden="true">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span class="pokedex-query">char<span class="pokedex-caret"></span></span>
+                            <span class="pokedex-filter">FIRE ▾</span>
+                        </div>
+                        <div class="pokedex-cards">${cards}</div>
+                    </div>
+
+                    <div class="pokedex-panel" aria-hidden="true">
+                        <small>Nº006</small>
+                        <strong>CHARIZARD</strong>
+                        <div class="pokedex-panel-types">
+                            <span class="pokedex-type type-fire">Fire</span>
+                            <span class="pokedex-type type-flying">Flying</span>
+                        </div>
+                        <div class="pokedex-stat"><span>PS</span><i style="--v: 39%"></i></div>
+                        <div class="pokedex-stat"><span>ATQ</span><i style="--v: 42%"></i></div>
+                        <div class="pokedex-stat"><span>AT.E</span><i style="--v: 55%"></i></div>
+                        <div class="pokedex-stat"><span>VEL</span><i style="--v: 50%"></i></div>
+                    </div>
+                </div>
+
+                <div class="pokedex-stack" aria-label="Tecnologías de la Mini-Pokédex">
+                    <span><i class="fa-brands fa-html5"></i> HTML</span>
+                    <span><i class="fa-brands fa-css3-alt"></i> CSS</span>
+                    <span><i class="fa-brands fa-js"></i> JavaScript</span>
+                    <span><i class="fa-solid fa-plug"></i> PokéAPI</span>
+                    <span><i class="fa-solid fa-arrows-rotate"></i> fetch · Promise.all</span>
+                    <span><i class="fa-solid fa-window-restore"></i> &lt;dialog&gt;</span>
+                </div>
+            </div>
+        `;
     }
 
     function createGitHubProfilePreview() {
@@ -633,7 +641,7 @@
         const days = Math.max(0, Math.floor((Date.now() - new Date(dateStr).getTime()) / 86400000));
 
         if (days < 1) {
-            return currentLang === 'es' ? 'Hoy' : (currentLang === 'en' ? 'Today' : (currentLang === 'de' ? 'Heute' : 'Í dag'));
+            return t('Hoy', 'Today');
         }
 
         let value, unit;
@@ -642,16 +650,14 @@
         else { value = Math.floor(days / 365); unit = 'year'; }
 
         const labels = {
-            day: { es: ['día', 'días'], en: ['day', 'days'], de: ['Tag', 'Tage'], is: ['dagur', 'dagar'] },
-            month: { es: ['mes', 'meses'], en: ['month', 'months'], de: ['Monat', 'Monate'], is: ['mánuður', 'mánuðir'] },
-            year: { es: ['año', 'años'], en: ['year', 'years'], de: ['Jahr', 'Jahre'], is: ['ár', 'ár'] }
+            day: { es: ['día', 'días'], en: ['day', 'days'] },
+            month: { es: ['mes', 'meses'], en: ['month', 'months'] },
+            year: { es: ['año', 'años'], en: ['year', 'years'] }
         };
         const [singular, plural] = labels[unit][currentLang] || labels[unit].es;
         const word = value === 1 ? singular : plural;
 
         if (currentLang === 'en') return `${value} ${word} ago`;
-        if (currentLang === 'de') return `Vor ${value} ${word}`;
-        if (currentLang === 'is') return `Fyrir ${value} ${word}`;
         return `Hace ${value} ${word}`;
     }
 
@@ -666,15 +672,16 @@
             const githubProfile = isGitHubProfileRepo(repo);
             const etsDam = isEtsDamRepo(repo);
             const zeeBoard = isZeeBoardRepo(repo);
-            const hasCustomPreview = netScanner || centroPlus || githubProfile || etsDam || zeeBoard;
+            const pmdm = isPmdmRepo(repo);
+            const hasCustomPreview = netScanner || centroPlus || githubProfile || etsDam || zeeBoard || pmdm;
 
             card.className = `repo-card panel panel-hover repo-card-reveal${hasCustomPreview ? ' repo-card-featured' : ''}`;
 
-            const updatedText = currentLang === 'es' ? 'Actualizado' : (currentLang === 'en' ? 'Updated' : (currentLang === 'de' ? 'Aktualisiert' : 'Uppfært'));
-            const viewCodeText = currentLang === 'es' ? 'Ver código' : (currentLang === 'en' ? 'View code' : (currentLang === 'de' ? 'Code ansehen' : 'Skoða kóða'));
-            const compositionText = currentLang === 'es' ? 'Composición' : (currentLang === 'en' ? 'Composition' : (currentLang === 'de' ? 'Zusammensetzung' : 'Samsetning'));
-            const activityText = currentLang === 'es' ? 'Actividad' : (currentLang === 'en' ? 'Activity' : (currentLang === 'de' ? 'Aktivität' : 'Virkni'));
-            const languageText = currentLang === 'es' ? 'Lenguaje' : (currentLang === 'en' ? 'Language' : (currentLang === 'de' ? 'Sprache' : 'Tungumál'));
+            const updatedText = t('Actualizado', 'Updated');
+            const viewCodeText = t('Ver código', 'View code');
+            const compositionText = t('Composición', 'Composition');
+            const activityText = t('Actividad', 'Activity');
+            const languageText = t('Lenguaje', 'Language');
             const hasSocialStats = repo.stargazers_count > 0 || repo.forks_count > 0;
 
             let scene = '';
@@ -683,6 +690,7 @@
             else if (githubProfile) scene = createGitHubProfilePreview();
             else if (etsDam) scene = createEtsDamPreview();
             else if (zeeBoard) scene = createZeeBoardPreview();
+            else if (pmdm) scene = createPokedexPreview();
 
             card.innerHTML = `
                 <div class="repo-card-grid">
@@ -690,11 +698,11 @@
                         <h3>${repo.name}</h3>
                         <p>${repo.description || '...'}</p>
                         <ul class="repo-topics">
-                            ${repo.topics ? repo.topics.map(t => `<li class="chip">#${t}</li>`).join('') : ''}
+                            ${(repo.topics || []).filter(topic => topic !== 'showcase').map(topic => `<li class="chip">#${topic}</li>`).join('')}
                         </ul>
                         <div class="repo-actions">
                             <a href="${repo.html_url}" target="_blank" class="btn btn-primary"><i class="fa-brands fa-github"></i> ${viewCodeText}</a>
-                            ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="btn btn-outline">Demo Live</a>` : ''}
+                            ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-solid fa-play"></i> ${t('Probar demo', 'Live demo')}</a>` : ''}
                         </div>
                         <div class="repo-updated"><i class="fa-regular fa-calendar"></i> ${updatedText}: ${new Date(repo.updated_at).toLocaleDateString()}</div>
                     </div>
@@ -791,6 +799,23 @@
         }
     });
 
+    // Timeline paginado: una página por curso (1º DAM / 2º DAM)
+    const roadmapPages = document.querySelectorAll('.roadmap-page');
+    let roadmapIndex = 0;
+
+    function showRoadmapPage(index) {
+        roadmapIndex = Math.max(0, Math.min(index, roadmapPages.length - 1));
+        roadmapPages.forEach((page, i) => { page.hidden = i !== roadmapIndex; });
+    }
+
+    document.querySelectorAll('.roadmap-prev').forEach(btn => {
+        btn.addEventListener('click', () => showRoadmapPage(roadmapIndex - 1));
+    });
+
+    document.querySelectorAll('.roadmap-next').forEach(btn => {
+        btn.addEventListener('click', () => showRoadmapPage(roadmapIndex + 1));
+    });
+
     // Event Listeners para botones de idioma
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => switchLanguage(btn.getAttribute('data-lang')));
@@ -802,7 +827,7 @@
         const originalText = emailText.textContent;
         
         navigator.clipboard.writeText(email).then(() => {
-            emailText.textContent = 'Correo copiado';
+            emailText.textContent = t('Correo copiado', 'Email copied');
             emailText.style.color = '#22c55e';
             
             setTimeout(() => {
@@ -811,6 +836,10 @@
             }, 2000);
         });
     }
+
+    // Botón "Descargar CV": abre la impresión del navegador (Guardar como PDF).
+    // El diseño para papel está en assets/css/print.css
+    document.getElementById('print-cv')?.addEventListener('click', () => window.print());
 
     // Lógica de Temas (Luz/Oscuro)
     const themeToggle = document.getElementById('theme-toggle');
@@ -824,10 +853,10 @@
         
         if (theme === 'light') {
             themeIcon.className = 'fa-solid fa-sun';
-            themeText.textContent = currentLang === 'es' ? 'Modo Claro' : (currentLang === 'en' ? 'Light Mode' : (currentLang === 'de' ? 'Heller Modus' : 'Ljós stilling'));
+            themeText.textContent = t('Modo claro', 'Light mode');
         } else {
             themeIcon.className = 'fa-solid fa-moon';
-            themeText.textContent = currentLang === 'es' ? 'Modo Oscuro' : (currentLang === 'en' ? 'Dark Mode' : (currentLang === 'de' ? 'Dunkler Modus' : 'Dökk stilling'));
+            themeText.textContent = t('Modo oscuro', 'Dark mode');
         }
     }
 
@@ -841,6 +870,8 @@
     setTheme(savedTheme);
 
     document.addEventListener('DOMContentLoaded', () => {
-        currentPage = 1;
+        let savedLang = 'es';
+        try { savedLang = localStorage.getItem('lang') || 'es'; } catch (e) { /* sin almacenamiento */ }
+        if (savedLang === 'en') switchLanguage('en');
         fetchGitHubData();
     });

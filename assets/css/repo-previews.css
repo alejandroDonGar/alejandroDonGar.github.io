@@ -2110,3 +2110,282 @@
         animation: none !important;
     }
 }
+
+/* ==========================================================================
+   PROGRAMACIÓN MULTIMEDIA — Mini-Pokédex retro (estilo Game Boy Advance)
+   Misma paleta crema / tinta que la Pokédex real, en ambos temas.
+   ========================================================================== */
+
+.repo-pokedex-preview {
+    --pk-ink: #203828;
+    --pk-paper: #f8f0d0;
+    --pk-paper-dark: #efe3b8;
+    --pk-paper-light: #fffbe8;
+    --pk-red: #e04830;
+    --pk-red-dark: #b83420;
+
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 170px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 3px solid var(--pk-ink);
+    border-radius: var(--radius-lg);
+    color: var(--pk-ink);
+    font-family: "Press Start 2P", var(--font-mono);
+    font-size: 8px;
+    line-height: 1.6;
+    /* Rayas diagonales, como el fondo de la Pokédex */
+    background: repeating-linear-gradient(45deg, var(--pk-paper) 0 8px, var(--pk-paper-dark) 8px 16px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+}
+
+[data-theme="light"] .repo-pokedex-preview {
+    box-shadow: 0 12px 24px rgba(32, 37, 49, 0.10);
+}
+
+/* Barra roja superior con la Pokéball */
+.pokedex-topbar {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 0.8rem;
+    color: var(--pk-paper-light);
+    background: var(--pk-red);
+    border-bottom: 3px solid var(--pk-ink);
+    box-shadow: inset 0 -4px 0 var(--pk-red-dark);
+}
+
+.pokedex-topbar strong {
+    font-weight: normal;
+    font-size: 9px;
+    text-shadow: 2px 2px 0 var(--pk-ink);
+}
+
+.pokedex-topbar small {
+    margin-left: auto;
+    padding: 0.2rem 0.4rem;
+    color: var(--pk-ink);
+    background: var(--pk-paper-light);
+    border: 2px solid var(--pk-ink);
+}
+
+.pokedex-ball {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    border: 2px solid var(--pk-ink);
+    border-radius: 50%;
+    background: linear-gradient(var(--pk-red) 0 45%, var(--pk-ink) 45% 55%, #fff 55%);
+    animation: pokedex-wobble 2.4s steps(4) infinite;
+}
+
+.pokedex-ball::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    border: 1px solid var(--pk-ink);
+    border-radius: 50%;
+    background: #fff;
+    translate: -50% -50%;
+}
+
+.pokedex-body {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 0.6rem;
+    padding: 0.7rem;
+}
+
+/* Buscador con el texto "char" y el filtro de tipo */
+.pokedex-search {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.55rem;
+    padding: 0.35rem 0.5rem;
+    background: var(--pk-paper-light);
+    border: 2px solid var(--pk-ink);
+}
+
+.pokedex-query {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.pokedex-caret {
+    width: 5px;
+    height: 9px;
+    margin-left: 2px;
+    background: var(--pk-ink);
+    animation: pokedex-blink 1s steps(1) infinite;
+}
+
+.pokedex-filter {
+    padding: 0.15rem 0.35rem;
+    background: #f8a060;
+    border: 2px solid var(--pk-ink);
+}
+
+/* Tres tarjetas: de espaldas, y de frente al pasar el ratón (como en la Pokédex real) */
+.pokedex-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.45rem;
+}
+
+.pokedex-card {
+    display: grid;
+    justify-items: center;
+    gap: 0.15rem;
+    padding: 0.35rem 0.2rem 0.4rem;
+    text-align: center;
+    background: var(--pk-paper-light);
+    border: 2px solid var(--pk-ink);
+    border-radius: 4px;
+    box-shadow: 3px 3px 0 var(--pk-ink);
+    cursor: pointer;
+    transition: translate 0.12s steps(2), box-shadow 0.12s steps(2);
+}
+
+.pokedex-card:hover {
+    translate: -2px -2px;
+    box-shadow: 5px 5px 0 var(--pk-ink);
+}
+
+.pokedex-card small { color: var(--pk-red); font-size: 7px; }
+
+.pokedex-card strong {
+    max-width: 100%;
+    overflow: hidden;
+    font-weight: normal;
+    font-size: 6px;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.pokedex-sprite { width: 48px; height: 48px; }
+
+.pokedex-sprite img {
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+}
+
+.pokedex-sprite .sprite-front,
+.pokedex-card:hover .sprite-back { display: none; }
+.pokedex-card:hover .sprite-front { display: block; }
+
+.pokedex-type {
+    padding: 0.1rem 0.3rem;
+    font-size: 6px;
+    text-transform: uppercase;
+    border: 2px solid var(--pk-ink);
+    border-radius: 999px;
+}
+
+.type-fire { background: #f8a060; }
+.type-flying { background: #c8b8f8; }
+
+/* Mini panel de detalles con barras de bloques */
+.pokedex-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 0.55rem;
+    background: var(--pk-paper-light);
+    border: 2px solid var(--pk-ink);
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 2px var(--pk-paper-light), inset 0 0 0 4px #88b0d8;
+}
+
+.pokedex-panel small { color: var(--pk-red); }
+.pokedex-panel strong { font-weight: normal; font-size: 9px; }
+
+.pokedex-panel-types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin-bottom: 0.15rem;
+}
+
+.pokedex-stat {
+    display: grid;
+    grid-template-columns: 3.4em 1fr;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 6px;
+}
+
+.pokedex-stat i {
+    position: relative;
+    height: 7px;
+    background: var(--pk-paper);
+    border: 2px solid var(--pk-ink);
+}
+
+.pokedex-stat i::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: var(--v);
+    background: repeating-linear-gradient(90deg, var(--pk-red) 0 4px, transparent 4px 5px);
+    transform-origin: left;
+    animation: pokedex-fill 4s steps(8) infinite;
+}
+
+/* Tecnologías */
+.pokedex-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    padding: 0 0.7rem 0.7rem;
+}
+
+.pokedex-stack span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.25rem 0.45rem;
+    font-size: 6px;
+    color: var(--pk-paper-light);
+    background: var(--pk-ink);
+    border-radius: 3px;
+}
+
+.pokedex-stack i { font-size: 9px; }
+
+@keyframes pokedex-blink { 50% { opacity: 0; } }
+@keyframes pokedex-wobble { 0%, 60%, 100% { rotate: 0deg; } 70% { rotate: -14deg; } 85% { rotate: 14deg; } }
+
+/* Las barras se llenan a saltos, se mantienen y vuelven a empezar */
+@keyframes pokedex-fill {
+    0% { transform: scaleX(0); }
+    25%, 100% { transform: scaleX(1); }
+}
+
+@media (max-width: 1200px) {
+    .repo-pokedex-preview { min-height: 230px; }
+}
+
+@media (max-width: 640px) {
+    .pokedex-body { grid-template-columns: 1fr; }
+    .pokedex-topbar small { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pokedex-ball,
+    .pokedex-caret,
+    .pokedex-stat i::after {
+        animation: none !important;
+    }
+}

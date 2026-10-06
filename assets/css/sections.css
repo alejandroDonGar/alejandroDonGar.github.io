@@ -285,6 +285,210 @@
     }
 }
 
+/* ---- Disponibilidad para prácticas (hero) ---- */
+
+.hero-availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid rgba(34, 197, 94, 0.35);
+    border-radius: 999px;
+    background: rgba(34, 197, 94, 0.10);
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.availability-dot {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+    animation: availabilityPulse 2s ease-out infinite;
+}
+
+@keyframes availabilityPulse {
+    0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55); }
+    100% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+}
+
+/* ---- Experience ---- */
+
+.experience-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.experience-icon {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 1.3rem;
+}
+
+.experience-main h3 {
+    margin: 0.4rem 0 0.6rem;
+    font-size: 1.3rem;
+}
+
+.experience-main p {
+    max-width: 70ch;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.experience-main strong {
+    color: var(--text);
+}
+
+.experience-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+}
+
+.experience-tags li {
+    padding: 0.3rem 0.65rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.experience-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+}
+
+@media (max-width: 768px) {
+    .experience-card {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-meta {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+/* ---- Tecnologías: leyenda y destacadas ---- */
+
+.tech-legend {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: -0.75rem 0 1.5rem;
+    color: var(--text-faint);
+    font-size: 0.8rem;
+}
+
+.tech-legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.tech-list li.is-main {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.tech-list li.is-main::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    background: var(--accent);
+    vertical-align: middle;
+}
+
+/* ---- Pestañas de proyectos ---- */
+
+.projects-tabs {
+    display: inline-flex;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+    padding: 0.3rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+}
+
+.projects-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.projects-tab:hover {
+    color: var(--text);
+}
+
+.projects-tab.active {
+    background: var(--accent);
+    color: var(--accent-contrast);
+}
+
+.projects-tab-count {
+    min-width: 1.5em;
+    padding: 0.05rem 0.4rem;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    font-size: 0.72rem;
+    text-align: center;
+}
+
+.projects-tab.active .projects-tab-count {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+/* ---- Inglés: resumen del certificado ---- */
+
+.lang-summary {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    padding: 1.25rem 1.5rem;
+}
+
+.lang-summary p {
+    flex: 1;
+    min-width: 260px;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .availability-dot { animation: none; }
+}
+
 /* Roadmap */
 
 .roadmap {
@@ -306,6 +510,32 @@
 .roadmap-head span {
     color: var(--text-faint);
     font-size: 0.8rem;
+}
+
+/* Paginación del timeline (1º DAM / 2º DAM) */
+.roadmap-pager {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.roadmap-head .roadmap-pager .page-info {
+    min-width: 7.5em;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.roadmap-page:not([hidden]) {
+    animation: roadmap-fade 0.25s ease;
+}
+
+@keyframes roadmap-fade {
+    from { opacity: 0; transform: translateY(6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .roadmap-page:not([hidden]) { animation: none; }
 }
 
 .roadmap-months {
@@ -702,8 +932,14 @@
 }
 
 .footer-cta h3 {
-    margin-bottom: 1.1rem;
+    margin-bottom: 0.5rem;
     font-size: 1.6rem;
+}
+
+.footer-cta p {
+    margin-bottom: 1.25rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
 }
 
 .footer-inner {
