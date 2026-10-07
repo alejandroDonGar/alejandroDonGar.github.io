@@ -213,70 +213,6 @@
     }
 
     // Preview de Programación Multimedia: de momento muestra la Mini-Pokédex retro (UT1)
-    function createPokedexPreview() {
-        const sprite = (id, back) =>
-            `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${back ? 'back/' : ''}${id}.png`;
-
-        const cards = [
-            { id: 4, name: 'Charmander' },
-            { id: 5, name: 'Charmeleon' },
-            { id: 6, name: 'Charizard' }
-        ].map(({ id, name }) => `
-            <div class="pokedex-card">
-                <small>Nº${String(id).padStart(3, '0')}</small>
-                <span class="pokedex-sprite">
-                    <img class="sprite-back" src="${sprite(id, true)}" alt="${name} de espaldas" loading="lazy">
-                    <img class="sprite-front" src="${sprite(id, false)}" alt="${name} de frente" loading="lazy">
-                </span>
-                <strong>${name}</strong>
-                <span class="pokedex-type type-fire">Fire</span>
-            </div>
-        `).join('');
-
-        return `
-            <div class="repo-pokedex-preview" aria-label="Preview visual de la Mini-Pokédex retro: PokéAPI, búsqueda, filtros y panel de detalles">
-                <div class="pokedex-topbar">
-                    <span class="pokedex-ball" aria-hidden="true"></span>
-                    <strong>MINI-POKéDEX</strong>
-                    <small>UT1 · en curso</small>
-                </div>
-
-                <div class="pokedex-body">
-                    <div class="pokedex-grid-zone">
-                        <div class="pokedex-search" aria-hidden="true">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <span class="pokedex-query">char<span class="pokedex-caret"></span></span>
-                            <span class="pokedex-filter">FIRE ▾</span>
-                        </div>
-                        <div class="pokedex-cards">${cards}</div>
-                    </div>
-
-                    <div class="pokedex-panel" aria-hidden="true">
-                        <small>Nº006</small>
-                        <strong>CHARIZARD</strong>
-                        <div class="pokedex-panel-types">
-                            <span class="pokedex-type type-fire">Fire</span>
-                            <span class="pokedex-type type-flying">Flying</span>
-                        </div>
-                        <div class="pokedex-stat"><span>PS</span><i style="--v: 39%"></i></div>
-                        <div class="pokedex-stat"><span>ATQ</span><i style="--v: 42%"></i></div>
-                        <div class="pokedex-stat"><span>AT.E</span><i style="--v: 55%"></i></div>
-                        <div class="pokedex-stat"><span>VEL</span><i style="--v: 50%"></i></div>
-                    </div>
-                </div>
-
-                <div class="pokedex-stack" aria-label="Tecnologías de la Mini-Pokédex">
-                    <span><i class="fa-brands fa-html5"></i> HTML</span>
-                    <span><i class="fa-brands fa-css3-alt"></i> CSS</span>
-                    <span><i class="fa-brands fa-js"></i> JavaScript</span>
-                    <span><i class="fa-solid fa-plug"></i> PokéAPI</span>
-                    <span><i class="fa-solid fa-arrows-rotate"></i> fetch · Promise.all</span>
-                    <span><i class="fa-solid fa-window-restore"></i> &lt;dialog&gt;</span>
-                </div>
-            </div>
-        `;
-    }
-
     function createGitHubProfilePreview() {
         return `
             <div class="repo-profile-readme-preview" aria-label="Preview visual del README principal de GitHub">
@@ -390,248 +326,119 @@
         `;
     }
 
-    function createNetScannerWavePreview() {
-        return `
-            <div class="repo-wave-preview" aria-label="Animación de olas inspirada en NetScanner">
-                <div class="repo-wave-label">
-                    <i class="fa-solid fa-water"></i>
-                    NetScanner scan
-                </div>
+    // Carrusel de capturas reales: la activa al centro y las vecinas atenuadas a los lados.
+    // Cada proyecto es solo un dato: carpeta en assets/img, capturas y pastillas del stack.
+    const SHOWCASES = {
+        zeeboard: {
+            label: 'ZeeBoard: gestor de comisiones para artistas',
+            slides: [
+                ['dashboard', 'Panel con lo que hay que atender hoy'],
+                ['commission', 'Comisión abierta con sus etapas e imágenes'],
+                ['payments', 'Pagos, tarifas y dinero realmente recibido'],
+                ['requests', 'Solicitudes del formulario, plazas y lista de espera'],
+            ],
+            stack: [
+                ['fa-solid fa-code', 'TypeScript'], ['fa-brands fa-react', 'React'], ['fa-solid fa-window-maximize', 'Tauri'],
+                ['fa-brands fa-rust', 'Rust'], ['fa-solid fa-database', 'SQLite'], ['fa-solid fa-wind', 'Tailwind'],
+            ],
+        },
+        netscanner: {
+            label: 'NetScanner: descubrimiento e inventariado de redes locales',
+            slides: [
+                ['topologia', 'Resumen de la red: tipos de dispositivo, fabricantes y riesgo'],
+                ['mapa', 'Mapa de red con los dispositivos agrupados por tipo'],
+                ['historial', 'Historial de escaneos y niveles de riesgo'],
+                ['alertas', 'Alertas de seguridad: dispositivos nuevos y cambios de riesgo'],
+            ],
+            stack: [
+                ['fa-brands fa-python', 'Python'], ['fa-solid fa-server', 'Django'], ['fa-solid fa-leaf', 'MongoDB'],
+                ['fa-solid fa-network-wired', 'Scapy'],
+            ],
+        },
+        centroplus: {
+            label: 'CentroPlus Connect: gestión de centros educativos',
+            slides: [
+                ['inicio', 'Panel principal con los indicadores del centro'],
+                ['acciones', 'Operaciones rápidas: formularios para crear usuarios, actividades, reservas e incidencias'],
+                ['actividades', 'Catálogo de actividades con plazas disponibles'],
+                ['swagger', 'API REST documentada con Swagger'],
+            ],
+            stack: [
+                ['fa-brands fa-java', 'Java 17'], ['fa-solid fa-leaf', 'Spring'], ['fa-solid fa-database', 'H2'],
+                ['fa-solid fa-code-branch', 'JPA'], ['fa-solid fa-arrows-turn-to-dots', 'MapStruct'],
+                ['fa-solid fa-book-open', 'Swagger'], ['fa-solid fa-vial', 'JUnit'], ['fa-solid fa-mask', 'Mockito'],
+            ],
+        },
+        pokedex: {
+            label: 'Mini-Pokédex: práctica de JavaScript con PokéAPI',
+            slides: [
+                ['coleccion', 'Los 151 Pokémon cargados desde PokéAPI'],
+                ['busqueda', 'Búsqueda en tiempo real por nombre o número'],
+                ['filtro', 'Filtro por tipo, combinable con la búsqueda'],
+                ['detalle', 'Panel de detalles con estadísticas base'],
+            ],
+            stack: [
+                ['fa-brands fa-html5', 'HTML'], ['fa-brands fa-css3-alt', 'CSS'], ['fa-brands fa-js', 'JavaScript'],
+                ['fa-solid fa-plug', 'PokéAPI'], ['fa-solid fa-arrows-rotate', 'fetch · Promise.all'],
+                ['fa-solid fa-window-restore', '<dialog>'],
+            ],
+        },
+    };
 
-                <div class="repo-wave-scene">
-                    <div class="repo-pulse-glow repo-pulse-glow-1"></div>
-                    <div class="repo-pulse-glow repo-pulse-glow-2"></div>
-
-                    <div class="repo-network-overlay" aria-hidden="true">
-                        <div class="repo-network-router">
-                            <i class="fa-solid fa-wifi"></i>
-                            <span>192.168.1.1</span>
-                        </div>
-
-                        <div class="repo-network-device repo-device-laptop">
-                            <i class="fa-solid fa-laptop"></i>
-                            <strong>DESKTOP-A12</strong>
-                            <span>192.168.1.24</span>
-                            <small>MAC · 3C:52</small>
-                        </div>
-
-                        <div class="repo-network-device repo-device-phone">
-                            <i class="fa-solid fa-mobile-screen-button"></i>
-                            <strong>Galaxy-S23</strong>
-                            <span>192.168.1.37</span>
-                            <small>MAC · A8:09</small>
-                        </div>
-
-                        <div class="repo-network-device repo-device-printer">
-                            <i class="fa-solid fa-print"></i>
-                            <strong>HP-OfficeJet</strong>
-                            <span>192.168.1.52</span>
-                            <small>MAC · E4:7B</small>
-                        </div>
-
-                        <div class="repo-scan-status">
-                            <span class="repo-scan-dot"></span>
-                            6 hosts online · ARP scan complete
-                        </div>
-                    </div>
-
-                    <div class="repo-floating-tech repo-tech-python" title="Python">
-                        <i class="fa-brands fa-python"></i>
-                    </div>
-                    <div class="repo-floating-tech repo-tech-mongodb" title="MongoDB">
-                        <i class="fa-solid fa-leaf"></i>
-                    </div>
-                    <div class="repo-floating-tech repo-tech-django" title="Django">
-                        <i class="fa-solid fa-server"></i>
-                    </div>
-                    <div class="repo-floating-tech repo-tech-scapy" title="Scapy">
-                        <i class="fa-solid fa-network-wired"></i>
-                    </div>
-
-                    <div class="repo-liquid-layer repo-liquid-back">
-                        <div class="repo-wave-track repo-wave-track-1">
-                            <svg class="repo-wave-svg" viewBox="0 0 2880 1000" preserveAspectRatio="none">
-                                <path d="M0,70 C240,20 480,20 720,70 C960,120 1200,120 1440,70 C1680,20 1920,20 2160,70 C2400,120 2640,120 2880,70 L2880,1000 L0,1000 Z"></path>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="repo-liquid-layer repo-liquid-mid">
-                        <div class="repo-wave-track repo-wave-track-2">
-                            <svg class="repo-wave-svg" viewBox="0 0 2880 1000" preserveAspectRatio="none">
-                                <path d="M0,70 C240,40 480,40 720,70 C960,100 1200,100 1440,70 C1680,40 1920,40 2160,70 C2400,100 2640,100 2880,70 L2880,1000 L0,1000 Z"></path>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="repo-liquid-layer repo-liquid-front">
-                        <div class="repo-wave-track repo-wave-track-3">
-                            <svg class="repo-wave-svg" viewBox="0 0 2880 1000" preserveAspectRatio="none">
-                                <path d="M0,75 C240,55 480,55 720,75 C960,95 1200,95 1440,75 C1680,55 1920,55 2160,75 C2400,95 2640,95 2880,75 L2880,1000 L0,1000 Z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
+    function showcaseSlidePos(index, active, total) {
+        let distance = (index - active + total) % total;
+        if (distance > total / 2) distance -= total;
+        return Math.abs(distance) > 1 ? 'far' : distance;
     }
 
-    function createZeeBoardPreview() {
-        return `
-            <div class="repo-zeeboard-preview" aria-label="Preview visual de ZeeBoard: gestor de comisiones tipo kanban">
-                <div class="zeeboard-window">
-                    <nav class="zeeboard-mini-sidebar" aria-hidden="true">
-                        <div class="zeeboard-brand-row">
-                            <div class="zeeboard-logo"><i class="fa-solid fa-feather-pointed"></i></div>
-                            <div>
-                                <strong>ZeeBoard</strong>
-                                <span>Commission workspace</span>
-                            </div>
-                        </div>
-
-                        <span class="active">Commissions</span>
-                        <span>Clients</span>
-                        <span>Tags</span>
-                        <span>Templates</span>
-                    </nav>
-
-                    <div class="zeeboard-board-area">
-                        <header class="zeeboard-header">
-                            <div>
-                                <small>Main workspace</small>
-                                <strong>Commissions</strong>
-                                <span>Organiza encargos, clientes, fechas y etiquetas.</span>
-                            </div>
-                            <button type="button">+ New</button>
-                        </header>
-
-                        <div class="zeeboard-metrics" aria-hidden="true">
-                            <div><small>Total earned</small><strong>700€</strong></div>
-                            <div><small>Active</small><strong>3</strong></div>
-                            <div><small>Unpaid</small><strong>1</strong></div>
-                        </div>
-
-                        <div class="zeeboard-preview-main" aria-hidden="true">
-                            <div class="zeeboard-kanban">
-                                <section class="zeeboard-column">
-                                    <div class="zeeboard-column-title"><span class="dot sketch"></span> Sketch</div>
-                                    <article class="zeeboard-commission-card">
-                                        <div class="zeeboard-card-top">
-                                            <strong>Commission #01</strong>
-                                            <span class="payment unpaid">Not paid</span>
-                                        </div>
-                                        <p>2 characters · render</p>
-                                        <div class="zeeboard-thumb-lines"><span></span><span></span><span></span></div>
-                                        <div class="zeeboard-progress-row"><span>33%</span><div><em style="width:33%"></em></div></div>
-                                    </article>
-                                </section>
-
-                                <section class="zeeboard-column">
-                                    <div class="zeeboard-column-title"><span class="dot lineart"></span> Lineart</div>
-                                    <article class="zeeboard-commission-card focused">
-                                        <div class="zeeboard-card-top">
-                                            <strong>Commission #02</strong>
-                                            <span class="payment paid">Paid</span>
-                                        </div>
-                                        <p>1 character · background</p>
-                                        <div class="zeeboard-thumb-lines"><span></span><span></span><span></span></div>
-                                        <div class="zeeboard-progress-row"><span>60%</span><div><em style="width:60%"></em></div></div>
-                                    </article>
-                                </section>
-                            </div>
-
-                            <aside class="zeeboard-calendar-card">
-                                <small>Calendar</small>
-                                <strong>Jun 2026</strong>
-                                <div class="zeeboard-days">
-                                    <span>24</span>
-                                    <span class="today">25</span>
-                                    <span class="due">26</span>
-                                    <span>27</span>
-                                    <span>28</span>
-                                </div>
-                                <div class="zeeboard-deadline">23 days left</div>
-                            </aside>
-                        </div>
-
-                        <footer class="zeeboard-stack" aria-label="Stack de ZeeBoard">
-                            <span>TypeScript</span>
-                            <span>React</span>
-                            <span>Tauri</span>
-                            <span>Rust</span>
-                            <span>SQLite</span>
-                            <span>Node.js</span>
-                            <span>Drag & Drop</span>
-                        </footer>
-                    </div>
-                </div>
-            </div>
-        `;
+    function setShowcaseSlide(stage, active) {
+        const slides = stage.querySelectorAll('.zb-slide');
+        stage.dataset.active = (active + slides.length) % slides.length;
+        slides.forEach((slide, index) => {
+            slide.dataset.pos = showcaseSlidePos(index, Number(stage.dataset.active), slides.length);
+        });
     }
 
-    function createCentroPlusApiPreview() {
+    // The stage grows to fit the tallest capture so none is cropped (slide is 92% wide, plus a little air)
+    document.addEventListener('load', event => {
+        if (!event.target.matches?.('.zb-slide')) return;
+        const stage = event.target.closest('.zb-stage');
+        const tallest = Math.max(...[...stage.querySelectorAll('.zb-slide')]
+            .filter(img => img.naturalWidth)
+            .map(img => img.naturalHeight / img.naturalWidth));
+        stage.style.setProperty('--r', Math.max(0.64, 0.92 * tallest + 0.06).toFixed(3));
+    }, true);
+
+    document.addEventListener('click', event => {
+        const arrow = event.target.closest('.zb-arrow');
+        if (!arrow) return;
+        const stage = arrow.closest('.zb-stage');
+        setShowcaseSlide(stage, Number(stage.dataset.active) + Number(arrow.dataset.step));
+    });
+
+    // Avanza solo, salvo con el ratón encima o si se piden menos animaciones
+    setInterval(() => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        document.querySelectorAll('.zb-stage').forEach(stage => {
+            if (!stage.parentElement.matches(':hover')) setShowcaseSlide(stage, Number(stage.dataset.active) + 1);
+        });
+    }, 4000);
+
+    function createShowcase(key) {
+        const { label, slides, stack } = SHOWCASES[key];
+        const total = slides.length;
+
         return `
-            <div class="repo-centroplus-connect-preview" aria-label="Preview visual de CentroPlus Connect: dashboard, API REST y Swagger">
-                <div class="centroplus-preview-topbar">
-                    <div class="centroplus-preview-brand">
-                        <span class="centroplus-logo-mark"><i class="fa-solid fa-plus"></i></span>
-                        <div>
-                            <strong>CentroPlus</strong>
-                            <small>Connect</small>
-                        </div>
-                    </div>
-                    <span class="centroplus-api-pill">API REST · JavaFX · SQLite</span>
+            <div class="repo-showcase" aria-label="Capturas de ${label}">
+                <div class="zb-stage" data-active="0">
+                    <button type="button" class="zb-arrow" data-step="-1" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                    ${slides.map(([name, alt], index) => `
+                        <img class="zb-slide" data-pos="${showcaseSlidePos(index, 0, total)}" src="assets/img/${key}/${name}.webp" alt="${alt}">
+                    `).join('')}
+                    <button type="button" class="zb-arrow" data-step="1" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
-
-                <div class="centroplus-preview-main">
-                    <div class="centroplus-dashboard-zone">
-                        <div class="centroplus-metric metric-users">
-                            <i class="fa-solid fa-user-group"></i>
-                            <span>Usuarios</span>
-                            <strong>3</strong>
-                        </div>
-
-                        <div class="centroplus-metric metric-activities">
-                            <i class="fa-solid fa-chart-simple"></i>
-                            <span>Actividades</span>
-                            <strong>5</strong>
-                        </div>
-
-                        <div class="centroplus-metric metric-bookings">
-                            <i class="fa-solid fa-calendar-check"></i>
-                            <span>Reservas</span>
-                            <strong>2</strong>
-                        </div>
-
-                        <div class="centroplus-metric metric-incidents">
-                            <i class="fa-solid fa-triangle-exclamation"></i>
-                            <span>Incidencias</span>
-                            <strong>2</strong>
-                        </div>
-                    </div>
-
-                    <div class="centroplus-swagger-zone">
-                        <div class="swagger-title-row">
-                            <span><i class="fa-solid fa-book-open"></i> Swagger integrado</span>
-                            <small>OAS 3.0</small>
-                        </div>
-
-                        <div class="swagger-endpoint endpoint-get"><strong>GET</strong><span>/api/v1/actividades</span></div>
-                        <div class="swagger-endpoint endpoint-post"><strong>POST</strong><span>/api/v1/usuarios</span></div>
-                        <div class="swagger-endpoint endpoint-patch"><strong>PATCH</strong><span>/api/v1/reservas/{id}</span></div>
-                        <div class="swagger-endpoint endpoint-delete"><strong>DELETE</strong><span>/api/v1/incidencias/{id}</span></div>
-                    </div>
-                </div>
-
-                <div class="centroplus-tech-row">
-                    <span><i class="fa-brands fa-java"></i> Java 17</span>
-                    <span><i class="fa-solid fa-leaf"></i> Spring</span>
-                    <span><i class="fa-solid fa-database"></i> H2 DB</span>
-                    <span><i class="fa-solid fa-code-branch"></i> JPA</span>
-                    <span><i class="fa-solid fa-arrows-turn-to-dots"></i> MapStruct</span>
-                    <span><i class="fa-solid fa-book-open"></i> Swagger</span>
-                    <span><i class="fa-solid fa-vial"></i> JUnit</span>
-                    <span><i class="fa-solid fa-mask"></i> Mockito</span>
+                <div class="showcase-stack">
+                    ${stack.map(([icon, text]) => `<span><i class="${icon}"></i> ${text.replace(/</g, '&lt;')}</span>`).join('')}
                 </div>
             </div>
         `;
@@ -685,12 +492,12 @@
             const hasSocialStats = repo.stargazers_count > 0 || repo.forks_count > 0;
 
             let scene = '';
-            if (netScanner) scene = createNetScannerWavePreview();
-            else if (centroPlus) scene = createCentroPlusApiPreview();
+            if (netScanner) scene = createShowcase('netscanner');
+            else if (centroPlus) scene = createShowcase('centroplus');
             else if (githubProfile) scene = createGitHubProfilePreview();
             else if (etsDam) scene = createEtsDamPreview();
-            else if (zeeBoard) scene = createZeeBoardPreview();
-            else if (pmdm) scene = createPokedexPreview();
+            else if (zeeBoard) scene = createShowcase('zeeboard');
+            else if (pmdm) scene = createShowcase('pokedex');
 
             card.innerHTML = `
                 <div class="repo-card-grid">
