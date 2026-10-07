@@ -594,8 +594,9 @@
 }
 
 .roadmap-track-projects {
-    min-height: 128px;
-    grid-template-rows: repeat(4, 1fr);
+    --rows: 4; /* each page sets how many bar rows it uses */
+    min-height: calc(var(--rows) * 28px + 16px);
+    grid-template-rows: repeat(var(--rows), 1fr);
     row-gap: 6px;
 }
 
