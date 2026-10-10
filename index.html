@@ -18,6 +18,7 @@ description: "Portfolio de Alejandro Donate García, estudiante de 2º DAM. Java
         <a href="#about" class="sidebar-link" id="nav-about"><i class="fa-solid fa-user"></i> <span data-en="About me">Sobre mí</span></a>
         <a href="#tech" class="sidebar-link" id="nav-tech"><i class="fa-solid fa-layer-group"></i> <span data-en="Technologies">Tecnologías</span></a>
         <a href="#projects" class="sidebar-link" id="nav-projects"><i class="fa-solid fa-laptop-code"></i> <span data-en="Projects">Proyectos</span></a>
+        <a href="#courses" class="sidebar-link" id="nav-courses"><i class="fa-solid fa-book"></i> <span data-en="Coursework">Asignaturas</span></a>
         <a href="#english" class="sidebar-link" id="nav-english"><i class="fa-solid fa-language"></i> <span data-en="English">Inglés</span></a>
     </nav>
 
@@ -347,19 +348,56 @@ description: "Portfolio de Alejandro Donate García, estudiante de 2º DAM. Java
         </div>
     </section>
 
-    <!-- Repositories -->
+    <!-- Projects -->
     <section id="projects">
         <div class="content-width">
-            <h2 class="section-title"><span data-en="GitHub projects">Proyectos GitHub</span></h2>
+            <h2 class="section-title"><span data-en="Projects">Proyectos</span></h2>
 
-            <div class="projects-tabs" role="tablist">
-                <button class="projects-tab active" type="button" role="tab" data-tab="showcase" aria-selected="true">
-                    <i class="fa-solid fa-star"></i> <span data-en="Projects">Proyectos</span> <span class="projects-tab-count">0</span>
-                </button>
-                <button class="projects-tab" type="button" role="tab" data-tab="course" aria-selected="false">
-                    <i class="fa-solid fa-book"></i> <span data-en="Coursework">Asignaturas</span> <span class="projects-tab-count">0</span>
-                </button>
+            <div class="project-grid">
+                <article class="project-card panel panel-hover">
+                    <img class="project-cover" src="assets/img/zeeboard/dashboard.webp" alt="ZeeBoard" loading="lazy">
+                    <div class="project-body">
+                        <h3>ZeeBoard</h3>
+                        <p data-en="Commission manager for artists: requests, clients, staged images, payments and statistics. Local desktop app.">Gestor de comisiones para artistas: solicitudes, clientes, etapas con imágenes, pagos y estadísticas. App de escritorio local.</p>
+                        <ul class="repo-topics"><li class="chip"><i class="fa-solid fa-code"></i> TypeScript</li><li class="chip"><i class="fa-brands fa-react"></i> React</li><li class="chip"><i class="fa-solid fa-window-maximize"></i> Tauri</li><li class="chip"><i class="fa-solid fa-database"></i> SQLite</li><li class="chip"><i class="fa-solid fa-wind"></i> Tailwind</li></ul>
+                        <div class="project-actions">
+                            <a href="https://alejandrodongar.github.io/zeeboard/" class="btn btn-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-en="View page">Ver página</span></a>
+                            <a href="https://github.com/alejandroDonGar/zeeboard" target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-github"></i> <span data-en="Code">Código</span></a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card panel panel-hover">
+                    <img class="project-cover" src="assets/img/netscanner/topologia.webp" alt="NetScanner" loading="lazy">
+                    <div class="project-body">
+                        <h3>NetScanner</h3>
+                        <p data-en="Local network discovery and inventory with topology, risk, trust and alerts. Team project.">Descubrimiento e inventariado de redes locales con topología, riesgo, confianza y alertas. Proyecto de equipo.</p>
+                        <ul class="repo-topics"><li class="chip"><i class="fa-brands fa-python"></i> Python</li><li class="chip"><i class="fa-solid fa-server"></i> Django</li><li class="chip"><i class="fa-solid fa-leaf"></i> MongoDB</li><li class="chip"><i class="fa-solid fa-network-wired"></i> Scapy</li></ul>
+                        <div class="project-actions">
+                            <a href="https://alejandrodongar.github.io/netscanner/" class="btn btn-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-en="View page">Ver página</span></a>
+                            <a href="https://github.com/alejandroDonGar/netscanner" target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-github"></i> <span data-en="Code">Código</span></a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card panel panel-hover">
+                    <img class="project-cover" src="assets/img/centroplus/inicio.webp" alt="CentroPlus Connect" loading="lazy">
+                    <div class="project-body">
+                        <h3>CentroPlus Connect</h3>
+                        <p data-en="Management of users, activities, bookings and incidents for a school: web, JavaFX app and REST API.">Gestión de usuarios, actividades, reservas e incidencias de un centro educativo: web, app JavaFX y API REST.</p>
+                        <ul class="repo-topics"><li class="chip"><i class="fa-brands fa-java"></i> Java 17</li><li class="chip"><i class="fa-solid fa-leaf"></i> Spring</li><li class="chip"><i class="fa-solid fa-window-maximize"></i> JavaFX</li><li class="chip"><i class="fa-solid fa-book-open"></i> Swagger</li></ul>
+                        <div class="project-actions">
+                            <a href="https://alejandrodongar.github.io/centroplus-connect/" class="btn btn-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-en="View page">Ver página</span></a>
+                            <a href="https://github.com/alejandroDonGar/centroplus-connect" target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-github"></i> <span data-en="Code">Código</span></a>
+                        </div>
+                    </div>
+                </article>
             </div>
+        </div>
+    </section>
+
+    <!-- Coursework -->
+    <section id="courses">
+        <div class="content-width">
+            <h2 class="section-title"><span data-en="Coursework">Asignaturas</span></h2>
 
             <div id="repos-container" class="projects-list"></div>
 

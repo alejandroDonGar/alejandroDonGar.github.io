@@ -4,9 +4,7 @@
     const CACHE_MINUTES = 30;
 
     let currentLang = 'es';
-    let showcaseRepos = [];   // proyectos propios (topic "showcase")
     let courseRepos = [];     // repositorios de asignaturas
-    let activeTab = 'showcase';
     let currentPage = 1;
 
     // Devuelve el texto en el idioma actual: t('Hola', 'Hello')
@@ -42,7 +40,7 @@
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
         setTheme(currentTheme);
 
-        if (showcaseRepos.length || courseRepos.length) updatePagination();
+        if (courseRepos.length) updatePagination();
     }
 
     // ------------------------------------------------------------------
@@ -82,16 +80,16 @@
                 .filter(repo => repo.name.toLowerCase() !== 'alejandrodongar.github.io' && !repo.fork)
                 .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
 
-            // Pestañas: proyectos propios (topic "showcase") y asignaturas (el resto)
-            showcaseRepos = repos.filter(repo => (repo.topics || []).includes('showcase'));
-            courseRepos = repos.filter(repo => !(repo.topics || []).includes('showcase'));
+            // Los proyectos y el perfil tienen su propia sección: aquí solo asignaturas
+            const isOwnProject = repo =>
+                ['zeeboard', 'netscanner', 'escaner-de-red-netscanner', 'centroplus-connect', 'alejandrodongar'].includes(repo.name.toLowerCase());
+            courseRepos = repos.filter(repo => !isOwnProject(repo));
 
-            if (repos.length === 0) {
+            if (courseRepos.length === 0) {
                 container.innerHTML = `<div style="text-align:center; padding:2rem;">${t('No se encontraron repositorios públicos.', 'No public repositories found.')}</div>`;
                 return;
             }
 
-            if (showcaseRepos.length === 0) activeTab = 'course';
             currentPage = 1;
             updatePagination();
         } catch (error) {
@@ -109,158 +107,43 @@
         }
     }
 
-    function activeRepos() {
-        return activeTab === 'showcase' ? showcaseRepos : courseRepos;
-    }
-
     function updatePagination() {
-        const repos = activeRepos();
-        const totalPages = Math.max(1, Math.ceil(repos.length / reposPerPage));
+        const totalPages = Math.max(1, Math.ceil(courseRepos.length / reposPerPage));
         currentPage = Math.min(currentPage, totalPages);
         const start = (currentPage - 1) * reposPerPage;
 
-        renderRepos(repos.slice(start, start + reposPerPage));
-
-        document.querySelectorAll('.projects-tab').forEach(tab => {
-            const selected = tab.dataset.tab === activeTab;
-            tab.classList.toggle('active', selected);
-            tab.setAttribute('aria-selected', selected);
-        });
-        document.querySelector('[data-tab="showcase"] .projects-tab-count').textContent = showcaseRepos.length;
-        document.querySelector('[data-tab="course"] .projects-tab-count').textContent = courseRepos.length;
+        renderRepos(courseRepos.slice(start, start + reposPerPage));
 
         document.getElementById('page-info').textContent = `${t('Página', 'Page')} ${currentPage} / ${totalPages}`;
         document.getElementById('prev-page').disabled = currentPage === 1;
         document.getElementById('next-page').disabled = currentPage === totalPages;
     }
 
-    document.querySelectorAll('.projects-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-            activeTab = tab.dataset.tab;
-            currentPage = 1;
-            updatePagination();
-        });
-    });
-
     document.getElementById('prev-page').addEventListener('click', () => {
         if (currentPage > 1) {
             currentPage--;
             updatePagination();
-            document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('courses').scrollIntoView({ behavior: 'smooth' });
         }
     });
 
     document.getElementById('next-page').addEventListener('click', () => {
-        const totalPages = Math.ceil(activeRepos().length / reposPerPage);
+        const totalPages = Math.ceil(courseRepos.length / reposPerPage);
         if (currentPage < totalPages) {
             currentPage++;
             updatePagination();
-            document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('courses').scrollIntoView({ behavior: 'smooth' });
         }
     });
-
-    function isNetScannerRepo(repo) {
-        const normalizedName = repo.name.toLowerCase();
-        const topics = (repo.topics || []).map(topic => topic.toLowerCase());
-
-        return (
-            normalizedName.includes('escaner-de-red-netscanner') ||
-            normalizedName.includes('netscanner') ||
-            (topics.includes('scapy') && topics.includes('nmap')) ||
-            (topics.includes('scapy') && topics.includes('django'))
-        );
-    }
-
-    function isCentroPlusRepo(repo) {
-        const normalizedName = repo.name.toLowerCase();
-        const topics = (repo.topics || []).map(topic => topic.toLowerCase());
-
-        return (
-            normalizedName.includes('centroplus-connect') ||
-            normalizedName.includes('centroplus') ||
-            (topics.includes('spring') && topics.includes('javafx')) ||
-            (topics.includes('swagger') && topics.includes('junit'))
-        );
-    }
-
-
-    function isGitHubProfileRepo(repo) {
-        const normalizedName = repo.name.toLowerCase();
-        return normalizedName === 'alejandrodongar';
-    }
 
     function isEtsDamRepo(repo) {
         const normalizedName = repo.name.toLowerCase();
         return normalizedName === 'etsdam_alejandro' || normalizedName.includes('etsdam');
     }
 
-    function isZeeBoardRepo(repo) {
-        const normalizedName = repo.name.toLowerCase();
-        const topics = (repo.topics || []).map(topic => topic.toLowerCase());
-
-        return (
-            normalizedName.includes('zeeboard') ||
-            normalizedName.includes('zee-board') ||
-            (topics.includes('commissions') && topics.includes('kanban')) ||
-            (topics.includes('tauri-app') && topics.includes('typescript')) ||
-            (topics.includes('react') && topics.includes('sqlite') && topics.includes('typescript'))
-        );
-    }
-
     function isPmdmRepo(repo) {
         const normalizedName = repo.name.toLowerCase();
         return normalizedName.includes('programacion-multimedia') || normalizedName.includes('pokedex');
-    }
-
-    // Preview de Programación Multimedia: de momento muestra la Mini-Pokédex retro (UT1)
-    function createGitHubProfilePreview() {
-        return `
-            <div class="repo-profile-readme-preview" aria-label="Preview visual del README principal de GitHub">
-                <div class="repo-profile-topbar">
-                    <span>alejandroDonGar / README.md</span>
-                    <i class="fa-solid fa-pen"></i>
-                </div>
-
-                <div class="repo-profile-readme-body">
-                    <div class="repo-profile-avatar-wrap">
-                        <div class="repo-profile-avatar">
-                            <i class="fa-solid fa-user-astronaut"></i>
-                        </div>
-                        <span class="repo-profile-status-dot"></span>
-                    </div>
-
-                    <div class="repo-profile-content">
-                        <div class="repo-profile-heading-row">
-                            <div>
-                                <h4>Hola, soy Alejandro Donate García 👋</h4>
-                                <p>Estudiante DAM · Java · SQL · Web</p>
-                            </div>
-                        </div>
-
-                        <div class="repo-profile-lines">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-
-                        <div class="repo-profile-techs" aria-label="Tecnologías del perfil GitHub">
-                            <span><i class="fa-brands fa-java"></i></span>
-                            <span><i class="fa-solid fa-database"></i></span>
-                            <span><i class="fa-brands fa-html5"></i></span>
-                            <span><i class="fa-brands fa-css3-alt"></i></span>
-                            <span><i class="fa-brands fa-js"></i></span>
-                            <span><i class="fa-brands fa-github"></i></span>
-                        </div>
-
-                        <div class="repo-profile-meta-grid" aria-label="Resumen del perfil GitHub">
-                            <div><strong>10+</strong><small>Repos</small></div>
-                            <div><strong>Open</strong><small>Source</small></div>
-                            <div><strong>C1</strong><small>Inglés</small></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
     }
 
     function createEtsDamPreview() {
@@ -327,48 +210,8 @@
     }
 
     // Carrusel de capturas reales: la activa al centro y las vecinas atenuadas a los lados.
-    // Cada proyecto es solo un dato: carpeta en assets/img, capturas y pastillas del stack.
+    // Cada entrada es solo un dato: carpeta en assets/img, capturas y pastillas del stack.
     const SHOWCASES = {
-        zeeboard: {
-            label: 'ZeeBoard: gestor de comisiones para artistas',
-            slides: [
-                ['dashboard', 'Panel con lo que hay que atender hoy'],
-                ['commission', 'Comisión abierta con sus etapas e imágenes'],
-                ['payments', 'Pagos, tarifas y dinero realmente recibido'],
-                ['requests', 'Solicitudes del formulario, plazas y lista de espera'],
-            ],
-            stack: [
-                ['fa-solid fa-code', 'TypeScript'], ['fa-brands fa-react', 'React'], ['fa-solid fa-window-maximize', 'Tauri'],
-                ['fa-brands fa-rust', 'Rust'], ['fa-solid fa-database', 'SQLite'], ['fa-solid fa-wind', 'Tailwind'],
-            ],
-        },
-        netscanner: {
-            label: 'NetScanner: descubrimiento e inventariado de redes locales',
-            slides: [
-                ['topologia', 'Resumen de la red: tipos de dispositivo, fabricantes y riesgo'],
-                ['mapa', 'Mapa de red con los dispositivos agrupados por tipo'],
-                ['historial', 'Historial de escaneos y niveles de riesgo'],
-                ['alertas', 'Alertas de seguridad: dispositivos nuevos y cambios de riesgo'],
-            ],
-            stack: [
-                ['fa-brands fa-python', 'Python'], ['fa-solid fa-server', 'Django'], ['fa-solid fa-leaf', 'MongoDB'],
-                ['fa-solid fa-network-wired', 'Scapy'],
-            ],
-        },
-        centroplus: {
-            label: 'CentroPlus Connect: gestión de centros educativos',
-            slides: [
-                ['inicio', 'Panel principal con los indicadores del centro'],
-                ['acciones', 'Operaciones rápidas: formularios para crear usuarios, actividades, reservas e incidencias'],
-                ['actividades', 'Catálogo de actividades con plazas disponibles'],
-                ['swagger', 'API REST documentada con Swagger'],
-            ],
-            stack: [
-                ['fa-brands fa-java', 'Java 17'], ['fa-solid fa-leaf', 'Spring'], ['fa-solid fa-database', 'H2'],
-                ['fa-solid fa-code-branch', 'JPA'], ['fa-solid fa-arrows-turn-to-dots', 'MapStruct'],
-                ['fa-solid fa-book-open', 'Swagger'], ['fa-solid fa-vial', 'JUnit'], ['fa-solid fa-mask', 'Mockito'],
-            ],
-        },
         pokedex: {
             label: 'Mini-Pokédex: práctica de JavaScript con PokéAPI',
             slides: [
@@ -474,13 +317,9 @@
 
         repos.forEach(repo => {
             const card = document.createElement('article');
-            const netScanner = isNetScannerRepo(repo);
-            const centroPlus = isCentroPlusRepo(repo);
-            const githubProfile = isGitHubProfileRepo(repo);
             const etsDam = isEtsDamRepo(repo);
-            const zeeBoard = isZeeBoardRepo(repo);
             const pmdm = isPmdmRepo(repo);
-            const hasCustomPreview = netScanner || centroPlus || githubProfile || etsDam || zeeBoard || pmdm;
+            const hasCustomPreview = etsDam || pmdm;
 
             card.className = `repo-card panel panel-hover repo-card-reveal${hasCustomPreview ? ' repo-card-featured' : ''}`;
 
@@ -492,11 +331,7 @@
             const hasSocialStats = repo.stargazers_count > 0 || repo.forks_count > 0;
 
             let scene = '';
-            if (netScanner) scene = createShowcase('netscanner');
-            else if (centroPlus) scene = createShowcase('centroplus');
-            else if (githubProfile) scene = createGitHubProfilePreview();
-            else if (etsDam) scene = createEtsDamPreview();
-            else if (zeeBoard) scene = createShowcase('zeeboard');
+            if (etsDam) scene = createEtsDamPreview();
             else if (pmdm) scene = createShowcase('pokedex');
 
             card.innerHTML = `
