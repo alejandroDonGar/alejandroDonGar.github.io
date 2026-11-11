@@ -103,7 +103,16 @@
   @media (min-width: 60rem) { .panel-ahora { position: sticky; top: 24px; } }
   @media (min-width: 40rem) { .panel-ahora .hito { grid-template-columns: 5.5rem 1fr; gap: 4px 20px; } }
 
-  footer { padding: 0 clamp(24px, 5vw, 72px) 64px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; }
+  /* Contacto: los datos de la FCT a un lado y la forma de escribirme al otro */
+  .contacto { display: grid; gap: 32px 48px; align-items: start; }
+  @media (min-width: 60rem) { .contacto { grid-template-columns: minmax(0, 1.5fr) minmax(16rem, 1fr); } }
+  .contacto .datos { grid-template-columns: auto 1fr; }
+  .contacto .datos dd { max-width: 52ch; }
+  .escribir { display: grid; gap: 16px; align-content: start; }
+  .escribir p { color: var(--musgo); font-size: 1.25rem; line-height: 1.4; letter-spacing: -.01em; max-width: 26ch; }
+  .escribir .redes { display: flex; flex-wrap: wrap; gap: 20px; font-size: 1rem; }
+
+  footer { padding: 0 clamp(24px, 5vw, 72px) 48px; font-size: .9rem; }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
@@ -115,6 +124,7 @@
       <a href="#proyectos">Proyectos</a>
       <a href="#como-trabajo">Cómo trabajo</a>
       <a href="#trayectoria">Trayectoria</a>
+      <a href="#contacto">Contacto</a>
       <a href="/2DAM/">Apuntes</a>
     </nav>
   </div>
@@ -251,11 +261,27 @@
     </aside>
     </div>
   </section>
+
+  <section class="bloque" id="contacto">
+    <h2>Contacto</h2>
+    <div class="contacto">
+      <dl class="datos">
+        <dt>FCT</dt><dd>De febrero a junio de 2027</dd>
+        <dt>Modalidad</dt><dd>Presencial, híbrida o remota</dd>
+        <dt>Zona</dt><dd>Norte de Tenerife, del Puerto de la Cruz a Santa Cruz</dd>
+        <dt>Qué busco</dt><dd>Backend con Java o Python y bases de datos: lo que estoy dando ahora de ORM y lo que viene de Spring. También apps móviles con Flutter.</dd>
+      </dl>
+      <div class="escribir">
+        <p>Si tu empresa acoge alumnado en prácticas, escríbeme.</p>
+        <a class="fct" href="mailto:AlexDoGa.work@gmail.com">Escribirme un correo</a>
+        <p class="redes"><a href="https://www.linkedin.com/in/alejandrodongar/">LinkedIn</a> <a href="https://github.com/alejandroDonGar">GitHub</a></p>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer id="contacto">
-  <span>Busco empresa para la FCT a partir de febrero de 2027.</span>
-  <span><a href="mailto:AlexDoGa.work@gmail.com">Correo</a> &nbsp; <a href="https://github.com/alejandroDonGar">GitHub</a> &nbsp; <a href="https://www.linkedin.com/in/alejandrodongar/">LinkedIn</a></span>
+<footer>
+  <span>Alejandro Donate García, 2026</span>
 </footer>
 
 <script src="paletas.js"></script>
