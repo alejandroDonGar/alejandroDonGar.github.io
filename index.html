@@ -1,489 +1,299 @@
----
-layout: default
-title: "Alejandro Donate García | Desarrollador junior · DAM"
-description: "Portfolio de Alejandro Donate García, estudiante de 2º DAM. Java, Python, Flutter y desarrollo web. Disponible para prácticas (FCT) desde febrero de 2027."
----
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alejandro Donate García | Estudiante de 2º de DAM</title>
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<meta name="description" content="Alejandro Donate García, estudiante de 2º de DAM en Tenerife. Java, Python y Flutter. Busca empresa para la FCT desde febrero de 2027.">
 
-<aside>
-    <div class="brand">
-        <div class="brand-name">Alejandro Donate</div>
-        <div class="brand-role" data-en="Junior developer · DAM">Desarrollador junior · DAM</div>
-    </div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Mona Sans: fuente variable de GitHub con ejes de anchura (wdth) y grosor (wght) -->
+<link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="paletas.css">
+<style>
+  /* Los colores vienen de paletas.css (dos colores y un acento) */
+  * { box-sizing: border-box; margin: 0; }
 
-    <nav class="sidebar-nav">
-        <p class="sidebar-nav-label" data-en="Navigation">Navegación</p>
-        <a href="#home" class="sidebar-link active" id="nav-home"><i class="fa-solid fa-house"></i> <span data-en="Home">Inicio</span></a>
-        <a href="#education" class="sidebar-link" id="nav-education"><i class="fa-solid fa-graduation-cap"></i> <span data-en="Education">Educación</span></a>
-        <a href="#experience" class="sidebar-link" id="nav-experience"><i class="fa-solid fa-briefcase"></i> <span data-en="Experience">Experiencia</span></a>
-        <a href="#about" class="sidebar-link" id="nav-about"><i class="fa-solid fa-user"></i> <span data-en="About me">Sobre mí</span></a>
-        <a href="#tech" class="sidebar-link" id="nav-tech"><i class="fa-solid fa-layer-group"></i> <span data-en="Technologies">Tecnologías</span></a>
-        <a href="#projects" class="sidebar-link" id="nav-projects"><i class="fa-solid fa-laptop-code"></i> <span data-en="Projects">Proyectos</span></a>
-        <a href="#courses" class="sidebar-link" id="nav-courses"><i class="fa-solid fa-book"></i> <span data-en="Coursework">Asignaturas</span></a>
-        <a href="#english" class="sidebar-link" id="nav-english"><i class="fa-solid fa-language"></i> <span data-en="English">Inglés</span></a>
+  body { background: var(--laurisilva); color: var(--musgo-70); font: 400 1.0625rem/1.6 "Mona Sans", system-ui, sans-serif; font-variation-settings: "wdth" 100; }
+  a { color: var(--musgo); text-underline-offset: .25em; text-decoration-color: var(--tajinaste); }
+  a:hover { color: var(--tajinaste); }
+  :focus-visible { outline: 2px solid var(--tajinaste); outline-offset: 4px; border-radius: 4px; }
+
+  /* Portada: el nombre ocupa la pantalla y reacciona al cursor */
+  .portada { min-height: 100svh; display: grid; grid-template-rows: auto 1fr auto; padding: 32px clamp(24px, 5vw, 72px); }
+  .barra { display: flex; justify-content: space-between; align-items: center; gap: 24px; font-size: .95rem; }
+  .barra nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px 28px; }
+  @media (max-width: 40rem) { .barra > span { display: none; } .barra nav { gap: 8px 18px; justify-content: flex-start; } }
+  .barra nav a { color: var(--musgo-70); text-decoration: none; }
+  .barra nav a:hover { color: var(--musgo); }
+
+  .nombre { align-self: center; color: var(--musgo); line-height: .86; letter-spacing: -.02em; font-size: clamp(3.4rem, 13.5vw, 12.5rem); user-select: none; }
+  .nombre .linea { display: block; white-space: nowrap; }
+  /* Cada letra lleva su propio grosor y anchura, que el script va cambiando */
+  .nombre .l { display: inline-block; font-variation-settings: "wght" var(--w, 300), "wdth" var(--a, 90); }
+
+  .pie { display: grid; gap: 24px; align-items: end; }
+  @media (min-width: 52rem) { .pie { grid-template-columns: 1.2fr 1fr auto; } }
+  .pie p { max-width: 38ch; }
+  .pie strong { color: var(--musgo); font-weight: 600; }
+  .fct { justify-self: start; display: inline-flex; align-items: center; gap: 10px; color: var(--laurisilva); background: var(--tajinaste); font-weight: 600; padding: 10px 18px; border-radius: 99px; text-decoration: none; white-space: nowrap; }
+  .fct:hover { color: var(--laurisilva); transform: translateY(-1px); }
+  .fct:active { transform: scale(.97); }
+
+  /* Contenido */
+  /* Sin ancho máximo: el contenido usa todo el ancho y las listas se reparten en columnas */
+  .contenido { padding: 72px clamp(24px, 5vw, 72px); display: grid; gap: 88px; }
+  .bloque { display: grid; gap: 24px; }
+  @media (min-width: 60rem) { .bloque { grid-template-columns: 12rem 1fr; gap: 40px; } }
+  .bloque > h2 { color: var(--musgo); font-size: 1rem; font-weight: 600; font-variation-settings: "wdth" 112; }
+
+  /* Sobre mí: el texto y, al lado, una ficha con los datos rápidos */
+  .sobre { display: grid; gap: 32px 48px; align-items: start; }
+  @media (min-width: 60rem) { .sobre { grid-template-columns: minmax(0, 1.6fr) minmax(16rem, 1fr); } }
+  .intro { color: var(--musgo); font-size: clamp(1.3rem, 2.1vw, 1.85rem); line-height: 1.35; font-weight: 400; letter-spacing: -.01em; max-width: 40ch; font-variation-settings: "wdth" 95; }
+  .datos { display: grid; grid-template-columns: auto 1fr; gap: 12px 24px; padding: 20px 24px; border: 1px solid var(--musgo-12); border-radius: 12px; }
+  .datos dt { font-size: .9rem; }
+  .datos dd { color: var(--musgo); }
+
+  /* Proyectos: una columna en móvil, dos en tablet, tres en monitor */
+  .proyectos { display: grid; gap: 40px 28px; }
+  @media (min-width: 48rem) { .proyectos { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 75rem) { .proyectos { grid-template-columns: repeat(3, 1fr); } }
+  .proyecto a { text-decoration: none; display: grid; gap: 16px; color: inherit; }
+  .proyecto img { width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: top left; border-radius: 10px; outline: 1px solid var(--musgo-12); transition: transform .4s cubic-bezier(.2, .8, .2, 1); }
+  .proyecto a:hover img { transform: scale(1.01); }
+  .proyecto h3 { color: var(--musgo); font-size: 1.5rem; font-weight: 650; letter-spacing: -.015em; font-variation-settings: "wdth" 110; }
+  .proyecto a:hover h3 { color: var(--tajinaste); }
+  .tec { font-size: .9rem; }
+
+  /* Cómo trabajo: cada costumbre con el sitio donde se puede comprobar */
+  .costumbres { list-style: none; padding: 0; display: grid; gap: 32px 40px; }
+  @media (min-width: 48rem) { .costumbres { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 75rem) { .costumbres { grid-template-columns: repeat(4, 1fr); } }
+  .costumbres h3 { color: var(--musgo); font-size: 1.25rem; font-weight: 600; letter-spacing: -.01em; font-variation-settings: "wdth" 105; margin-bottom: 8px; }
+  .costumbres p { max-width: 46ch; }
+  .prueba { margin-top: 12px; font-size: .9rem; }
+
+  /* Trayectoria y ahora: línea de tiempo con el pasado, el punto actual y lo que viene */
+  .linea-tiempo { list-style: none; padding: 0; }
+  .hito { display: grid; gap: 4px 32px; }
+  @media (min-width: 40rem) { .hito { grid-template-columns: 9rem 1fr; } }
+  .hito time { font-variant-numeric: tabular-nums; padding-top: 2px; }
+  .hito > div { position: relative; padding: 0 0 28px 32px; border-left: 1px solid var(--musgo-12); }
+  .hito:last-child > div { padding-bottom: 0; }
+  .hito > div::before { content: ""; position: absolute; left: -6px; top: 7px; width: 11px; height: 11px; border-radius: 50%; background: var(--laurisilva); border: 2px solid var(--musgo-70); }
+  .hito h3 { color: var(--musgo); font-size: 1.1rem; font-weight: 600; }
+  .hito p { max-width: 56ch; }
+  /* Lo que viene: punto hueco y línea discontinua */
+  .hito.viene > div { border-left-style: dashed; }
+  .hito.viene > div::before { border-style: dashed; border-color: var(--musgo-12); }
+  .hito.viene h3 { color: var(--musgo-70); }
+  /* Ahora: el único punto con el color de acento */
+  .hito.ahora time, .hito.ahora h3 { color: var(--tajinaste); }
+  .hito.ahora > div::before { background: var(--tajinaste); border-color: var(--tajinaste); box-shadow: 0 0 0 6px var(--acento-18); }
+  .hito.ahora ul { margin: 8px 0 0; padding-left: 1.1em; }
+  .hito.ahora li { margin-top: 4px; }
+
+  /* Trayectoria a la izquierda; «Ahora» y lo que viene, en un panel a la derecha */
+  .trayectoria { display: grid; gap: 40px 48px; align-items: start; }
+  @media (min-width: 60rem) { .trayectoria { grid-template-columns: minmax(0, 1.5fr) minmax(18rem, 1fr); } }
+  .panel-ahora { padding: 24px; border: 1px solid var(--musgo-12); border-radius: 12px; }
+  @media (min-width: 60rem) { .panel-ahora { position: sticky; top: 24px; } }
+  @media (min-width: 40rem) { .panel-ahora .hito { grid-template-columns: 5.5rem 1fr; gap: 4px 20px; } }
+
+  footer { padding: 0 clamp(24px, 5vw, 72px) 64px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<header class="portada">
+  <div class="barra">
+    <span>Tenerife</span>
+    <nav aria-label="Secciones">
+      <a href="#proyectos">Proyectos</a>
+      <a href="#como-trabajo">Cómo trabajo</a>
+      <a href="#trayectoria">Trayectoria</a>
+      <a href="/2DAM/">Apuntes</a>
     </nav>
+  </div>
 
-    <div class="sidebar-footer">
-        <div class="lang-group">
-            <button class="lang-btn active" data-lang="es">ES</button>
-            <button class="lang-btn" data-lang="en">EN</button>
-        </div>
-        <button id="theme-toggle" class="theme-toggle">
-            <i class="fa-solid fa-moon"></i>
-            <span id="theme-text">Modo oscuro</span>
-        </button>
+  <h1 class="nombre" aria-label="Alejandro Donate">
+    <span class="linea" aria-hidden="true">Alejandro</span>
+    <span class="linea" aria-hidden="true">Donate</span>
+  </h1>
+
+  <div class="pie">
+    <p>Estudio <strong>2º de DAM</strong> y hago aplicaciones con Java y Python, con las bases de datos detrás y Flutter delante.</p>
+    <p>Ahora mismo: relaciones en JPA, sockets en Python y una web con mis apuntes del curso.</p>
+    <a class="fct" href="#contacto">FCT desde febrero de 2027</a>
+  </div>
+</header>
+
+<main class="contenido">
+  <section class="bloque">
+    <h2>Sobre mí</h2>
+    <div class="sobre">
+      <p class="intro">Me engancha la parte que no se ve: dónde viven los datos y cómo llegan a la pantalla. Este curso he pasado de leer un CSV a mano a montar repositorios con JPA.</p>
+      <dl class="datos">
+        <dt>Dónde</dt><dd>Tenerife</dd>
+        <dt>Estudios</dt><dd>2º de DAM, IES Puerto de la Cruz</dd>
+        <dt>FCT</dt><dd>Desde febrero de 2027</dd>
+        <dt>Inglés</dt><dd>B1 certificado</dd>
+      </dl>
     </div>
-</aside>
+  </section>
 
-<main>
-    <!-- Hero -->
-    <section id="home">
-        <div class="hero content-width">
-            <div class="hero-main">
-                <span class="section-kicker" data-en="2nd year DAM student">Estudiante 2º DAM</span>
+  <section class="bloque" id="proyectos">
+    <h2>Proyectos</h2>
+    <div class="proyectos">
+      <article class="proyecto">
+        <a href="zeeboard.html">
+          <img class="cap" style="view-transition-name: zb-captura" src="https://alejandrodongar.github.io/assets/img/zeeboard/dashboard.webp" alt="Panel principal de ZeeBoard" loading="lazy">
+          <h3 style="view-transition-name: zb-titulo">ZeeBoard</h3>
+          <p>Lleva los encargos de un artista de principio a fin: el cliente, cada etapa del dibujo con sus imágenes y lo que falta por cobrar.</p>
+          <p class="tec">TypeScript, React, Tauri y SQLite</p>
+        </a>
+      </article>
+      <article class="proyecto">
+        <a href="netscanner.html">
+          <img class="cap" style="view-transition-name: ns-captura" src="https://alejandrodongar.github.io/assets/img/netscanner/topologia.webp" alt="Mapa de la red en NetScanner" loading="lazy">
+          <h3 style="view-transition-name: ns-titulo">NetScanner</h3>
+          <p>Dibuja el mapa de una red local y avisa de los equipos que parecen un riesgo. Lo hicimos en equipo en las prácticas.</p>
+          <p class="tec">Python, Django, Scapy y MongoDB</p>
+        </a>
+      </article>
+      <article class="proyecto">
+        <a href="https://alejandrodongar.github.io/centroplus-connect/">
+          <img class="cap" src="https://alejandrodongar.github.io/assets/img/centroplus/inicio.webp" alt="Pantalla de inicio de CentroPlus Connect" loading="lazy">
+          <h3>CentroPlus Connect</h3>
+          <p>Reservas, actividades e incidencias de un centro educativo: una web, una app en JavaFX y la API que las une.</p>
+          <p class="tec">Java 17, Spring y JavaFX</p>
+        </a>
+      </article>
+    </div>
+  </section>
 
-                <h1 class="hero-title">Alejandro <em>Donate</em></h1>
+  <section class="bloque" id="como-trabajo">
+    <h2>Cómo trabajo</h2>
+    <ul class="costumbres">
+      <li>
+        <h3>Commits pequeños que cuentan qué cambió</h3>
+        <p>Un commit por paso, con un mensaje que explica el cambio y el porqué. En las entregas de Despliegue el profesor revisa el historial, así que lo cuido desde el principio.</p>
+        <p class="prueba"><a href="https://github.com/alejandroDonGar/2DAM/commits/main">Historial de la web de apuntes</a></p>
+      </li>
+      <li>
+        <h3>Apunto lo que hago mientras lo hago</h3>
+        <p>Mis README guardan cada comando con la salida real que dio, errores incluidos. Lo que aprendo en clase lo paso a una web de apuntes que cualquiera puede leer.</p>
+        <p class="prueba"><a href="/2DAM/">Apuntes de 2º DAM</a></p>
+      </li>
+      <li>
+        <h3>Lo doy por terminado cuando pasan las pruebas</h3>
+        <p>El taller mecánico de Acceso a Datos tenía 90 pruebas con JUnit y no lo entregué hasta verlas todas en verde. En la biblioteca con JPA también cuentan Checkstyle y PMD.</p>
+        <p class="prueba"><a href="https://github.com/alejandroDonGar/Acceso-a-Datos-2026---2027/tree/main/taller-mecanico-alejandroDonateGarcia">Código del taller</a></p>
+      </li>
+      <li>
+        <h3>Dejo que las máquinas hagan lo repetitivo</h3>
+        <p>GitHub Actions compila mis proyectos de Maven y publica el jar. Este CV y la web de apuntes se publican solos cada vez que subo un cambio.</p>
+        <p class="prueba"><a href="https://github.com/alejandroDonGar/Acceso-a-Datos-2026---2027/actions">Ejecuciones de GitHub Actions</a></p>
+      </li>
+    </ul>
+  </section>
 
-                <p class="hero-availability">
-                    <span class="availability-dot" aria-hidden="true"></span>
-                    <span data-en="Available for an internship (FCT) from February 2027">Disponible para prácticas (FCT) desde febrero de 2027</span>
-                </p>
-
-                <p class="hero-pitch" data-en="Multiplatform Application Development student focused on Java, Python, databases, Flutter and web development. Building real projects to turn knowledge into experience.">
-                    Estudiante de Desarrollo de Aplicaciones Multiplataforma, enfocado en Java, Python, bases de datos, Flutter y desarrollo web. Construyendo proyectos reales para convertir conocimiento en experiencia.
-                </p>
-
-                <div class="hero-actions">
-                    <a href="#projects" class="btn btn-primary scroll-link" data-en="Explore projects">Explorar proyectos</a>
-                    <a href="#about" class="btn btn-outline scroll-link" data-en="About me">Sobre mí</a>
-                    <button type="button" class="btn btn-outline" id="print-cv">
-                        <i class="fa-solid fa-file-arrow-down"></i> <span data-en="Download CV (PDF)">Descargar CV (PDF)</span>
-                    </button>
-                </div>
-
-                <dl class="hero-facts">
-                    <div><dt>2º</dt><dd>DAM</dd></div>
-                    <div><dt>6+</dt><dd data-en="Projects">Proyectos</dd></div>
-                    <div><dt data-en="Feb 27">Feb 27</dt><dd data-en="Internship">Prácticas</dd></div>
-                    <div><dt>EN</dt><dd data-en="Daily use">Uso diario</dd></div>
-                </dl>
-
-                <div class="hero-contact">
-                    <button onclick="copyEmail()" class="btn btn-outline" id="email-btn">
-                        <i class="fa-solid fa-envelope"></i>
-                        <span id="email-text">AlexDoGa.work@gmail.com</span>
-                    </button>
-                    <a href="https://www.linkedin.com/in/alejandrodongar/" target="_blank" rel="noopener" class="btn btn-outline">
-                        <i class="fa-brands fa-linkedin"></i> LinkedIn
-                    </a>
-                    <a href="https://github.com/alejandroDonGar" target="_blank" rel="noopener" class="btn btn-outline">
-                        <i class="fa-brands fa-github"></i> GitHub
-                    </a>
-                </div>
-            </div>
-
-            <figure class="hero-photo">
-                <div class="hero-photo-frame">
-                    <img src="{{ '/assets/img/perfil.jpg' | relative_url }}" alt="Alejandro Donate">
-                </div>
-                <figcaption>Java · Python · Flutter · Web</figcaption>
-            </figure>
+  <section class="bloque" id="trayectoria">
+    <h2>Trayectoria y ahora</h2>
+    <div class="trayectoria">
+    <ol class="linea-tiempo" aria-label="Lo que ya he hecho">
+      <li class="hito">
+        <time>Sep 2025</time>
+        <div><h3>Empiezo DAM en el IES Puerto de la Cruz</h3><p>Java desde cero, HTML, CSS y JavaScript, XML y bases de datos con PostgreSQL en Docker.</p></div>
+      </li>
+      <li class="hito">
+        <time>May 2026</time>
+        <div><h3>CentroPlus Connect, el proyecto de 1º</h3><p>Una API REST con Spring Boot y arquitectura hexagonal, con una web y una app de JavaFX que la usan.</p></div>
+      </li>
+      <li class="hito">
+        <time>May 2026</time>
+        <div><h3>Prácticas en Laberit Canarias</h3><p>Desarrollamos NetScanner en equipo: Python, Django, Scapy para escanear la red y MongoDB para el historial.</p></div>
+      </li>
+      <li class="hito">
+        <time>Jul 2026</time>
+        <div><h3>Empiezo ZeeBoard por mi cuenta</h3><p>Una app de escritorio para artistas que trabajan por encargo, con Tauri, React y SQLite.</p></div>
+      </li>
+      <li class="hito">
+        <time>Sep 2026</time>
+        <div><h3>Segundo curso</h3><p>JDBC y JPA en Java, hilos y sockets en Python, Flutter, React con TypeScript, despliegue con Docker y nginx, y Odoo.</p></div>
+      </li>
+    </ol>
+    <aside class="panel-ahora">
+    <ol class="linea-tiempo" aria-label="Ahora y lo que viene">
+      <li class="hito ahora">
+        <time>Ahora</time>
+        <div>
+          <h3>Noviembre de 2026</h3>
+          <ul>
+            <li>Relaciones entre entidades con JPA e Hibernate en una biblioteca de prueba.</li>
+            <li>Servidores con sockets en Python, de momento atendiendo a un cliente cada vez.</li>
+            <li>Pasando mis apuntes del curso a una web.</li>
+          </ul>
         </div>
-    </section>
-
-    <!-- Education -->
-    <section id="education">
-        <div class="content-width">
-            <h2 class="section-title"><span data-en="Education">Educación</span></h2>
-
-            <div class="education-card panel panel-hover">
-                <div class="education-info">
-                    <div class="education-main">
-                        <span class="section-kicker" data-en="Current studies">Formación actual</span>
-                        <h3 data-en="Higher Technician in Multiplatform Application Development (DAM)">Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</h3>
-                        <p>IES Puerto de la Cruz · Telésforo Bravo</p>
-                        <p class="education-address"><i class="fa-solid fa-location-dot"></i> Calle Las Cabezas 7, Puerto de la Cruz, Tenerife</p>
-                    </div>
-                    <div class="education-meta">
-                        <span class="chip chip-accent" data-en="In progress · Year 2">En curso · 2º</span>
-                        <span class="education-dates" data-en="September 2025 – June 2027">Septiembre 2025 – Junio 2027</span>
-                    </div>
-                </div>
-
-                <div class="education-map">
-                    <iframe
-                        src="https://www.openstreetmap.org/export/embed.html?bbox=-16.5555%2C28.4083%2C-16.5475%2C28.4143&amp;layer=mapnik&amp;marker=28.4113%2C-16.5515"
-                        title="Ubicación del IES Puerto de la Cruz - Telésforo Bravo"
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    <a href="https://www.openstreetmap.org/?mlat=28.4113&mlon=-16.5515#map=16/28.4113/-16.5515" target="_blank" rel="noopener">
-                        <span data-en="View full map">Ver mapa completo</span> <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience">
-        <div class="content-width">
-            <h2 class="section-title"><span data-en="Experience">Experiencia</span></h2>
-
-            <div class="experience-card panel panel-hover">
-                <div class="experience-icon" aria-hidden="true"><i class="fa-solid fa-briefcase"></i></div>
-
-                <div class="experience-main">
-                    <span class="section-kicker" data-en="Internship · 1st year DAM">Prácticas · 1º DAM</span>
-                    <h3>Laberit Canarias</h3>
-                    <p data-en="During my 1st year internship I developed <strong>NetScanner</strong>, a web application to discover, classify and inventory the devices on a network.">
-                        Durante las prácticas de 1º desarrollé <strong>NetScanner</strong>, una aplicación web para descubrir, clasificar e inventariar los dispositivos de una red.
-                    </p>
-                    <ul class="experience-tags">
-                        <li>Python</li><li>Django</li><li>Scapy</li><li>MongoDB</li><li data-en="Networks">Redes</li>
-                    </ul>
-                </div>
-
-                <div class="experience-meta">
-                    <span class="chip" data-en="2026">2026</span>
-                    <a href="https://github.com/alejandroDonGar/Escaner-de-Red-NetScanner" target="_blank" rel="noopener" class="btn btn-outline">
-                        <i class="fa-brands fa-github"></i> NetScanner
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-        <div class="content-width">
-            <h2 class="section-title"><span data-en="About me">Sobre mí</span></h2>
-
-            <div class="roadmap panel panel-hover">
-                <!-- Página 1: 1º DAM -->
-                <div class="roadmap-page" data-roadmap-page="1">
-                <div class="roadmap-head">
-                    <div>
-                        <span class="section-kicker" data-en="Timeline · September 2025 – June 2026">Timeline · Septiembre 2025 – Junio 2026</span>
-                        <h3 data-en="My progress during 1st year DAM">Mi evolución durante 1º DAM</h3>
-                    </div>
-                    <div class="roadmap-pager">
-                        <button class="page-btn roadmap-prev" type="button" aria-label="Curso anterior" data-en-title="Previous year" disabled><i class="fa-solid fa-chevron-left"></i></button>
-                        <span class="page-info" data-en="1st DAM · 1 / 2">1º DAM · 1 / 2</span>
-                        <button class="page-btn roadmap-next" type="button" aria-label="Curso siguiente" data-en-title="Next year"><i class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
-
-                <div class="roadmap-months" aria-hidden="true">
-                    <span>Sep</span><span>Oct</span><span>Nov</span><span data-en="Dec">Dic</span><span data-en="Jan">Ene</span><span>Feb</span><span>Mar</span><span data-en="Apr">Abr</span><span>May</span><span>Jun</span>
-                </div>
-
-                <div class="roadmap-grid">
-                    <div class="roadmap-label"><i class="fa-solid fa-graduation-cap"></i> <span data-en="DAM Y1">DAM 1º</span></div>
-                    <div class="roadmap-track">
-                        <span class="roadmap-bar" style="--start: 1; --span: 10;" data-en="DAM year 1 · Sep–Jun">DAM 1º · Sep-Jun</span>
-                    </div>
-
-                    <div class="roadmap-label"><i class="fa-brands fa-java"></i> Java</div>
-                    <div class="roadmap-track">
-                        <span class="roadmap-bar" style="--start: 1; --span: 2;" data-en="Basics">Básico</span>
-                        <span class="roadmap-bar" style="--start: 2; --span: 2;">Arrays</span>
-                        <span class="roadmap-bar" style="--start: 4; --span: 2;" data-en="Lists">Listas</span>
-                        <span class="roadmap-bar" style="--start: 6; --span: 2;">CSV/JSON</span>
-                        <span class="roadmap-bar" style="--start: 7; --span: 2;">SQLite</span>
-                        <span class="roadmap-bar" style="--start: 9; --span: 1;">JavaFX</span>
-                    </div>
-
-                    <div class="roadmap-label"><i class="fa-solid fa-globe"></i> Web / XML</div>
-                    <div class="roadmap-track">
-                        <span class="roadmap-bar" style="--start: 1; --span: 4;">HTML · CSS · JS</span>
-                        <span class="roadmap-bar" style="--start: 5; --span: 3;">XML · XSL</span>
-                        <span class="roadmap-bar" style="--start: 8; --span: 1;">XPath</span>
-                        <span class="roadmap-bar" style="--start: 9; --span: 1;">BaseX</span>
-                    </div>
-
-                    <div class="roadmap-label"><i class="fa-solid fa-database"></i> <span data-en="Databases">BBDD</span></div>
-                    <div class="roadmap-track">
-                        <span class="roadmap-bar" style="--start: 1; --span: 5;">PostgreSQL · Docker · E/R</span>
-                        <span class="roadmap-bar" style="--start: 6; --span: 4;">Apache Cassandra</span>
-                    </div>
-
-                    <div class="roadmap-label"><i class="fa-solid fa-folder-open"></i> Portfolio</div>
-                    <div class="roadmap-track">
-                        <span class="roadmap-bar" style="--start: 5; --span: 6;" data-en="Personal portfolio · active">Portfolio personal · activo</span>
-                    </div>
-
-                    <div class="roadmap-label"><i class="fa-solid fa-diagram-project"></i> <span data-en="Projects">Proyectos</span></div>
-                    <div class="roadmap-track roadmap-track-projects" style="--rows: 3">
-                        <span class="roadmap-bar muted" style="--start: 6; --span: 2; grid-row: 1;" data-en="GitHub profile">Perfil GitHub</span>
-                        <span class="roadmap-bar" style="--start: 9; --span: 2; grid-row: 2;">CentroPlus Connect</span>
-                        <span class="roadmap-bar muted" style="--start: 9; --span: 2; grid-row: 3;" data-en="NetScanner · Laberit">NetScanner · Laberit</span>
-                    </div>
-                </div>
-                </div>
-
-                <!-- Página 2: 2º DAM -->
-                <div class="roadmap-page" data-roadmap-page="2" hidden>
-                <div class="roadmap-head">
-                    <div>
-                        <span class="section-kicker" data-en="Timeline · September 2026 – June 2027">Timeline · Septiembre 2026 – Junio 2027</span>
-                        <h3 data-en="My progress during 2nd year DAM">Mi evolución durante 2º DAM</h3>
-                    </div>
-                    <div class="roadmap-pager">
-                        <button class="page-btn roadmap-prev" type="button" aria-label="Curso anterior" data-en-title="Previous year"><i class="fa-solid fa-chevron-left"></i></button>
-                        <span class="page-info" data-en="2nd DAM · 2 / 2">2º DAM · 2 / 2</span>
-                        <button class="page-btn roadmap-next" type="button" aria-label="Curso siguiente" data-en-title="Next year" disabled><i class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
-
-                <div class="roadmap-months" aria-hidden="true">
-                    <span>Sep</span><span>Oct</span><span>Nov</span><span data-en="Dec">Dic</span><span data-en="Jan">Ene</span><span>Feb</span><span>Mar</span><span data-en="Apr">Abr</span><span>May</span><span>Jun</span>
-                </div>
-
-                <div class="roadmap-grid">
-                    <div class="roadmap-label"><i class="fa-solid fa-graduation-cap"></i> <span data-en="DAM Y2">DAM 2º</span></div>
-                    <div class="roadmap-track">
-                        <span class="roadmap-bar" style="--start: 1; --span: 2;" data-en="DAM year 2 · ongoing">DAM 2º · en curso</span>
-                        <span class="roadmap-bar faint" style="--start: 3; --span: 3;" data-en="Until June 2027">Hasta junio 2027</span>
-                        <span class="roadmap-bar muted" style="--start: 6; --span: 5;" data-en="Internship (FCT)">Prácticas (FCT)</span>
-                    </div>
-
-                    <div class="roadmap-label"><i class="fa-solid fa-mobile-screen-button"></i> Multimedia</div>
-                    <div class="roadmap-track">
-                        <span class="roadmap-bar" style="--start: 1; --span: 1;">JavaScript</span>
-                        <span class="roadmap-bar" style="--start: 2; --span: 1;">Pokédex</span>
-                        <span class="roadmap-bar faint" style="--start: 3; --span: 8;">React Native · Multimedia · Unity</span>
-                    </div>
-
-                    <div class="roadmap-label"><i class="fa-brands fa-java"></i> <span data-en="Data access">Acceso a datos</span></div>
-                    <div class="roadmap-track roadmap-track-stacked">
-                        <span class="roadmap-bar" style="--start: 1; --span: 1; grid-row: 1;">Maven · CI</span>
-                        <span class="roadmap-bar" style="--start: 1; --span: 2; grid-row: 2;" data-en="CSV · JSON · XML files">Ficheros CSV · JSON · XML</span>
-                    </div>
-
-                    <div class="roadmap-label"><i class="fa-solid fa-palette"></i> <span data-en="Interfaces">Interfaces</span></div>
-                    <div class="roadmap-track">
-                        <span class="roadmap-bar" style="--start: 1; --span: 2;">Flutter · Dart</span>
-                    </div>
-
-                    <div class="roadmap-label"><i class="fa-brands fa-python"></i> <span data-en="Processes">Procesos</span></div>
-                    <div class="roadmap-track">
-                        <span class="roadmap-bar" style="--start: 1; --span: 2;" data-en="Processes · os.fork">Procesos · os.fork</span>
-                    </div>
-
-                    <div class="roadmap-label"><i class="fa-solid fa-rocket"></i> <span data-en="Deployment">Despliegue</span></div>
-                    <div class="roadmap-track">
-                        <span class="roadmap-bar" style="--start: 1; --span: 2;">uv · Zensical · Pages</span>
-                    </div>
-
-                    <div class="roadmap-label"><i class="fa-solid fa-diagram-project"></i> <span data-en="Projects">Proyectos</span></div>
-                    <div class="roadmap-track roadmap-track-projects" style="--rows: 2">
-                        <span class="roadmap-bar" style="--start: 1; --span: 2; grid-row: 1;" data-en="ZeeBoard · since July">ZeeBoard · desde julio</span>
-                        <span class="roadmap-bar" style="--start: 2; --span: 1; grid-row: 2;" data-en="Retro Pokédex">Pokédex retro</span>
-                        <span class="roadmap-bar faint" style="--start: 3; --span: 8; grid-row: 2;" data-en="Upcoming 2nd year projects">Próximos proyectos de 2º</span>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <div class="about-grid">
-                <div class="about-text">
-                    <span class="section-kicker" data-en="Profile">Perfil</span>
-                    <h3 data-en="Development, learning and real projects">Desarrollo, aprendizaje y proyectos reales</h3>
-                    <p data-en="I am a Multiplatform Application Development (DAM) student interested in backend development, databases and building useful applications. I enjoy learning by building practical projects, documenting them and turning each subject into an opportunity to improve the way I code.">
-                        Soy estudiante de Desarrollo de Aplicaciones Multiplataforma (DAM), con interés en el desarrollo backend, las bases de datos y la creación de aplicaciones útiles. Me gusta aprender construyendo proyectos prácticos, documentarlos y convertir cada asignatura en una oportunidad para mejorar mi forma de programar.
-                    </p>
-                </div>
-
-                <div class="about-focus">
-                    <span class="section-kicker" data-en="Current focus">Enfoque actual</span>
-                    <h3 data-en="What I am working on">Qué estoy reforzando</h3>
-                    <ul class="focus-list">
-                        <li><i class="fa-brands fa-java"></i> <span data-en="Java: data access, files and Maven">Java: acceso a datos, ficheros y Maven</span></li>
-                        <li><i class="fa-solid fa-mobile-screen-button"></i> <span data-en="Flutter and Dart for interfaces">Flutter y Dart para interfaces</span></li>
-                        <li><i class="fa-brands fa-python"></i> <span data-en="Python: processes, concurrency and Django">Python: procesos, concurrencia y Django</span></li>
-                        <li><i class="fa-solid fa-code"></i> <span data-en="JavaScript, APIs and web development">JavaScript, APIs y desarrollo web</span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technologies -->
-    <section id="tech">
-        <div class="content-width">
-            <h2 class="section-title"><span data-en="Technologies">Tecnologías</span></h2>
-            <p class="tech-legend">
-                <span class="tech-legend-dot" aria-hidden="true"></span>
-                <span data-en="Highlighted: the ones I use most often. The rest: used in projects or subjects.">Destacadas: las que más uso. El resto: usadas en proyectos o asignaturas.</span>
-            </p>
-
-            <div class="tech-grid">
-                <div class="tech-group panel panel-hover">
-                    <h3><i class="fa-solid fa-server"></i> Backend</h3>
-                    <ul class="tech-list">
-                        <li class="is-main">Java</li><li class="is-main">Python</li><li>Spring</li><li>Django</li><li data-en="REST APIs">APIs REST</li>
-                    </ul>
-                </div>
-
-                <div class="tech-group panel panel-hover">
-                    <h3><i class="fa-solid fa-window-maximize"></i> <span data-en="Frontend / Interfaces">Frontend / Interfaces</span></h3>
-                    <ul class="tech-list">
-                        <li class="is-main">HTML</li><li class="is-main">CSS</li><li class="is-main">JavaScript</li><li>TypeScript</li><li>React</li><li>JavaFX</li><li>Flutter · Dart</li>
-                    </ul>
-                </div>
-
-                <div class="tech-group panel panel-hover">
-                    <h3><i class="fa-solid fa-database"></i> <span data-en="Databases">Bases de datos</span></h3>
-                    <ul class="tech-list">
-                        <li class="is-main">PostgreSQL</li><li class="is-main">SQLite</li><li>MongoDB</li><li>Cassandra</li><li>BaseX</li><li>H2</li>
-                    </ul>
-                </div>
-
-                <div class="tech-group panel panel-hover">
-                    <h3><i class="fa-solid fa-toolbox"></i> <span data-en="Tools">Herramientas</span></h3>
-                    <ul class="tech-list">
-                        <li class="is-main">Git · GitHub</li><li class="is-main">Maven</li><li>GitHub Actions</li><li>Docker</li><li>Swagger</li><li>JUnit · Mockito</li><li>Tauri</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects">
-        <div class="content-width">
-            <h2 class="section-title"><span data-en="Projects">Proyectos</span></h2>
-
-            <div class="project-grid">
-                <article class="project-card panel panel-hover">
-                    <img class="project-cover" src="assets/img/zeeboard/dashboard.webp" alt="ZeeBoard" loading="lazy">
-                    <div class="project-body">
-                        <h3>ZeeBoard</h3>
-                        <p data-en="Commission manager for artists: requests, clients, staged images, payments and statistics. Local desktop app.">Gestor de comisiones para artistas: solicitudes, clientes, etapas con imágenes, pagos y estadísticas. App de escritorio local.</p>
-                        <ul class="repo-topics"><li class="chip"><i class="fa-solid fa-code"></i> TypeScript</li><li class="chip"><i class="fa-brands fa-react"></i> React</li><li class="chip"><i class="fa-solid fa-window-maximize"></i> Tauri</li><li class="chip"><i class="fa-solid fa-database"></i> SQLite</li><li class="chip"><i class="fa-solid fa-wind"></i> Tailwind</li></ul>
-                        <div class="project-actions">
-                            <a href="https://alejandrodongar.github.io/zeeboard/" class="btn btn-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-en="View page">Ver página</span></a>
-                            <a href="https://github.com/alejandroDonGar/zeeboard" target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-github"></i> <span data-en="Code">Código</span></a>
-                        </div>
-                    </div>
-                </article>
-                <article class="project-card panel panel-hover">
-                    <img class="project-cover" src="assets/img/netscanner/topologia.webp" alt="NetScanner" loading="lazy">
-                    <div class="project-body">
-                        <h3>NetScanner</h3>
-                        <p data-en="Local network discovery and inventory with topology, risk, trust and alerts. Team project.">Descubrimiento e inventariado de redes locales con topología, riesgo, confianza y alertas. Proyecto de equipo.</p>
-                        <ul class="repo-topics"><li class="chip"><i class="fa-brands fa-python"></i> Python</li><li class="chip"><i class="fa-solid fa-server"></i> Django</li><li class="chip"><i class="fa-solid fa-leaf"></i> MongoDB</li><li class="chip"><i class="fa-solid fa-network-wired"></i> Scapy</li></ul>
-                        <div class="project-actions">
-                            <a href="https://alejandrodongar.github.io/netscanner/" class="btn btn-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-en="View page">Ver página</span></a>
-                            <a href="https://github.com/alejandroDonGar/netscanner" target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-github"></i> <span data-en="Code">Código</span></a>
-                        </div>
-                    </div>
-                </article>
-                <article class="project-card panel panel-hover">
-                    <img class="project-cover" src="assets/img/centroplus/inicio.webp" alt="CentroPlus Connect" loading="lazy">
-                    <div class="project-body">
-                        <h3>CentroPlus Connect</h3>
-                        <p data-en="Management of users, activities, bookings and incidents for a school: web, JavaFX app and REST API.">Gestión de usuarios, actividades, reservas e incidencias de un centro educativo: web, app JavaFX y API REST.</p>
-                        <ul class="repo-topics"><li class="chip"><i class="fa-brands fa-java"></i> Java 17</li><li class="chip"><i class="fa-solid fa-leaf"></i> Spring</li><li class="chip"><i class="fa-solid fa-window-maximize"></i> JavaFX</li><li class="chip"><i class="fa-solid fa-book-open"></i> Swagger</li></ul>
-                        <div class="project-actions">
-                            <a href="https://alejandrodongar.github.io/centroplus-connect/" class="btn btn-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-en="View page">Ver página</span></a>
-                            <a href="https://github.com/alejandroDonGar/centroplus-connect" target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-github"></i> <span data-en="Code">Código</span></a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Coursework -->
-    <section id="courses">
-        <div class="content-width">
-            <h2 class="section-title"><span data-en="Coursework">Asignaturas</span></h2>
-
-            <div id="repos-container" class="projects-list"></div>
-
-            <div class="pagination">
-                <button id="prev-page" class="page-btn" aria-label="Página anterior" data-en-title="Previous page" disabled><i class="fa-solid fa-chevron-left"></i></button>
-                <span id="page-info" class="page-info">Página 1</span>
-                <button id="next-page" class="page-btn" aria-label="Página siguiente" data-en-title="Next page"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
-        </div>
-    </section>
-
-    <!-- English -->
-    <section id="english">
-        <div class="content-width">
-            <h2 class="section-title"><span data-en="English">Inglés</span></h2>
-
-            <div class="lang-summary panel">
-                <span class="chip chip-accent" data-en="Official certificate: B1">Certificado oficial: B1</span>
-                <p data-en="I study, read and watch content in English every day. My understanding is very high; speaking is the skill I am improving the most. The levels below are self-assessed.">
-                    Estudio, leo y consumo contenido en inglés a diario. Mi comprensión es muy alta; el speaking es lo que más estoy trabajando. Los niveles de abajo son autoevaluados.
-                </p>
-            </div>
-
-            <div class="lang-levels">
-                <div class="lang-level panel panel-hover">
-                    <div class="lang-level-head">
-                        <span><i class="fa-solid fa-book-open"></i> <span data-en="Reading">Comprensión lectora</span></span>
-                    </div>
-                    <div class="level-track"><div class="level-fill" style="width: 70%;"></div></div>
-                    <div class="level-markers"><span>B1</span><span>B2</span><span>C1</span><span>C2</span></div>
-                    <p class="lang-level-note" data-en="Self-assessed · around C1">Autoevaluado · en torno a C1</p>
-                </div>
-
-                <div class="lang-level panel panel-hover">
-                    <div class="lang-level-head">
-                        <span><i class="fa-solid fa-headphones"></i> <span data-en="Listening">Comprensión auditiva</span></span>
-                    </div>
-                    <div class="level-track"><div class="level-fill" style="width: 72%;"></div></div>
-                    <div class="level-markers"><span>B1</span><span>B2</span><span>C1</span><span>C2</span></div>
-                    <p class="lang-level-note" data-en="Self-assessed · around C1">Autoevaluado · en torno a C1</p>
-                </div>
-
-                <div class="lang-level panel panel-hover">
-                    <div class="lang-level-head">
-                        <span><i class="fa-solid fa-pen-nib"></i> <span data-en="Writing">Expresión escrita</span></span>
-                    </div>
-                    <div class="level-track"><div class="level-fill" style="width: 50%;"></div></div>
-                    <div class="level-markers"><span>B1</span><span>B2</span><span>C1</span><span>C2</span></div>
-                    <p class="lang-level-note" data-en="Self-assessed · around B2">Autoevaluado · en torno a B2</p>
-                </div>
-
-                <div class="lang-level panel panel-hover">
-                    <div class="lang-level-head">
-                        <span><i class="fa-solid fa-comment-dots"></i> <span data-en="Speaking">Expresión oral</span></span>
-                    </div>
-                    <div class="level-track"><div class="level-fill" style="width: 35%;"></div></div>
-                    <div class="level-markers"><span>B1</span><span>B2</span><span>C1</span><span>C2</span></div>
-                    <p class="lang-level-note" data-en="Certified B1 · my main focus for improvement">Certificado B1 · lo que más estoy mejorando</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="site-footer">
-        <div class="content-width">
-            <div class="footer-cta">
-                <div>
-                    <h3 data-en="Does your company take on interns?">¿Tu empresa acoge alumnado en prácticas?</h3>
-                    <p data-en="I am looking for a company for my FCT internship from February 2027.">Busco empresa para mis prácticas (FCT) a partir de febrero de 2027.</p>
-                </div>
-                <a href="mailto:AlexDoGa.work@gmail.com" class="btn btn-primary"><span data-en="Let's talk">Hablemos</span> <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-
-            <div class="footer-inner">
-                <div>
-                    <span class="brand-name">Alejandro Donate García</span>
-                    <p data-en="Multiplatform Application Development student building real projects with Java, Python, Flutter and databases.">Estudiante de Desarrollo de Aplicaciones Multiplataforma, construyendo proyectos reales con Java, Python, Flutter y bases de datos.</p>
-                </div>
-                <div class="footer-links">
-                    <button onclick="copyEmail()" class="btn btn-outline" aria-label="Copiar email"><i class="fa-solid fa-envelope"></i></button>
-                    <a href="https://www.linkedin.com/in/alejandrodongar/" target="_blank" rel="noopener" class="btn btn-outline" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://github.com/alejandroDonGar" target="_blank" rel="noopener" class="btn btn-outline" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                </div>
-            </div>
-
-            <p class="footer-note">© 2026 Alejandro Donate García</p>
-        </div>
-    </footer>
+      </li>
+      <li class="hito viene">
+        <time>Feb 2027</time>
+        <div><h3>FCT de 2º</h3><p>Busco empresa en Tenerife.</p></div>
+      </li>
+      <li class="hito viene">
+        <time>Jun 2027</time>
+        <div><h3>Termino DAM</h3></div>
+      </li>
+    </ol>
+    </aside>
+    </div>
+  </section>
 </main>
+
+<footer id="contacto">
+  <span>Busco empresa para la FCT a partir de febrero de 2027.</span>
+  <span><a href="mailto:AlexDoGa.work@gmail.com">Correo</a> &nbsp; <a href="https://github.com/alejandroDonGar">GitHub</a> &nbsp; <a href="https://www.linkedin.com/in/alejandrodongar/">LinkedIn</a></span>
+</footer>
+
+<script src="paletas.js"></script>
+<script>
+  // Parte el nombre en letras para que cada una tenga su propio grosor y anchura
+  const letras = [];
+  document.querySelectorAll('.nombre .linea').forEach(linea => {
+    linea.innerHTML = [...linea.textContent].map(c => `<span class="l">${c}</span>`).join('');
+    letras.push(...linea.querySelectorAll('.l'));
+  });
+
+  const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Estado de cada letra: valor actual y objetivo (el actual persigue al objetivo en cada fotograma)
+  const estado = letras.map(() => ({ w: 300, a: 90, wObj: 300, aObj: 90 }));
+  let raton = null;
+
+  addEventListener('pointermove', e => { raton = { x: e.clientX, y: e.clientY }; });
+  document.documentElement.addEventListener('pointerleave', () => { raton = null; });
+
+  function fotograma() {
+    letras.forEach((l, i) => {
+      const s = estado[i];
+      if (raton) {
+        const r = l.getBoundingClientRect();
+        const d = Math.hypot(raton.x - (r.left + r.width / 2), raton.y - (r.top + r.height / 2));
+        const cerca = Math.max(0, 1 - d / 420);   // 1 justo encima, 0 a 420 px o más
+        s.wObj = 300 + cerca * 600;               // de 300 a 900
+        s.aObj = 90 + cerca * 35;                 // de 90 a 125
+      } else { s.wObj = 300; s.aObj = 90; }
+      // Interpolación suave: avanza un 12 % de lo que falta, así se puede interrumpir en cualquier momento
+      s.w += (s.wObj - s.w) * .12;
+      s.a += (s.aObj - s.a) * .12;
+      l.style.setProperty('--w', s.w.toFixed(1));
+      l.style.setProperty('--a', s.a.toFixed(1));
+    });
+    requestAnimationFrame(fotograma);
+  }
+  if (!quieto) requestAnimationFrame(fotograma);
+</script>
+</body>
+</html>
