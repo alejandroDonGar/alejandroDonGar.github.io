@@ -83,3 +83,6 @@ button:active, .boton:active, .fct:active { transform: scale(.97); transition-du
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+/* Los botones de enlaces nunca se estiran: aunque su columna sea más alta, se quedan arriba con su altura */
+.enlaces { align-self: start; align-items: center; }
