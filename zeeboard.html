@@ -90,8 +90,8 @@
     <h1 style="view-transition-name: zb-titulo">ZeeBoard</h1>
     <p class="resumen">Una app de escritorio para artistas que trabajan por encargo. Lleva cada dibujo desde que alguien lo pide hasta que está cobrado.</p>
     <dl class="ficha">
-      <div><dt>Mi papel</dt><dd>Proyecto personal, de la idea al instalador</dd></div>
-      <div><dt>Desde</dt><dd>Julio de 2026, en marcha</dd></div>
+      <div><dt>Mi papel</dt><dd>La idea, el diseño y las pruebas; el código, con IA</dd></div>
+      <div><dt>Desde</dt><dd>Junio de 2026, en marcha</dd></div>
       <div><dt>Tecnologías</dt><dd>Tauri, Rust, React, TypeScript y SQLite</dd></div>
       <div><dt>Estado</dt><dd>Versión 0.2 instalable, en uso diario</dd></div>
     </dl>
@@ -109,15 +109,15 @@
       <div>
         <h3>El problema</h3>
         <div class="texto">
-          <p>Dibujo por encargo y lo llevaba repartido entre un formulario de Google, PayPal, carpetas de imágenes y notas. Para saber en qué punto iba un dibujo o si alguien me había pagado tenía que mirar en cuatro sitios.</p>
-          <p>Quería un tablero donde ver de un vistazo quién me ha pedido qué, en qué etapa va cada dibujo y cuánto me queda por cobrar, sin subir los datos de mis clientes a ningún servicio.</p>
+          <p>En mi tiempo libre dibujo en el iPad y acepto encargos. Abro plazas en Twitter y Bluesky, la gente me pide su personaje por un formulario de Google con sus referencias, y cada dibujo pasa por etapas: boceto, línea, color. El cliente revisa cada una y a veces pide cambios antes de seguir.</p>
+          <p>Todo eso lo llevaba repartido entre el formulario, PayPal, carpetas de imágenes y notas. Para saber en qué punto iba un dibujo o si alguien me había pagado tenía que mirar en cuatro sitios, así que quería un tablero donde verlo de un vistazo, sin subir los datos de mis clientes a ningún servicio.</p>
         </div>
       </div>
       <div>
         <h3>Mi papel</h3>
         <div class="texto">
-          <p>Es un proyecto mío de principio a fin. Decido qué hace la app, cómo se organiza y cómo se ve, y la pruebo con mis encargos reales antes de dar nada por bueno. Para programarla me apoyo en un asistente de IA (Claude Code): yo planteo cada cambio, lo reviso y lo pruebo.</p>
-          <p>Llevo el repositorio como en un trabajo de verdad: una rama por cada parte, commits pequeños y un <a href="https://github.com/alejandroDonGar/zeeboard/blob/main/ROADMAP.md">plan de trabajo</a> que voy tachando. Hoy son 152 commits.</p>
+          <p>La idea salió de una necesidad mía. No sé Rust ni Tauri y de TypeScript sé poco, así que el código lo escribe casi entero un asistente de IA (Claude Code) a partir de lo que le pido. Lo hice así para tener pronto algo que funcionara.</p>
+          <p>Lo mío es decidir qué hace la app y cómo se ve, probar cada cambio con mis encargos reales y leer el código hasta entender qué hace. El trabajo va por ramas, con commits pequeños y un <a href="https://github.com/alejandroDonGar/zeeboard/blob/main/ROADMAP.md">plan</a> que se va tachando. Hoy son 152 commits.</p>
         </div>
       </div>
     </div>
@@ -180,10 +180,10 @@ write_atomically(&amp;full_path, &amp;encode_webp(&amp;view, VIEW_QUALITY))?;</c
     <div class="dos">
       <div class="texto">
         <p>A no tocar los datos de nadie sin red de seguridad: cada migración guarda antes una copia de la base de datos, y 15 scripts de comprobación revisan los pagos, las importaciones y la papelera cada vez que cambio algo.</p>
-        <p>Y que Rust compensa justo en lo pesado, como redimensionar imágenes o servir archivos, mientras la interfaz sigue en React.</p>
+        <p>Y a leer código en lenguajes que no domino: entender qué hace cada parte aunque no la haya escrito yo, y saber qué pedir cuando algo no va.</p>
       </div>
       <div class="texto">
-        <p><strong>Lo que haría distinto:</strong> sacar las imágenes de la base de datos desde el primer día. Migrarlas después me obligó a escribir una conversión para los datos que ya tenía.</p>
+        <p><strong>Lo que haría distinto:</strong> sacar las imágenes de la base de datos desde el primer día. Migrarlas después obligó a convertir los datos que ya tenía.</p>
         <div class="enlaces">
           <a class="boton principal" href="https://alejandrodongar.github.io/zeeboard/">Página de ZeeBoard</a>
           <a class="boton" href="https://github.com/alejandroDonGar/zeeboard">Código en GitHub</a>
