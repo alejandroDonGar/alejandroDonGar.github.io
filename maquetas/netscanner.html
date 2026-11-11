@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NetScanner: caso de estudio | Alejandro Donate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="paletas.css">
+<style>
+  /* Misma estructura que el caso de ZeeBoard; colores y movimiento en paletas.css */
+  :root { --margen: clamp(20px, 5vw, 72px); }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--laurisilva); color: var(--musgo-70); font: 400 1.0625rem/1.65 "Mona Sans", system-ui, sans-serif; }
+  a { color: var(--musgo); text-underline-offset: .25em; text-decoration-color: var(--tajinaste); }
+  a:hover { color: var(--tajinaste); }
+  :focus-visible { outline: 2px solid var(--tajinaste); outline-offset: 4px; border-radius: 4px; }
+
+  .barra { display: flex; justify-content: space-between; gap: 16px; padding: 28px var(--margen); font-size: .95rem; }
+  .barra a { text-decoration: none; color: var(--musgo-70); }
+  .barra a:hover { color: var(--musgo); }
+
+  .cabecera { padding: 24px var(--margen) 0; display: grid; gap: 32px 56px; align-items: center; }
+  @media (min-width: 75rem) { .cabecera { grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); } }
+  /* El título se mide con el ancho de su columna (cqi): nunca se sale de ella */
+  .presenta { display: grid; gap: 28px; container-type: inline-size; }
+  h1 { color: var(--musgo); font-size: clamp(2.5rem, 15cqi, 7rem); line-height: .9; letter-spacing: -.03em; font-variation-settings: "wght" 800, "wdth" 125; }
+  .resumen { color: var(--musgo); font-size: clamp(1.2rem, 1.8vw, 1.5rem); line-height: 1.4; max-width: 34ch; font-variation-settings: "wdth" 95; }
+  .ficha { display: grid; gap: 16px 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: 20px; border-top: 1px solid var(--musgo-12); }
+  .ficha dt { font-size: .85rem; }
+  .ficha dd { color: var(--musgo); }
+  img { display: block; width: 100%; height: auto; }
+  figcaption { font-size: .85rem; margin-top: 10px; }
+
+  .cuerpo { padding: 88px var(--margen); display: grid; gap: 88px; }
+  .bloque { display: grid; gap: 24px; }
+  @media (min-width: 60rem) { .bloque { grid-template-columns: 12rem minmax(0, 1fr); gap: 40px; } }
+  .bloque > *, .dos > *, .decision > * { min-width: 0; }
+  .bloque > h2 { color: var(--musgo); font-size: 1rem; font-weight: 600; font-variation-settings: "wdth" 112; }
+  h3 { color: var(--musgo); font-size: 1.4rem; font-weight: 650; letter-spacing: -.015em; font-variation-settings: "wdth" 110; margin-bottom: 10px; }
+  .texto { display: grid; gap: 14px; max-width: 62ch; }
+  .texto strong { color: var(--musgo); font-weight: 600; }
+  .dos { display: grid; gap: 32px 48px; }
+  @media (min-width: 60rem) { .dos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  /* Lo que hice yo: lista en columnas */
+  .partes { list-style: none; padding: 0; display: grid; gap: 20px 32px; margin-top: 8px; }
+  @media (min-width: 48rem) { .partes { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  /* Va debajo del contexto, en la columna de contenido y no en la del título de la sección */
+  @media (min-width: 60rem) { .bloque > .partes { grid-column: 2; } }
+  .partes strong { display: block; color: var(--musgo); font-weight: 600; margin-bottom: 4px; }
+
+  .decisiones { display: grid; gap: 64px; }
+  .decision { display: grid; gap: 24px 48px; align-items: start; }
+  @media (min-width: 75rem) { .decision { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); } }
+  .dato { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin-top: 20px; }
+  .dato b { color: var(--tajinaste); font-size: clamp(1.8rem, 3.2vw, 2.6rem); font-weight: 700; letter-spacing: -.02em; font-variation-settings: "wdth" 115; }
+
+  pre { background: var(--marco); border-radius: 14px; padding: 20px 22px; overflow-x: auto; font: .84rem/1.6 ui-monospace, "Cascadia Code", Consolas, monospace; color: var(--musgo); }
+  pre .c { color: var(--musgo-70); }
+  .nota-codigo { font-size: .85rem; margin-top: 8px; }
+
+  .enlaces { display: flex; flex-wrap: wrap; gap: 12px; }
+  .boton { display: inline-flex; padding: 10px 18px; border-radius: 99px; text-decoration: none; font-weight: 600; border: 1px solid var(--musgo-12); }
+  .boton.principal { background: var(--tajinaste); color: var(--laurisilva); border-color: var(--tajinaste); }
+  .boton.principal:hover { color: var(--laurisilva); }
+
+  /* Solo en la maqueta: textos que aún tiene que confirmar Alejandro */
+  .pendiente { outline: 1px dashed var(--tajinaste); outline-offset: 10px; border-radius: 4px; position: relative; }
+  .pendiente::before { content: "Por confirmar"; position: absolute; top: -26px; left: 0; font-size: .75rem; color: var(--tajinaste); }
+
+  .siguiente { padding: 0 var(--margen) 72px; }
+  .siguiente a { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; padding-top: 28px; border-top: 1px solid var(--musgo-12); text-decoration: none; color: var(--musgo-70); }
+  .siguiente strong { color: var(--musgo); font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1; letter-spacing: -.02em; font-variation-settings: "wght" 700, "wdth" 120; }
+  .siguiente a:hover strong { color: var(--tajinaste); }
+</style>
+</head>
+<body>
+<nav class="barra" aria-label="Navegación">
+  <a href="d-laurisilva.html#proyectos">Volver a proyectos</a>
+  <a href="d-laurisilva.html">Alejandro Donate</a>
+</nav>
+
+<header class="cabecera">
+  <div class="presenta">
+    <h1 style="view-transition-name: ns-titulo">NetScanner</h1>
+    <p class="resumen">Una web que encuentra los dispositivos conectados a una red local, los clasifica y avisa cuando algo cambia.</p>
+    <dl class="ficha">
+      <div><dt>Mi papel</dt><dd>Desarrollador principal en un equipo de seis</dd></div>
+      <div><dt>Cuándo</dt><dd>Mayo y junio de 2026, prácticas de 1º en Laberit Canarias</dd></div>
+      <div><dt>Tecnologías</dt><dd>Python, Django, Scapy y MongoDB Atlas</dd></div>
+      <div><dt>Resultado</dt><dd>Proyecto de prácticas terminado y documentado</dd></div>
+    </dl>
+  </div>
+  <figure>
+    <img class="cap" style="view-transition-name: ns-captura" src="https://alejandrodongar.github.io/netscanner/images/topologia.webp" alt="Mapa de topología de NetScanner con los dispositivos agrupados por tipo">
+    <figcaption>La topología activa: cada bloque es un tipo de dispositivo, con su nivel de riesgo. La red es de ejemplo.</figcaption>
+  </figure>
+</header>
+
+<main class="cuerpo">
+  <section class="bloque">
+    <h2>Contexto</h2>
+    <div class="dos">
+      <div>
+        <h3>El encargo</h3>
+        <div class="texto">
+          <p>Fue el proyecto de las prácticas de 1º en Laberit Canarias: una herramienta para saber qué hay conectado a una red, qué riesgo tiene cada equipo y qué ha cambiado desde la última vez que se miró.</p>
+          <p>Lo hicimos seis compañeros en las cuatro semanas de prácticas, sobre un repositorio común con ramas para el backend y el front.</p>
+        </div>
+      </div>
+      <div>
+        <h3>Mi papel</h3>
+        <div class="texto">
+          <p>Fui el desarrollador principal: hice la estructura inicial y buena parte del backend y del front. En el repositorio del equipo tengo 28 de los 52 commits. Usé IA para resolver dudas y partes concretas, pero el código lo escribí yo.</p>
+        </div>
+      </div>
+    </div>
+    <ul class="partes" aria-label="Lo que hice">
+      <li><strong>El escáner</strong>Detección de dispositivos, puertos, tipo de equipo y registro de la primera y la última conexión.</li>
+      <li><strong>Los datos</strong>Repositorios sobre MongoDB, consulta personalizada y exportación a CSV, JSON y Excel.</li>
+      <li><strong>La interfaz</strong>El mapa de topología por bloques, el resumen de activos y la animación del escaneo.</li>
+    </ul>
+  </section>
+
+  <section class="bloque">
+    <h2>Decisiones</h2>
+    <div class="decisiones">
+      <article class="decision">
+        <div>
+          <h3>Un escáner que no molesta a la red</h3>
+          <div class="texto">
+            <p>La idea era un escáner completo: barrido con ping y sondeo de puertos con Scapy. En la red de la empresa eso no era viable, así que tuvimos que reducirlo a una observación pasiva.</p>
+            <p>El resultado lee la tabla ARP del propio equipo y las conexiones que ya existen, sin enviar paquetes a nadie. Detecta menos puertos, pero se puede usar en una red real sin que salten las alarmas de nadie.</p>
+          </div>
+        </div>
+        <img class="cap" src="https://alejandrodongar.github.io/netscanner/images/mapa.webp" alt="Ficha de un dispositivo en NetScanner con su IP, MAC y puertos" loading="lazy">
+      </article>
+
+      <article class="decision">
+        <div>
+          <h3>Comparar con el escaneo anterior</h3>
+          <div class="texto">
+            <p>Una lista de dispositivos no dice mucho si no sabes qué ha cambiado. Cada escaneo se compara con el último que se guardó del mismo equipo, identificado por su MAC: si cambia de IP o de nivel de riesgo, se crea una alerta. También avisan los dispositivos nuevos y los de fabricante desconocido.</p>
+          </div>
+          <p class="dato"><b>4 tipos de alerta</b><span>dispositivo nuevo, fabricante desconocido, cambio de IP y cambio de riesgo</span></p>
+        </div>
+        <div>
+          <pre><code><span class="c"># Si la misma MAC aparece con otra IP, se avisa</span>
+if ip_anterior != ip_actual:
+    self.alertas_repo.guardar_alerta(
+        tipo="CAMBIO_IP",
+        mensaje=f"La MAC {mac} cambió de IP: "
+                f"{ip_anterior} --> {ip_actual}",
+        nivel="INFO", mac=mac, ip=ip_actual,
+    )</code></pre>
+          <p class="nota-codigo">Fragmento adaptado de <code>services/comparador_service.py</code></p>
+        </div>
+      </article>
+
+      <article class="decision">
+        <div>
+          <h3>Que se vea el escaneo mientras ocurre</h3>
+          <div class="texto">
+            <p>Un escaneo tarda unos segundos y una pantalla quieta parece colgada. Hice que el mapa de topología muestre el progreso con una ola que avanza, con una aleta de tiburón encima, y con mensajes de qué está haciendo en cada momento.</p>
+            <p>El mapa agrupa los dispositivos en bloques por tipo y marca el riesgo de cada uno con una barra, así se ve de un vistazo dónde mirar.</p>
+          </div>
+        </div>
+        <img class="cap" src="https://alejandrodongar.github.io/netscanner/images/alertas.webp" alt="Pantalla de alertas de NetScanner" loading="lazy">
+      </article>
+    </div>
+  </section>
+
+  <section class="bloque">
+    <h2>Lo que aprendí</h2>
+    <div class="dos">
+      <div class="texto">
+        <p>Sobre todo, a entender Python. Venía de Java, que me resulta más complicado, y Python se entiende mucho mejor leyéndolo por encima. Aquí vi las bases, aunque luego el proyecto se complicó, y sigo teniendo mucho que aprender.</p>
+        <p>Lo más divertido fue trabajar con MongoDB: combinarlo con Django y lo sencillo que es hacer consultas con sus herramientas.</p>
+      </div>
+      <div class="texto">
+        <p><strong>Lo más difícil:</strong> trabajar con sockets y sacar la información de la red, que es la mayor parte del proyecto.</p>
+        <p><strong>Lo que haría distinto:</strong> tomármelo con más calma para entender mejor el código. Cuatro semanas se me quedaron cortas para aprender a la vez un lenguaje, una base de datos y un framework nuevos.</p>
+        <div class="enlaces">
+          <a class="boton principal" href="https://alejandrodongar.github.io/netscanner/">Página de NetScanner</a>
+          <a class="boton" href="https://github.com/alejandroDonGar/netscanner">Código en GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="siguiente">
+  <a href="#"><span>Siguiente proyecto</span><strong>CentroPlus Connect</strong></a>
+</div>
+<script src="paletas.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+/* Dos temas con dos colores cada uno y el mismo acento, el azul Atlántico.
+   El acento tiene una versión para fondo claro y otra para fondo oscuro, así se lee
+   como el mismo color en los dos temas. Todo pasa WCAG AA.
+   Las páginas usan --laurisilva (fondo), --musgo (texto) y --tajinaste (acento). */
+
+/* Niebla (claro): el gris verdoso de la bruma del norte de Tenerife */
+:root {
+  --fondo: #E5E8E3;
+  --texto: #2A3A32;   /* 9,7:1 sobre el fondo */
+  --acento: #2E6488;  /* Atlántico, 5,2:1 */
+  --marco: #D4D9D1;   /* paspartú detrás de cada captura */
+  color-scheme: light;
+
+  --laurisilva: var(--fondo);
+  --musgo: var(--texto);
+  --tajinaste: var(--acento);
+  --musgo-70: color-mix(in srgb, var(--texto) 80%, transparent);  /* texto secundario */
+  --musgo-12: color-mix(in srgb, var(--texto) 14%, transparent);  /* líneas y bordes */
+  --musgo-06: color-mix(in srgb, var(--texto) 6%, transparent);
+  --acento-18: color-mix(in srgb, var(--acento) 18%, transparent);
+}
+
+/* Pizarra (oscuro): gris oscuro con un punto de azul, de la misma familia que el acento */
+[data-paleta="pizarra"] {
+  --fondo: #222831;
+  --texto: #DDE2E8;   /* 11,4:1 */
+  --acento: #7DB4DC;  /* Atlántico, 6,7:1 */
+  --marco: #1A1F27;
+  color-scheme: dark;
+}
+
+/* Paspartú: cada captura va sobre un marco neutro, separada del fondo */
+img.cap {
+  padding: 10px;
+  background: var(--marco);
+  border-radius: 14px !important;
+  outline: none !important;
+}
+
+/* Interruptor de tema (en la web final irá en la barra de arriba) */
+.selector-paleta {
+  position: fixed; right: 16px; bottom: 16px; z-index: 10;
+  display: flex; gap: 2px; padding: 4px; border-radius: 99px;
+  background: color-mix(in srgb, var(--fondo) 85%, transparent);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--musgo-12);
+  font: 500 .8rem/1 "Mona Sans", system-ui, sans-serif;
+}
+.selector-paleta button {
+  border: 0; background: none; color: var(--musgo-70); cursor: pointer;
+  padding: 8px 12px; border-radius: 99px; font: inherit;
+}
+.selector-paleta button[aria-pressed="true"] { background: var(--acento); color: var(--fondo); }
+
+/* ===== Movimiento =====
+   Nada cambia de golpe: los enlaces y botones cambian en 180 ms con ease, la página se desliza
+   hasta las secciones y al cambiar de página los elementos compartidos viajan de una a otra.
+   Con «reducir movimiento» activado en el sistema, todo vuelve a ser instantáneo. */
+:root { --rapido: 180ms ease; }
+
+a, button, .proyecto h3, .siguiente strong {
+  transition: color var(--rapido), background-color var(--rapido), border-color var(--rapido),
+              text-decoration-color var(--rapido), opacity var(--rapido), transform var(--rapido);
+}
+/* Al pulsar, el botón se hunde un poco (responde al momento de pulsar, no al soltar) */
+button:active, .boton:active, .fct:active { transform: scale(.97); transition-duration: 90ms; }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Dentro de la página: desplazamiento suave hasta la sección */
+  html { scroll-behavior: smooth; }
+  section[id] { scroll-margin-top: 24px; }
+
+  /* Entre páginas: transición entre documentos (Chrome/Edge 126+, Safari 18.2+) */
+  @view-transition { navigation: auto; }
+  ::view-transition-group(*) { animation-duration: 420ms; animation-timing-function: cubic-bezier(.2, .8, .2, 1); }
+  /* El resto de la página: la vieja se va hacia arriba y la nueva entra desde abajo */
+  ::view-transition-old(root) { animation: 220ms ease-in both salir; }
+  ::view-transition-new(root) { animation: 320ms 80ms ease-out both entrar; }
+}
+@keyframes salir { to { opacity: 0; transform: translateY(-12px); } }
+@keyframes entrar { from { opacity: 0; transform: translateY(16px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}

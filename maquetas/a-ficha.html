@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plantilla A: ficha | Alejandro Donate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Plantilla A (ref. Brittany Chiang): rejilla asimétrica 5/7, identidad fija a la izquierda.
+     Escala tipográfica modular 1.25 (tercera mayor) y espaciado en múltiplos de 8 px. */
+  :root {
+    --basalto: #171A1F; --malpais: #20252C; --bruma: #E6E4DF;
+    --ceniza: #9AA1A9; --laurisilva: #7FB5A3; --retama: #E3B95B;
+    --linea: rgba(230, 228, 223, .10);
+    --t-0: .8rem; --t-1: 1rem; --t-2: 1.25rem; --t-3: 1.563rem; --t-5: 2.441rem; --t-6: 3.052rem;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--basalto); color: var(--ceniza); font: 400 var(--t-1)/1.6 "Schibsted Grotesk", system-ui, sans-serif; }
+  a { color: inherit; }
+  a:focus-visible { outline: 2px solid var(--laurisilva); outline-offset: 4px; border-radius: 4px; }
+
+  .pagina { max-width: 74rem; margin: 0 auto; padding: 0 24px; display: grid; gap: 64px; }
+  @media (min-width: 64rem) { .pagina { grid-template-columns: 5fr 7fr; padding: 0 48px; } }
+
+  .identidad { padding-top: 96px; display: flex; flex-direction: column; gap: 16px; }
+  @media (min-width: 64rem) { .identidad { position: sticky; top: 0; height: 100vh; padding-bottom: 96px; } }
+  h1 { color: var(--bruma); font-size: clamp(var(--t-5), 4vw, var(--t-6)); line-height: 1.05; letter-spacing: -.025em; font-weight: 700; }
+  .rol { color: var(--bruma); font-size: var(--t-2); font-weight: 500; letter-spacing: -.01em; }
+  .resumen { max-width: 32ch; }
+  .estado { display: inline-flex; gap: 8px; align-items: center; color: var(--retama); font-size: .95rem; margin-top: 8px; }
+  .estado::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--retama); }
+
+  .menu { display: none; list-style: none; padding: 0; margin-top: 48px; }
+  @media (min-width: 64rem) { .menu { display: grid; gap: 16px; } }
+  .menu a { display: inline-flex; align-items: center; gap: 16px; text-decoration: none; font-size: .9rem; font-weight: 600; }
+  .menu a::before { content: ""; width: 32px; height: 1px; background: currentColor; transition: width .25s ease; }
+  .menu a.activo, .menu a:hover { color: var(--bruma); }
+  .menu a.activo::before, .menu a:hover::before { width: 64px; }
+  .enlaces { margin-top: auto; display: flex; flex-wrap: wrap; gap: 24px; font-size: .9rem; }
+  .enlaces a { text-underline-offset: .3em; }
+
+  main { padding: 96px 0; display: grid; gap: 96px; }
+  section > h2 { color: var(--bruma); font-size: var(--t-1); font-weight: 600; margin-bottom: 24px; }
+  /* En escritorio el menú ya nombra cada sección: el título queda solo para lectores de pantalla */
+  @media (min-width: 64rem) { section > h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } }
+  .bio { max-width: 62ch; }
+  .bio p + p { margin-top: 16px; }
+  .bio strong { color: var(--bruma); font-weight: 500; }
+
+  .filas { list-style: none; padding: 0; display: grid; gap: 8px; }
+  .fila { display: grid; gap: 4px 24px; padding: 24px; margin: 0 -24px; border-radius: 12px; transition: background .2s, opacity .2s; }
+  @media (min-width: 40rem) { .fila { grid-template-columns: 9rem 1fr; } }
+  .fila:hover { background: var(--malpais); }
+  .filas:hover .fila:not(:hover) { opacity: .5; }
+  .fecha { font-size: var(--t-0); padding-top: 3px; }
+  .fila h3 { color: var(--bruma); font-size: var(--t-1); font-weight: 600; }
+  .fila p { max-width: 58ch; }
+  .etiquetas { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .etiquetas li { font-size: .75rem; font-weight: 500; color: var(--laurisilva); background: rgba(127, 181, 163, .12); padding: 2px 12px; border-radius: 99px; }
+  .fila img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 6px; border: 1px solid var(--linea); }
+
+  .mas { display: inline-block; margin-top: 16px; color: var(--bruma); font-weight: 600; text-underline-offset: .3em; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="pagina">
+  <header class="identidad">
+    <h1>Alejandro Donate García</h1>
+    <p class="rol">Estudiante de 2º de DAM en Tenerife</p>
+    <p class="resumen">Hago aplicaciones con Java y Python, con bases de datos detrás y Flutter delante.</p>
+    <p class="estado">Busco empresa para la FCT desde febrero de 2027</p>
+    <nav aria-label="Secciones">
+      <ul class="menu">
+        <li><a href="#sobre-mi" class="activo">Sobre mí</a></li>
+        <li><a href="#experiencia">Experiencia</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#ahora">Ahora</a></li>
+      </ul>
+    </nav>
+    <p class="enlaces">
+      <a href="https://github.com/alejandroDonGar">GitHub</a>
+      <a href="https://www.linkedin.com/in/alejandrodongar/">LinkedIn</a>
+      <a href="#">Correo</a>
+      <a href="#">Mis apuntes</a>
+    </p>
+  </header>
+
+  <main>
+    <section id="sobre-mi" class="bio">
+      <h2>Sobre mí</h2>
+      <p>Estudio Desarrollo de Aplicaciones Multiplataforma en el IES Puerto de la Cruz. La parte que más me engancha es la de los datos: cómo se guardan, cómo se consultan y cómo se ordena el código que los mueve. Este curso he pasado de leer un CSV a mano a montar repositorios con <strong>JPA e Hibernate</strong>.</p>
+      <p>En las prácticas de 1º hice <strong>NetScanner</strong> en Laberit Canarias. En mi tiempo libre sigo con <strong>ZeeBoard</strong>, una app de escritorio para artistas que trabajan por encargo.</p>
+    </section>
+
+    <section id="experiencia">
+      <h2>Experiencia y formación</h2>
+      <ol class="filas">
+        <li class="fila">
+          <span class="fecha">2026</span>
+          <div>
+            <h3>Prácticas de 1º en Laberit Canarias</h3>
+            <p>Desarrollé NetScanner, una web que encuentra los dispositivos de una red, los clasifica y guarda un inventario.</p>
+            <ul class="etiquetas"><li>Python</li><li>Django</li><li>Scapy</li><li>MongoDB</li></ul>
+          </div>
+        </li>
+        <li class="fila">
+          <span class="fecha">2025 a 2027</span>
+          <div>
+            <h3>Técnico Superior en DAM, IES Puerto de la Cruz</h3>
+            <p>Este año: acceso a datos con Java, procesos e hilos en Python, interfaces con Flutter, React para móvil y despliegue con Docker.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="proyectos">
+      <h2>Proyectos</h2>
+      <ol class="filas">
+        <li class="fila">
+          <img src="https://alejandrodongar.github.io/assets/img/zeeboard/dashboard.webp" alt="Panel principal de ZeeBoard" loading="lazy">
+          <div>
+            <h3>ZeeBoard</h3>
+            <p>Lleva los encargos de un artista de principio a fin: el cliente, cada etapa del dibujo con sus imágenes y lo que falta por cobrar.</p>
+            <ul class="etiquetas"><li>TypeScript</li><li>React</li><li>Tauri</li><li>SQLite</li></ul>
+          </div>
+        </li>
+        <li class="fila">
+          <img src="https://alejandrodongar.github.io/assets/img/netscanner/topologia.webp" alt="Mapa de la red en NetScanner" loading="lazy">
+          <div>
+            <h3>NetScanner</h3>
+            <p>Dibuja el mapa de una red local y avisa de los equipos que parecen un riesgo. Lo hicimos en equipo durante las prácticas.</p>
+            <ul class="etiquetas"><li>Python</li><li>Django</li><li>MongoDB</li></ul>
+          </div>
+        </li>
+        <li class="fila">
+          <img src="https://alejandrodongar.github.io/assets/img/centroplus/inicio.webp" alt="Pantalla de inicio de CentroPlus Connect" loading="lazy">
+          <div>
+            <h3>CentroPlus Connect</h3>
+            <p>Reservas, actividades e incidencias de un centro educativo, con una web, una app de escritorio en JavaFX y la API que las une.</p>
+            <ul class="etiquetas"><li>Java 17</li><li>Spring</li><li>JavaFX</li></ul>
+          </div>
+        </li>
+      </ol>
+      <a class="mas" href="#">Ver todos los proyectos</a>
+    </section>
+
+    <section id="ahora">
+      <h2>Ahora</h2>
+      <ol class="filas">
+        <li class="fila">
+          <span class="fecha">Noviembre de 2026</span>
+          <div>
+            <h3>En qué ando</h3>
+            <p>Peleándome con las relaciones de JPA en una biblioteca de prueba, aprendiendo sockets en Python y pasando mis apuntes del curso a una web.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+  </main>
+</div>
+
+<script>
+  // Marca en el menú la sección que está en pantalla
+  // (la sección activa es la última cuyo borde superior ya ha pasado el 45 % de la pantalla)
+  const enlaces = document.querySelectorAll('.menu a');
+  const secciones = [...document.querySelectorAll('main section')];
+  function marcar() {
+    let actual = secciones[0];
+    for (const s of secciones) if (s.getBoundingClientRect().top < innerHeight * 0.45) actual = s;
+    // Al llegar al final, la última sección no puede subir tanto: se marca igualmente
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) actual = secciones.at(-1);
+    enlaces.forEach(a => a.classList.toggle('activo', a.hash === '#' + actual.id));
+  }
+  addEventListener('scroll', marcar, { passive: true });
+  marcar();
+</script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plantilla C: escaparate | Alejandro Donate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* Plantilla C (ref. Rauno Freiberg): la presentación es tipografía grande y los proyectos van en una tira horizontal.
+     Al abrir un proyecto, su captura crece hasta la ficha con la View Transitions API (mismo camino de ida y vuelta). */
+  :root {
+    --basalto: #171A1F; --malpais: #20252C; --bruma: #E6E4DF;
+    --ceniza: #9AA1A9; --laurisilva: #7FB5A3; --retama: #E3B95B;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--basalto); color: var(--ceniza); font: 400 1rem/1.6 "Schibsted Grotesk", system-ui, sans-serif; overflow-x: hidden; }
+  a, button { color: inherit; font: inherit; }
+  :focus-visible { outline: 2px solid var(--laurisilva); outline-offset: 4px; border-radius: 6px; }
+
+  .presentacion { min-height: 78vh; display: grid; align-content: end; padding: 48px clamp(24px, 6vw, 96px); gap: 32px; }
+  /* Titular como pieza visual: frase completa, sangría escalonada como en rauno.me */
+  .frase { color: var(--bruma); font-weight: 600; font-size: clamp(2.2rem, 6.4vw, 5.6rem); line-height: 1.02; letter-spacing: -.035em; max-width: 15ch; }
+  .frase span { display: block; }
+  .frase span:nth-child(2) { padding-left: .9em; }
+  .frase span:nth-child(4) { padding-left: .9em; }
+  .pie { display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; }
+  .estado { display: inline-flex; gap: 8px; align-items: center; color: var(--retama); }
+  .estado::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--retama); }
+  .pie a { text-underline-offset: .3em; }
+
+  /* Entrada única al cargar: las líneas del titular suben una tras otra */
+  @media (prefers-reduced-motion: no-preference) {
+    .frase span { animation: subir .7s cubic-bezier(.2, .8, .2, 1) both; }
+    .frase span:nth-child(2) { animation-delay: .08s; }
+    .frase span:nth-child(3) { animation-delay: .16s; }
+    .frase span:nth-child(4) { animation-delay: .24s; }
+  }
+  @keyframes subir { from { opacity: 0; transform: translateY(.4em); } }
+
+  .tira-titulo { padding: 0 clamp(24px, 6vw, 96px); color: var(--bruma); font-weight: 600; margin-bottom: 16px; }
+  .tira { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: clamp(24px, 6vw, 96px); padding: 0 clamp(24px, 6vw, 96px) 48px; scrollbar-width: thin; }
+  .tarjeta { flex: 0 0 min(80vw, 30rem); scroll-snap-align: start; background: none; border: 0; text-align: left; cursor: pointer; padding: 0; }
+  .tarjeta img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 14px; display: block; transition: transform .3s cubic-bezier(.2, .8, .2, 1); }
+  .tarjeta:hover img { transform: scale(1.015); }
+  .tarjeta:active img { transform: scale(.985); transition-duration: .1s; }
+  .tarjeta h3 { color: var(--bruma); font-weight: 600; margin-top: 16px; }
+
+  .resto { display: grid; gap: 48px; padding: 48px clamp(24px, 6vw, 96px) 96px; max-width: 64rem; }
+  @media (min-width: 48rem) { .resto { grid-template-columns: 1fr 1fr; } }
+  .resto h2 { color: var(--bruma); font-size: 1rem; font-weight: 600; margin-bottom: 12px; }
+
+  /* Ficha del proyecto */
+  dialog { border: 0; padding: 0; background: var(--malpais); color: var(--ceniza); border-radius: 18px; width: min(56rem, 92vw); max-height: 90vh; }
+  dialog::backdrop { background: rgba(10, 12, 15, .7); backdrop-filter: blur(6px); }
+  dialog img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+  dialog .cuerpo { padding: 32px; display: grid; gap: 12px; }
+  dialog h3 { color: var(--bruma); font-size: 1.6rem; letter-spacing: -.02em; }
+  dialog .cerrar { position: absolute; top: 16px; right: 16px; background: rgba(23, 26, 31, .7); border: 0; border-radius: 99px; padding: 6px 14px; cursor: pointer; color: var(--bruma); }
+  .etiquetas { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .etiquetas li { font-size: .8rem; color: var(--laurisilva); background: rgba(127, 181, 163, .12); padding: 2px 12px; border-radius: 99px; }
+  ::view-transition-group(captura) { animation-duration: .45s; animation-timing-function: cubic-bezier(.2, .8, .2, 1); }
+</style>
+</head>
+<body>
+<header class="presentacion">
+  <h1 class="frase">
+    <span>Alejandro Donate</span>
+    <span>estudia 2º de DAM</span>
+    <span>en Tenerife y hace</span>
+    <span>apps con datos detrás</span>
+  </h1>
+  <div class="pie">
+    <span class="estado">Busco empresa para la FCT desde febrero de 2027</span>
+    <a href="https://github.com/alejandroDonGar">GitHub</a>
+    <a href="https://www.linkedin.com/in/alejandrodongar/">LinkedIn</a>
+    <a href="#">Correo</a>
+  </div>
+</header>
+
+<h2 class="tira-titulo">Proyectos</h2>
+<div class="tira" role="list">
+  <button class="tarjeta" role="listitem" data-p="0"><img src="https://alejandrodongar.github.io/assets/img/zeeboard/dashboard.webp" alt=""><h3>ZeeBoard</h3><p>Encargos de artistas, de la solicitud al cobro.</p></button>
+  <button class="tarjeta" role="listitem" data-p="1"><img src="https://alejandrodongar.github.io/assets/img/netscanner/topologia.webp" alt=""><h3>NetScanner</h3><p>Mapa e inventario de una red local.</p></button>
+  <button class="tarjeta" role="listitem" data-p="2"><img src="https://alejandrodongar.github.io/assets/img/centroplus/inicio.webp" alt=""><h3>CentroPlus Connect</h3><p>Reservas de un centro educativo en Java.</p></button>
+</div>
+
+<div class="resto">
+  <section>
+    <h2>Experiencia</h2>
+    <p>En las prácticas de 1º en Laberit Canarias (2026) desarrollé NetScanner con Python, Django y MongoDB.</p>
+  </section>
+  <section>
+    <h2>Ahora</h2>
+    <p>Noviembre de 2026: relaciones en JPA, sockets en Python y una web con mis apuntes del curso.</p>
+  </section>
+</div>
+
+<dialog id="ficha">
+  <button class="cerrar" type="button">Cerrar</button>
+  <img alt="">
+  <div class="cuerpo"><h3></h3><p class="texto"></p><ul class="etiquetas"></ul></div>
+</dialog>
+
+<script>
+  // Contenido de la ficha de cada proyecto
+  const proyectos = [
+    { nombre: 'ZeeBoard', texto: 'Lleva los encargos de un artista de principio a fin: el cliente, cada etapa del dibujo con sus imágenes y lo que falta por cobrar. App de escritorio que guarda todo en local.', tec: ['TypeScript', 'React', 'Tauri', 'SQLite'] },
+    { nombre: 'NetScanner', texto: 'Dibuja el mapa de una red local y avisa de los equipos que parecen un riesgo. Lo hicimos en equipo durante las prácticas de 1º.', tec: ['Python', 'Django', 'Scapy', 'MongoDB'] },
+    { nombre: 'CentroPlus Connect', texto: 'Reservas, actividades e incidencias de un centro educativo, con una web, una app de escritorio en JavaFX y la API que las une.', tec: ['Java 17', 'Spring', 'JavaFX'] },
+  ];
+  const ficha = document.getElementById('ficha');
+  const fichaImg = ficha.querySelector('img');
+  let origen = null;
+
+  // La captura de la tarjeta y la de la ficha comparten nombre: el navegador anima de una a otra
+  function conTransicion(cambio) {
+    if (!document.startViewTransition || matchMedia('(prefers-reduced-motion: reduce)').matches) { cambio(); return Promise.resolve(); }
+    return document.startViewTransition(cambio).finished;
+  }
+
+  document.querySelectorAll('.tarjeta').forEach(t => t.addEventListener('click', () => {
+    const p = proyectos[t.dataset.p];
+    origen = t.querySelector('img');
+    origen.style.viewTransitionName = 'captura';
+    conTransicion(() => {
+      origen.style.viewTransitionName = '';
+      fichaImg.src = origen.src;
+      fichaImg.style.viewTransitionName = 'captura';
+      ficha.querySelector('h3').textContent = p.nombre;
+      ficha.querySelector('.texto').textContent = p.texto;
+      ficha.querySelector('.etiquetas').innerHTML = p.tec.map(x => `<li>${x}</li>`).join('');
+      ficha.showModal();
+    });
+  }));
+
+  // Al cerrar, la captura vuelve a su tarjeta por el mismo camino
+  function cerrar() {
+    conTransicion(() => {
+      fichaImg.style.viewTransitionName = '';
+      origen.style.viewTransitionName = 'captura';
+      ficha.close();
+    }).then(() => { origen.style.viewTransitionName = ''; });
+  }
+  ficha.querySelector('.cerrar').addEventListener('click', cerrar);
+  ficha.addEventListener('cancel', e => { e.preventDefault(); cerrar(); });
+</script>
+</body>
+</html>

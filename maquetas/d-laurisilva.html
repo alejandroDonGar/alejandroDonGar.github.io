@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plantilla D: laurisilva | Alejandro Donate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Mona Sans: fuente variable de GitHub con ejes de anchura (wdth) y grosor (wght) -->
+<link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="paletas.css">
+<style>
+  /* Los colores vienen de paletas.css (dos colores y un acento) */
+  * { box-sizing: border-box; margin: 0; }
+
+  body { background: var(--laurisilva); color: var(--musgo-70); font: 400 1.0625rem/1.6 "Mona Sans", system-ui, sans-serif; font-variation-settings: "wdth" 100; }
+  a { color: var(--musgo); text-underline-offset: .25em; text-decoration-color: var(--tajinaste); }
+  a:hover { color: var(--tajinaste); }
+  :focus-visible { outline: 2px solid var(--tajinaste); outline-offset: 4px; border-radius: 4px; }
+
+  /* Portada: el nombre ocupa la pantalla y reacciona al cursor */
+  .portada { min-height: 100svh; display: grid; grid-template-rows: auto 1fr auto; padding: 32px clamp(24px, 5vw, 72px); }
+  .barra { display: flex; justify-content: space-between; align-items: center; gap: 24px; font-size: .95rem; }
+  .barra nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px 28px; }
+  @media (max-width: 40rem) { .barra > span { display: none; } .barra nav { gap: 8px 18px; justify-content: flex-start; } }
+  .barra nav a { color: var(--musgo-70); text-decoration: none; }
+  .barra nav a:hover { color: var(--musgo); }
+
+  .nombre { align-self: center; color: var(--musgo); line-height: .86; letter-spacing: -.02em; font-size: clamp(3.4rem, 13.5vw, 12.5rem); user-select: none; }
+  .nombre .linea { display: block; white-space: nowrap; }
+  /* Cada letra lleva su propio grosor y anchura, que el script va cambiando */
+  .nombre .l { display: inline-block; font-variation-settings: "wght" var(--w, 300), "wdth" var(--a, 90); }
+
+  .pie { display: grid; gap: 24px; align-items: end; }
+  @media (min-width: 52rem) { .pie { grid-template-columns: 1.2fr 1fr auto; } }
+  .pie p { max-width: 38ch; }
+  .pie strong { color: var(--musgo); font-weight: 600; }
+  .fct { justify-self: start; display: inline-flex; align-items: center; gap: 10px; color: var(--laurisilva); background: var(--tajinaste); font-weight: 600; padding: 10px 18px; border-radius: 99px; text-decoration: none; white-space: nowrap; }
+  .fct:hover { color: var(--laurisilva); transform: translateY(-1px); }
+  .fct:active { transform: scale(.97); }
+
+  /* Contenido */
+  /* Sin ancho máximo: el contenido usa todo el ancho y las listas se reparten en columnas */
+  .contenido { padding: 72px clamp(24px, 5vw, 72px); display: grid; gap: 88px; }
+  .bloque { display: grid; gap: 24px; }
+  @media (min-width: 60rem) { .bloque { grid-template-columns: 12rem 1fr; gap: 40px; } }
+  .bloque > h2 { color: var(--musgo); font-size: 1rem; font-weight: 600; font-variation-settings: "wdth" 112; }
+
+  /* Sobre mí: el texto y, al lado, una ficha con los datos rápidos */
+  .sobre { display: grid; gap: 32px 48px; align-items: start; }
+  @media (min-width: 60rem) { .sobre { grid-template-columns: minmax(0, 1.6fr) minmax(16rem, 1fr); } }
+  .intro { color: var(--musgo); font-size: clamp(1.3rem, 2.1vw, 1.85rem); line-height: 1.35; font-weight: 400; letter-spacing: -.01em; max-width: 40ch; font-variation-settings: "wdth" 95; }
+  .datos { display: grid; grid-template-columns: auto 1fr; gap: 12px 24px; padding: 20px 24px; border: 1px solid var(--musgo-12); border-radius: 12px; }
+  .datos dt { font-size: .9rem; }
+  .datos dd { color: var(--musgo); }
+
+  /* Proyectos: una columna en móvil, dos en tablet, tres en monitor */
+  .proyectos { display: grid; gap: 40px 28px; }
+  @media (min-width: 48rem) { .proyectos { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 75rem) { .proyectos { grid-template-columns: repeat(3, 1fr); } }
+  .proyecto a { text-decoration: none; display: grid; gap: 16px; color: inherit; }
+  .proyecto img { width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: top left; border-radius: 10px; outline: 1px solid var(--musgo-12); transition: transform .4s cubic-bezier(.2, .8, .2, 1); }
+  .proyecto a:hover img { transform: scale(1.01); }
+  .proyecto h3 { color: var(--musgo); font-size: 1.5rem; font-weight: 650; letter-spacing: -.015em; font-variation-settings: "wdth" 110; }
+  .proyecto a:hover h3 { color: var(--tajinaste); }
+  .tec { font-size: .9rem; }
+
+  /* Cómo trabajo: cada costumbre con el sitio donde se puede comprobar */
+  .costumbres { list-style: none; padding: 0; display: grid; gap: 32px 40px; }
+  @media (min-width: 48rem) { .costumbres { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 75rem) { .costumbres { grid-template-columns: repeat(4, 1fr); } }
+  .costumbres h3 { color: var(--musgo); font-size: 1.25rem; font-weight: 600; letter-spacing: -.01em; font-variation-settings: "wdth" 105; margin-bottom: 8px; }
+  .costumbres p { max-width: 46ch; }
+  .prueba { margin-top: 12px; font-size: .9rem; }
+
+  /* Trayectoria y ahora: línea de tiempo con el pasado, el punto actual y lo que viene */
+  .linea-tiempo { list-style: none; padding: 0; }
+  .hito { display: grid; gap: 4px 32px; }
+  @media (min-width: 40rem) { .hito { grid-template-columns: 9rem 1fr; } }
+  .hito time { font-variant-numeric: tabular-nums; padding-top: 2px; }
+  .hito > div { position: relative; padding: 0 0 28px 32px; border-left: 1px solid var(--musgo-12); }
+  .hito:last-child > div { padding-bottom: 0; }
+  .hito > div::before { content: ""; position: absolute; left: -6px; top: 7px; width: 11px; height: 11px; border-radius: 50%; background: var(--laurisilva); border: 2px solid var(--musgo-70); }
+  .hito h3 { color: var(--musgo); font-size: 1.1rem; font-weight: 600; }
+  .hito p { max-width: 56ch; }
+  /* Lo que viene: punto hueco y línea discontinua */
+  .hito.viene > div { border-left-style: dashed; }
+  .hito.viene > div::before { border-style: dashed; border-color: var(--musgo-12); }
+  .hito.viene h3 { color: var(--musgo-70); }
+  /* Ahora: el único punto con el color de acento */
+  .hito.ahora time, .hito.ahora h3 { color: var(--tajinaste); }
+  .hito.ahora > div::before { background: var(--tajinaste); border-color: var(--tajinaste); box-shadow: 0 0 0 6px var(--acento-18); }
+  .hito.ahora ul { margin: 8px 0 0; padding-left: 1.1em; }
+  .hito.ahora li { margin-top: 4px; }
+
+  /* Trayectoria a la izquierda; «Ahora» y lo que viene, en un panel a la derecha */
+  .trayectoria { display: grid; gap: 40px 48px; align-items: start; }
+  @media (min-width: 60rem) { .trayectoria { grid-template-columns: minmax(0, 1.5fr) minmax(18rem, 1fr); } }
+  .panel-ahora { padding: 24px; border: 1px solid var(--musgo-12); border-radius: 12px; }
+  @media (min-width: 60rem) { .panel-ahora { position: sticky; top: 24px; } }
+  @media (min-width: 40rem) { .panel-ahora .hito { grid-template-columns: 5.5rem 1fr; gap: 4px 20px; } }
+
+  footer { padding: 0 clamp(24px, 5vw, 72px) 64px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<header class="portada">
+  <div class="barra">
+    <span>Tenerife</span>
+    <nav aria-label="Secciones">
+      <a href="#proyectos">Proyectos</a>
+      <a href="#como-trabajo">Cómo trabajo</a>
+      <a href="#trayectoria">Trayectoria</a>
+      <a href="#">Apuntes</a>
+    </nav>
+  </div>
+
+  <h1 class="nombre" aria-label="Alejandro Donate">
+    <span class="linea" aria-hidden="true">Alejandro</span>
+    <span class="linea" aria-hidden="true">Donate</span>
+  </h1>
+
+  <div class="pie">
+    <p>Estudio <strong>2º de DAM</strong> y hago aplicaciones con Java y Python, con las bases de datos detrás y Flutter delante.</p>
+    <p>Ahora mismo: relaciones en JPA, sockets en Python y una web con mis apuntes del curso.</p>
+    <a class="fct" href="#contacto">FCT desde febrero de 2027</a>
+  </div>
+</header>
+
+<main class="contenido">
+  <section class="bloque">
+    <h2>Sobre mí</h2>
+    <div class="sobre">
+      <p class="intro">Me engancha la parte que no se ve: dónde viven los datos y cómo llegan a la pantalla. Este curso he pasado de leer un CSV a mano a montar repositorios con JPA.</p>
+      <dl class="datos">
+        <dt>Dónde</dt><dd>Tenerife</dd>
+        <dt>Estudios</dt><dd>2º de DAM, IES Puerto de la Cruz</dd>
+        <dt>FCT</dt><dd>Desde febrero de 2027</dd>
+        <dt>Inglés</dt><dd>B1 certificado</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="bloque" id="proyectos">
+    <h2>Proyectos</h2>
+    <div class="proyectos">
+      <article class="proyecto">
+        <a href="zeeboard.html">
+          <img class="cap" style="view-transition-name: zb-captura" src="https://alejandrodongar.github.io/assets/img/zeeboard/dashboard.webp" alt="Panel principal de ZeeBoard" loading="lazy">
+          <h3 style="view-transition-name: zb-titulo">ZeeBoard</h3>
+          <p>Lleva los encargos de un artista de principio a fin: el cliente, cada etapa del dibujo con sus imágenes y lo que falta por cobrar.</p>
+          <p class="tec">TypeScript, React, Tauri y SQLite</p>
+        </a>
+      </article>
+      <article class="proyecto">
+        <a href="netscanner.html">
+          <img class="cap" style="view-transition-name: ns-captura" src="https://alejandrodongar.github.io/assets/img/netscanner/topologia.webp" alt="Mapa de la red en NetScanner" loading="lazy">
+          <h3 style="view-transition-name: ns-titulo">NetScanner</h3>
+          <p>Dibuja el mapa de una red local y avisa de los equipos que parecen un riesgo. Lo hicimos en equipo en las prácticas.</p>
+          <p class="tec">Python, Django, Scapy y MongoDB</p>
+        </a>
+      </article>
+      <article class="proyecto">
+        <a href="#">
+          <img class="cap" src="https://alejandrodongar.github.io/assets/img/centroplus/inicio.webp" alt="Pantalla de inicio de CentroPlus Connect" loading="lazy">
+          <h3>CentroPlus Connect</h3>
+          <p>Reservas, actividades e incidencias de un centro educativo: una web, una app en JavaFX y la API que las une.</p>
+          <p class="tec">Java 17, Spring y JavaFX</p>
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <section class="bloque" id="como-trabajo">
+    <h2>Cómo trabajo</h2>
+    <ul class="costumbres">
+      <li>
+        <h3>Commits pequeños que cuentan qué cambió</h3>
+        <p>Un commit por paso, con un mensaje que explica el cambio y el porqué. En las entregas de Despliegue el profesor revisa el historial, así que lo cuido desde el principio.</p>
+        <p class="prueba"><a href="https://github.com/alejandroDonGar/2DAM/commits/main">Historial de la web de apuntes</a></p>
+      </li>
+      <li>
+        <h3>Apunto lo que hago mientras lo hago</h3>
+        <p>Mis README guardan cada comando con la salida real que dio, errores incluidos. Lo que aprendo en clase lo paso a una web de apuntes que cualquiera puede leer.</p>
+        <p class="prueba"><a href="#">Apuntes de 2º DAM</a></p>
+      </li>
+      <li>
+        <h3>Lo doy por terminado cuando pasan las pruebas</h3>
+        <p>El taller mecánico de Acceso a Datos tenía 90 pruebas con JUnit y no lo entregué hasta verlas todas en verde. En la biblioteca con JPA también cuentan Checkstyle y PMD.</p>
+        <p class="prueba"><a href="https://github.com/alejandroDonGar/Acceso-a-Datos-2026---2027/tree/main/taller-mecanico-alejandroDonateGarcia">Código del taller</a></p>
+      </li>
+      <li>
+        <h3>Dejo que las máquinas hagan lo repetitivo</h3>
+        <p>GitHub Actions compila mis proyectos de Maven y publica el jar. Este CV y la web de apuntes se publican solos cada vez que subo un cambio.</p>
+        <p class="prueba"><a href="https://github.com/alejandroDonGar/Acceso-a-Datos-2026---2027/actions">Ejecuciones de GitHub Actions</a></p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="bloque" id="trayectoria">
+    <h2>Trayectoria y ahora</h2>
+    <div class="trayectoria">
+    <ol class="linea-tiempo" aria-label="Lo que ya he hecho">
+      <li class="hito">
+        <time>Sep 2025</time>
+        <div><h3>Empiezo DAM en el IES Puerto de la Cruz</h3><p>Java desde cero, HTML, CSS y JavaScript, XML y bases de datos con PostgreSQL en Docker.</p></div>
+      </li>
+      <li class="hito">
+        <time>May 2026</time>
+        <div><h3>CentroPlus Connect, el proyecto de 1º</h3><p>Una API REST con Spring Boot y arquitectura hexagonal, con una web y una app de JavaFX que la usan.</p></div>
+      </li>
+      <li class="hito">
+        <time>May 2026</time>
+        <div><h3>Prácticas en Laberit Canarias</h3><p>Desarrollamos NetScanner en equipo: Python, Django, Scapy para escanear la red y MongoDB para el historial.</p></div>
+      </li>
+      <li class="hito">
+        <time>Jul 2026</time>
+        <div><h3>Empiezo ZeeBoard por mi cuenta</h3><p>Una app de escritorio para artistas que trabajan por encargo, con Tauri, React y SQLite.</p></div>
+      </li>
+      <li class="hito">
+        <time>Sep 2026</time>
+        <div><h3>Segundo curso</h3><p>JDBC y JPA en Java, hilos y sockets en Python, Flutter, React con TypeScript, despliegue con Docker y nginx, y Odoo.</p></div>
+      </li>
+    </ol>
+    <aside class="panel-ahora">
+    <ol class="linea-tiempo" aria-label="Ahora y lo que viene">
+      <li class="hito ahora">
+        <time>Ahora</time>
+        <div>
+          <h3>Noviembre de 2026</h3>
+          <ul>
+            <li>Relaciones entre entidades con JPA e Hibernate en una biblioteca de prueba.</li>
+            <li>Servidores con sockets en Python, de momento atendiendo a un cliente cada vez.</li>
+            <li>Pasando mis apuntes del curso a una web.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="hito viene">
+        <time>Feb 2027</time>
+        <div><h3>FCT de 2º</h3><p>Busco empresa en Tenerife.</p></div>
+      </li>
+      <li class="hito viene">
+        <time>Jun 2027</time>
+        <div><h3>Termino DAM</h3></div>
+      </li>
+    </ol>
+    </aside>
+    </div>
+  </section>
+</main>
+
+<footer id="contacto">
+  <span>Busco empresa para la FCT a partir de febrero de 2027.</span>
+  <span><a href="#">Correo</a> &nbsp; <a href="https://github.com/alejandroDonGar">GitHub</a> &nbsp; <a href="https://www.linkedin.com/in/alejandrodongar/">LinkedIn</a></span>
+</footer>
+
+<script src="paletas.js"></script>
+<script>
+  // Parte el nombre en letras para que cada una tenga su propio grosor y anchura
+  const letras = [];
+  document.querySelectorAll('.nombre .linea').forEach(linea => {
+    linea.innerHTML = [...linea.textContent].map(c => `<span class="l">${c}</span>`).join('');
+    letras.push(...linea.querySelectorAll('.l'));
+  });
+
+  const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Estado de cada letra: valor actual y objetivo (el actual persigue al objetivo en cada fotograma)
+  const estado = letras.map(() => ({ w: 300, a: 90, wObj: 300, aObj: 90 }));
+  let raton = null;
+
+  addEventListener('pointermove', e => { raton = { x: e.clientX, y: e.clientY }; });
+  document.documentElement.addEventListener('pointerleave', () => { raton = null; });
+
+  function fotograma() {
+    letras.forEach((l, i) => {
+      const s = estado[i];
+      if (raton) {
+        const r = l.getBoundingClientRect();
+        const d = Math.hypot(raton.x - (r.left + r.width / 2), raton.y - (r.top + r.height / 2));
+        const cerca = Math.max(0, 1 - d / 420);   // 1 justo encima, 0 a 420 px o más
+        s.wObj = 300 + cerca * 600;               // de 300 a 900
+        s.aObj = 90 + cerca * 35;                 // de 90 a 125
+      } else { s.wObj = 300; s.aObj = 90; }
+      // Interpolación suave: avanza un 12 % de lo que falta, así se puede interrumpir en cualquier momento
+      s.w += (s.wObj - s.w) * .12;
+      s.a += (s.aObj - s.a) * .12;
+      l.style.setProperty('--w', s.w.toFixed(1));
+      l.style.setProperty('--a', s.a.toFixed(1));
+    });
+    requestAnimationFrame(fotograma);
+  }
+  if (!quieto) requestAnimationFrame(fotograma);
+</script>
+</body>
+</html>
