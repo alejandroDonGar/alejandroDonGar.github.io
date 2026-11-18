@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZeeBoard: case study | Alejandro Donate</title>
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<meta name="description" content="How and why I made ZeeBoard, a desktop app for artists who work on commission.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../paletas.css?v=2">
+<style>
+  /* Colores en paletas.css; misma fuente que la portada */
+  :root { --margen: clamp(20px, 5vw, 72px); }
+  * { box-sizing: border-box; margin: 0; }
+
+  body { background: var(--laurisilva); color: var(--musgo-70); font: 400 1.0625rem/1.65 "Mona Sans", system-ui, sans-serif; }
+  a { color: var(--musgo); text-underline-offset: .25em; text-decoration-color: var(--tajinaste); }
+  a:hover { color: var(--tajinaste); }
+  :focus-visible { outline: 2px solid var(--tajinaste); outline-offset: 4px; border-radius: 4px; }
+
+  .barra { display: flex; justify-content: space-between; gap: 16px; padding: 28px var(--margen); font-size: .95rem; }
+  .barra a { text-decoration: none; color: var(--musgo-70); }
+  .barra a:hover { color: var(--musgo); }
+
+  /* Cabecera: en monitor, título y ficha a la izquierda y la captura a la derecha */
+  .cabecera { padding: 24px var(--margen) 0; display: grid; gap: 32px 56px; align-items: center; }
+  @media (min-width: 75rem) { .cabecera { grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); } }
+  /* El título se mide con el ancho de su columna (cqi), no con el de la ventana: nunca se sale de ella */
+  .presenta { display: grid; gap: 28px; container-type: inline-size; }
+  h1 { color: var(--musgo); font-size: clamp(2.5rem, 18cqi, 7rem); line-height: .9; letter-spacing: -.03em; font-variation-settings: "wght" 800, "wdth" 125; }
+  .resumen { color: var(--musgo); font-size: clamp(1.2rem, 1.8vw, 1.5rem); line-height: 1.4; max-width: 34ch; font-variation-settings: "wdth" 95; }
+  .ficha { display: grid; gap: 16px 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: 20px; border-top: 1px solid var(--musgo-12); }
+  .ficha dt { font-size: .85rem; }
+  .ficha dd { color: var(--musgo); }
+  /* Las columnas de la rejilla pueden encogerse aunque dentro haya código ancho (el código se desplaza solo) */
+  .bloque > *, .dos > *, .decision > * { min-width: 0; }
+  /* Ninguna imagen pasa del ancho de su columna */
+  img { display: block; width: 100%; height: auto; }
+  figcaption { font-size: .85rem; margin-top: 10px; }
+
+  /* Cuerpo: título de sección en una columna estrecha, contenido en el resto del ancho */
+  .cuerpo { padding: 88px var(--margen); display: grid; gap: 88px; }
+  .bloque { display: grid; gap: 24px; }
+  @media (min-width: 60rem) { .bloque { grid-template-columns: 12rem minmax(0, 1fr); gap: 40px; } }
+  .bloque > h2 { color: var(--musgo); font-size: 1rem; font-weight: 600; font-variation-settings: "wdth" 112; }
+  h3 { color: var(--musgo); font-size: 1.4rem; font-weight: 650; letter-spacing: -.015em; font-variation-settings: "wdth" 110; margin-bottom: 10px; }
+  .texto { display: grid; gap: 14px; max-width: 62ch; }
+  .texto strong { color: var(--musgo); font-weight: 600; }
+
+  /* Dos columnas de texto (contexto, aprendizaje) */
+  .dos { display: grid; gap: 32px 48px; }
+  @media (min-width: 60rem) { .dos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  /* Cada decisión: el texto a la izquierda y su imagen o código a la derecha */
+  .decisiones { display: grid; gap: 64px; }
+  .decision { display: grid; gap: 24px 48px; align-items: start; }
+  @media (min-width: 75rem) { .decision { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); } }
+  .dato { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin-top: 20px; }
+  .dato b { color: var(--tajinaste); font-size: clamp(1.8rem, 3.2vw, 2.6rem); font-weight: 700; letter-spacing: -.02em; font-variation-settings: "wdth" 115; }
+
+  pre { background: var(--marco); border-radius: 14px; padding: 20px 22px; overflow-x: auto; font: .84rem/1.6 ui-monospace, "Cascadia Code", Consolas, monospace; color: var(--musgo); }
+  pre .c { color: var(--musgo-70); }
+  .nota-codigo { font-size: .85rem; margin-top: 8px; }
+  .pareja { display: grid; gap: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pareja img { aspect-ratio: 4/3; object-fit: cover; object-position: top; }
+
+  .enlaces { display: flex; flex-wrap: wrap; gap: 12px; }
+  .boton { display: inline-flex; padding: 10px 18px; border-radius: 99px; text-decoration: none; font-weight: 600; border: 1px solid var(--musgo-12); }
+  .boton.principal { background: var(--tajinaste); color: var(--laurisilva); border-color: var(--tajinaste); }
+  .boton.principal:hover { color: var(--laurisilva); }
+
+  .siguiente { padding: 0 var(--margen) 72px; }
+  .siguiente a { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; padding-top: 28px; border-top: 1px solid var(--musgo-12); text-decoration: none; color: var(--musgo-70); }
+  .siguiente strong { color: var(--musgo); font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1; letter-spacing: -.02em; font-variation-settings: "wght" 700, "wdth" 120; }
+  .siguiente a:hover strong { color: var(--tajinaste); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+<link rel="alternate" hreflang="es" href="https://alejandrodongar.github.io/zeeboard.html">
+<link rel="alternate" hreflang="en" href="https://alejandrodongar.github.io/en/zeeboard.html">
+</head>
+<body>
+<nav class="barra" aria-label="Navigation">
+  <a href="./#proyectos">Back to projects</a>
+  <a href="./">Alejandro Donate</a>
+  <a href="../zeeboard.html" lang="es" hreflang="es">Español</a>
+</nav>
+
+<header class="cabecera">
+  <div class="presenta">
+    <h1 style="view-transition-name: zb-titulo">ZeeBoard</h1>
+    <p class="resumen">A desktop app for artists who work on commission. It follows each drawing from the request until it's paid.</p>
+    <dl class="ficha">
+      <div><dt>My role</dt><dd>The idea, the design and the testing; the code, with AI</dd></div>
+      <div><dt>Since</dt><dd>June 2026, ongoing</dd></div>
+      <div><dt>Stack</dt><dd>Tauri, Rust, React, TypeScript and SQLite</dd></div>
+      <div><dt>Status</dt><dd>Version 0.2, installable and in daily use</dd></div>
+    </dl>
+  </div>
+  <figure>
+    <img class="cap" style="view-transition-name: zb-captura" src="../assets/img/zeeboard/commission.webp" alt="An open commission in ZeeBoard with its stages and the image for each one">
+    <figcaption>An open commission: payments at the top, each stage with its image below. Made-up data.</figcaption>
+  </figure>
+</header>
+
+<main class="cuerpo">
+  <section class="bloque">
+    <h2>Context</h2>
+    <div class="dos">
+      <div>
+        <h3>The problem</h3>
+        <div class="texto">
+          <p>In my free time I draw on the iPad and take commissions. I open slots on Twitter and Bluesky, people request their character through a Google form with their references, and each drawing goes through stages: sketch, lineart, colour. The client reviews each one and sometimes asks for changes before I move on.</p>
+          <p>I kept all of that spread across the form, PayPal, image folders and notes. Checking where a drawing was or whether someone had paid meant looking in four places, so I wanted a board that showed it at a glance, without uploading my clients' data to any service.</p>
+        </div>
+      </div>
+      <div>
+        <h3>My role</h3>
+        <div class="texto">
+          <p>The idea came from a need of my own. I don't know Rust or Tauri and only a little TypeScript, so almost all of the code is written by an AI assistant (Claude Code) from what I ask for. I did it that way to have something working quickly.</p>
+          <p>My part is deciding what the app does and how it looks, testing every change with my real commissions, and reading the code until I understand what it does. The work happens on branches, with small commits and a <a href="https://github.com/alejandroDonGar/zeeboard/blob/main/ROADMAP.md">plan</a> that gets ticked off. It's at 152 commits today.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque">
+    <h2>Decisions</h2>
+    <div class="decisiones">
+      <article class="decision">
+        <div>
+          <h3>Everything lives on the computer</h3>
+          <div class="texto">
+            <p>The data belongs to my clients: names, PayPal emails and what they've paid me. That's why ZeeBoard is a desktop app with Tauri and a local SQLite database, with no server and no accounts.</p>
+            <p>What you lose is cloud backup, so the app makes a backup every day in a folder of your choice (I use a Google Drive one) and can restore it without deleting anything.</p>
+          </div>
+        </div>
+        <img class="cap" src="https://alejandrodongar.github.io/zeeboard/images/settings-backups.png" alt="Automatic backup settings in ZeeBoard" loading="lazy">
+      </article>
+
+      <article class="decision">
+        <div>
+          <h3>50 MB images that don't slow the app down</h3>
+          <div class="texto">
+            <p>My exported canvases are 40 to 70 MB each. At first the app stored them as they were inside the database and everything was slow. Now, when you import an image, Rust makes a WebP copy of at most 2560 px and a 480 px thumbnail. The original stays on the iPad.</p>
+          </div>
+          <p class="dato"><b>92 MB → 60 KB</b><span>the database size before and after moving the images out</span></p>
+        </div>
+        <div>
+          <pre><code><span class="c">// El nombre es el hash: una imagen repetida se reutiliza</span>
+let hash = Sha256::digest(original);
+
+let decoded = decode(original)?;
+let view = shrink(&amp;decoded, VIEW_MAX_SIDE)?;  <span class="c">// 2560 px</span>
+drop(decoded);                                 <span class="c">// suelta el lienzo ya</span>
+let thumb = shrink(&amp;view, THUMB_MAX_SIDE)?;    <span class="c">// 480 px</span>
+
+write_atomically(&amp;full_path, &amp;encode_webp(&amp;view, VIEW_QUALITY))?;</code></pre>
+          <p class="nota-codigo">Excerpt from <a href="https://github.com/alejandroDonGar/zeeboard/blob/main/src-tauri/src/images.rs">src-tauri/src/images.rs</a></p>
+        </div>
+      </article>
+
+      <article class="decision">
+        <div>
+          <h3>From the iPad to the stage, no cables</h3>
+          <div class="texto">
+            <p>I draw on the iPad and the computer is wired, so they aren't on the same network. The app runs a small Rust server, and Tailscale connects both devices even when the iPad is on mobile data.</p>
+            <p>From a key-protected page that opens with a QR code, I send the image straight to the commission's stage. Client corrections are marked with pins on the image.</p>
+          </div>
+        </div>
+        <div class="pareja">
+          <img class="cap" src="../assets/img/zeeboard/ipad-page.webp" alt="iPad page to pick the commission and send the image" loading="lazy">
+          <img class="cap" src="../assets/img/zeeboard/correction-pins.webp" alt="Client corrections marked with pins on the image" loading="lazy">
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="bloque">
+    <h2>What I learned</h2>
+    <div class="dos">
+      <div class="texto">
+        <p>Not to touch anyone's data without a safety net: every migration saves a copy of the database first, and 15 check scripts verify payments, imports and the trash every time I change something.</p>
+        <p>And to read code in languages I don't know well: understanding what each part does even if I didn't write it, and knowing what to ask for when something breaks.</p>
+      </div>
+      <div class="texto">
+        <p><strong>What I'd do differently:</strong> keep the images out of the database from day one. Moving them later meant converting the data I already had.</p>
+        <div class="enlaces">
+          <a class="boton principal" href="https://alejandrodongar.github.io/zeeboard/">ZeeBoard page</a>
+          <a class="boton" href="https://github.com/alejandroDonGar/zeeboard">Code on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="siguiente">
+  <a href="netscanner.html"><span>Next project</span><strong>NetScanner</strong></a>
+</div>
+<script src="../paletas.js?v=2"></script>
+</body>
+</html>

@@ -1,12 +1,13 @@
 // Interruptor de tema claro/oscuro; la primera vez sigue al sistema y luego recuerda la elección
 (() => {
-  const temas = { niebla: 'Claro', pizarra: 'Oscuro' };
+  const en = document.documentElement.lang === 'en';
+  const temas = { niebla: en ? 'Light' : 'Claro', pizarra: en ? 'Dark' : 'Oscuro' };
   const raiz = document.documentElement;
 
   const caja = document.createElement('div');
   caja.className = 'selector-paleta';
   caja.setAttribute('role', 'group');
-  caja.setAttribute('aria-label', 'Tema');
+  caja.setAttribute('aria-label', en ? 'Theme' : 'Tema');
   // Los nombres son fijos (no vienen del usuario), así que se pueden poner en el HTML
   caja.innerHTML = Object.entries(temas)
     .map(([v, n]) => `<button type="button" data-tema="${v}">${n}</button>`).join('');

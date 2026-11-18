@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CentroPlus Connect: case study | Alejandro Donate</title>
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<meta name="description" content="CentroPlus Connect, my first-year final project: a JavaFX app and a Spring Boot REST API to manage a school.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../paletas.css?v=2">
+<style>
+  /* Misma estructura que el caso de ZeeBoard; colores y movimiento en paletas.css */
+  :root { --margen: clamp(20px, 5vw, 72px); }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--laurisilva); color: var(--musgo-70); font: 400 1.0625rem/1.65 "Mona Sans", system-ui, sans-serif; }
+  a { color: var(--musgo); text-underline-offset: .25em; text-decoration-color: var(--tajinaste); }
+  a:hover { color: var(--tajinaste); }
+  :focus-visible { outline: 2px solid var(--tajinaste); outline-offset: 4px; border-radius: 4px; }
+
+  .barra { display: flex; justify-content: space-between; gap: 16px; padding: 28px var(--margen); font-size: .95rem; }
+  .barra a { text-decoration: none; color: var(--musgo-70); }
+  .barra a:hover { color: var(--musgo); }
+
+  .cabecera { padding: 24px var(--margen) 0; display: grid; gap: 32px 56px; align-items: center; }
+  @media (min-width: 75rem) { .cabecera { grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); } }
+  /* El título se mide con el ancho de su columna (cqi): nunca se sale de ella */
+  .presenta { display: grid; gap: 28px; container-type: inline-size; }
+  h1 { color: var(--musgo); font-size: clamp(2.2rem, 11cqi, 6rem); line-height: .9; letter-spacing: -.03em; font-variation-settings: "wght" 800, "wdth" 125; }
+  .resumen { color: var(--musgo); font-size: clamp(1.2rem, 1.8vw, 1.5rem); line-height: 1.4; max-width: 34ch; font-variation-settings: "wdth" 95; }
+  .ficha { display: grid; gap: 16px 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: 20px; border-top: 1px solid var(--musgo-12); }
+  .ficha dt { font-size: .85rem; }
+  .ficha dd { color: var(--musgo); }
+  img { display: block; width: 100%; height: auto; }
+  figcaption { font-size: .85rem; margin-top: 10px; }
+
+  .cuerpo { padding: 88px var(--margen); display: grid; gap: 88px; }
+  .bloque { display: grid; gap: 24px; }
+  @media (min-width: 60rem) { .bloque { grid-template-columns: 12rem minmax(0, 1fr); gap: 40px; } }
+  .bloque > *, .dos > *, .decision > * { min-width: 0; }
+  .bloque > h2 { color: var(--musgo); font-size: 1rem; font-weight: 600; font-variation-settings: "wdth" 112; }
+  h3 { color: var(--musgo); font-size: 1.4rem; font-weight: 650; letter-spacing: -.015em; font-variation-settings: "wdth" 110; margin-bottom: 10px; }
+  .texto { display: grid; gap: 14px; max-width: 62ch; }
+  .texto strong { color: var(--musgo); font-weight: 600; }
+  .dos { display: grid; gap: 32px 48px; }
+  @media (min-width: 60rem) { .dos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  /* Lo que hice yo: lista en columnas */
+  .partes { list-style: none; padding: 0; display: grid; gap: 20px 32px; margin-top: 8px; }
+  @media (min-width: 48rem) { .partes { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  /* Va debajo del contexto, en la columna de contenido y no en la del título de la sección */
+  @media (min-width: 60rem) { .bloque > .partes { grid-column: 2; } }
+  .partes strong { display: block; color: var(--musgo); font-weight: 600; margin-bottom: 4px; }
+
+  .decisiones { display: grid; gap: 64px; }
+  .decision { display: grid; gap: 24px 48px; align-items: start; }
+  @media (min-width: 75rem) { .decision { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); } }
+  .dato { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin-top: 20px; }
+  .dato b { color: var(--tajinaste); font-size: clamp(1.8rem, 3.2vw, 2.6rem); font-weight: 700; letter-spacing: -.02em; font-variation-settings: "wdth" 115; }
+
+  pre { background: var(--marco); border-radius: 14px; padding: 20px 22px; overflow-x: auto; font: .84rem/1.6 ui-monospace, "Cascadia Code", Consolas, monospace; color: var(--musgo); }
+  pre .c { color: var(--musgo-70); }
+  .nota-codigo { font-size: .85rem; margin-top: 8px; }
+
+  .enlaces { display: flex; flex-wrap: wrap; gap: 12px; }
+  .boton { display: inline-flex; padding: 10px 18px; border-radius: 99px; text-decoration: none; font-weight: 600; border: 1px solid var(--musgo-12); }
+  .boton.principal { background: var(--tajinaste); color: var(--laurisilva); border-color: var(--tajinaste); }
+  .boton.principal:hover { color: var(--laurisilva); }
+
+
+  .siguiente { padding: 0 var(--margen) 72px; }
+  .siguiente a { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; padding-top: 28px; border-top: 1px solid var(--musgo-12); text-decoration: none; color: var(--musgo-70); }
+  .siguiente strong { color: var(--musgo); font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1; letter-spacing: -.02em; font-variation-settings: "wght" 700, "wdth" 120; }
+  .siguiente a:hover strong { color: var(--tajinaste); }
+</style>
+<link rel="alternate" hreflang="es" href="https://alejandrodongar.github.io/centroplus.html">
+<link rel="alternate" hreflang="en" href="https://alejandrodongar.github.io/en/centroplus.html">
+</head>
+<body>
+<nav class="barra" aria-label="Navigation">
+  <a href="./#proyectos">Back to projects</a>
+  <a href="./">Alejandro Donate</a>
+  <a href="../centroplus.html" lang="es" hreflang="es">Español</a>
+</nav>
+
+<header class="cabecera">
+  <div class="presenta">
+    <h1 style="view-transition-name: cp-titulo">CentroPlus Connect</h1>
+    <p class="resumen">Running a school: users, activities, bookings and incident reports, with a desktop app and a REST API.</p>
+    <dl class="ficha">
+      <div><dt>My role</dt><dd>Solo project</dd></div>
+      <div><dt>When</dt><dd>May and June 2026, first-year final project</dd></div>
+      <div><dt>Stack</dt><dd>Java 17, Spring Boot, JavaFX, SQLite and H2</dd></div>
+      <div><dt>Outcome</dt><dd>App, Swagger-documented API and 41 test classes</dd></div>
+    </dl>
+  </div>
+  <figure>
+    <img class="cap" style="view-transition-name: cp-captura" src="https://alejandrodongar.github.io/centroplus-connect/images/app.webp" alt="Main screen of the CentroPlus Connect JavaFX app">
+    <figcaption>The desktop app: activities with their duration, price and free places.</figcaption>
+  </figure>
+</header>
+
+<main class="cuerpo">
+  <section class="bloque">
+    <h2>Context</h2>
+    <div class="dos">
+      <div>
+        <h3>The brief</h3>
+        <div class="texto">
+          <p>It was the only project of the year, the end-of-year one for my first-year Programming course. I had a month, from 11 May to 11 June, to build a management app for a school with its database, its API and a user interface.</p>
+        </div>
+      </div>
+      <div>
+        <h3>My role</h3>
+        <div class="texto">
+          <p>I built it alone, from the database to the documentation. I used AI for questions and specific parts, but I wrote the code.</p>
+        </div>
+      </div>
+    </div>
+    <ul class="partes" aria-label="What I did">
+      <li><strong>The database</strong>The SQLite schema, models and validation for users, activities, bookings and incident reports.</li>
+      <li><strong>The desktop app</strong>Activity list and detail, bookings you can create and cancel, and incident reports with their status.</li>
+      <li><strong>The REST API</strong>CRUD for all four resources with Spring Boot, documented with Swagger, plus a management website.</li>
+    </ul>
+  </section>
+
+  <section class="bloque">
+    <h2>Decisions</h2>
+    <div class="decisiones">
+      <article class="decision">
+        <div>
+          <h3>Hexagonal architecture in the API</h3>
+          <div class="texto">
+            <p>The brief required a hexagonal architecture, and it was my first time using one. The domain (the classes <code>Actividad</code>, <code>Reserva</code>…) knows nothing about the database or HTTP: controllers come in on one side, JPA persistence goes out the other, and in between are the ports, which are interfaces.</p>
+            <p>To convert between the database entity and the domain model I used MapStruct, which generates those mappings from an interface.</p>
+          </div>
+        </div>
+        <div>
+          <pre><code><span class="c">// MapStruct escribe la clase y Spring la inyecta</span>
+@Mapper(componentModel = "spring")
+public interface ActividadMapper {
+
+    Actividad toDomain(ActividadJpaEntity entity);
+
+    ActividadJpaEntity toEntity(Actividad actividad);
+}</code></pre>
+          <p class="nota-codigo">Excerpt from <code>adapters/mapper/ActividadMapper.java</code></p>
+        </div>
+      </article>
+
+      <article class="decision">
+        <div>
+          <h3>Two ways to use it</h3>
+          <div class="texto">
+            <p>The JavaFX app is for the people who use the school day to day: browsing activities, booking a place and reporting an issue. The API also serves a website to manage everything from the browser, with nothing to install, including a chart dashboard and export to CSV, JSON and PDF.</p>
+          </div>
+        </div>
+        <img class="cap" src="https://alejandrodongar.github.io/centroplus-connect/images/web-gestion.webp" alt="CentroPlus management website served by the API" loading="lazy">
+      </article>
+
+      <article class="decision">
+        <div>
+          <h3>Documented and tested</h3>
+          <div class="texto">
+            <p>Every endpoint can be tried from the browser with Swagger, and I rewrote its texts to explain the project instead of showing the defaults. Behind it there are 41 test classes with JUnit 5 and Mockito, across the app and the API.</p>
+          </div>
+          <p class="dato"><b>41 test classes</b><span>with JUnit 5 and Mockito, across the desktop app and the API</span></p>
+        </div>
+        <img class="cap" src="https://alejandrodongar.github.io/centroplus-connect/images/swagger.webp" alt="CentroPlus API documentation in Swagger" loading="lazy">
+      </article>
+    </div>
+  </section>
+
+  <section class="bloque">
+    <h2>What I learned</h2>
+    <div class="dos">
+      <div class="texto">
+        <p>Mostly, it was my first look at a lot of things: Spring Boot, JavaFX, hexagonal architecture, Swagger and testing with Mockito.</p>
+        <p>It went so fast that we barely covered the core of Spring. Now, in second year, we're studying it in depth.</p>
+      </div>
+      <div class="texto">
+        <div class="enlaces">
+          <a class="boton principal" href="https://alejandrodongar.github.io/centroplus-connect/">CentroPlus page</a>
+          <a class="boton" href="https://github.com/alejandroDonGar/centroplus-connect">Code on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="siguiente">
+  <a href="zeeboard.html"><span>Next project</span><strong>ZeeBoard</strong></a>
+</div>
+<script src="../paletas.js?v=2"></script>
+</body>
+</html>

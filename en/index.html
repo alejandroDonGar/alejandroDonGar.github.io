@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alejandro Donate García | Second-year DAM student</title>
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<meta name="description" content="Alejandro Donate García, second-year Multiplatform Application Development student in Tenerife. Java, Python and Flutter. Looking for an internship from February 2027.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Mona Sans: fuente variable de GitHub con ejes de anchura (wdth) y grosor (wght) -->
+<link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../paletas.css?v=2">
+<style>
+  /* Los colores vienen de paletas.css (dos colores y un acento) */
+  * { box-sizing: border-box; margin: 0; }
+
+  body { background: var(--laurisilva); color: var(--musgo-70); font: 400 1.0625rem/1.6 "Mona Sans", system-ui, sans-serif; font-variation-settings: "wdth" 100; }
+  a { color: var(--musgo); text-underline-offset: .25em; text-decoration-color: var(--tajinaste); }
+  a:hover { color: var(--tajinaste); }
+  :focus-visible { outline: 2px solid var(--tajinaste); outline-offset: 4px; border-radius: 4px; }
+
+  /* Portada: el nombre ocupa la pantalla y reacciona al cursor */
+  .portada { min-height: 100svh; display: grid; grid-template-rows: auto 1fr auto; padding: 32px clamp(24px, 5vw, 72px); }
+  .barra { display: flex; justify-content: space-between; align-items: center; gap: 24px; font-size: .95rem; }
+  .barra nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px 28px; }
+  @media (max-width: 40rem) { .barra > span { display: none; } .barra nav { gap: 8px 18px; justify-content: flex-start; } }
+  .barra nav a { color: var(--musgo-70); text-decoration: none; }
+  .barra nav a:hover { color: var(--musgo); }
+
+  .nombre { align-self: center; color: var(--musgo); line-height: .86; letter-spacing: -.02em; font-size: clamp(3.4rem, 13.5vw, 12.5rem); user-select: none; }
+  .nombre .linea { display: block; white-space: nowrap; }
+  /* Cada letra lleva su propio grosor y anchura, que el script va cambiando */
+  .nombre .l { display: inline-block; font-variation-settings: "wght" var(--w, 300), "wdth" var(--a, 90); }
+
+  .pie { display: grid; gap: 24px; align-items: end; }
+  @media (min-width: 52rem) { .pie { grid-template-columns: 1.2fr 1fr auto; } }
+  .pie p { max-width: 38ch; }
+  .pie strong { color: var(--musgo); font-weight: 600; }
+  .fct { justify-self: start; display: inline-flex; align-items: center; gap: 10px; color: var(--laurisilva); background: var(--tajinaste); font-weight: 600; padding: 10px 18px; border-radius: 99px; text-decoration: none; white-space: nowrap; }
+  .fct:hover { color: var(--laurisilva); transform: translateY(-1px); }
+  .fct:active { transform: scale(.97); }
+
+  /* Contenido */
+  /* Sin ancho máximo: el contenido usa todo el ancho y las listas se reparten en columnas */
+  .contenido { padding: 72px clamp(24px, 5vw, 72px); display: grid; gap: 88px; }
+  .bloque { display: grid; gap: 24px; }
+  @media (min-width: 60rem) { .bloque { grid-template-columns: 12rem 1fr; gap: 40px; } }
+  .bloque > h2 { color: var(--musgo); font-size: 1rem; font-weight: 600; font-variation-settings: "wdth" 112; }
+
+  /* Sobre mí: el texto y, al lado, una ficha con los datos rápidos */
+  .sobre { display: grid; gap: 32px 48px; align-items: start; }
+  @media (min-width: 60rem) { .sobre { grid-template-columns: minmax(0, 1.6fr) minmax(16rem, 1fr); } }
+  .intro { color: var(--musgo); font-size: clamp(1.3rem, 2.1vw, 1.85rem); line-height: 1.35; font-weight: 400; letter-spacing: -.01em; max-width: 40ch; font-variation-settings: "wdth" 95; }
+  .datos { display: grid; grid-template-columns: auto 1fr; gap: 12px 24px; padding: 20px 24px; border: 1px solid var(--musgo-12); border-radius: 12px; }
+  .datos dt { font-size: .9rem; }
+  .datos dd { color: var(--musgo); }
+
+  /* Proyectos: una columna en móvil, dos en tablet, tres en monitor */
+  .proyectos { display: grid; gap: 40px 28px; }
+  @media (min-width: 48rem) { .proyectos { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 75rem) { .proyectos { grid-template-columns: repeat(3, 1fr); } }
+  .proyecto a { text-decoration: none; display: grid; gap: 16px; color: inherit; }
+  .proyecto img { width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: top left; border-radius: 10px; outline: 1px solid var(--musgo-12); transition: transform .4s cubic-bezier(.2, .8, .2, 1); }
+  .proyecto a:hover img { transform: scale(1.01); }
+  .proyecto h3 { color: var(--musgo); font-size: 1.5rem; font-weight: 650; letter-spacing: -.015em; font-variation-settings: "wdth" 110; }
+  .proyecto a:hover h3 { color: var(--tajinaste); }
+  .tec { font-size: .9rem; }
+
+  /* Cómo trabajo: cada costumbre con el sitio donde se puede comprobar */
+  .costumbres { list-style: none; padding: 0; display: grid; gap: 32px 40px; }
+  @media (min-width: 48rem) { .costumbres { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 75rem) { .costumbres { grid-template-columns: repeat(4, 1fr); } }
+  .costumbres h3 { color: var(--musgo); font-size: 1.25rem; font-weight: 600; letter-spacing: -.01em; font-variation-settings: "wdth" 105; margin-bottom: 8px; }
+  .costumbres p { max-width: 46ch; }
+  .prueba { margin-top: 12px; font-size: .9rem; }
+
+  /* Trayectoria y ahora: línea de tiempo con el pasado, el punto actual y lo que viene */
+  .linea-tiempo { list-style: none; padding: 0; }
+  .hito { display: grid; gap: 4px 32px; }
+  @media (min-width: 40rem) { .hito { grid-template-columns: 9rem 1fr; } }
+  .hito time { font-variant-numeric: tabular-nums; padding-top: 2px; }
+  .hito > div { position: relative; padding: 0 0 28px 32px; border-left: 1px solid var(--musgo-12); }
+  .hito:last-child > div { padding-bottom: 0; }
+  .hito > div::before { content: ""; position: absolute; left: -6px; top: 7px; width: 11px; height: 11px; border-radius: 50%; background: var(--laurisilva); border: 2px solid var(--musgo-70); }
+  .hito h3 { color: var(--musgo); font-size: 1.1rem; font-weight: 600; }
+  .hito p { max-width: 56ch; }
+  /* Lo que viene: punto hueco y línea discontinua */
+  .hito.viene > div { border-left-style: dashed; }
+  .hito.viene > div::before { border-style: dashed; border-color: var(--musgo-12); }
+  .hito.viene h3 { color: var(--musgo-70); }
+  /* Ahora: el único punto con el color de acento */
+  .hito.ahora time, .hito.ahora h3 { color: var(--tajinaste); }
+  .hito.ahora > div::before { background: var(--tajinaste); border-color: var(--tajinaste); box-shadow: 0 0 0 6px var(--acento-18); }
+  .hito.ahora ul { margin: 8px 0 0; padding-left: 1.1em; }
+  .hito.ahora li { margin-top: 4px; }
+
+  /* Trayectoria a la izquierda; «Ahora» y lo que viene, en un panel a la derecha */
+  .trayectoria { display: grid; gap: 40px 48px; align-items: start; }
+  @media (min-width: 60rem) { .trayectoria { grid-template-columns: minmax(0, 1.5fr) minmax(18rem, 1fr); } }
+  .panel-ahora { padding: 24px; border: 1px solid var(--musgo-12); border-radius: 12px; }
+  @media (min-width: 60rem) { .panel-ahora { position: sticky; top: 24px; } }
+  @media (min-width: 40rem) { .panel-ahora .hito { grid-template-columns: 5.5rem 1fr; gap: 4px 20px; } }
+
+  /* Contacto: los datos de la FCT a un lado y la forma de escribirme al otro */
+  .contacto { display: grid; gap: 32px 48px; align-items: start; }
+  @media (min-width: 60rem) { .contacto { grid-template-columns: minmax(0, 1.5fr) minmax(16rem, 1fr); } }
+  .contacto .datos { grid-template-columns: auto 1fr; }
+  .contacto .datos dd { max-width: 52ch; }
+  .escribir { display: grid; gap: 16px; align-content: start; }
+  .escribir p { color: var(--musgo); font-size: 1.25rem; line-height: 1.4; letter-spacing: -.01em; max-width: 26ch; }
+  .escribir .redes { display: flex; flex-wrap: wrap; gap: 20px; font-size: 1rem; }
+
+  footer { padding: 0 clamp(24px, 5vw, 72px) 48px; font-size: .9rem; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+<link rel="alternate" hreflang="es" href="https://alejandrodongar.github.io/">
+<link rel="alternate" hreflang="en" href="https://alejandrodongar.github.io/en/">
+</head>
+<body>
+<header class="portada">
+  <div class="barra">
+    <span>Tenerife</span>
+    <nav aria-label="Sections">
+      <a href="#proyectos">Projects</a>
+      <a href="#como-trabajo">How I work</a>
+      <a href="#trayectoria">Timeline</a>
+      <a href="#contacto">Contact</a>
+      <a href="/2DAM/">Notes</a>
+      <a href="../" lang="es" hreflang="es">Español</a>
+</nav>
+  </div>
+
+  <h1 class="nombre" aria-label="Alejandro Donate">
+    <span class="linea" aria-hidden="true">Alejandro</span>
+    <span class="linea" aria-hidden="true">Donate</span>
+  </h1>
+
+  <div class="pie">
+    <p>I study <strong>Multiplatform App Development</strong> and build apps with Java and Python, with databases behind them and Flutter in front.</p>
+    <p>Right now: JPA relationships, sockets in Python and a website with my course notes.</p>
+    <a class="fct" href="#contacto">Internship from February 2027</a>
+  </div>
+</header>
+
+<main class="contenido">
+  <section class="bloque">
+    <h2>About me</h2>
+    <div class="sobre">
+      <p class="intro">I'm hooked on the part nobody sees: where the data lives and how it gets to the screen. This year I went from parsing a CSV by hand to building repositories with JPA.</p>
+      <dl class="datos">
+        <dt>Where</dt><dd>Tenerife</dd>
+        <dt>Studies</dt><dd>Second year of DAM, IES Puerto de la Cruz</dd>
+        <dt>Internship</dt><dd>From February 2027</dd>
+        <dt>English</dt><dd>Certified B1</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="bloque" id="proyectos">
+    <h2>Projects</h2>
+    <div class="proyectos">
+      <article class="proyecto">
+        <a href="zeeboard.html">
+          <img class="cap" style="view-transition-name: zb-captura" src="../assets/img/zeeboard/dashboard.webp" alt="ZeeBoard dashboard" loading="lazy">
+          <h3 style="view-transition-name: zb-titulo">ZeeBoard</h3>
+          <p>Tracks an artist's commissions from start to finish: the client, every stage of the drawing with its images, and what is still unpaid.</p>
+          <p class="tec">TypeScript, React, Tauri and SQLite</p>
+        </a>
+      </article>
+      <article class="proyecto">
+        <a href="netscanner.html">
+          <img class="cap" style="view-transition-name: ns-captura" src="../assets/img/netscanner/topologia.webp" alt="Network map in NetScanner" loading="lazy">
+          <h3 style="view-transition-name: ns-titulo">NetScanner</h3>
+          <p>Maps a local network and flags the devices that look risky. A team project from my first internship.</p>
+          <p class="tec">Python, Django, Scapy and MongoDB</p>
+        </a>
+      </article>
+      <article class="proyecto">
+        <a href="centroplus.html">
+          <img class="cap" style="view-transition-name: cp-captura" src="../assets/img/centroplus/inicio.webp" alt="CentroPlus Connect home screen" loading="lazy">
+          <h3 style="view-transition-name: cp-titulo">CentroPlus Connect</h3>
+          <p>Bookings, activities and incident reports for a school: a website, a JavaFX app and the API behind both.</p>
+          <p class="tec">Java 17, Spring and JavaFX</p>
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <section class="bloque" id="como-trabajo">
+    <h2>How I work</h2>
+    <ul class="costumbres">
+      <li>
+        <h3>Small commits that say what changed</h3>
+        <p>One commit per step, with a message that explains the change and the reason for it. In my Deployment course the teacher grades the history, so I take care of it from day one.</p>
+        <p class="prueba"><a href="https://github.com/alejandroDonGar/2DAM/commits/main">History of my notes website</a></p>
+      </li>
+      <li>
+        <h3>I write things down as I go</h3>
+        <p>My READMEs keep every command with the real output it gave, errors included. What I learn in class goes into a notes website anyone can read.</p>
+        <p class="prueba"><a href="/2DAM/">My course notes (Spanish)</a></p>
+      </li>
+      <li>
+        <h3>It's done when the tests pass</h3>
+        <p>The car workshop project for my Data Access course had 90 JUnit tests, and I didn't hand it in until all of them were green. The JPA library project also counts Checkstyle and PMD.</p>
+        <p class="prueba"><a href="https://github.com/alejandroDonGar/Acceso-a-Datos-2026---2027/tree/main/taller-mecanico-alejandroDonateGarcia">Workshop project code</a></p>
+      </li>
+      <li>
+        <h3>I let machines do the repetitive work</h3>
+        <p>GitHub Actions builds my Maven projects and publishes the jar. This CV and my notes website deploy themselves every time I push a change.</p>
+        <p class="prueba"><a href="https://github.com/alejandroDonGar/Acceso-a-Datos-2026---2027/actions">GitHub Actions runs</a></p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="bloque" id="trayectoria">
+    <h2>Timeline and now</h2>
+    <div class="trayectoria">
+    <ol class="linea-tiempo" aria-label="What I've done">
+      <li class="hito">
+        <time>Sep 2025</time>
+        <div><h3>I start DAM at IES Puerto de la Cruz</h3><p>Java from scratch, HTML, CSS and JavaScript, XML, and databases with PostgreSQL in Docker.</p></div>
+      </li>
+      <li class="hito">
+        <time>May 2026</time>
+        <div><h3>CentroPlus Connect, my first-year project</h3><p>A REST API with Spring Boot and hexagonal architecture, used by a website and a JavaFX app.</p></div>
+      </li>
+      <li class="hito">
+        <time>May 2026</time>
+        <div><h3>Internship at Laberit Canarias</h3><p>We built NetScanner as a team: Python, Django, Scapy to scan the network and MongoDB for the history.</p></div>
+      </li>
+      <li class="hito">
+        <time>Jun 2026</time>
+        <div><h3>I start ZeeBoard on my own</h3><p>A desktop app for artists who work on commission, with Tauri, React and SQLite.</p></div>
+      </li>
+      <li class="hito">
+        <time>Sep 2026</time>
+        <div><h3>Second year</h3><p>JDBC and JPA in Java, threads and sockets in Python, Flutter, React with TypeScript, deployment with Docker and nginx, and Odoo.</p></div>
+      </li>
+    </ol>
+    <aside class="panel-ahora">
+    <ol class="linea-tiempo" aria-label="Now and what's next">
+      <li class="hito ahora">
+        <time>Now</time>
+        <div>
+          <h3>November 2026</h3>
+          <ul>
+            <li>Entity relationships with JPA and Hibernate in a practice library app.</li>
+            <li>Socket servers in Python, for now serving one client at a time.</li>
+            <li>Turning my course notes into a website.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="hito viene">
+        <time>Feb 2027</time>
+        <div><h3>Second-year internship</h3><p>Looking for a company in Tenerife.</p></div>
+      </li>
+      <li class="hito viene">
+        <time>Jun 2027</time>
+        <div><h3>I finish DAM</h3></div>
+      </li>
+    </ol>
+    </aside>
+    </div>
+  </section>
+
+  <section class="bloque" id="contacto">
+    <h2>Contact</h2>
+    <div class="contacto">
+      <dl class="datos">
+        <dt>Internship</dt><dd>February to June 2027</dd>
+        <dt>Format</dt><dd>On-site, hybrid or remote</dd>
+        <dt>Area</dt><dd>North of Tenerife, from Puerto de la Cruz to Santa Cruz</dd>
+        <dt>What I'm looking for</dt><dd>Backend work with Java or Python and databases: the ORM work I'm doing now and the Spring that comes next. Mobile apps with Flutter too.</dd>
+      </dl>
+      <div class="escribir">
+        <p>If your company takes interns, get in touch.</p>
+        <a class="fct" href="mailto:AlexDoGa.work@gmail.com">Send me an email</a>
+        <p class="redes"><a href="https://www.linkedin.com/in/alejandrodongar/">LinkedIn</a> <a href="https://github.com/alejandroDonGar">GitHub</a> <a href="cv/">PDF CV</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>Alejandro Donate García, 2026</span>
+</footer>
+
+<script src="../paletas.js?v=2"></script>
+<script>
+  // Parte el nombre en letras para que cada una tenga su propio grosor y anchura
+  const letras = [];
+  document.querySelectorAll('.nombre .linea').forEach(linea => {
+    linea.innerHTML = [...linea.textContent].map(c => `<span class="l">${c}</span>`).join('');
+    letras.push(...linea.querySelectorAll('.l'));
+  });
+
+  const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Estado de cada letra: valor actual y objetivo (el actual persigue al objetivo en cada fotograma)
+  const estado = letras.map(() => ({ w: 300, a: 90, wObj: 300, aObj: 90 }));
+  let raton = null;
+
+  addEventListener('pointermove', e => { raton = { x: e.clientX, y: e.clientY }; });
+  document.documentElement.addEventListener('pointerleave', () => { raton = null; });
+
+  function fotograma() {
+    letras.forEach((l, i) => {
+      const s = estado[i];
+      if (raton) {
+        const r = l.getBoundingClientRect();
+        const d = Math.hypot(raton.x - (r.left + r.width / 2), raton.y - (r.top + r.height / 2));
+        const cerca = Math.max(0, 1 - d / 420);   // 1 justo encima, 0 a 420 px o más
+        s.wObj = 300 + cerca * 600;               // de 300 a 900
+        s.aObj = 90 + cerca * 35;                 // de 90 a 125
+      } else { s.wObj = 300; s.aObj = 90; }
+      // Interpolación suave: avanza un 12 % de lo que falta, así se puede interrumpir en cualquier momento
+      s.w += (s.wObj - s.w) * .12;
+      s.a += (s.aObj - s.a) * .12;
+      l.style.setProperty('--w', s.w.toFixed(1));
+      l.style.setProperty('--a', s.a.toFixed(1));
+    });
+    requestAnimationFrame(fotograma);
+  }
+  if (!quieto) requestAnimationFrame(fotograma);
+</script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CV de Alejandro Donate García</title>
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<meta name="description" content="CV de una página de Alejandro Donate García, estudiante de 2º de DAM. Listo para imprimir o guardar como PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&display=swap" rel="stylesheet">
+<style>
+  /* Una hoja A4: en pantalla se ve como un papel; al imprimir, solo la hoja */
+  :root { --tinta: #22302a; --suave: #55625b; --linea: #d4d9d1; --acento: #2E6488; }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: #E5E8E3; color: var(--tinta); font: 400 10pt/1.45 "Mona Sans", system-ui, sans-serif; }
+  a { color: inherit; text-decoration: none; }
+  .acciones { display: flex; justify-content: center; gap: 12px; padding: 24px 16px; font-size: 11pt; }
+  .acciones a, .acciones button { font: inherit; padding: 9px 18px; border-radius: 99px; border: 1px solid var(--linea); background: #fff; color: var(--tinta); cursor: pointer; }
+  .acciones button { background: var(--acento); border-color: var(--acento); color: #fff; font-weight: 600; }
+  .acciones :focus-visible { outline: 2px solid var(--acento); outline-offset: 3px; }
+
+  .hoja { width: 210mm; min-height: 297mm; margin: 0 auto 32px; background: #fff; padding: 16mm 17mm; box-shadow: 0 2px 24px rgba(0,0,0,.08); }
+  @media (max-width: 220mm) { .hoja { width: auto; min-height: 0; margin: 0 12px 24px; padding: 24px; } }
+
+  header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-bottom: 10px; border-bottom: 2px solid var(--tinta); }
+  h1 { font-size: 24pt; line-height: 1; letter-spacing: -.02em; font-variation-settings: "wght" 750, "wdth" 115; }
+  .rol { font-size: 11pt; margin-top: 4px; color: var(--suave); }
+  .contacto { list-style: none; padding: 0; text-align: right; font-size: 9pt; color: var(--suave); }
+  .fct { margin-top: 8px; font-weight: 600; color: var(--acento); }
+
+  .cuerpo { display: grid; grid-template-columns: 1fr 58mm; gap: 0 9mm; margin-top: 12px; }
+  @media (max-width: 220mm) { .cuerpo { grid-template-columns: 1fr; } }
+  h2 { font-size: 9pt; font-weight: 700; letter-spacing: .02em; color: var(--acento); margin: 12px 0 6px; padding-bottom: 3px; border-bottom: 1px solid var(--linea); font-variation-settings: "wdth" 110; }
+  .item { margin-bottom: 9px; break-inside: avoid; }
+  .item .cab { display: flex; justify-content: space-between; gap: 12px; }
+  .item h3 { font-size: 10pt; font-weight: 650; }
+  .item time { color: var(--suave); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .item p { color: var(--suave); }
+  .tec { font-size: 8.5pt; color: var(--acento); margin-top: 1px; }
+  .lado p, .lado li { color: var(--suave); }
+  .lado ul { list-style: none; padding: 0; }
+  .lado li + li { margin-top: 3px; }
+  .lado strong { color: var(--tinta); font-weight: 600; }
+
+  @page { size: A4; margin: 0; }
+  @media print {
+    body { background: #fff; }
+    .acciones { display: none; }
+    .hoja { margin: 0; box-shadow: none; width: 210mm; min-height: 297mm; }
+  }
+</style>
+<link rel="alternate" hreflang="es" href="https://alejandrodongar.github.io/cv/">
+<link rel="alternate" hreflang="en" href="https://alejandrodongar.github.io/en/cv/">
+</head>
+<body>
+<nav class="acciones" aria-label="Acciones">
+  <a href="../">Volver a la web</a>
+  <button type="button" onclick="print()">Guardar como PDF</button>
+  <a href="../en/cv/" lang="en" hreflang="en">English</a>
+</nav>
+
+<main class="hoja">
+  <header>
+    <div>
+      <h1>Alejandro Donate García</h1>
+      <p class="rol">Estudiante de 2º de Desarrollo de Aplicaciones Multiplataforma</p>
+      <p class="fct">Disponible para la FCT de febrero a junio de 2027</p>
+    </div>
+    <ul class="contacto">
+      <li>Norte de Tenerife (Puerto de la Cruz a Santa Cruz)</li>
+      <li><a href="mailto:AlexDoGa.work@gmail.com">AlexDoGa.work@gmail.com</a></li>
+      <li><a href="https://alejandrodongar.github.io">alejandrodongar.github.io</a></li>
+      <li><a href="https://github.com/alejandroDonGar">github.com/alejandroDonGar</a></li>
+      <li><a href="https://www.linkedin.com/in/alejandrodongar/">linkedin.com/in/alejandrodongar</a></li>
+    </ul>
+  </header>
+
+  <div class="cuerpo">
+    <div>
+      <h2>Perfil</h2>
+      <p>Me engancha la parte que no se ve: dónde viven los datos y cómo llegan a la pantalla. Este curso he pasado de leer un CSV a mano a montar repositorios con JPA. Busco hacer la FCT en backend con Java o Python y bases de datos, o en apps móviles con Flutter.</p>
+
+      <h2>Experiencia</h2>
+      <div class="item">
+        <div class="cab"><h3>Prácticas de 1º, Laberit Canarias</h3><time>2026</time></div>
+        <p>Desarrollador principal de NetScanner en un equipo de seis: una web que descubre los dispositivos de una red local, los clasifica por tipo y riesgo y avisa de los cambios entre escaneos.</p>
+        <p class="tec">Python, Django, Scapy y MongoDB</p>
+      </div>
+
+      <h2>Proyectos</h2>
+      <div class="item">
+        <div class="cab"><h3>ZeeBoard</h3><time>Desde junio de 2026</time></div>
+        <p>App de escritorio para artistas que trabajan por encargo: clientes, etapas con imágenes, correcciones y cobros, todo en local. Idea, diseño y pruebas míos; el código, con ayuda de IA.</p>
+        <p class="tec">Tauri, Rust, React, TypeScript y SQLite</p>
+      </div>
+      <div class="item">
+        <div class="cab"><h3>CentroPlus Connect</h3><time>Mayo y junio de 2026</time></div>
+        <p>Proyecto final individual de 1º: gestión de un centro educativo con una app de JavaFX y una API REST con arquitectura hexagonal, documentada con Swagger y con 41 clases de test.</p>
+        <p class="tec">Java 17, Spring Boot, JavaFX, SQLite y H2</p>
+      </div>
+
+      <h2>Formación</h2>
+      <div class="item">
+        <div class="cab"><h3>Técnico Superior en DAM, IES Puerto de la Cruz</h3><time>2025 a 2027</time></div>
+        <p>En 2º: acceso a datos con JDBC y JPA, hilos y sockets en Python, Flutter, React con TypeScript, despliegue con Docker y nginx, y Odoo.</p>
+      </div>
+    </div>
+
+    <aside class="lado">
+      <h2>Lo que sé hacer</h2>
+      <ul>
+        <li><strong>Java y datos:</strong> JDBC, JPA e Hibernate, Spring Boot, Maven, JUnit</li>
+        <li><strong>Python:</strong> Django, hilos, sockets</li>
+        <li><strong>Interfaces:</strong> Flutter, React con TypeScript, JavaFX</li>
+        <li><strong>Bases de datos:</strong> SQLite, PostgreSQL, MongoDB</li>
+        <li><strong>Herramientas:</strong> Git, GitHub Actions, Docker, nginx</li>
+      </ul>
+
+      <h2>Cómo trabajo</h2>
+      <ul>
+        <li>Commits pequeños que cuentan qué cambió</li>
+        <li>README con cada comando y su salida real</li>
+        <li>Lo doy por terminado cuando pasan las pruebas</li>
+        <li>Publico mis apuntes del curso</li>
+      </ul>
+
+      <h2>Idiomas</h2>
+      <ul>
+        <li><strong>Español:</strong> nativo</li>
+        <li><strong>Inglés:</strong> B1 certificado; lectura y escucha diarias</li>
+      </ul>
+
+      <h2>Prácticas</h2>
+      <p>De febrero a junio de 2027. Presencial, híbrida o remota.</p>
+    </aside>
+  </div>
+</main>
+</body>
+</html>
